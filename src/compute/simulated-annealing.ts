@@ -1,4 +1,4 @@
-export function simulate_annealing<T>(
+export function simulateAnnealing<T>(
     initialState: T,
     mutateState: (state: T) => T,
     computeEnergy: (state: T) => number,

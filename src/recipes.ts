@@ -1,4 +1,4 @@
-import { Item, items, Minutes, Ore, Quantity } from "./items"
+import { Item, items, Machine, Minutes, Ore, Quantity } from "./items"
 
 export interface Batch {
     readonly item: Item

@@ -2,17 +2,17 @@ import { determineComputationOrder } from "./computation-order"
 import { findRecipe, Recipe } from "../recipes"
 import { isOre, Item, Ore } from "../items"
 import { ContainerNode, FactoryGraph, MachineNode } from "./graph"
-import { simulate_annealing } from "./simulated-annealing"
+import { simulateAnnealing } from "./simulated-annealing"
 import { Draft, produce } from "immer"
 
 export function buildFactory(products: Map<Exclude<Item, Ore>, number>): FactoryGraph {
     const graph = initGraph(products)
 
     const computationOrder = determineComputationOrder(new Set(products.keys()))
-    console.log(computationOrder)
+    console.log("Computation plan", computationOrder)
 
     for (const item of computationOrder) {
-        console.log(item)
+        console.log("Computing", item)
         if (isOre(item)) {
             addInputContainers(graph, item)
         } else {
@@ -52,7 +52,7 @@ function addInputContainers(graph: FactoryGraph, item: Ore): void {
 
 function addProducers(graph: FactoryGraph, item: Exclude<Item, Ore>): void {
     const recipe = findRecipe(item)
-    const result = simulate_annealing(
+    const result = simulateAnnealing(
         makeInitialStates(graph, item),
         mutateLinks(recipe),
         computeEnergy(recipe),

@@ -2,7 +2,7 @@ import { isOre, Item } from "../items"
 import { Batch, findRecipe, Recipe } from "../recipes"
 import { ItemRate } from "./graph"
 
-class ItemsFlow extends Map<Item, ItemRate> {
+export class ItemsFlow extends Map<Item, ItemRate> {
     constructor(itemsStream?: ItemsFlow) {
         super()
         if (itemsStream) {
@@ -135,7 +135,7 @@ export function computeThroughputs(minimumEgress: ItemsFlow): ItemsFlow {
     return throughputs
 }
 
-export function computeRequiredMachines(throughputs: ItemsFlow): Map<Item, [string, number]> {
+export function computeIdealMachineCount(throughputs: ItemsFlow): Map<Item, [string, number]> {
     const machines = new Map<Item, [string, number]>()
 
     for (const [item, throughput] of throughputs.entries()) {
