@@ -15,6 +15,9 @@ module.exports = ({ ifDev, ifProd }) => ({
     output: {
         path: path.join(__dirname, "./dist"),
         filename: "[name].[hash].js",
+        ...ifProd({
+            publicPath: "/du-factory-planer/",
+        }),
     },
     devServer: {
         publicPath: "/",
