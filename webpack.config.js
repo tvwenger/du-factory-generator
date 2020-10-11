@@ -25,14 +25,14 @@ module.exports = ({ ifDev, ifProd }) => ({
         port: 8080,
         historyApiFallback: true,
     },
-    entry: "./src/main.ts",
+    entry: "./src/main.tsx",
     resolve: {
-        extensions: [".ts", ".js"],
+        extensions: [".ts", ".tsx", ".js"],
     },
     module: {
         rules: [
             {
-                test: /\.ts$/,
+                test: /\.tsx?$/,
                 use: "ts-loader",
             },
         ],
