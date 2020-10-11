@@ -49,7 +49,7 @@ export function machine(name: string, volume: Liter): Machine {
 }
 
 export function isMachine(item: Item): item is Machine {
-    return item.type === ItemType.ORE
+    return item.type === ItemType.MACHINE
 }
 
 export function container(name: string, volume: Liter): Container {
