@@ -4,7 +4,12 @@
         "module": "es6",
         "target": "es6",
         "sourceMap": true,
-        "strict": true
+        "strict": true,
+        "jsx": "react",
+        "lib": [
+            "es6",
+            "dom"
+        ]
     },
     "exclude": [
         "node_modules"

@@ -6,6 +6,8 @@ import {
     computeThroughputs,
     ItemsFlow,
 } from "./compute/ideal-machine-count"
+import * as React from "react"
+import * as ReactDOM from "react-dom"
 
 enableMapSet()
 
@@ -45,3 +47,11 @@ computeIdealMachineCount(computeThroughputs(requiredOutput))
 `,
     "color: #880088",
 )
+
+function App() {
+    return <h1>Open the Javascript console</h1>
+}
+
+const rootElement = document.getElementById("root")
+ReactDOM.render(<App />, rootElement)
+
