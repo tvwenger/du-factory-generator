@@ -16,6 +16,18 @@ export class ContainerNode {
         return this.consumers.size
     }
 
+    get items(): Set<Item> {
+        const consumedItems = Array.from(this.consumers).map((consumer) =>
+            consumer.recipe.ingredients
+                .filter((ingredient) => consumer.getIntakeFrom(this, ingredient.item) > 0)
+                .map((product) => product.item),
+        )
+        const producedItems = Array.from(this.producers).map((producer) =>
+            [producer.recipe.product, ...producer.recipe.byproducts].map((product) => product.item),
+        )
+        return new Set(([] as Item[]).concat(...consumedItems, ...producedItems))
+    }
+
     static is(node: FactoryNode): node is ContainerNode {
         return node instanceof ContainerNode
     }
