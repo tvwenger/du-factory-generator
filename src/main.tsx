@@ -1,57 +1,85 @@
 import { items } from "./items"
 import { buildFactory } from "./compute/factory"
 import { enableMapSet } from "immer"
-import {
-    computeIdealMachineCount,
-    computeThroughputs,
-    ItemsFlow,
-} from "./compute/ideal-machine-count"
 import * as React from "react"
+import { Fragment } from "react"
 import * as ReactDOM from "react-dom"
+import { ContainerNode, MachineNode } from "./compute/graph"
 
 enableMapSet()
 
-Object.assign(window, {
-    items,
-    buildFactory,
-    computeIdealMachineCount,
-    computeThroughputs,
-    ItemsFlow,
-})
+class IdGenerator<T> {
+    private idCache = new Map<T, number>()
 
-console.log(
-    `
-%cGenerate a factory (slow): 
+    getId(entity: T): number {
+        if (!this.idCache.has(entity)) {
+            this.idCache.set(entity, this.idCache.size + 1)
+        }
+        return this.idCache.get(entity)!
+    }
+}
 
-// produce each item with two assemblers
-const assemblyMachines = new Map([
-    [items.adjuster_l, 2],
-    [items.vertical_booster_l, 2],
-    [items.retro_rocket_brake_l, 2],
-])
-buildFactory(assemblyMachines)
-`,
-    "color: #000099",
-)
+interface ContainerProps {
+    container: ContainerNode
+    idGenerator: IdGenerator<ContainerNode>
+}
 
-console.log(
-    `
-%cCompute the minimum number of machines required (fast):
+function Container(props: ContainerProps) {
+    const content = Array.from(props.container.items.values()).map((item) => <p>{item.name}</p>)
+    return (
+        <Fragment>
+            <h4>Container {props.idGenerator.getId(props.container)}</h4>
+            {content}
+        </Fragment>
+    )
+}
 
-const requiredOutput = new ItemsFlow()
-// produce at least 2 of each in 32 minutes
-requiredOutput.add(items.adjuster_l, 2 / 32)
-requiredOutput.add(items.vertical_booster_l, 2 / 32)
-requiredOutput.add(items.retro_rocket_brake_l, 2 / 32)
-computeIdealMachineCount(computeThroughputs(requiredOutput))
-`,
-    "color: #880088",
-)
+interface MachineProps {
+    machine: MachineNode
+    machineIdGenerator: IdGenerator<MachineNode>
+    containerIdGenerator: IdGenerator<ContainerNode>
+}
+
+function Machine(props: MachineProps) {
+    return (
+        <Fragment>
+            <h2>
+                Machine {props.machineIdGenerator.getId(props.machine)}:{" "}
+                {props.machine.recipe.product.item.name}
+            </h2>
+            <h3>Inputs</h3>
+            {Array.from(props.machine.inputs.values()).map((container) => (
+                <Container container={container} idGenerator={props.containerIdGenerator} />
+            ))}
+            <h3>Output</h3>
+            <Container container={props.machine.output!} idGenerator={props.containerIdGenerator} />
+        </Fragment>
+    )
+}
 
 function App() {
-    return <h1>Open the Javascript console</h1>
+    const assemblyMachines = new Map([
+        [items.adjuster_l, 2],
+        [items.vertical_booster_l, 2],
+        [items.retro_rocket_brake_l, 2],
+    ])
+    const factory = buildFactory(assemblyMachines)
+    const machineIdGenerator = new IdGenerator<MachineNode>()
+    const containerIdGenerator = new IdGenerator<ContainerNode>()
+
+    return (
+        <Fragment>
+            <h1>Factory Generator</h1>
+            {Array.from(factory.machines).map((machine) => (
+                <Machine
+                    machine={machine}
+                    containerIdGenerator={containerIdGenerator}
+                    machineIdGenerator={machineIdGenerator}
+                />
+            ))}
+        </Fragment>
+    )
 }
 
 const rootElement = document.getElementById("root")
 ReactDOM.render(<App />, rootElement)
-
