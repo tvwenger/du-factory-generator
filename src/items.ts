@@ -1,124 +1,1166 @@
+/**
+ * items.ts
+ * All available items and their properties
+ * lgfrbcsgo & Nikolaus - October 2020
+ */
+
 export type Liter = number
 export type Minutes = number
 export type Quantity = number
 
-export type Item = Machine | Container | Ore | Other
+export type Item = Ore | Catalyst | Product | Element
 
 export enum ItemType {
-    MACHINE = "machine",
-    CONTAINER = "container",
     ORE = "ore",
-    OTHER = "product",
+    CATALYST = "catalyst",
+    PRODUCT = "product",
+    ELEMENT = "element",
 }
 
-export interface Container extends CommonProperties {
-    readonly type: ItemType.CONTAINER
+/**
+ * Properties commen to each item type
+ */
+export interface CommonProperties {
+    readonly name: string
+    readonly tier: string
+    readonly category: string
+    readonly volume: Liter
 }
 
-export interface Machine extends CommonProperties {
-    readonly type: ItemType.MACHINE
-}
-
-export interface Other extends CommonProperties {
-    readonly type: ItemType.OTHER
-}
-
+/**
+ * Item types
+ */
 export interface Ore extends CommonProperties {
     readonly type: ItemType.ORE
 }
 
-export interface CommonProperties {
-    readonly name: string
-    readonly volume: Liter
+export interface Catalyst extends CommonProperties {
+    readonly type: ItemType.CATALYST
 }
 
-export function other(name: string, volume: Liter): Other {
-    return {
-        type: ItemType.OTHER,
-        name,
-        volume,
-    }
+export interface Product extends CommonProperties {
+    readonly type: ItemType.PRODUCT
 }
 
-export function machine(name: string, volume: Liter): Machine {
-    return {
-        type: ItemType.MACHINE,
-        name,
-        volume,
-    }
+export interface Element extends CommonProperties {
+    readonly type: ItemType.ELEMENT
 }
 
-export function isMachine(item: Item): item is Machine {
-    return item.type === ItemType.MACHINE
-}
-
-export function container(name: string, volume: Liter): Container {
-    return {
-        type: ItemType.CONTAINER,
-        name,
-        volume,
-    }
-}
-
-export function isContainer(item: Item): item is Container {
-    return item.type === ItemType.CONTAINER
-}
-
-export function ore(name: string): Ore {
-    return {
-        type: ItemType.ORE,
-        name,
-        volume: 1,
-    }
-}
-
-export function isOre(item: Item): item is Ore {
+/**
+ * Ore type checker
+ * @param item Item to check
+ */
+export function isOre(item: Item) {
     return item.type === ItemType.ORE
 }
 
+/**
+ * Returns a new Ore type
+ * @param name Ore name
+ * @param volume Ore volume
+ */
+export function ore(name: string, tier: string, category: string, volume: Liter): Ore {
+    return {
+        type: ItemType.ORE,
+        name,
+        tier,
+        category,
+        volume,
+    }
+}
+
+/**
+ * Returns a new Catalyst type
+ * @param name Catalyst name
+ * @param volume Catalyst volume
+ */
+export function catalyst(name: string, tier: string, category: string, volume: Liter): Catalyst {
+    return {
+        type: ItemType.CATALYST,
+        name,
+        tier,
+        category,
+        volume,
+    }
+}
+
+/**
+ * Returns a new Product type
+ * @param name Product name
+ * @param volume Product volume
+ */
+export function product(name: string, tier: string, category: string, volume: Liter): Product {
+    return {
+        type: ItemType.PRODUCT,
+        name,
+        tier,
+        category,
+        volume,
+    }
+}
+
+/**
+ * Returns a new Element type
+ * @param name Element name
+ * @param volume Element volume
+ */
+export function element(name: string, tier: string, category: string, volume: Liter): Element {
+    return {
+        type: ItemType.ELEMENT,
+        name,
+        tier,
+        category,
+        volume,
+    }
+}
+
+/**
+ * Item list (TODO: complete)
+ */
 export const items = {
-    vertical_booster_l: other("Vertical booster L", 562.4),
-    adjuster_l: other("Adjuster L", 619.2),
-    retro_rocket_brake_l: other("Retro-rocket brake L", 562.4),
-    atmospheric_airbrake_l: other("Atmospheric airbrake L", 619.2),
-
-    basic_hydraulics: other("Basic hydraulics", 10),
-    basic_mobile_panel_m: other("Basic mobile panel M", 259.2),
-
-    basic_standard_frame_m: other("Basic standard frame M", 74),
-    basic_pipe: other("Basic pipe", 1),
-    basic_screw: other("Basic screw", 1),
-    basic_burner: other("Basic burner", 10),
-    basic_ionic_chamber_m: other("Basic ionic chamber M", 202.4),
-    basic_connector: other("Basic connector", 0.8),
-    basic_injector: other("Basic injector", 10),
-    basic_gaz_cylinder_m: other("Basic gaz cylinder M", 259.2),
-
-    al_fe_alloy: other("Al-Fe alloy", 1),
-    silumin: other("Silumin", 1),
-    steel: other("Steel", 1),
-
-    polycarbonate_plastic: other("Polycarbonate plastic", 1),
-
-    pure_aluminium: other("Pure aluminium", 1),
-    pure_silicon: other("Pure silicon", 1),
-    pure_iron: other("Pure iron", 1),
-    pure_carbon: other("Pure carbon", 1),
-
-    pure_oxygen: ore("Pure oxygen"), // TODO
-    pure_hydrogen: ore("Pure hydrogen"), // TODO
-
-    bauxite: ore("Bauxite"),
-    quarz: ore("Quarz"),
-    hematite: ore("Hematite"),
-    coal: ore("Coal"),
-
-    smelter_m: machine("Smelter M", 499.2),
-    refiner_m: machine("Refiner M", 479.2),
-    metalwork_industry_m: machine("Metalwork industry M", 599.2),
-    assembly_line_m: machine("Assembly line M", 599.2),
-    assembly_line_l: machine("Assembly line L", 3255.4),
-    chemical_industry_m: machine("Chemical industry M", 479.2),
-    electronic_industry_m: machine("Electronical industry M", 459.2),
-    "3d_prnter_m": machine("3D printer M", 609.2),
+    Hydrogen: ore("Hydrogen", "Basic", "Ore", 1),
+    Oxygen: ore("Oxygen", "Basic", "Ore", 1),
+    Hematite: ore("Hematite", "Basic", "Ore", 1),
+    Bauxite: ore("Bauxite", "Basic", "Ore", 1),
+    Quartz: ore("Quartz", "Basic", "Ore", 1),
+    Coal: ore("Coal", "Basic", "Ore", 1),
+    Limestone: ore("Limestone", "Uncommon", "Ore", 1),
+    Chromite: ore("Chromite", "Uncommon", "Ore", 1),
+    Malachite: ore("Malachite", "Uncommon", "Ore", 1),
+    Natron: ore("Natron", "Uncommon", "Ore", 1),
+    Petalite: ore("Petalite", "Advanced", "Ore", 1),
+    Garnierite: ore("Garnierite", "Advanced", "Ore", 1),
+    Acanthite: ore("Acanthite", "Advanced", "Ore", 1),
+    Pyrite: ore("Pyrite", "Advanced", "Ore", 1),
+    Cobaltite: ore("Cobaltite", "Rare", "Ore", 1),
+    Cryolite: ore("Cryolite", "Rare", "Ore", 1),
+    "Gold Nuggets": ore("Gold Nuggets", "Rare", "Ore", 1),
+    Kolbeckite: ore("Kolbeckite", "Rare", "Ore", 1),
+    Rhodonite: ore("Rhodonite", "Exotic", "Ore", 1),
+    Columbite: ore("Columbite", "Exotic", "Ore", 1),
+    Illmenite: ore("Illmenite", "Exotic", "Ore", 1),
+    Vanadinite: ore("Vanadinite", "Exotic", "Ore", 1),
+    Iron: product("Iron", "Basic", "Pure", 1),
+    Aluminium: product("Aluminium", "Basic", "Pure", 1),
+    Silicon: product("Silicon", "Basic", "Pure", 1),
+    Carbon: product("Carbon", "Basic", "Pure", 1),
+    Calcium: product("Calcium", "Uncommon", "Pure", 1),
+    Chromium: product("Chromium", "Uncommon", "Pure", 1),
+    Copper: product("Copper", "Uncommon", "Pure", 1),
+    Sodium: product("Sodium", "Uncommon", "Pure", 1),
+    Lithium: product("Lithium", "Advanced", "Pure", 1),
+    Nickel: product("Nickel", "Advanced", "Pure", 1),
+    Silver: product("Silver", "Advanced", "Pure", 1),
+    Sulfur: product("Sulfur", "Advanced", "Pure", 1),
+    Cobalt: product("Cobalt", "Rare", "Pure", 1),
+    Fluorine: product("Fluorine", "Rare", "Pure", 1),
+    Gold: product("Gold", "Rare", "Pure", 1),
+    Scandium: product("Scandium", "Rare", "Pure", 1),
+    Manganese: product("Manganese", "Exotic", "Pure", 1),
+    Niobium: product("Niobium", "Exotic", "Pure", 1),
+    Titanium: product("Titanium", "Exotic", "Pure", 1),
+    Vanadium: product("Vanadium", "Exotic", "Pure", 1),
+    Steel: product("Steel", "Basic", "Product", 1),
+    Silumin: product("Silumin", "Basic", "Product", 1),
+    "Al-Fe Alloy": product("Al-Fe Alloy", "Basic", "Product", 1),
+    "Biologic Matter": product("Biologic Matter", "Basic", "Product", 1),
+    Brick: product("Brick", "Basic", "Product", 1),
+    "Carbon Fiber": product("Carbon Fiber", "Basic", "Product", 1),
+    Glass: product("Glass", "Basic", "Product", 1),
+    "Polycarbonate Plastic": product("Polycarbonate Plastic", "Basic", "Product", 1),
+    Wood: product("Wood", "Basic", "Product", 1),
+    "Advanced Glass": product("Advanced Glass", "Uncommon", "Product", 1),
+    "Calcium Reinforced Copper": product("Calcium Reinforced Copper", "Uncommon", "Product", 1),
+    Concrete: product("Concrete", "Uncommon", "Product", 1),
+    Duralumin: product("Duralumin", "Uncommon", "Product", 1),
+    Marble: product("Marble", "Uncommon", "Product", 1),
+    "Polycalcite Plastic": product("Polycalcite Plastic", "Uncommon", "Product", 1),
+    "Stainless Steel": product("Stainless Steel", "Uncommon", "Product", 1),
+    "Ag-Li Reinforced Glass": product("Ag-Li Reinforced Glass", "Advanced", "Product", 1),
+    "Al-Li Alloy": product("Al-Li Alloy", "Advanced", "Product", 1),
+    "Cu-Ag Alloy": product("Cu-Ag Alloy", "Advanced", "Product", 1),
+    Inconel: product("Inconel", "Advanced", "Product", 1),
+    "Polysulfide Plastic": product("Polysulfide Plastic", "Advanced", "Product", 1),
+    Fluoropolymer: product("Fluoropolymer", "Rare", "Product", 1),
+    "Gold Coated Glass": product("Gold Coated Glass", "Rare", "Product", 1),
+    "Maraging Steel": product("Maraging Steel", "Rare", "Product", 1),
+    "Red Gold": product("Red Gold", "Rare", "Product", 1),
+    "Sc-Al Alloy": product("Sc-Al Alloy", "Rare", "Product", 1),
+    "Grade 5 Titanium Alloy": product("Grade 5 Titanium Alloy", "Exotic", "Product", 1),
+    Mangalloy: product("Mangalloy", "Exotic", "Product", 1),
+    "Manganese Reinforced Glass": product("Manganese Reinforced Glass", "Exotic", "Product", 1),
+    "Ti-Nb Superconductor": product("Ti-Nb Superconductor", "Exotic", "Product", 1),
+    Vanamer: product("Vanamer", "Exotic", "Product", 1),
+    "Catalyst 3": catalyst("Catalyst 3", "Advanced", "Catalyst", 1),
+    "Catalyst 4": catalyst("Catalyst 4", "Rare", "Catalyst", 1),
+    "Catalyst 5": catalyst("Catalyst 5", "Exotic", "Catalyst", 1),
+    "Kergon-X1 Fuel": element("Kergon-X1 Fuel", "Element", "Fuel", 1),
+    "Kergon-X2 Fuel": element("Kergon-X2 Fuel", "Element", "Fuel", 1),
+    "Kergon-X3 Fuel": element("Kergon-X3 Fuel", "Element", "Fuel", 1),
+    "Kergon-X4 Fuel": element("Kergon-X4 Fuel", "Element", "Fuel", 1),
+    "Nitron Fuel": element("Nitron Fuel", "Element", "Fuel", 1),
+    "Xeron Fuel": element("Xeron Fuel", "Element", "Fuel", 1),
+    "Warp Cell": element("Warp Cell", "Element", "Fuel", 40),
+    "Basic Anti-Matter Capsule": product(
+        "Basic Anti-Matter Capsule",
+        "Basic",
+        "Complex Parts",
+        4.6,
+    ),
+    "Basic Burner": product("Basic Burner", "Basic", "Complex Parts", 10),
+    "Basic Electronics": product("Basic Electronics", "Basic", "Complex Parts", 4),
+    "Basic Explosive Module": product("Basic Explosive Module", "Basic", "Complex Parts", 4.6),
+    "Basic Hydraulics": product("Basic Hydraulics", "Basic", "Complex Parts", 10),
+    "Basic Injector": product("Basic Injector", "Basic", "Complex Parts", 10),
+    "Basic Magnet": product("Basic Magnet", "Basic", "Complex Parts", 7.36),
+    "Basic Optics": product("Basic Optics", "Basic", "Complex Parts", 10),
+    "Basic Power System": product("Basic Power System", "Basic", "Complex Parts", 9.2),
+    "Basic Processor": product("Basic Processor", "Basic", "Complex Parts", 5),
+    "Basic Quantum Core": product("Basic Quantum Core", "Basic", "Complex Parts", 5),
+    "Basic Singularity Container": product(
+        "Basic Singularity Container",
+        "Basic",
+        "Complex Parts",
+        4,
+    ),
+    "Uncommon Anti-Matter Capsule": product(
+        "Uncommon Anti-Matter Capsule",
+        "Uncommon",
+        "Complex Parts",
+        4.6,
+    ),
+    "Uncommon Burner": product("Uncommon Burner", "Uncommon", "Complex Parts", 10),
+    "Uncommon Electronics": product("Uncommon Electronics", "Uncommon", "Complex Parts", 4),
+    "Uncommon Explosive Module": product(
+        "Uncommon Explosive Module",
+        "Uncommon",
+        "Complex Parts",
+        4.6,
+    ),
+    "Uncommon Hydraulics": product("Uncommon Hydraulics", "Uncommon", "Complex Parts", 10),
+    "Uncommon Injector": product("Uncommon Injector", "Uncommon", "Complex Parts", 10),
+    "Uncommon Magnet": product("Uncommon Magnet", "Uncommon", "Complex Parts", 7.36),
+    "Uncommon Optics": product("Uncommon Optics", "Uncommon", "Complex Parts", 10),
+    "Uncommon Power System": product("Uncommon Power System", "Uncommon", "Complex Parts", 9.2),
+    "Uncommon Processor": product("Uncommon Processor", "Uncommon", "Complex Parts", 5),
+    "Uncommon Quantum Core": product("Uncommon Quantum Core", "Uncommon", "Complex Parts", 5),
+    "Uncommon Singularity Container": product(
+        "Uncommon Singularity Container",
+        "Uncommon",
+        "Complex Parts",
+        4,
+    ),
+    "Uncommon Solid Warhead": product("Uncommon Solid Warhead", "Uncommon", "Complex Parts", 5),
+    "Advanced Anti-Matter Capsule": product(
+        "Advanced Anti-Matter Capsule",
+        "Advanced",
+        "Complex Parts",
+        4.6,
+    ),
+    "Advanced Burner": product("Advanced Burner", "Advanced", "Complex Parts", 10),
+    "Advanced Electronics": product("Advanced Electronics", "Advanced", "Complex Parts", 4),
+    "Advanced Explosive Module": product(
+        "Advanced Explosive Module",
+        "Advanced",
+        "Complex Parts",
+        4.6,
+    ),
+    "Advanced Hydraulics": product("Advanced Hydraulics", "Advanced", "Complex Parts", 10),
+    "Advanced Injector": product("Advanced Injector", "Advanced", "Complex Parts", 10),
+    "Advanced Magnet": product("Advanced Magnet", "Advanced", "Complex Parts", 7.36),
+    "Advanced Optics": product("Advanced Optics", "Advanced", "Complex Parts", 10),
+    "Advanced Power System": product("Advanced Power System", "Advanced", "Complex Parts", 9.2),
+    "Advanced Processor": product("Advanced Processor", "Advanced", "Complex Parts", 5),
+    "Advanced Quantum Core": product("Advanced Quantum Core", "Advanced", "Complex Parts", 5),
+    "Advanced Singularity Container": product(
+        "Advanced Singularity Container",
+        "Advanced",
+        "Complex Parts",
+        4,
+    ),
+    "Advanced Solid Warhead": product("Advanced Solid Warhead", "Advanced", "Complex Parts", 5),
+    "Rare Anti-Matter Capsule": product("Rare Anti-Matter Capsule", "Rare", "Complex Parts", 4.6),
+    "Rare Electronics": product("Rare Electronics", "Rare", "Complex Parts", 4),
+    "Rare Magnet": product("Rare Magnet", "Rare", "Complex Parts", 7.36),
+    "Rare Optics": product("Rare Optics", "Rare", "Complex Parts", 10),
+    "Rare Power System": product("Rare Power System", "Rare", "Complex Parts", 9.2),
+    "Rare Quantum Core": product("Rare Quantum Core", "Rare", "Complex Parts", 5),
+    "Rare Singularity Container": product("Rare Singularity Container", "Rare", "Complex Parts", 4),
+    "Exotic Anti-Matter Capsule": product(
+        "Exotic Anti-Matter Capsule",
+        "Exotic",
+        "Complex Parts",
+        4.6,
+    ),
+    "Exotic Electronics": product("Exotic Electronics", "Exotic", "Complex Parts", 4),
+    "Exotic Magnet": product("Exotic Magnet", "Exotic", "Complex Parts", 7.36),
+    "Exotic Power System": product("Exotic Power System", "Exotic", "Complex Parts", 9.2),
+    "Exotic Processor": product("Exotic Processor", "Exotic", "Complex Parts", 5),
+    "Exotic Quantum Core": product("Exotic Quantum Core", "Exotic", "Complex Parts", 5),
+    "Exotic Singularity Container": product(
+        "Exotic Singularity Container",
+        "Exotic",
+        "Complex Parts",
+        4,
+    ),
+    "Advanced Anti-Gravity Core Unit": product(
+        "Advanced Anti-Gravity Core Unit",
+        "Advanced",
+        "Exceptional Parts",
+        20,
+    ),
+    "Advanced Anti-Matter Core Unit": product(
+        "Advanced Anti-Matter Core Unit",
+        "Advanced",
+        "Exceptional Parts",
+        21.5,
+    ),
+    "Advanced Quantum Alignment Unit": product(
+        "Advanced Quantum Alignment Unit",
+        "Advanced",
+        "Exceptional Parts",
+        25,
+    ),
+    "Advanced Quantum Barrier": product(
+        "Advanced Quantum Barrier",
+        "Advanced",
+        "Exceptional Parts",
+        25,
+    ),
+    "Rare Anti-Gravity Core Unit": product(
+        "Rare Anti-Gravity Core Unit",
+        "Rare",
+        "Exceptional Parts",
+        22.5,
+    ),
+    "Exotic Anti-Gravity Core Unit": product(
+        "Exotic Anti-Gravity Core Unit",
+        "Exotic",
+        "Exceptional Parts",
+        25,
+    ),
+    "Exotic Anti-Matter Core Unit": product(
+        "Exotic Anti-Matter Core Unit",
+        "Exotic",
+        "Exceptional Parts",
+        26.5,
+    ),
+    "Exotic Quantum Alignment Unit": product(
+        "Exotic Quantum Alignment Unit",
+        "Exotic",
+        "Exceptional Parts",
+        30,
+    ),
+    "Basic Antenna XS": product("Basic Antenna XS", "Basic", "Functional Parts", 8.96),
+    "Basic Antenna S": product("Basic Antenna S", "Basic", "Functional Parts", 46.4),
+    "Basic Chemical Container XS": product(
+        "Basic Chemical Container XS",
+        "Basic",
+        "Functional Parts",
+        4.8,
+    ),
+    "Basic Chemical Container S": product(
+        "Basic Chemical Container S",
+        "Basic",
+        "Functional Parts",
+        25.6,
+    ),
+    "Basic Chemical Container M": product(
+        "Basic Chemical Container M",
+        "Basic",
+        "Functional Parts",
+        139.2,
+    ),
+    "Basic Chemical Container L": product(
+        "Basic Chemical Container L",
+        "Basic",
+        "Functional Parts",
+        774.4,
+    ),
+    "Basic Chemical Container XL": product(
+        "Basic Chemical Container XL",
+        "Basic",
+        "Functional Parts",
+        4420.8,
+    ),
+    "Basic Combustion Chamber XS": product(
+        "Basic Combustion Chamber XS",
+        "Basic",
+        "Functional Parts",
+        9.6,
+    ),
+    "Basic Combustion Chamber S": product(
+        "Basic Combustion Chamber S",
+        "Basic",
+        "Functional Parts",
+        49.6,
+    ),
+    "Basic Combustion Chamber M": product(
+        "Basic Combustion Chamber M",
+        "Basic",
+        "Functional Parts",
+        259.2,
+    ),
+    "Basic Combustion Chamber L": product(
+        "Basic Combustion Chamber L",
+        "Basic",
+        "Functional Parts",
+        1374.4,
+    ),
+    "Basic Control System XS": product("Basic Control System XS", "Basic", "Functional Parts", 5.2),
+    "Basic Control System S": product("Basic Control System S", "Basic", "Functional Parts", 27.6),
+    "Basic Control System M": product("Basic Control System M", "Basic", "Functional Parts", 149.2),
+    "Basic Core Unit System XS": product(
+        "Basic Core Unit System XS",
+        "Basic",
+        "Functional Parts",
+        4.4,
+    ),
+    "Basic Core Unit System S": product(
+        "Basic Core Unit System S",
+        "Basic",
+        "Functional Parts",
+        23.6,
+    ),
+    "Basic Electric Engine S": product(
+        "Basic Electric Engine S",
+        "Basic",
+        "Functional Parts",
+        39.04,
+    ),
+    "Basic Electric Engine M": product(
+        "Basic Electric Engine M",
+        "Basic",
+        "Functional Parts",
+        206.4,
+    ),
+    "Basic Firing System XS": product("Basic Firing System XS", "Basic", "Functional Parts", 9.6),
+    "Basic Gas Cylinder XS": product("Basic Gas Cylinder XS", "Basic", "Functional Parts", 9.6),
+    "Basic Gas Cylinder S": product("Basic Gas Cylinder S", "Basic", "Functional Parts", 49.6),
+    "Basic Gas Cylinder M": product("Basic Gas Cylinder M", "Basic", "Functional Parts", 259.2),
+    "Basic Ionic Chamber XS": product("Basic Ionic Chamber XS", "Basic", "Functional Parts", 7.33),
+    "Basic Ionic Chamber S": product("Basic Ionic Chamber S", "Basic", "Functional Parts", 38.24),
+    "Basic Ionic Chamber M": product("Basic Ionic Chamber M", "Basic", "Functional Parts", 202.4),
+    "Basic Ionic Chamber L": product("Basic Ionic Chamber L", "Basic", "Functional Parts", 1090.4),
+    "Basic Ionic Chamber XL": product(
+        "Basic Ionic Chamber XL",
+        "Basic",
+        "Functional Parts",
+        6000.8,
+    ),
+    "Basic Mechanical Sensor XS": product(
+        "Basic Mechanical Sensor XS",
+        "Basic",
+        "Functional Parts",
+        7.49,
+    ),
+    "Basic Mobile Panel XS": product("Basic Mobile Panel XS", "Basic", "Functional Parts", 9.6),
+    "Basic Mobile Panel S": product("Basic Mobile Panel S", "Basic", "Functional Parts", 49.6),
+    "Basic Mobile Panel M": product("Basic Mobile Panel M", "Basic", "Functional Parts", 259.2),
+    "Basic Mobile Panel L": product("Basic Mobile Panel L", "Basic", "Functional Parts", 1374.4),
+    "Basic Mobile Panel XL": product("Basic Mobile Panel XL", "Basic", "Functional Parts", 7420.8),
+    "Basic Power Transformer M": product(
+        "Basic Power Transformer M",
+        "Basic",
+        "Functional Parts",
+        196.4,
+    ),
+    "Basic Robotic Arm M": product("Basic Robotic Arm M", "Basic", "Functional Parts", 249.2),
+    "Basic Robotic Arm L": product("Basic Robotic Arm L", "Basic", "Functional Parts", 1324.4),
+    "Basic Robotic Arm XL": product("Basic Robotic Arm XL", "Basic", "Functional Parts", 7170.8),
+    "Basic Screen S": product("Basic Screen S", "Basic", "Functional Parts", 25.6),
+    "Basic Screen M": product("Basic Screen M", "Basic", "Functional Parts", 139.2),
+    "Uncommon Antenna XS": product("Uncommon Antenna XS", "Uncommon", "Functional Parts", 17.12),
+    "Uncommon Antenna S": product("Uncommon Antenna S", "Uncommon", "Functional Parts", 54.56),
+    "Uncommon Antenna M": product("Uncommon Antenna M", "Uncommon", "Functional Parts", 251.36),
+    "Uncommon Antenna L": product("Uncommon Antenna L", "Uncommon", "Functional Parts", 1302.56),
+    "Uncommon Combustion Chamber XS": product(
+        "Uncommon Combustion Chamber XS",
+        "Uncommon",
+        "Functional Parts",
+        18.4,
+    ),
+    "Uncommon Combustion Chamber S": product(
+        "Uncommon Combustion Chamber S",
+        "Uncommon",
+        "Functional Parts",
+        58.4,
+    ),
+    "Uncommon Combustion Chamber M": product(
+        "Uncommon Combustion Chamber M",
+        "Uncommon",
+        "Functional Parts",
+        268,
+    ),
+    "Uncommon Combustion Chamber L": product(
+        "Uncommon Combustion Chamber L",
+        "Uncommon",
+        "Functional Parts",
+        1383.2,
+    ),
+    "Uncommon Core Unit System S": product(
+        "Uncommon Core Unit System S",
+        "Uncommon",
+        "Functional Parts",
+        27.2,
+    ),
+    "Uncommon Core Unit System M": product(
+        "Uncommon Core Unit System M",
+        "Uncommon",
+        "Functional Parts",
+        132.8,
+    ),
+    "Uncommon Core Unit System L": product(
+        "Uncommon Core Unit System L",
+        "Uncommon",
+        "Functional Parts",
+        728,
+    ),
+    "Uncommon Electric Engine XL": product(
+        "Uncommon Electric Engine XL",
+        "Uncommon",
+        "Functional Parts",
+        6107.49,
+    ),
+    "Uncommon Ionic Chamber XS": product(
+        "Uncommon Ionic Chamber XS",
+        "Uncommon",
+        "Functional Parts",
+        13.86,
+    ),
+    "Uncommon Ionic Chamber S": product(
+        "Uncommon Ionic Chamber S",
+        "Uncommon",
+        "Functional Parts",
+        44.77,
+    ),
+    "Uncommon Ionic Chamber M": product(
+        "Uncommon Ionic Chamber M",
+        "Uncommon",
+        "Functional Parts",
+        208.93,
+    ),
+    "Uncommon Ionic Chamber L": product(
+        "Uncommon Ionic Chamber L",
+        "Uncommon",
+        "Functional Parts",
+        1096.93,
+    ),
+    "Uncommon Ionic Chamber XL": product(
+        "Uncommon Ionic Chamber XL",
+        "Uncommon",
+        "Functional Parts",
+        6007.33,
+    ),
+    "Uncommon Laser Chamber XS": product(
+        "Uncommon Laser Chamber XS",
+        "Uncommon",
+        "Functional Parts",
+        18.4,
+    ),
+    "Uncommon Light XS": product("Uncommon Light XS", "Uncommon", "Functional Parts", 8.8),
+    "Uncommon Light S": product("Uncommon Light S", "Uncommon", "Functional Parts", 29.6),
+    "Uncommon Ore Scanner XL": product(
+        "Uncommon Ore Scanner XL",
+        "Uncommon",
+        "Functional Parts",
+        2702.9,
+    ),
+    "Uncommon Power Transformer S": product(
+        "Uncommon Power Transformer S",
+        "Uncommon",
+        "Functional Parts",
+        43.33,
+    ),
+    "Uncommon Power Transformer M": product(
+        "Uncommon Power Transformer M",
+        "Uncommon",
+        "Functional Parts",
+        206.69,
+    ),
+    "Uncommon Screen XS": product("Uncommon Screen XS", "Uncommon", "Functional Parts", 8.8),
+    "Uncommon Screen M": product("Uncommon Screen M", "Uncommon", "Functional Parts", 143.2),
+    "Uncommon Screen XL": product("Uncommon Screen XL", "Uncommon", "Functional Parts", 4424.8),
+    "Advanced Antenna S": product("Advanced Antenna S", "Advanced", "Functional Parts", 54.56),
+    "Advanced Chemical Container S": product(
+        "Advanced Chemical Container S",
+        "Advanced",
+        "Functional Parts",
+        29.6,
+    ),
+    "Advanced Chemical Container M": product(
+        "Advanced Chemical Container M",
+        "Advanced",
+        "Functional Parts",
+        143.2,
+    ),
+    "Advanced Chemical Container L": product(
+        "Advanced Chemical Container L",
+        "Advanced",
+        "Functional Parts",
+        448.4,
+    ),
+    "Advanced Chemical Container XL": product(
+        "Advanced Chemical Container XL",
+        "Advanced",
+        "Functional Parts",
+        4424.8,
+    ),
+    "Advanced Combustion Chamber XS": product(
+        "Advanced Combustion Chamber XS",
+        "Advanced",
+        "Functional Parts",
+        27.2,
+    ),
+    "Advanced Combustion Chamber S": product(
+        "Advanced Combustion Chamber S",
+        "Advanced",
+        "Functional Parts",
+        58.4,
+    ),
+    "Advanced Combustion Chamber M": product(
+        "Advanced Combustion Chamber M",
+        "Advanced",
+        "Functional Parts",
+        268,
+    ),
+    "Advanced Control System S": product(
+        "Advanced Control System S",
+        "Advanced",
+        "Functional Parts",
+        32,
+    ),
+    "Advanced Control System M": product(
+        "Advanced Control System M",
+        "Advanced",
+        "Functional Parts",
+        153.6,
+    ),
+    "Advanced Control System L": product(
+        "Advanced Control System L",
+        "Advanced",
+        "Functional Parts",
+        828.8,
+    ),
+    "Advanced Core Unit System M": product(
+        "Advanced Core Unit System M",
+        "Advanced",
+        "Functional Parts",
+        132.8,
+    ),
+    "Advanced Firing System XS": product(
+        "Advanced Firing System XS",
+        "Advanced",
+        "Functional Parts",
+        27.2,
+    ),
+    "Advanced Firing System S": product(
+        "Advanced Firing System S",
+        "Advanced",
+        "Functional Parts",
+        58.4,
+    ),
+    "Advanced Firing System M": product(
+        "Advanced Firing System M",
+        "Advanced",
+        "Functional Parts",
+        268,
+    ),
+    "Advanced Firing System L": product(
+        "Advanced Firing System L",
+        "Advanced",
+        "Functional Parts",
+        1383.2,
+    ),
+    "Advanced Ionic Chamber M": product(
+        "Advanced Ionic Chamber M",
+        "Advanced",
+        "Functional Parts",
+        208.93,
+    ),
+    "Advanced Ionic Chamber L": product(
+        "Advanced Ionic Chamber L",
+        "Advanced",
+        "Functional Parts",
+        1096.93,
+    ),
+    "Advanced Laser Chamber XS": product(
+        "Advanced Laser Chamber XS",
+        "Advanced",
+        "Functional Parts",
+        27.2,
+    ),
+    "Advanced Laser Chamber S": product(
+        "Advanced Laser Chamber S",
+        "Advanced",
+        "Functional Parts",
+        58.4,
+    ),
+    "Advanced Laser Chamber M": product(
+        "Advanced Laser Chamber M",
+        "Advanced",
+        "Functional Parts",
+        268,
+    ),
+    "Advanced Laser Chamber L": product(
+        "Advanced Laser Chamber L",
+        "Advanced",
+        "Functional Parts",
+        1383.2,
+    ),
+    "Advanced Magnetic Rail XS": product(
+        "Advanced Magnetic Rail XS",
+        "Advanced",
+        "Functional Parts",
+        20.86,
+    ),
+    "Advanced Magnetic Rail S": product(
+        "Advanced Magnetic Rail S",
+        "Advanced",
+        "Functional Parts",
+        45.73,
+    ),
+    "Advanced Magnetic Rail M": product(
+        "Advanced Magnetic Rail M",
+        "Advanced",
+        "Functional Parts",
+        213.09,
+    ),
+    "Advanced Magnetic Rail L": product(
+        "Advanced Magnetic Rail L",
+        "Advanced",
+        "Functional Parts",
+        1117.09,
+    ),
+    "Advanced Mechanical Sensor XS": product(
+        "Advanced Mechanical Sensor XS",
+        "Advanced",
+        "Functional Parts",
+        20.86,
+    ),
+    "Advanced Missile Silo XS": product(
+        "Advanced Missile Silo XS",
+        "Advanced",
+        "Functional Parts",
+        27.2,
+    ),
+    "Advanced Missile Silo S": product(
+        "Advanced Missile Silo S",
+        "Advanced",
+        "Functional Parts",
+        58.4,
+    ),
+    "Advanced Missile Silo M": product(
+        "Advanced Missile Silo M",
+        "Advanced",
+        "Functional Parts",
+        268,
+    ),
+    "Advanced Missile Silo L": product(
+        "Advanced Missile Silo L",
+        "Advanced",
+        "Functional Parts",
+        1383.2,
+    ),
+    "Advanced Motherboard": product("Advanced Motherboard", "Advanced", "Functional Parts", 96),
+    "Advanced Power Transformer S": product(
+        "Advanced Power Transformer S",
+        "Advanced",
+        "Functional Parts",
+        43.33,
+    ),
+    "Advanced Screen XS": product("Advanced Screen XS", "Advanced", "Functional Parts", 12.8),
+    "Advanced Screen XL": product("Advanced Screen XL", "Advanced", "Functional Parts", 4424.8),
+    "Rare Core Unit System L": product("Rare Core Unit System L", "Rare", "Functional Parts", 728),
+    "Rare Laser Chamber S": product("Rare Laser Chamber S", "Rare", "Functional Parts", 58.4),
+    "Rare Power Transformer L": product(
+        "Rare Power Transformer L",
+        "Rare",
+        "Functional Parts",
+        1066.69,
+    ),
+    "Rare Power Transformer XL": product(
+        "Rare Power Transformer XL",
+        "Rare",
+        "Functional Parts",
+        5857.09,
+    ),
+    "Exotic Antenna M": product("Exotic Antenna M", "Exotic", "Functional Parts", 250.56),
+    "Exotic Antenna L": product("Exotic Antenna L", "Exotic", "Functional Parts", 1301.76),
+    "Exotic Antenna XL": product("Exotic Antenna XL", "Exotic", "Functional Parts", 7028.16),
+    "Exotic Core Unit System S": product(
+        "Exotic Core Unit System S",
+        "Exotic",
+        "Functional Parts",
+        26.8,
+    ),
+    "Exotic Mechanical Sensor XS": product(
+        "Exotic Mechanical Sensor XS",
+        "Exotic",
+        "Functional Parts",
+        19.26,
+    ),
+    "Exotic Power Transformer L": product(
+        "Exotic Power Transformer L",
+        "Exotic",
+        "Functional Parts",
+        1066.29,
+    ),
+    "Basic Component": product("Basic Component", "Basic", "Intermediary Parts", 0.5),
+    "Basic Connector": product("Basic Connector", "Basic", "Intermediary Parts", 0.8),
+    "Basic Fixation": product("Basic Fixation", "Basic", "Intermediary Parts", 1),
+    "Basic LED": product("Basic LED", "Basic", "Intermediary Parts", 1),
+    "Basic Pipe": product("Basic Pipe", "Basic", "Intermediary Parts", 1),
+    "Basic Screw": product("Basic Screw", "Basic", "Intermediary Parts", 1),
+    "Uncommon Component": product("Uncommon Component", "Uncommon", "Intermediary Parts", 0.5),
+    "Uncommon Connector": product("Uncommon Connector", "Uncommon", "Intermediary Parts", 0.8),
+    "Uncommon Fixation": product("Uncommon Fixation", "Uncommon", "Intermediary Parts", 1),
+    "Uncommon LED": product("Uncommon LED", "Uncommon", "Intermediary Parts", 1),
+    "Uncommon Pipe": product("Uncommon Pipe", "Uncommon", "Intermediary Parts", 1),
+    "Uncommon Screw": product("Uncommon Screw", "Uncommon", "Intermediary Parts", 1),
+    "Advanced Component": product("Advanced Component", "Advanced", "Intermediary Parts", 0.5),
+    "Advanced Connector": product("Advanced Connector", "Advanced", "Intermediary Parts", 0.8),
+    "Advanced Fixation": product("Advanced Fixation", "Advanced", "Intermediary Parts", 1),
+    "Advanced LED": product("Advanced LED", "Advanced", "Intermediary Parts", 1),
+    "Advanced Pipe": product("Advanced Pipe", "Advanced", "Intermediary Parts", 1),
+    "Advanced Screw": product("Advanced Screw", "Advanced", "Intermediary Parts", 1),
+    "Basic Casing XS": product("Basic Casing XS", "Basic", "Structural Parts", 2),
+    "Basic Casing S": product("Basic Casing S", "Basic", "Structural Parts", 11),
+    "Basic Reinforced Frame XS": product(
+        "Basic Reinforced Frame XS",
+        "Basic",
+        "Structural Parts",
+        2,
+    ),
+    "Basic Reinforced Frame S": product(
+        "Basic Reinforced Frame S",
+        "Basic",
+        "Structural Parts",
+        11,
+    ),
+    "Basic Reinforced Frame M": product(
+        "Basic Reinforced Frame M",
+        "Basic",
+        "Structural Parts",
+        74,
+    ),
+    "Basic Reinforced Frame L": product(
+        "Basic Reinforced Frame L",
+        "Basic",
+        "Structural Parts",
+        515,
+    ),
+    "Basic Reinforced Frame XL": product(
+        "Basic Reinforced Frame XL",
+        "Basic",
+        "Structural Parts",
+        3602,
+    ),
+    "Basic Standard Frame XS": product("Basic Standard Frame XS", "Basic", "Structural Parts", 2),
+    "Basic Standard Frame S": product("Basic Standard Frame S", "Basic", "Structural Parts", 11),
+    "Basic Standard Frame M": product("Basic Standard Frame M", "Basic", "Structural Parts", 74),
+    "Basic Standard Frame L": product("Basic Standard Frame L", "Basic", "Structural Parts", 515),
+    "Uncommon Casing XS": product("Uncommon Casing XS", "Uncommon", "Structural Parts", 2),
+    "Uncommon Casing S": product("Uncommon Casing S", "Uncommon", "Structural Parts", 11),
+    "Uncommon Casing M": product("Uncommon Casing M", "Uncommon", "Structural Parts", 74),
+    "Uncommon Casing XL": product("Uncommon Casing XL", "Uncommon", "Structural Parts", 3602),
+    "Uncommon Reinforced Frame XS": product(
+        "Uncommon Reinforced Frame XS",
+        "Uncommon",
+        "Structural Parts",
+        2,
+    ),
+    "Uncommon Reinforced Frame S": product(
+        "Uncommon Reinforced Frame S",
+        "Uncommon",
+        "Structural Parts",
+        11,
+    ),
+    "Uncommon Reinforced Frame M": product(
+        "Uncommon Reinforced Frame M",
+        "Uncommon",
+        "Structural Parts",
+        74,
+    ),
+    "Uncommon Reinforced Frame L": product(
+        "Uncommon Reinforced Frame L",
+        "Uncommon",
+        "Structural Parts",
+        515,
+    ),
+    "Uncommon Reinforced Frame XL": product(
+        "Uncommon Reinforced Frame XL",
+        "Uncommon",
+        "Structural Parts",
+        3602,
+    ),
+    "Uncommon Standard Frame XS": product(
+        "Uncommon Standard Frame XS",
+        "Uncommon",
+        "Structural Parts",
+        2,
+    ),
+    "Uncommon Standard Frame S": product(
+        "Uncommon Standard Frame S",
+        "Uncommon",
+        "Structural Parts",
+        11,
+    ),
+    "Uncommon Standard Frame M": product(
+        "Uncommon Standard Frame M",
+        "Uncommon",
+        "Structural Parts",
+        74,
+    ),
+    "Uncommon Standard Frame L": product(
+        "Uncommon Standard Frame L",
+        "Uncommon",
+        "Structural Parts",
+        515,
+    ),
+    "Advanced Casing XS": product("Advanced Casing XS", "Advanced", "Structural Parts", 2),
+    "Advanced Casing S": product("Advanced Casing S", "Advanced", "Structural Parts", 11),
+    "Advanced Casing M": product("Advanced Casing M", "Advanced", "Structural Parts", 74),
+    "Advanced Casing L": product("Advanced Casing L", "Advanced", "Structural Parts", 515),
+    "Advanced Casing XL": product("Advanced Casing XL", "Advanced", "Structural Parts", 3602),
+    "Advanced Reinforced Frame XS": product(
+        "Advanced Reinforced Frame XS",
+        "Advanced",
+        "Structural Parts",
+        2,
+    ),
+    "Advanced Reinforced Frame S": product(
+        "Advanced Reinforced Frame S",
+        "Advanced",
+        "Structural Parts",
+        11,
+    ),
+    "Advanced Reinforced Frame M": product(
+        "Advanced Reinforced Frame M",
+        "Advanced",
+        "Structural Parts",
+        74,
+    ),
+    "Advanced Reinforced Frame L": product(
+        "Advanced Reinforced Frame L",
+        "Advanced",
+        "Structural Parts",
+        515,
+    ),
+    "Advanced Standard Frame XS": product(
+        "Advanced Standard Frame XS",
+        "Advanced",
+        "Structural Parts",
+        2,
+    ),
+    "Advanced Standard Frame S": product(
+        "Advanced Standard Frame S",
+        "Advanced",
+        "Structural Parts",
+        11,
+    ),
+    "Advanced Standard Frame M": product(
+        "Advanced Standard Frame M",
+        "Advanced",
+        "Structural Parts",
+        74,
+    ),
+    "Advanced Standard Frame L": product(
+        "Advanced Standard Frame L",
+        "Advanced",
+        "Structural Parts",
+        515,
+    ),
+    "Rare Casing XS": product("Rare Casing XS", "Rare", "Structural Parts", 2),
+    "Rare Casing S": product("Rare Casing S", "Rare", "Structural Parts", 11),
+    "Rare Reinforced Frame L": product("Rare Reinforced Frame L", "Rare", "Structural Parts", 515),
+    "Rare Reinforced Frame XL": product(
+        "Rare Reinforced Frame XL",
+        "Rare",
+        "Structural Parts",
+        3602,
+    ),
+    "Rare Standard Frame L": product("Rare Standard Frame L", "Rare", "Structural Parts", 515),
+    "Exotic Casing S": product("Exotic Casing S", "Exotic", "Structural Parts", 11),
+    "Exotic Reinforced Frame M": product(
+        "Exotic Reinforced Frame M",
+        "Exotic",
+        "Structural Parts",
+        74,
+    ),
+    "Exotic Reinforced Frame L": product(
+        "Exotic Reinforced Frame L",
+        "Exotic",
+        "Structural Parts",
+        515,
+    ),
+    "Exotic Reinforced Frame XL": product(
+        "Exotic Reinforced Frame XL",
+        "Exotic",
+        "Structural Parts",
+        3602,
+    ),
+    "Exotic Standard Frame XS": product(
+        "Exotic Standard Frame XS",
+        "Exotic",
+        "Structural Parts",
+        2,
+    ),
+    "Exotic Standard Frame L": product(
+        "Exotic Standard Frame L",
+        "Exotic",
+        "Structural Parts",
+        515,
+    ),
+    "Anti-Gravity Pulsor": element("Anti-Gravity Pulsor", "Element", "Anti-Gravity", 804.93),
+    "Anti-Gravity Generator S": element(
+        "Anti-Gravity Generator S",
+        "Element",
+        "Anti-Gravity",
+        4279.69,
+    ),
+    "Anti-Gravity Generator M": element(
+        "Anti-Gravity Generator M",
+        "Element",
+        "Anti-Gravity",
+        21617.09,
+    ),
+    "Anti-Gravity Generator L": element(
+        "Anti-Gravity Generator L",
+        "Element",
+        "Anti-Gravity",
+        86468.35,
+    ),
+    "Container XS": element("Container XS", "Element", "Item Containers", 64),
+    "Container S": element("Container S", "Element", "Item Containers", 342),
+    "Container M": element("Container M", "Element", "Item Containers", 1873),
+    "Container L": element("Container L", "Element", "Item Containers", 3746),
+    "Container Hub": element("Container Hub", "Element", "Item Containers", 44.3),
+    "Atmospheric Fuel Tank S": element("Atmospheric Fuel Tank S", "Element", "Fuel Tanks", 92.6),
+    "Atmospheric Fuel Tank M": element("Atmospheric Fuel Tank M", "Element", "Fuel Tanks", 499.2),
+    "Atmospheric Fuel Tank L": element("Atmospheric Fuel Tank L", "Element", "Fuel Tanks", 2755.4),
+    "Space Fuel Tank S": element("Space Fuel Tank S", "Element", "Fuel Tanks", 92.6),
+    "Space Fuel Tank M": element("Space Fuel Tank M", "Element", "Fuel Tanks", 499.2),
+    "Space Fuel Tank L": element("Space Fuel Tank L", "Element", "Fuel Tanks", 2755.4),
+    "Resurrection Node": element("Resurrection Node", "Element", "Control", 203.33),
+    "Cockpit Controller": element("Cockpit Controller", "Element", "Control", 491.2),
+    "Command Seat Controller": element("Command Seat Controller", "Element", "Control", 66.6),
+    "Emergency Controller": element("Emergency Controller", "Element", "Control", 4.8),
+    "Programming Board": element("Programming Board", "Element", "Control", 12.7),
+    "Adjustor S": element("Adjustor S", "Element", "Flight Control", 22.6),
+    "Adjustor M": element("Adjustor M", "Element", "Flight Control", 116.6),
+    "Adjustor L": element("Adjustor L", "Element", "Flight Control", 619.2),
+    "Atmospheric Airbrake S": element("Atmospheric Airbrake S", "Element", "Flight Control", 22.6),
+    "Atmospheric Airbrake M": element("Atmospheric Airbrake M", "Element", "Flight Control", 116.6),
+    "Atmospheric Airbrake L": element("Atmospheric Airbrake L", "Element", "Flight Control", 619.2),
+    "Retro-Rocket Brake S": element("Retro-Rocket Brake S", "Element", "Flight Control", 20.33),
+    "Retro-Rocket Brake M": element("Retro-Rocket Brake M", "Element", "Flight Control", 105.24),
+    "Retro-Rocket Brake L": element("Retro-Rocket Brake L", "Element", "Flight Control", 562.4),
+    "Aileron XS": element("Aileron XS", "Element", "Airfoil", 45.2),
+    "Aileron S": element("Aileron S", "Element", "Airfoil", 233.2),
+    "Aileron M": element("Aileron M", "Element", "Airfoil", 1238.4),
+    "Compact Aileron XS": element("Compact Aileron XS", "Element", "Airfoil", 22.6),
+    "Compact Aileron S": element("Compact Aileron S", "Element", "Airfoil", 116.6),
+    "Compact Aileron M": element("Compact Aileron M", "Element", "Airfoil", 619.2),
+    "Stabilizer XS": element("Stabilizer XS", "Element", "Airfoil", 22.6),
+    "Stabilizer S": element("Stabilizer S", "Element", "Airfoil", 116.6),
+    "Stabilizer M": element("Stabilizer M", "Element", "Airfoil", 619.2),
+    "Stabilizer L": element("Stabilizer L", "Element", "Airfoil", 3355.4),
+    "Wing XS": element("Wing XS", "Element", "Airfoil", 22.6),
+    "Wing S": element("Wing S", "Element", "Airfoil", 116.6),
+    "Wing M": element("Wing M", "Element", "Airfoil", 619.2),
+    "Warp Drive L": element("Warp Drive L", "Element", "Engines", 4123),
+    "Basic Atmospheric Engine S": element(
+        "Basic Atmospheric Engine S",
+        "Element",
+        "Engines",
+        116.6,
+    ),
+    "Basic Atmospheric Engine M": element(
+        "Basic Atmospheric Engine M",
+        "Element",
+        "Engines",
+        619.2,
+    ),
+    "Basic Atmospheric Engine L": element(
+        "Basic Atmospheric Engine L",
+        "Element",
+        "Engines",
+        3355.4,
+    ),
+    "Basic Space Engine S": element("Basic Space Engine S", "Element", "Engines", 105.24),
+    "Basic Space Engine M": element("Basic Space Engine M", "Element", "Engines", 562.4),
+    "Basic Space Engine L": element("Basic Space Engine L", "Element", "Engines", 3071.4),
+    "Basic Space Engine XL": element("Basic Space Engine XL", "Element", "Engines", 17148.8),
+    "Vertical Booster S": element("Vertical Booster S", "Element", "Engines", 20.33),
+    "Vertical Booster M": element("Vertical Booster M", "Element", "Engines", 105.24),
+    "Vertical Booster L": element("Vertical Booster L", "Element", "Engines", 562.4),
+    "Assembly Line XS": element("Assembly Line XS", "Element", "Industry", 21.8),
+    "Assembly Line S": element("Assembly Line S", "Element", "Industry", 112.6),
+    "Assembly Line M": element("Assembly Line M", "Element", "Industry", 599.2),
+    "Assembly Line L": element("Assembly Line L", "Element", "Industry", 3255.4),
+    "Assembly Line XL": element("Assembly Line XL", "Element", "Industry", 18068.8),
+    "3D Printer M": element("3D Printer M", "Element", "Industry", 609.2),
+    "Chemical Industry M": element("Chemical Industry M", "Element", "Industry", 479.2),
+    "Electronics Industry M": element("Electronics Industry M", "Element", "Industry", 459.2),
+    "Glass Furnace M": element("Glass Furnace M", "Element", "Industry", 556.4),
+    "Honeycomb Refiner M": element("Honeycomb Refiner M", "Element", "Industry", 589.2),
+    "Metalwork Industry M": element("Metalwork Industry M", "Element", "Industry", 599.2),
+    "Recycler M": element("Recycler M", "Element", "Industry", 619.2),
+    "Refiner M": element("Refiner M", "Element", "Industry", 479.2),
+    "Smelter M": element("Smelter M", "Element", "Industry", 499.2),
+    "Transfer Unit": element("Transfer Unit", "Element", "Industry", 3305.4),
+    "Repair Unit": element("Repair Unit", "Element", "Industry", 10000),
+    Gyroscope: element("Gyroscope", "Element", "Instruments", 17.65),
+    Telemeter: element("Telemeter", "Element", "Instruments", 31.4),
+    "Territory Scanner": element("Territory Scanner", "Element", "Instruments", 12702.9),
+    Airlock: element("Airlock", "Element", "Interactive", 546.4),
+    "Elevator XS": element("Elevator XS", "Element", "Interactive", 57.56),
+    "Expanded Gate L": element("Expanded Gate L", "Element", "Interactive", 16755.49),
+    "Force Field XS": element("Force Field XS", "Element", "Interactive", 34.7),
+    "Force Field S": element("Force Field S", "Element", "Interactive", 34.7),
+    "Force Field M": element("Force Field M", "Element", "Interactive", 34.7),
+    "Force Field L": element("Force Field L", "Element", "Interactive", 34.7),
+    "Gate XL": element("Gate XL", "Element", "Interactive", 16755.49),
+    "Hatch S": element("Hatch S", "Element", "Interactive", 24),
+    "Interior Door": element("Interior Door", "Element", "Interactive", 546.4),
+    "Landing Gear S": element("Landing Gear S", "Element", "Interactive", 67),
+    "Landing Gear M": element("Landing Gear M", "Element", "Interactive", 360),
+    "Landing Gear L": element("Landing Gear L", "Element", "Interactive", 1981),
+    "Reinforced Sliding Door": element("Reinforced Sliding Door", "Element", "Interactive", 546.4),
+    "Screen XS": element("Screen XS", "Element", "Interactive", 15.8),
+    "Screen S": element("Screen S", "Element", "Interactive", 15.8),
+    "Screen M": element("Screen M", "Element", "Interactive", 15.8),
+    "Screen XL": element("Screen XL", "Element", "Interactive", 11174.8),
+    "Transparent Screen XS": element("Transparent Screen XS", "Element", "Interactive", 15.8),
+    "Transparent Screen S": element("Transparent Screen S", "Element", "Interactive", 15.8),
+    "Transparent Screen M": element("Transparent Screen M", "Element", "Interactive", 15.8),
+    "Transparent Screen L": element("Transparent Screen L", "Element", "Interactive", 15.8),
+    "Sliding Door S": element("Sliding Door S", "Element", "Interactive", 102.4),
+    "Sliding Door M": element("Sliding Door M", "Element", "Interactive", 151.8),
+    "Encampment Chair": element("Encampment Chair", "Element", "Interactive", 2),
+    "Navigator Chair": element("Navigator Chair", "Element", "Interactive", 24),
+    "Office Chair": element("Office Chair", "Element", "Interactive", 13),
+    "Long Light S": element("Long Light S", "Element", "Interactive", 21.6),
+    "Long Light M": element("Long Light M", "Element", "Interactive", 21.6),
+    "Long Light L": element("Long Light L", "Element", "Interactive", 21.6),
+    "Atmospheric Radar S": element("Atmospheric Radar S", "Element", "Sensor", 96.56),
+    "Atmospheric Radar M": element("Atmospheric Radar M", "Element", "Sensor", 486.36),
+    "Atmospheric Radar L": element("Atmospheric Radar L", "Element", "Sensor", 2658.56),
+    "Space Radar S": element("Space Radar S", "Element", "Sensor", 96.56),
+    "Space Radar M": element("Space Radar M", "Element", "Sensor", 486.36),
+    "Space Radar L": element("Space Radar L", "Element", "Sensor", 2658.56),
+    "Static Core XS": element("Static Core XS", "Element", "Core Unit", 16.1),
+    "Static Core S": element("Static Core S", "Element", "Core Unit", 83.6),
+    "Static Core M": element("Static Core M", "Element", "Core Unit", 454.8),
+    "Static Core L": element("Static Core L", "Element", "Core Unit", 2501),
+    "Space Core XS": element("Space Core XS", "Element", "Core Unit", 14),
+    "Space Core S": element("Space Core S", "Element", "Core Unit", 120),
+    "Space Core M": element("Space Core M", "Element", "Core Unit", 420),
+    "Space Core L": element("Space Core L", "Element", "Core Unit", 1383),
+    "Dynamic Core XS": element("Dynamic Core XS", "Element", "Core Unit", 16.1),
+    "Dynamic Core S": element("Dynamic Core S", "Element", "Core Unit", 87.2),
+    "Dynamic Core M": element("Dynamic Core M", "Element", "Core Unit", 454.8),
+    "Dynamic Core L": element("Dynamic Core L", "Element", "Core Unit", 2501),
+    "Territory Unit": element("Territory Unit", "Element", "Core Unit", 4118.29),
 }

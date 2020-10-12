@@ -1,51 +1,29 @@
+/**
+ * main.ts
+ * Create or update a factory graph to produce a set of elements.
+ * lgfrbcsgo & Nikolaus - October 2020
+ */
 import { items } from "./items"
-import { buildFactory } from "./compute/factory"
-import { enableMapSet } from "immer"
-import {
-    computeIdealMachineCount,
-    computeThroughputs,
-    ItemsFlow,
-} from "./compute/ideal-machine-count"
+import { buildFactory } from "./factory"
 import * as React from "react"
 import * as ReactDOM from "react-dom"
-
-enableMapSet()
 
 Object.assign(window, {
     items,
     buildFactory,
-    computeIdealMachineCount,
-    computeThroughputs,
-    ItemsFlow,
 })
 
 console.log(
     `
-%cGenerate a factory (slow): 
-
 // produce each item with two assemblers
-const assemblyMachines = new Map([
-    [items.adjuster_l, 2],
-    [items.vertical_booster_l, 2],
-    [items.retro_rocket_brake_l, 2],
+const requirements = new Map([
+    [items["Adjustor L"], 2],
+    [items["Vertical Booster L"], 2],
+    [items["Retro-Rocket Brake L"], 2],
 ])
-buildFactory(assemblyMachines)
+buildFactory(requirements)
 `,
     "color: #000099",
-)
-
-console.log(
-    `
-%cCompute the minimum number of machines required (fast):
-
-const requiredOutput = new ItemsFlow()
-// produce at least 2 of each in 32 minutes
-requiredOutput.add(items.adjuster_l, 2 / 32)
-requiredOutput.add(items.vertical_booster_l, 2 / 32)
-requiredOutput.add(items.retro_rocket_brake_l, 2 / 32)
-computeIdealMachineCount(computeThroughputs(requiredOutput))
-`,
-    "color: #880088",
 )
 
 function App() {
@@ -54,4 +32,3 @@ function App() {
 
 const rootElement = document.getElementById("root")
 ReactDOM.render(<App />, rootElement)
-
