@@ -15,7 +15,7 @@ export class ContainerNode {
      * this container, and a set of consumers is drawing from this container.
      */
     readonly producers = new Set<IndustryNode>()
-    readonly consumers = new Set<IndustryNode>()
+    readonly consumers = new Set<ConsumerNode>()
 
     /**
      * Initialize a new ContainerNode
@@ -56,18 +56,15 @@ export class ContainerNode {
     }
 }
 
-export class IndustryNode {
+export class ConsumerNode {
     /**
-     * Industry producing components. Draws inputs from a set of containers, and outputs
-     * to a single container.
+     * Node that consumes product. Either an industry or a factory output.
      */
     readonly inputs = new Map<Item, ContainerNode>()
-    output: ContainerNode | undefined = undefined
 
     /**
-     * Initialize a new IndustryNode
+     * Initialize a new ConsumerNode
      * @param item Item produced by this industry
-     * @param utilization Utilization fraction
      */
     constructor(readonly item: Exclude<Item, Ore>) {}
 
@@ -79,18 +76,6 @@ export class IndustryNode {
     takeFrom(container: ContainerNode, item: Item) {
         this.inputs.set(item, container)
         container.consumers.add(this)
-    }
-
-    /**
-     * Add or replace output container
-     * @param container Output container
-     */
-    outputTo(container: ContainerNode) {
-        if (this.output) {
-            this.output.producers.delete(this)
-        }
-        this.output = container
-        container.producers.add(this)
     }
 
     /**
@@ -106,6 +91,52 @@ export class IndustryNode {
             }
         }
         return quantity / recipe.time
+    }
+}
+
+export class OutputNode extends ConsumerNode {
+    /**
+     * Factory output node
+     */
+
+    /**
+     * Initialize a new OutputNode
+     * @param item Item produced by this industry
+     * @param rate Required production rate
+     */
+    constructor(readonly item: Exclude<Item, Ore>, readonly rate: PerMinute) {
+        super(item)
+    }
+
+    /**
+     * Return the consumption rate of this output
+     * @param item Must be this node's item
+     */
+    getInput(item: Item): PerMinute {
+        if (item === this.item) {
+            return this.rate
+        }
+        return 0
+    }
+}
+
+export class IndustryNode extends ConsumerNode {
+    /**
+     * Industry producing components. Draws inputs from a set of containers, and outputs
+     * to a single container.
+     */
+    output: ContainerNode | undefined = undefined
+
+    /**
+     * Add or replace output container
+     * @param container Output container
+     */
+    outputTo(container: ContainerNode) {
+        if (this.output) {
+            this.output.producers.delete(this)
+        }
+        this.output = container
+        container.producers.add(this)
     }
 
     /**
@@ -130,6 +161,7 @@ export class FactoryGraph {
      */
     containers = new Set<ContainerNode>()
     industries = new Set<IndustryNode>()
+    outputs = new Set<OutputNode>()
 
     /**
      * Add an industry to the factory graph
@@ -145,6 +177,14 @@ export class FactoryGraph {
      */
     addContainer(container: ContainerNode) {
         this.containers.add(container)
+    }
+
+    /**
+     * Add an output node to the factory graph
+     * @param node ConsumerNode to add
+     */
+    addOutput(node: OutputNode) {
+        this.outputs.add(node)
     }
 
     /**
@@ -172,5 +212,16 @@ export class FactoryGraph {
      */
     getProducts(): Set<Item> {
         return new Set(Array.from(this.containers).map((node) => node.item))
+    }
+
+    /**
+     * Return a Map of factory output items and production rates
+     */
+    getOutputs(): Map<Item, PerMinute> {
+        let outputMap = new Map<Item, PerMinute>()
+        for (const output of this.outputs) {
+            outputMap.set(output.item, output.getInput(output.item))
+        }
+        return outputMap
     }
 }
