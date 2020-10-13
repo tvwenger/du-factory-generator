@@ -17,11 +17,26 @@ import { ContainerNode, FactoryGraph, OutputNode, IndustryNode, PerMinute } from
  */
 export function buildDependencies(
     factory: FactoryGraph,
-    item: any,
+    item: Item,
     rate: PerMinute,
 ): ContainerNode {
     /** Get containers holding this product */
-    const containers = factory.getContainers(item)
+    const containers = Array.from(factory.getContainers(item))
+    /** If ingredient is an ore, link from new or existing ore container */
+    if (isOre(item)) {
+        let output: ContainerNode | undefined = undefined
+        for (const container of containers) {
+            if (container.outgoingLinkCount < 10) {
+                output = container
+            }
+        }
+        if (output === undefined) {
+            /* Create new ore container */
+            output = new ContainerNode(item)
+            factory.addContainer(output)
+        }
+        return output
+    }
     /** Increase egress of existing container if possible. No need to increase production of dependencies */
     for (const container of containers) {
         if (
@@ -60,27 +75,12 @@ export function buildDependencies(
         factory.addIndustry(industry)
         /** Build dependencies recursively */
         for (const ingredient of recipe.ingredients) {
-            /** If ingredient is an ore, link from new or existing ore container */
-            if (isOre(ingredient.item)) {
-                const oreContainers = Array.from(factory.getContainers(ingredient.item))
-                let input: ContainerNode | undefined = undefined
-                if (oreContainers.length > 0) {
-                    /* Use existing ore container */
-                    input = oreContainers[0]
-                } else {
-                    /* Create new ore container */
-                    input = new ContainerNode(ingredient.item)
-                    factory.addContainer(input)
-                }
-                industry.takeFrom(input, ingredient.item)
-            } else {
-                const input = buildDependencies(
-                    factory,
-                    ingredient.item,
-                    ingredient.quantity / recipe.time,
-                )
-                industry.takeFrom(input, ingredient.item)
-            }
+            const input = buildDependencies(
+                factory,
+                ingredient.item,
+                ingredient.quantity / recipe.time,
+            )
+            industry.takeFrom(input, ingredient.item)
         }
     }
     return output
