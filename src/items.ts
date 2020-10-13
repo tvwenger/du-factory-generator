@@ -56,8 +56,8 @@ export enum Category {
  */
 export interface CommonProperties {
     readonly name: string
-    readonly tier: string
-    readonly category: string
+    readonly tier: Tier
+    readonly category: Category
     readonly volume: Liter
 }
 
@@ -93,7 +93,7 @@ export function isOre(item: Item): item is Ore {
  * @param name Ore name
  * @param tier Ore tier
  */
-export function ore(name: string, tier: string): Ore {
+export function ore(name: string, tier: Tier): Ore {
     return {
         type: ItemType.ORE,
         name,
@@ -109,7 +109,7 @@ export function ore(name: string, tier: string): Ore {
  * @param tier Catalyst tier
  * @param volume Catalyst volume
  */
-export function catalyst(name: string, tier: string, volume: Liter): Catalyst {
+export function catalyst(name: string, tier: Tier, volume: Liter): Catalyst {
     return {
         type: ItemType.CATALYST,
         name,
@@ -126,7 +126,7 @@ export function catalyst(name: string, tier: string, volume: Liter): Catalyst {
  * @param category Product category
  * @param volume Product volume
  */
-export function product(name: string, tier: string, category: string, volume: Liter): Product {
+export function product(name: string, tier: Tier, category: Category, volume: Liter): Product {
     return {
         type: ItemType.PRODUCT,
         name,
@@ -143,7 +143,7 @@ export function product(name: string, tier: string, category: string, volume: Li
  * @param category Element category
  * @param volume Element volume
  */
-export function element(name: string, category: string, volume: Liter): Element {
+export function element(name: string, category: Category, volume: Liter): Element {
     return {
         type: ItemType.ELEMENT,
         name,
