@@ -15,7 +15,7 @@ export class ContainerNode {
      * this container, and a set of consumers is drawing from this container.
      */
     readonly producers = new Set<IndustryNode>()
-    readonly consumers = new Set<ConsumerNode | OutputNode | IndustryNode>()
+    readonly consumers = new Set<ConsumerNode>()
 
     /**
      * Initialize a new ContainerNode
@@ -161,7 +161,7 @@ export class FactoryGraph {
      */
     containers = new Set<ContainerNode>()
     industries = new Set<IndustryNode>()
-    outputs = new Set<ConsumerNode>()
+    outputs = new Set<OutputNode>()
 
     /**
      * Add an industry to the factory graph
@@ -183,7 +183,7 @@ export class FactoryGraph {
      * Add an output node to the factory graph
      * @param node ConsumerNode to add
      */
-    addOutput(node: ConsumerNode) {
+    addOutput(node: OutputNode) {
         this.outputs.add(node)
     }
 
