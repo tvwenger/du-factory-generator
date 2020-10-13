@@ -646,7 +646,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Basic Burner"], 1),
         time: 60,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Screw"], 4), batch(items["Silumin"], 6)],
         byproducts: [],
     },
@@ -667,7 +667,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Basic Hydraulics"], 1),
         time: 60,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Pipe"], 4), batch(items["Steel"], 6)],
         byproducts: [],
     },
@@ -681,7 +681,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Basic Magnet"], 1),
         time: 60,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Connector"], 4), batch(items["Steel"], 6)],
         byproducts: [],
     },
@@ -716,7 +716,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Basic Singularity Container"], 1),
         time: 60,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Component"], 4), batch(items["Steel"], 6)],
         byproducts: [],
     },
@@ -734,7 +734,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Burner"], 1),
         time: 240,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Screw"], 4),
             batch(items["Silumin"], 2),
@@ -767,7 +767,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Hydraulics"], 1),
         time: 240,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 4),
             batch(items["Steel"], 2),
@@ -789,7 +789,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Magnet"], 1),
         time: 240,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Connector"], 4),
             batch(items["Steel"], 2),
@@ -844,7 +844,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Singularity Container"], 1),
         time: 240,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Component"], 4),
             batch(items["Steel"], 2),
@@ -855,7 +855,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Solid Warhead"], 1),
         time: 240,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 4),
             batch(items["Steel"], 2),
@@ -879,7 +879,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Burner"], 1),
         time: 960,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Screw"], 2),
             batch(items["Silumin"], 2),
@@ -918,7 +918,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Hydraulics"], 1),
         time: 960,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 2),
             batch(items["Steel"], 2),
@@ -944,7 +944,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Magnet"], 1),
         time: 960,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Connector"], 2),
             batch(items["Steel"], 2),
@@ -1009,7 +1009,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Singularity Container"], 1),
         time: 960,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Component"], 2),
             batch(items["Steel"], 2),
@@ -1022,7 +1022,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Solid Warhead"], 1),
         time: 960,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 2),
             batch(items["Steel"], 2),
@@ -1061,7 +1061,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Rare Magnet"], 1),
         time: 3840,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Connector"], 1),
             batch(items["Maraging Steel"], 2),
@@ -1113,7 +1113,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Rare Singularity Container"], 1),
         time: 3840,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Maraging Steel"], 2),
             batch(items["Inconel"], 2),
@@ -1154,7 +1154,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Exotic Magnet"], 1),
         time: 14400,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Mangalloy"], 2),
             batch(items["Maraging Steel"], 2),
@@ -1210,7 +1210,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Exotic Singularity Container"], 1),
         time: 14400,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Mangalloy"], 2),
             batch(items["Maraging Steel"], 2),
@@ -1376,63 +1376,63 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Basic Chemical Container XS"], 1),
         time: 60,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Screw"], 1), batch(items["Silumin"], 1)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Chemical Container S"], 1),
         time: 180,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Screw"], 5), batch(items["Silumin"], 7)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Chemical Container M"], 1),
         time: 540,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Screw"], 25), batch(items["Silumin"], 49)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Chemical Container L"], 1),
         time: 1620,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Screw"], 125), batch(items["Silumin"], 343)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Chemical Container XL"], 1),
         time: 4860,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Screw"], 625), batch(items["Silumin"], 2401)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Combustion Chamber XS"], 1),
         time: 60,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Pipe"], 1), batch(items["Steel"], 1)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Combustion Chamber S"], 1),
         time: 180,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Pipe"], 5), batch(items["Steel"], 7)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Combustion Chamber M"], 1),
         time: 540,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Pipe"], 25), batch(items["Steel"], 49)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Combustion Chamber L"], 1),
         time: 1620,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Pipe"], 125), batch(items["Steel"], 343)],
         byproducts: [],
     },
@@ -1477,77 +1477,77 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Basic Electric Engine S"], 1),
         time: 180,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Screw"], 5), batch(items["Silumin"], 7)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Electric Engine M"], 1),
         time: 540,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Screw"], 25), batch(items["Silumin"], 49)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Firing System XS"], 1),
         time: 60,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Pipe"], 1), batch(items["Steel"], 1)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Gas Cylinder XS"], 1),
         time: 60,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 1), batch(items["Basic Screw"], 1)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Gas Cylinder S"], 1),
         time: 180,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 7), batch(items["Basic Screw"], 5)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Gas Cylinder M"], 1),
         time: 540,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 49), batch(items["Basic Screw"], 25)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Ionic Chamber XS"], 1),
         time: 60,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 1), batch(items["Basic Connector"], 1)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Ionic Chamber S"], 1),
         time: 180,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 7), batch(items["Basic Connector"], 5)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Ionic Chamber M"], 1),
         time: 540,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 49), batch(items["Basic Connector"], 25)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Ionic Chamber L"], 1),
         time: 1620,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 343), batch(items["Basic Connector"], 125)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Ionic Chamber XL"], 1),
         time: 4860,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 2401), batch(items["Basic Connector"], 625)],
         byproducts: [],
     },
@@ -1561,35 +1561,35 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Basic Mobile Panel XS"], 1),
         time: 60,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Screw"], 1), batch(items["Silumin"], 1)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Mobile Panel S"], 1),
         time: 180,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Screw"], 5), batch(items["Silumin"], 7)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Mobile Panel M"], 1),
         time: 540,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Screw"], 25), batch(items["Silumin"], 49)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Mobile Panel L"], 1),
         time: 1620,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Screw"], 125), batch(items["Silumin"], 343)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Mobile Panel XL"], 1),
         time: 4860,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Screw"], 625), batch(items["Silumin"], 2401)],
         byproducts: [],
     },
@@ -1603,21 +1603,21 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Basic Robotic Arm M"], 1),
         time: 540,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Component"], 25), batch(items["Silumin"], 49)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Robotic Arm L"], 1),
         time: 1620,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Component"], 125), batch(items["Silumin"], 343)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Robotic Arm XL"], 1),
         time: 4860,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Basic Component"], 625), batch(items["Silumin"], 2401)],
         byproducts: [],
     },
@@ -1690,7 +1690,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Combustion Chamber XS"], 1),
         time: 240,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 1),
             batch(items["Stainless Steel"], 1),
@@ -1703,7 +1703,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Combustion Chamber S"], 1),
         time: 720,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 2),
             batch(items["Stainless Steel"], 7),
@@ -1716,7 +1716,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Combustion Chamber M"], 1),
         time: 2160,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 8),
             batch(items["Stainless Steel"], 49),
@@ -1729,7 +1729,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Combustion Chamber L"], 1),
         time: 6480,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 38),
             batch(items["Stainless Steel"], 343),
@@ -1781,7 +1781,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Electric Engine XL"], 1),
         time: 18000,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Screw"], 188),
             batch(items["Uncommon Magnet"], 438),
@@ -1794,7 +1794,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Ionic Chamber XS"], 1),
         time: 240,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Magnet"], 1),
             batch(items["Stainless Steel"], 1),
@@ -1807,7 +1807,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Ionic Chamber S"], 1),
         time: 720,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Magnet"], 2),
             batch(items["Stainless Steel"], 7),
@@ -1820,7 +1820,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Ionic Chamber M"], 1),
         time: 2160,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Magnet"], 8),
             batch(items["Stainless Steel"], 49),
@@ -1833,7 +1833,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Ionic Chamber L"], 1),
         time: 6480,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Magnet"], 38),
             batch(items["Stainless Steel"], 343),
@@ -1846,7 +1846,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Ionic Chamber XL"], 1),
         time: 18000,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Magnet"], 188),
             batch(items["Stainless Steel"], 2401),
@@ -1991,7 +1991,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Chemical Container S"], 1),
         time: 2880,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Screw"], 2),
             batch(items["Basic Electronics"], 2),
@@ -2006,7 +2006,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Chemical Container M"], 1),
         time: 8640,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Screw"], 8),
             batch(items["Basic Electronics"], 8),
@@ -2021,7 +2021,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Chemical Container L"], 1),
         time: 25920,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Screw"], 38),
             batch(items["Basic Electronics"], 38),
@@ -2036,7 +2036,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Chemical Container XL"], 1),
         time: 77760,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Screw"], 188),
             batch(items["Basic Electronics"], 188),
@@ -2051,7 +2051,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Combustion Chamber XS"], 1),
         time: 960,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 1),
             batch(items["Basic Burner"], 1),
@@ -2066,7 +2066,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Combustion Chamber S"], 1),
         time: 2880,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 2),
             batch(items["Basic Burner"], 2),
@@ -2081,7 +2081,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Combustion Chamber M"], 1),
         time: 7224,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 8),
             batch(items["Basic Burner"], 8),
@@ -2156,7 +2156,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Firing System XS"], 1),
         time: 960,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Advanced Pipe"], 1),
             batch(items["Advanced Burner"], 1),
@@ -2171,7 +2171,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Firing System S"], 1),
         time: 2880,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Advanced Pipe"], 2),
             batch(items["Advanced Burner"], 2),
@@ -2186,7 +2186,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Firing System M"], 1),
         time: 7200,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Advanced Pipe"], 10),
             batch(items["Advanced Burner"], 10),
@@ -2201,7 +2201,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Firing System L"], 1),
         time: 25200,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Advanced Pipe"], 50),
             batch(items["Advanced Burner"], 50),
@@ -2216,7 +2216,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Ionic Chamber M"], 1),
         time: 7200,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Advanced Magnet"], 10),
             batch(items["Advanced Connector"], 10),
@@ -2231,7 +2231,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Ionic Chamber L"], 1),
         time: 25200,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Advanced Magnet"], 50),
             batch(items["Advanced Connector"], 50),
@@ -2306,7 +2306,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Magnetic Rail XS"], 1),
         time: 960,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 1),
             batch(items["Basic Magnet"], 1),
@@ -2321,7 +2321,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Magnetic Rail S"], 1),
         time: 2880,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 2),
             batch(items["Basic Magnet"], 2),
@@ -2336,7 +2336,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Magnetic Rail M"], 1),
         time: 7200,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 8),
             batch(items["Basic Magnet"], 8),
@@ -2351,7 +2351,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Magnetic Rail L"], 1),
         time: 25200,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 38),
             batch(items["Basic Magnet"], 38),
@@ -2381,7 +2381,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Missile Silo XS"], 1),
         time: 960,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 1),
             batch(items["Basic Burner"], 1),
@@ -2396,7 +2396,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Missile Silo S"], 1),
         time: 2880,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 2),
             batch(items["Basic Burner"], 2),
@@ -2411,7 +2411,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Missile Silo M"], 1),
         time: 7200,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 8),
             batch(items["Basic Burner"], 8),
@@ -2426,7 +2426,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Missile Silo L"], 1),
         time: 25200,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Basic Pipe"], 38),
             batch(items["Basic Burner"], 38),
@@ -2663,14 +2663,14 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Basic Pipe"], 10),
         time: 120,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 10)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Screw"], 10),
         time: 120,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 10)],
         byproducts: [],
     },
@@ -2708,14 +2708,14 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Pipe"], 10),
         time: 480,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 5), batch(items["Duralumin"], 5)],
         byproducts: [],
     },
     {
         product: batch(items["Uncommon Screw"], 10),
         time: 480,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 5), batch(items["Stainless Steel"], 5)],
         byproducts: [],
     },
@@ -2766,7 +2766,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Pipe"], 10),
         time: 1920,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Al-Li Alloy"], 4),
             batch(items["Silumin"], 3),
@@ -2777,7 +2777,7 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Screw"], 10),
         time: 1920,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [
             batch(items["Inconel"], 4),
             batch(items["Stainless Steel"], 3),
@@ -2802,63 +2802,63 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Basic Reinforced Frame XS"], 1),
         time: 40,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 2)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Reinforced Frame S"], 1),
         time: 120,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 11)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Reinforced Frame M"], 1),
         time: 360,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 74)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Reinforced Frame L"], 1),
         time: 1080,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 515)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Reinforced Frame XL"], 1),
         time: 3240,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 3602)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Standard Frame XS"], 1),
         time: 40,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 2)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Standard Frame S"], 1),
         time: 120,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 11)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Standard Frame M"], 1),
         time: 360,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 74)],
         byproducts: [],
     },
     {
         product: batch(items["Basic Standard Frame L"], 1),
         time: 1080,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 515)],
         byproducts: [],
     },
@@ -2905,63 +2905,63 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Uncommon Reinforced Frame XS"], 1),
         time: 180,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 1), batch(items["Stainless Steel"], 1)],
         byproducts: [],
     },
     {
         product: batch(items["Uncommon Reinforced Frame S"], 1),
         time: 480,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 4), batch(items["Stainless Steel"], 7)],
         byproducts: [],
     },
     {
         product: batch(items["Uncommon Reinforced Frame M"], 1),
         time: 1440,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 25), batch(items["Stainless Steel"], 49)],
         byproducts: [],
     },
     {
         product: batch(items["Uncommon Reinforced Frame L"], 1),
         time: 4320,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 172), batch(items["Stainless Steel"], 343)],
         byproducts: [],
     },
     {
         product: batch(items["Uncommon Reinforced Frame XL"], 1),
         time: 14400,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 1201), batch(items["Stainless Steel"], 2401)],
         byproducts: [],
     },
     {
         product: batch(items["Uncommon Standard Frame XS"], 1),
         time: 180,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 1), batch(items["Duralumin"], 1)],
         byproducts: [],
     },
     {
         product: batch(items["Uncommon Standard Frame S"], 1),
         time: 480,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 4), batch(items["Duralumin"], 7)],
         byproducts: [],
     },
     {
         product: batch(items["Uncommon Standard Frame M"], 1),
         time: 1440,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 25), batch(items["Duralumin"], 49)],
         byproducts: [],
     },
     {
         product: batch(items["Uncommon Standard Frame L"], 1),
         time: 4320,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 172), batch(items["Duralumin"], 343)],
         byproducts: [],
     },
@@ -3018,56 +3018,56 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Advanced Reinforced Frame XS"], 1),
         time: 660,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 1), batch(items["Inconel"], 1)],
         byproducts: [],
     },
     {
         product: batch(items["Advanced Reinforced Frame S"], 1),
         time: 1920,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 4), batch(items["Inconel"], 7)],
         byproducts: [],
     },
     {
         product: batch(items["Advanced Reinforced Frame M"], 1),
         time: 5760,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 25), batch(items["Inconel"], 49)],
         byproducts: [],
     },
     {
         product: batch(items["Advanced Reinforced Frame L"], 1),
         time: 18000,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 172), batch(items["Inconel"], 343)],
         byproducts: [],
     },
     {
         product: batch(items["Advanced Standard Frame XS"], 1),
         time: 660,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 1), batch(items["Al-Li Alloy"], 1)],
         byproducts: [],
     },
     {
         product: batch(items["Advanced Standard Frame S"], 1),
         time: 1920,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 4), batch(items["Al-Li Alloy"], 7)],
         byproducts: [],
     },
     {
         product: batch(items["Advanced Standard Frame M"], 1),
         time: 5760,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 25), batch(items["Al-Li Alloy"], 49)],
         byproducts: [],
     },
     {
         product: batch(items["Advanced Standard Frame L"], 1),
         time: 18000,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 172), batch(items["Al-Li Alloy"], 343)],
         byproducts: [],
     },
@@ -3088,21 +3088,21 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Rare Reinforced Frame L"], 1),
         time: 68400,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 172), batch(items["Maraging Steel"], 343)],
         byproducts: [],
     },
     {
         product: batch(items["Rare Reinforced Frame XL"], 1),
         time: 172800,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 1201), batch(items["Maraging Steel"], 2401)],
         byproducts: [],
     },
     {
         product: batch(items["Rare Standard Frame L"], 1),
         time: 68400,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 172), batch(items["Sc-Al Alloy"], 343)],
         byproducts: [],
     },
@@ -3116,35 +3116,35 @@ export const recipes: Recipe[] = [
     {
         product: batch(items["Exotic Reinforced Frame M"], 1),
         time: 93600,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 25), batch(items["Mangalloy"], 49)],
         byproducts: [],
     },
     {
         product: batch(items["Exotic Reinforced Frame L"], 1),
         time: 259200,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 172), batch(items["Mangalloy"], 343)],
         byproducts: [],
     },
     {
         product: batch(items["Exotic Reinforced Frame XL"], 1),
         time: 864000,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Steel"], 1201), batch(items["Mangalloy"], 2401)],
         byproducts: [],
     },
     {
         product: batch(items["Exotic Standard Frame XS"], 1),
         time: 10800,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 1), batch(items["Grade 5 Titanium Alloy"], 1)],
         byproducts: [],
     },
     {
         product: batch(items["Exotic Standard Frame L"], 1),
         time: 259200,
-        industry: items["Metalworks M"],
+        industry: items["Metalwork Industry M"],
         ingredients: [batch(items["Silumin"], 172), batch(items["Grade 5 Titanium Alloy"], 343)],
         byproducts: [],
     },
