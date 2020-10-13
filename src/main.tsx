@@ -26,8 +26,32 @@ const factory = buildFactory(requirements)
     "color: #000099",
 )
 
+function submit() {
+    console.log("submit!")
+}
+
 function App() {
-    return <h1>Open the Javascript console</h1>
+    let elements = []
+    for (const item of Object.keys(items)) {
+        elements.push(item)
+    }
+    return (
+        <div>
+            <table>
+                {elements.map((value, index) => {
+                    return (
+                        <tr>
+                            <td>{value}:</td>
+                            <td>
+                                <input type="number" min="0" id="{value}"></input>
+                            </td>
+                        </tr>
+                    )
+                })}
+            </table>
+            <button onClick={submit}>Submit</button>
+        </div>
+    )
 }
 
 const rootElement = document.getElementById("root")
