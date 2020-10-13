@@ -24,16 +24,18 @@ export function buildDependencies(
     const containers = Array.from(factory.getContainers(item))
     /** If ingredient is an ore, link from new or existing ore container */
     if (isOre(item)) {
-        let container: ContainerNode | undefined = undefined
-        if (containers.length > 0) {
-            /*  Use existing ore container */
-            container = containers[0]
-        } else {
-            /* Create new ore container */
-            container = new ContainerNode(item)
-            factory.addContainer(container)
+        let output: ContainerNode | undefined = undefined
+        for (const container of containers) {
+            if (container.outgoingLinkCount < 10) {
+                output = container
+            }
         }
-        return container
+        if (output === undefined) {
+            /* Create new ore container */
+            output = new ContainerNode(item)
+            factory.addContainer(output)
+        }
+        return output
     }
     /** Increase egress of existing container if possible. No need to increase production of dependencies */
     for (const container of containers) {
