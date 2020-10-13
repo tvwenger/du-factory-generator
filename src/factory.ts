@@ -6,7 +6,7 @@
 
 import { items, Item, Ore, isOre } from "./items"
 import { findRecipe } from "./recipes"
-import { ContainerNode, FactoryGraph, IndustryNode, PerMinute } from "./graph"
+import { ContainerNode, FactoryGraph, OutputNode, IndustryNode, PerMinute } from "./graph"
 
 /**
  * Add to the a factory graph all nodes required to produce and store a given item
@@ -99,6 +99,10 @@ export function buildFactory(requirements: Map<Exclude<Item, Ore>, number>): Fac
         const recipe = findRecipe(item)
         const rate = (count * recipe.product.quantity) / recipe.time
         const container = buildDependencies(factory, item, rate)
+        /* Create factory output node */
+        const output = new OutputNode(item, rate)
+        output.takeFrom(container, item)
+        factory.addOutput(output)
     }
     return factory
 }

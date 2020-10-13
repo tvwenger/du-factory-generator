@@ -21,7 +21,7 @@ const requirements = new Map([
     [items["Vertical Booster L"], 2],
     [items["Retro-Rocket Brake L"], 2],
 ])
-buildFactory(requirements)
+const factory = buildFactory(requirements)
 `,
     "color: #000099",
 )
