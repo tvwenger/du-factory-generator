@@ -35,6 +35,10 @@ module.exports = ({ ifDev, ifProd }) => ({
                 test: /\.tsx?$/,
                 use: "ts-loader",
             },
+            {
+                test: /\.css$/,
+                use: ["style-loader", "css-loader"],
+            },
         ],
     },
     plugins: [

@@ -10,6 +10,8 @@ export type Quantity = number
 
 export type Item = Ore | Catalyst | Product | Element
 
+export type Craftable = Exclude<Item, Ore>
+
 export enum ItemType {
     ORE = "ore",
     CATALYST = "catalyst",
@@ -81,11 +83,19 @@ export interface Element extends CommonProperties {
 }
 
 /**
- * Ore type checker
+ * Ore type guard
  * @param item Item to check
  */
 export function isOre(item: Item): item is Ore {
     return item.type === ItemType.ORE
+}
+
+/**
+ * Craftable type guard
+ * @param item Item to check
+ */
+export function isCraftable(item: Item): item is Craftable {
+    return !isOre(item)
 }
 
 /**
@@ -139,7 +149,6 @@ export function product(name: string, tier: Tier, category: Category, volume: Li
 /**
  * Returns a new Element type
  * @param name Element name
- * @param tier Element tier
  * @param category Element category
  * @param volume Element volume
  */
@@ -156,7 +165,7 @@ export function element(name: string, category: Category, volume: Liter): Elemen
 /**
  * Item list (TODO: complete)
  */
-export const items = {
+export const ITEMS = {
     Hydrogen: ore("Hydrogen", Tier.BASIC),
     Oxygen: ore("Oxygen", Tier.BASIC),
     Hematite: ore("Hematite", Tier.BASIC),
