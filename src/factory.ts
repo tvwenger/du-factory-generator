@@ -4,9 +4,9 @@
  * lgfrbcsgo & Nikolaus - October 2020
  */
 
-import { items, Item, Ore, isOre } from "./items"
+import { isOre, Item, Ore } from "./items"
 import { findRecipe } from "./recipes"
-import { ContainerNode, FactoryGraph, OutputNode, IndustryNode, PerMinute } from "./graph"
+import { ContainerNode, FactoryGraph, IndustryNode, OutputNode, PerMinute } from "./graph"
 
 /**
  * Add to the a factory graph all nodes required to produce and store a given item

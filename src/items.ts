@@ -3,6 +3,7 @@
  * All available items and their properties
  * lgfrbcsgo & Nikolaus - October 2020
  */
+import { values } from "ramda"
 
 export type Liter = number
 export type Minutes = number
@@ -139,7 +140,6 @@ export function product(name: string, tier: Tier, category: Category, volume: Li
 /**
  * Returns a new Element type
  * @param name Element name
- * @param tier Element tier
  * @param category Element category
  * @param volume Element volume
  */
@@ -156,7 +156,7 @@ export function element(name: string, category: Category, volume: Liter): Elemen
 /**
  * Item list (TODO: complete)
  */
-export const items = {
+export const ITEMS = {
     Hydrogen: ore("Hydrogen", Tier.BASIC),
     Oxygen: ore("Oxygen", Tier.BASIC),
     Hematite: ore("Hematite", Tier.BASIC),
@@ -1516,3 +1516,5 @@ export const items = {
     "Dynamic Core L": element("Dynamic Core L", Category.CORE_UNIT, 2501),
     "Territory Unit": element("Territory Unit", Category.CORE_UNIT, 4118.29),
 }
+
+export const ITEMS_LIST = values(ITEMS)
