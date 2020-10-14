@@ -3,13 +3,14 @@
  * All available items and their properties
  * lgfrbcsgo & Nikolaus - October 2020
  */
-import { values } from "ramda"
 
 export type Liter = number
 export type Minutes = number
 export type Quantity = number
 
 export type Item = Ore | Catalyst | Product | Element
+
+export type Craftable = Exclude<Item, Ore>
 
 export enum ItemType {
     ORE = "ore",
@@ -82,11 +83,19 @@ export interface Element extends CommonProperties {
 }
 
 /**
- * Ore type checker
+ * Ore type guard
  * @param item Item to check
  */
 export function isOre(item: Item): item is Ore {
     return item.type === ItemType.ORE
+}
+
+/**
+ * Craftable type guard
+ * @param item Item to check
+ */
+export function isCraftable(item: Item): item is Craftable {
+    return !isOre(item)
 }
 
 /**
@@ -1516,5 +1525,3 @@ export const ITEMS = {
     "Dynamic Core L": element("Dynamic Core L", Category.CORE_UNIT, 2501),
     "Territory Unit": element("Territory Unit", Category.CORE_UNIT, 4118.29),
 }
-
-export const ITEMS_LIST = values(ITEMS)

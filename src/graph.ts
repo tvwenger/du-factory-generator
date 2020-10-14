@@ -3,11 +3,10 @@
  * Define the factory graph and its components
  * lgfrbcsgo & Nikolaus - October 2020
  */
-import { Item, Ore } from "./items"
+import { Craftable, Item } from "./items"
 import { findRecipe } from "./recipes"
 
 export type PerMinute = number
-export type FactoryNode = ContainerNode | IndustryNode
 
 export class ContainerNode {
     /**
@@ -66,7 +65,7 @@ export class ConsumerNode {
      * Initialize a new ConsumerNode
      * @param item Item produced by this industry
      */
-    constructor(readonly item: Exclude<Item, Ore>) {}
+    constructor(readonly item: Craftable) {}
 
     /**
      * Add or replace input container for an item
@@ -104,7 +103,7 @@ export class OutputNode extends ConsumerNode {
      * @param item Item produced by this industry
      * @param rate Required production rate
      */
-    constructor(readonly item: Exclude<Item, Ore>, readonly rate: PerMinute) {
+    constructor(readonly item: Craftable, readonly rate: PerMinute) {
         super(item)
     }
 

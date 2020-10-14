@@ -4,7 +4,7 @@
  * lgfrbcsgo & Nikolaus - October 2020
  */
 
-import { isOre, Item, Ore } from "./items"
+import { Craftable, isOre, Item } from "./items"
 import { findRecipe } from "./recipes"
 import { ContainerNode, FactoryGraph, IndustryNode, OutputNode, PerMinute } from "./graph"
 
@@ -91,7 +91,7 @@ export function buildDependencies(
  * for a given set of products
  * @param requirements Products and number of assemblers
  */
-export function buildFactory(requirements: Map<Exclude<Item, Ore>, number>): FactoryGraph {
+export function buildFactory(requirements: Map<Craftable, number>): FactoryGraph {
     const factory = new FactoryGraph()
     for (const [item, count] of requirements) {
         console.log(item.name)
