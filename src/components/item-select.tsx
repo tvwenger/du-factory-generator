@@ -4,14 +4,22 @@ import { useMemo } from "react"
 import { compose, groupBy, indexBy, prop, toPairs } from "ramda"
 import { TreeSelect } from "antd"
 
+/**
+ * Props of the {@link ItemSelect} component
+ */
 export interface ItemSelectProps<T extends Item> {
     items: T[]
     selection: T[]
     onSelection: (selection: T[]) => void
 }
 
-export function ItemSelect<T extends Item>({ items, selection, onSelection }: ItemSelectProps<T>) {
-    const { treeData, value, fromValue } = useTreeData(items, selection)
+/**
+ * Tree select component for selecting items.
+ * @param props
+ */
+export function ItemSelect<T extends Item>(props: ItemSelectProps<T>) {
+    const treeData = useItemTreeData(props.items)
+    const [value, fromValue] = useItemSelection(props.items, props.selection)
 
     return (
         <TreeSelect
@@ -24,13 +32,17 @@ export function ItemSelect<T extends Item>({ items, selection, onSelection }: It
             allowClear
             showArrow
             treeCheckable
-            onChange={compose(onSelection, fromValue)}
+            onChange={compose(props.onSelection, fromValue)}
         />
     )
 }
 
-function useTreeData<T extends Item>(items: T[], selection: T[]) {
-    const treeData = useMemo(() => {
+/**
+ * Hook for grouping items into a tree based on their category for the use in {@link TreeSelect}
+ * @param items
+ */
+function useItemTreeData<T extends Item>(items: T[]) {
+    return useMemo(() => {
         const byCategory = groupBy(prop("category"), items)
 
         return toPairs(byCategory).map(([category, items]) => ({
@@ -42,15 +54,20 @@ function useTreeData<T extends Item>(items: T[], selection: T[]) {
             })),
         }))
     }, [items])
+}
 
-    const value = useMemo(() => selection.map((item) => item.name), [selection])
+/**
+ * Hook for mapping a selection of items to strings and back
+ * @param items All selectable items
+ * @param selection The currently selected items
+ */
+function useItemSelection<T extends Item>(items: T[], selection: T[]) {
+    const byName = useMemo(() => indexBy(prop("name"), items), [items])
 
-    const fromValue = useMemo(() => {
-        const byName = indexBy(prop("name"), items)
+    const value = useMemo(() => selection.map(prop("name")), [selection])
 
-        return (itemNames: string[]) =>
-            itemNames.map((itemName) => byName[itemName]).filter((item) => item !== undefined)
-    }, [items])
+    const fromValue = (itemNames: string[]) =>
+        itemNames.map((itemName) => byName[itemName]).filter((item) => item !== undefined)
 
-    return { treeData, value, fromValue }
+    return [value, fromValue] as const
 }
