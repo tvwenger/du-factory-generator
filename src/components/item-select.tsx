@@ -8,9 +8,21 @@ import { TreeSelect } from "antd"
  * Props of the {@link ItemSelect} component
  */
 export interface ItemSelectProps<T extends Item> {
+    /**
+     * All selectable items
+     */
     items: T[]
-    selection: T[]
-    onSelection: (selection: T[]) => void
+
+    /**
+     * The currently selected items
+     */
+    value: T[]
+
+    /**
+     * Callback function when the selection changes
+     * @param selection
+     */
+    onChange: (selection: T[]) => void
 }
 
 /**
@@ -19,7 +31,7 @@ export interface ItemSelectProps<T extends Item> {
  */
 export function ItemSelect<T extends Item>(props: ItemSelectProps<T>) {
     const treeData = useItemTreeData(props.items)
-    const [value, fromValue] = useItemSelection(props.items, props.selection)
+    const [value, fromValue] = useItemSelection(props.items, props.value)
 
     return (
         <TreeSelect
@@ -32,7 +44,7 @@ export function ItemSelect<T extends Item>(props: ItemSelectProps<T>) {
             allowClear
             showArrow
             treeCheckable
-            onChange={compose(props.onSelection, fromValue)}
+            onChange={compose(props.onChange, fromValue)}
         />
     )
 }
