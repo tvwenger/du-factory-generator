@@ -14,27 +14,50 @@ export function App() {
 
     const [selection, setSelection] = useState<Craftable[]>([])
 
-    const [counter, setCount] = useMap<Craftable, number>()
+    const [industryCounter, setIndustryCount] = useMap<Craftable, number>()
 
-    const getCount = (item: Craftable) => counter.get(item) || 1
+    const [maintainCounter, setMaintainCount] = useMap<Craftable, number>()
 
-    const getRequirements = () => new Map(selection.map((item) => [item, getCount(item)]))
+    const getIndustryCount = (item: Craftable) => industryCounter.get(item) || 1
+    const getMaintainCount = (item: Craftable) => maintainCounter.get(item) || 1
+
+    const getRequirements = () =>
+        new Map<Craftable, { count: number; maintain: number }>(
+            selection.map((item) => [
+                item,
+                { count: getIndustryCount(item), maintain: getMaintainCount(item) },
+            ]),
+        )
 
     return (
         <Fragment>
             <ItemSelect items={items} value={selection} onChange={setSelection} />
             <Row>
-                {selection.map((item) => (
-                    <Col span={6} key={item.name}>
+                <Col span={6}>Item</Col>
+                <Col span={2}>Assemblers</Col>
+                <Col span={2}>Maintain</Col>
+            </Row>
+            {selection.map((item) => (
+                <Row key={item.name}>
+                    <Col span={6}>
                         <label>{item.name}</label>
+                    </Col>
+                    <Col span={2}>
                         <InputNumber
                             min={1}
-                            value={getCount(item)}
-                            onChange={(value) => setCount(item, Number(value))}
+                            value={getIndustryCount(item)}
+                            onChange={(value) => setIndustryCount(item, Number(value))}
                         />
                     </Col>
-                ))}
-            </Row>
+                    <Col span={2}>
+                        <InputNumber
+                            min={1}
+                            value={getMaintainCount(item)}
+                            onChange={(value) => setMaintainCount(item, Number(value))}
+                        />
+                    </Col>
+                </Row>
+            ))}
             <Button type="primary" onClick={() => console.log(buildFactory(getRequirements()))}>
                 Generate
             </Button>

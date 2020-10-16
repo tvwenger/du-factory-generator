@@ -3,7 +3,13 @@
  * Define the factory graph and its components
  * lgfrbcsgo & Nikolaus - October 2020
  */
-import { Craftable, Item } from "./items"
+import {
+    Craftable,
+    Item,
+    Quantity,
+    ContainerElement,
+    CONTAINERS_ASCENDING_BY_CAPACITY,
+} from "./items"
 import { findRecipe } from "./recipes"
 
 export type PerMinute = number
@@ -52,6 +58,42 @@ export class ContainerNode {
         return Array.from(this.consumers)
             .map((producer) => producer.getInput(this.item))
             .reduce((totalEgress, egress) => totalEgress + egress, 0)
+    }
+
+    /**
+     * Return the required maintain value to store the required components for all consumers
+     */
+    get maintain(): Quantity {
+        let maintain = 0
+        for (const consumer of this.consumers) {
+            for (const ingredient of findRecipe(consumer.item).ingredients) {
+                if (ingredient.item === this.item) {
+                    maintain += ingredient.quantity
+                }
+            }
+            /* If consumer is an OutputNode, maintain OutputNode requirement */
+            if (isOutputNode(consumer) && consumer.item === this.item) {
+                maintain += consumer.maintain
+            }
+        }
+        return maintain
+    }
+
+    /**
+     * Return the required container (size) to hold the maintain value
+     */
+    get container(): ContainerElement {
+        if (CONTAINERS_ASCENDING_BY_CAPACITY.length < 1) {
+            throw new Error("CONTAINERS_ASCENDING_BY_CAPACITY is empty")
+        }
+        const requiredCapacity = this.maintain * this.item.volume
+        let requiredContainer: ContainerElement = CONTAINERS_ASCENDING_BY_CAPACITY[0]
+        for (const checkContainer of CONTAINERS_ASCENDING_BY_CAPACITY) {
+            if (requiredCapacity <= checkContainer.capacity) {
+                requiredContainer = checkContainer
+            }
+        }
+        return requiredContainer
     }
 }
 
@@ -103,7 +145,7 @@ export class OutputNode extends ConsumerNode {
      * @param item Item produced by this industry
      * @param rate Required production rate
      */
-    constructor(readonly item: Craftable, readonly rate: PerMinute) {
+    constructor(readonly item: Craftable, readonly rate: PerMinute, readonly maintain: Quantity) {
         super(item)
     }
 
@@ -117,6 +159,14 @@ export class OutputNode extends ConsumerNode {
         }
         return 0
     }
+}
+
+/**
+ * OutputNode type guard
+ * @param node Node to check
+ */
+export function isOutputNode(node: ConsumerNode): node is OutputNode {
+    return node instanceof OutputNode
 }
 
 export class IndustryNode extends ConsumerNode {

@@ -91,16 +91,18 @@ export function buildDependencies(
  * for a given set of products
  * @param requirements Products and number of assemblers
  */
-export function buildFactory(requirements: Map<Craftable, number>): FactoryGraph {
+export function buildFactory(
+    requirements: Map<Craftable, { count: number; maintain: number }>,
+): FactoryGraph {
     const factory = new FactoryGraph()
-    for (const [item, count] of requirements) {
+    for (const [item, { count, maintain }] of requirements) {
         console.log(item.name)
         /* Recursively build this product and all required components */
         const recipe = findRecipe(item)
         const rate = (count * recipe.product.quantity) / recipe.time
         const container = buildDependencies(factory, item, rate)
         /* Create factory output node */
-        const output = new OutputNode(item, rate)
+        const output = new OutputNode(item, rate, maintain)
         output.takeFrom(container, item)
         factory.addOutput(output)
     }
