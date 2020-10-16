@@ -3,11 +3,10 @@
  * Define the factory graph and its components
  * lgfrbcsgo & Nikolaus - October 2020
  */
-import { Item, Ore } from "./items"
+import { Craftable, Item } from "./items"
 import { findRecipe } from "./recipes"
 
 export type PerMinute = number
-export type FactoryNode = ContainerNode | IndustryNode
 
 export class ContainerNode {
     /**
@@ -15,7 +14,7 @@ export class ContainerNode {
      * this container, and a set of consumers is drawing from this container.
      */
     readonly producers = new Set<IndustryNode>()
-    readonly consumers = new Set<ConsumerNode | OutputNode | IndustryNode>()
+    readonly consumers = new Set<ConsumerNode>()
 
     /**
      * Initialize a new ContainerNode
@@ -66,7 +65,7 @@ export class ConsumerNode {
      * Initialize a new ConsumerNode
      * @param item Item produced by this industry
      */
-    constructor(readonly item: Exclude<Item, Ore>) {}
+    constructor(readonly item: Craftable) {}
 
     /**
      * Add or replace input container for an item
@@ -104,7 +103,7 @@ export class OutputNode extends ConsumerNode {
      * @param item Item produced by this industry
      * @param rate Required production rate
      */
-    constructor(readonly item: Exclude<Item, Ore>, readonly rate: PerMinute) {
+    constructor(readonly item: Craftable, readonly rate: PerMinute) {
         super(item)
     }
 
@@ -161,7 +160,7 @@ export class FactoryGraph {
      */
     containers = new Set<ContainerNode>()
     industries = new Set<IndustryNode>()
-    outputs = new Set<ConsumerNode>()
+    outputs = new Set<OutputNode>()
 
     /**
      * Add an industry to the factory graph
@@ -183,7 +182,7 @@ export class FactoryGraph {
      * Add an output node to the factory graph
      * @param node ConsumerNode to add
      */
-    addOutput(node: ConsumerNode) {
+    addOutput(node: OutputNode) {
         this.outputs.add(node)
     }
 
