@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Fragment, useMemo, useState } from "react"
-import { Craftable, isCraftable, Item, Ore, ITEMS } from "../items"
+import { Craftable, isCraftable, ITEMS } from "../items"
 import { values } from "ramda"
 import { ItemSelect } from "./item-select"
 import { Button, Col, InputNumber, Row } from "antd"
@@ -22,8 +22,11 @@ export function App() {
     const getMaintainCount = (item: Craftable) => maintainCounter.get(item) || 1
 
     const getRequirements = () =>
-        new Map<Exclude<Item, Ore>, [number, number]>(
-            selection.map((item) => [item, [getIndustryCount(item), getMaintainCount(item)]]),
+        new Map<Craftable, { count: number; maintain: number }>(
+            selection.map((item) => [
+                item,
+                { count: getIndustryCount(item), maintain: getMaintainCount(item) },
+            ]),
         )
 
     return (
