@@ -3,7 +3,13 @@
  * Define the factory graph and its components
  * lgfrbcsgo & Nikolaus - October 2020
  */
-import { Craftable, Item, Quantity, ContainerElement, SORTED_CONTAINERS } from "./items"
+import {
+    Craftable,
+    Item,
+    Quantity,
+    ContainerElement,
+    CONTAINERS_ASCENDING_BY_CAPACITY,
+} from "./items"
 import { findRecipe } from "./recipes"
 
 export type PerMinute = number
@@ -77,9 +83,12 @@ export class ContainerNode {
      * Return the required container (size) to hold the maintain value
      */
     get container(): ContainerElement {
+        if (CONTAINERS_ASCENDING_BY_CAPACITY.length < 1) {
+            throw new Error("CONTAINERS_ASCENDING_BY_CAPACITY is empty")
+        }
         const requiredCapacity = this.maintain * this.item.volume
-        let requiredContainer: ContainerElement = SORTED_CONTAINERS[0]
-        for (const checkContainer of SORTED_CONTAINERS) {
+        let requiredContainer: ContainerElement = CONTAINERS_ASCENDING_BY_CAPACITY[0]
+        for (const checkContainer of CONTAINERS_ASCENDING_BY_CAPACITY) {
             if (requiredCapacity <= checkContainer.capacity) {
                 requiredContainer = checkContainer
             }

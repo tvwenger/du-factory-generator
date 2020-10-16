@@ -1598,10 +1598,5 @@ export const ITEMS = {
 /**
  * Get the ContainerElements sorted by capacity from largest to smallest
  */
-export const SORTED_CONTAINERS: ContainerElement[] = []
-for (const [key, val] of Object.entries(ITEMS)) {
-    if (isContainerElement(val)) {
-        SORTED_CONTAINERS.push(val)
-    }
-}
-SORTED_CONTAINERS.sort((a, b) => b.capacity - a.capacity)
+export const CONTAINERS_ASCENDING_BY_CAPACITY = Object.values(ITEMS).filter(isContainerElement)
+CONTAINERS_ASCENDING_BY_CAPACITY.sort((a, b) => b.capacity - a.capacity)
