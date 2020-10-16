@@ -3,10 +3,23 @@
  * Define the factory graph and its components
  * lgfrbcsgo & Nikolaus - October 2020
  */
-import { Craftable, Item } from "./items"
+import { Craftable, Item, Quantity, Liter } from "./items"
 import { findRecipe } from "./recipes"
 
 export type PerMinute = number
+export enum ContainerSize {
+    XS = "XS",
+    S = "S",
+    M = "M",
+    L = "L",
+}
+/* Container volumes sorted from largest to smallest */
+export const ContainerVolume = new Map<ContainerSize, Liter>([
+    [ContainerSize.L, 128000],
+    [ContainerSize.M, 64000],
+    [ContainerSize.S, 8000],
+    [ContainerSize.XS, 1000],
+])
 
 export class ContainerNode {
     /**
@@ -15,6 +28,8 @@ export class ContainerNode {
      */
     readonly producers = new Set<IndustryNode>()
     readonly consumers = new Set<ConsumerNode>()
+    maintain: Quantity | undefined = undefined
+    size: ContainerSize | undefined = undefined
 
     /**
      * Initialize a new ContainerNode
@@ -103,7 +118,7 @@ export class OutputNode extends ConsumerNode {
      * @param item Item produced by this industry
      * @param rate Required production rate
      */
-    constructor(readonly item: Craftable, readonly rate: PerMinute) {
+    constructor(readonly item: Craftable, readonly rate: PerMinute, readonly maintain: Quantity) {
         super(item)
     }
 
@@ -117,6 +132,14 @@ export class OutputNode extends ConsumerNode {
         }
         return 0
     }
+}
+
+/**
+ * OutputNode type guard
+ * @param node Node to check
+ */
+export function isOutputNode(node: ConsumerNode): node is OutputNode {
+    return node instanceof OutputNode
 }
 
 export class IndustryNode extends ConsumerNode {

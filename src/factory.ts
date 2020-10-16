@@ -4,9 +4,17 @@
  * lgfrbcsgo & Nikolaus - October 2020
  */
 
-import { Craftable, isOre, Item } from "./items"
+import { Craftable, isOre, Item, ITEMS } from "./items"
 import { findRecipe } from "./recipes"
-import { ContainerNode, FactoryGraph, IndustryNode, OutputNode, PerMinute } from "./graph"
+import {
+    ContainerNode,
+    FactoryGraph,
+    IndustryNode,
+    OutputNode,
+    PerMinute,
+    ContainerVolume,
+    isOutputNode,
+} from "./graph"
 
 /**
  * Add to the a factory graph all nodes required to produce and store a given item
@@ -87,22 +95,53 @@ export function buildDependencies(
 }
 
 /**
+ * Set the maintain values and container sizes for each container in the factory
+ * @param factory FactoryGraph to update
+ */
+export function updateContainers(factory: FactoryGraph) {
+    for (const container of factory.containers) {
+        /* Maintain value is sum of required components for all consumers */
+        container.maintain = 0
+        for (const consumer of container.consumers) {
+            for (const ingredient of findRecipe(consumer.item).ingredients) {
+                if (ingredient.item === container.item) {
+                    container.maintain += ingredient.quantity
+                }
+            }
+            /* If consumer is an OutputNode, maintain OutputNode requirement */
+            if (isOutputNode(consumer) && consumer.item === container.item) {
+                container.maintain += consumer.maintain
+            }
+        }
+        /* Get required container size to store maintain */
+        const maintainVolume = container.maintain * container.item.volume
+        for (const [size, volume] of ContainerVolume) {
+            if (maintainVolume < volume) {
+                container.size = size
+            }
+        }
+    }
+}
+
+/**
  * Generate a new factory graph that supplies a given number of assemblers
  * for a given set of products
  * @param requirements Products and number of assemblers
  */
-export function buildFactory(requirements: Map<Craftable, number>): FactoryGraph {
+export function buildFactory(requirements: Map<Craftable, [number, number]>): FactoryGraph {
     const factory = new FactoryGraph()
-    for (const [item, count] of requirements) {
+    for (const [item, [count, maintain]] of requirements) {
         console.log(item.name)
         /* Recursively build this product and all required components */
         const recipe = findRecipe(item)
         const rate = (count * recipe.product.quantity) / recipe.time
         const container = buildDependencies(factory, item, rate)
         /* Create factory output node */
-        const output = new OutputNode(item, rate)
+        const output = new OutputNode(item, rate, maintain)
         output.takeFrom(container, item)
         factory.addOutput(output)
     }
+    /* Set container maintain levels and sizes */
+    updateContainers(factory)
     return factory
 }
