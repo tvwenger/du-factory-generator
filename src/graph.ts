@@ -3,23 +3,10 @@
  * Define the factory graph and its components
  * lgfrbcsgo & Nikolaus - October 2020
  */
-import { Craftable, Item, Quantity, Liter } from "./items"
+import { Craftable, Item, Quantity, ContainerElement, SORTED_CONTAINERS } from "./items"
 import { findRecipe } from "./recipes"
 
 export type PerMinute = number
-export enum ContainerSize {
-    XS = "XS",
-    S = "S",
-    M = "M",
-    L = "L",
-}
-/* Container volumes sorted from largest to smallest */
-export const ContainerVolume = new Map<ContainerSize, Liter>([
-    [ContainerSize.L, 128000],
-    [ContainerSize.M, 64000],
-    [ContainerSize.S, 8000],
-    [ContainerSize.XS, 1000],
-])
 
 export class ContainerNode {
     /**
@@ -28,8 +15,6 @@ export class ContainerNode {
      */
     readonly producers = new Set<IndustryNode>()
     readonly consumers = new Set<ConsumerNode>()
-    maintain: Quantity | undefined = undefined
-    size: ContainerSize | undefined = undefined
 
     /**
      * Initialize a new ContainerNode
@@ -67,6 +52,39 @@ export class ContainerNode {
         return Array.from(this.consumers)
             .map((producer) => producer.getInput(this.item))
             .reduce((totalEgress, egress) => totalEgress + egress, 0)
+    }
+
+    /**
+     * Return the required maintain value to store the required components for all consumers
+     */
+    get maintain(): Quantity {
+        let maintain = 0
+        for (const consumer of this.consumers) {
+            for (const ingredient of findRecipe(consumer.item).ingredients) {
+                if (ingredient.item === this.item) {
+                    maintain += ingredient.quantity
+                }
+            }
+            /* If consumer is an OutputNode, maintain OutputNode requirement */
+            if (isOutputNode(consumer) && consumer.item === this.item) {
+                maintain += consumer.maintain
+            }
+        }
+        return maintain
+    }
+
+    /**
+     * Return the required container (size) to hold the maintain value
+     */
+    get container(): ContainerElement {
+        const requiredCapacity = this.maintain * this.item.volume
+        let requiredContainer: ContainerElement = SORTED_CONTAINERS[0]
+        for (const checkContainer of SORTED_CONTAINERS) {
+            if (requiredCapacity <= checkContainer.capacity) {
+                requiredContainer = checkContainer
+            }
+        }
+        return requiredContainer
     }
 }
 
