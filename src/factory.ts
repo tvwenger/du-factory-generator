@@ -77,7 +77,7 @@ export function buildDependencies(
                 ingredient.item,
                 ingredient.quantity / recipe.time,
             )
-            industry.takeFrom(input, ingredient.item)
+            industry.takeFrom(input)
         }
     }
     return output
@@ -100,7 +100,7 @@ export function buildFactory(
         const container = buildDependencies(factory, item, rate)
         /* Create factory output node */
         const output = factory.createOutput(item, rate, maintain)
-        output.takeFrom(container, item)
+        output.takeFrom(container)
     }
     return factory
 }

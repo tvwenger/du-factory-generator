@@ -14,11 +14,11 @@ import { findRecipe } from "./recipes"
 
 export type PerMinute = number
 
+/**
+ * Container holding components. A set of producers is filling
+ * this container, and a set of consumers is drawing from this container.
+ */
 export class ContainerNode {
-    /**
-     * Container holding components. A set of producers is filling
-     * this container, and a set of consumers is drawing from this container.
-     */
     readonly producers = new Set<IndustryNode>()
     readonly consumers = new Set<ConsumerNode>()
 
@@ -66,13 +66,15 @@ export class ContainerNode {
     get maintain(): Quantity {
         let maintain = 0
         for (const consumer of this.consumers) {
-            for (const ingredient of findRecipe(consumer.item).ingredients) {
-                if (ingredient.item === this.item) {
-                    maintain += ingredient.quantity
+            if (consumer instanceof IndustryNode) {
+                for (const ingredient of findRecipe(consumer.item).ingredients) {
+                    if (ingredient.item === this.item) {
+                        maintain += ingredient.quantity
+                    }
                 }
             }
             /* If consumer is an OutputNode, maintain OutputNode requirement */
-            if (isOutputNode(consumer) && consumer.item === this.item) {
+            if (consumer instanceof OutputNode && consumer.item === this.item) {
                 maintain += consumer.maintain
             }
         }
@@ -97,48 +99,29 @@ export class ContainerNode {
     }
 }
 
-export class ConsumerNode {
-    /**
-     * Node that consumes product. Either an industry or a factory output.
-     */
-    readonly inputs = new Map<Item, ContainerNode>()
-
-    /**
-     * Initialize a new ConsumerNode
-     * @param item Item produced by this industry
-     */
-    constructor(readonly item: Craftable) {}
-
+/**
+ * Node that consumes product. Either an industry or a factory output.
+ */
+interface ConsumerNode {
     /**
      * Add or replace input container for an item
      * @param container Input container
-     * @param item Input container's contents
      */
-    takeFrom(container: ContainerNode, item: Item) {
-        this.inputs.set(item, container)
-        container.consumers.add(this)
-    }
+    takeFrom(container: ContainerNode): void
 
     /**
      * Return the consumption rate of a given item
      * @param item Item for which the consumption rate is calculated
      */
-    getInput(item: Item): PerMinute {
-        let quantity = 0
-        const recipe = findRecipe(this.item)
-        for (const ingredient of recipe.ingredients) {
-            if (ingredient.item === item) {
-                quantity += ingredient.quantity
-            }
-        }
-        return quantity / recipe.time
-    }
+    getInput(item: Item): PerMinute
 }
 
-export class OutputNode extends ConsumerNode {
-    /**
-     * Factory output node
-     */
+/**
+ * Factory output node
+ */
+export class OutputNode implements ConsumerNode {
+
+    input: ContainerNode | undefined
 
     /**
      * Initialize a new OutputNode
@@ -147,12 +130,10 @@ export class OutputNode extends ConsumerNode {
      * @param maintain The number of items to maintain
      */
     constructor(readonly item: Craftable, readonly rate: PerMinute, readonly maintain: Quantity) {
-        super(item)
     }
 
     /**
-     * Return the consumption rate of this output
-     * @param item Must be this node's item
+     * @see {@link ConsumerNode#getInput}
      */
     getInput(item: Item): PerMinute {
         if (item === this.item) {
@@ -160,22 +141,34 @@ export class OutputNode extends ConsumerNode {
         }
         return 0
     }
+
+    /**
+     * @see {@link ConsumerNode#takeFrom}
+     */
+    takeFrom(container: ContainerNode): void {
+        this.input = container
+        container.consumers.add(this)
+    }
 }
 
 /**
- * OutputNode type guard
- * @param node Node to check
+ * Industry producing components. Draws inputs from a set of containers, and outputs
+ * to a single container.
  */
-export function isOutputNode(node: ConsumerNode): node is OutputNode {
-    return node instanceof OutputNode
-}
+export class IndustryNode implements ConsumerNode {
+    readonly inputs = new Map<Item, ContainerNode>()
 
-export class IndustryNode extends ConsumerNode {
+    output: ContainerNode | undefined
+
+    constructor(readonly item: Craftable) {}
+
     /**
-     * Industry producing components. Draws inputs from a set of containers, and outputs
-     * to a single container.
+     * @see {@link ConsumerNode#takeFrom}
      */
-    output: ContainerNode | undefined = undefined
+    takeFrom(container: ContainerNode) {
+        this.inputs.set(container.item, container)
+        container.consumers.add(this)
+    }
 
     /**
      * Add or replace output container
@@ -203,6 +196,20 @@ export class IndustryNode extends ConsumerNode {
         }
         return quantity / recipe.time
     }
+
+    /**
+     * @see {@link ConsumerNode#getInput}
+     */
+    getInput(item: Item): PerMinute {
+        let quantity = 0
+        const recipe = findRecipe(this.item)
+        for (const ingredient of recipe.ingredients) {
+            if (ingredient.item === item) {
+                quantity += ingredient.quantity
+            }
+        }
+        return quantity / recipe.time
+    }
 }
 
 export class FactoryGraph {
@@ -215,7 +222,7 @@ export class FactoryGraph {
 
     /**
      * Add an industry to the factory graph
-     * See {@link IndustryNode}
+     * @see {@link IndustryNode}
      */
     createIndustry(item: Craftable): IndustryNode {
         const industry = new IndustryNode(item)
@@ -225,7 +232,7 @@ export class FactoryGraph {
 
     /**
      * Add a container to the factory graph
-     * See {@link ContainerNode}
+     * @see {@link ContainerNode}
      */
     createContainer(item: Item): ContainerNode {
         const container = new ContainerNode(item)
@@ -235,7 +242,7 @@ export class FactoryGraph {
 
     /**
      * Add an output node to the factory graph
-     * See {@link OutputNode}
+     * @see {@link OutputNode}
      */
     createOutput(item: Craftable, rate: PerMinute, maintain: Quantity): OutputNode {
         const output = new OutputNode(item, rate, maintain)
