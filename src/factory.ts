@@ -6,7 +6,7 @@
 
 import { Craftable, isOre, Item } from "./items"
 import { findRecipe } from "./recipes"
-import { ContainerNode, FactoryGraph, IndustryNode, OutputNode, PerMinute } from "./graph"
+import { ContainerNode, FactoryGraph, PerMinute } from "./graph"
 
 /**
  * Add to the a factory graph all nodes required to produce and store a given item
@@ -32,8 +32,7 @@ export function buildDependencies(
         }
         if (output === undefined) {
             /* Create new ore container */
-            output = new ContainerNode(item)
-            factory.addContainer(output)
+            output = factory.createContainer(item)
         }
         return output
     }
@@ -61,8 +60,7 @@ export function buildDependencies(
     }
     /** Create a new container if necessary */
     if (output === undefined) {
-        output = new ContainerNode(item)
-        factory.addContainer(output)
+        output = factory.createContainer(item)
     }
     /** Add new producers */
     const count = Math.ceil(
@@ -70,9 +68,8 @@ export function buildDependencies(
             (recipe.product.quantity / recipe.time),
     )
     for (let i = 0; i < count; i++) {
-        const industry = new IndustryNode(item)
+        const industry = factory.createIndustry(item)
         industry.outputTo(output)
-        factory.addIndustry(industry)
         /** Build dependencies recursively */
         for (const ingredient of recipe.ingredients) {
             const input = buildDependencies(
@@ -102,9 +99,8 @@ export function buildFactory(
         const rate = (count * recipe.product.quantity) / recipe.time
         const container = buildDependencies(factory, item, rate)
         /* Create factory output node */
-        const output = new OutputNode(item, rate, maintain)
+        const output = factory.createOutput(item, rate, maintain)
         output.takeFrom(container, item)
-        factory.addOutput(output)
     }
     return factory
 }

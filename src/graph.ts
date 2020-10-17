@@ -4,11 +4,11 @@
  * lgfrbcsgo & Nikolaus - October 2020
  */
 import {
+    ContainerElement,
+    CONTAINERS_ASCENDING_BY_CAPACITY,
     Craftable,
     Item,
     Quantity,
-    ContainerElement,
-    CONTAINERS_ASCENDING_BY_CAPACITY,
 } from "./items"
 import { findRecipe } from "./recipes"
 
@@ -144,6 +144,7 @@ export class OutputNode extends ConsumerNode {
      * Initialize a new OutputNode
      * @param item Item produced by this industry
      * @param rate Required production rate
+     * @param maintain The number of items to maintain
      */
     constructor(readonly item: Craftable, readonly rate: PerMinute, readonly maintain: Quantity) {
         super(item)
@@ -214,26 +215,32 @@ export class FactoryGraph {
 
     /**
      * Add an industry to the factory graph
-     * @param industry Industry to add
+     * See {@link IndustryNode}
      */
-    addIndustry(industry: IndustryNode) {
+    createIndustry(item: Craftable): IndustryNode {
+        const industry = new IndustryNode(item)
         this.industries.add(industry)
+        return industry
     }
 
     /**
      * Add a container to the factory graph
-     * @param container Container to add
+     * See {@link ContainerNode}
      */
-    addContainer(container: ContainerNode) {
+    createContainer(item: Item): ContainerNode {
+        const container = new ContainerNode(item)
         this.containers.add(container)
+        return container
     }
 
     /**
      * Add an output node to the factory graph
-     * @param node ConsumerNode to add
+     * See {@link OutputNode}
      */
-    addOutput(node: OutputNode) {
-        this.outputs.add(node)
+    createOutput(item: Craftable, rate: PerMinute, maintain: Quantity): OutputNode {
+        const output = new OutputNode(item, rate, maintain)
+        this.outputs.add(output)
+        return output
     }
 
     /**
