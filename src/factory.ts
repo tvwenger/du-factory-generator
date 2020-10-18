@@ -6,7 +6,15 @@
 
 import { Craftable, isOre, Item } from "./items"
 import { findRecipe } from "./recipes"
-import { ContainerNode, FactoryGraph, IndustryNode, OutputNode, PerMinute } from "./graph"
+import {
+    ContainerNode,
+    FactoryGraph,
+    IndustryNode,
+    OutputNode,
+    PerMinute,
+    TransferNode,
+    isTransferNode,
+} from "./graph"
 
 /**
  * Add to the a factory graph all nodes required to produce and store a given item
@@ -41,7 +49,7 @@ export function buildDependencies(
     for (const container of containers) {
         if (
             container.getEgress() + rate <= container.getIngress() &&
-            container.outgoingLinkCount < 10
+            container.canAddOutgoingLinks(1)
         ) {
             return container
         }
@@ -55,7 +63,7 @@ export function buildDependencies(
             (rate + (container.getEgress() - container.getIngress())) /
                 (recipe.product.quantity / recipe.time),
         )
-        if (container.incomingLinkCount + count <= 10 && container.outgoingLinkCount < 10) {
+        if (container.canAddIncomingLinks(count) && container.canAddOutgoingLinks(1)) {
             output = container
         }
     }
@@ -87,6 +95,78 @@ export function buildDependencies(
 }
 
 /**
+ * Add transfer units to remove byproducts from industry outputs
+ * @param factory the FactoryGraph
+ */
+export function handleByproducts(factory: FactoryGraph) {
+    /* Loop over all factory containers */
+    for (const container of factory.containers) {
+        /* Ore containers have no byproducts */
+        if (isOre(container.item)) {
+            continue
+        }
+        const recipe = findRecipe(container.item)
+        for (const byproduct of recipe.byproducts) {
+            /* Skip ores (but there should be none anyway) */
+            if (isOre(byproduct.item)) {
+                continue
+            }
+            /* Check if byproduct is already being consumed */
+            let isConsumed = false
+            for (const consumer of container.consumers) {
+                if (consumer.item === byproduct.item) {
+                    isConsumed = true
+                }
+            }
+            if (!isConsumed) {
+                /* Check if there is already a transfer unit for this item */
+                let industry: TransferNode | undefined
+                const itemTransfers = Array.from(factory.getTransfers(byproduct.item))
+                for (const itemTransfer of itemTransfers) {
+                    if (itemTransfer.canAddIncomingLinks(1)) {
+                        console.log(
+                            "Adding " +
+                                byproduct.item.name +
+                                " from " +
+                                container.item.name +
+                                " to existing",
+                        )
+                        industry = itemTransfer
+                    }
+                }
+                /* Create a new transfer unit if necessary */
+                if (industry === undefined) {
+                    industry = new TransferNode(byproduct.item)
+                    console.log(
+                        "Adding " +
+                            byproduct.item.name +
+                            " from " +
+                            container.item.name +
+                            " to new",
+                    )
+                    factory.addIndustry(industry)
+                    /* Find an output container that has space for an incoming link */
+                    let output: ContainerNode | undefined
+                    const itemContainers = factory.getContainers(byproduct.item)
+                    for (const itemContainer of itemContainers) {
+                        if (itemContainer.canAddIncomingLinks(1)) {
+                            output = itemContainer
+                        }
+                    }
+                    /* Create a new container if necessary */
+                    if (output === undefined) {
+                        output = new ContainerNode(byproduct.item)
+                        factory.addContainer(output)
+                    }
+                    industry.outputTo(output)
+                }
+                industry.takeFrom(container, byproduct.item)
+            }
+        }
+    }
+}
+
+/**
  * Generate a new factory graph that supplies a given number of assemblers
  * for a given set of products
  * @param requirements Products and number of assemblers
@@ -106,5 +186,7 @@ export function buildFactory(
         output.takeFrom(container, item)
         factory.addOutput(output)
     }
+    /* Add transfer units to relocate byproducts */
+    handleByproducts(factory)
     return factory
 }
