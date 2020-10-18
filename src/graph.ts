@@ -20,7 +20,7 @@ export type PerMinute = number
  */
 export class ContainerNode {
     readonly producers = new Set<IndustryNode>()
-    readonly consumers = new Set<ConsumerNode>()
+    readonly consumers = new Set<IndustryNode>()
 
     /**
      * Initialize a new ContainerNode
@@ -66,16 +66,10 @@ export class ContainerNode {
     get maintain(): Quantity {
         let maintain = 0
         for (const consumer of this.consumers) {
-            if (consumer instanceof IndustryNode) {
-                for (const ingredient of findRecipe(consumer.item).ingredients) {
-                    if (ingredient.item === this.item) {
-                        maintain += ingredient.quantity
-                    }
+            for (const ingredient of findRecipe(consumer.item).ingredients) {
+                if (ingredient.item === this.item) {
+                    maintain += ingredient.quantity
                 }
-            }
-            /* If consumer is an OutputNode, maintain OutputNode requirement */
-            if (consumer instanceof OutputNode && consumer.item === this.item) {
-                maintain += consumer.maintain
             }
         }
         return maintain
@@ -100,54 +94,26 @@ export class ContainerNode {
 }
 
 /**
- * Node that consumes product. Either an industry or a factory output.
- */
-interface ConsumerNode {
-    /**
-     * Add or replace input container for an item
-     * @param container Input container
-     */
-    takeFrom(container: ContainerNode): void
-
-    /**
-     * Return the consumption rate of a given item
-     * @param item Item for which the consumption rate is calculated
-     */
-    getInput(item: Item): PerMinute
-}
-
-/**
  * Factory output node
  */
-export class OutputNode implements ConsumerNode {
-
-    input: ContainerNode | undefined
+export class OutputNode extends ContainerNode {
 
     /**
      * Initialize a new OutputNode
      * @param item Item produced by this industry
-     * @param rate Required production rate
-     * @param maintain The number of items to maintain
+     * @param outputRate Required production rate
+     * @param maintainedOutput The number of items to maintain
      */
-    constructor(readonly item: Craftable, readonly rate: PerMinute, readonly maintain: Quantity) {
+    constructor(readonly item: Craftable, readonly outputRate: PerMinute, readonly maintainedOutput: Quantity) {
+        super(item)
     }
 
-    /**
-     * @see {@link ConsumerNode#getInput}
-     */
-    getInput(item: Item): PerMinute {
-        if (item === this.item) {
-            return this.rate
-        }
-        return 0
+    getEgress(): PerMinute {
+        return super.getEgress() + this.outputRate
     }
 
-    /**
-     * @see {@link ConsumerNode#takeFrom}
-     */
-    takeFrom(container: ContainerNode): void {
-        this.input = container
-        container.consumers.add(this)
+    get maintain(): Quantity {
+        return super.maintain + this.maintainedOutput
     }
 }
 
@@ -155,7 +121,7 @@ export class OutputNode implements ConsumerNode {
  * Industry producing components. Draws inputs from a set of containers, and outputs
  * to a single container.
  */
-export class IndustryNode implements ConsumerNode {
+export class IndustryNode {
     readonly inputs = new Map<Item, ContainerNode>()
 
     output: ContainerNode | undefined
@@ -163,7 +129,8 @@ export class IndustryNode implements ConsumerNode {
     constructor(readonly item: Craftable) {}
 
     /**
-     * @see {@link ConsumerNode#takeFrom}
+     * Add or replace input container for an item
+     * @param container Input container
      */
     takeFrom(container: ContainerNode) {
         this.inputs.set(container.item, container)
@@ -198,7 +165,8 @@ export class IndustryNode implements ConsumerNode {
     }
 
     /**
-     * @see {@link ConsumerNode#getInput}
+     * Return the consumption rate of a given item
+     * @param item Item for which the consumption rate is calculated
      */
     getInput(item: Item): PerMinute {
         let quantity = 0
@@ -218,7 +186,6 @@ export class FactoryGraph {
      */
     containers = new Set<ContainerNode>()
     industries = new Set<IndustryNode>()
-    outputs = new Set<OutputNode>()
 
     /**
      * Add an industry to the factory graph
@@ -244,9 +211,9 @@ export class FactoryGraph {
      * Add an output node to the factory graph
      * @see {@link OutputNode}
      */
-    createOutput(item: Craftable, rate: PerMinute, maintain: Quantity): OutputNode {
-        const output = new OutputNode(item, rate, maintain)
-        this.outputs.add(output)
+    createOutput(item: Craftable, outputRate: PerMinute, maintainedOutput: Quantity): OutputNode {
+        const output = new OutputNode(item, outputRate, maintainedOutput)
+        this.containers.add(output)
         return output
     }
 
@@ -275,16 +242,5 @@ export class FactoryGraph {
      */
     getProducts(): Set<Item> {
         return new Set(Array.from(this.containers).map((node) => node.item))
-    }
-
-    /**
-     * Return a Map of factory output items and production rates
-     */
-    getOutputs(): Map<Item, PerMinute> {
-        let outputMap = new Map<Item, PerMinute>()
-        for (const output of this.outputs) {
-            outputMap.set(output.item, output.getInput(output.item))
-        }
-        return outputMap
     }
 }

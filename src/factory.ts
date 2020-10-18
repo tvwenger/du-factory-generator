@@ -9,34 +9,25 @@ import { findRecipe } from "./recipes"
 import { ContainerNode, FactoryGraph, PerMinute } from "./graph"
 
 /**
- * Add to the a factory graph all nodes required to produce and store a given item
- * produced at a given rate. Recursively call this function to produce all ingredients.
+ * Search for a container which either
+ * - has enough excess ingress, or
+ * - has enough incoming links left for additional industries
+ * to be able to satisfy additional egress.
+ * If none is found, create a new container.
  * @param factory FactoryGraph to be modified
- * @param item Item to be built
- * @param rate Rate at which to build the product
+ * @param item Item whose demand needs to be satisfied
+ * @param rate Rate of the extra demand
  */
-export function buildDependencies(
-    factory: FactoryGraph,
-    item: Item,
-    rate: PerMinute,
-): ContainerNode {
-    /** Get containers holding this product */
-    const containers = Array.from(factory.getContainers(item))
-    /** If ingredient is an ore, link from new or existing ore container */
+function findInputContainer(factory: FactoryGraph, item: Item, rate: PerMinute): ContainerNode {
+    // If ingredient is an ore, create new ore container
     if (isOre(item)) {
-        let output: ContainerNode | undefined = undefined
-        for (const container of containers) {
-            if (container.outgoingLinkCount < 10) {
-                output = container
-            }
-        }
-        if (output === undefined) {
-            /* Create new ore container */
-            output = factory.createContainer(item)
-        }
-        return output
+        return factory.createContainer(item)
     }
-    /** Increase egress of existing container if possible. No need to increase production of dependencies */
+
+    // Get containers holding this product
+    const containers = Array.from(factory.getContainers(item))
+
+    // Search for containers which have excess ingress
     for (const container of containers) {
         if (
             container.getEgress() + rate <= container.getIngress() &&
@@ -45,42 +36,72 @@ export function buildDependencies(
             return container
         }
     }
-    let output: ContainerNode | undefined = undefined
-    /** Add more producers if possible */
+
     const recipe = findRecipe(item)
-    for (const container of containers) {
-        /** Required number of additional producers */
-        const count = Math.ceil(
+
+    // Search for containers which can accommodate extra producers
+    const inputContainer = containers.find((container) => {
+        const additionalMachines = Math.ceil(
             (rate + (container.getEgress() - container.getIngress())) /
-                (recipe.product.quantity / recipe.time),
-        )
-        if (container.incomingLinkCount + count <= 10 && container.outgoingLinkCount < 10) {
-            output = container
-        }
-    }
-    /** Create a new container if necessary */
-    if (output === undefined) {
-        output = factory.createContainer(item)
-    }
-    /** Add new producers */
-    const count = Math.ceil(
-        (rate + (output.getEgress() - output.getIngress())) /
             (recipe.product.quantity / recipe.time),
+        )
+        return (
+            container.incomingLinkCount + additionalMachines <= 10 &&
+            container.outgoingLinkCount < 10
+        )
+    })
+
+    // Create a new container if necessary
+    if (inputContainer) {
+        return inputContainer
+    } else {
+        return factory.createContainer(item)
+    }
+}
+
+/**
+ * Add to the a factory graph all nodes required to satisfy the insufficient ingress of the given
+ * container.
+ * Recursively call this function to produce all ingredients.
+ * @param factory FactoryGraph to be modified
+ * @param output Container which has insufficient ingress
+ */
+function satisfyContainerEgress(factory: FactoryGraph, output: ContainerNode): void {
+    if (isOre(output.item)) {
+        return
+    }
+
+    const recipe = findRecipe(output.item)
+
+    // figure out the needed additional industries
+    const additionalIndustries = Math.ceil(
+        (output.getEgress() - output.getIngress()) / (recipe.product.quantity / recipe.time),
     )
-    for (let i = 0; i < count; i++) {
-        const industry = factory.createIndustry(item)
+
+    // sanity check that this container as enough incoming links left
+    if (additionalIndustries + output.incomingLinkCount > 10) {
+        throw new Error(
+            `Egress of ${output.getEgress()} ${output.item} per minute cannot be satisfied.`,
+        )
+    }
+
+    for (let i = 0; i < additionalIndustries; i++) {
+        const industry = factory.createIndustry(output.item)
         industry.outputTo(output)
-        /** Build dependencies recursively */
+
+        // Build dependencies recursively
         for (const ingredient of recipe.ingredients) {
-            const input = buildDependencies(
+            const input = findInputContainer(
                 factory,
                 ingredient.item,
                 ingredient.quantity / recipe.time,
             )
             industry.takeFrom(input)
+
+            // Try to satisfy the updated egress of the container
+            satisfyContainerEgress(factory, input)
         }
     }
-    return output
 }
 
 /**
@@ -93,14 +114,12 @@ export function buildFactory(
 ): FactoryGraph {
     const factory = new FactoryGraph()
     for (const [item, { count, maintain }] of requirements) {
-        console.log(item.name)
-        /* Recursively build this product and all required components */
         const recipe = findRecipe(item)
         const rate = (count * recipe.product.quantity) / recipe.time
-        const container = buildDependencies(factory, item, rate)
-        /* Create factory output node */
-        const output = factory.createOutput(item, rate, maintain)
-        output.takeFrom(container)
+
+        // Create factory output node
+        const container = factory.createOutput(item, rate, maintain)
+        satisfyContainerEgress(factory, container)
     }
     return factory
 }
