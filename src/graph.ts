@@ -141,7 +141,7 @@ export class ContainerNode {
 
 export class ConsumerNode {
     /**
-     * Node that consumes product. Industry, Transfer Unit, or Output
+     * Node that consumes product. Industry or Output
      */
     readonly inputs: Map<Item, ContainerNode> = new Map()
 
