@@ -129,8 +129,7 @@ function handleByproducts(factory: FactoryGraph) {
                 }
                 /* Create a new transfer unit if necessary */
                 if (transfer === undefined) {
-                    transfer = new TransferNode(byproduct.item)
-                    factory.addTransferUnit(transfer)
+                    transfer = factory.createTransferUnit(byproduct.item)
                     /* Find an output container that has space for an incoming link */
                     let output: ContainerNode | undefined
                     const itemContainers = factory.getContainers(byproduct.item)
@@ -145,7 +144,7 @@ function handleByproducts(factory: FactoryGraph) {
                     }
                     transfer.outputTo(output)
                 }
-                transfer.takeFrom(container, byproduct.item)
+                transfer.takeFrom(container)
             }
         }
     }

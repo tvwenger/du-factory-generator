@@ -11,10 +11,11 @@ import {
     Item,
     Quantity,
 } from "./items"
-import { findRecipe } from "./recipes"
+import { findRecipe, Recipe } from "./recipes"
 
 /** Maximum number of incoming/outgoing container links */
 const MAX_CONTAINER_LINKS = 10
+
 /** Maximum number of incoming industry links */
 const MAX_INDUSTRY_LINKS = 7
 
@@ -54,7 +55,13 @@ export class ContainerNode {
      */
     get ingress(): PerMinute {
         return Array.from(this.producers)
-            .map((producer) => producer.getOutput(this.item))
+            .map((producer) => {
+                if (producer instanceof IndustryNode) {
+                    return producer.getOutput(this.item)
+                } else {
+                    return producer.actualTransferRate
+                }
+            })
             .reduce((totalIngress, ingress) => totalIngress + ingress, 0)
     }
 
@@ -63,39 +70,14 @@ export class ContainerNode {
      */
     get egress(): PerMinute {
         return Array.from(this.consumers)
-            .map((producer) => producer.getInput(this.item))
-            .reduce((totalEgress, egress) => totalEgress + egress, 0)
-    }
-
-    /**
-     * Check if a container can support additional incoming links
-     * @param count Number of new incoming links
-     */
-    canAddIncomingLinks(count: number) {
-        return this.incomingLinkCount + count <= MAX_CONTAINER_LINKS
-    }
-
-    /**
-     * Check if a container can support additional outgoing links
-     * @param count Number of new outgoing links
-     */
-    canAddOutgoingLinks(count: number) {
-        /* Ore containers have no byproducts */
-        if (isOre(this.item)) {
-            return this.outgoingLinkCount + count <= MAX_CONTAINER_LINKS
-        }
-        /* Get byproducts stored in this container */
-        const recipe = findRecipe(this.item)
-        let reservedByproductLinks = recipe.byproducts.length
-        for (const byproduct of recipe.byproducts) {
-            /* Check if this container already has a consumer for this byproduct */
-            for (const consumer of this.consumers) {
-                if (consumer.item === byproduct.item) {
-                    reservedByproductLinks += -1
+            .map((producer) => {
+                if (producer instanceof IndustryNode) {
+                    return producer.getInput(this.item)
+                } else {
+                    return producer.actualTransferRate
                 }
-            }
-        }
-        return this.outgoingLinkCount + count + reservedByproductLinks <= MAX_CONTAINER_LINKS
+            })
+            .reduce((totalEgress, egress) => totalEgress + egress, 0)
     }
 
     /**
@@ -132,6 +114,37 @@ export class ContainerNode {
             }
         }
         return requiredContainer
+    }
+
+    /**
+     * Check if a container can support additional incoming links
+     * @param count Number of new incoming links
+     */
+    canAddIncomingLinks(count: number) {
+        return this.incomingLinkCount + count <= MAX_CONTAINER_LINKS
+    }
+
+    /**
+     * Check if a container can support additional outgoing links
+     * @param count Number of new outgoing links
+     */
+    canAddOutgoingLinks(count: number) {
+        /* Ore containers have no byproducts */
+        if (isOre(this.item)) {
+            return this.outgoingLinkCount + count <= MAX_CONTAINER_LINKS
+        }
+        /* Get byproducts stored in this container */
+        const recipe = findRecipe(this.item)
+        let reservedByproductLinks = recipe.byproducts.length
+        for (const byproduct of recipe.byproducts) {
+            /* Check if this container already has a consumer for this byproduct */
+            for (const consumer of this.consumers) {
+                if (consumer.item === byproduct.item) {
+                    reservedByproductLinks += -1
+                }
+            }
+        }
+        return this.outgoingLinkCount + count + reservedByproductLinks <= MAX_CONTAINER_LINKS
     }
 }
 
@@ -170,12 +183,28 @@ export class OutputNode extends ContainerNode {
  */
 export class IndustryNode {
     readonly inputs = new Map<Item, ContainerNode>()
+    readonly recipe: Recipe
 
     output: ContainerNode | undefined
-    readonly industry: Item
 
-    constructor(readonly item: Craftable, readonly factory: FactoryGraph) {
-        this.industry = findRecipe(item).industry
+    get industry() {
+        return this.recipe.industry
+    }
+
+    get item(): Craftable {
+        // TODO: remove cast then gases are craftable
+        return this.recipe.product.item as Craftable
+    }
+
+    /**
+     * Return the number of inputs to this industry
+     */
+    get incomingLinkCount(): number {
+        return this.inputs.size
+    }
+
+    constructor(item: Craftable, readonly factory: FactoryGraph) {
+        this.recipe = findRecipe(item)
     }
 
     /**
@@ -233,13 +262,6 @@ export class IndustryNode {
     }
 
     /**
-     * Return the number of inputs to this industry
-     */
-    get incomingLinkCount(): number {
-        return this.inputs.size
-    }
-
-    /**
      * Check if a industry can support additional incoming links
      * @param count Number of new incoming links
      */
@@ -253,22 +275,47 @@ export class TransferNode {
      * Transfer Unit moving components. Draws inputs from a set of containers, and outputs
      * to a single container.
      */
-    readonly inputs: ContainerNode[] = []
+    readonly inputs = new Set<ContainerNode>()
+    readonly transferRate = Infinity // TODO: transfer rate is not infinite
     output: ContainerNode | undefined
+
+    /**
+     * Return the number of inputs to this transfer unit
+     */
+    get incomingLinkCount(): number {
+        return this.inputs.size
+    }
+
+    /**
+     * Return the transfer rate of a given item
+     */
+    get actualTransferRate(): PerMinute {
+        let rate = 0
+        for (const container of this.inputs) {
+            for (const producer of container.producers) {
+                if (producer instanceof IndustryNode) {
+                    rate += producer.getOutput(this.item)
+                } else {
+                    rate += producer.actualTransferRate
+                }
+            }
+        }
+        return Math.min(rate, this.transferRate)
+    }
 
     /**
      * Initialize a new TransferNode
      * @param item Item produced by this industry
+     * @param factory The factory which this transfer unit belongs to
      */
-    constructor(readonly item: Item) {}
+    constructor(readonly item: Item, readonly factory: FactoryGraph) {}
 
     /**
-     * Add or replace input container for an item
+     * Add an input container for an item
      * @param container Input container
-     * @param item Input container's contents
      */
-    takeFrom(container: ContainerNode, item: Item) {
-        this.inputs.push(container)
+    takeFrom(container: ContainerNode) {
+        this.inputs.add(container)
         container.consumers.add(this)
     }
 
@@ -282,42 +329,6 @@ export class TransferNode {
         }
         this.output = container
         container.producers.add(this)
-    }
-
-    /**
-     * Return the inflow rate of a given item
-     * For a transfer unit, this is the production rate of all producers
-     * adding to the input containers of this node
-     * @param item Item for which the production rate is calculated
-     */
-    /**
-     * Return the consumption rate of a given item
-     * @param item Item for which the consumption rate is calculated
-     */
-    getInput(item: Item): PerMinute {
-        let rate = 0
-        for (const container of this.inputs) {
-            for (const producer of container.producers) {
-                rate += producer.getOutput(item)
-            }
-        }
-        return rate
-    }
-
-    /**
-     * Return the production rate of a given item
-     * For a transfer unit, this is the same as the inflow rate
-     * @param item Item for which the production rate is calculated
-     */
-    getOutput(item: Item): PerMinute {
-        return this.getInput(item)
-    }
-
-    /**
-     * Return the number of inputs to this transfer unit
-     */
-    get incomingLinkCount(): number {
-        return this.inputs.length
     }
 
     /**
@@ -364,10 +375,12 @@ export class FactoryGraph {
 
     /**
      * Add a transfer unit to the factory graph
-     * @param transfer Industry to add
+     * @see {@link TransferNode}
      */
-    addTransferUnit(transfer: TransferNode) {
+    createTransferUnit(item: Item) {
+        const transfer = new TransferNode(item, this)
         this.transferUnits.add(transfer)
+        return transfer
     }
 
     /**
