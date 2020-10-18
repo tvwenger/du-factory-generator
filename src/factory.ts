@@ -109,11 +109,13 @@ export function buildFactory(
     const factory = new FactoryGraph()
     for (const [item, { count, maintain }] of requirements) {
         const recipe = findRecipe(item)
-        const rate = (count * recipe.product.quantity) / recipe.time
+        const rate = recipe.product.quantity / recipe.time
 
-        // Create factory output node
-        const container = factory.createOutput(item, rate, maintain)
-        satisfyContainerEgress(container)
+        for (let i = 0; i < count; i++) {
+            // Create factory output node
+            const container = factory.createOutput(item, rate, maintain)
+            satisfyContainerEgress(container)
+        }
     }
     return factory
 }
