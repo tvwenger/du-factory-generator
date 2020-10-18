@@ -107,10 +107,6 @@ export function handleByproducts(factory: FactoryGraph) {
         }
         const recipe = findRecipe(container.item)
         for (const byproduct of recipe.byproducts) {
-            /* Skip ores (but there should be none anyway) */
-            if (isOre(byproduct.item)) {
-                continue
-            }
             /* Check if byproduct is already being consumed */
             let isConsumed = false
             for (const consumer of container.consumers) {
@@ -120,31 +116,17 @@ export function handleByproducts(factory: FactoryGraph) {
             }
             if (!isConsumed) {
                 /* Check if there is already a transfer unit for this item */
-                let industry: TransferNode | undefined
-                const itemTransfers = Array.from(factory.getTransfers(byproduct.item))
+                let transfer: TransferNode | undefined
+                const itemTransfers = factory.getTransferUnits(byproduct.item)
                 for (const itemTransfer of itemTransfers) {
                     if (itemTransfer.canAddIncomingLinks(1)) {
-                        console.log(
-                            "Adding " +
-                                byproduct.item.name +
-                                " from " +
-                                container.item.name +
-                                " to existing",
-                        )
-                        industry = itemTransfer
+                        transfer = itemTransfer
                     }
                 }
                 /* Create a new transfer unit if necessary */
-                if (industry === undefined) {
-                    industry = new TransferNode(byproduct.item)
-                    console.log(
-                        "Adding " +
-                            byproduct.item.name +
-                            " from " +
-                            container.item.name +
-                            " to new",
-                    )
-                    factory.addIndustry(industry)
+                if (transfer === undefined) {
+                    transfer = new TransferNode(byproduct.item)
+                    factory.addTransferUnit(transfer)
                     /* Find an output container that has space for an incoming link */
                     let output: ContainerNode | undefined
                     const itemContainers = factory.getContainers(byproduct.item)
@@ -158,9 +140,9 @@ export function handleByproducts(factory: FactoryGraph) {
                         output = new ContainerNode(byproduct.item)
                         factory.addContainer(output)
                     }
-                    industry.outputTo(output)
+                    transfer.outputTo(output)
                 }
-                industry.takeFrom(container, byproduct.item)
+                transfer.takeFrom(container, byproduct.item)
             }
         }
     }

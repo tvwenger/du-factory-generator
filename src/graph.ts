@@ -26,8 +26,8 @@ export class ContainerNode {
      * Container holding components. A set of producers is filling
      * this container, and a set of consumers is drawing from this container.
      */
-    readonly producers = new Set<IndustryNode>()
-    readonly consumers = new Set<ConsumerNode>()
+    readonly producers = new Set<IndustryNode | TransferNode>()
+    readonly consumers = new Set<ConsumerNode | TransferNode>()
 
     /**
      * Initialize a new ContainerNode
@@ -104,6 +104,10 @@ export class ContainerNode {
     get maintain(): Quantity {
         let maintain = 0
         for (const consumer of this.consumers) {
+            /* Skip transfer units */
+            if (isTransferNode(consumer)) {
+                continue
+            }
             for (const ingredient of findRecipe(consumer.item).ingredients) {
                 if (ingredient.item === this.item) {
                     maintain += ingredient.quantity
@@ -139,7 +143,7 @@ export class ConsumerNode {
     /**
      * Node that consumes product. Industry, Transfer Unit, or Output
      */
-    readonly inputs: ContainerNode[] = []
+    readonly inputs: Map<Item, ContainerNode> = new Map()
 
     /**
      * Initialize a new ConsumerNode
@@ -153,7 +157,7 @@ export class ConsumerNode {
      * @param item Input container's contents
      */
     takeFrom(container: ContainerNode, item: Item) {
-        this.inputs.push(container)
+        this.inputs.set(item, container)
         container.consumers.add(this)
     }
 
@@ -176,7 +180,7 @@ export class ConsumerNode {
      * Return the number of inputs to this industry
      */
     get incomingLinkCount(): number {
-        return this.inputs.length
+        return this.inputs.size
     }
 
     /**
@@ -268,20 +272,19 @@ export class IndustryNode extends ConsumerNode {
     }
 }
 
-export class TransferNode extends IndustryNode {
+export class TransferNode {
     /**
      * Transfer Unit moving components. Draws inputs from a set of containers, and outputs
      * to a single container.
      */
-    industry: Item = ITEMS["Transfer Unit"]
+    readonly inputs: ContainerNode[] = []
+    output: ContainerNode | undefined
 
     /**
      * Initialize a new TransferNode
      * @param item Item produced by this industry
      */
-    constructor(readonly item: Craftable) {
-        super(item)
-    }
+    constructor(readonly item: Item) {}
 
     /**
      * Add or replace input container for an item
@@ -311,14 +314,11 @@ export class TransferNode extends IndustryNode {
      * adding to the input containers of this node
      * @param item Item for which the production rate is calculated
      */
-
     /**
-     * Return the production rate of a given item
-     * For a transfer unit, this is the production rate of all producers
-     * adding to the input containers of this node
-     * @param item Item for which the production rate is calculated
+     * Return the consumption rate of a given item
+     * @param item Item for which the consumption rate is calculated
      */
-    getOutput(item: Item): PerMinute {
+    getInput(item: Item): PerMinute {
         let rate = 0
         for (const container of this.inputs) {
             for (const producer of container.producers) {
@@ -327,13 +327,37 @@ export class TransferNode extends IndustryNode {
         }
         return rate
     }
+
+    /**
+     * Return the production rate of a given item
+     * For a transfer unit, this is the same as the inflow rate
+     * @param item Item for which the production rate is calculated
+     */
+    getOutput(item: Item): PerMinute {
+        return this.getInput(item)
+    }
+
+    /**
+     * Return the number of inputs to this transfer unit
+     */
+    get incomingLinkCount(): number {
+        return this.inputs.length
+    }
+
+    /**
+     * Check if a transfer unit can support additional incoming links
+     * @param count Number of new incoming links
+     */
+    canAddIncomingLinks(count: number) {
+        return this.incomingLinkCount + count <= MAX_INDUSTRY_LINKS
+    }
 }
 
 /**
  * TransferNode type guard
  * @param node Node to check
  */
-export function isTransferNode(node: ConsumerNode): node is TransferNode {
+export function isTransferNode(node: ConsumerNode | TransferNode): node is TransferNode {
     return node instanceof TransferNode
 }
 
@@ -343,6 +367,7 @@ export class FactoryGraph {
      */
     containers = new Set<ContainerNode>()
     industries = new Set<IndustryNode>()
+    transferUnits = new Set<TransferNode>()
     outputs = new Set<OutputNode>()
 
     /**
@@ -351,6 +376,14 @@ export class FactoryGraph {
      */
     addIndustry(industry: IndustryNode) {
         this.industries.add(industry)
+    }
+
+    /**
+     * Add a transfer unit to the factory graph
+     * @param transfer Industry to add
+     */
+    addTransferUnit(transfer: TransferNode) {
+        this.transferUnits.add(transfer)
     }
 
     /**
@@ -389,15 +422,8 @@ export class FactoryGraph {
      * Return the set of all transfer units of a given item
      * @param item Item for which to find the consumers
      */
-    getTransfers(item: Item): Set<TransferNode> {
-        /*return new Set(
-            Array.from(this.industries).filter((node) => isTransferNode(node) && node.item == item),
-        )*/
-        return new Set(
-            Array.from(this.industries)
-                .filter(isTransferNode)
-                .filter((node) => node.item === item),
-        )
+    getTransferUnits(item: Item): Set<TransferNode> {
+        return new Set(Array.from(this.transferUnits).filter((node) => node.item === item))
     }
 
     /**
