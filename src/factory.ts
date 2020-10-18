@@ -6,7 +6,7 @@
 
 import { Craftable, isOre, Item } from "./items"
 import { findRecipe } from "./recipes"
-import { ContainerNode, FactoryGraph, PerMinute } from "./graph"
+import { ContainerNode, FactoryGraph, PerMinute, TransferNode } from "./graph"
 
 /**
  * Search for a container which either
@@ -29,7 +29,7 @@ function findInputContainer(factory: FactoryGraph, item: Item, rate: PerMinute):
 
     // Search for containers which have excess ingress
     for (const container of containers) {
-        if (container.egress + rate <= container.ingress && container.outgoingLinkCount < 10) {
+        if (container.egress + rate <= container.ingress && container.canAddOutgoingLinks(1)) {
             return container
         }
     }
@@ -43,8 +43,8 @@ function findInputContainer(factory: FactoryGraph, item: Item, rate: PerMinute):
                 (recipe.product.quantity / recipe.time),
         )
         return (
-            container.incomingLinkCount + additionalMachines <= 10 &&
-            container.outgoingLinkCount < 10
+            container.canAddIncomingLinks(additionalMachines) &&
+            container.canAddOutgoingLinks(1)
         )
     })
 
@@ -99,6 +99,59 @@ function satisfyContainerEgress(output: ContainerNode): void {
 }
 
 /**
+ * Add transfer units to remove byproducts from industry outputs
+ * @param factory the FactoryGraph
+ */
+function handleByproducts(factory: FactoryGraph) {
+    /* Loop over all factory containers */
+    for (const container of factory.containers) {
+        /* Ore containers have no byproducts */
+        if (isOre(container.item)) {
+            continue
+        }
+        const recipe = findRecipe(container.item)
+        for (const byproduct of recipe.byproducts) {
+            /* Check if byproduct is already being consumed */
+            let isConsumed = false
+            for (const consumer of container.consumers) {
+                if (consumer.item === byproduct.item) {
+                    isConsumed = true
+                }
+            }
+            if (!isConsumed) {
+                /* Check if there is already a transfer unit for this item */
+                let transfer: TransferNode | undefined
+                const itemTransfers = factory.getTransferUnits(byproduct.item)
+                for (const itemTransfer of itemTransfers) {
+                    if (itemTransfer.canAddIncomingLinks(1)) {
+                        transfer = itemTransfer
+                    }
+                }
+                /* Create a new transfer unit if necessary */
+                if (transfer === undefined) {
+                    transfer = new TransferNode(byproduct.item)
+                    factory.addTransferUnit(transfer)
+                    /* Find an output container that has space for an incoming link */
+                    let output: ContainerNode | undefined
+                    const itemContainers = factory.getContainers(byproduct.item)
+                    for (const itemContainer of itemContainers) {
+                        if (itemContainer.canAddIncomingLinks(1)) {
+                            output = itemContainer
+                        }
+                    }
+                    /* Create a new container if necessary */
+                    if (output === undefined) {
+                        output = factory.createContainer(byproduct.item)
+                    }
+                    transfer.outputTo(output)
+                }
+                transfer.takeFrom(container, byproduct.item)
+            }
+        }
+    }
+}
+
+/**
  * Generate a new factory graph that supplies a given number of assemblers
  * for a given set of products
  * @param requirements Products and number of assemblers
@@ -117,5 +170,7 @@ export function buildFactory(
             satisfyContainerEgress(container)
         }
     }
+    /* Add transfer units to relocate byproducts */
+    handleByproducts(factory)
     return factory
 }
