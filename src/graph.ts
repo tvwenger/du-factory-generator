@@ -139,6 +139,9 @@ export class IndustryNode {
      * @param container Input container
      */
     takeFrom(container: ContainerNode) {
+        if (this.inputs.has(container.item)) {
+            this.inputs.get(container.item)!.consumers.delete(this)
+        }
         this.inputs.set(container.item, container)
         container.consumers.add(this)
     }
