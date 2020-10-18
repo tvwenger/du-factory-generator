@@ -63,10 +63,9 @@ function findInputContainer(factory: FactoryGraph, item: Item, rate: PerMinute):
  * Add to the a factory graph all nodes required to satisfy the insufficient ingress of the given
  * container.
  * Recursively call this function to produce all ingredients.
- * @param factory FactoryGraph to be modified
  * @param output Container which has insufficient ingress
  */
-function satisfyContainerEgress(factory: FactoryGraph, output: ContainerNode): void {
+function satisfyContainerEgress(output: ContainerNode): void {
     if (isOre(output.item)) {
         return
     }
@@ -86,20 +85,20 @@ function satisfyContainerEgress(factory: FactoryGraph, output: ContainerNode): v
     }
 
     for (let i = 0; i < additionalIndustries; i++) {
-        const industry = factory.createIndustry(output.item)
+        const industry = output.factory.createIndustry(output.item)
         industry.outputTo(output)
 
         // Build dependencies recursively
         for (const ingredient of recipe.ingredients) {
             const input = findInputContainer(
-                factory,
+                output.factory,
                 ingredient.item,
                 ingredient.quantity / recipe.time,
             )
             industry.takeFrom(input)
 
             // Try to satisfy the updated egress of the container
-            satisfyContainerEgress(factory, input)
+            satisfyContainerEgress(input)
         }
     }
 }
@@ -119,7 +118,7 @@ export function buildFactory(
 
         // Create factory output node
         const container = factory.createOutput(item, rate, maintain)
-        satisfyContainerEgress(factory, container)
+        satisfyContainerEgress(container)
     }
     return factory
 }

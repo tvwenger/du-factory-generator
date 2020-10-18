@@ -25,8 +25,9 @@ export class ContainerNode {
     /**
      * Initialize a new ContainerNode
      * @param item Item stored in this container
+     * @param factory The factory this container belongs to
      */
-    constructor(readonly item: Item) {}
+    constructor(readonly item: Item, readonly factory: FactoryGraph) {}
 
     /**
      * Return the number of producers filling this container
@@ -97,15 +98,20 @@ export class ContainerNode {
  * Factory output node
  */
 export class OutputNode extends ContainerNode {
-
     /**
      * Initialize a new OutputNode
      * @param item Item produced by this industry
      * @param outputRate Required production rate
      * @param maintainedOutput The number of items to maintain
+     * @param factory The factory this output belongs to
      */
-    constructor(readonly item: Craftable, readonly outputRate: PerMinute, readonly maintainedOutput: Quantity) {
-        super(item)
+    constructor(
+        item: Craftable,
+        readonly outputRate: PerMinute,
+        readonly maintainedOutput: Quantity,
+        factory: FactoryGraph,
+    ) {
+        super(item, factory)
     }
 
     getEgress(): PerMinute {
@@ -126,7 +132,7 @@ export class IndustryNode {
 
     output: ContainerNode | undefined
 
-    constructor(readonly item: Craftable) {}
+    constructor(readonly item: Craftable, readonly factory: FactoryGraph) {}
 
     /**
      * Add or replace input container for an item
@@ -192,7 +198,7 @@ export class FactoryGraph {
      * @see {@link IndustryNode}
      */
     createIndustry(item: Craftable): IndustryNode {
-        const industry = new IndustryNode(item)
+        const industry = new IndustryNode(item, this)
         this.industries.add(industry)
         return industry
     }
@@ -202,7 +208,7 @@ export class FactoryGraph {
      * @see {@link ContainerNode}
      */
     createContainer(item: Item): ContainerNode {
-        const container = new ContainerNode(item)
+        const container = new ContainerNode(item, this)
         this.containers.add(container)
         return container
     }
@@ -212,7 +218,7 @@ export class FactoryGraph {
      * @see {@link OutputNode}
      */
     createOutput(item: Craftable, outputRate: PerMinute, maintainedOutput: Quantity): OutputNode {
-        const output = new OutputNode(item, outputRate, maintainedOutput)
+        const output = new OutputNode(item, outputRate, maintainedOutput, this)
         this.containers.add(output)
         return output
     }
