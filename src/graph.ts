@@ -46,7 +46,7 @@ export class ContainerNode {
     /**
      * Return the rate at which the producers are filling this container.
      */
-    getIngress(): PerMinute {
+    get ingress(): PerMinute {
         return Array.from(this.producers)
             .map((producer) => producer.getOutput(this.item))
             .reduce((totalIngress, ingress) => totalIngress + ingress, 0)
@@ -55,7 +55,7 @@ export class ContainerNode {
     /**
      * Return the rate at which the consumers are drawing from this container.
      */
-    getEgress(): PerMinute {
+    get egress(): PerMinute {
         return Array.from(this.consumers)
             .map((producer) => producer.getInput(this.item))
             .reduce((totalEgress, egress) => totalEgress + egress, 0)
@@ -114,8 +114,8 @@ export class OutputNode extends ContainerNode {
         super(item, factory)
     }
 
-    getEgress(): PerMinute {
-        return super.getEgress() + this.outputRate
+    get egress(): PerMinute {
+        return super.egress + this.outputRate
     }
 
     get maintain(): Quantity {
@@ -194,6 +194,13 @@ export class FactoryGraph {
     industries = new Set<IndustryNode>()
 
     /**
+     * Return the set of all products produced or stored in this factory
+     */
+    get products(): Set<Item> {
+        return new Set(Array.from(this.containers).map((node) => node.item))
+    }
+
+    /**
      * Add an industry to the factory graph
      * @see {@link IndustryNode}
      */
@@ -241,12 +248,5 @@ export class FactoryGraph {
      */
     getContainers(item: Item): Set<ContainerNode> {
         return new Set(Array.from(this.containers).filter((node) => node.item === item))
-    }
-
-    /**
-     * Return the set of all products produced or stored in this factory
-     */
-    getProducts(): Set<Item> {
-        return new Set(Array.from(this.containers).map((node) => node.item))
     }
 }

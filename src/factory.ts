@@ -29,10 +29,7 @@ function findInputContainer(factory: FactoryGraph, item: Item, rate: PerMinute):
 
     // Search for containers which have excess ingress
     for (const container of containers) {
-        if (
-            container.getEgress() + rate <= container.getIngress() &&
-            container.outgoingLinkCount < 10
-        ) {
+        if (container.egress + rate <= container.ingress && container.outgoingLinkCount < 10) {
             return container
         }
     }
@@ -42,8 +39,8 @@ function findInputContainer(factory: FactoryGraph, item: Item, rate: PerMinute):
     // Search for containers which can accommodate extra producers
     const inputContainer = containers.find((container) => {
         const additionalMachines = Math.ceil(
-            (rate + (container.getEgress() - container.getIngress())) /
-            (recipe.product.quantity / recipe.time),
+            (rate + (container.egress - container.ingress)) /
+                (recipe.product.quantity / recipe.time),
         )
         return (
             container.incomingLinkCount + additionalMachines <= 10 &&
@@ -74,14 +71,12 @@ function satisfyContainerEgress(output: ContainerNode): void {
 
     // figure out the needed additional industries
     const additionalIndustries = Math.ceil(
-        (output.getEgress() - output.getIngress()) / (recipe.product.quantity / recipe.time),
+        (output.egress - output.ingress) / (recipe.product.quantity / recipe.time),
     )
 
     // sanity check that this container as enough incoming links left
     if (additionalIndustries + output.incomingLinkCount > 10) {
-        throw new Error(
-            `Egress of ${output.getEgress()} ${output.item} per minute cannot be satisfied.`,
-        )
+        throw new Error(`Egress of ${output.egress} ${output.item} per minute cannot be satisfied.`)
     }
 
     for (let i = 0; i < additionalIndustries; i++) {
