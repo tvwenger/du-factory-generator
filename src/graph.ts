@@ -4,29 +4,37 @@
  * lgfrbcsgo & Nikolaus - October 2020
  */
 import {
-    Craftable,
-    Item,
-    Quantity,
     ContainerElement,
     CONTAINERS_ASCENDING_BY_CAPACITY,
+    Craftable,
+    isOre,
+    Item,
+    Quantity,
 } from "./items"
-import { findRecipe } from "./recipes"
+import { findRecipe, Recipe } from "./recipes"
+
+/** Maximum number of incoming/outgoing container links */
+const MAX_CONTAINER_LINKS = 10
+
+/** Maximum number of incoming industry links */
+const MAX_INDUSTRY_LINKS = 7
 
 export type PerMinute = number
 
+/**
+ * Container holding components. A set of producers is filling
+ * this container, and a set of consumers is drawing from this container.
+ */
 export class ContainerNode {
-    /**
-     * Container holding components. A set of producers is filling
-     * this container, and a set of consumers is drawing from this container.
-     */
-    readonly producers = new Set<IndustryNode>()
-    readonly consumers = new Set<ConsumerNode>()
+    readonly producers = new Set<IndustryNode | TransferNode>()
+    readonly consumers = new Set<IndustryNode | TransferNode>()
 
     /**
      * Initialize a new ContainerNode
      * @param item Item stored in this container
+     * @param factory The factory this container belongs to
      */
-    constructor(readonly item: Item) {}
+    constructor(readonly item: Item, readonly factory: FactoryGraph) {}
 
     /**
      * Return the number of producers filling this container
@@ -45,18 +53,30 @@ export class ContainerNode {
     /**
      * Return the rate at which the producers are filling this container.
      */
-    getIngress(): PerMinute {
+    get ingress(): PerMinute {
         return Array.from(this.producers)
-            .map((producer) => producer.getOutput(this.item))
+            .map((producer) => {
+                if (producer instanceof IndustryNode) {
+                    return producer.getOutput(this.item)
+                } else {
+                    return producer.actualTransferRate
+                }
+            })
             .reduce((totalIngress, ingress) => totalIngress + ingress, 0)
     }
 
     /**
      * Return the rate at which the consumers are drawing from this container.
      */
-    getEgress(): PerMinute {
+    get egress(): PerMinute {
         return Array.from(this.consumers)
-            .map((producer) => producer.getInput(this.item))
+            .map((producer) => {
+                if (producer instanceof IndustryNode) {
+                    return producer.getInput(this.item)
+                } else {
+                    return producer.actualTransferRate
+                }
+            })
             .reduce((totalEgress, egress) => totalEgress + egress, 0)
     }
 
@@ -66,14 +86,14 @@ export class ContainerNode {
     get maintain(): Quantity {
         let maintain = 0
         for (const consumer of this.consumers) {
+            /* Skip transfer units */
+            if (isTransferNode(consumer)) {
+                continue
+            }
             for (const ingredient of findRecipe(consumer.item).ingredients) {
                 if (ingredient.item === this.item) {
                     maintain += ingredient.quantity
                 }
-            }
-            /* If consumer is an OutputNode, maintain OutputNode requirement */
-            if (isOutputNode(consumer) && consumer.item === this.item) {
-                maintain += consumer.maintain
             }
         }
         return maintain
@@ -95,86 +115,109 @@ export class ContainerNode {
         }
         return requiredContainer
     }
-}
-
-export class ConsumerNode {
-    /**
-     * Node that consumes product. Either an industry or a factory output.
-     */
-    readonly inputs = new Map<Item, ContainerNode>()
 
     /**
-     * Initialize a new ConsumerNode
-     * @param item Item produced by this industry
+     * Check if a container can support additional incoming links
+     * @param count Number of new incoming links
      */
-    constructor(readonly item: Craftable) {}
-
-    /**
-     * Add or replace input container for an item
-     * @param container Input container
-     * @param item Input container's contents
-     */
-    takeFrom(container: ContainerNode, item: Item) {
-        this.inputs.set(item, container)
-        container.consumers.add(this)
+    canAddIncomingLinks(count: number) {
+        return this.incomingLinkCount + count <= MAX_CONTAINER_LINKS
     }
 
     /**
-     * Return the consumption rate of a given item
-     * @param item Item for which the consumption rate is calculated
+     * Check if a container can support additional outgoing links
+     * @param count Number of new outgoing links
      */
-    getInput(item: Item): PerMinute {
-        let quantity = 0
+    canAddOutgoingLinks(count: number) {
+        /* Ore containers have no byproducts */
+        if (isOre(this.item)) {
+            return this.outgoingLinkCount + count <= MAX_CONTAINER_LINKS
+        }
+        /* Get byproducts stored in this container */
         const recipe = findRecipe(this.item)
-        for (const ingredient of recipe.ingredients) {
-            if (ingredient.item === item) {
-                quantity += ingredient.quantity
+        let reservedByproductLinks = recipe.byproducts.length
+        for (const byproduct of recipe.byproducts) {
+            /* Check if this container already has a consumer for this byproduct */
+            for (const consumer of this.consumers) {
+                if (consumer.item === byproduct.item) {
+                    reservedByproductLinks += -1
+                }
             }
         }
-        return quantity / recipe.time
-    }
-}
-
-export class OutputNode extends ConsumerNode {
-    /**
-     * Factory output node
-     */
-
-    /**
-     * Initialize a new OutputNode
-     * @param item Item produced by this industry
-     * @param rate Required production rate
-     */
-    constructor(readonly item: Craftable, readonly rate: PerMinute, readonly maintain: Quantity) {
-        super(item)
-    }
-
-    /**
-     * Return the consumption rate of this output
-     * @param item Must be this node's item
-     */
-    getInput(item: Item): PerMinute {
-        if (item === this.item) {
-            return this.rate
-        }
-        return 0
+        return this.outgoingLinkCount + count + reservedByproductLinks <= MAX_CONTAINER_LINKS
     }
 }
 
 /**
- * OutputNode type guard
- * @param node Node to check
+ * Factory output node
  */
-export function isOutputNode(node: ConsumerNode): node is OutputNode {
-    return node instanceof OutputNode
+export class OutputNode extends ContainerNode {
+    /**
+     * Initialize a new OutputNode
+     * @param item Item produced by this industry
+     * @param outputRate Required production rate
+     * @param maintainedOutput The number of items to maintain
+     * @param factory The factory this output belongs to
+     */
+    constructor(
+        item: Craftable,
+        readonly outputRate: PerMinute,
+        readonly maintainedOutput: Quantity,
+        factory: FactoryGraph,
+    ) {
+        super(item, factory)
+    }
+
+    get egress(): PerMinute {
+        return super.egress + this.outputRate
+    }
+
+    get maintain(): Quantity {
+        return super.maintain + this.maintainedOutput
+    }
 }
 
-export class IndustryNode extends ConsumerNode {
+/**
+ * Industry producing components. Draws inputs from a set of containers, and outputs
+ * to a single container.
+ */
+export class IndustryNode {
+    readonly inputs = new Map<Item, ContainerNode>()
+    readonly recipe: Recipe
+
+    output: ContainerNode | undefined
+
+    get industry() {
+        return this.recipe.industry
+    }
+
+    get item(): Craftable {
+        // TODO: remove cast then gases are craftable
+        return this.recipe.product.item as Craftable
+    }
+
     /**
-     * Industry producing components. Draws inputs from a set of containers, and outputs
-     * to a single container.
+     * Return the number of inputs to this industry
      */
-    output: ContainerNode | undefined = undefined
+    get incomingLinkCount(): number {
+        return this.inputs.size
+    }
+
+    constructor(item: Craftable, readonly factory: FactoryGraph) {
+        this.recipe = findRecipe(item)
+    }
+
+    /**
+     * Add or replace input container for an item
+     * @param container Input container
+     */
+    takeFrom(container: ContainerNode) {
+        if (this.inputs.has(container.item)) {
+            this.inputs.get(container.item)!.consumers.delete(this)
+        }
+        this.inputs.set(container.item, container)
+        container.consumers.add(this)
+    }
 
     /**
      * Add or replace output container
@@ -202,38 +245,162 @@ export class IndustryNode extends ConsumerNode {
         }
         return quantity / recipe.time
     }
+
+    /**
+     * Return the consumption rate of a given item
+     * @param item Item for which the consumption rate is calculated
+     */
+    getInput(item: Item): PerMinute {
+        let quantity = 0
+        const recipe = findRecipe(this.item)
+        for (const ingredient of recipe.ingredients) {
+            if (ingredient.item === item) {
+                quantity += ingredient.quantity
+            }
+        }
+        return quantity / recipe.time
+    }
+
+    /**
+     * Check if a industry can support additional incoming links
+     * @param count Number of new incoming links
+     */
+    canAddIncomingLinks(count: number) {
+        return this.incomingLinkCount + count <= MAX_INDUSTRY_LINKS
+    }
 }
 
-export class FactoryGraph {
+export class TransferNode {
+    /**
+     * Transfer Unit moving components. Draws inputs from a set of containers, and outputs
+     * to a single container.
+     */
+    readonly inputs = new Set<ContainerNode>()
+    readonly transferRate = Infinity // TODO: transfer rate is not infinite
+    output: ContainerNode | undefined
+
+    /**
+     * Return the number of inputs to this transfer unit
+     */
+    get incomingLinkCount(): number {
+        return this.inputs.size
+    }
+
+    /**
+     * Return the transfer rate of a given item
+     */
+    get actualTransferRate(): PerMinute {
+        let rate = 0
+        for (const container of this.inputs) {
+            for (const producer of container.producers) {
+                if (producer instanceof IndustryNode) {
+                    rate += producer.getOutput(this.item)
+                } else {
+                    rate += producer.actualTransferRate
+                }
+            }
+        }
+        return Math.min(rate, this.transferRate)
+    }
+
+    /**
+     * Initialize a new TransferNode
+     * @param item Item produced by this industry
+     * @param factory The factory which this transfer unit belongs to
+     */
+    constructor(readonly item: Item, readonly factory: FactoryGraph) {}
+
+    /**
+     * Add an input container for an item
+     * @param container Input container
+     */
+    takeFrom(container: ContainerNode) {
+        this.inputs.add(container)
+        container.consumers.add(this)
+    }
+
+    /**
+     * Add or replace output container
+     * @param container Output container
+     */
+    outputTo(container: ContainerNode) {
+        if (this.output) {
+            this.output.producers.delete(this)
+        }
+        this.output = container
+        container.producers.add(this)
+    }
+
+    /**
+     * Check if a transfer unit can support additional incoming links
+     * @param count Number of new incoming links
+     */
+    canAddIncomingLinks(count: number) {
+        return this.incomingLinkCount + count <= MAX_INDUSTRY_LINKS
+    }
+}
+
+/**
+ * TransferNode type guard
+ * @param node Node to check
+ */
+export function isTransferNode(node: IndustryNode | TransferNode): node is TransferNode {
+    return node instanceof TransferNode
+}
+
     /**
      * Graph containing factory components (industries and containers).
      */
+export class FactoryGraph {
     containers = new Set<ContainerNode>()
     industries = new Set<IndustryNode>()
-    outputs = new Set<OutputNode>()
+    transferUnits = new Set<TransferNode>()
+
+    /**
+     * Return the set of all products produced or stored in this factory
+     */
+    get products(): Set<Item> {
+        return new Set(Array.from(this.containers).map((node) => node.item))
+    }
 
     /**
      * Add an industry to the factory graph
-     * @param industry Industry to add
+     * @see {@link IndustryNode}
      */
-    addIndustry(industry: IndustryNode) {
+    createIndustry(item: Craftable): IndustryNode {
+        const industry = new IndustryNode(item, this)
         this.industries.add(industry)
+        return industry
+    }
+
+    /**
+     * Add a transfer unit to the factory graph
+     * @see {@link TransferNode}
+     */
+    createTransferUnit(item: Item) {
+        const transfer = new TransferNode(item, this)
+        this.transferUnits.add(transfer)
+        return transfer
     }
 
     /**
      * Add a container to the factory graph
-     * @param container Container to add
+     * @see {@link ContainerNode}
      */
-    addContainer(container: ContainerNode) {
+    createContainer(item: Item): ContainerNode {
+        const container = new ContainerNode(item, this)
         this.containers.add(container)
+        return container
     }
 
     /**
      * Add an output node to the factory graph
-     * @param node ConsumerNode to add
+     * @see {@link OutputNode}
      */
-    addOutput(node: OutputNode) {
-        this.outputs.add(node)
+    createOutput(item: Craftable, outputRate: PerMinute, maintainedOutput: Quantity): OutputNode {
+        const output = new OutputNode(item, outputRate, maintainedOutput, this)
+        this.containers.add(output)
+        return output
     }
 
     /**
@@ -249,28 +416,18 @@ export class FactoryGraph {
     }
 
     /**
+     * Return the set of all transfer units of a given item
+     * @param item Item for which to find the consumers
+     */
+    getTransferUnits(item: Item): Set<TransferNode> {
+        return new Set(Array.from(this.transferUnits).filter((node) => node.item === item))
+    }
+
+    /**
      * Return the set of all containers holding a given item
      * @param item Item for which to find the containers
      */
     getContainers(item: Item): Set<ContainerNode> {
         return new Set(Array.from(this.containers).filter((node) => node.item === item))
-    }
-
-    /**
-     * Return the set of all products produced or stored in this factory
-     */
-    getProducts(): Set<Item> {
-        return new Set(Array.from(this.containers).map((node) => node.item))
-    }
-
-    /**
-     * Return a Map of factory output items and production rates
-     */
-    getOutputs(): Map<Item, PerMinute> {
-        let outputMap = new Map<Item, PerMinute>()
-        for (const output of this.outputs) {
-            outputMap.set(output.item, output.getInput(output.item))
-        }
-        return outputMap
     }
 }
