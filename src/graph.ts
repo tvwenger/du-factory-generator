@@ -154,7 +154,7 @@ export class ContainerNode {
 export class OutputNode extends ContainerNode {
     /**
      * Initialize a new OutputNode
-     * @param item Item produced by this industry
+     * @param item Item stored in this container
      * @param outputRate Required production rate
      * @param maintainedOutput The number of items to maintain
      * @param factory The factory this output belongs to
@@ -348,9 +348,9 @@ export function isTransferNode(node: IndustryNode | TransferNode): node is Trans
     return node instanceof TransferNode
 }
 
-    /**
-     * Graph containing factory components (industries and containers).
-     */
+/**
+ * Graph containing factory components (industries and containers).
+ */
 export class FactoryGraph {
     containers = new Set<ContainerNode>()
     industries = new Set<IndustryNode>()
