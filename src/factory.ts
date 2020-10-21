@@ -9,10 +9,10 @@ import { findRecipe } from "./recipes"
 import { ContainerNode, FactoryGraph, PerMinute, TransferNode, OutputNode } from "./graph"
 
 /**
- * Add to the a factory graph all nodes required to produce an item at a given rate.
+ * Add to the factory graph all nodes required to increase production of an item by a given rate.
  * Recursively call this function to produce all ingredients.
  * @param item Item to produce
- * @param rate Rate of production
+ * @param rate Rate of increased production
  * @param factory the FactoryGraph
  */
 function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerNode {
@@ -61,6 +61,10 @@ function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerN
     const additionalIndustries = Math.ceil(
         (rate + output.egress - output.ingress) / (recipe.product.quantity / recipe.time),
     )
+    /* Sanity check */
+    if (!output.canAddIncomingLinks(additionalIndustries) || !output.canAddOutgoingLinks(1)) {
+        throw new Error("Unable to assign links to container " + output)
+    }
     for (let i = 0; i < additionalIndustries; i++) {
         const industry = factory.createIndustry(item)
         industry.outputTo(output)
