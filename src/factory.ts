@@ -6,7 +6,14 @@
 
 import { Craftable, isOre, Item } from "./items"
 import { findRecipe } from "./recipes"
-import { ContainerNode, FactoryGraph, PerMinute, TransferNode, OutputNode } from "./graph"
+import {
+    ContainerNode,
+    FactoryGraph,
+    PerMinute,
+    TransferNode,
+    OutputNode,
+    MAX_CONTAINER_LINKS,
+} from "./graph"
 
 /**
  * Add to the factory graph all nodes required to increase production of an item by a given rate.
@@ -15,7 +22,7 @@ import { ContainerNode, FactoryGraph, PerMinute, TransferNode, OutputNode } from
  * @param rate Rate of increased production
  * @param factory the FactoryGraph
  */
-function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerNode {
+function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerNode[] {
     /* Get containers already storing this item */
     const containers = factory.getContainers(item)
 
@@ -23,58 +30,69 @@ function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerN
     if (isOre(item)) {
         for (const container of containers) {
             if (container.canAddOutgoingLinks(1)) {
-                return container
+                return [container]
             }
         }
-        return factory.createContainer(item)
+        return [factory.createContainer(item)]
     }
 
     /* Increase egress of existing container if possible */
     for (const container of containers) {
         if (container.egress + rate < container.ingress && container.canAddOutgoingLinks(1)) {
-            return container
+            return [container]
         }
     }
 
     /* Create producers to existing container if possible */
     const recipe = findRecipe(item)
-    let output: ContainerNode | undefined
+    let outputs: ContainerNode[] = []
+    let additionalIndustries = 0
     for (const container of containers) {
-        const additionalIndustries = Math.ceil(
+        additionalIndustries = Math.ceil(
             (rate + container.egress - container.ingress) / (recipe.product.quantity / recipe.time),
         )
         if (
             container.canAddIncomingLinks(additionalIndustries) &&
             container.canAddOutgoingLinks(1)
         ) {
-            output = container
+            outputs.push(container)
             break
         }
     }
 
-    /* Create a new output container if necessary */
-    if (output === undefined) {
-        output = factory.createContainer(item)
-    }
+    /* Create a new output container(s) if necessary */
+    if (outputs.length === 0) {
+        // The maximum number of required industries
+        additionalIndustries = Math.ceil(rate / (recipe.product.quantity / recipe.time))
 
-    /* Add new producers */
-    const additionalIndustries = Math.ceil(
-        (rate + output.egress - output.ingress) / (recipe.product.quantity / recipe.time),
-    )
-    /* Sanity check */
-    if (!output.canAddIncomingLinks(additionalIndustries) || !output.canAddOutgoingLinks(1)) {
-        throw new Error("Unable to assign links to container " + output)
-    }
-    for (let i = 0; i < additionalIndustries; i++) {
-        const industry = factory.createIndustry(item)
-        industry.outputTo(output)
-        /* Build dependencies recursively */
-        for (const ingredient of recipe.ingredients) {
-            const input = produce(ingredient.item, ingredient.quantity / recipe.time, factory)
-            industry.takeFrom(input)
+        // Add split containers if maxAdditionalIndustries exceeds limit
+        if (additionalIndustries > MAX_CONTAINER_LINKS) {
+            const numContainers = Math.ceil(additionalIndustries / MAX_CONTAINER_LINKS)
+            const evenLinks = Math.ceil(additionalIndustries / numContainers)
+            let linksRemaining = additionalIndustries
+            for (let i = 0; i < numContainers; i++) {
+                const numLinks = Math.min(evenLinks, linksRemaining)
+                const split = numLinks / additionalIndustries
+                outputs.push(factory.createSplitContainer(item, split))
+                linksRemaining += -numLinks
+            }
+        } else {
+            outputs.push(factory.createContainer(item))
         }
     }
-    return output
+
+    for (let i = 0; i < additionalIndustries; i++) {
+        const industry = factory.createIndustry(item)
+        industry.outputTo(outputs[i % outputs.length])
+        /* Build dependencies recursively */
+        for (const ingredient of recipe.ingredients) {
+            const inputs = produce(ingredient.item, ingredient.quantity / recipe.time, factory)
+            for (const input of inputs) {
+                industry.takeFrom(input)
+            }
+        }
+    }
+    return outputs
 }
 
 /**
@@ -150,12 +168,16 @@ export function buildFactory(
             industry.outputTo(output)
             // Build ingredients
             for (const ingredient of recipe.ingredients) {
-                const input = produce(ingredient.item, ingredient.quantity / recipe.time, factory)
-                industry.takeFrom(input)
+                const inputs = produce(ingredient.item, ingredient.quantity / recipe.time, factory)
+                for (const input of inputs) {
+                    industry.takeFrom(input)
+                }
             }
         }
     }
     /* Add transfer units to relocate byproducts */
     handleByproducts(factory)
+    /* Sanity check for errors in factory */
+    factory.sanityCheck()
     return factory
 }
