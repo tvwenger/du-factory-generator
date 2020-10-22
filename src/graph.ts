@@ -14,7 +14,7 @@ import {
 import { findRecipe, Recipe } from "./recipes"
 
 /** Maximum number of incoming/outgoing container links */
-const MAX_CONTAINER_LINKS = 10
+export const MAX_CONTAINER_LINKS = 10
 
 /** Maximum number of incoming industry links */
 const MAX_INDUSTRY_LINKS = 7
@@ -33,8 +33,13 @@ export class ContainerNode {
      * Initialize a new ContainerNode
      * @param item Item stored in this container
      * @param factory The factory this container belongs to
+     * @param split If not 1.0, the fraction of some consumer's input supplied
+     * by this container. In some cases the
+     * number of input links exceeds the limit, so we needed to split
+     * the container in two (or more). To prevent an upstream backup,
+     * split containers can only link to one industry.
      */
-    constructor(readonly item: Item, readonly factory: FactoryGraph) {}
+    constructor(readonly item: Item, readonly factory: FactoryGraph, readonly split: number) {}
 
     /**
      * Return the number of producers filling this container
@@ -54,12 +59,18 @@ export class ContainerNode {
      * Return the rate at which the producers are filling this container.
      */
     get ingress(): PerMinute {
+        // Assume infinite ore availablility
+        if (isOre(this.item)) {
+            return Infinity
+        }
         return Array.from(this.producers)
             .map((producer) => {
                 if (producer instanceof IndustryNode) {
                     return producer.getOutput(this.item)
-                } else {
+                } else if (producer.item === this.item) {
                     return producer.actualTransferRate
+                } else {
+                    return 0
                 }
             })
             .reduce((totalIngress, ingress) => totalIngress + ingress, 0)
@@ -70,11 +81,13 @@ export class ContainerNode {
      */
     get egress(): PerMinute {
         return Array.from(this.consumers)
-            .map((producer) => {
-                if (producer instanceof IndustryNode) {
-                    return producer.getInput(this.item)
+            .map((consumer) => {
+                if (consumer instanceof IndustryNode) {
+                    return this.split * consumer.getInput(this.item)
+                } else if (consumer.item === this.item) {
+                    return consumer.actualTransferRate
                 } else {
-                    return producer.actualTransferRate
+                    return 0
                 }
             })
             .reduce((totalEgress, egress) => totalEgress + egress, 0)
@@ -96,7 +109,7 @@ export class ContainerNode {
                 }
             }
         }
-        return maintain
+        return maintain * this.split
     }
 
     /**
@@ -117,6 +130,13 @@ export class ContainerNode {
     }
 
     /**
+     * Return if this is a split container
+     */
+    get isSplit(): boolean {
+        return this.split !== 1.0
+    }
+
+    /**
      * Check if a container can support additional incoming links
      * @param count Number of new incoming links
      */
@@ -129,6 +149,10 @@ export class ContainerNode {
      * @param count Number of new outgoing links
      */
     canAddOutgoingLinks(count: number) {
+        /* Check if this is a split input container */
+        if (this.isSplit) {
+            return false
+        }
         /* Ore containers have no byproducts */
         if (isOre(this.item)) {
             return this.outgoingLinkCount + count <= MAX_CONTAINER_LINKS
@@ -154,7 +178,7 @@ export class ContainerNode {
 export class OutputNode extends ContainerNode {
     /**
      * Initialize a new OutputNode
-     * @param item Item produced by this industry
+     * @param item Item stored in this container
      * @param outputRate Required production rate
      * @param maintainedOutput The number of items to maintain
      * @param factory The factory this output belongs to
@@ -165,7 +189,7 @@ export class OutputNode extends ContainerNode {
         readonly maintainedOutput: Quantity,
         factory: FactoryGraph,
     ) {
-        super(item, factory)
+        super(item, factory, 1.0)
     }
 
     get egress(): PerMinute {
@@ -182,7 +206,7 @@ export class OutputNode extends ContainerNode {
  * to a single container.
  */
 export class IndustryNode {
-    readonly inputs = new Map<Item, ContainerNode>()
+    readonly inputs: ContainerNode[] = []
     readonly recipe: Recipe
 
     output: ContainerNode | undefined
@@ -200,7 +224,7 @@ export class IndustryNode {
      * Return the number of inputs to this industry
      */
     get incomingLinkCount(): number {
-        return this.inputs.size
+        return this.inputs.length
     }
 
     constructor(item: Craftable, readonly factory: FactoryGraph) {
@@ -208,14 +232,11 @@ export class IndustryNode {
     }
 
     /**
-     * Add or replace input container for an item
+     * Add input container for an item
      * @param container Input container
      */
     takeFrom(container: ContainerNode) {
-        if (this.inputs.has(container.item)) {
-            this.inputs.get(container.item)!.consumers.delete(this)
-        }
-        this.inputs.set(container.item, container)
+        this.inputs.push(container)
         container.consumers.add(this)
     }
 
@@ -348,9 +369,9 @@ export function isTransferNode(node: IndustryNode | TransferNode): node is Trans
     return node instanceof TransferNode
 }
 
-    /**
-     * Graph containing factory components (industries and containers).
-     */
+/**
+ * Graph containing factory components (industries and containers).
+ */
 export class FactoryGraph {
     containers = new Set<ContainerNode>()
     industries = new Set<IndustryNode>()
@@ -388,7 +409,17 @@ export class FactoryGraph {
      * @see {@link ContainerNode}
      */
     createContainer(item: Item): ContainerNode {
-        const container = new ContainerNode(item, this)
+        const container = new ContainerNode(item, this, 1.0)
+        this.containers.add(container)
+        return container
+    }
+
+    /**
+     * Add a split container to the factory graph
+     * @see {@link ContainerNode}
+     */
+    createSplitContainer(item: Item, split: number): ContainerNode {
+        const container = new ContainerNode(item, this, split)
         this.containers.add(container)
         return container
     }
@@ -429,5 +460,38 @@ export class FactoryGraph {
      */
     getContainers(item: Item): Set<ContainerNode> {
         return new Set(Array.from(this.containers).filter((node) => node.item === item))
+    }
+
+    /**
+     * Sanity check the factory. Check for 1) exceeding container limits,
+     * 2) egress > ingress, 3) or split containers having more than one consumer
+     */
+    sanityCheck() {
+        // Check containers
+        for (const container of this.containers) {
+            if (container.incomingLinkCount > MAX_CONTAINER_LINKS) {
+                console.log(container)
+                throw new Error("Container exceeds incoming link limit")
+            }
+            if (container.outgoingLinkCount > MAX_CONTAINER_LINKS) {
+                console.log(container)
+                throw new Error("Container exceeds outgoing link limit")
+            }
+            if (container.egress > container.ingress) {
+                console.log(container)
+                throw new Error("Container egress exceeds ingress")
+            }
+            if (container.isSplit && container.outgoingLinkCount > 1) {
+                console.log(container)
+                throw new Error("Split container has more than one outgoing link")
+            }
+        }
+        // Check industries
+        for (const industry of this.industries) {
+            if (industry.incomingLinkCount > MAX_INDUSTRY_LINKS) {
+                console.log(industry)
+                throw new Error("Industry exceeds incoming link limit")
+            }
+        }
     }
 }
