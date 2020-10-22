@@ -109,7 +109,7 @@ export class ContainerNode {
                 }
             }
         }
-        return maintain
+        return maintain * this.split
     }
 
     /**
