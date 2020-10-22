@@ -68,7 +68,7 @@ export class ContainerNode {
                 if (producer instanceof IndustryNode) {
                     return producer.getOutput(this.item)
                 } else if (producer.item === this.item) {
-                    return producer.actualTransferRate
+                    return producer.outflowRate
                 } else {
                     return 0
                 }
@@ -85,7 +85,7 @@ export class ContainerNode {
                 if (consumer instanceof IndustryNode) {
                     return this.split * consumer.getInput(this.item)
                 } else if (consumer.item === this.item) {
-                    return consumer.actualTransferRate
+                    return consumer.inflowRatePerContainer
                 } else {
                     return 0
                 }
@@ -262,6 +262,16 @@ export class TransferContainerNode {
 }
 
 /**
+ * TransferContainerNode type guard
+ * @param node Node to check
+ */
+export function isTransferContainerNode(
+    node: ContainerNode | TransferContainerNode,
+): node is TransferContainerNode {
+    return node instanceof TransferContainerNode
+}
+
+/**
  * Factory output node
  */
 export class OutputNode extends ContainerNode {
@@ -295,7 +305,7 @@ export class OutputNode extends ContainerNode {
  * to a single container.
  */
 export class IndustryNode {
-    readonly inputs: ContainerNode[] = []
+    readonly inputs: Set<ContainerNode | TransferContainerNode> = new Set()
     readonly recipe: Recipe
 
     output: ContainerNode | undefined
@@ -313,7 +323,7 @@ export class IndustryNode {
      * Return the number of inputs to this industry
      */
     get incomingLinkCount(): number {
-        return this.inputs.length
+        return this.inputs.size
     }
 
     constructor(item: Craftable, readonly factory: FactoryGraph) {
@@ -324,8 +334,8 @@ export class IndustryNode {
      * Add input container for an item
      * @param container Input container
      */
-    takeFrom(container: ContainerNode) {
-        this.inputs.push(container)
+    takeFrom(container: ContainerNode | TransferContainerNode) {
+        this.inputs.add(container)
         container.consumers.add(this)
     }
 
@@ -387,7 +397,7 @@ export class TransferNode {
      */
     readonly inputs = new Set<ContainerNode>()
     readonly transferRate = Infinity // TODO: transfer rate is not infinite
-    output: ContainerNode | undefined
+    output: ContainerNode | TransferContainerNode | undefined
 
     /**
      * Return the number of inputs to this transfer unit
@@ -397,20 +407,30 @@ export class TransferNode {
     }
 
     /**
-     * Return the transfer rate of a given item
+     * Return the transfer rate into the output container
+     * This must be the minimum of
+     * (total consumption rate leaving output, maximum transfer unit rate)
      */
-    get actualTransferRate(): PerMinute {
-        let rate = 0
-        for (const container of this.inputs) {
-            for (const producer of container.producers) {
-                if (producer instanceof IndustryNode) {
-                    rate += producer.getOutput(this.item)
+    get outflowRate(): PerMinute {
+        let consumptionRate = 0
+        if (this.output !== undefined) {
+            for (const consumer of this.output.consumers) {
+                if (consumer instanceof IndustryNode) {
+                    consumptionRate += consumer.getInput(this.item)
                 } else {
-                    rate += producer.actualTransferRate
+                    consumptionRate += consumer.inflowRatePerContainer
                 }
             }
         }
-        return Math.min(rate, this.transferRate)
+        return Math.min(consumptionRate, this.transferRate)
+    }
+
+    /**
+     * Return the transfer inflow rate per container, assuming the transfer unit
+     * draws equally from all inputs
+     */
+    get inflowRatePerContainer(): PerMinute {
+        return this.outflowRate / this.inputs.size
     }
 
     /**
@@ -433,7 +453,7 @@ export class TransferNode {
      * Add or replace output container
      * @param container Output container
      */
-    outputTo(container: ContainerNode) {
+    outputTo(container: ContainerNode | TransferContainerNode) {
         if (this.output) {
             this.output.producers.delete(this)
         }
@@ -465,6 +485,7 @@ export class FactoryGraph {
     containers = new Set<ContainerNode>()
     industries = new Set<IndustryNode>()
     transferUnits = new Set<TransferNode>()
+    transferContainers = new Set<TransferContainerNode>()
 
     /**
      * Return the set of all products produced or stored in this factory
@@ -514,6 +535,16 @@ export class FactoryGraph {
     }
 
     /**
+     * Add a transfer container to the factory graph
+     * @see {@link TransferContainerNode}
+     */
+    createTransferContainer(items: Item[]): TransferContainerNode {
+        const container = new TransferContainerNode(items, this)
+        this.transferContainers.add(container)
+        return container
+    }
+
+    /**
      * Add an output node to the factory graph
      * @see {@link OutputNode}
      */
@@ -549,6 +580,110 @@ export class FactoryGraph {
      */
     getContainers(item: Item): Set<ContainerNode> {
         return new Set(Array.from(this.containers).filter((node) => node.item === item))
+    }
+
+    /**
+     * Return the set of all transfer containers holding one or more of the
+     * given items and no other items
+     * @param items Items for which to find the TransferContainers
+     */
+    getTransferContainers(items: Set<Item>): Set<TransferContainerNode> {
+        let transferContainers = Array.from(this.transferContainers)
+        // Filter only those containing one or more of items
+        transferContainers = transferContainers.filter((node) =>
+            node.items.some((item) => Array.from(items).includes(item)),
+        )
+        // Filter out those containing anything not in items
+        transferContainers = transferContainers.filter((node) =>
+            Array.from(items).some((item) => !node.items.includes(item)),
+        )
+        return new Set(transferContainers)
+    }
+
+    /**
+     * Add transfer units and containers to handle industries that require
+     * >7 incoming links
+     */
+    handleIndustryLinks() {
+        // Loop over all factory industries
+        for (const industry of this.industries) {
+            // Get ingredients and ingredient quantities
+            const recipe = findRecipe(industry.item)
+            // Sort ingredients by quantity
+            const recipeIngredients = recipe.ingredients
+            recipeIngredients.sort((a, b) => a.quantity - b.quantity)
+            const ingredients = recipeIngredients.map((ingredient) => ingredient.item)
+
+            // Get exceeding link count
+            const exceedingLinks = industry.incomingLinkCount - MAX_INDUSTRY_LINKS
+            if (exceedingLinks > 0) {
+                let transferContainer: TransferContainerNode | undefined
+
+                // Get all transfer containers containing a subset of the industry ingredients
+                const transferContainers = this.getTransferContainers(new Set(ingredients))
+                for (const checkTransferContainer of transferContainers) {
+                    // Check if this transfer container has at least exceedingLinks+1 items
+                    // +1 because we need to remove one link to make space for TransferContainerNode
+                    if (checkTransferContainer.items.length < exceedingLinks + 1) {
+                        continue
+                    }
+                    // Check if we can add an outgoing link from this TransferContainerNode
+                    if (!checkTransferContainer.canAddOutgoingLinks(1)) {
+                        continue
+                    }
+                    // Check if we can add one ingoing link to each transfer unit on this TransferContainerNode
+                    if (
+                        Array.from(checkTransferContainer.producers).some(
+                            (node) => !node.canAddIncomingLinks(1),
+                        )
+                    ) {
+                        continue
+                    }
+                    // good
+                    transferContainer = checkTransferContainer
+                    break
+                }
+
+                // Create a new TransferContainerNode if necessary
+                if (transferContainer === undefined) {
+                    // Use first exceedingLinks+1 items in ingredients (sorted by quantity)
+                    // +1 because we need to remove one link to make space for TransferContainerNode
+                    const items = ingredients.slice(0, exceedingLinks + 1)
+                    transferContainer = this.createTransferContainer(items)
+                    // Add transfer units
+                    for (const item of items) {
+                        const transferUnit = this.createTransferUnit(item)
+                        transferUnit.outputTo(transferContainer)
+                    }
+                }
+
+                // Remove existing container->industry links, and replace with
+                // container->transfer unit links
+                for (const transferUnit of transferContainer.producers) {
+                    let check = false
+                    for (const container of industry.inputs) {
+                        if (isTransferContainerNode(container)) {
+                            continue
+                        }
+                        if (container.item === transferUnit.item) {
+                            container.consumers.delete(industry)
+                            industry.inputs.delete(container)
+                            transferUnit.takeFrom(container)
+                            check = true
+                            break
+                        }
+                    }
+                    if (!check) {
+                        console.log(industry)
+                        console.log(transferUnit)
+                        throw new Error("Unable to transfer item")
+                    }
+                }
+
+                // Link transfer container to industry
+                industry.takeFrom(transferContainer)
+            }
+        }
     }
 
     /**

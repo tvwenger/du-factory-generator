@@ -177,6 +177,8 @@ export function buildFactory(
     }
     /* Add transfer units to relocate byproducts */
     handleByproducts(factory)
+    /* Add transfer units and containers to handle industry link limit */
+    factory.handleIndustryLinks()
     /* Sanity check for errors in factory */
     factory.sanityCheck()
     return factory
