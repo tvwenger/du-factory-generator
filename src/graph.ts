@@ -173,6 +173,95 @@ export class ContainerNode {
 }
 
 /**
+ * Container holding components to handle industry link limits (when industries require
+ * more than 7 ingredients, for example). A set of TransferNodes is filling
+ * this container, and a set of IndustryNodes is drawing from this container.
+ */
+export class TransferContainerNode {
+    readonly producers = new Set<TransferNode>()
+    readonly consumers = new Set<IndustryNode>()
+
+    /**
+     * Initialize a new TransferContainerNode
+     * @param items Items stored in this container
+     * @param factory The factory this container belongs to
+     */
+    constructor(readonly items: Item[], readonly factory: FactoryGraph) {}
+
+    /**
+     * Return the number of producers filling this container
+     */
+    get incomingLinkCount(): number {
+        return this.producers.size
+    }
+
+    /**
+     * Return the number of consumers drawing from this container
+     */
+    get outgoingLinkCount(): number {
+        return this.consumers.size
+    }
+
+    /**
+     * Return the required maintain value to store the required components for all consumers
+     */
+    get maintain(): Map<Item, Quantity> {
+        const maintain: Map<Item, Quantity> = new Map()
+        for (const item of this.items) {
+            for (const consumer of this.consumers) {
+                for (const ingredient of findRecipe(consumer.item).ingredients) {
+                    if (ingredient.item === item) {
+                        if (maintain.has(item)) {
+                            maintain.set(item, maintain.get(item)! + ingredient.quantity)
+                        } else {
+                            maintain.set(item, ingredient.quantity)
+                        }
+                    }
+                }
+            }
+        }
+        return maintain
+    }
+
+    /**
+     * Return the required container (size) to hold the maintain values
+     */
+    get container(): ContainerElement {
+        if (CONTAINERS_ASCENDING_BY_CAPACITY.length < 1) {
+            throw new Error("CONTAINERS_ASCENDING_BY_CAPACITY is empty")
+        }
+        let requiredCapacity = 0
+        const maintain = this.maintain
+        for (const [item, quantity] of maintain.entries()) {
+            requiredCapacity += quantity * item.volume
+        }
+        let requiredContainer: ContainerElement = CONTAINERS_ASCENDING_BY_CAPACITY[0]
+        for (const checkContainer of CONTAINERS_ASCENDING_BY_CAPACITY) {
+            if (requiredCapacity <= checkContainer.capacity) {
+                requiredContainer = checkContainer
+            }
+        }
+        return requiredContainer
+    }
+
+    /**
+     * Check if a container can support additional incoming links
+     * @param count Number of new incoming links
+     */
+    canAddIncomingLinks(count: number) {
+        return this.incomingLinkCount + count <= MAX_CONTAINER_LINKS
+    }
+
+    /**
+     * Check if a container can support additional outgoing links
+     * @param count Number of new outgoing links
+     */
+    canAddOutgoingLinks(count: number) {
+        return this.outgoingLinkCount + count <= MAX_CONTAINER_LINKS
+    }
+}
+
+/**
  * Factory output node
  */
 export class OutputNode extends ContainerNode {
