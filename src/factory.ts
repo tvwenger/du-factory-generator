@@ -6,96 +6,93 @@
 
 import { Craftable, isOre, Item } from "./items"
 import { findRecipe } from "./recipes"
-import { ContainerNode, FactoryGraph, PerMinute, TransferNode } from "./graph"
+import {
+    ContainerNode,
+    FactoryGraph,
+    PerMinute,
+    TransferNode,
+    OutputNode,
+    MAX_CONTAINER_LINKS,
+} from "./graph"
 
 /**
- * Search for a container which either
- * - has enough excess ingress, or
- * - has enough incoming links left for additional industries
- * to be able to satisfy additional egress.
- * If none is found, create a new container.
- * @param factory FactoryGraph to be modified
- * @param item Item whose demand needs to be satisfied
- * @param rate Rate of the extra demand
+ * Add to the factory graph all nodes required to increase production of an item by a given rate.
+ * Recursively call this function to produce all ingredients.
+ * @param item Item to produce
+ * @param rate Rate of increased production
+ * @param factory the FactoryGraph
  */
-function findInputContainer(factory: FactoryGraph, item: Item, rate: PerMinute): ContainerNode {
-    // If ingredient is an ore, create new ore container
+function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerNode[] {
+    /* Get containers already storing this item */
+    const containers = factory.getContainers(item)
+
+    /* Return a container(s) for ores, or create a new one(s) */
     if (isOre(item)) {
-        return factory.createContainer(item)
+        for (const container of containers) {
+            if (container.canAddOutgoingLinks(1)) {
+                return [container]
+            }
+        }
+        return [factory.createContainer(item)]
     }
 
-    // Get containers holding this product
-    const containers = Array.from(factory.getContainers(item))
-
-    // Search for containers which have excess ingress
+    /* Increase egress of existing container if possible */
     for (const container of containers) {
-        if (container.egress + rate <= container.ingress && container.canAddOutgoingLinks(1)) {
-            return container
+        if (container.egress + rate < container.ingress && container.canAddOutgoingLinks(1)) {
+            return [container]
         }
     }
 
+    /* Create producers to existing container if possible */
     const recipe = findRecipe(item)
-
-    // Search for containers which can accommodate extra producers
-    const inputContainer = containers.find((container) => {
-        const additionalMachines = Math.ceil(
-            (rate + (container.egress - container.ingress)) /
-                (recipe.product.quantity / recipe.time),
+    let outputs: ContainerNode[] = []
+    let additionalIndustries = 0
+    for (const container of containers) {
+        additionalIndustries = Math.ceil(
+            (rate + container.egress - container.ingress) / (recipe.product.quantity / recipe.time),
         )
-        return (
-            container.canAddIncomingLinks(additionalMachines) &&
+        if (
+            container.canAddIncomingLinks(additionalIndustries) &&
             container.canAddOutgoingLinks(1)
-        )
-    })
-
-    // Create a new container if necessary
-    if (inputContainer) {
-        return inputContainer
-    } else {
-        return factory.createContainer(item)
-    }
-}
-
-/**
- * Add to the a factory graph all nodes required to satisfy the insufficient ingress of the given
- * container.
- * Recursively call this function to produce all ingredients.
- * @param output Container which has insufficient ingress
- */
-function satisfyContainerEgress(output: ContainerNode): void {
-    if (isOre(output.item)) {
-        return
+        ) {
+            outputs.push(container)
+            break
+        }
     }
 
-    const recipe = findRecipe(output.item)
+    /* Create a new output container(s) if necessary */
+    if (outputs.length === 0) {
+        // The maximum number of required industries
+        additionalIndustries = Math.ceil(rate / (recipe.product.quantity / recipe.time))
 
-    // figure out the needed additional industries
-    const additionalIndustries = Math.ceil(
-        (output.egress - output.ingress) / (recipe.product.quantity / recipe.time),
-    )
-
-    // sanity check that this container as enough incoming links left
-    if (additionalIndustries + output.incomingLinkCount > 10) {
-        throw new Error(`Egress of ${output.egress} ${output.item} per minute cannot be satisfied.`)
+        // Add split containers if maxAdditionalIndustries exceeds limit
+        if (additionalIndustries > MAX_CONTAINER_LINKS) {
+            const numContainers = Math.ceil(additionalIndustries / MAX_CONTAINER_LINKS)
+            const evenLinks = Math.ceil(additionalIndustries / numContainers)
+            let linksRemaining = additionalIndustries
+            for (let i = 0; i < numContainers; i++) {
+                const numLinks = Math.min(evenLinks, linksRemaining)
+                const split = numLinks / additionalIndustries
+                outputs.push(factory.createSplitContainer(item, split))
+                linksRemaining += -numLinks
+            }
+        } else {
+            outputs.push(factory.createContainer(item))
+        }
     }
 
     for (let i = 0; i < additionalIndustries; i++) {
-        const industry = output.factory.createIndustry(output.item)
-        industry.outputTo(output)
-
-        // Build dependencies recursively
+        const industry = factory.createIndustry(item)
+        industry.outputTo(outputs[i % outputs.length])
+        /* Build dependencies recursively */
         for (const ingredient of recipe.ingredients) {
-            const input = findInputContainer(
-                output.factory,
-                ingredient.item,
-                ingredient.quantity / recipe.time,
-            )
-            industry.takeFrom(input)
-
-            // Try to satisfy the updated egress of the container
-            satisfyContainerEgress(input)
+            const inputs = produce(ingredient.item, ingredient.quantity / recipe.time, factory)
+            for (const input of inputs) {
+                industry.takeFrom(input)
+            }
         }
     }
+    return outputs
 }
 
 /**
@@ -162,14 +159,25 @@ export function buildFactory(
     for (const [item, { count, maintain }] of requirements) {
         const recipe = findRecipe(item)
         const rate = recipe.product.quantity / recipe.time
+        // Add an output node
+        const output = factory.createOutput(item, rate * count, maintain)
 
         for (let i = 0; i < count; i++) {
-            // Create factory output node
-            const container = factory.createOutput(item, rate, maintain)
-            satisfyContainerEgress(container)
+            // Add industry, output to OutputNode
+            const industry = factory.createIndustry(item)
+            industry.outputTo(output)
+            // Build ingredients
+            for (const ingredient of recipe.ingredients) {
+                const inputs = produce(ingredient.item, ingredient.quantity / recipe.time, factory)
+                for (const input of inputs) {
+                    industry.takeFrom(input)
+                }
+            }
         }
     }
     /* Add transfer units to relocate byproducts */
     handleByproducts(factory)
+    /* Sanity check for errors in factory */
+    factory.sanityCheck()
     return factory
 }
