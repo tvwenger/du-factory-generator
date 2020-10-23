@@ -4,15 +4,15 @@
  * lgfrbcsgo & Nikolaus - October 2020
  */
 
-import { Craftable, isOre, Item, isCatalyst } from "./items"
+import { Craftable, isOre, Item, CATALYSTS, isCatalyst } from "./items"
 import { findRecipe } from "./recipes"
 import {
     ContainerNode,
     FactoryGraph,
     PerMinute,
     TransferNode,
-    OutputNode,
     MAX_CONTAINER_LINKS,
+    isIndustryNode,
 } from "./graph"
 
 /**
@@ -22,7 +22,7 @@ import {
  * @param rate Rate of increased production
  * @param factory the FactoryGraph
  */
-export function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerNode[] {
+function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerNode[] {
     /* Get containers already storing this item */
     const containers = factory.getContainers(item)
 
@@ -158,6 +158,112 @@ function handleByproducts(factory: FactoryGraph) {
 }
 
 /**
+ * Handle the production and transfer of catalysts
+ * @param factory the FactoryGraph
+ * */
+function handleCatalysts(factory: FactoryGraph): void {
+    // Loop over catalyst types
+    for (const catalyst of CATALYSTS) {
+        // Get all catalyst containers that don't already have an input link
+        const catalystContainers = Array.from(factory.containers)
+            .filter((node) => node.item === catalyst)
+            .filter((node) => node.incomingLinkCount == 0)
+
+        // Create a map of containers holding a catalyst byproduct, and
+        // all containers from which that catalyst byproduct originated
+        const catalystFlow: Map<ContainerNode, ContainerNode[]> = new Map()
+        for (const container of catalystContainers) {
+            const consumers = Array.from(container.consumers)
+            if (consumers.length !== 1) {
+                console.log(container)
+                throw new Error("Catalyst container does not have one consumer?")
+            }
+            if (consumers[0].output === undefined) {
+                console.log(consumers[0])
+                throw new Error("Catalyst consumer has no output?")
+            }
+            if (catalystFlow.has(consumers[0].output)) {
+                catalystFlow.set(
+                    consumers[0].output,
+                    catalystFlow.get(consumers[0].output)!.concat([container]),
+                )
+            } else {
+                catalystFlow.set(consumers[0].output, [container])
+            }
+        }
+
+        // Get transfer nodes already moving this catalyst
+        const transferUnits = factory.getTransferUnits(catalyst)
+
+        // Loop over containers holding byproduct and try to add an existing
+        // transfer unit. Otherwise, create a new transfer unit
+        for (const [endingContainer, startingContainers] of catalystFlow) {
+            let transferUnit: TransferNode | undefined
+
+            // Check for existing transfer unit
+            for (const checkTransferUnit of transferUnits) {
+                if (checkTransferUnit.output === undefined) {
+                    console.log(checkTransferUnit)
+                    throw new Error("Transfer unit has no output?")
+                }
+                if (
+                    checkTransferUnit.canAddIncomingLinks(1) &&
+                    checkTransferUnit.output.canAddOutgoingLinks(startingContainers.length)
+                ) {
+                    transferUnit = checkTransferUnit
+                    break
+                }
+            }
+
+            // Create new transfer unit if necessary
+            if (transferUnit === undefined) {
+                transferUnit = factory.createTransferUnit(catalyst)
+                const container = factory.createContainer(catalyst)
+                transferUnit.outputTo(container)
+            }
+
+            // Remove starting containers, link transfer unit output back to industries
+            for (const container of startingContainers) {
+                const consumers = Array.from(container.consumers)
+                if (consumers.length !== 1) {
+                    console.log(container)
+                    throw new Error("Catalyst container does not have one consumer?")
+                }
+                consumers[0].inputs.delete(container)
+                factory.containers.delete(container)
+                if (transferUnit.output === undefined) {
+                    console.log(transferUnit)
+                    throw new Error("Transfer unit has no output?")
+                }
+                consumers[0].takeFrom(transferUnit.output)
+            }
+
+            // Link industry output to transfer unit
+            transferUnit.takeFrom(endingContainer)
+        }
+
+        // Get all catalyst containers that don't already have a producing industry
+        const containers = Array.from(factory.getContainers(catalyst)).filter(
+            (node) => !Array.from(node.producers).some(isIndustryNode),
+        )
+
+        const recipe = findRecipe(catalyst)
+        for (const container of containers) {
+            // Add one industry to produce catalyst for this container
+            const industry = factory.createIndustry(catalyst)
+            industry.outputTo(container)
+            // Build ingredients
+            for (const ingredient of recipe.ingredients) {
+                const inputs = produce(ingredient.item, ingredient.quantity / recipe.time, factory)
+                for (const input of inputs) {
+                    industry.takeFrom(input)
+                }
+            }
+        }
+    }
+}
+
+/**
  * Generate a new factory graph that supplies a given number of assemblers
  * for a given set of products
  * @param requirements Products and number of assemblers
@@ -188,7 +294,7 @@ export function buildFactory(
     /* Add transfer units to relocate byproducts */
     handleByproducts(factory)
     // Handle catalyst production
-    factory.handleCatalysts()
+    handleCatalysts(factory)
     /* Sanity check for errors in factory */
     factory.sanityCheck()
     return factory
