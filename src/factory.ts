@@ -4,7 +4,7 @@
  * lgfrbcsgo & Nikolaus - October 2020
  */
 
-import { Craftable, isOre, Item } from "./items"
+import { Craftable, isOre, Item, isCatalyst } from "./items"
 import { findRecipe } from "./recipes"
 import {
     ContainerNode,
@@ -22,7 +22,7 @@ import {
  * @param rate Rate of increased production
  * @param factory the FactoryGraph
  */
-function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerNode[] {
+export function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerNode[] {
     /* Get containers already storing this item */
     const containers = factory.getContainers(item)
 
@@ -33,6 +33,11 @@ function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerN
                 return [container]
             }
         }
+        return [factory.createContainer(item)]
+    }
+
+    /* Return a new container for each catalyst */
+    if (isCatalyst(item)) {
         return [factory.createContainer(item)]
     }
 
@@ -102,12 +107,16 @@ function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerN
 function handleByproducts(factory: FactoryGraph) {
     /* Loop over all factory containers */
     for (const container of factory.containers) {
-        /* Ore containers have no byproducts */
+        /* Ore containers have no byproducts, */
         if (isOre(container.item)) {
             continue
         }
         const recipe = findRecipe(container.item)
         for (const byproduct of recipe.byproducts) {
+            // Skip catalysts
+            if (isCatalyst(byproduct.item)) {
+                continue
+            }
             /* Check if byproduct is already being consumed */
             let isConsumed = false
             for (const consumer of container.consumers) {
@@ -115,34 +124,35 @@ function handleByproducts(factory: FactoryGraph) {
                     isConsumed = true
                 }
             }
-            if (!isConsumed) {
-                /* Check if there is already a transfer unit for this item */
-                let transfer: TransferNode | undefined
-                const itemTransfers = factory.getTransferUnits(byproduct.item)
-                for (const itemTransfer of itemTransfers) {
-                    if (itemTransfer.canAddIncomingLinks(1)) {
-                        transfer = itemTransfer
-                    }
-                }
-                /* Create a new transfer unit if necessary */
-                if (transfer === undefined) {
-                    transfer = factory.createTransferUnit(byproduct.item)
-                    /* Find an output container that has space for an incoming link */
-                    let output: ContainerNode | undefined
-                    const itemContainers = factory.getContainers(byproduct.item)
-                    for (const itemContainer of itemContainers) {
-                        if (itemContainer.canAddIncomingLinks(1)) {
-                            output = itemContainer
-                        }
-                    }
-                    /* Create a new container if necessary */
-                    if (output === undefined) {
-                        output = factory.createContainer(byproduct.item)
-                    }
-                    transfer.outputTo(output)
-                }
-                transfer.takeFrom(container)
+            if (isConsumed) {
+                continue
             }
+            /* Check if there is already a transfer unit for this item */
+            let transfer: TransferNode | undefined
+            const itemTransfers = factory.getTransferUnits(byproduct.item)
+            for (const itemTransfer of itemTransfers) {
+                if (itemTransfer.canAddIncomingLinks(1)) {
+                    transfer = itemTransfer
+                }
+            }
+            /* Create a new transfer unit if necessary */
+            if (transfer === undefined) {
+                transfer = factory.createTransferUnit(byproduct.item)
+                /* Find an output container that has space for an incoming link */
+                let output: ContainerNode | undefined
+                const itemContainers = factory.getContainers(byproduct.item)
+                for (const itemContainer of itemContainers) {
+                    if (itemContainer.canAddIncomingLinks(1)) {
+                        output = itemContainer
+                    }
+                }
+                /* Create a new container if necessary */
+                if (output === undefined) {
+                    output = factory.createContainer(byproduct.item)
+                }
+                transfer.outputTo(output)
+            }
+            transfer.takeFrom(container)
         }
     }
 }
@@ -177,6 +187,8 @@ export function buildFactory(
     }
     /* Add transfer units to relocate byproducts */
     handleByproducts(factory)
+    // Handle catalyst production
+    factory.handleCatalysts()
     /* Sanity check for errors in factory */
     factory.sanityCheck()
     return factory
