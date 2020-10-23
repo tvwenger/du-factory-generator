@@ -39,9 +39,9 @@ function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerN
         return [factory.createContainer(item)]
     }
 
-    /* Return a new container for each catalyst */
+    /* Return a new temporary container for each catalyst */
     if (isCatalyst(item)) {
-        return [factory.createContainer(item)]
+        return [factory.createTemporaryContainer(item)]
     }
 
     /* Increase egress of existing container if possible */
@@ -167,10 +167,10 @@ function handleByproducts(factory: FactoryGraph) {
 function handleCatalysts(factory: FactoryGraph): void {
     // Loop over catalyst types
     for (const catalyst of CATALYSTS) {
-        // Get all catalyst containers that don't already have an input link
-        const catalystContainers = Array.from(factory.containers)
-            .filter((node) => node.item === catalyst)
-            .filter((node) => node.incomingLinkCount == 0)
+        // Get all temporary catalyst containers
+        const catalystContainers = Array.from(factory.temporaryContainers).filter(
+            (node) => node.item === catalyst,
+        )
 
         // Create a map of containers holding a catalyst byproduct, and
         // all containers from which that catalyst byproduct originated
@@ -229,7 +229,7 @@ function handleCatalysts(factory: FactoryGraph): void {
                 transferUnit.outputTo(container)
             }
 
-            // Remove starting containers, link transfer unit output back to industries
+            // Remove temporary containers, link transfer unit output back to industries
             for (const container of startingContainers) {
                 const consumers = Array.from(container.consumers)
                 if (consumers.length !== 1) {
@@ -237,7 +237,7 @@ function handleCatalysts(factory: FactoryGraph): void {
                     throw new Error("Catalyst container does not have one consumer?")
                 }
                 consumers[0].inputs.delete(container)
-                factory.containers.delete(container)
+                factory.temporaryContainers.delete(container)
                 if (transferUnit.output === undefined) {
                     console.log(transferUnit)
                     throw new Error("Transfer unit has no output?")
@@ -363,7 +363,8 @@ function handleIndustryLinks(factory: FactoryGraph): void {
 
 /**
  * Sanity check the factory. Check for 1) exceeding container limits,
- * 2) egress > ingress, 3) or split containers having more than one consumer
+ * 2) egress > ingress, 3) or split containers having more than one consumer,
+ * 4) no temporary containers remain
  * @param factory the FactoryGraph
  */
 function sanityCheck(factory: FactoryGraph): void {
@@ -394,6 +395,11 @@ function sanityCheck(factory: FactoryGraph): void {
             console.log(industry)
             throw new Error("Industry exceeds incoming link limit")
         }
+    }
+    // Check temporary containers
+    if (factory.temporaryContainers.size > 0) {
+        console.log(factory)
+        throw new Error("Factory still contains temporary containers")
     }
 }
 
