@@ -31,6 +31,7 @@ export class ContainerNode {
 
     /**
      * Initialize a new ContainerNode
+     * @param name Node name
      * @param item Item stored in this container
      * @param factory The factory this container belongs to
      * @param split If not 1.0, the fraction of some consumer's input supplied
@@ -39,7 +40,12 @@ export class ContainerNode {
      * the container in two (or more). To prevent an upstream backup,
      * split containers can only link to one industry.
      */
-    constructor(readonly item: Item, readonly factory: FactoryGraph, readonly split: number) {}
+    constructor(
+        readonly name: string,
+        readonly item: Item,
+        readonly factory: FactoryGraph,
+        readonly split: number,
+    ) {}
 
     /**
      * Return the number of producers filling this container
@@ -186,7 +192,7 @@ export class TransferContainerNode {
      * @param items Items stored in this container
      * @param factory The factory this container belongs to
      */
-    constructor(readonly items: Item[], readonly factory: FactoryGraph) {}
+    constructor(readonly name: string, readonly items: Item[], readonly factory: FactoryGraph) {}
 
     /**
      * Return the number of producers filling this container
@@ -277,18 +283,20 @@ export function isTransferContainerNode(
 export class OutputNode extends ContainerNode {
     /**
      * Initialize a new OutputNode
+     * @param name Node name
      * @param item Item stored in this container
      * @param outputRate Required production rate
      * @param maintainedOutput The number of items to maintain
      * @param factory The factory this output belongs to
      */
     constructor(
+        name: string,
         item: Craftable,
         readonly outputRate: PerMinute,
         readonly maintainedOutput: Quantity,
         factory: FactoryGraph,
     ) {
-        super(item, factory, 1.0)
+        super(name, item, factory, 1.0)
     }
 
     get egress(): PerMinute {
@@ -326,7 +334,7 @@ export class IndustryNode {
         return this.inputs.size
     }
 
-    constructor(item: Craftable, readonly factory: FactoryGraph) {
+    constructor(readonly name: string, item: Craftable, readonly factory: FactoryGraph) {
         this.recipe = findRecipe(item)
     }
 
@@ -446,7 +454,7 @@ export class TransferNode {
      * @param item Item produced by this industry
      * @param factory The factory which this transfer unit belongs to
      */
-    constructor(readonly item: Item, readonly factory: FactoryGraph) {}
+    constructor(readonly name: string, readonly item: Item, readonly factory: FactoryGraph) {}
 
     /**
      * Add an input container for an item
@@ -494,6 +502,7 @@ export class FactoryGraph {
     industries = new Set<IndustryNode>()
     transferUnits = new Set<TransferNode>()
     transferContainers = new Set<TransferContainerNode>()
+    temporaryContainers = new Set<ContainerNode>()
 
     /**
      * Return the set of all products produced or stored in this factory
@@ -507,7 +516,9 @@ export class FactoryGraph {
      * @see {@link IndustryNode}
      */
     createIndustry(item: Craftable): IndustryNode {
-        const industry = new IndustryNode(item, this)
+        const industries = this.getIndustries(item)
+        const name = item.name + " P" + industries.size
+        const industry = new IndustryNode(name, item, this)
         this.industries.add(industry)
         return industry
     }
@@ -517,9 +528,22 @@ export class FactoryGraph {
      * @see {@link TransferNode}
      */
     createTransferUnit(item: Item) {
-        const transfer = new TransferNode(item, this)
+        const transfers = this.getTransferUnits(item)
+        const name = item.name + " T" + transfers.size
+        const transfer = new TransferNode(name, item, this)
         this.transferUnits.add(transfer)
         return transfer
+    }
+
+    /**
+     * Add a temporary container to the factory graph
+     * @see {@link ContainerNode}
+     */
+    createTemporaryContainer(item: Item): ContainerNode {
+        const name = ""
+        const container = new ContainerNode(name, item, this, 1.0)
+        this.temporaryContainers.add(container)
+        return container
     }
 
     /**
@@ -527,7 +551,9 @@ export class FactoryGraph {
      * @see {@link ContainerNode}
      */
     createContainer(item: Item): ContainerNode {
-        const container = new ContainerNode(item, this, 1.0)
+        const containers = this.getContainers(item)
+        const name = item.name + " C" + containers.size
+        const container = new ContainerNode(name, item, this, 1.0)
         this.containers.add(container)
         return container
     }
@@ -537,7 +563,9 @@ export class FactoryGraph {
      * @see {@link ContainerNode}
      */
     createSplitContainer(item: Item, split: number): ContainerNode {
-        const container = new ContainerNode(item, this, split)
+        const containers = this.getContainers(item)
+        const name = item.name + " C" + containers.size
+        const container = new ContainerNode(name, item, this, split)
         this.containers.add(container)
         return container
     }
@@ -547,7 +575,8 @@ export class FactoryGraph {
      * @see {@link TransferContainerNode}
      */
     createTransferContainer(items: Item[]): TransferContainerNode {
-        const container = new TransferContainerNode(items, this)
+        const name = "Transfer Container " + this.transferContainers.size
+        const container = new TransferContainerNode(name, items, this)
         this.transferContainers.add(container)
         return container
     }
@@ -557,9 +586,19 @@ export class FactoryGraph {
      * @see {@link OutputNode}
      */
     createOutput(item: Craftable, outputRate: PerMinute, maintainedOutput: Quantity): OutputNode {
-        const output = new OutputNode(item, outputRate, maintainedOutput, this)
+        const containers = this.getContainers(item)
+        const name = item.name + " C" + containers.size
+        const output = new OutputNode(name, item, outputRate, maintainedOutput, this)
         this.containers.add(output)
         return output
+    }
+
+    /**
+     * Return the set of all industries producing a given item
+     * @param item Item for which to find the industries
+     */
+    getIndustries(item: Item): Set<IndustryNode> {
+        return new Set(Array.from(this.industries).filter((node) => node.item === item))
     }
 
     /**
