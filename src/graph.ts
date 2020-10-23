@@ -65,7 +65,7 @@ export class ContainerNode {
         }
         return Array.from(this.producers)
             .map((producer) => {
-                if (producer instanceof IndustryNode) {
+                if (isIndustryNode(producer)) {
                     return producer.getOutput(this.item)
                 } else if (producer.item === this.item) {
                     return producer.outflowRate
@@ -82,7 +82,7 @@ export class ContainerNode {
     get egress(): PerMinute {
         return Array.from(this.consumers)
             .map((consumer) => {
-                if (consumer instanceof IndustryNode) {
+                if (isIndustryNode(consumer)) {
                     return this.split * consumer.getInput(this.item)
                 } else if (consumer.item === this.item) {
                     return consumer.inflowRatePerContainer
@@ -388,6 +388,14 @@ export class IndustryNode {
     canAddIncomingLinks(count: number) {
         return this.incomingLinkCount + count <= MAX_INDUSTRY_LINKS
     }
+}
+
+/**
+ * IndustryNode type guard
+ * @param node Node to check
+ */
+export function isIndustryNode(node: IndustryNode | TransferNode): node is IndustryNode {
+    return node instanceof IndustryNode
 }
 
 export class TransferNode {

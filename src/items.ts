@@ -120,6 +120,14 @@ export function isContainerElement(item: Item): item is ContainerElement {
 }
 
 /**
+ * Catalyst type guard
+ * @param item Item to check
+ */
+export function isCatalyst(item: Item): item is Catalyst {
+    return item.type === ItemType.CATALYST
+}
+
+/**
  * Returns a new Ore type
  * @param name Ore name
  * @param tier Ore tier
@@ -1600,3 +1608,8 @@ export const ITEMS = {
  */
 export const CONTAINERS_ASCENDING_BY_CAPACITY = Object.values(ITEMS).filter(isContainerElement)
 CONTAINERS_ASCENDING_BY_CAPACITY.sort((a, b) => b.capacity - a.capacity)
+
+/**
+ * Get catalysts
+ */
+export const CATALYSTS = Object.values(ITEMS).filter(isCatalyst)
