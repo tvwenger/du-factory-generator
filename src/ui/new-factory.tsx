@@ -6,7 +6,7 @@ import { useMap } from "./app"
 import { Button, Row, Col, InputNumber } from "antd"
 import { buildFactory } from "../factory"
 import { FactoryGraph } from "../graph"
-import { FactoryVisualGraph } from "./render-factory"
+import { FactoryVisiualization } from "./render-factory"
 
 enum NewFactoryStep {
     SELECT = "select",
@@ -16,7 +16,6 @@ enum NewFactoryStep {
 
 export function NewFactory() {
     const [factory, setFactory] = React.useState<FactoryGraph>()
-    const [factoryVisualGraph, setFactoryVisualGraph] = React.useState<FactoryVisualGraph>()
     const [factoryStep, setFactoryStep] = React.useState<NewFactoryStep>(NewFactoryStep.SELECT)
     const items = React.useMemo(() => values(ITEMS).filter(isCraftable), [ITEMS])
     const [selection, setSelection] = React.useState<Craftable[]>([])
@@ -68,8 +67,6 @@ export function NewFactory() {
                         type="primary"
                         onClick={() => {
                             setFactory(buildFactory(getRequirements()))
-                            setFactoryVisualGraph(new FactoryVisualGraph(factory))
-                            factoryVisualGraph.render()
                             setFactoryStep(NewFactoryStep.RENDER)
                         }}
                     >
@@ -83,6 +80,7 @@ export function NewFactory() {
             content = (
                 <React.Fragment>
                     <Button onClick={() => setFactoryStep(NewFactoryStep.COUNT)}>Back</Button>
+                    <FactoryVisiualization factory={factory!} />
                 </React.Fragment>
             )
             break
