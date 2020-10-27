@@ -1,6 +1,6 @@
 /**
  * ui/app.ts
- * React compont for main application
+ * React component for main application
  * lgfrbcsgo & Nikolaus - October 2020
  */
 
@@ -10,52 +10,45 @@ import { Info } from "./info"
 import { NewFactory } from "./new-factory"
 import { OldFactory } from "./old-factory"
 
-enum AppState {
+export enum AppState {
     HOME = "home",
     INFO = "info",
     NEWFACTORY = "newFactory",
     OLDFACTORY = "oldFactory",
 }
 
+/**
+ * Main application component
+ */
 export function App() {
     const [appState, setAppState] = React.useState<AppState>(AppState.HOME)
 
     let content = null
     switch (appState) {
-        case AppState.INFO:
+        default:
             content = (
                 <React.Fragment>
-                    <Button onClick={() => setAppState(AppState.HOME)}>Back</Button>
-                    <Info />
+                    <Button type="primary" onClick={() => setAppState(AppState.NEWFACTORY)}>
+                        Start a New Factory
+                    </Button>
+                    <Button onClick={() => setAppState(AppState.OLDFACTORY)}>
+                        Start from Existing Factory
+                    </Button>
+                    <Button onClick={() => setAppState(AppState.INFO)}>Show Information</Button>
                 </React.Fragment>
             )
             break
+        case AppState.INFO:
+            content = <Info setAppState={setAppState} />
+            break
         case AppState.NEWFACTORY:
-            content = (
-                <React.Fragment>
-                    <Button onClick={() => setAppState(AppState.HOME)}>Back</Button>
-                    <NewFactory />
-                </React.Fragment>
-            )
+            content = <NewFactory setAppState={setAppState} />
             break
         case AppState.OLDFACTORY:
             content = (
                 <React.Fragment>
                     <Button onClick={() => setAppState(AppState.HOME)}>Back</Button>
                     <OldFactory />
-                </React.Fragment>
-            )
-            break
-        default:
-            content = (
-                <React.Fragment>
-                    <Button onClick={() => setAppState(AppState.INFO)}>Show Information</Button>
-                    <Button onClick={() => setAppState(AppState.NEWFACTORY)}>
-                        Start a New Factory
-                    </Button>
-                    <Button onClick={() => setAppState(AppState.OLDFACTORY)}>
-                        Start from Existing Factory
-                    </Button>
                 </React.Fragment>
             )
             break

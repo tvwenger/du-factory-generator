@@ -21,6 +21,8 @@ export const MAX_INDUSTRY_LINKS = 7
 
 export type PerMinute = number
 
+export type FactoryNode = ContainerNode | TransferContainerNode | IndustryNode | TransferNode
+
 /**
  * Container holding components. A set of producers is filling
  * this container, and a set of consumers is drawing from this container.
