@@ -4,7 +4,7 @@
  * lgfrbcsgo & Nikolaus - October 2020
  */
 
-import { Item, ITEMS, Minutes, Ore, Quantity } from "./items"
+import { Item, ITEMS, Minutes, OtherElement, Ore, Quantity } from "./items"
 
 /**
  * Batch holds a product and the production batch size
@@ -20,7 +20,7 @@ export interface Batch {
 export interface Recipe {
     readonly product: Batch
     readonly time: Minutes
-    readonly industry: Item
+    readonly industry: OtherElement
     readonly byproducts: Batch[]
     readonly ingredients: Batch[]
 }

@@ -9,6 +9,7 @@ import {
     Craftable,
     isOre,
     Item,
+    Liter,
     Quantity,
 } from "./items"
 import { findRecipe, Recipe } from "./recipes"
@@ -33,7 +34,7 @@ export class ContainerNode {
 
     /**
      * Initialize a new ContainerNode
-     * @param name Node name
+     * @param id Identfier for this container
      * @param item Item stored in this container
      * @param factory The factory this container belongs to
      * @param split If not 1.0, the fraction of some consumer's input supplied
@@ -43,11 +44,18 @@ export class ContainerNode {
      * split containers can only link to one industry.
      */
     constructor(
-        readonly name: string,
+        readonly id: string,
         readonly item: Item,
         readonly factory: FactoryGraph,
         readonly split: number,
     ) {}
+
+    /**
+     * Return a unique identifier for the node
+     */
+    get name(): string {
+        return this.item.name + " " + this.id
+    }
 
     /**
      * Return the number of producers filling this container
@@ -121,20 +129,35 @@ export class ContainerNode {
     }
 
     /**
-     * Return the required container (size) to hold the maintain value
+     * Return the required containers (sizes) to hold the maintain value
      */
-    get container(): ContainerElement {
+    get containers(): ContainerElement[] {
         if (CONTAINERS_ASCENDING_BY_CAPACITY.length < 1) {
             throw new Error("CONTAINERS_ASCENDING_BY_CAPACITY is empty")
         }
-        const requiredCapacity = this.maintain * this.item.volume
-        let requiredContainer: ContainerElement = CONTAINERS_ASCENDING_BY_CAPACITY[0]
-        for (const checkContainer of CONTAINERS_ASCENDING_BY_CAPACITY) {
-            if (requiredCapacity <= checkContainer.capacity) {
-                requiredContainer = checkContainer
+        const requiredContainers: ContainerElement[] = []
+        let remainingCapacity = this.maintain * this.item.volume
+        while (remainingCapacity > 0) {
+            let foundContainer = false
+            for (const container of CONTAINERS_ASCENDING_BY_CAPACITY) {
+                if (remainingCapacity <= container.capacity) {
+                    requiredContainers.push(container)
+                    remainingCapacity += -container.capacity
+                    foundContainer = true
+                    break
+                }
+            }
+            if (!foundContainer) {
+                // Add one large container
+                requiredContainers.push(
+                    CONTAINERS_ASCENDING_BY_CAPACITY[CONTAINERS_ASCENDING_BY_CAPACITY.length - 1],
+                )
+                remainingCapacity += -CONTAINERS_ASCENDING_BY_CAPACITY[
+                    CONTAINERS_ASCENDING_BY_CAPACITY.length - 1
+                ].capacity
             }
         }
-        return requiredContainer
+        return requiredContainers
     }
 
     /**
@@ -181,6 +204,16 @@ export class ContainerNode {
 }
 
 /**
+ * ContainerNode type guard
+ * @param node Node to check
+ */
+export function isContainerNode(
+    node: ContainerNode | TransferContainerNode,
+): node is ContainerNode {
+    return node instanceof ContainerNode
+}
+
+/**
  * Container holding components to handle industry link limits (when industries require
  * more than 7 ingredients, for example). A set of TransferNodes is filling
  * this container, and a set of IndustryNodes is drawing from this container.
@@ -191,10 +224,18 @@ export class TransferContainerNode {
 
     /**
      * Initialize a new TransferContainerNode
+     * @param id Identifier for this TransferContainer
      * @param items Items stored in this container
      * @param factory The factory this container belongs to
      */
-    constructor(readonly name: string, readonly items: Item[], readonly factory: FactoryGraph) {}
+    constructor(readonly id: string, readonly items: Item[], readonly factory: FactoryGraph) {}
+
+    /**
+     * Return a unique identifier for the node
+     */
+    get name(): string {
+        return this.id
+    }
 
     /**
      * Return the number of producers filling this container
@@ -232,24 +273,39 @@ export class TransferContainerNode {
     }
 
     /**
-     * Return the required container (size) to hold the maintain values
+     * Return the required containers (size)s to hold the maintain values
      */
-    get container(): ContainerElement {
+    get containers(): ContainerElement[] {
         if (CONTAINERS_ASCENDING_BY_CAPACITY.length < 1) {
             throw new Error("CONTAINERS_ASCENDING_BY_CAPACITY is empty")
         }
-        let requiredCapacity = 0
+        let remainingCapacity = 0
         const maintain = this.maintain
         for (const [item, quantity] of maintain.entries()) {
-            requiredCapacity += quantity * item.volume
+            remainingCapacity += quantity * item.volume
         }
-        let requiredContainer: ContainerElement = CONTAINERS_ASCENDING_BY_CAPACITY[0]
-        for (const checkContainer of CONTAINERS_ASCENDING_BY_CAPACITY) {
-            if (requiredCapacity <= checkContainer.capacity) {
-                requiredContainer = checkContainer
+        const requiredContainers: ContainerElement[] = []
+        while (remainingCapacity > 0) {
+            let foundContainer = false
+            for (const container of CONTAINERS_ASCENDING_BY_CAPACITY) {
+                if (remainingCapacity <= container.capacity) {
+                    requiredContainers.push(container)
+                    remainingCapacity += -container.capacity
+                    foundContainer = true
+                    break
+                }
+            }
+            if (!foundContainer) {
+                // Add one large container
+                requiredContainers.push(
+                    CONTAINERS_ASCENDING_BY_CAPACITY[CONTAINERS_ASCENDING_BY_CAPACITY.length - 1],
+                )
+                remainingCapacity += -CONTAINERS_ASCENDING_BY_CAPACITY[
+                    CONTAINERS_ASCENDING_BY_CAPACITY.length - 1
+                ].capacity
             }
         }
-        return requiredContainer
+        return requiredContainers
     }
 
     /**
@@ -285,20 +341,20 @@ export function isTransferContainerNode(
 export class OutputNode extends ContainerNode {
     /**
      * Initialize a new OutputNode
-     * @param name Node name
+     * @param id Node identifier
      * @param item Item stored in this container
      * @param outputRate Required production rate
      * @param maintainedOutput The number of items to maintain
      * @param factory The factory this output belongs to
      */
     constructor(
-        name: string,
+        id: string,
         item: Craftable,
         readonly outputRate: PerMinute,
         readonly maintainedOutput: Quantity,
         factory: FactoryGraph,
     ) {
-        super(name, item, factory, 1.0)
+        super(id, item, factory, 1.0)
     }
 
     get egress(): PerMinute {
@@ -317,9 +373,21 @@ export class OutputNode extends ContainerNode {
 export class IndustryNode {
     readonly inputs: Set<ContainerNode | TransferContainerNode> = new Set()
     readonly recipe: Recipe
-
     output: ContainerNode | undefined
 
+    /**
+     * Create a new industry node
+     * @param id Industry identifier
+     * @param item Item produced
+     * @param factory the FactoryGraph
+     */
+    constructor(readonly id: string, item: Craftable, readonly factory: FactoryGraph) {
+        this.recipe = findRecipe(item)
+    }
+
+    /**
+     * Get the type of industry
+     */
     get industry() {
         return this.recipe.industry
     }
@@ -336,8 +404,11 @@ export class IndustryNode {
         return this.inputs.size
     }
 
-    constructor(readonly name: string, item: Craftable, readonly factory: FactoryGraph) {
-        this.recipe = findRecipe(item)
+    /**
+     * Return a unique identifier for the node
+     */
+    get name(): string {
+        return this.item.name + " " + this.id
     }
 
     /**
@@ -418,6 +489,21 @@ export class TransferNode {
     output: ContainerNode | TransferContainerNode | undefined
 
     /**
+     * Initialize a new TransferNode
+     * @param id Node identifier
+     * @param item Item produced by this industry
+     * @param factory The factory which this transfer unit belongs to
+     */
+    constructor(readonly id: string, readonly item: Item, readonly factory: FactoryGraph) {}
+
+    /**
+     * Return a unique identifier for the node
+     */
+    get name(): string {
+        return this.item.name + " " + this.id
+    }
+
+    /**
      * Return the number of inputs to this transfer unit
      */
     get incomingLinkCount(): number {
@@ -450,13 +536,6 @@ export class TransferNode {
     get inflowRatePerContainer(): PerMinute {
         return this.outflowRate / this.inputs.size
     }
-
-    /**
-     * Initialize a new TransferNode
-     * @param item Item produced by this industry
-     * @param factory The factory which this transfer unit belongs to
-     */
-    constructor(readonly name: string, readonly item: Item, readonly factory: FactoryGraph) {}
 
     /**
      * Add an input container for an item
@@ -519,8 +598,7 @@ export class FactoryGraph {
      */
     createIndustry(item: Craftable): IndustryNode {
         const industries = this.getIndustries(item)
-        const name = item.name + " P" + industries.size
-        const industry = new IndustryNode(name, item, this)
+        const industry = new IndustryNode("P" + industries.size, item, this)
         this.industries.add(industry)
         return industry
     }
@@ -531,8 +609,7 @@ export class FactoryGraph {
      */
     createTransferUnit(item: Item) {
         const transfers = this.getTransferUnits(item)
-        const name = item.name + " T" + transfers.size
-        const transfer = new TransferNode(name, item, this)
+        const transfer = new TransferNode("T" + transfers.size, item, this)
         this.transferUnits.add(transfer)
         return transfer
     }
@@ -542,8 +619,7 @@ export class FactoryGraph {
      * @see {@link ContainerNode}
      */
     createTemporaryContainer(item: Item): ContainerNode {
-        const name = ""
-        const container = new ContainerNode(name, item, this, 1.0)
+        const container = new ContainerNode("", item, this, 1.0)
         this.temporaryContainers.add(container)
         return container
     }
@@ -554,8 +630,7 @@ export class FactoryGraph {
      */
     createContainer(item: Item): ContainerNode {
         const containers = this.getContainers(item)
-        const name = item.name + " C" + containers.size
-        const container = new ContainerNode(name, item, this, 1.0)
+        const container = new ContainerNode("C" + containers.size, item, this, 1.0)
         this.containers.add(container)
         return container
     }
@@ -566,8 +641,7 @@ export class FactoryGraph {
      */
     createSplitContainer(item: Item, split: number): ContainerNode {
         const containers = this.getContainers(item)
-        const name = item.name + " C" + containers.size
-        const container = new ContainerNode(name, item, this, split)
+        const container = new ContainerNode("C" + containers.size, item, this, split)
         this.containers.add(container)
         return container
     }
@@ -577,8 +651,11 @@ export class FactoryGraph {
      * @see {@link TransferContainerNode}
      */
     createTransferContainer(items: Item[]): TransferContainerNode {
-        const name = "Transfer Container " + this.transferContainers.size
-        const container = new TransferContainerNode(name, items, this)
+        const container = new TransferContainerNode(
+            "Trans Container" + this.transferContainers.size,
+            items,
+            this,
+        )
         this.transferContainers.add(container)
         return container
     }
@@ -589,8 +666,13 @@ export class FactoryGraph {
      */
     createOutput(item: Craftable, outputRate: PerMinute, maintainedOutput: Quantity): OutputNode {
         const containers = this.getContainers(item)
-        const name = item.name + " C" + containers.size
-        const output = new OutputNode(name, item, outputRate, maintainedOutput, this)
+        const output = new OutputNode(
+            "C" + containers.size,
+            item,
+            outputRate,
+            maintainedOutput,
+            this,
+        )
         this.containers.add(output)
         return output
     }

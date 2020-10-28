@@ -13,9 +13,9 @@ import { Button, Row, Col, InputNumber } from "antd"
 import { buildFactory } from "../factory"
 import { FactoryGraph } from "../graph"
 import { AppState } from "./app"
-import { FactoryVisualization } from "./render-factory"
+import { FactoryInstruction, generateInstructions, FactoryVisualization } from "./render-factory"
 
-enum FactoryState {
+export enum FactoryState {
     SELECT = "select",
     COUNT = "count",
     RENDER = "render",
@@ -39,8 +39,9 @@ interface NewFactoryProps {
 export function NewFactory({ setAppState }: NewFactoryProps) {
     // all possible craftable items
     const items = React.useMemo(() => values(ITEMS).filter(isCraftable), [ITEMS])
-    // NewFactory state
+    // NewFactory state and factory instructions
     const [factoryState, setFactoryState] = React.useState<FactoryState>(FactoryState.SELECT)
+    const [factoryInstructions, setFactoryInstructions] = React.useState<FactoryInstruction[]>([])
     // produced items, industry count, and maintain count
     const [selection, setSelection] = React.useState<Craftable[]>([])
     const [industryCount, setIndustryCount] = useMap<Craftable, number>()
@@ -84,15 +85,16 @@ export function NewFactory({ setAppState }: NewFactoryProps) {
                         getMaintainValue={getMaintainValue}
                         getRequirements={getRequirements}
                         setFactory={setFactory}
+                        setFactoryInstructions={setFactoryInstructions}
                     />
                 </React.Fragment>
             )
         case FactoryState.RENDER:
             return (
-                <React.Fragment>
-                    <Button onClick={() => setFactoryState(FactoryState.COUNT)}>Back</Button>
-                    <FactoryVisualization factory={factory!} />
-                </React.Fragment>
+                <FactoryVisualization
+                    setFactoryState={setFactoryState}
+                    instructions={factoryInstructions!}
+                />
             )
     }
 }
@@ -187,6 +189,12 @@ interface NewFactoryCountProps extends NewFactoryChildrenProps {
      * @param factory the FactoryGraph
      */
     setFactory: (factory: FactoryGraph) => void
+
+    /**
+     * Set the factory instructions
+     * @param factoryInstructions the FactoryInstructions
+     */
+    setFactoryInstructions: (factory: FactoryInstruction[]) => void
 }
 
 /**
@@ -226,7 +234,9 @@ function NewFactoryCount(props: NewFactoryCountProps) {
             <Button
                 type="primary"
                 onClick={() => {
-                    props.setFactory(buildFactory(props.getRequirements()))
+                    const factory = buildFactory(props.getRequirements())
+                    props.setFactory(factory)
+                    props.setFactoryInstructions(generateInstructions(factory))
                     props.setFactoryState(FactoryState.RENDER)
                 }}
             >
