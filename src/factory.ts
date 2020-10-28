@@ -199,13 +199,13 @@ function handleCatalysts(factory: FactoryGraph): void {
             }
         }
 
-        // Get transfer nodes already moving this catalyst
-        const transferUnits = factory.getTransferUnits(catalyst)
-
         // Loop over containers holding byproduct and try to add an existing
         // transfer unit. Otherwise, create a new transfer unit
         for (const [endingContainer, startingContainers] of catalystFlow) {
             let transferUnit: TransferNode | undefined
+
+            // Get transfer nodes already moving this catalyst
+            const transferUnits = factory.getTransferUnits(catalyst)
 
             // Check for existing transfer unit
             for (const checkTransferUnit of transferUnits) {

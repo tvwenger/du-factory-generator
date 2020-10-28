@@ -1604,10 +1604,10 @@ export const ITEMS = {
 }
 
 /**
- * Get the ContainerElements sorted by capacity from largest to smallest
+ * Get the ContainerElements sorted by capacity from smallest to largest
  */
 export const CONTAINERS_ASCENDING_BY_CAPACITY = Object.values(ITEMS).filter(isContainerElement)
-CONTAINERS_ASCENDING_BY_CAPACITY.sort((a, b) => b.capacity - a.capacity)
+CONTAINERS_ASCENDING_BY_CAPACITY.sort((a, b) => a.capacity - b.capacity)
 
 /**
  * Get catalysts

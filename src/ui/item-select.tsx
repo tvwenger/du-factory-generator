@@ -1,3 +1,9 @@
+/**
+ * ui/item-select.ts
+ * React components and utilities for selecting items to craft
+ * lgfrbcsgo & Nikolaus - October 2020
+ */
+
 import { Item } from "../items"
 import * as React from "react"
 import { useMemo } from "react"
@@ -5,7 +11,7 @@ import { compose, groupBy, indexBy, prop, toPairs } from "ramda"
 import { TreeSelect } from "antd"
 
 /**
- * Props of the {@link ItemSelect} component
+ * Properties of the {@link ItemSelect} component
  */
 export interface ItemSelectProps<T extends Item> {
     /**
@@ -27,7 +33,7 @@ export interface ItemSelectProps<T extends Item> {
 
 /**
  * Tree select component for selecting items.
- * @param props
+ * @param props {@link ItemSelectProps}
  */
 export function ItemSelect<T extends Item>(props: ItemSelectProps<T>) {
     const treeData = useItemTreeData(props.items)
@@ -51,7 +57,7 @@ export function ItemSelect<T extends Item>(props: ItemSelectProps<T>) {
 
 /**
  * Hook for grouping items into a tree based on their category for the use in {@link TreeSelect}
- * @param items
+ * @param items all items to group
  */
 function useItemTreeData<T extends Item>(items: T[]) {
     return useMemo(() => {
