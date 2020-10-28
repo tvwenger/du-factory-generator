@@ -8,6 +8,7 @@ export type Liter = number
 export type Minutes = number
 export type Quantity = number
 
+export type Element = ContainerElement | OtherElement
 export type Item = Ore | Catalyst | Product | Element
 
 export type Craftable = Exclude<Item, Ore>
@@ -53,6 +54,11 @@ export enum Category {
     STRUCTURAL_PARTS = "structural parts",
 }
 
+export enum ElementType {
+    CONTAINER = "container",
+    OTHER = "other",
+}
+
 /**
  * Properties commen to each item type
  */
@@ -78,8 +84,15 @@ export interface Product extends CommonProperties {
     readonly type: ItemType.PRODUCT
 }
 
-export interface Element extends CommonProperties {
+export interface ContainerElement extends CommonProperties {
     readonly type: ItemType.ELEMENT
+    readonly elementType: ElementType.CONTAINER
+    readonly capacity: Liter
+}
+
+export interface OtherElement extends CommonProperties {
+    readonly type: ItemType.ELEMENT
+    readonly elementType: ElementType.OTHER
 }
 
 /**
@@ -96,6 +109,22 @@ export function isOre(item: Item): item is Ore {
  */
 export function isCraftable(item: Item): item is Craftable {
     return !isOre(item)
+}
+
+/**
+ * ContainerElement type guard
+ * @param item Item to check
+ */
+export function isContainerElement(item: Item): item is ContainerElement {
+    return item.type === ItemType.ELEMENT && item.elementType === ElementType.CONTAINER
+}
+
+/**
+ * Catalyst type guard
+ * @param item Item to check
+ */
+export function isCatalyst(item: Item): item is Catalyst {
+    return item.type === ItemType.CATALYST
 }
 
 /**
@@ -147,18 +176,42 @@ export function product(name: string, tier: Tier, category: Category, volume: Li
 }
 
 /**
- * Returns a new Element type
+ * Returns a new OtherElement type
  * @param name Element name
  * @param category Element category
  * @param volume Element volume
  */
-export function element(name: string, category: Category, volume: Liter): Element {
+export function otherElement(name: string, category: Category, volume: Liter): OtherElement {
     return {
         type: ItemType.ELEMENT,
+        elementType: ElementType.OTHER,
         name,
         tier: Tier.ELEMENT,
         category,
         volume,
+    }
+}
+
+/**
+ * Returns a new ContainerElement type
+ * @param name Element name
+ * @param category Element category
+ * @param volume Element volume
+ */
+export function containerElement(
+    name: string,
+    category: Category,
+    volume: Liter,
+    capacity: Liter,
+): ContainerElement {
+    return {
+        type: ItemType.ELEMENT,
+        elementType: ElementType.CONTAINER,
+        name,
+        tier: Tier.ELEMENT,
+        category,
+        volume,
+        capacity,
     }
 }
 
@@ -252,13 +305,13 @@ export const ITEMS = {
     "Catalyst 3": catalyst("Catalyst 3", Tier.ADVANCED, 1),
     "Catalyst 4": catalyst("Catalyst 4", Tier.RARE, 1),
     "Catalyst 5": catalyst("Catalyst 5", Tier.EXOTIC, 1),
-    "Kergon-X1 Fuel": element("Kergon-X1 Fuel", Category.FUEL, 1),
-    "Kergon-X2 Fuel": element("Kergon-X2 Fuel", Category.FUEL, 1),
-    "Kergon-X3 Fuel": element("Kergon-X3 Fuel", Category.FUEL, 1),
-    "Kergon-X4 Fuel": element("Kergon-X4 Fuel", Category.FUEL, 1),
-    "Nitron Fuel": element("Nitron Fuel", Category.FUEL, 1),
-    "Xeron Fuel": element("Xeron Fuel", Category.FUEL, 1),
-    "Warp Cell": element("Warp Cell", Category.FUEL, 40),
+    "Kergon-X1 Fuel": otherElement("Kergon-X1 Fuel", Category.FUEL, 1),
+    "Kergon-X2 Fuel": otherElement("Kergon-X2 Fuel", Category.FUEL, 1),
+    "Kergon-X3 Fuel": otherElement("Kergon-X3 Fuel", Category.FUEL, 1),
+    "Kergon-X4 Fuel": otherElement("Kergon-X4 Fuel", Category.FUEL, 1),
+    "Nitron Fuel": otherElement("Nitron Fuel", Category.FUEL, 1),
+    "Xeron Fuel": otherElement("Xeron Fuel", Category.FUEL, 1),
+    "Warp Cell": otherElement("Warp Cell", Category.FUEL, 40),
     "Basic Anti-Matter Capsule": product(
         "Basic Anti-Matter Capsule",
         Tier.BASIC,
@@ -1395,133 +1448,168 @@ export const ITEMS = {
         Category.STRUCTURAL_PARTS,
         515,
     ),
-    "Anti-Gravity Pulsor": element("Anti-Gravity Pulsor", Category.ANTI_GRAVITY, 804.93),
-    "Anti-Gravity Generator S": element("Anti-Gravity Generator S", Category.ANTI_GRAVITY, 4279.69),
-    "Anti-Gravity Generator M": element(
+    "Anti-Gravity Pulsor": otherElement("Anti-Gravity Pulsor", Category.ANTI_GRAVITY, 804.93),
+    "Anti-Gravity Generator S": otherElement(
+        "Anti-Gravity Generator S",
+        Category.ANTI_GRAVITY,
+        4279.69,
+    ),
+    "Anti-Gravity Generator M": otherElement(
         "Anti-Gravity Generator M",
         Category.ANTI_GRAVITY,
         21617.09,
     ),
-    "Anti-Gravity Generator L": element(
+    "Anti-Gravity Generator L": otherElement(
         "Anti-Gravity Generator L",
         Category.ANTI_GRAVITY,
         86468.35,
     ),
-    "Container XS": element("Container XS", Category.ITEM_CONTAINERS, 64),
-    "Container S": element("Container S", Category.ITEM_CONTAINERS, 342),
-    "Container M": element("Container M", Category.ITEM_CONTAINERS, 1873),
-    "Container L": element("Container L", Category.ITEM_CONTAINERS, 3746),
-    "Container Hub": element("Container Hub", Category.ITEM_CONTAINERS, 44.3),
-    "Atmospheric Fuel Tank S": element("Atmospheric Fuel Tank S", Category.FUEL_TANKS, 92.6),
-    "Atmospheric Fuel Tank M": element("Atmospheric Fuel Tank M", Category.FUEL_TANKS, 499.2),
-    "Atmospheric Fuel Tank L": element("Atmospheric Fuel Tank L", Category.FUEL_TANKS, 2755.4),
-    "Space Fuel Tank S": element("Space Fuel Tank S", Category.FUEL_TANKS, 92.6),
-    "Space Fuel Tank M": element("Space Fuel Tank M", Category.FUEL_TANKS, 499.2),
-    "Space Fuel Tank L": element("Space Fuel Tank L", Category.FUEL_TANKS, 2755.4),
-    "Resurrection Node": element("Resurrection Node", Category.CONTROL, 203.33),
-    "Cockpit Controller": element("Cockpit Controller", Category.CONTROL, 491.2),
-    "Command Seat Controller": element("Command Seat Controller", Category.CONTROL, 66.6),
-    "Emergency Controller": element("Emergency Controller", Category.CONTROL, 4.8),
-    "Programming Board": element("Programming Board", Category.CONTROL, 12.7),
-    "Adjustor S": element("Adjustor S", Category.FLIGHT_CONTROL, 22.6),
-    "Adjustor M": element("Adjustor M", Category.FLIGHT_CONTROL, 116.6),
-    "Adjustor L": element("Adjustor L", Category.FLIGHT_CONTROL, 619.2),
-    "Atmospheric Airbrake S": element("Atmospheric Airbrake S", Category.FLIGHT_CONTROL, 22.6),
-    "Atmospheric Airbrake M": element("Atmospheric Airbrake M", Category.FLIGHT_CONTROL, 116.6),
-    "Atmospheric Airbrake L": element("Atmospheric Airbrake L", Category.FLIGHT_CONTROL, 619.2),
-    "Retro-Rocket Brake S": element("Retro-Rocket Brake S", Category.FLIGHT_CONTROL, 20.33),
-    "Retro-Rocket Brake M": element("Retro-Rocket Brake M", Category.FLIGHT_CONTROL, 105.24),
-    "Retro-Rocket Brake L": element("Retro-Rocket Brake L", Category.FLIGHT_CONTROL, 562.4),
-    "Aileron XS": element("Aileron XS", Category.AIRFOIL, 45.2),
-    "Aileron S": element("Aileron S", Category.AIRFOIL, 233.2),
-    "Aileron M": element("Aileron M", Category.AIRFOIL, 1238.4),
-    "Compact Aileron XS": element("Compact Aileron XS", Category.AIRFOIL, 22.6),
-    "Compact Aileron S": element("Compact Aileron S", Category.AIRFOIL, 116.6),
-    "Compact Aileron M": element("Compact Aileron M", Category.AIRFOIL, 619.2),
-    "Stabilizer XS": element("Stabilizer XS", Category.AIRFOIL, 22.6),
-    "Stabilizer S": element("Stabilizer S", Category.AIRFOIL, 116.6),
-    "Stabilizer M": element("Stabilizer M", Category.AIRFOIL, 619.2),
-    "Stabilizer L": element("Stabilizer L", Category.AIRFOIL, 3355.4),
-    "Wing XS": element("Wing XS", Category.AIRFOIL, 22.6),
-    "Wing S": element("Wing S", Category.AIRFOIL, 116.6),
-    "Wing M": element("Wing M", Category.AIRFOIL, 619.2),
-    "Warp Drive L": element("Warp Drive L", Category.ENGINES, 4123),
-    "Basic Atmospheric Engine S": element("Basic Atmospheric Engine S", Category.ENGINES, 116.6),
-    "Basic Atmospheric Engine M": element("Basic Atmospheric Engine M", Category.ENGINES, 619.2),
-    "Basic Atmospheric Engine L": element("Basic Atmospheric Engine L", Category.ENGINES, 3355.4),
-    "Basic Space Engine S": element("Basic Space Engine S", Category.ENGINES, 105.24),
-    "Basic Space Engine M": element("Basic Space Engine M", Category.ENGINES, 562.4),
-    "Basic Space Engine L": element("Basic Space Engine L", Category.ENGINES, 3071.4),
-    "Basic Space Engine XL": element("Basic Space Engine XL", Category.ENGINES, 17148.8),
-    "Vertical Booster S": element("Vertical Booster S", Category.ENGINES, 20.33),
-    "Vertical Booster M": element("Vertical Booster M", Category.ENGINES, 105.24),
-    "Vertical Booster L": element("Vertical Booster L", Category.ENGINES, 562.4),
-    "Assembly Line XS": element("Assembly Line XS", Category.INDUSTRY, 21.8),
-    "Assembly Line S": element("Assembly Line S", Category.INDUSTRY, 112.6),
-    "Assembly Line M": element("Assembly Line M", Category.INDUSTRY, 599.2),
-    "Assembly Line L": element("Assembly Line L", Category.INDUSTRY, 3255.4),
-    "Assembly Line XL": element("Assembly Line XL", Category.INDUSTRY, 18068.8),
-    "3D Printer M": element("3D Printer M", Category.INDUSTRY, 609.2),
-    "Chemical Industry M": element("Chemical Industry M", Category.INDUSTRY, 479.2),
-    "Electronics Industry M": element("Electronics Industry M", Category.INDUSTRY, 459.2),
-    "Glass Furnace M": element("Glass Furnace M", Category.INDUSTRY, 556.4),
-    "Honeycomb Refiner M": element("Honeycomb Refiner M", Category.INDUSTRY, 589.2),
-    "Metalwork Industry M": element("Metalwork Industry M", Category.INDUSTRY, 599.2),
-    "Recycler M": element("Recycler M", Category.INDUSTRY, 619.2),
-    "Refiner M": element("Refiner M", Category.INDUSTRY, 479.2),
-    "Smelter M": element("Smelter M", Category.INDUSTRY, 499.2),
-    "Transfer Unit": element("Transfer Unit", Category.INDUSTRY, 3305.4),
-    "Repair Unit": element("Repair Unit", Category.INDUSTRY, 10000),
-    Gyroscope: element("Gyroscope", Category.INSTRUMENTS, 17.65),
-    Telemeter: element("Telemeter", Category.INSTRUMENTS, 31.4),
-    "Territory Scanner": element("Territory Scanner", Category.INSTRUMENTS, 12702.9),
-    Airlock: element("Airlock", Category.INTERACTIVE, 546.4),
-    "Elevator XS": element("Elevator XS", Category.INTERACTIVE, 57.56),
-    "Expanded Gate L": element("Expanded Gate L", Category.INTERACTIVE, 16755.49),
-    "Force Field XS": element("Force Field XS", Category.INTERACTIVE, 34.7),
-    "Force Field S": element("Force Field S", Category.INTERACTIVE, 34.7),
-    "Force Field M": element("Force Field M", Category.INTERACTIVE, 34.7),
-    "Force Field L": element("Force Field L", Category.INTERACTIVE, 34.7),
-    "Gate XL": element("Gate XL", Category.INTERACTIVE, 16755.49),
-    "Hatch S": element("Hatch S", Category.INTERACTIVE, 24),
-    "Interior Door": element("Interior Door", Category.INTERACTIVE, 546.4),
-    "Landing Gear S": element("Landing Gear S", Category.INTERACTIVE, 67),
-    "Landing Gear M": element("Landing Gear M", Category.INTERACTIVE, 360),
-    "Landing Gear L": element("Landing Gear L", Category.INTERACTIVE, 1981),
-    "Reinforced Sliding Door": element("Reinforced Sliding Door", Category.INTERACTIVE, 546.4),
-    "Screen XS": element("Screen XS", Category.INTERACTIVE, 15.8),
-    "Screen S": element("Screen S", Category.INTERACTIVE, 15.8),
-    "Screen M": element("Screen M", Category.INTERACTIVE, 15.8),
-    "Screen XL": element("Screen XL", Category.INTERACTIVE, 11174.8),
-    "Transparent Screen XS": element("Transparent Screen XS", Category.INTERACTIVE, 15.8),
-    "Transparent Screen S": element("Transparent Screen S", Category.INTERACTIVE, 15.8),
-    "Transparent Screen M": element("Transparent Screen M", Category.INTERACTIVE, 15.8),
-    "Transparent Screen L": element("Transparent Screen L", Category.INTERACTIVE, 15.8),
-    "Sliding Door S": element("Sliding Door S", Category.INTERACTIVE, 102.4),
-    "Sliding Door M": element("Sliding Door M", Category.INTERACTIVE, 151.8),
-    "Encampment Chair": element("Encampment Chair", Category.INTERACTIVE, 2),
-    "Navigator Chair": element("Navigator Chair", Category.INTERACTIVE, 24),
-    "Office Chair": element("Office Chair", Category.INTERACTIVE, 13),
-    "Long Light S": element("Long Light S", Category.INTERACTIVE, 21.6),
-    "Long Light M": element("Long Light M", Category.INTERACTIVE, 21.6),
-    "Long Light L": element("Long Light L", Category.INTERACTIVE, 21.6),
-    "Atmospheric Radar S": element("Atmospheric Radar S", Category.SENSOR, 96.56),
-    "Atmospheric Radar M": element("Atmospheric Radar M", Category.SENSOR, 486.36),
-    "Atmospheric Radar L": element("Atmospheric Radar L", Category.SENSOR, 2658.56),
-    "Space Radar S": element("Space Radar S", Category.SENSOR, 96.56),
-    "Space Radar M": element("Space Radar M", Category.SENSOR, 486.36),
-    "Space Radar L": element("Space Radar L", Category.SENSOR, 2658.56),
-    "Static Core XS": element("Static Core XS", Category.CORE_UNIT, 16.1),
-    "Static Core S": element("Static Core S", Category.CORE_UNIT, 83.6),
-    "Static Core M": element("Static Core M", Category.CORE_UNIT, 454.8),
-    "Static Core L": element("Static Core L", Category.CORE_UNIT, 2501),
-    "Space Core XS": element("Space Core XS", Category.CORE_UNIT, 14),
-    "Space Core S": element("Space Core S", Category.CORE_UNIT, 120),
-    "Space Core M": element("Space Core M", Category.CORE_UNIT, 420),
-    "Space Core L": element("Space Core L", Category.CORE_UNIT, 1383),
-    "Dynamic Core XS": element("Dynamic Core XS", Category.CORE_UNIT, 16.1),
-    "Dynamic Core S": element("Dynamic Core S", Category.CORE_UNIT, 87.2),
-    "Dynamic Core M": element("Dynamic Core M", Category.CORE_UNIT, 454.8),
-    "Dynamic Core L": element("Dynamic Core L", Category.CORE_UNIT, 2501),
-    "Territory Unit": element("Territory Unit", Category.CORE_UNIT, 4118.29),
+    "Container XS": containerElement("Container XS", Category.ITEM_CONTAINERS, 64, 1000),
+    "Container S": containerElement("Container S", Category.ITEM_CONTAINERS, 342, 8000),
+    "Container M": containerElement("Container M", Category.ITEM_CONTAINERS, 1873, 64000),
+    "Container L": containerElement("Container L", Category.ITEM_CONTAINERS, 3746, 128000),
+    "Container Hub": otherElement("Container Hub", Category.ITEM_CONTAINERS, 44.3),
+    "Atmospheric Fuel Tank S": otherElement("Atmospheric Fuel Tank S", Category.FUEL_TANKS, 92.6),
+    "Atmospheric Fuel Tank M": otherElement("Atmospheric Fuel Tank M", Category.FUEL_TANKS, 499.2),
+    "Atmospheric Fuel Tank L": otherElement("Atmospheric Fuel Tank L", Category.FUEL_TANKS, 2755.4),
+    "Space Fuel Tank S": otherElement("Space Fuel Tank S", Category.FUEL_TANKS, 92.6),
+    "Space Fuel Tank M": otherElement("Space Fuel Tank M", Category.FUEL_TANKS, 499.2),
+    "Space Fuel Tank L": otherElement("Space Fuel Tank L", Category.FUEL_TANKS, 2755.4),
+    "Resurrection Node": otherElement("Resurrection Node", Category.CONTROL, 203.33),
+    "Cockpit Controller": otherElement("Cockpit Controller", Category.CONTROL, 491.2),
+    "Command Seat Controller": otherElement("Command Seat Controller", Category.CONTROL, 66.6),
+    "Emergency Controller": otherElement("Emergency Controller", Category.CONTROL, 4.8),
+    "Programming Board": otherElement("Programming Board", Category.CONTROL, 12.7),
+    "Adjustor S": otherElement("Adjustor S", Category.FLIGHT_CONTROL, 22.6),
+    "Adjustor M": otherElement("Adjustor M", Category.FLIGHT_CONTROL, 116.6),
+    "Adjustor L": otherElement("Adjustor L", Category.FLIGHT_CONTROL, 619.2),
+    "Atmospheric Airbrake S": otherElement("Atmospheric Airbrake S", Category.FLIGHT_CONTROL, 22.6),
+    "Atmospheric Airbrake M": otherElement(
+        "Atmospheric Airbrake M",
+        Category.FLIGHT_CONTROL,
+        116.6,
+    ),
+    "Atmospheric Airbrake L": otherElement(
+        "Atmospheric Airbrake L",
+        Category.FLIGHT_CONTROL,
+        619.2,
+    ),
+    "Retro-Rocket Brake S": otherElement("Retro-Rocket Brake S", Category.FLIGHT_CONTROL, 20.33),
+    "Retro-Rocket Brake M": otherElement("Retro-Rocket Brake M", Category.FLIGHT_CONTROL, 105.24),
+    "Retro-Rocket Brake L": otherElement("Retro-Rocket Brake L", Category.FLIGHT_CONTROL, 562.4),
+    "Aileron XS": otherElement("Aileron XS", Category.AIRFOIL, 45.2),
+    "Aileron S": otherElement("Aileron S", Category.AIRFOIL, 233.2),
+    "Aileron M": otherElement("Aileron M", Category.AIRFOIL, 1238.4),
+    "Compact Aileron XS": otherElement("Compact Aileron XS", Category.AIRFOIL, 22.6),
+    "Compact Aileron S": otherElement("Compact Aileron S", Category.AIRFOIL, 116.6),
+    "Compact Aileron M": otherElement("Compact Aileron M", Category.AIRFOIL, 619.2),
+    "Stabilizer XS": otherElement("Stabilizer XS", Category.AIRFOIL, 22.6),
+    "Stabilizer S": otherElement("Stabilizer S", Category.AIRFOIL, 116.6),
+    "Stabilizer M": otherElement("Stabilizer M", Category.AIRFOIL, 619.2),
+    "Stabilizer L": otherElement("Stabilizer L", Category.AIRFOIL, 3355.4),
+    "Wing XS": otherElement("Wing XS", Category.AIRFOIL, 22.6),
+    "Wing S": otherElement("Wing S", Category.AIRFOIL, 116.6),
+    "Wing M": otherElement("Wing M", Category.AIRFOIL, 619.2),
+    "Warp Drive L": otherElement("Warp Drive L", Category.ENGINES, 4123),
+    "Basic Atmospheric Engine S": otherElement(
+        "Basic Atmospheric Engine S",
+        Category.ENGINES,
+        116.6,
+    ),
+    "Basic Atmospheric Engine M": otherElement(
+        "Basic Atmospheric Engine M",
+        Category.ENGINES,
+        619.2,
+    ),
+    "Basic Atmospheric Engine L": otherElement(
+        "Basic Atmospheric Engine L",
+        Category.ENGINES,
+        3355.4,
+    ),
+    "Basic Space Engine S": otherElement("Basic Space Engine S", Category.ENGINES, 105.24),
+    "Basic Space Engine M": otherElement("Basic Space Engine M", Category.ENGINES, 562.4),
+    "Basic Space Engine L": otherElement("Basic Space Engine L", Category.ENGINES, 3071.4),
+    "Basic Space Engine XL": otherElement("Basic Space Engine XL", Category.ENGINES, 17148.8),
+    "Vertical Booster S": otherElement("Vertical Booster S", Category.ENGINES, 20.33),
+    "Vertical Booster M": otherElement("Vertical Booster M", Category.ENGINES, 105.24),
+    "Vertical Booster L": otherElement("Vertical Booster L", Category.ENGINES, 562.4),
+    "Assembly Line XS": otherElement("Assembly Line XS", Category.INDUSTRY, 21.8),
+    "Assembly Line S": otherElement("Assembly Line S", Category.INDUSTRY, 112.6),
+    "Assembly Line M": otherElement("Assembly Line M", Category.INDUSTRY, 599.2),
+    "Assembly Line L": otherElement("Assembly Line L", Category.INDUSTRY, 3255.4),
+    "Assembly Line XL": otherElement("Assembly Line XL", Category.INDUSTRY, 18068.8),
+    "3D Printer M": otherElement("3D Printer M", Category.INDUSTRY, 609.2),
+    "Chemical Industry M": otherElement("Chemical Industry M", Category.INDUSTRY, 479.2),
+    "Electronics Industry M": otherElement("Electronics Industry M", Category.INDUSTRY, 459.2),
+    "Glass Furnace M": otherElement("Glass Furnace M", Category.INDUSTRY, 556.4),
+    "Honeycomb Refiner M": otherElement("Honeycomb Refiner M", Category.INDUSTRY, 589.2),
+    "Metalwork Industry M": otherElement("Metalwork Industry M", Category.INDUSTRY, 599.2),
+    "Recycler M": otherElement("Recycler M", Category.INDUSTRY, 619.2),
+    "Refiner M": otherElement("Refiner M", Category.INDUSTRY, 479.2),
+    "Smelter M": otherElement("Smelter M", Category.INDUSTRY, 499.2),
+    "Transfer Unit": otherElement("Transfer Unit", Category.INDUSTRY, 3305.4),
+    "Repair Unit": otherElement("Repair Unit", Category.INDUSTRY, 10000),
+    Gyroscope: otherElement("Gyroscope", Category.INSTRUMENTS, 17.65),
+    Telemeter: otherElement("Telemeter", Category.INSTRUMENTS, 31.4),
+    "Territory Scanner": otherElement("Territory Scanner", Category.INSTRUMENTS, 12702.9),
+    Airlock: otherElement("Airlock", Category.INTERACTIVE, 546.4),
+    "Elevator XS": otherElement("Elevator XS", Category.INTERACTIVE, 57.56),
+    "Expanded Gate L": otherElement("Expanded Gate L", Category.INTERACTIVE, 16755.49),
+    "Force Field XS": otherElement("Force Field XS", Category.INTERACTIVE, 34.7),
+    "Force Field S": otherElement("Force Field S", Category.INTERACTIVE, 34.7),
+    "Force Field M": otherElement("Force Field M", Category.INTERACTIVE, 34.7),
+    "Force Field L": otherElement("Force Field L", Category.INTERACTIVE, 34.7),
+    "Gate XL": otherElement("Gate XL", Category.INTERACTIVE, 16755.49),
+    "Hatch S": otherElement("Hatch S", Category.INTERACTIVE, 24),
+    "Interior Door": otherElement("Interior Door", Category.INTERACTIVE, 546.4),
+    "Landing Gear S": otherElement("Landing Gear S", Category.INTERACTIVE, 67),
+    "Landing Gear M": otherElement("Landing Gear M", Category.INTERACTIVE, 360),
+    "Landing Gear L": otherElement("Landing Gear L", Category.INTERACTIVE, 1981),
+    "Reinforced Sliding Door": otherElement("Reinforced Sliding Door", Category.INTERACTIVE, 546.4),
+    "Screen XS": otherElement("Screen XS", Category.INTERACTIVE, 15.8),
+    "Screen S": otherElement("Screen S", Category.INTERACTIVE, 15.8),
+    "Screen M": otherElement("Screen M", Category.INTERACTIVE, 15.8),
+    "Screen XL": otherElement("Screen XL", Category.INTERACTIVE, 11174.8),
+    "Transparent Screen XS": otherElement("Transparent Screen XS", Category.INTERACTIVE, 15.8),
+    "Transparent Screen S": otherElement("Transparent Screen S", Category.INTERACTIVE, 15.8),
+    "Transparent Screen M": otherElement("Transparent Screen M", Category.INTERACTIVE, 15.8),
+    "Transparent Screen L": otherElement("Transparent Screen L", Category.INTERACTIVE, 15.8),
+    "Sliding Door S": otherElement("Sliding Door S", Category.INTERACTIVE, 102.4),
+    "Sliding Door M": otherElement("Sliding Door M", Category.INTERACTIVE, 151.8),
+    "Encampment Chair": otherElement("Encampment Chair", Category.INTERACTIVE, 2),
+    "Navigator Chair": otherElement("Navigator Chair", Category.INTERACTIVE, 24),
+    "Office Chair": otherElement("Office Chair", Category.INTERACTIVE, 13),
+    "Long Light S": otherElement("Long Light S", Category.INTERACTIVE, 21.6),
+    "Long Light M": otherElement("Long Light M", Category.INTERACTIVE, 21.6),
+    "Long Light L": otherElement("Long Light L", Category.INTERACTIVE, 21.6),
+    "Atmospheric Radar S": otherElement("Atmospheric Radar S", Category.SENSOR, 96.56),
+    "Atmospheric Radar M": otherElement("Atmospheric Radar M", Category.SENSOR, 486.36),
+    "Atmospheric Radar L": otherElement("Atmospheric Radar L", Category.SENSOR, 2658.56),
+    "Space Radar S": otherElement("Space Radar S", Category.SENSOR, 96.56),
+    "Space Radar M": otherElement("Space Radar M", Category.SENSOR, 486.36),
+    "Space Radar L": otherElement("Space Radar L", Category.SENSOR, 2658.56),
+    "Static Core XS": otherElement("Static Core XS", Category.CORE_UNIT, 16.1),
+    "Static Core S": otherElement("Static Core S", Category.CORE_UNIT, 83.6),
+    "Static Core M": otherElement("Static Core M", Category.CORE_UNIT, 454.8),
+    "Static Core L": otherElement("Static Core L", Category.CORE_UNIT, 2501),
+    "Space Core XS": otherElement("Space Core XS", Category.CORE_UNIT, 14),
+    "Space Core S": otherElement("Space Core S", Category.CORE_UNIT, 120),
+    "Space Core M": otherElement("Space Core M", Category.CORE_UNIT, 420),
+    "Space Core L": otherElement("Space Core L", Category.CORE_UNIT, 1383),
+    "Dynamic Core XS": otherElement("Dynamic Core XS", Category.CORE_UNIT, 16.1),
+    "Dynamic Core S": otherElement("Dynamic Core S", Category.CORE_UNIT, 87.2),
+    "Dynamic Core M": otherElement("Dynamic Core M", Category.CORE_UNIT, 454.8),
+    "Dynamic Core L": otherElement("Dynamic Core L", Category.CORE_UNIT, 2501),
+    "Territory Unit": otherElement("Territory Unit", Category.CORE_UNIT, 4118.29),
 }
+
+/**
+ * Get the ContainerElements sorted by capacity from smallest to largest
+ */
+export const CONTAINERS_ASCENDING_BY_CAPACITY = Object.values(ITEMS).filter(isContainerElement)
+CONTAINERS_ASCENDING_BY_CAPACITY.sort((a, b) => a.capacity - b.capacity)
+
+/**
+ * Get catalysts
+ */
+export const CATALYSTS = Object.values(ITEMS).filter(isCatalyst)
