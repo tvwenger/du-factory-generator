@@ -28,6 +28,7 @@ enum VisualizationState {
 
 // order that the factory is visualized
 const CATEGORY_ORDER = [
+    Category.ORE,
     Category.PURE,
     Category.CATALYST,
     Category.PRODUCT,
@@ -142,7 +143,8 @@ export class FactoryInstruction {
     get width(): number {
         // -> industry -> container -> = 5x SIZE
         // Add approximate width of longest input link and output link strings
-        return 5 * SIZE + this.maxInputWidth + this.maxOutputWidth
+        let width = 5 * SIZE + this.maxInputWidth + this.maxOutputWidth
+        return width
     }
 
     /**
@@ -150,7 +152,7 @@ export class FactoryInstruction {
      */
     get height(): number {
         // height is a little larger than 1.5*size of combined producers
-        let height = 1.5 * SIZE * this.container.producers.size + SIZE
+        let height = 1.5 * SIZE * Math.max(this.container.producers.size, 1) + SIZE
         return height
     }
 
@@ -289,35 +291,41 @@ export class FactoryInstruction {
             )
             elements.push(element)
 
-            // move y to next producer
-            producer_y += 1.5 * SIZE
+            if (producer_i < producers.length - 1) {
+                // move y to next producer
+                producer_y += 1.5 * SIZE
+            }
         }
 
         // add container
         const x = start_x + 3 * SIZE
-        const container_y = start_y + (producer_y - 1.5 * SIZE - start_y) / 2
+        const container_y = start_y + (producer_y - start_y) / 2
         element = (
             <React.Fragment key={this.container.name}>
-                <line
-                    x1={x - SIZE}
-                    y1={container_y + SIZE / 2}
-                    x2={x - 10}
-                    y2={container_y + SIZE / 2}
-                    stroke="#000"
-                    strokeWidth="2"
-                    markerEnd="url(#arrowhead)"
-                />
-                <text
-                    x={x - SIZE / 2}
-                    y={container_y + SIZE / 2 - 5}
-                    fill="green"
-                    fontSize={FONTSIZE}
-                    dominantBaseline="auto"
-                    textAnchor="middle"
-                >
-                    {isContainerNode(this.container) &&
-                        Math.round(this.container.ingress * 100) / 100}
-                </text>
+                {this.container.producers.size > 0 && (
+                    <React.Fragment>
+                        <line
+                            x1={x - SIZE}
+                            y1={container_y + SIZE / 2}
+                            x2={x - 10}
+                            y2={container_y + SIZE / 2}
+                            stroke="#000"
+                            strokeWidth="2"
+                            markerEnd="url(#arrowhead)"
+                        />
+                        <text
+                            x={x - SIZE / 2}
+                            y={container_y + SIZE / 2 - 5}
+                            fill="green"
+                            fontSize={FONTSIZE}
+                            dominantBaseline="auto"
+                            textAnchor="middle"
+                        >
+                            {isContainerNode(this.container) &&
+                                Math.round(this.container.ingress * 100) / 100}
+                        </text>
+                    </React.Fragment>
+                )}
                 <rect
                     x={x}
                     y={container_y}

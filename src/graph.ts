@@ -598,7 +598,7 @@ export class FactoryGraph {
      */
     createIndustry(item: Craftable): IndustryNode {
         const industries = this.getIndustries(item)
-        const industry = new IndustryNode("P" + industries.size, item, this)
+        const industry = new IndustryNode(`P${industries.size}`, item, this)
         this.industries.add(industry)
         return industry
     }
@@ -609,7 +609,7 @@ export class FactoryGraph {
      */
     createTransferUnit(item: Item) {
         const transfers = this.getTransferUnits(item)
-        const transfer = new TransferNode("T" + transfers.size, item, this)
+        const transfer = new TransferNode(`T${transfers.size}`, item, this)
         this.transferUnits.add(transfer)
         return transfer
     }
@@ -630,7 +630,7 @@ export class FactoryGraph {
      */
     createContainer(item: Item): ContainerNode {
         const containers = this.getContainers(item)
-        const container = new ContainerNode("C" + containers.size, item, this, 1.0)
+        const container = new ContainerNode(`C${containers.size}`, item, this, 1.0)
         this.containers.add(container)
         return container
     }
@@ -641,7 +641,7 @@ export class FactoryGraph {
      */
     createSplitContainer(item: Item, split: number): ContainerNode {
         const containers = this.getContainers(item)
-        const container = new ContainerNode("C" + containers.size, item, this, split)
+        const container = new ContainerNode(`C${containers.size}`, item, this, split)
         this.containers.add(container)
         return container
     }
@@ -652,7 +652,7 @@ export class FactoryGraph {
      */
     createTransferContainer(items: Item[]): TransferContainerNode {
         const container = new TransferContainerNode(
-            "Trans Container" + this.transferContainers.size,
+            `Trans Container${this.transferContainers.size}`,
             items,
             this,
         )
@@ -667,7 +667,7 @@ export class FactoryGraph {
     createOutput(item: Craftable, outputRate: PerMinute, maintainedOutput: Quantity): OutputNode {
         const containers = this.getContainers(item)
         const output = new OutputNode(
-            "C" + containers.size,
+            `C${containers.size}`,
             item,
             outputRate,
             maintainedOutput,
