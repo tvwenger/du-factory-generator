@@ -45,12 +45,7 @@ export function App() {
             content = <NewFactory setAppState={setAppState} />
             break
         case AppState.OLDFACTORY:
-            content = (
-                <React.Fragment>
-                    <Button onClick={() => setAppState(AppState.HOME)}>Back</Button>
-                    <OldFactory />
-                </React.Fragment>
-            )
+            content = <OldFactory setAppState={setAppState} />
             break
     }
 

@@ -20,6 +20,7 @@ import {
     isTransferContainerNode,
 } from "../graph"
 import { FactoryState } from "./new-factory"
+import { serialize } from "../serialize"
 
 enum VisualizationState {
     INSTRUCTIONS = "instructions",
@@ -475,6 +476,9 @@ export interface FactoryVisualizationComponentProps {
  * Properties of the FactoryVisualization components
  */
 export interface FactoryVisualizationProps extends FactoryVisualizationComponentProps {
+    // the factory graph
+    factory: FactoryGraph | undefined
+
     /**
      * Set the parent factory state
      * @param state the FactoryState
@@ -486,7 +490,11 @@ export interface FactoryVisualizationProps extends FactoryVisualizationComponent
  * Component for visualizing factory graph
  * @param props {@link FactoryVisualizationProps}
  */
-export function FactoryVisualization({ setFactoryState, instructions }: FactoryVisualizationProps) {
+export function FactoryVisualization({
+    factory,
+    setFactoryState,
+    instructions,
+}: FactoryVisualizationProps) {
     // The state of the visualization
     const [visualizationState, setVisualizationState] = React.useState<VisualizationState>()
 
@@ -531,7 +539,12 @@ export function FactoryVisualization({ setFactoryState, instructions }: FactoryV
     return (
         <React.Fragment>
             <Button onClick={() => setFactoryState(FactoryState.COUNT)}>Back</Button>
-            <Button>Download Factory as JSON</Button>
+            <Button
+                href={`data:text/json;charset=utf-8,${encodeURIComponent(serialize(factory!))}`}
+                download="factory.json"
+            >
+                Download Factory as JSON
+            </Button>
             <br />
             {content}
         </React.Fragment>

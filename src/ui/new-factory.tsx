@@ -11,7 +11,7 @@ import { ItemSelect } from "./item-select"
 import { useMap } from "./app"
 import { Button, Row, Col, InputNumber } from "antd"
 import { buildFactory } from "../factory"
-import { FactoryGraph } from "../graph"
+import { FactoryGraph, FactoryNode } from "../graph"
 import { AppState } from "./app"
 import { FactoryInstruction, generateInstructions, FactoryVisualization } from "./render-factory"
 
@@ -92,6 +92,7 @@ export function NewFactory({ setAppState }: NewFactoryProps) {
         case FactoryState.RENDER:
             return (
                 <FactoryVisualization
+                    factory={factory}
                     setFactoryState={setFactoryState}
                     instructions={factoryInstructions!}
                 />

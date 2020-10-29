@@ -218,7 +218,9 @@ export function containerElement(
 /**
  * Item list (TODO: complete)
  */
-export const ITEMS = {
+export const ITEMS: {
+    [key: string]: any
+} = {
     Hydrogen: ore("Hydrogen", Tier.BASIC),
     Oxygen: ore("Oxygen", Tier.BASIC),
     Hematite: ore("Hematite", Tier.BASIC),
