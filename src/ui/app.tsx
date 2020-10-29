@@ -7,8 +7,7 @@
 import * as React from "react"
 import { Button } from "antd"
 import { Info } from "./info"
-import { NewFactory } from "./new-factory"
-import { OldFactory } from "./old-factory"
+import { Factory, FactoryState } from "./factory"
 
 export enum AppState {
     HOME = "home",
@@ -42,10 +41,10 @@ export function App() {
             content = <Info setAppState={setAppState} />
             break
         case AppState.NEWFACTORY:
-            content = <NewFactory setAppState={setAppState} />
+            content = <Factory setAppState={setAppState} startFactoryState={FactoryState.SELECT} />
             break
         case AppState.OLDFACTORY:
-            content = <OldFactory setAppState={setAppState} />
+            content = <Factory setAppState={setAppState} startFactoryState={FactoryState.UPLOAD} />
             break
     }
 

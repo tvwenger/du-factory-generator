@@ -410,8 +410,11 @@ function sanityCheck(factory: FactoryGraph): void {
  */
 export function buildFactory(
     requirements: Map<Craftable, { count: number; maintain: number }>,
+    factory: FactoryGraph | undefined,
 ): FactoryGraph {
-    const factory = new FactoryGraph()
+    if (factory === undefined) {
+        factory = new FactoryGraph()
+    }
     for (const [item, { count, maintain }] of requirements) {
         const recipe = findRecipe(item)
         const rate = recipe.product.quantity / recipe.time

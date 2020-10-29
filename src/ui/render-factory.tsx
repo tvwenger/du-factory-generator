@@ -19,7 +19,7 @@ import {
     isTransferNode,
     isTransferContainerNode,
 } from "../graph"
-import { FactoryState } from "./new-factory"
+import { FactoryState } from "./factory"
 import { serialize } from "../serialize"
 
 enum VisualizationState {
