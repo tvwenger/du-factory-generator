@@ -14,7 +14,7 @@ import {
     isTransferNode,
     isTransferContainerNode,
 } from "./graph"
-import { Item, ITEMS } from "./items"
+import { Craftable, Item, ITEMS } from "./items"
 
 /**
  * Saved properties for each ContainerNode
@@ -202,10 +202,10 @@ export function deserialize(serializedFactory: string): FactoryGraph {
     // Unpack ContainerNodes
     for (const saveContainer of saveFactory.containers) {
         let container: ContainerNode
-        const item = ITEMS[saveContainer.item.name as string]
+        const item = ITEMS[saveContainer.item.name as keyof typeof ITEMS]
         if (saveContainer.outputRate !== undefined) {
             container = factory.createOutput(
-                item,
+                item as Craftable,
                 saveContainer.outputRate,
                 saveContainer.maintainedOutput,
                 saveContainer.id,
@@ -220,15 +220,17 @@ export function deserialize(serializedFactory: string): FactoryGraph {
 
     // Unpack TransferContainerNodes
     for (const saveTransferContainer of saveFactory.transferContainers) {
-        const items = saveTransferContainer.items.map((item: Item) => ITEMS[item.name as string])
+        const items = saveTransferContainer.items.map(
+            (item: Item) => ITEMS[item.name as keyof typeof ITEMS],
+        )
         const transferContainer = factory.createTransferContainer(items, saveTransferContainer.id)
         factoryTransferContainers.push(transferContainer)
     }
 
     // Unpack IndustryNodes
     for (const saveIndustry of saveFactory.industries) {
-        const item = ITEMS[saveIndustry.item.name]
-        const industry = factory.createIndustry(item, saveIndustry.id)
+        const item = ITEMS[saveIndustry.item.name as keyof typeof ITEMS]
+        const industry = factory.createIndustry(item as Craftable, saveIndustry.id)
 
         // Add links
         for (const input of saveIndustry.inputContainers) {
@@ -242,7 +244,7 @@ export function deserialize(serializedFactory: string): FactoryGraph {
 
     // Unpack TransferNodes
     for (const saveTransferUnit of saveFactory.transferUnits) {
-        const item = ITEMS[saveTransferUnit.item.name]
+        const item = ITEMS[saveTransferUnit.item.name as keyof typeof ITEMS]
         const transferUnit = factory.createTransferUnit(item, saveTransferUnit.id)
 
         // Add links
