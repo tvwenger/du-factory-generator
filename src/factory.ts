@@ -434,13 +434,15 @@ export function buildFactory(
             }
         }
     }
-    /* Add transfer units to relocate byproducts */
+    // Add transfer units to relocate byproducts
     handleByproducts(factory)
     // Handle catalyst production
     handleCatalysts(factory)
-    /* Add transfer units and containers to handle industry link limit */
+    // Add catalyst production may have added more byproducts
+    handleByproducts(factory)
+    // Add transfer units and containers to handle industry link limit
     handleIndustryLinks(factory)
-    /* Sanity check for errors in factory */
+    // Sanity check for errors in factory
     sanityCheck(factory)
     return factory
 }
