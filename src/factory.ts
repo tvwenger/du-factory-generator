@@ -410,7 +410,7 @@ function sanityCheck(factory: FactoryGraph): void {
  */
 export function buildFactory(
     requirements: Map<Craftable, { count: number; maintain: number }>,
-    factory: FactoryGraph | undefined,
+    factory?: FactoryGraph,
 ): FactoryGraph {
     if (factory === undefined) {
         factory = new FactoryGraph()

@@ -631,7 +631,7 @@ export class FactoryGraph {
      * Add a container to the factory graph
      * @see {@link ContainerNode}
      */
-    createContainer(item: Item, id: string | undefined = undefined): ContainerNode {
+    createContainer(item: Item, id?: string): ContainerNode {
         const containers = this.getContainers(item)
         if (id === undefined) {
             id = `C${containers.size}`
@@ -648,7 +648,7 @@ export class FactoryGraph {
     createSplitContainer(
         item: Item,
         split: number,
-        id: string | undefined = undefined,
+        id?: string,
     ): ContainerNode {
         const containers = this.getContainers(item)
         if (id === undefined) {
@@ -665,7 +665,7 @@ export class FactoryGraph {
      */
     createTransferContainer(
         items: Item[],
-        id: string | undefined = undefined,
+        id?: string,
     ): TransferContainerNode {
         if (id === undefined) {
             id = `Trans Container${this.transferContainers.size}`
@@ -683,7 +683,7 @@ export class FactoryGraph {
         item: Craftable,
         outputRate: PerMinute,
         maintainedOutput: Quantity,
-        id: string | undefined = undefined,
+        id?: string,
     ): OutputNode {
         const containers = this.getContainers(item)
         if (id === undefined) {
