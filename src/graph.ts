@@ -36,19 +36,13 @@ export class ContainerNode {
      * Initialize a new ContainerNode
      * @param id Identfier for this container
      * @param item Item stored in this container
-     * @param factory The factory this container belongs to
      * @param split If not 1.0, the fraction of some consumer's input supplied
      * by this container. In some cases the
      * number of input links exceeds the limit, so we needed to split
      * the container in two (or more). To prevent an upstream backup,
      * split containers can only link to one industry.
      */
-    constructor(
-        readonly id: string,
-        readonly item: Item,
-        readonly factory: FactoryGraph,
-        readonly split: number,
-    ) {}
+    constructor(readonly id: string, readonly item: Item, readonly split: number) {}
 
     /**
      * Return a unique identifier for the node
@@ -93,19 +87,25 @@ export class ContainerNode {
     }
 
     /**
+     * Return the rate at which a given consumer is drawing from this container
+     */
+    egressTo(consumer: IndustryNode | TransferNode) {
+        if (this.consumers.has(consumer)) {
+            if (isIndustryNode(consumer)) {
+                return this.split * consumer.getInput(this.item)
+            } else {
+                return consumer.inflowRate(this)
+            }
+        }
+        return 0
+    }
+
+    /**
      * Return the rate at which the consumers are drawing from this container.
      */
     get egress(): PerMinute {
         return Array.from(this.consumers)
-            .map((consumer) => {
-                if (isIndustryNode(consumer)) {
-                    return this.split * consumer.getInput(this.item)
-                } else if (consumer.item === this.item) {
-                    return consumer.inflowRatePerContainer
-                } else {
-                    return 0
-                }
-            })
+            .map((consumer) => this.egressTo(consumer))
             .reduce((totalEgress, egress) => totalEgress + egress, 0)
     }
 
@@ -226,9 +226,8 @@ export class TransferContainerNode {
      * Initialize a new TransferContainerNode
      * @param id Identifier for this TransferContainer
      * @param items Items stored in this container
-     * @param factory The factory this container belongs to
      */
-    constructor(readonly id: string, readonly items: Item[], readonly factory: FactoryGraph) {}
+    constructor(readonly id: string, readonly items: Item[]) {}
 
     /**
      * Return a unique identifier for the node
@@ -339,22 +338,20 @@ export function isTransferContainerNode(
  * Factory output node
  */
 export class OutputNode extends ContainerNode {
+    outputRate: PerMinute
+    maintainedOutput: Quantity
+
     /**
      * Initialize a new OutputNode
      * @param id Node identifier
      * @param item Item stored in this container
      * @param outputRate Required production rate
      * @param maintainedOutput The number of items to maintain
-     * @param factory The factory this output belongs to
      */
-    constructor(
-        id: string,
-        item: Craftable,
-        readonly outputRate: PerMinute,
-        readonly maintainedOutput: Quantity,
-        factory: FactoryGraph,
-    ) {
-        super(id, item, factory, 1.0)
+    constructor(id: string, item: Craftable, outputRate: PerMinute, maintainedOutput: Quantity) {
+        super(id, item, 1.0)
+        this.outputRate = outputRate
+        this.maintainedOutput = maintainedOutput
     }
 
     get egress(): PerMinute {
@@ -364,6 +361,14 @@ export class OutputNode extends ContainerNode {
     get maintain(): Quantity {
         return super.maintain + this.maintainedOutput
     }
+}
+
+/**
+ * OutputNode type guard
+ * @param node Node to check
+ */
+export function isOutputNode(node: ContainerNode): node is OutputNode {
+    return node instanceof OutputNode
 }
 
 /**
@@ -379,9 +384,8 @@ export class IndustryNode {
      * Create a new industry node
      * @param id Industry identifier
      * @param item Item produced
-     * @param factory the FactoryGraph
      */
-    constructor(readonly id: string, item: Craftable, readonly factory: FactoryGraph) {
+    constructor(readonly id: string, item: Craftable) {
         this.recipe = findRecipe(item)
     }
 
@@ -485,6 +489,7 @@ export class TransferNode {
      * to a single container.
      */
     readonly inputs = new Set<ContainerNode>()
+    readonly rates = new Map<ContainerNode, PerMinute | undefined>()
     readonly transferRate = Infinity // TODO: transfer rate is not infinite
     output: ContainerNode | TransferContainerNode | undefined
 
@@ -492,9 +497,8 @@ export class TransferNode {
      * Initialize a new TransferNode
      * @param id Node identifier
      * @param item Item produced by this industry
-     * @param factory The factory which this transfer unit belongs to
      */
-    constructor(readonly id: string, readonly item: Item, readonly factory: FactoryGraph) {}
+    constructor(readonly id: string, readonly item: Item) {}
 
     /**
      * Return a unique identifier for the node
@@ -511,18 +515,19 @@ export class TransferNode {
     }
 
     /**
-     * Return the transfer rate into the output container
-     * This must be the minimum of
-     * (total consumption rate leaving output, maximum transfer unit rate)
+     * Return the transfer rate into the output container.
      */
     get outflowRate(): PerMinute {
         let consumptionRate = 0
         if (this.output !== undefined) {
             for (const consumer of this.output.consumers) {
-                if (consumer instanceof IndustryNode) {
+                if (isIndustryNode(consumer)) {
+                    // add the industry consumer input rate
                     consumptionRate += consumer.getInput(this.item)
                 } else {
-                    consumptionRate += consumer.inflowRatePerContainer
+                    // the only time we get here is when the output's consumer is a transfer unit,
+                    // in which case it is simply moving byproduct.
+                    consumptionRate += 0
                 }
             }
         }
@@ -530,19 +535,23 @@ export class TransferNode {
     }
 
     /**
-     * Return the transfer inflow rate per container, assuming the transfer unit
-     * draws equally from all inputs
+     * Return the transfer inflow rate for a given container,
      */
-    get inflowRatePerContainer(): PerMinute {
-        return this.outflowRate / this.inputs.size
+    inflowRate(container: ContainerNode): PerMinute {
+        if (this.rates.has(container) && this.rates.get(container) !== undefined) {
+            return this.rates.get(container)!
+        }
+        return 0
     }
 
     /**
      * Add an input container for an item
      * @param container Input container
+     * @param rate For transfers to transfer containers, rate at which original consumer industry requested product
      */
-    takeFrom(container: ContainerNode) {
+    takeFrom(container: ContainerNode, rate?: PerMinute) {
         this.inputs.add(container)
+        this.rates.set(container, rate)
         container.consumers.add(this)
     }
 
@@ -596,9 +605,12 @@ export class FactoryGraph {
      * Add an industry to the factory graph
      * @see {@link IndustryNode}
      */
-    createIndustry(item: Craftable): IndustryNode {
+    createIndustry(item: Craftable, id: string | undefined = undefined): IndustryNode {
         const industries = this.getIndustries(item)
-        const industry = new IndustryNode(`P${industries.size}`, item, this)
+        if (id === undefined) {
+            id = `P${industries.size}`
+        }
+        const industry = new IndustryNode(id, item)
         this.industries.add(industry)
         return industry
     }
@@ -607,9 +619,12 @@ export class FactoryGraph {
      * Add a transfer unit to the factory graph
      * @see {@link TransferNode}
      */
-    createTransferUnit(item: Item) {
+    createTransferUnit(item: Item, id: string | undefined = undefined) {
         const transfers = this.getTransferUnits(item)
-        const transfer = new TransferNode(`T${transfers.size}`, item, this)
+        if (id === undefined) {
+            id = `T${transfers.size}`
+        }
+        const transfer = new TransferNode(id, item)
         this.transferUnits.add(transfer)
         return transfer
     }
@@ -619,7 +634,7 @@ export class FactoryGraph {
      * @see {@link ContainerNode}
      */
     createTemporaryContainer(item: Item): ContainerNode {
-        const container = new ContainerNode("", item, this, 1.0)
+        const container = new ContainerNode("", item, 1.0)
         this.temporaryContainers.add(container)
         return container
     }
@@ -628,9 +643,12 @@ export class FactoryGraph {
      * Add a container to the factory graph
      * @see {@link ContainerNode}
      */
-    createContainer(item: Item): ContainerNode {
+    createContainer(item: Item, id?: string): ContainerNode {
         const containers = this.getContainers(item)
-        const container = new ContainerNode(`C${containers.size}`, item, this, 1.0)
+        if (id === undefined) {
+            id = `C${containers.size}`
+        }
+        const container = new ContainerNode(id, item, 1.0)
         this.containers.add(container)
         return container
     }
@@ -639,9 +657,12 @@ export class FactoryGraph {
      * Add a split container to the factory graph
      * @see {@link ContainerNode}
      */
-    createSplitContainer(item: Item, split: number): ContainerNode {
+    createSplitContainer(item: Item, split: number, id?: string): ContainerNode {
         const containers = this.getContainers(item)
-        const container = new ContainerNode(`C${containers.size}`, item, this, split)
+        if (id === undefined) {
+            id = `C${containers.size}`
+        }
+        const container = new ContainerNode(id, item, split)
         this.containers.add(container)
         return container
     }
@@ -650,12 +671,11 @@ export class FactoryGraph {
      * Add a transfer container to the factory graph
      * @see {@link TransferContainerNode}
      */
-    createTransferContainer(items: Item[]): TransferContainerNode {
-        const container = new TransferContainerNode(
-            `Trans Container${this.transferContainers.size}`,
-            items,
-            this,
-        )
+    createTransferContainer(items: Item[], id?: string): TransferContainerNode {
+        if (id === undefined) {
+            id = `Trans Container${this.transferContainers.size}`
+        }
+        const container = new TransferContainerNode(id, items)
         this.transferContainers.add(container)
         return container
     }
@@ -664,15 +684,17 @@ export class FactoryGraph {
      * Add an output node to the factory graph
      * @see {@link OutputNode}
      */
-    createOutput(item: Craftable, outputRate: PerMinute, maintainedOutput: Quantity): OutputNode {
+    createOutput(
+        item: Craftable,
+        outputRate: PerMinute,
+        maintainedOutput: Quantity,
+        id?: string,
+    ): OutputNode {
         const containers = this.getContainers(item)
-        const output = new OutputNode(
-            `C${containers.size}`,
-            item,
-            outputRate,
-            maintainedOutput,
-            this,
-        )
+        if (id === undefined) {
+            id = `C${containers.size}`
+        }
+        const output = new OutputNode(id, item, outputRate, maintainedOutput)
         this.containers.add(output)
         return output
     }
@@ -729,5 +751,17 @@ export class FactoryGraph {
             Array.from(items).some((item) => !node.items.includes(item)),
         )
         return new Set(transferContainers)
+    }
+
+    /**
+     * Return the set of all OutputNodes holding a given item
+     * @param item Item for which to find the OutputNodes
+     */
+    getOutputNodes(item: Item): Set<OutputNode> {
+        return new Set(
+            Array.from(this.containers)
+                .filter(isOutputNode)
+                .filter((node) => node.item === item),
+        )
     }
 }
