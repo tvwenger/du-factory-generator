@@ -16,6 +16,7 @@ import {
     isTransferContainerNode,
     MAX_CONTAINER_LINKS,
     MAX_INDUSTRY_LINKS,
+    OutputNode,
 } from "./graph"
 
 /**
@@ -418,8 +419,20 @@ export function buildFactory(
     for (const [item, { count, maintain }] of requirements) {
         const recipe = findRecipe(item)
         const rate = recipe.product.quantity / recipe.time
-        // Add an output node
-        const output = factory.createOutput(item, rate * count, maintain)
+        // check if there is already an output node for this item that we can use
+        let output: OutputNode | undefined
+        const outputs = factory.getOutputNodes(item)
+        for (const checkOutput of outputs) {
+            if (checkOutput.canAddIncomingLinks(count)) {
+                output = checkOutput
+                output.outputRate += rate * count
+                output.maintainedOutput += maintain
+            }
+        }
+        if (output === undefined) {
+            // add a new output node
+            output = factory.createOutput(item, rate * count, maintain)
+        }
 
         for (let i = 0; i < count; i++) {
             // Add industry, output to OutputNode

@@ -332,6 +332,9 @@ export function isTransferContainerNode(
  * Factory output node
  */
 export class OutputNode extends ContainerNode {
+    outputRate: PerMinute
+    maintainedOutput: Quantity
+
     /**
      * Initialize a new OutputNode
      * @param id Node identifier
@@ -339,13 +342,10 @@ export class OutputNode extends ContainerNode {
      * @param outputRate Required production rate
      * @param maintainedOutput The number of items to maintain
      */
-    constructor(
-        id: string,
-        item: Craftable,
-        readonly outputRate: PerMinute,
-        readonly maintainedOutput: Quantity,
-    ) {
+    constructor(id: string, item: Craftable, outputRate: PerMinute, maintainedOutput: Quantity) {
         super(id, item, 1.0)
+        this.outputRate = outputRate
+        this.maintainedOutput = maintainedOutput
     }
 
     get egress(): PerMinute {
@@ -645,11 +645,7 @@ export class FactoryGraph {
      * Add a split container to the factory graph
      * @see {@link ContainerNode}
      */
-    createSplitContainer(
-        item: Item,
-        split: number,
-        id?: string,
-    ): ContainerNode {
+    createSplitContainer(item: Item, split: number, id?: string): ContainerNode {
         const containers = this.getContainers(item)
         if (id === undefined) {
             id = `C${containers.size}`
@@ -663,10 +659,7 @@ export class FactoryGraph {
      * Add a transfer container to the factory graph
      * @see {@link TransferContainerNode}
      */
-    createTransferContainer(
-        items: Item[],
-        id?: string,
-    ): TransferContainerNode {
+    createTransferContainer(items: Item[], id?: string): TransferContainerNode {
         if (id === undefined) {
             id = `Trans Container${this.transferContainers.size}`
         }
@@ -746,5 +739,17 @@ export class FactoryGraph {
             Array.from(items).some((item) => !node.items.includes(item)),
         )
         return new Set(transferContainers)
+    }
+
+    /**
+     * Return the set of all OutputNodes holding a given item
+     * @param item Item for which to find the OutputNodes
+     */
+    getOutputNodes(item: Item): Set<OutputNode> {
+        return new Set(
+            Array.from(this.containers)
+                .filter(isOutputNode)
+                .filter((node) => node.item === item),
+        )
     }
 }
