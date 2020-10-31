@@ -493,11 +493,9 @@ export function buildFactory(
             }
         }
     }
-    // Add transfer units to relocate byproducts
-    handleByproducts(factory)
     // Handle catalyst production
     handleCatalysts(factory)
-    // Add catalyst production may have added more byproducts
+    // Add transfer units to relocate byproducts
     handleByproducts(factory)
     // Add transfer units and containers to handle industry link limit
     handleIndustryLinks(factory)
