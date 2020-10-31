@@ -51,6 +51,7 @@ interface SaveTransferNode {
     id: string
     item: Item
     inputs: number[]
+    rates: (number | undefined)[]
     outputContainerNode: number | undefined
     outputTransferContainerNode: number | undefined
 }
@@ -143,12 +144,15 @@ export function serialize(factory: FactoryGraph): string {
      * Save TransferNodes by replacing cyclic references with indicies
      */
     for (const transferUnit of factoryTransferUnits) {
+        const inputs = Array.from(transferUnit.inputs)
+            .map((node) => factoryContainers.indexOf(node))
+            .sort()
+        const rates = inputs.map((input) => transferUnit.rates.get(factoryContainers[input]))
         const saveTransferUnit: SaveTransferNode = {
             id: transferUnit.id,
             item: transferUnit.item,
-            inputs: Array.from(transferUnit.inputs)
-                .map((node) => factoryContainers.indexOf(node))
-                .sort(),
+            inputs: inputs,
+            rates: rates,
             outputContainerNode:
                 transferUnit.output !== undefined && isContainerNode(transferUnit.output)
                     ? factoryContainers.indexOf(transferUnit.output)
@@ -248,8 +252,8 @@ export function deserialize(serializedFactory: string): FactoryGraph {
         const transferUnit = factory.createTransferUnit(item, saveTransferUnit.id)
 
         // Add links
-        for (const input of saveTransferUnit.inputs) {
-            transferUnit.takeFrom(factoryContainers[input])
+        for (const [input_i, input] of saveTransferUnit.inputs.entries()) {
+            transferUnit.takeFrom(factoryContainers[input], saveTransferUnit.rates[input_i])
         }
         if (saveTransferUnit.outputContainerNode !== undefined) {
             transferUnit.outputTo(factoryContainers[saveTransferUnit.outputContainerNode])

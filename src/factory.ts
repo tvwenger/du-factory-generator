@@ -17,6 +17,7 @@ import {
     MAX_CONTAINER_LINKS,
     MAX_INDUSTRY_LINKS,
     OutputNode,
+    isContainerNode,
 } from "./graph"
 
 /**
@@ -295,19 +296,22 @@ function handleIndustryLinks(factory: FactoryGraph): void {
         if (exceedingLinks > 0) {
             let transferContainer: TransferContainerNode | undefined
 
-            // Get all transfer containers containing a subset of the industry ingredients
-            const transferContainers = factory.getTransferContainers(new Set(ingredients))
-            for (const checkTransferContainer of transferContainers) {
-                // Check if this transfer container has at least exceedingLinks+1 items
-                // +1 because we need to remove one link to make space for TransferContainerNode
-                if (checkTransferContainer.items.length < exceedingLinks + 1) {
+            // Check if this industry is already fed by a transfer container
+            const industryTransferContainers = Array.from(industry.inputs).filter(
+                isTransferContainerNode,
+            )
+            for (const checkTransferContainer of industryTransferContainers) {
+                // Get the links to this industry that can be moved to this transfer container
+                const movingLinks = Array.from(industry.inputs)
+                    .filter(isContainerNode)
+                    .filter((node) => checkTransferContainer.items.includes(node.item))
+
+                // Check that all transfer container items are links
+                if (movingLinks.length !== checkTransferContainer.items.length) {
                     continue
                 }
-                // Check if we can add an outgoing link from this TransferContainerNode
-                if (!checkTransferContainer.canAddOutgoingLinks(1)) {
-                    continue
-                }
-                // Check if we can add one ingoing link to each transfer unit on this TransferContainerNode
+
+                // Check that all transfer container input transfer units can have one incoming link
                 if (
                     Array.from(checkTransferContainer.producers).some(
                         (node) => !node.canAddIncomingLinks(1),
@@ -315,9 +319,49 @@ function handleIndustryLinks(factory: FactoryGraph): void {
                 ) {
                     continue
                 }
+
                 // good
                 transferContainer = checkTransferContainer
                 break
+            }
+
+            if (transferContainer === undefined) {
+                // Check if there exists another transfer container from which we can feed
+                const transferContainers = factory.getTransferContainers(new Set(ingredients))
+                for (const checkTransferContainer of transferContainers) {
+                    // Check if thi stransfer container has at least exceedingLinks+1 items
+                    // +1 because we need to remove one link to make space for this transfer container
+                    if (checkTransferContainer.items.length < exceedingLinks + 1) {
+                        continue
+                    }
+
+                    // Check if we can add an outgoing link from this transfer continaer
+                    if (!checkTransferContainer.canAddOutgoingLinks(1)) {
+                        continue
+                    }
+
+                    // Check that all transfer container input transfer units can have one incoming link
+                    if (
+                        Array.from(checkTransferContainer.producers).some(
+                            (node) => !node.canAddIncomingLinks(1),
+                        )
+                    ) {
+                        continue
+                    }
+
+                    // Check that all transfer container input transfer units can have one incoming link
+                    if (
+                        Array.from(checkTransferContainer.producers).some(
+                            (node) => !node.canAddIncomingLinks(1),
+                        )
+                    ) {
+                        continue
+                    }
+
+                    // good
+                    transferContainer = checkTransferContainer
+                    break
+                }
             }
 
             // Create a new TransferContainerNode if necessary
@@ -326,6 +370,7 @@ function handleIndustryLinks(factory: FactoryGraph): void {
                 // +1 because we need to remove one link to make space for TransferContainerNode
                 const items = ingredients.slice(0, exceedingLinks + 1)
                 transferContainer = factory.createTransferContainer(items)
+
                 // Add transfer units
                 for (const item of items) {
                     const transferUnit = factory.createTransferUnit(item)
@@ -342,9 +387,10 @@ function handleIndustryLinks(factory: FactoryGraph): void {
                         continue
                     }
                     if (container.item === transferUnit.item) {
+                        const rate = container.egressTo(industry)
                         container.consumers.delete(industry)
                         industry.inputs.delete(container)
-                        transferUnit.takeFrom(container)
+                        transferUnit.takeFrom(container, rate)
                         check = true
                         break
                     }

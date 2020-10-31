@@ -87,19 +87,25 @@ export class ContainerNode {
     }
 
     /**
+     * Return the rate at which a given consumer is drawing from this container
+     */
+    egressTo(consumer: IndustryNode | TransferNode) {
+        if (this.consumers.has(consumer)) {
+            if (isIndustryNode(consumer)) {
+                return this.split * consumer.getInput(this.item)
+            } else {
+                return consumer.inflowRate(this)
+            }
+        }
+        return 0
+    }
+
+    /**
      * Return the rate at which the consumers are drawing from this container.
      */
     get egress(): PerMinute {
         return Array.from(this.consumers)
-            .map((consumer) => {
-                if (isIndustryNode(consumer)) {
-                    return this.split * consumer.getInput(this.item)
-                } else if (consumer.item === this.item) {
-                    return consumer.inflowRatePerContainer
-                } else {
-                    return 0
-                }
-            })
+            .map((consumer) => this.egressTo(consumer))
             .reduce((totalEgress, egress) => totalEgress + egress, 0)
     }
 
@@ -483,6 +489,7 @@ export class TransferNode {
      * to a single container.
      */
     readonly inputs = new Set<ContainerNode>()
+    readonly rates = new Map<ContainerNode, PerMinute | undefined>()
     readonly transferRate = Infinity // TODO: transfer rate is not infinite
     output: ContainerNode | TransferContainerNode | undefined
 
@@ -508,18 +515,19 @@ export class TransferNode {
     }
 
     /**
-     * Return the transfer rate into the output container
-     * This must be the minimum of
-     * (total consumption rate leaving output, maximum transfer unit rate)
+     * Return the transfer rate into the output container.
      */
     get outflowRate(): PerMinute {
         let consumptionRate = 0
         if (this.output !== undefined) {
             for (const consumer of this.output.consumers) {
-                if (consumer instanceof IndustryNode) {
+                if (isIndustryNode(consumer)) {
+                    // add the industry consumer input rate
                     consumptionRate += consumer.getInput(this.item)
                 } else {
-                    consumptionRate += consumer.inflowRatePerContainer
+                    // the only time we get here is when the output's consumer is a transfer unit,
+                    // in which case it is simply moving byproduct.
+                    consumptionRate += 0
                 }
             }
         }
@@ -527,19 +535,23 @@ export class TransferNode {
     }
 
     /**
-     * Return the transfer inflow rate per container, assuming the transfer unit
-     * draws equally from all inputs
+     * Return the transfer inflow rate for a given container,
      */
-    get inflowRatePerContainer(): PerMinute {
-        return this.outflowRate / this.inputs.size
+    inflowRate(container: ContainerNode): PerMinute {
+        if (this.rates.has(container) && this.rates.get(container) !== undefined) {
+            return this.rates.get(container)!
+        }
+        return 0
     }
 
     /**
      * Add an input container for an item
      * @param container Input container
+     * @param rate For transfers to transfer containers, rate at which original consumer industry requested product
      */
-    takeFrom(container: ContainerNode) {
+    takeFrom(container: ContainerNode, rate?: PerMinute) {
         this.inputs.add(container)
+        this.rates.set(container, rate)
         container.consumers.add(this)
     }
 
