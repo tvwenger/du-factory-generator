@@ -10,7 +10,7 @@ import { Craftable } from "../items"
 import { FactoryState } from "./factory"
 import { buildFactory } from "../factory"
 import { FactoryGraph } from "../graph"
-import { FactoryInstruction, generateInstructions } from "./render-factory"
+import { FactoryInstruction, generateInstructions } from "./factory-instruction"
 
 /**
  * Properties of the FactoryCount component

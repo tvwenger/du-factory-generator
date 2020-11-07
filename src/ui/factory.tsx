@@ -12,7 +12,8 @@ import { Button, Upload, Row, Col } from "antd"
 import { FactorySelect } from "./factory-select"
 import { FactoryCount } from "./factory-count"
 import { FactoryGraph, isOutputNode } from "../graph"
-import { FactoryInstruction, generateInstructions, FactoryVisualization } from "./render-factory"
+import { FactoryVisualization } from "./render-factory"
+import { FactoryInstruction, generateInstructions } from "./factory-instruction"
 import { deserialize } from "../serialize"
 
 export enum FactoryState {
