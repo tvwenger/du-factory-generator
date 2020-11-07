@@ -1,6 +1,9 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer")
+const TerserJSPlugin = require("terser-webpack-plugin")
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 const path = require("path")
 
 module.exports = ({ ifDev, ifProd }) => ({
@@ -36,8 +39,23 @@ module.exports = ({ ifDev, ifProd }) => ({
                 use: "ts-loader",
             },
             {
+                test: /\.scss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    {
+                        loader: "css-loader",
+                        options: {
+                            modules: {
+                                exportLocalsConvention: "camelCase",
+                            },
+                        },
+                    },
+                    "sass-loader",
+                ],
+            },
+            {
                 test: /\.css$/,
-                use: ["style-loader", "css-loader"],
+                use: [MiniCssExtractPlugin.loader, "css-loader"],
             },
         ],
     },
@@ -46,6 +64,9 @@ module.exports = ({ ifDev, ifProd }) => ({
         new HtmlWebpackPlugin({
             filename: "index.html",
             template: "./public/index.html",
+        }),
+        new MiniCssExtractPlugin({
+            filename: "[name].[hash].css",
         }),
         new BundleAnalyzerPlugin({
             analyzerMode: "static",
@@ -62,5 +83,6 @@ module.exports = ({ ifDev, ifProd }) => ({
                 },
             },
         },
+        minimizer: ifProd([new TerserJSPlugin({}), new OptimizeCSSAssetsPlugin({})]),
     },
 })
