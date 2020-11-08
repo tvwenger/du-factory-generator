@@ -372,7 +372,7 @@ export class OutputNode extends ContainerNode {
  * OutputNode type guard
  * @param node Node to check
  */
-export function isOutputNode(node: ContainerNode): node is OutputNode {
+export function isOutputNode(node: ContainerNode | TransferContainerNode): node is OutputNode {
     return node instanceof OutputNode
 }
 

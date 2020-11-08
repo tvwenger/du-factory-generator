@@ -14,6 +14,7 @@ import {
     isIndustryNode,
     isTransferNode,
     isTransferContainerNode,
+    isOutputNode,
 } from "../graph"
 import {
     SIZE,
@@ -243,6 +244,26 @@ export class FactoryInstruction {
         // add container
         const x = start_x + 3 * SIZE
         const container_y = start_y + (producer_y - start_y) / 2
+        let ingress = 0
+        let egress = 0
+        let unit = "sec"
+        if (isContainerNode(this.container)) {
+            ingress = this.container.ingress * 60.0
+            egress = this.container.egress * 60.0
+            unit = "min"
+            if (egress < 1) {
+                ingress *= 60.0
+                egress *= 60.0
+                unit = "hour"
+            }
+            if (egress < 1) {
+                ingress *= 24.0
+                egress *= 24.0
+                unit = "day"
+            }
+            ingress = Math.round(ingress * 100) / 100
+            egress = Math.round(egress * 100) / 100
+        }
         element = (
             <React.Fragment key={this.container.name}>
                 {this.container.producers.size > 0 && (
@@ -264,8 +285,7 @@ export class FactoryInstruction {
                             dominantBaseline="auto"
                             textAnchor="middle"
                         >
-                            {isContainerNode(this.container) &&
-                                Math.round(this.container.ingress * 100) / 100}
+                            {isContainerNode(this.container) && ingress + "/" + unit}
                         </text>
                     </React.Fragment>
                 )}
@@ -275,7 +295,7 @@ export class FactoryInstruction {
                     width={SIZE}
                     height={SIZE}
                     fill={this.highlightDiff && this.container.changed ? "red" : "gray"}
-                    stroke="red"
+                    stroke={isOutputNode(this.container) ? "blue" : "red"}
                     strokeWidth="3"
                 />
                 <text
@@ -329,8 +349,7 @@ export class FactoryInstruction {
                             dominantBaseline="auto"
                             textAnchor="middle"
                         >
-                            {isContainerNode(this.container) &&
-                                Math.round(this.container.egress * 100) / 100}
+                            {isContainerNode(this.container) && egress + "/" + unit}
                         </text>
                     </React.Fragment>
                 )}
