@@ -18,6 +18,7 @@ import {
     MAX_INDUSTRY_LINKS,
     OutputNode,
     isContainerNode,
+    isTransferNode,
 } from "./graph"
 import { equals } from "ramda"
 
@@ -62,9 +63,25 @@ function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerN
         additionalIndustries = Math.ceil(
             (rate + container.egress - container.ingress) / (recipe.product.quantity / recipe.time),
         )
+        // if this container holds catalyst byproducts and already has
+        // a catalyst transfer unit, then we must check that the transfer
+        // unit output can add links to these new industries
+        let catalystCheck = true
+        for (const consumer of container.consumers) {
+            if (isTransferNode(consumer) && isCatalyst(consumer.item)) {
+                if (consumer.output === undefined) {
+                    console.log(consumer)
+                    throw new Error("Transfer unit has no output?")
+                }
+                if (!consumer.output.canAddOutgoingLinks(additionalIndustries)) {
+                    catalystCheck = false
+                }
+            }
+        }
         if (
             container.canAddIncomingLinks(additionalIndustries) &&
-            container.canAddOutgoingLinks(1)
+            container.canAddOutgoingLinks(1) &&
+            catalystCheck
         ) {
             outputs.push(container)
             break
@@ -176,7 +193,7 @@ function handleCatalysts(factory: FactoryGraph): void {
         )
 
         // Create a map of containers holding a catalyst byproduct, and
-        // all containers from which that catalyst byproduct originated
+        // all temproary catalyst containers from which that catalyst byproduct originated
         const catalystFlow: Map<ContainerNode, ContainerNode[]> = new Map()
         for (const container of catalystContainers) {
             const consumers = Array.from(container.consumers)
@@ -207,21 +224,47 @@ function handleCatalysts(factory: FactoryGraph): void {
         for (const [endingContainer, startingContainers] of catalystFlow) {
             let transferUnit: TransferNode | undefined
 
-            // Get transfer nodes already moving this catalyst
-            const transferUnits = factory.getTransferUnits(catalyst)
-
-            // Check for existing transfer unit
-            for (const checkTransferUnit of transferUnits) {
-                if (checkTransferUnit.output === undefined) {
-                    console.log(checkTransferUnit)
-                    throw new Error("Transfer unit has no output?")
+            // check if there is already a transfer unit for this container
+            // and the transfer unit output can handle more consumers
+            let hasTransferUnit = false
+            for (const consumer of endingContainer.consumers) {
+                if (isTransferNode(consumer) && consumer.item === catalyst) {
+                    hasTransferUnit = true
+                    if (consumer.output === undefined) {
+                        console.log(consumer)
+                        throw new Error("Transfer unit has no output?")
+                    }
+                    if (consumer.output.canAddOutgoingLinks(startingContainers.length)) {
+                        transferUnit = consumer
+                        break
+                    }
                 }
-                if (
-                    checkTransferUnit.canAddIncomingLinks(1) &&
-                    checkTransferUnit.output.canAddOutgoingLinks(startingContainers.length)
-                ) {
-                    transferUnit = checkTransferUnit
-                    break
+            }
+
+            // sanity check: prevent having two transfer units drawing from the same container
+            if (transferUnit === undefined && hasTransferUnit) {
+                console.log(endingContainer)
+                throw new Error("Container already has a transfer unit?")
+            }
+
+            // look for existing transfer units
+            if (transferUnit === undefined) {
+                // Get transfer nodes already moving this catalyst
+                const transferUnits = factory.getTransferUnits(catalyst)
+
+                // Check for existing transfer unit
+                for (const checkTransferUnit of transferUnits) {
+                    if (checkTransferUnit.output === undefined) {
+                        console.log(checkTransferUnit)
+                        throw new Error("Transfer unit has no output?")
+                    }
+                    if (
+                        checkTransferUnit.canAddIncomingLinks(1) &&
+                        checkTransferUnit.output.canAddOutgoingLinks(startingContainers.length)
+                    ) {
+                        transferUnit = checkTransferUnit
+                        break
+                    }
                 }
             }
 

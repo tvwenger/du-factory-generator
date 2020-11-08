@@ -54,6 +54,7 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
     const [maintainValue, setMaintainValue] = useMap<Craftable, number>()
     // the FactoryGraph and a flag to show differences
     const [showDifferences, setShowDifferences] = React.useState<boolean>(false)
+    const [startingFactory, setStartingFactory] = React.useState<FactoryGraph>()
     const [factory, setFactory] = React.useState<FactoryGraph>()
     // parse the industry and maintain values, generate requirements
     const getIndustryCount = (item: Craftable) => industryCount.get(item) || 1
@@ -71,7 +72,7 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
             return (
                 <React.Fragment>
                     <Button onClick={() => setAppState(AppState.HOME)}>Back</Button>
-                    <ExistingFactorySummary factory={factory} />
+                    <ExistingFactorySummary factory={startingFactory} />
                     <FactorySelect
                         setFactoryState={setFactoryState}
                         items={items}
@@ -94,7 +95,7 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                                 const factoryJSON = reader.result as string
                                 const factory = deserialize(factoryJSON)
                                 setShowDifferences(true)
-                                setFactory(factory)
+                                setStartingFactory(factory)
                                 setFactoryState(FactoryState.SELECT)
                             }
                             reader.readAsText(file)
@@ -110,7 +111,7 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
             return (
                 <React.Fragment>
                     <Button onClick={() => setFactoryState(FactoryState.SELECT)}>Back</Button>
-                    <ExistingFactorySummary factory={factory} />
+                    <ExistingFactorySummary factory={startingFactory} />
                     <FactoryCount
                         selection={selection}
                         setFactoryState={setFactoryState}
@@ -119,7 +120,7 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                         setMaintainValue={setMaintainValue}
                         getMaintainValue={getMaintainValue}
                         getRequirements={getRequirements}
-                        factory={factory}
+                        startingFactory={startingFactory}
                         setFactory={setFactory}
                         setFactoryInstructions={setFactoryInstructions}
                         showDifferences={showDifferences}
