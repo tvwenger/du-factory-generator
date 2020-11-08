@@ -1,0 +1,223 @@
+/**
+ * ui/render-factory.ts
+ * React component for visualizing a factory graph
+ * lgfrbcsgo & Nikolaus - October 2020
+ */
+
+import * as React from "react"
+import { renderToStaticMarkup } from "react-dom/server"
+import { Button } from "antd"
+import { UncontrolledReactSVGPanZoom } from "react-svg-pan-zoom"
+import { isContainerNode, isTransferContainerNode } from "../graph"
+import { FactoryInstruction } from "./factory-instruction"
+import { FONTSIZE, FactoryVisualizationComponentProps } from "./render-factory"
+
+/**
+ * Component for visualizing factory graph as a large map
+ * @param props {@link FactoryVisualizationComponentProps}
+ */
+export function FactoryMap({ instructions }: FactoryVisualizationComponentProps) {
+    // get inner SVG
+    const [innerSVG, width, height] = React.useMemo(() => generateInnerSVG(instructions), [
+        instructions,
+    ])
+
+    function prepareDownload() {
+        const canvas = document.createElement("canvas")
+        canvas.width = width
+        canvas.height = height
+        const ctx = canvas.getContext("2d")!
+        const svg = (
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height={height}
+                width={width}
+                style={{ backgroundColor: "white" }}
+            >
+                {innerSVG}
+            </svg>
+        )
+        const svgBlob = new Blob([renderToStaticMarkup(svg)], {
+            type: "image/svg+xml;charset=utf-8",
+        })
+        const DOMURL = window.URL || window.webkitURL
+        const svgURL = DOMURL.createObjectURL(svgBlob)
+        const img = new Image()
+        img.onload = () => {
+            ctx.drawImage(img, 0, 0)
+            DOMURL.revokeObjectURL(svgURL)
+            triggerDownload(canvas)
+        }
+        img.src = svgURL
+    }
+
+    function triggerDownload(canvas: HTMLCanvasElement) {
+        const imgURI = canvas.toDataURL("image/png")
+        const link = document.createElement("a")
+        link.download = "factory-map.png"
+        link.href = imgURI
+        document.body.appendChild(link)
+        link.click()
+        link.remove()
+        canvas.remove()
+    }
+
+    return (
+        <React.Fragment>
+            <Button onClick={prepareDownload}>Download Image</Button>
+            <div style={{ border: "1px solid black", width: 0.95 * window.innerWidth + 2 }}>
+                <UncontrolledReactSVGPanZoom
+                    width={0.95 * window.innerWidth}
+                    height={window.innerHeight - 100}
+                >
+                    <svg height={height} width={width}>
+                        {innerSVG}
+                    </svg>
+                </UncontrolledReactSVGPanZoom>
+            </div>
+        </React.Fragment>
+    )
+}
+
+/**
+ * Generate SVG inner components, determine SVG dimensions
+ * @param instructions the Factory instructions
+ */
+export function generateInnerSVG(
+    instructions: FactoryInstruction[],
+): [JSX.Element, number, number] {
+    // keep track of edges of each section
+    let start_x = 100
+    let start_y = 100
+
+    // keep track of the top-left corner where we are currently placing items
+    let x = start_x
+    let y = start_y
+
+    // keep track of maximum width and height of instructions
+    let max_x = start_x
+    let max_y = start_y
+
+    // keep track of the index of the first instruction in this section
+    let section_i = 0
+
+    // keep track of the maxInputWidth of the first instruction in each section
+    let maxInputWidth = instructions[0].maxInputWidth
+
+    const elements: JSX.Element[] = []
+    for (const [instruction_i, instruction] of instructions.entries()) {
+        const translate =
+            "translate(" + (x + maxInputWidth - instruction.maxInputWidth) + "," + y + ")"
+        const element = (
+            <g key={instruction.container.name + "group"} transform={translate}>
+                {instruction.render()}
+            </g>
+        )
+        elements.push(element)
+
+        y += instruction.height
+        max_y = Math.max(y, max_y)
+
+        // check if we've reached the end of this section
+        let endSection = false
+        let endFactory = false
+        let sectionWidth = 0
+        let nextInstruction: FactoryInstruction | undefined
+        if (instruction_i < instructions.length - 1) {
+            nextInstruction = instructions[instruction_i + 1]
+            if (
+                (isContainerNode(instruction.container) &&
+                    !isContainerNode(nextInstruction.container)) ||
+                (!isContainerNode(instruction.container) &&
+                    isContainerNode(nextInstruction.container)) ||
+                (isContainerNode(instruction.container) &&
+                    isContainerNode(nextInstruction.container) &&
+                    (instruction.container.item.category !=
+                        nextInstruction.container.item.category ||
+                        instruction.container.item.tier != nextInstruction.container.item.tier))
+            ) {
+                endSection = true
+            }
+        } else {
+            // end of factory
+            endSection = true
+            endFactory = true
+        }
+
+        // Add section title
+        if (endSection) {
+            //end of section
+            sectionWidth = Math.max(
+                ...instructions
+                    .slice(section_i, instruction_i + 1)
+                    .map((instruction) => instruction.width),
+            )
+            const translate = "translate(" + (x + sectionWidth / 2) + "," + start_y / 2 + ")"
+            const element = (
+                <g key={"sectionheader" + section_i} transform={translate}>
+                    <text
+                        x={0}
+                        y={0}
+                        fill="black"
+                        fontSize={2 * FONTSIZE}
+                        fontWeight="bold"
+                        dominantBaseline="middle"
+                        textAnchor="middle"
+                    >
+                        {isContainerNode(instruction.container) && (
+                            <React.Fragment>
+                                <tspan x="0" dy="1em">
+                                    {instruction.container.item.category}
+                                </tspan>
+                                <tspan x="0" dy="1em">
+                                    {instruction.container.item.tier}
+                                </tspan>
+                            </React.Fragment>
+                        )}
+                        {isTransferContainerNode(instruction.container) && (
+                            <React.Fragment>
+                                <tspan x="0" dy="1em">
+                                    Transfer
+                                </tspan>
+                                <tspan x="0" dy="1em">
+                                    Containers
+                                </tspan>
+                            </React.Fragment>
+                        )}
+                    </text>
+                </g>
+            )
+            elements.push(element)
+        }
+
+        if (endFactory) {
+            // save current x position
+            max_x =
+                x +
+                Math.max(
+                    ...instructions
+                        .slice(section_i, instruction_i + 1)
+                        .map((instruction) => instruction.width),
+                )
+        } else if (endSection) {
+            // move to next section
+            start_x += sectionWidth
+            start_y = 100
+            x = start_x
+            y = start_y
+            section_i = instruction_i + 1
+            maxInputWidth = nextInstruction!.maxInputWidth
+        }
+    }
+
+    const element = (
+        <React.Fragment>
+            <marker id="arrowhead" markerWidth="5" markerHeight="4" refX="0" refY="2" orient="auto">
+                <polygon points="0 0, 5 2, 0 4" />
+            </marker>
+            {elements}
+        </React.Fragment>
+    )
+
+    return [element, max_x, max_y]
+}

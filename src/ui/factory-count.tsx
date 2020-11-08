@@ -10,7 +10,7 @@ import { Craftable } from "../items"
 import { FactoryState } from "./factory"
 import { buildFactory } from "../factory"
 import { FactoryGraph } from "../graph"
-import { FactoryInstruction, generateInstructions } from "./render-factory"
+import { FactoryInstruction, generateInstructions } from "./factory-instruction"
 
 /**
  * Properties of the FactoryCount component
@@ -68,6 +68,9 @@ interface FactoryCountProps {
      * @param factoryInstructions the FactoryInstructions
      */
     setFactoryInstructions: (factory: FactoryInstruction[]) => void
+
+    // flag to show differences from original factory
+    showDifferences: boolean
 }
 
 /**
@@ -109,7 +112,9 @@ export function FactoryCount(props: FactoryCountProps) {
                 onClick={() => {
                     const newFactory = buildFactory(props.getRequirements(), props.factory)
                     props.setFactory(newFactory)
-                    props.setFactoryInstructions(generateInstructions(newFactory))
+                    props.setFactoryInstructions(
+                        generateInstructions(newFactory, props.showDifferences),
+                    )
                     props.setFactoryState(FactoryState.RENDER)
                 }}
             >

@@ -12,7 +12,8 @@ import { Button, Upload, Row, Col } from "antd"
 import { FactorySelect } from "./factory-select"
 import { FactoryCount } from "./factory-count"
 import { FactoryGraph, isOutputNode } from "../graph"
-import { FactoryInstruction, generateInstructions, FactoryVisualization } from "./render-factory"
+import { FactoryVisualization } from "./render-factory"
+import { FactoryInstruction, generateInstructions } from "./factory-instruction"
 import { deserialize } from "../serialize"
 
 export enum FactoryState {
@@ -51,7 +52,8 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
     const [selection, setSelection] = React.useState<Craftable[]>([])
     const [industryCount, setIndustryCount] = useMap<Craftable, number>()
     const [maintainValue, setMaintainValue] = useMap<Craftable, number>()
-    // the FactoryGraph
+    // the FactoryGraph and a flag to show differences
+    const [showDifferences, setShowDifferences] = React.useState<boolean>(false)
     const [factory, setFactory] = React.useState<FactoryGraph>()
     // parse the industry and maintain values, generate requirements
     const getIndustryCount = (item: Craftable) => industryCount.get(item) || 1
@@ -91,8 +93,8 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                             reader.onload = () => {
                                 const factoryJSON = reader.result as string
                                 const factory = deserialize(factoryJSON)
+                                setShowDifferences(true)
                                 setFactory(factory)
-                                setFactoryInstructions(generateInstructions(factory))
                                 setFactoryState(FactoryState.SELECT)
                             }
                             reader.readAsText(file)
@@ -120,6 +122,7 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                         factory={factory}
                         setFactory={setFactory}
                         setFactoryInstructions={setFactoryInstructions}
+                        showDifferences={showDifferences}
                     />
                 </React.Fragment>
             )

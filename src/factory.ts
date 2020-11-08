@@ -19,6 +19,7 @@ import {
     OutputNode,
     isContainerNode,
 } from "./graph"
+import { equals } from "ramda"
 
 /**
  * Add to the factory graph all nodes required to increase production of an item by a given rate.
@@ -501,5 +502,20 @@ export function buildFactory(
     handleIndustryLinks(factory)
     // Sanity check for errors in factory
     sanityCheck(factory)
+    // update container changed state if maintain or size changed
+    for (const container of factory.containers) {
+        if (
+            container.originalMaintain !== undefined &&
+            container.originalMaintain !== container.maintain
+        ) {
+            container.changed = true
+        }
+        if (
+            container.originalContainers !== undefined &&
+            !equals([...container.originalContainers], [...container.containers])
+        ) {
+            container.changed = true
+        }
+    }
     return factory
 }

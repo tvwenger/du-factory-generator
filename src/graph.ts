@@ -31,6 +31,9 @@ export type FactoryNode = ContainerNode | TransferContainerNode | IndustryNode |
 export class ContainerNode {
     readonly producers = new Set<IndustryNode | TransferNode>()
     readonly consumers = new Set<IndustryNode | TransferNode>()
+    changed: boolean = false
+    originalMaintain: number | undefined
+    originalContainers: ContainerElement[] | undefined
 
     /**
      * Initialize a new ContainerNode
@@ -221,6 +224,7 @@ export function isContainerNode(
 export class TransferContainerNode {
     readonly producers = new Set<TransferNode>()
     readonly consumers = new Set<IndustryNode>()
+    changed = false
 
     /**
      * Initialize a new TransferContainerNode
@@ -340,6 +344,7 @@ export function isTransferContainerNode(
 export class OutputNode extends ContainerNode {
     outputRate: PerMinute
     maintainedOutput: Quantity
+    changed = false
 
     /**
      * Initialize a new OutputNode
@@ -379,6 +384,7 @@ export class IndustryNode {
     readonly inputs: Set<ContainerNode | TransferContainerNode> = new Set()
     readonly recipe: Recipe
     output: ContainerNode | undefined
+    changed = false
 
     /**
      * Create a new industry node
@@ -420,6 +426,8 @@ export class IndustryNode {
      * @param container Input container
      */
     takeFrom(container: ContainerNode | TransferContainerNode) {
+        this.changed = true
+        container.changed = true
         this.inputs.add(container)
         container.consumers.add(this)
     }
@@ -429,7 +437,10 @@ export class IndustryNode {
      * @param container Output container
      */
     outputTo(container: ContainerNode) {
+        this.changed = true
+        container.changed = true
         if (this.output) {
+            this.output.changed = true
             this.output.producers.delete(this)
         }
         this.output = container
@@ -492,6 +503,7 @@ export class TransferNode {
     readonly rates = new Map<ContainerNode, PerMinute | undefined>()
     readonly transferRate = Infinity // TODO: transfer rate is not infinite
     output: ContainerNode | TransferContainerNode | undefined
+    changed = false
 
     /**
      * Initialize a new TransferNode
@@ -550,6 +562,8 @@ export class TransferNode {
      * @param rate For transfers to transfer containers, rate at which original consumer industry requested product
      */
     takeFrom(container: ContainerNode, rate?: PerMinute) {
+        this.changed = true
+        container.changed = true
         this.inputs.add(container)
         this.rates.set(container, rate)
         container.consumers.add(this)
@@ -560,7 +574,10 @@ export class TransferNode {
      * @param container Output container
      */
     outputTo(container: ContainerNode | TransferContainerNode) {
+        this.changed = true
+        container.changed = true
         if (this.output) {
+            this.output.changed = true
             this.output.producers.delete(this)
         }
         this.output = container
@@ -611,6 +628,7 @@ export class FactoryGraph {
             id = `P${industries.size}`
         }
         const industry = new IndustryNode(id, item)
+        industry.changed = true
         this.industries.add(industry)
         return industry
     }
@@ -625,6 +643,7 @@ export class FactoryGraph {
             id = `T${transfers.size}`
         }
         const transfer = new TransferNode(id, item)
+        transfer.changed = true
         this.transferUnits.add(transfer)
         return transfer
     }
@@ -635,6 +654,7 @@ export class FactoryGraph {
      */
     createTemporaryContainer(item: Item): ContainerNode {
         const container = new ContainerNode("", item, 1.0)
+        container.changed = true
         this.temporaryContainers.add(container)
         return container
     }
@@ -649,6 +669,7 @@ export class FactoryGraph {
             id = `C${containers.size}`
         }
         const container = new ContainerNode(id, item, 1.0)
+        container.changed = true
         this.containers.add(container)
         return container
     }
@@ -663,6 +684,7 @@ export class FactoryGraph {
             id = `C${containers.size}`
         }
         const container = new ContainerNode(id, item, split)
+        container.changed = true
         this.containers.add(container)
         return container
     }
@@ -676,6 +698,7 @@ export class FactoryGraph {
             id = `Trans Container${this.transferContainers.size}`
         }
         const container = new TransferContainerNode(id, items)
+        container.changed = true
         this.transferContainers.add(container)
         return container
     }
@@ -695,6 +718,7 @@ export class FactoryGraph {
             id = `C${containers.size}`
         }
         const output = new OutputNode(id, item, outputRate, maintainedOutput)
+        output.changed = true
         this.containers.add(output)
         return output
     }

@@ -401,7 +401,7 @@ export const RECIPES: Recipe[] = [
     },
     {
         product: batch(ITEMS["Fluoropolymer"], 75),
-        time: 18000,
+        time: 18780,
         industry: ITEMS["Chemical Industry M"],
         ingredients: [
             batch(ITEMS["Fluorine"], 100),
@@ -413,7 +413,7 @@ export const RECIPES: Recipe[] = [
     },
     {
         product: batch(ITEMS["Gold Coated Glass"], 75),
-        time: 10800,
+        time: 18780,
         industry: ITEMS["Glass Furnace M"],
         ingredients: [
             batch(ITEMS["Oxygen"], 50),
@@ -426,7 +426,7 @@ export const RECIPES: Recipe[] = [
     },
     {
         product: batch(ITEMS["Maraging Steel"], 75),
-        time: 10800,
+        time: 18780,
         industry: ITEMS["Smelter M"],
         ingredients: [
             batch(ITEMS["Catalyst 4"], 1),
@@ -438,7 +438,7 @@ export const RECIPES: Recipe[] = [
     },
     {
         product: batch(ITEMS["Red Gold"], 75),
-        time: 10800,
+        time: 18780,
         industry: ITEMS["Smelter M"],
         ingredients: [
             batch(ITEMS["Catalyst 4"], 1),
@@ -449,7 +449,7 @@ export const RECIPES: Recipe[] = [
     },
     {
         product: batch(ITEMS["Sc-Al Alloy"], 75),
-        time: 10800,
+        time: 18780,
         industry: ITEMS["Smelter M"],
         ingredients: [
             batch(ITEMS["Catalyst 4"], 1),

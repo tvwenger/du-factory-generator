@@ -219,6 +219,11 @@ export function deserialize(serializedFactory: string): FactoryGraph {
         } else {
             container = factory.createContainer(item, saveContainer.id)
         }
+        container.originalMaintain = saveContainer.maintain
+        const containers = saveContainer.containers.map(
+            (item: Item) => ITEMS[item.name as keyof typeof ITEMS],
+        )
+        container.originalContainers = containers
         factoryContainers.push(container)
     }
 
@@ -262,6 +267,20 @@ export function deserialize(serializedFactory: string): FactoryGraph {
                 factoryTransferContainers[saveTransferUnit.outputTransferContainerNode],
             )
         }
+    }
+
+    // set changed=false for all loaded factory nodes
+    for (const node of factory.containers) {
+        node.changed = false
+    }
+    for (const node of factory.industries) {
+        node.changed = false
+    }
+    for (const node of factory.transferUnits) {
+        node.changed = false
+    }
+    for (const node of factory.transferContainers) {
+        node.changed = false
     }
 
     return factory
