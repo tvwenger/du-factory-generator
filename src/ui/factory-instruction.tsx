@@ -41,8 +41,12 @@ export class FactoryInstruction {
     /**
      * Create a new FactoryInstruction object centered on a given container
      * @param container Container that is the focal point of this instruction
+     * @param highlightDiff Highlight changed nodes
      */
-    constructor(readonly container: ContainerNode | TransferContainerNode) {}
+    constructor(
+        readonly container: ContainerNode | TransferContainerNode,
+        readonly highlightDiff: boolean,
+    ) {}
 
     /**
      * Approximate the width of the longest input link name
@@ -176,7 +180,7 @@ export class FactoryInstruction {
                         cx={x + SIZE / 2}
                         cy={y}
                         r={SIZE / 2}
-                        fill="gray"
+                        fill={this.highlightDiff && producer.changed ? "green" : "gray"}
                         stroke="green"
                         strokeWidth="3"
                     />
@@ -270,7 +274,7 @@ export class FactoryInstruction {
                     y={container_y}
                     width={SIZE}
                     height={SIZE}
-                    fill="gray"
+                    fill={this.highlightDiff && this.container.changed ? "red" : "gray"}
                     stroke="red"
                     strokeWidth="3"
                 />
@@ -367,8 +371,12 @@ export class FactoryInstruction {
 /**
  * Generate the instruction set required to build a factory, in visualization order
  * @param factory the Factory graph
+ * @param showDifferences if true, highlight changed nodes
  */
-export function generateInstructions(factory: FactoryGraph): FactoryInstruction[] {
+export function generateInstructions(
+    factory: FactoryGraph,
+    showDifferences: boolean,
+): FactoryInstruction[] {
     const instructions: FactoryInstruction[] = []
 
     // loop over category
@@ -382,7 +390,7 @@ export function generateInstructions(factory: FactoryGraph): FactoryInstruction[
 
         // Add transferContainer instructions
         for (const container of transferContainers) {
-            instructions.push(new FactoryInstruction(container))
+            instructions.push(new FactoryInstruction(container, showDifferences))
         }
         // loop over tier
         for (const tier of TIER_ORDER) {
@@ -395,7 +403,7 @@ export function generateInstructions(factory: FactoryGraph): FactoryInstruction[
 
             // Loop over containers
             for (const container of containers) {
-                instructions.push(new FactoryInstruction(container))
+                instructions.push(new FactoryInstruction(container, showDifferences))
             }
         }
     }
