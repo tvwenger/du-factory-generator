@@ -54,8 +54,8 @@ interface FactoryCountProps {
      */
     getRequirements: () => Map<Craftable, { count: number; maintain: number }>
 
-    // the existing FactoryGraph
-    factory: FactoryGraph | undefined
+    // the starting FactoryGraph
+    startingFactory: FactoryGraph | undefined
 
     /**
      * Set the factory graph
@@ -110,7 +110,7 @@ export function FactoryCount(props: FactoryCountProps) {
             <Button
                 type="primary"
                 onClick={() => {
-                    const newFactory = buildFactory(props.getRequirements(), props.factory)
+                    const newFactory = buildFactory(props.getRequirements(), props.startingFactory)
                     props.setFactory(newFactory)
                     props.setFactoryInstructions(
                         generateInstructions(newFactory, props.showDifferences),
