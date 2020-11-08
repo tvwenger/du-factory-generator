@@ -6,17 +6,12 @@
 
 import * as React from "react"
 import { Button } from "antd"
-import { UncontrolledReactSVGPanZoom } from "react-svg-pan-zoom"
-import { Category, Tier, ITEMS, Item } from "../items"
-import {
-    FactoryGraph,
-    MAX_CONTAINER_LINKS,
-    isContainerNode,
-    isTransferContainerNode,
-} from "../graph"
+import { Category, Tier, ITEMS } from "../items"
+import { FactoryGraph, MAX_CONTAINER_LINKS } from "../graph"
 import { FactoryState } from "./factory"
 import { serialize } from "../serialize"
 import { FactoryInstruction } from "./factory-instruction"
+import { FactoryMap } from "./factory-map"
 
 enum VisualizationState {
     INSTRUCTIONS = "instructions",
@@ -219,152 +214,5 @@ export function FactoryInstructions({ instructions }: FactoryVisualizationCompon
                 <Button onClick={() => setStep(step + 1)}>Next Step</Button>
             )}
         </React.Fragment>
-    )
-}
-
-/**
- * Component for visualizing factory graph as a large map
- * @param props {@link FactoryVisualizationComponentProps}
- */
-export function FactoryMap({ instructions }: FactoryVisualizationComponentProps) {
-    // keep track of edges of each section
-    let start_x = 100
-    let start_y = 100
-
-    // keep track of the top-left corner where we are currently placing items
-    let x = start_x
-    let y = start_y
-
-    // keep track of maximum width and height of instructions
-    let max_x = start_x
-    let max_y = start_y
-
-    // keep track of the index of the first instruction in this section
-    let section_i = 0
-
-    // keep track of the maxInputWidth of the first instruction in each section
-    let maxInputWidth = instructions[0].maxInputWidth
-
-    const elements: JSX.Element[] = []
-    for (const [instruction_i, instruction] of instructions.entries()) {
-        const translate =
-            "translate(" + (x + maxInputWidth - instruction.maxInputWidth) + "," + y + ")"
-        const element = (
-            <g key={instruction.container.name + "group"} transform={translate}>
-                {instruction.render()}
-            </g>
-        )
-        elements.push(element)
-
-        y += instruction.height
-        max_y = Math.max(y, max_y)
-
-        // check if we've reached the end of this section
-        let endSection = false
-        let endFactory = false
-        let sectionWidth = 0
-        let nextInstruction: FactoryInstruction | undefined
-        if (instruction_i < instructions.length - 1) {
-            nextInstruction = instructions[instruction_i + 1]
-            if (
-                (isContainerNode(instruction.container) &&
-                    !isContainerNode(nextInstruction.container)) ||
-                (!isContainerNode(instruction.container) &&
-                    isContainerNode(nextInstruction.container)) ||
-                (isContainerNode(instruction.container) &&
-                    isContainerNode(nextInstruction.container) &&
-                    (instruction.container.item.category !=
-                        nextInstruction.container.item.category ||
-                        instruction.container.item.tier != nextInstruction.container.item.tier))
-            ) {
-                endSection = true
-            }
-        } else {
-            // end of factory
-            endSection = true
-            endFactory = true
-        }
-
-        // Add section title
-        if (endSection) {
-            //end of section
-            sectionWidth = Math.max(
-                ...instructions
-                    .slice(section_i, instruction_i + 1)
-                    .map((instruction) => instruction.width),
-            )
-            const translate = "translate(" + (x + sectionWidth / 2) + "," + start_y / 2 + ")"
-            const element = (
-                <g key={"sectionheader" + section_i} transform={translate}>
-                    <text
-                        x={0}
-                        y={0}
-                        fill="black"
-                        fontSize={2 * FONTSIZE}
-                        fontWeight="bold"
-                        dominantBaseline="middle"
-                        textAnchor="middle"
-                    >
-                        {isContainerNode(instruction.container) && (
-                            <React.Fragment>
-                                <tspan x="0" dy="1em">
-                                    {instruction.container.item.category}
-                                </tspan>
-                                <tspan x="0" dy="1em">
-                                    {instruction.container.item.tier}
-                                </tspan>
-                            </React.Fragment>
-                        )}
-                        {isTransferContainerNode(instruction.container) && (
-                            <React.Fragment>
-                                <tspan x="0" dy="1em">
-                                    Transfer
-                                </tspan>
-                                <tspan x="0" dy="1em">
-                                    Containers
-                                </tspan>
-                            </React.Fragment>
-                        )}
-                    </text>
-                </g>
-            )
-            elements.push(element)
-        }
-
-        if (endFactory) {
-            // save current x position
-            max_x =
-                x +
-                Math.max(
-                    ...instructions
-                        .slice(section_i, instruction_i + 1)
-                        .map((instruction) => instruction.width),
-                )
-        } else if (endSection) {
-            // move to next section
-            start_x += sectionWidth
-            start_y = 100
-            x = start_x
-            y = start_y
-            section_i = instruction_i + 1
-            maxInputWidth = nextInstruction!.maxInputWidth
-        }
-    }
-    return (
-        <UncontrolledReactSVGPanZoom width={800} height={600}>
-            <svg height={max_y} width={max_x}>
-                <marker
-                    id="arrowhead"
-                    markerWidth="5"
-                    markerHeight="4"
-                    refX="0"
-                    refY="2"
-                    orient="auto"
-                >
-                    <polygon points="0 0, 5 2, 0 4" />
-                </marker>
-                {elements}
-            </svg>
-        </UncontrolledReactSVGPanZoom>
     )
 }

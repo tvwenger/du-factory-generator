@@ -28,6 +28,7 @@
         "ramda": "0.27.1",
         "react": "16.13.1",
         "react-dom": "16.13.1",
-        "react-svg-pan-zoom": "3.8.1"
+        "react-svg-pan-zoom": "3.8.1",
+        "save-svg-as-png": "1.4.17"
     }
 }
