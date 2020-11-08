@@ -151,7 +151,6 @@ export function FactoryVisualization({
                     <Button onClick={() => setVisualizationState(VisualizationState.MAP)}>
                         Factory Map
                     </Button>
-                    <br />
                     <FactoryInstructions instructions={instructions} />
                 </React.Fragment>
             )
@@ -162,7 +161,6 @@ export function FactoryVisualization({
                     <Button onClick={() => setVisualizationState(VisualizationState.INSTRUCTIONS)}>
                         Building Instructions
                     </Button>
-                    <br />
                     <FactoryMap instructions={instructions} />
                 </React.Fragment>
             )
@@ -178,7 +176,6 @@ export function FactoryVisualization({
             >
                 Download Factory as JSON
             </Button>
-            <br />
             {content}
         </React.Fragment>
     )

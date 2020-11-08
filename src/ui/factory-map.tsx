@@ -5,9 +5,9 @@
  */
 
 import * as React from "react"
+import { renderToStaticMarkup } from "react-dom/server"
 import { Button } from "antd"
 import { UncontrolledReactSVGPanZoom } from "react-svg-pan-zoom"
-import { saveSvgAsPng } from "save-svg-as-png"
 import { isContainerNode, isTransferContainerNode } from "../graph"
 import { FactoryInstruction } from "./factory-instruction"
 import { FONTSIZE, FactoryVisualizationComponentProps } from "./render-factory"
@@ -17,82 +17,70 @@ import { FONTSIZE, FactoryVisualizationComponentProps } from "./render-factory"
  * @param props {@link FactoryVisualizationComponentProps}
  */
 export function FactoryMap({ instructions }: FactoryVisualizationComponentProps) {
-    // download state
-    const [downloadPNG, setDownloadPNG] = React.useState(false)
-
     // get inner SVG
     const [innerSVG, width, height] = React.useMemo(() => generateInnerSVG(instructions), [
         instructions,
     ])
 
-    if (downloadPNG) {
-        return (
-            <FactoryMapDownload
-                innerSVG={innerSVG}
-                width={width}
-                height={height}
-                setDownloadPNG={setDownloadPNG}
-            />
-        )
-    }
-    return (
-        <React.Fragment>
-            <Button onClick={() => setDownloadPNG(true)}>Download Image</Button>
-            <UncontrolledReactSVGPanZoom width={800} height={600}>
-                <svg height={height} width={width}>
-                    {innerSVG}
-                </svg>
-            </UncontrolledReactSVGPanZoom>
-        </React.Fragment>
-    )
-}
-
-/**
- * Properties of the FactoryMapDownload component
- */
-export interface FactoryMapDownloadProps {
-    // factory inner SVG elements
-    innerSVG: JSX.Element
-
-    // SVG size
-    height: number
-    width: number
-
-    // Change parent state
-    setDownloadPNG: (state: boolean) => void
-}
-
-/**
- * Component for downloading the full map
- * @param props {@link FactoryMapDownloadProps}
- */
-export function FactoryMapDownload({
-    innerSVG,
-    height,
-    width,
-    setDownloadPNG,
-}: FactoryMapDownloadProps) {
-    React.useEffect(() => {
-        saveSvgAsPng(document.getElementById("factory-map-svg")!, "factory-map.png")
-    }, [])
-
-    return (
-        <React.Fragment>
-            <Button onClick={() => setDownloadPNG(false)}>Interactive Factory Map</Button>
+    function prepareDownload() {
+        const canvas = document.createElement("canvas")
+        canvas.width = width
+        canvas.height = height
+        const ctx = canvas.getContext("2d")!
+        const svg = (
             <svg
+                xmlns="http://www.w3.org/2000/svg"
                 height={height}
                 width={width}
                 style={{ backgroundColor: "white" }}
-                id="factory-map-svg"
             >
                 {innerSVG}
             </svg>
+        )
+        const svgBlob = new Blob([renderToStaticMarkup(svg)], {
+            type: "image/svg+xml;charset=utf-8",
+        })
+        const DOMURL = window.URL || window.webkitURL
+        const svgURL = DOMURL.createObjectURL(svgBlob)
+        const img = new Image()
+        img.onload = () => {
+            ctx.drawImage(img, 0, 0)
+            DOMURL.revokeObjectURL(svgURL)
+            triggerDownload(canvas)
+        }
+        img.src = svgURL
+    }
+
+    function triggerDownload(canvas: HTMLCanvasElement) {
+        const imgURI = canvas.toDataURL("image/png")
+        const link = document.createElement("a")
+        link.download = "factory-map.png"
+        link.href = imgURI
+        document.body.appendChild(link)
+        link.click()
+        link.remove()
+        canvas.remove()
+    }
+
+    return (
+        <React.Fragment>
+            <Button onClick={prepareDownload}>Download Image</Button>
+            <div style={{ border: "1px solid black", width: 0.95 * window.innerWidth + 2 }}>
+                <UncontrolledReactSVGPanZoom
+                    width={0.95 * window.innerWidth}
+                    height={window.innerHeight - 100}
+                >
+                    <svg height={height} width={width}>
+                        {innerSVG}
+                    </svg>
+                </UncontrolledReactSVGPanZoom>
+            </div>
         </React.Fragment>
     )
 }
 
 /**
- * Generate SVG inner components
+ * Generate SVG inner components, determine SVG dimensions
  * @param instructions the Factory instructions
  */
 export function generateInnerSVG(
