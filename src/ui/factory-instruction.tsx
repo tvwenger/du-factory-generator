@@ -316,7 +316,7 @@ export class FactoryInstruction {
                     dominantBaseline="hanging"
                     textAnchor="middle"
                 >
-                    {isContainerNode(this.container) && this.container.maintain}
+                    {isContainerNode(this.container) && Math.ceil(this.container.maintain)}
                 </text>
                 {isOutputNode(this.container) && (
                     <text
