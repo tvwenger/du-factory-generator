@@ -6,7 +6,6 @@
 
 import * as React from "react"
 import { Button, Upload } from "antd"
-import { compose } from "ramda"
 import { ItemSelect } from "./item-select"
 import { Craftable } from "../items"
 import { FactoryState } from "./factory"

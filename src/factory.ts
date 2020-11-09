@@ -4,7 +4,7 @@
  * lgfrbcsgo & Nikolaus - October 2020
  */
 
-import { Craftable, isOre, Item, CATALYSTS, isCatalyst, containerElement } from "./items"
+import { Craftable, isOre, Item, CATALYSTS, isCatalyst } from "./items"
 import { findRecipe } from "./recipes"
 import {
     ContainerNode,
