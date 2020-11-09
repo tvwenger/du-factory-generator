@@ -12,6 +12,8 @@ import { isContainerNode, isTransferContainerNode } from "../graph"
 import { FactoryInstruction } from "./factory-instruction"
 import { FONTSIZE, FactoryVisualizationComponentProps } from "./render-factory"
 
+const MAX_IMAGE_SIZE = 12500
+
 /**
  * Component for visualizing factory graph as a large map
  * @param props {@link FactoryVisualizationComponentProps}
@@ -24,8 +26,19 @@ export function FactoryMap({ instructions }: FactoryVisualizationComponentProps)
 
     function prepareDownload() {
         const canvas = document.createElement("canvas")
-        canvas.width = width
-        canvas.height = height
+        let scale = 1.0
+        let scaleWidth = width
+        let scaleHeight = height
+        if (scaleWidth > MAX_IMAGE_SIZE) {
+            scaleHeight *= MAX_IMAGE_SIZE / scaleWidth
+            scaleWidth *= MAX_IMAGE_SIZE / scaleWidth
+        }
+        if (scaleHeight > MAX_IMAGE_SIZE) {
+            scaleWidth *= MAX_IMAGE_SIZE / scaleHeight
+            scaleHeight *= MAX_IMAGE_SIZE / scaleHeight
+        }
+        canvas.width = scaleWidth
+        canvas.height = scaleHeight
         const ctx = canvas.getContext("2d")!
         const svg = (
             <svg
@@ -44,7 +57,7 @@ export function FactoryMap({ instructions }: FactoryVisualizationComponentProps)
         const svgURL = DOMURL.createObjectURL(svgBlob)
         const img = new Image()
         img.onload = () => {
-            ctx.drawImage(img, 0, 0)
+            ctx.drawImage(img, 0, 0, scaleWidth, scaleHeight)
             DOMURL.revokeObjectURL(svgURL)
             triggerDownload(canvas)
         }

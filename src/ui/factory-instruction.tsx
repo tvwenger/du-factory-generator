@@ -246,23 +246,30 @@ export class FactoryInstruction {
         const container_y = start_y + (producer_y - start_y) / 2
         let ingress = 0
         let egress = 0
+        let outputRate = 0
         let unit = "sec"
         if (isContainerNode(this.container)) {
             ingress = this.container.ingress * 60.0
             egress = this.container.egress * 60.0
+            if (isOutputNode(this.container)) {
+                outputRate = this.container.outputRate * 60.0
+            }
             unit = "min"
             if (egress < 1) {
                 ingress *= 60.0
                 egress *= 60.0
+                outputRate *= 60.0
                 unit = "hour"
             }
             if (egress < 1) {
                 ingress *= 24.0
                 egress *= 24.0
+                outputRate *= 24.0
                 unit = "day"
             }
             ingress = Math.round(ingress * 100) / 100
             egress = Math.round(egress * 100) / 100
+            outputRate = Math.round(outputRate * 100) / 100
         }
         element = (
             <React.Fragment key={this.container.name}>
@@ -316,8 +323,20 @@ export class FactoryInstruction {
                     dominantBaseline="hanging"
                     textAnchor="middle"
                 >
-                    {isContainerNode(this.container) && this.container.maintain}
+                    {isContainerNode(this.container) && Math.ceil(this.container.maintain)}
                 </text>
+                {isOutputNode(this.container) && (
+                    <text
+                        x={x + SIZE / 2}
+                        y={container_y + SIZE + 15}
+                        fill="blue"
+                        fontSize={FONTSIZE}
+                        dominantBaseline="hanging"
+                        textAnchor="middle"
+                    >
+                        ({this.container.maintainedOutput})
+                    </text>
+                )}
                 <text
                     x={x + SIZE / 2}
                     y={container_y + SIZE / 2}
@@ -351,6 +370,18 @@ export class FactoryInstruction {
                         >
                             {isContainerNode(this.container) && egress + "/" + unit}
                         </text>
+                        {isOutputNode(this.container) && (
+                            <text
+                                x={x + 1.5 * SIZE}
+                                y={container_y + SIZE / 2 - 5 + 20}
+                                fill="blue"
+                                fontSize={FONTSIZE}
+                                dominantBaseline="auto"
+                                textAnchor="middle"
+                            >
+                                ({outputRate + "/" + unit})
+                            </text>
+                        )}
                     </React.Fragment>
                 )}
             </React.Fragment>

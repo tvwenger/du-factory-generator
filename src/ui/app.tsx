@@ -66,5 +66,5 @@ export function useMap<Key, Value>() {
         newCounter.set(key, value)
         setMap(newCounter)
     }
-    return [map, setValue] as const
+    return [map, setValue, setMap] as const
 }
