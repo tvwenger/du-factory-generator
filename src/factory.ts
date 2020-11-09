@@ -4,7 +4,7 @@
  * lgfrbcsgo & Nikolaus - October 2020
  */
 
-import { Craftable, isOre, Item, CATALYSTS, isCatalyst } from "./items"
+import { Craftable, isOre, Item, CATALYSTS, isCatalyst, containerElement } from "./items"
 import { findRecipe } from "./recipes"
 import {
     ContainerNode,
@@ -519,6 +519,26 @@ export function buildFactory(
                 output.maintainedOutput += maintain
             }
         }
+
+        if (output === undefined) {
+            // check if there is a container node that we could use
+            const containers = factory.getContainers(item)
+            for (const container of containers) {
+                if (container.canAddIncomingLinks(count)) {
+                    // convert container to output node
+                    output = factory.createOutput(item, rate * count, maintain, container.id)
+                    for (const producer of container.producers) {
+                        producer.outputTo(output)
+                    }
+                    for (const consumer of container.consumers) {
+                        consumer.inputs.delete(container)
+                        consumer.takeFrom(output)
+                    }
+                    factory.containers.delete(container)
+                }
+            }
+        }
+
         if (output === undefined) {
             // add a new output node
             output = factory.createOutput(item, rate * count, maintain)

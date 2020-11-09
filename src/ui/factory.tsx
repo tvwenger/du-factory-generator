@@ -50,8 +50,8 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
     const [factoryInstructions, setFactoryInstructions] = React.useState<FactoryInstruction[]>([])
     // produced items, industry count, and maintain count
     const [selection, setSelection] = React.useState<Craftable[]>([])
-    const [industryCount, setIndustryCount] = useMap<Craftable, number>()
-    const [maintainValue, setMaintainValue] = useMap<Craftable, number>()
+    const [industryCount, setIndustryCount, setIndustryCountMap] = useMap<Craftable, number>()
+    const [maintainValue, setMaintainValue, setMaintainValueMap] = useMap<Craftable, number>()
     // the FactoryGraph and a flag to show differences
     const [showDifferences, setShowDifferences] = React.useState<boolean>(false)
     const [startingFactory, setStartingFactory] = React.useState<FactoryGraph>()
@@ -78,6 +78,8 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                         items={items}
                         selection={selection}
                         setSelection={setSelection}
+                        setIndustryCountMap={setIndustryCountMap}
+                        setMaintainValueMap={setMaintainValueMap}
                     />
                 </React.Fragment>
             )

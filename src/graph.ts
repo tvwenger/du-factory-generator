@@ -771,8 +771,8 @@ export class FactoryGraph {
             node.items.some((item) => Array.from(items).includes(item)),
         )
         // Filter out those containing anything not in items
-        transferContainers = transferContainers.filter((node) =>
-            Array.from(items).some((item) => !node.items.includes(item)),
+        transferContainers = transferContainers.filter(
+            (node) => !node.items.some((item) => !Array.from(items).includes(item)),
         )
         return new Set(transferContainers)
     }

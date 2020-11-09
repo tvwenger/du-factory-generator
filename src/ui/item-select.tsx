@@ -79,7 +79,7 @@ function useItemTreeData<T extends Item>(items: T[]) {
  * @param items All selectable items
  * @param selection The currently selected items
  */
-function useItemSelection<T extends Item>(items: T[], selection: T[]) {
+export function useItemSelection<T extends Item>(items: T[], selection: T[]) {
     const byName = useMemo(() => indexBy(prop("name"), items), [items])
 
     const value = useMemo(() => selection.map(prop("name")), [selection])

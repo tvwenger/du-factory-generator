@@ -318,6 +318,18 @@ export class FactoryInstruction {
                 >
                     {isContainerNode(this.container) && this.container.maintain}
                 </text>
+                {isOutputNode(this.container) && (
+                    <text
+                        x={x + SIZE / 2}
+                        y={container_y + SIZE + 15}
+                        fill="blue"
+                        fontSize={FONTSIZE}
+                        dominantBaseline="hanging"
+                        textAnchor="middle"
+                    >
+                        ({this.container.maintainedOutput})
+                    </text>
+                )}
                 <text
                     x={x + SIZE / 2}
                     y={container_y + SIZE / 2}
