@@ -14,7 +14,6 @@ Here is an example factory plan, where one assembler was requested for
 Container L, Nitron Fuel, and Polycarbonate Plastic:
 
 ![Example Factory Plan](./src/assets/example-map.svg)
-<img src="./src/assets/example-map.svg">
 
 [Load the
 application](https://lgfrbcsgo.github.io/du-factory-generator/) and
