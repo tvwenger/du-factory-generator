@@ -33,7 +33,7 @@ export function App() {
                     <Button onClick={() => setAppState(AppState.OLDFACTORY)}>
                         Start from Existing Factory
                     </Button>
-                    <Button onClick={() => setAppState(AppState.INFO)}>Show Information</Button>
+                    <Button onClick={() => setAppState(AppState.INFO)}>Help Information</Button>
                 </React.Fragment>
             )
             break
