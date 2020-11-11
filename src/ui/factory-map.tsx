@@ -79,15 +79,17 @@ export function FactoryMap({ instructions }: FactoryVisualizationComponentProps)
         <React.Fragment>
             <Button onClick={preparePNGDownload}>Download Image as PNG</Button>
             <Button
-                href={`data:image/svg+xml,${renderToStaticMarkup(
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        height={height}
-                        width={width}
-                        style={{ backgroundColor: "white" }}
-                    >
-                        {innerSVG}
-                    </svg>,
+                href={`data:image/svg+xml,${encodeURIComponent(
+                    renderToStaticMarkup(
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height={height}
+                            width={width}
+                            style={{ backgroundColor: "white" }}
+                        >
+                            {innerSVG}
+                        </svg>,
+                    ),
                 )}`}
                 download="factory-map.svg"
             >
