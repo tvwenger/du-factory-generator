@@ -24,7 +24,7 @@ export function FactoryMap({ instructions }: FactoryVisualizationComponentProps)
         instructions,
     ])
 
-    function prepareDownload() {
+    function preparePNGDownload() {
         const canvas = document.createElement("canvas")
         let scale = 1.0
         let scaleWidth = width
@@ -59,12 +59,12 @@ export function FactoryMap({ instructions }: FactoryVisualizationComponentProps)
         img.onload = () => {
             ctx.drawImage(img, 0, 0, scaleWidth, scaleHeight)
             DOMURL.revokeObjectURL(svgURL)
-            triggerDownload(canvas)
+            triggerPNGDownload(canvas)
         }
         img.src = svgURL
     }
 
-    function triggerDownload(canvas: HTMLCanvasElement) {
+    function triggerPNGDownload(canvas: HTMLCanvasElement) {
         const imgURI = canvas.toDataURL("image/png")
         const link = document.createElement("a")
         link.download = "factory-map.png"
@@ -77,7 +77,24 @@ export function FactoryMap({ instructions }: FactoryVisualizationComponentProps)
 
     return (
         <React.Fragment>
-            <Button onClick={prepareDownload}>Download Image</Button>
+            <Button onClick={preparePNGDownload}>Download Image as PNG</Button>
+            <Button
+                href={`data:image/svg+xml,${encodeURIComponent(
+                    renderToStaticMarkup(
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            height={height}
+                            width={width}
+                            style={{ backgroundColor: "white" }}
+                        >
+                            {innerSVG}
+                        </svg>,
+                    ),
+                )}`}
+                download="factory-map.svg"
+            >
+                Download Image as SVG
+            </Button>
             <div style={{ border: "1px solid black", width: 0.95 * window.innerWidth + 2 }}>
                 <UncontrolledReactSVGPanZoom
                     width={0.95 * window.innerWidth}
