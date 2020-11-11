@@ -60,7 +60,7 @@ styles.
 ## Contact
 
 Join our [Discord server](https://discord.gg/gXSWKqVnHx) and look for
-lgfrbcsgo and Nikolaus Ephranor.
+`lgfrbcsgo` and `Nikolaus`.
 
 ## Contributors
 
