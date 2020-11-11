@@ -29,9 +29,11 @@
     },
     "dependencies": {
         "antd": "4.7.0",
+        "file-loader": "6.2.0",
         "ramda": "0.27.1",
         "react": "16.13.1",
         "react-dom": "16.13.1",
-        "react-svg-pan-zoom": "3.8.1"
+        "react-svg-pan-zoom": "3.8.1",
+        "url-loader": "4.1.1"
     }
 }

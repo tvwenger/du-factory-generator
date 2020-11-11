@@ -57,6 +57,10 @@ module.exports = ({ ifDev, ifProd }) => ({
                 test: /\.css$/,
                 use: [MiniCssExtractPlugin.loader, "css-loader"],
             },
+            {
+                test: /\.png$/,
+                use: ["file-loader"],
+            },
         ],
     },
     plugins: [

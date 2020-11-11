@@ -27,12 +27,28 @@ import {
 } from "./render-factory"
 
 /**
- * Sorting function to sort factory nodes by name
+ * If an item name contains a terminal XS, S, M, L, or XL, replace
+ * that with A, B, C, D, or E to support sorting
+ * @param name the name to fix
+ */
+function replaceSizeInName(name: string) {
+    name = name.replace(" XS ", " A ")
+    name = name.replace(" S ", " B ")
+    name = name.replace(" M ", " C ")
+    name = name.replace(" L ", " D ")
+    name = name.replace(" XL ", " E ")
+    return name
+}
+
+/**
+ * Sorting function to sort factory nodes by name, considering XS, S, M, L, XL
  * @param a First node
  * @param b Second node
  */
 function sortName(a: FactoryNode, b: FactoryNode): number {
-    return a.name.localeCompare(b.name, "en", { numeric: true })
+    let aName = replaceSizeInName(a.name)
+    let bName = replaceSizeInName(b.name)
+    return aName.localeCompare(bName, "en", { numeric: true })
 }
 
 /**
