@@ -1,0 +1,793 @@
+﻿Al-Fe Alloy
+Biologic Matter
+Brick
+Carbon Fiber
+Glass
+Polycarbonate Plastic
+Silumin
+Steel
+Wood
+Advanced Glass
+Calcium Reinforced Copper
+Concrete
+Duralumin
+Marble
+Polycalcite Plastic
+Stainless Steel
+Ag-Li Reinforced Glass
+Al-Li Alloy
+Cu-Ag Alloy
+Inconel
+Polysulfide Plastic
+Fluoropolymer
+Gold Coated Glass
+Maraging Steel
+Red Gold
+Sc-Al Alloy
+Grade 5 Titanium Alloy
+Mangalloy
+Manganese Reinforced Glass
+Ti-Nb Superconductor
+Vanamer
+Catalyst 3
+Catalyst 4
+Catalyst 5
+Basic Casing S
+Basic Casing XS
+Basic Reinforced Frame L
+Basic Reinforced Frame M
+Basic Reinforced Frame S
+Basic Reinforced Frame XL
+Basic Reinforced Frame XS
+Basic Standard Frame L
+Basic Standard Frame M
+Basic Standard Frame S
+Basic Standard Frame XS
+Uncommon Casing M
+Uncommon Casing S
+Uncommon Casing XL
+Uncommon Casing XS
+Uncommon Reinforced Frame L
+Uncommon Reinforced Frame M
+Uncommon Reinforced Frame S
+Uncommon Reinforced Frame XL
+Uncommon Reinforced Frame XS
+Uncommon Standard Frame L
+Uncommon Standard Frame M
+Uncommon Standard Frame S
+Uncommon Standard Frame XS
+Advanced Casing L
+Advanced Casing M
+Advanced Casing S
+Advanced Casing XL
+Advanced Casing XS
+Advanced Reinforced Frame L
+Advanced Reinforced Frame M
+Advanced Reinforced Frame S
+Advanced Reinforced Frame XS
+Advanced Standard Frame L
+Advanced Standard Frame M
+Advanced Standard Frame S
+Advanced Standard Frame XS
+Rare Casing S
+Rare Casing XS
+Rare Reinforced Frame L
+Rare Reinforced Frame XL
+Rare Standard Frame L
+Exotic Casing S
+Exotic Reinforced Frame L
+Exotic Reinforced Frame M
+Exotic Reinforced Frame XL
+Exotic Standard Frame L
+Exotic Standard Frame XS
+Basic Component
+Basic Connector
+Basic Fixation
+Basic LED
+Basic Pipe
+Basic Screw
+Uncommon Component
+Uncommon Connector
+Uncommon Fixation
+Uncommon LED
+Uncommon Pipe
+Uncommon Screw
+Advanced Component
+Advanced Connector
+Advanced Fixation
+Advanced LED
+Advanced Pipe
+Advanced Screw
+Basic Anti-Matter Capsule
+Basic Burner
+Basic Electronics
+Basic Explosive Module
+Basic Hydraulics
+Basic Injector
+Basic Magnet
+Basic Optics
+Basic Power System
+Basic Processor
+Basic Quantum Core
+Basic Singularity Container
+Uncommon Anti-Matter Capsule
+Uncommon Burner
+Uncommon Electronics
+Uncommon Explosive Module
+Uncommon Hydraulics
+Uncommon Injector
+Uncommon Magnet
+Uncommon Optics
+Uncommon Power System
+Uncommon Processor
+Uncommon Quantum Core
+Uncommon Singularity Container
+Uncommon Solid Warhead
+Advanced Anti-Matter Capsule
+Advanced Burner
+Advanced Electronics
+Advanced Explosive Module
+Advanced Hydraulics
+Advanced Injector
+Advanced Magnet
+Advanced Optics
+Advanced Power System
+Advanced Processor
+Advanced Quantum Core
+Advanced Singularity Container
+Advanced Solid Warhead
+Rare Anti-Matter Capsule
+Rare Electronics
+Rare Magnet
+Rare Optics
+Rare Power System
+Rare Quantum Core
+Rare Singularity Container
+Exotic Anti-Matter Capsule
+Exotic Electronics
+Exotic Magnet
+Exotic Power System
+Exotic Processor
+Exotic Quantum Core
+Exotic Singularity Container
+Advanced Anti-Gravity Core Unit
+Advanced Anti-Matter Core Unit
+Advanced Quantum Alignment Unit
+Advanced Quantum Barrier
+Rare Anti-Gravity Core Unit
+Exotic Anti-Gravity Core Unit
+Exotic Anti-Matter Core Unit
+Exotic Quantum Alignment Unit
+Basic Antenna S
+Basic Antenna XS
+Basic Chemical Container L
+Basic Chemical Container M
+Basic Chemical Container S
+Basic Chemical Container XL
+Basic Chemical Container XS
+Basic Combustion Chamber L
+Basic Combustion Chamber M
+Basic Combustion Chamber S
+Basic Combustion Chamber XS
+Basic Control System M
+Basic Control System S
+Basic Control System XS
+Basic Core Unit System S
+Basic Core Unit System XS
+Basic Electric Engine M
+Basic Electric Engine S
+Basic Firing System XS
+Basic Gas Cylinder M
+Basic Gas Cylinder S
+Basic Gas Cylinder XS
+Basic Ionic Chamber L
+Basic Ionic Chamber M
+Basic Ionic Chamber S
+Basic Ionic Chamber XL
+Basic Ionic Chamber XS
+Basic Mechanical Sensor XS
+Basic Mobile Panel L
+Basic Mobile Panel M
+Basic Mobile Panel S
+Basic Mobile Panel XL
+Basic Mobile Panel XS
+Basic Power Transformer M
+Basic Robotic Arm L
+Basic Robotic Arm M
+Basic Robotic Arm XL
+Basic Screen M
+Basic Screen S
+Uncommon Antenna L
+Uncommon Antenna M
+Uncommon Antenna S
+Uncommon Antenna XS
+Uncommon Combustion Chamber L
+Uncommon Combustion Chamber M
+Uncommon Combustion Chamber S
+Uncommon Combustion Chamber XS
+Uncommon Core Unit System L
+Uncommon Core Unit System M
+Uncommon Core Unit System S
+Uncommon Electric Engine XL
+Uncommon Ionic Chamber L
+Uncommon Ionic Chamber M
+Uncommon Ionic Chamber S
+Uncommon Ionic Chamber XL
+Uncommon Ionic Chamber XS
+Uncommon Laser Chamber XS
+Uncommon Light S
+Uncommon Light XS
+Uncommon Ore Scanner XL
+Uncommon Power Transformer M
+Uncommon Power Transformer S
+Uncommon Screen M
+Uncommon Screen XL
+Uncommon Screen XS
+Advanced Antenna S
+Advanced Chemical Container L
+Advanced Chemical Container M
+Advanced Chemical Container S
+Advanced Chemical Container XL
+Advanced Combustion Chamber M
+Advanced Combustion Chamber S
+Advanced Combustion Chamber XS
+Advanced Control System L
+Advanced Control System M
+Advanced Control System S
+Advanced Core Unit System M
+Advanced Firing System L
+Advanced Firing System M
+Advanced Firing System S
+Advanced Firing System XS
+Advanced Ionic Chamber L
+Advanced Ionic Chamber M
+Advanced Laser Chamber L
+Advanced Laser Chamber M
+Advanced Laser Chamber S
+Advanced Laser Chamber XS
+Advanced Magnetic Rail L
+Advanced Magnetic Rail M
+Advanced Magnetic Rail S
+Advanced Magnetic Rail XS
+Advanced Mechanical Sensor XS
+Advanced Missile Silo L
+Advanced Missile Silo M
+Advanced Missile Silo S
+Advanced Missile Silo XS
+Advanced Motherboard
+Advanced Power Transformer S
+Advanced Screen XL
+Advanced Screen XS
+Rare Core Unit System L
+Rare Laser Chamber S
+Rare Power Transformer L
+Rare Power Transformer XL
+Exotic Antenna L
+Exotic Antenna M
+Exotic Antenna XL
+Exotic Core Unit System S
+Exotic Mechanical Sensor XS
+Exotic Power Transformer L
+Kergon-X1 Fuel
+Kergon-X2 Fuel
+Kergon-X3 Fuel
+Kergon-X4 Fuel
+Nitron Fuel
+Warp Cell
+Xeron Fuel
+Anti-Gravity Generator L
+Anti-Gravity Generator M
+Anti-Gravity Generator S
+Anti-Gravity Pulsor
+Container Hub
+Container L
+Container M
+Container S
+Container XS
+Ammo Container XS
+Ammo Container S
+Ammo Container M
+Ammo Container L
+Atmospheric Fuel Tank L
+Atmospheric Fuel Tank M
+Atmospheric Fuel Tank S
+Space Fuel Tank L
+Space Fuel Tank M
+Space Fuel Tank S
+Rocket Fuel Tank XS
+Rocket Fuel Tank S
+Rocket Fuel Tank M
+Rocket Fuel Tank L
+Cockpit Controller
+Command Seat Controller
+Emergency Controller
+Programming Board
+Gunner Module S
+Gunner Module M
+Gunner Module L
+Hovercraft Seat Controller
+Antenna L
+Antenna M
+Antenna S
+Armored Window L
+Armored Window M
+Armored Window S
+Armored Window XS
+Bagged Planet A
+Bagged Planet B
+Barrier Corner
+Barrier S
+Barrier M
+Bay Window XL
+Bed
+Bench
+Bonsai
+Cable Model-A M
+Cable Model-A S
+Cable Model-B M
+Cable Model-B S
+Cable Model-C M
+Cable Model-C S
+Corner Cable Model A
+Corner Cable Model B
+Corner Cable Model C
+Dresser
+Eggplant Plant Case
+Eye Doll's Workshop - Artist Unknown
+Ficus Planet A
+Ficus Planet B
+Foliage Plant Case A
+Foliage Plant Case B
+Glass Panel L
+Glass Panel M
+Glass Panel S
+HMS Ajax33 - Artist Unknown
+Hull Decorative Element A
+Hull Decorative Element B
+Hull Decorative Element C
+Keyboard Unit
+Nightstand
+Parrotos Sanctuary - Artist Unknown
+Pipe A M
+Pipe B M
+Pipe C M
+Pipe D M
+Pipe Connector M
+Pipe Corner M
+Planet Hologram
+Planet Hologram L
+Plant
+Plant Case A
+Plant Case B
+Plant Case C
+Plant Case D
+Plant Case E
+Plant Case M
+Plant Case S
+Round Carpet
+Salad Plant Case
+Shelf Empty
+Shelf Full
+Shelf Half Full
+Shower Unit
+Sink Unit
+Sofa
+Spaceship Hologram L
+Spaceship Hologram M
+Spaceship Hologram S
+Square Carpet
+Squash Plant Case
+Steel Column
+Steel Panel
+Suspended Fruit Planet
+Suspended Planet A
+Suspended Planet B
+Table
+Toilet Unit A
+Toilet Unit B
+Trash
+Urinal Unit
+Vertical Wing
+Wardrobe
+Window L
+Window M
+Window S
+Window XS
+Wing Tip L
+Wing Tip M
+Wing Tip S
+Wooden Armchair
+Wooden Chair
+Wooden Dresser
+Wooden Low Table
+Wooden Sofa
+Wooden Table L
+Wooden Table M
+Wooden Wardrobe
+Adjustor L
+Adjustor M
+Adjustor S
+Adjustor XS
+Atmospheric Airbrake L
+Atmospheric Airbrake M
+Atmospheric Airbrake S
+Retro-Rocket Brake L
+Retro-Rocket Brake M
+Retro-Rocket Brake S
+Aileron M
+Aileron S
+Aileron XS
+Compact Aileron M
+Compact Aileron S
+Compact Aileron XS
+Stabilizer L
+Stabilizer M
+Stabilizer S
+Stabilizer XS
+Wing M
+Wing S
+Wing XS
+Wing Variant M
+Basic Atmospheric Engine L
+Basic Atmospheric Engine M
+Basic Atmospheric Engine S
+Basic Atmospheric Engine XS
+Freight Atmospheric Engine XS
+Freight Atmospheric Engine S
+Freight Atmospheric Engine M
+Freight Atmospheric Engine L
+Maneuver Atmospheric Engine XS
+Maneuver Atmospheric Engine S
+Maneuver Atmospheric Engine M
+Maneuver Atmospheric Engine L
+Military Atmospheric Engine XS
+Military Atmospheric Engine S
+Military Atmospheric Engine M
+Military Atmospheric Engine L
+Safe Atmospheric Engine XS
+Safe Atmospheric Engine S
+Safe Atmospheric Engine M
+Safe Atmospheric Engine L
+Basic Space Engine L
+Basic Space Engine M
+Basic Space Engine S
+Basic Space Engine XL
+Basic Space Engine XS
+Freight Space Engine XS
+Freight Space Engine S
+Freight Space Engine M
+Freight Space Engine L
+Freight Space Engine XL
+Maneuver Space Engine XS
+Maneuver Space Engine S
+Maneuver Space Engine M
+Maneuver Space Engine L
+Maneuver Space Engine XL
+Military Space Engine XS
+Military Space Engine S
+Military Space Engine M
+Military Space Engine L
+Military Space Engine XL
+Safe Space Engine XS
+Safe Space Engine S
+Safe Space Engine M
+Safe Space Engine L
+Safe Space Engine XL
+Vertical Booster L
+Vertical Booster M
+Vertical Booster S
+Hover Engine S
+Hover Engine M
+Hover Engine L
+Flat Hover Engine L
+Rocket Engine S
+Rocket Engine M
+Rocket Engine L
+3D Printer M
+Assembly Line L
+Assembly Line M
+Assembly Line S
+Assembly Line XL
+Assembly Line XS
+Chemical Industry M
+Electronics Industry M
+Glass Furnace M
+Honeycomb Refiner M
+Metalwork Industry M
+Recycler M
+Refiner M
+Smelter M
+Transfer Unit
+Gyroscope
+Telemeter
+Territory Scanner
+Airlock
+Elevator XS
+Expanded Gate L
+Expanded Gate S
+Force Field L
+Force Field M
+Force Field S
+Force Field XS
+Fuel Intake XS
+Gate XS
+Gate M
+Gate XL
+Hatch S
+Interior Door
+Landing Gear L
+Landing Gear M
+Landing Gear S
+Landing Gear XS
+Reinforced Sliding Door
+Screen M
+Screen S
+Screen XL
+Screen XS
+Sign L
+Sign M
+Sign S
+Sign XS
+Sign Vertical L
+Sign Vertical M
+Sign Vertical S
+Sign Vertical XS
+Sliding Door M
+Sliding Door S
+Transparent Screen L
+Transparent Screen M
+Transparent Screen S
+Transparent Screen XS
+Headlight
+Long Light L
+Long Light M
+Long Light S
+Long Light XS
+Square Light L
+Square Light M
+Square Light S
+Square Light XS
+Vertical Light L
+Vertical Light M
+Vertical Light S
+Vertical Light XS
+Luminescent White Glass
+2 Counter
+3 Counter
+5 Counter
+7 Counter
+10 Counter
+AND Operator
+NAND Operator
+NOR Operator
+NOT Operator
+OR Operator
+XOR Operator
+Databank
+Delay Line
+Emitter XS
+Emitter S
+Emitter M
+Infra-Red Laser Emitter
+Laser Emitter
+Receiver XS
+Receiver S
+Receiver M
+Relay
+Virtual Scaffolding Projector
+Repair Unit
+Resurrection Node
+Encampment Chair
+Navigator Chair
+Office Chair
+Atmospheric Radar L
+Atmospheric Radar M
+Atmospheric Radar S
+Space Radar L
+Space Radar M
+Space Radar S
+Detection Zone XS
+Detection Zone S
+Detection Zone M
+Detection Zone L
+Info Button S
+Infra-Red Laser Receiver
+Laser Receiver
+Manual Button XS
+Manual Button S
+Manual Switch
+Pressure Tile
+Transponder
+Surrogate Pod Station
+Surrogate VR Station
+Warp Drive L
+Warp Beacon XL
+Cannon XS
+Cannon S
+Cannon M
+Cannon L
+Laser XS
+Laser S
+Laser M
+Laser L
+Missile XS
+Missile S
+Missile M
+Missile L
+Railgun XS
+Railgun S
+Railgun M
+Railgun L
+Dynamic Core L
+Dynamic Core M
+Dynamic Core S
+Dynamic Core XS
+Space Core L
+Space Core M
+Space Core S
+Space Core XS
+Static Core L
+Static Core M
+Static Core S
+Static Core XS
+Territory Unit
+Cannon Agile Kinetic Ammo L
+Cannon Agile Kinetic Ammo M
+Cannon Agile Kinetic Ammo S
+Cannon Agile Kinetic Ammo XS
+Cannon Agile Thermic Ammo L
+Cannon Agile Thermic Ammo M
+Cannon Agile Thermic Ammo S
+Cannon Agile Thermic Ammo XS
+Cannon Defense Kinetic Ammo L
+Cannon Defense Kinetic Ammo M
+Cannon Defense Kinetic Ammo S
+Cannon Defense Kinetic Ammo XS
+Cannon Defense Thermic Ammo L
+Cannon Defense Thermic Ammo M
+Cannon Defense Thermic Ammo S
+Cannon Defense Thermic Ammo XS
+Cannon Heavy Kinetic Ammo L
+Cannon Heavy Kinetic Ammo M
+Cannon Heavy Kinetic Ammo S
+Cannon Heavy Kinetic Ammo XS
+Cannon Heavy Thermic Ammo L
+Cannon Heavy Thermic Ammo M
+Cannon Heavy Thermic Ammo S
+Cannon Heavy Thermic Ammo XS
+Cannon Precision Kinetic Ammo L
+Cannon Precision Kinetic Ammo M
+Cannon Precision Kinetic Ammo S
+Cannon Precision Kinetic Ammo XS
+Cannon Precision Thermic Ammo L
+Cannon Precision Thermic Ammo M
+Cannon Precision Thermic Ammo S
+Cannon Precision Thermic Ammo XS
+Cannon Kinetic Ammo L
+Cannon Kinetic Ammo M
+Cannon Kinetic Ammo S
+Cannon Kinetic Ammo XS
+Cannon Thermic Ammo L
+Cannon Thermic Ammo M
+Cannon Thermic Ammo S
+Cannon Thermic Ammo XS
+Laser Agile Electromagnetic Ammo L
+Laser Agile Electromagnetic Ammo M
+Laser Agile Electromagnetic Ammo S
+Laser Agile Electromagnetic Ammo XS
+Laser Agile Thermic Ammo L
+Laser Agile Thermic Ammo M
+Laser Agile Thermic Ammo S
+Laser Agile Thermic Ammo XS
+Laser Defense Electromagnetic Ammo L
+Laser Defense Electromagnetic Ammo M
+Laser Defense Electromagnetic Ammo S
+Laser Defense Electromagnetic Ammo XS
+Laser Defense Thermic Ammo L
+Laser Defense Thermic Ammo M
+Laser Defense Thermic Ammo S
+Laser Defense Thermic Ammo XS
+Laser Heavy Electromagnetic Ammo L
+Laser Heavy Electromagnetic Ammo M
+Laser Heavy Electromagnetic Ammo S
+Laser Heavy Electromagnetic Ammo XS
+Laser Heavy Thermic Ammo L
+Laser Heavy Thermic Ammo M
+Laser Heavy Thermic Ammo S
+Laser Heavy Thermic Ammo XS
+Laser Precision Electromagnetic Ammo L
+Laser Precision Electromagnetic Ammo M
+Laser Precision Electromagnetic Ammo S
+Laser Precision Electromagnetic Ammo XS
+Laser Precision Thermic Ammo L
+Laser Precision Thermic Ammo M
+Laser Precision Thermic Ammo S
+Laser Precision Thermic Ammo XS
+Laser Electromagnetic Ammo L
+Laser Electromagnetic Ammo M
+Laser Electromagnetic Ammo S
+Laser Electromagnetic Ammo XS
+Laser Thermic Ammo L
+Laser Thermic Ammo M
+Laser Thermic Ammo S
+Laser Thermic Ammo XS
+Missile Agile Antimatter Ammo L
+Missile Agile Antimatter Ammo M
+Missile Agile Antimatter Ammo S
+Missile Agile Antimatter Ammo XS
+Missile Agile Kinetic Ammo L
+Missile Agile Kinetic Ammo M
+Missile Agile Kinetic Ammo S
+Missile Agile Kinetic Ammo XS
+Missile Defense Antimatter Ammo L
+Missile Defense Antimatter Ammo M
+Missile Defense Antimatter Ammo S
+Missile Defense Antimatter Ammo XS
+Missile Defense Kinetic Ammo L
+Missile Defense Kinetic Ammo M
+Missile Defense Kinetic Ammo S
+Missile Defense Kinetic Ammo XS
+Missile Heavy Antimatter Ammo L
+Missile Heavy Antimatter Ammo M
+Missile Heavy Antimatter Ammo S
+Missile Heavy Antimatter Ammo XS
+Missile Heavy Kinetic Ammo L
+Missile Heavy Kinetic Ammo M
+Missile Heavy Kinetic Ammo S
+Missile Heavy Kinetic Ammo XS
+Missile Precision Antimatter Ammo L
+Missile Precision Antimatter Ammo M
+Missile Precision Antimatter Ammo S
+Missile Precision Antimatter Ammo XS
+Missile Precision Kinetic Ammo L
+Missile Precision Kinetic Ammo M
+Missile Precision Kinetic Ammo S
+Missile Precision Kinetic Ammo XS
+Missile Antimatter Ammo L
+Missile Antimatter Ammo M
+Missile Antimatter Ammo S
+Missile Antimatter Ammo XS
+Missile Kinetic Ammo L
+Missile Kinetic Ammo M
+Missile Kinetic Ammo S
+Missile Kinetic Ammo XS
+Railgun Agile Antimatter Ammo L
+Railgun Agile Antimatter Ammo M
+Railgun Agile Antimatter Ammo S
+Railgun Agile Antimatter Ammo XS
+Railgun Agile Electromagnetic Ammo L
+Railgun Agile Electromagnetic Ammo M
+Railgun Agile Electromagnetic Ammo S
+Railgun Agile Electromagnetic Ammo XS
+Railgun Defense Antimatter Ammo L
+Railgun Defense Antimatter Ammo M
+Railgun Defense Antimatter Ammo S
+Railgun Defense Antimatter Ammo XS
+Railgun Defense Electromagnetic Ammo L
+Railgun Defense Electromagnetic Ammo M
+Railgun Defense Electromagnetic Ammo S
+Railgun Defense Electromagnetic Ammo XS
+Railgun Heavy Antimatter Ammo L
+Railgun Heavy Antimatter Ammo M
+Railgun Heavy Antimatter Ammo S
+Railgun Heavy Antimatter Ammo XS
+Railgun Heavy Electromagnetic Ammo L
+Railgun Heavy Electromagnetic Ammo M
+Railgun Heavy Electromagnetic Ammo S
+Railgun Heavy Electromagnetic Ammo XS
+Railgun Precision Antimatter Ammo L
+Railgun Precision Antimatter Ammo M
+Railgun Precision Antimatter Ammo S
+Railgun Precision Antimatter Ammo XS
+Railgun Precision Electromagnetic Ammo L
+Railgun Precision Electromagnetic Ammo M
+Railgun Precision Electromagnetic Ammo S
+Railgun Precision Electromagnetic Ammo XS
+Railgun Antimatter Ammo L
+Railgun Antimatter Ammo M
+Railgun Antimatter Ammo S
+Railgun Antimatter Ammo XS
+Railgun Electromagnetic Ammo L
+Railgun Electromagnetic Ammo M
+Railgun Electromagnetic Ammo S
+Railgun Electromagnetic Ammo XS
