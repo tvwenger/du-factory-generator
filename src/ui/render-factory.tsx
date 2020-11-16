@@ -114,6 +114,15 @@ export interface FactoryVisualizationProps extends FactoryVisualizationComponent
     factory: FactoryGraph | undefined
 
     /**
+     * Set the factory
+     * @param factory the FactoryGraph
+     */
+    setFactory: (factory: FactoryGraph | undefined) => void
+
+    // the starting factory graph
+    startingFactory: FactoryGraph | undefined
+
+    /**
      * Set the parent factory state
      * @param state the FactoryState
      */
@@ -126,6 +135,8 @@ export interface FactoryVisualizationProps extends FactoryVisualizationComponent
  */
 export function FactoryVisualization({
     factory,
+    setFactory,
+    startingFactory,
     setFactoryState,
     instructions,
 }: FactoryVisualizationProps) {
@@ -235,7 +246,14 @@ export function FactoryVisualization({
 
     return (
         <React.Fragment>
-            <Button onClick={() => setFactoryState(FactoryState.COUNT)}>Back</Button>
+            <Button
+                onClick={() => {
+                    setFactory(startingFactory)
+                    setFactoryState(FactoryState.COUNT)
+                }}
+            >
+                Back
+            </Button>
             <Button
                 href={`data:text/json;charset=utf-8,${encodeURIComponent(serialize(factory!))}`}
                 download="factory.json"

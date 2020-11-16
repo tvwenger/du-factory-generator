@@ -101,9 +101,13 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                             const reader = new FileReader()
                             reader.onload = () => {
                                 const factoryJSON = reader.result as string
-                                const factory = deserialize(factoryJSON)
+                                const uploadedFactory = deserialize(factoryJSON)
+                                setStartingFactory(uploadedFactory)
+                                // create another copy to be modified
+                                const uploadedFactoryCopy = deserialize(factoryJSON)
+                                setFactory(uploadedFactoryCopy)
                                 setShowDifferences(true)
-                                setStartingFactory(factory)
+                                setStartingFactory(uploadedFactory)
                                 setFactoryState(FactoryState.SELECT)
                             }
                             reader.readAsText(file)
@@ -129,7 +133,7 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                         setMaintainValue={setMaintainValue}
                         getMaintainValue={getMaintainValue}
                         getRequirements={getRequirements}
-                        startingFactory={startingFactory}
+                        factory={factory}
                         setFactory={setFactory}
                         setFactoryInstructions={setFactoryInstructions}
                         showDifferences={showDifferences}
@@ -140,6 +144,8 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
             return (
                 <FactoryVisualization
                     factory={factory}
+                    setFactory={setFactory}
+                    startingFactory={startingFactory}
                     setFactoryState={setFactoryState}
                     instructions={factoryInstructions!}
                 />
