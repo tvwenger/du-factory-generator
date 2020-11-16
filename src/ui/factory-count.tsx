@@ -11,6 +11,7 @@ import { FactoryState } from "./factory"
 import { buildFactory } from "../factory"
 import { FactoryGraph } from "../graph"
 import { FactoryInstruction, generateInstructions } from "./factory-instruction"
+import { Recipe } from "../recipes"
 
 /**
  * Properties of the FactoryCount component
@@ -24,6 +25,9 @@ interface FactoryCountProps {
 
     // Items selected to build
     selection: Craftable[]
+
+    // Recipes for selected items
+    recipes: Map<Craftable, Recipe>
 
     /**
      * Set the number of assemblers for a given item
@@ -85,28 +89,47 @@ export function FactoryCount(props: FactoryCountProps) {
                 <Col span={3}>Item</Col>
                 <Col span={2}>Assemblers</Col>
                 <Col span={2}>Maintain</Col>
+                <Col span={4}>Production Rate</Col>
             </Row>
-            {props.selection.map((item) => (
-                <Row key={item.name}>
-                    <Col span={3}>
-                        <label>{item.name}</label>
-                    </Col>
-                    <Col span={2}>
-                        <InputNumber
-                            min={1}
-                            value={props.getIndustryCount(item)}
-                            onChange={(value) => props.setIndustryCount(item, Number(value))}
-                        />
-                    </Col>
-                    <Col span={2}>
-                        <InputNumber
-                            min={1}
-                            value={props.getMaintainValue(item)}
-                            onChange={(value) => props.setMaintainValue(item, Number(value))}
-                        />
-                    </Col>
-                </Row>
-            ))}
+            {props.selection.map(function (item) {
+                const recipe = props.recipes.get(item)!
+                // per minute
+                let productionRate =
+                    (60.0 * props.getIndustryCount(item) * recipe.product.quantity) / recipe.time
+                let unit = "minute"
+                if (productionRate < 1.0) {
+                    productionRate *= 60.0
+                    unit = "hour"
+                }
+                if (productionRate < 1.0) {
+                    productionRate *= 24.0
+                    unit = "day"
+                }
+                // round to 2 decimals
+                productionRate = Math.round(productionRate * 100) / 100
+                return (
+                    <Row key={item.name}>
+                        <Col span={3}>
+                            <label>{item.name}</label>
+                        </Col>
+                        <Col span={2}>
+                            <InputNumber
+                                min={1}
+                                value={props.getIndustryCount(item)}
+                                onChange={(value) => props.setIndustryCount(item, Number(value))}
+                            />
+                        </Col>
+                        <Col span={2}>
+                            <InputNumber
+                                min={1}
+                                value={props.getMaintainValue(item)}
+                                onChange={(value) => props.setMaintainValue(item, Number(value))}
+                            />
+                        </Col>
+                        <Col span={4}>{productionRate + " / " + unit}</Col>
+                    </Row>
+                )
+            })}
             <Button
                 type="primary"
                 onClick={() => {

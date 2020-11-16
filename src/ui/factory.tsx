@@ -15,6 +15,7 @@ import { FactoryGraph, isOutputNode } from "../graph"
 import { FactoryVisualization } from "./render-factory"
 import { FactoryInstruction, generateInstructions } from "./factory-instruction"
 import { deserialize } from "../serialize"
+import { findRecipe, Recipe } from "../recipes"
 
 export enum FactoryState {
     UPLOAD = "upload",
@@ -52,6 +53,11 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
     const [selection, setSelection] = React.useState<Craftable[]>([])
     const [industryCount, setIndustryCount, setIndustryCountMap] = useMap<Craftable, number>()
     const [maintainValue, setMaintainValue, setMaintainValueMap] = useMap<Craftable, number>()
+    // the recipes for all produced items
+    const recipes = React.useMemo(
+        () => new Map<Craftable, Recipe>(selection.map((item) => [item, findRecipe(item)])),
+        [selection],
+    )
     // the FactoryGraph and a flag to show differences
     const [showDifferences, setShowDifferences] = React.useState<boolean>(false)
     const [startingFactory, setStartingFactory] = React.useState<FactoryGraph>()
@@ -116,6 +122,7 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                     <ExistingFactorySummary factory={startingFactory} />
                     <FactoryCount
                         selection={selection}
+                        recipes={recipes}
                         setFactoryState={setFactoryState}
                         setIndustryCount={setIndustryCount}
                         getIndustryCount={getIndustryCount}
