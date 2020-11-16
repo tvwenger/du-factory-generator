@@ -16,6 +16,7 @@ import {
     isTransferContainerNode,
     isOutputNode,
 } from "../graph"
+import { Item } from "../items"
 import {
     SIZE,
     FONTSIZE,
@@ -32,11 +33,11 @@ import {
  * @param name the name to fix
  */
 function replaceSizeInName(name: string) {
-    name = name.replace(" XS ", " A ")
-    name = name.replace(" S ", " B ")
-    name = name.replace(" M ", " C ")
-    name = name.replace(" L ", " D ")
-    name = name.replace(" XL ", " E ")
+    name = name.replace(" XS", " A")
+    name = name.replace(" S", " B")
+    name = name.replace(" M", " C")
+    name = name.replace(" L", " D")
+    name = name.replace(" XL", " E")
     return name
 }
 
@@ -45,7 +46,7 @@ function replaceSizeInName(name: string) {
  * @param a First node
  * @param b Second node
  */
-function sortName(a: FactoryNode, b: FactoryNode): number {
+export function sortName(a: FactoryNode | Item, b: FactoryNode | Item): number {
     let aName = replaceSizeInName(a.name)
     let bName = replaceSizeInName(b.name)
     return aName.localeCompare(bName, "en", { numeric: true })

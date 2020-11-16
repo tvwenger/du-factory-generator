@@ -5,15 +5,16 @@
  */
 
 import * as React from "react"
-import { Button } from "antd"
-import { Category, Tier, ITEMS } from "../items"
-import { FactoryGraph, MAX_CONTAINER_LINKS } from "../graph"
+import { Button, Row, Col } from "antd"
+import { Category, Tier, ITEMS, OtherElement, ContainerElement } from "../items"
+import { FactoryGraph, IndustryNode, MAX_CONTAINER_LINKS } from "../graph"
 import { FactoryState } from "./factory"
 import { serialize } from "../serialize"
-import { FactoryInstruction } from "./factory-instruction"
+import { sortName, FactoryInstruction } from "./factory-instruction"
 import { FactoryMap } from "./factory-map"
 
 enum VisualizationState {
+    LIST = "list",
     INSTRUCTIONS = "instructions",
     MAP = "map",
 }
@@ -134,6 +135,38 @@ export function FactoryVisualization({
     let content = null
     switch (visualizationState) {
         default:
+            // get count of industry and container types
+            const industryCount = new Map<OtherElement, number>()
+            const containerCount = new Map<ContainerElement, number>()
+            if (factory !== undefined) {
+                Array.from(factory.industries).map((node) => {
+                    if (industryCount.has(node.industry)) {
+                        industryCount.set(node.industry, industryCount.get(node.industry)! + 1)
+                    } else {
+                        industryCount.set(node.industry, 1)
+                    }
+                })
+                industryCount.set(ITEMS["Transfer Unit"], factory.transferUnits.size)
+                Array.from(factory.containers).map((node) => {
+                    for (const container of node.containers) {
+                        if (containerCount.has(container)) {
+                            containerCount.set(container, containerCount.get(container)! + 1)
+                        } else {
+                            containerCount.set(container, 1)
+                        }
+                    }
+                })
+                Array.from(factory.transferContainers).map((node) => {
+                    for (const container of node.containers) {
+                        if (containerCount.has(container)) {
+                            containerCount.set(container, containerCount.get(container)! + 1)
+                        } else {
+                            containerCount.set(container, 1)
+                        }
+                    }
+                })
+            }
+
             content = (
                 <React.Fragment>
                     <Button onClick={() => setVisualizationState(VisualizationState.INSTRUCTIONS)}>
@@ -142,12 +175,42 @@ export function FactoryVisualization({
                     <Button onClick={() => setVisualizationState(VisualizationState.MAP)}>
                         Factory Map
                     </Button>
+                    <br />
+                    <h2>Factory Industries:</h2>
+                    <Row>
+                        <Col span={4}>Industry Type</Col>
+                        <Col span={4}>Count</Col>
+                    </Row>
+                    {Array.from(industryCount)
+                        .sort((a, b) => sortName(a[0], b[0]))
+                        .map(([key, value]) => (
+                            <Row key={key.name}>
+                                <Col span={4}>{key.name}</Col>
+                                <Col span={4}>{value}</Col>
+                            </Row>
+                        ))}
+                    <h2>Factory Containers:</h2>
+                    <Row>
+                        <Col span={4}>Container Type</Col>
+                        <Col span={4}>Count</Col>
+                    </Row>
+                    {Array.from(containerCount)
+                        .sort((a, b) => sortName(a[0], b[0]))
+                        .map(([key, value]) => (
+                            <Row key={key.name}>
+                                <Col span={4}>{key.name}</Col>
+                                <Col span={4}>{value}</Col>
+                            </Row>
+                        ))}
                 </React.Fragment>
             )
             break
         case VisualizationState.INSTRUCTIONS:
             content = (
                 <React.Fragment>
+                    <Button onClick={() => setVisualizationState(VisualizationState.LIST)}>
+                        Factory Summary
+                    </Button>
                     <Button onClick={() => setVisualizationState(VisualizationState.MAP)}>
                         Factory Map
                     </Button>
@@ -158,6 +221,9 @@ export function FactoryVisualization({
         case VisualizationState.MAP:
             content = (
                 <React.Fragment>
+                    <Button onClick={() => setVisualizationState(VisualizationState.LIST)}>
+                        Factory Summary
+                    </Button>
                     <Button onClick={() => setVisualizationState(VisualizationState.INSTRUCTIONS)}>
                         Building Instructions
                     </Button>
