@@ -173,11 +173,26 @@ export function ExistingFactorySummary({ factory }: ExistingFactorySummaryProps)
     const elements = []
     for (const output of factory.containers) {
         if (isOutputNode(output)) {
+            const recipe = findRecipe(output.item as Craftable)
+            let productionRate =
+                (60.0 * output.producers.size * recipe.product.quantity) / recipe.time
+            let unit = "minute"
+            if (productionRate < 1.0) {
+                productionRate *= 60.0
+                unit = "hour"
+            }
+            if (productionRate < 1.0) {
+                productionRate *= 24.0
+                unit = "day"
+            }
+            // round to 2 decimals
+            productionRate = Math.round(productionRate * 100) / 100
             const element = (
                 <Row key={output.name}>
                     <Col span={3}>{output.item.name}</Col>
                     <Col span={2}>{output.producers.size}</Col>
-                    <Col span={2}>{output.maintainedOutput}</Col>
+                    <Col span={2}>{output.maintain}</Col>
+                    <Col span={4}>{productionRate + " / " + unit}</Col>
                 </Row>
             )
             elements.push(element)
@@ -192,6 +207,7 @@ export function ExistingFactorySummary({ factory }: ExistingFactorySummaryProps)
                     <Col span={3}>Item</Col>
                     <Col span={2}>Assemblers</Col>
                     <Col span={2}>Maintain</Col>
+                    <Col span={4}>Production Rate</Col>
                 </Row>
                 {elements}
             </React.Fragment>
