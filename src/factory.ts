@@ -79,8 +79,7 @@ function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerN
             container.canAddIncomingLinks(additionalIndustries) &&
             container.canAddOutgoingLinks(1) &&
             (catalystTransferUnit === undefined ||
-                (catalystTransferUnit.output !== undefined &&
-                    catalystTransferUnit.output.canAddOutgoingLinks(additionalIndustries)))
+                catalystTransferUnit.output?.canAddOutgoingLinks(additionalIndustries) === true)
         ) {
             outputs.push(container)
             break
