@@ -3895,7 +3895,7 @@ export const RECIPES: Recipe[] = [
         time: 60,
         industry: ITEMS["Assembly Line XS"],
         ingredients: [
-            batch(ITEMS["Basic Casing XS"], 1),
+            batch(ITEMS["Basic Casing XS"], 4),
             batch(ITEMS["Basic Fixation"], 4),
             batch(ITEMS["Glass"], 4),
         ],

@@ -15,6 +15,7 @@ import { FactoryGraph, isOutputNode } from "../graph"
 import { FactoryVisualization } from "./render-factory"
 import { FactoryInstruction, generateInstructions } from "./factory-instruction"
 import { deserialize } from "../serialize"
+import { findRecipe, Recipe } from "../recipes"
 
 export enum FactoryState {
     UPLOAD = "upload",
@@ -52,6 +53,11 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
     const [selection, setSelection] = React.useState<Craftable[]>([])
     const [industryCount, setIndustryCount, setIndustryCountMap] = useMap<Craftable, number>()
     const [maintainValue, setMaintainValue, setMaintainValueMap] = useMap<Craftable, number>()
+    // the recipes for all produced items
+    const recipes = React.useMemo(
+        () => new Map<Craftable, Recipe>(selection.map((item) => [item, findRecipe(item)])),
+        [selection],
+    )
     // the FactoryGraph and a flag to show differences
     const [showDifferences, setShowDifferences] = React.useState<boolean>(false)
     const [startingFactory, setStartingFactory] = React.useState<FactoryGraph>()
@@ -95,9 +101,13 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                             const reader = new FileReader()
                             reader.onload = () => {
                                 const factoryJSON = reader.result as string
-                                const factory = deserialize(factoryJSON)
+                                const uploadedFactory = deserialize(factoryJSON)
+                                setStartingFactory(uploadedFactory)
+                                // create another copy to be modified
+                                const uploadedFactoryCopy = deserialize(factoryJSON)
+                                setFactory(uploadedFactoryCopy)
                                 setShowDifferences(true)
-                                setStartingFactory(factory)
+                                setStartingFactory(uploadedFactory)
                                 setFactoryState(FactoryState.SELECT)
                             }
                             reader.readAsText(file)
@@ -116,13 +126,14 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                     <ExistingFactorySummary factory={startingFactory} />
                     <FactoryCount
                         selection={selection}
+                        recipes={recipes}
                         setFactoryState={setFactoryState}
                         setIndustryCount={setIndustryCount}
                         getIndustryCount={getIndustryCount}
                         setMaintainValue={setMaintainValue}
                         getMaintainValue={getMaintainValue}
                         getRequirements={getRequirements}
-                        startingFactory={startingFactory}
+                        factory={factory}
                         setFactory={setFactory}
                         setFactoryInstructions={setFactoryInstructions}
                         showDifferences={showDifferences}
@@ -133,6 +144,8 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
             return (
                 <FactoryVisualization
                     factory={factory}
+                    setFactory={setFactory}
+                    startingFactory={startingFactory}
                     setFactoryState={setFactoryState}
                     instructions={factoryInstructions!}
                 />
@@ -160,11 +173,26 @@ export function ExistingFactorySummary({ factory }: ExistingFactorySummaryProps)
     const elements = []
     for (const output of factory.containers) {
         if (isOutputNode(output)) {
+            const recipe = findRecipe(output.item as Craftable)
+            let productionRate =
+                (60.0 * output.producers.size * recipe.product.quantity) / recipe.time
+            let unit = "minute"
+            if (productionRate < 1.0) {
+                productionRate *= 60.0
+                unit = "hour"
+            }
+            if (productionRate < 1.0) {
+                productionRate *= 24.0
+                unit = "day"
+            }
+            // round to 2 decimals
+            productionRate = Math.round(productionRate * 100) / 100
             const element = (
                 <Row key={output.name}>
                     <Col span={3}>{output.item.name}</Col>
                     <Col span={2}>{output.producers.size}</Col>
-                    <Col span={2}>{output.maintainedOutput}</Col>
+                    <Col span={2}>{output.maintain}</Col>
+                    <Col span={4}>{productionRate + " / " + unit}</Col>
                 </Row>
             )
             elements.push(element)
@@ -179,6 +207,7 @@ export function ExistingFactorySummary({ factory }: ExistingFactorySummaryProps)
                     <Col span={3}>Item</Col>
                     <Col span={2}>Assemblers</Col>
                     <Col span={2}>Maintain</Col>
+                    <Col span={4}>Production Rate</Col>
                 </Row>
                 {elements}
             </React.Fragment>

@@ -59,33 +59,32 @@ function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerN
     const recipe = findRecipe(item)
     let outputs: ContainerNode[] = []
     let additionalIndustries = 0
+    let catalystTransferUnit: TransferNode | undefined
     for (const container of containers) {
         additionalIndustries = Math.ceil(
             (rate + container.egress - container.ingress) / (recipe.product.quantity / recipe.time),
         )
-        // if this container holds catalyst byproducts and already has
-        // a catalyst transfer unit, then we must check that the transfer
-        // unit output can add links to these new industries
-        let catalystCheck = true
+
+        // Get the catalyst transfer unit consuming from this container, if any
         for (const consumer of container.consumers) {
             if (isTransferNode(consumer) && isCatalyst(consumer.item)) {
-                if (consumer.output === undefined) {
-                    console.log(consumer)
-                    throw new Error("Transfer unit has no output?")
-                }
-                if (!consumer.output.canAddOutgoingLinks(additionalIndustries)) {
-                    catalystCheck = false
-                }
+                catalystTransferUnit = consumer
             }
         }
+
+        // Check that we can add incoming and outgoing link to this container,
+        // and that we can add outgoing links to the catalyst transfer unit output
+        // if any
         if (
             container.canAddIncomingLinks(additionalIndustries) &&
             container.canAddOutgoingLinks(1) &&
-            catalystCheck
+            (catalystTransferUnit === undefined ||
+                catalystTransferUnit.output?.canAddOutgoingLinks(additionalIndustries) === true)
         ) {
             outputs.push(container)
             break
         }
+        catalystTransferUnit = undefined
     }
 
     /* Create a new output container(s) if necessary */
@@ -112,6 +111,10 @@ function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerN
     for (let i = 0; i < additionalIndustries; i++) {
         const industry = factory.createIndustry(item)
         industry.outputTo(outputs[i % outputs.length])
+        // link catalyst byproduct
+        if (catalystTransferUnit?.output !== undefined) {
+            industry.takeFrom(catalystTransferUnit.output)
+        }
         /* Build dependencies recursively */
         for (const ingredient of recipe.ingredients) {
             const inputs = produce(ingredient.item, ingredient.quantity / recipe.time, factory)
@@ -234,7 +237,32 @@ function handleCatalysts(factory: FactoryGraph): void {
                         console.log(consumer)
                         throw new Error("Transfer unit has no output?")
                     }
-                    if (consumer.output.canAddOutgoingLinks(startingContainers.length)) {
+                    if (isTransferContainerNode(consumer.output)) {
+                        console.log(consumer)
+                        throw new Error("Transfer unit output is transfer container node?")
+                    }
+
+                    // we may already have some links from transferContainer.output to
+                    // startingContainer.consumer. Count existing links
+                    let existingLinks = 0
+                    for (const startingContainer of startingContainers) {
+                        const startingConsumers = Array.from(startingContainer.consumers)
+                        if (startingConsumers.length !== 1) {
+                            console.log(startingContainer)
+                            throw new Error(
+                                "Temporary catalyst container does not have one consumer?",
+                            )
+                        }
+                        if (startingConsumers[0].inputs.has(consumer.output)) {
+                            existingLinks += 1
+                        }
+                    }
+
+                    if (
+                        consumer.output.canAddOutgoingLinks(
+                            startingContainers.length - existingLinks,
+                        )
+                    ) {
                         transferUnit = consumer
                         break
                     }
@@ -243,6 +271,9 @@ function handleCatalysts(factory: FactoryGraph): void {
 
             // sanity check: prevent having two transfer units drawing from the same container
             if (transferUnit === undefined && hasTransferUnit) {
+                console.log("Starting Containers")
+                console.log(startingContainers)
+                console.log("Ending Container")
                 console.log(endingContainer)
                 throw new Error("Container already has a transfer unit?")
             }
@@ -509,24 +540,55 @@ export function buildFactory(
     for (const [item, { count, maintain }] of requirements) {
         const recipe = findRecipe(item)
         const rate = recipe.product.quantity / recipe.time
+
+        // number of required output containers
+        const numOutputs = Math.ceil(count / MAX_CONTAINER_LINKS)
+
         // check if there is already an output node for this item that we can use
-        let output: OutputNode | undefined
-        const outputs = factory.getOutputNodes(item)
-        for (const checkOutput of outputs) {
-            if (checkOutput.canAddIncomingLinks(count)) {
-                output = checkOutput
-                output.outputRate += rate * count
-                output.maintainedOutput += maintain
+        const outputs: OutputNode[] = []
+        const availableOutputs = factory.getOutputNodes(item)
+        let catalystTransferUnit: TransferNode | undefined
+        for (const checkOutput of availableOutputs) {
+            // if this container has a catalyst byproduct transfer unit, then
+            // we need to ensure that we can out output link(s) to the transfer unit output
+            for (const consumer of checkOutput.consumers) {
+                if (isTransferNode(consumer) && isCatalyst(consumer.item)) {
+                    catalystTransferUnit = consumer
+                }
             }
+
+            if (
+                checkOutput.canAddIncomingLinks(count) &&
+                (catalystTransferUnit === undefined ||
+                    catalystTransferUnit?.output.canAddOutgoingLinks(count) === true)
+            ) {
+                checkOutput.outputRate += rate * count
+                checkOutput.maintainedOutput += maintain
+                outputs.push(checkOutput)
+                break
+            }
+            catalystTransferUnit = undefined
         }
 
-        if (output === undefined) {
+        if (outputs.length === 0) {
             // check if there is a container node that we could use
             const containers = factory.getContainers(item)
             for (const container of containers) {
-                if (container.canAddIncomingLinks(count)) {
+                // catalyst transfer unit check again
+                for (const consumer of container.consumers) {
+                    if (isTransferNode(consumer) && isCatalyst(consumer.item)) {
+                        catalystTransferUnit = consumer
+                    }
+                }
+
+                if (
+                    container.canAddIncomingLinks(count) &&
+                    (catalystTransferUnit === undefined ||
+                        (catalystTransferUnit.output !== undefined &&
+                            catalystTransferUnit.output.canAddOutgoingLinks(count)))
+                ) {
                     // convert container to output node
-                    output = factory.createOutput(item, rate * count, maintain, container.id)
+                    const output = factory.createOutput(item, rate * count, maintain, container.id)
                     for (const producer of container.producers) {
                         producer.outputTo(output)
                     }
@@ -535,19 +597,45 @@ export function buildFactory(
                         consumer.takeFrom(output)
                     }
                     factory.containers.delete(container)
+                    outputs.push(output)
+                    break
                 }
+                catalystTransferUnit = undefined
             }
         }
 
-        if (output === undefined) {
-            // add a new output node
-            output = factory.createOutput(item, rate * count, maintain)
+        if (outputs.length === 0) {
+            // track satisfied industries
+            let numSatisfied = count
+
+            // add a new output node(s)
+            for (let i = 0; i < numOutputs; i++) {
+                const numInput = Math.min(MAX_CONTAINER_LINKS, numSatisfied)
+                const split = numInput / count
+                numSatisfied -= numInput
+                const output = factory.createSplitOutput(
+                    item,
+                    rate * numInput,
+                    Math.ceil(maintain * split),
+                    split,
+                )
+                outputs.push(output)
+            }
         }
 
         for (let i = 0; i < count; i++) {
             // Add industry, output to OutputNode
             const industry = factory.createIndustry(item)
-            industry.outputTo(output)
+            for (const output of outputs) {
+                if (output.canAddIncomingLinks(1)) {
+                    industry.outputTo(output)
+                    break
+                }
+            }
+            // link transfer unit output to industry, if any
+            if (catalystTransferUnit?.output !== undefined) {
+                industry.takeFrom(catalystTransferUnit.output)
+            }
             // Build ingredients
             for (const ingredient of recipe.ingredients) {
                 const inputs = produce(ingredient.item, ingredient.quantity / recipe.time, factory)

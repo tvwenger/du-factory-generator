@@ -352,9 +352,16 @@ export class OutputNode extends ContainerNode {
      * @param item Item stored in this container
      * @param outputRate Required production rate
      * @param maintainedOutput The number of items to maintain
+     * @param split The split fraction
      */
-    constructor(id: string, item: Craftable, outputRate: PerMinute, maintainedOutput: Quantity) {
-        super(id, item, 1.0)
+    constructor(
+        id: string,
+        item: Craftable,
+        outputRate: PerMinute,
+        maintainedOutput: Quantity,
+        split: number,
+    ) {
+        super(id, item, split)
         this.outputRate = outputRate
         this.maintainedOutput = maintainedOutput
     }
@@ -717,7 +724,28 @@ export class FactoryGraph {
         if (id === undefined) {
             id = `C${containers.size}`
         }
-        const output = new OutputNode(id, item, outputRate, maintainedOutput)
+        const output = new OutputNode(id, item, outputRate, maintainedOutput, 1.0)
+        output.changed = true
+        this.containers.add(output)
+        return output
+    }
+
+    /**
+     * Add a split output node to the factory graph
+     * @see {@link OutputNode}
+     */
+    createSplitOutput(
+        item: Craftable,
+        outputRate: PerMinute,
+        maintainedOutput: Quantity,
+        split: number,
+        id?: string,
+    ): OutputNode {
+        const containers = this.getContainers(item)
+        if (id === undefined) {
+            id = `C${containers.size}`
+        }
+        const output = new OutputNode(id, item, outputRate, maintainedOutput, split)
         output.changed = true
         this.containers.add(output)
         return output
