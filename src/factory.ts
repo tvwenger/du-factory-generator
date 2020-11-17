@@ -633,7 +633,7 @@ export function buildFactory(
                 }
             }
             // link transfer unit output to industry, if any
-            if (catalystTransferUnit !== undefined && catalystTransferUnit.output !== undefined) {
+            if (catalystTransferUnit?.output !== undefined) {
                 industry.takeFrom(catalystTransferUnit.output)
             }
             // Build ingredients
