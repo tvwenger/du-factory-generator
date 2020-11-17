@@ -38,6 +38,7 @@ interface SaveContainerNode {
  */
 interface SaveIndustryNode {
     id: string
+    industry: string
     item: Item
     inputContainers: number[]
     inputTransferContainers: number[]
@@ -124,6 +125,7 @@ export function serialize(factory: FactoryGraph): string {
         const saveIndustry: SaveIndustryNode = {
             id: industry.id,
             item: industry.item,
+            industry: industry.industry.name,
             inputContainers: Array.from(industry.inputs)
                 .filter(isContainerNode)
                 .map((node) => factoryContainers.indexOf(node))
@@ -190,7 +192,7 @@ export function serialize(factory: FactoryGraph): string {
         saveFactory.transferContainers.push(saveTransferContainer)
     }
 
-    return JSON.stringify(saveFactory, null, 4)
+    return JSON.stringify(saveFactory, null, 0)
 }
 
 /**
