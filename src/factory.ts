@@ -560,7 +560,7 @@ export function buildFactory(
             if (
                 checkOutput.canAddIncomingLinks(count) &&
                 (catalystTransferUnit === undefined ||
-                    catalystTransferUnit?.output.canAddOutgoingLinks(count) === true)
+                    catalystTransferUnit.output?.canAddOutgoingLinks(count) === true)
             ) {
                 checkOutput.outputRate += rate * count
                 checkOutput.maintainedOutput += maintain
