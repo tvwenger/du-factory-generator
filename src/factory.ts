@@ -112,7 +112,7 @@ function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerN
         const industry = factory.createIndustry(item)
         industry.outputTo(outputs[i % outputs.length])
         // link catalyst byproduct
-        if (catalystTransferUnit !== undefined && catalystTransferUnit.output !== undefined) {
+        if (catalystTransferUnit?.output !== undefined) {
             industry.takeFrom(catalystTransferUnit.output)
         }
         /* Build dependencies recursively */
