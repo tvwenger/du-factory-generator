@@ -506,9 +506,18 @@ function sanityCheck(factory: FactoryGraph): void {
             console.log(container)
             throw new Error("Container egress exceeds ingress")
         }
-        if (container.isSplit && container.outgoingLinkCount > 1) {
-            console.log(container)
-            throw new Error("Split container has more than one outgoing link")
+        if (container.isSplit) {
+            // get the number of non-transfer unit outgoing links
+            let numOutgoing = 0
+            for (const consumer of container.consumers) {
+                if (!isTransferNode(consumer)) {
+                    numOutgoing += 1
+                }
+            }
+            if (numOutgoing > 1) {
+                console.log(container)
+                throw new Error("Split container has more than one non-transfer unit outgoing link")
+            }
         }
     }
     // Check industries
