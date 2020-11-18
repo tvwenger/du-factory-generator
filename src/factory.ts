@@ -108,9 +108,14 @@ function produce(item: Item, rate: PerMinute, factory: FactoryGraph): ContainerN
         }
     }
 
+    let outputIndex = 0
+    const outputGroup = Math.ceil(additionalIndustries / outputs.length)
     for (let i = 0; i < additionalIndustries; i++) {
         const industry = factory.createIndustry(item)
-        industry.outputTo(outputs[i % outputs.length])
+        industry.outputTo(outputs[outputIndex])
+        if (i >= (outputIndex + 1) * outputGroup - 1) {
+            outputIndex += 1
+        }
         // link catalyst byproduct
         if (catalystTransferUnit?.output !== undefined) {
             industry.takeFrom(catalystTransferUnit.output)
@@ -582,6 +587,7 @@ export function buildFactory(
                 }
 
                 if (
+                    !container.isSplit &&
                     container.canAddIncomingLinks(count) &&
                     (catalystTransferUnit === undefined ||
                         (catalystTransferUnit.output !== undefined &&
