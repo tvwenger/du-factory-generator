@@ -3262,7 +3262,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Dispenser"], 1),
+        product: batch(ITEMS["Light Dispenser"], 1),
         time: 1920,
         industry: ITEMS["Assembly Line M"],
         ingredients: [
@@ -3289,7 +3289,7 @@ export const RECIPES: Recipe[] = [
     {
         product: batch(ITEMS["Heavy Dispenser"], 1),
         time: 277200,
-        industry: ITEMS["Assembly Line L"],
+        industry: ITEMS["Assembly Line XL"],
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1296),
             batch(ITEMS["Advanced Power System"], 625),
