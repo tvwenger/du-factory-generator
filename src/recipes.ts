@@ -826,6 +826,13 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
+        product: batch(ITEMS["Advanced Standard Frame XL"], 1),
+        time: 50400,
+        industry: ITEMS["Metalwork Industry M"],
+        ingredients: [batch(ITEMS["Silumin"], 1201), batch(ITEMS["Al-Li Alloy"], 2401)],
+        byproducts: [],
+    },
+    {
         product: batch(ITEMS["Advanced Standard Frame L"], 1),
         time: 18000,
         industry: ITEMS["Metalwork Industry M"],
@@ -2391,6 +2398,19 @@ export const RECIPES: Recipe[] = [
             batch(ITEMS["Polycalcite Plastic"], 49),
             batch(ITEMS["Basic Electronics"], 8),
             batch(ITEMS["Basic LED"], 8),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Uncommon Screen L"], 1),
+        time: 6480,
+        industry: ITEMS["3D Printer M"],
+        ingredients: [
+            batch(ITEMS["Uncommon Electronics"], 88),
+            batch(ITEMS["Uncommon LED"], 88),
+            batch(ITEMS["Polycalcite Plastic"], 343),
+            batch(ITEMS["Basic Electronics"], 38),
+            batch(ITEMS["Basic LED"], 38),
         ],
         byproducts: [],
     },
