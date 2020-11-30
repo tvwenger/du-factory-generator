@@ -486,6 +486,12 @@ export const ITEMS = {
         Category.STRUCTURAL_PARTS,
         2,
     ),
+    "Advanced Standard Frame XL": product(
+        "Advanced Standard Frame XL",
+        Tier.ADVANCED,
+        Category.STRUCTURAL_PARTS,
+        3602,
+    ),
     "Advanced Standard Frame L": product(
         "Advanced Standard Frame L",
         Tier.ADVANCED,
@@ -1177,6 +1183,12 @@ export const ITEMS = {
         Category.FUNCTIONAL_PARTS,
         143.2,
     ),
+    "Uncommon Screen L": product(
+        "Uncommon Screen L",
+        Tier.UNCOMMON,
+        Category.FUNCTIONAL_PARTS,
+        778.4,
+    ),
     "Uncommon Screen XL": product(
         "Uncommon Screen XL",
         Tier.UNCOMMON,
@@ -1483,7 +1495,7 @@ export const ITEMS = {
     "Container S": containerElement("Container S", Category.ITEM_CONTAINERS, 342, 8000),
     "Container XS": containerElement("Container XS", Category.ITEM_CONTAINERS, 64, 1000),
     "Light Dispenser": otherElement("Light Dispenser", Category.ITEM_CONTAINERS, 479.2),
-    "Medium Dispenser": otherElement("Medium Dispenser", Category.ITEM_CONTAINERS, 2659.40),
+    "Medium Dispenser": otherElement("Medium Dispenser", Category.ITEM_CONTAINERS, 2659.4),
     "Heavy Dispenser": otherElement("Heavy Dispenser", Category.ITEM_CONTAINERS, 15070),
     "Ammo Container XS": otherElement("Ammo Container XS", Category.ITEM_CONTAINERS, 67),
     "Ammo Container S": otherElement("Ammo Container S", Category.ITEM_CONTAINERS, 360),
