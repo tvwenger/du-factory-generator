@@ -3270,6 +3270,43 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
+        product: batch(ITEMS["Light Dispenser"], 1),
+        time: 1920,
+        industry: ITEMS["Assembly Line M"],
+        ingredients: [
+            batch(ITEMS["Basic Screw"], 36),
+            batch(ITEMS["Basic Power System"], 25),
+            batch(ITEMS["Basic Screen M"], 1),
+            batch(ITEMS["Basic Standard Frame M"], 1),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Medium Dispenser"], 1),
+        time: 23040,
+        industry: ITEMS["Assembly Line L"],
+        ingredients: [
+            batch(ITEMS["Basic Screw"], 108),
+            batch(ITEMS["Uncommon Screw"], 108),
+            batch(ITEMS["Uncommon Power System"], 125),
+            batch(ITEMS["Uncommon Screen L"], 1),
+            batch(ITEMS["Uncommon Standard Frame L"], 125),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Heavy Dispenser"], 1),
+        time: 277200,
+        industry: ITEMS["Assembly Line XL"],
+        ingredients: [
+            batch(ITEMS["Uncommon Screw"], 1296),
+            batch(ITEMS["Advanced Power System"], 625),
+            batch(ITEMS["Advanced Screen XL"], 1),
+            batch(ITEMS["Advanced Standard Frame XL"], 1),
+        ],
+        byproducts: [],
+    },
+    {
         product: batch(ITEMS["Ammo Container XS"], 1),
         time: 360,
         industry: ITEMS["Assembly Line S"],
