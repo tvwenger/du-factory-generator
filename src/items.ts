@@ -231,6 +231,7 @@ export function otherElement(name: string, category: Category, volume: Liter): O
  * @param name Element name
  * @param category Element category
  * @param volume Element volume
+ * @param capacity Container capacity
  */
 export function containerElement(
     name: string,
@@ -1522,6 +1523,7 @@ export const ITEMS = {
     "Atmospheric Fuel Tank L": otherElement("Atmospheric Fuel Tank L", Category.FUEL_TANKS, 2755.4),
     "Atmospheric Fuel Tank M": otherElement("Atmospheric Fuel Tank M", Category.FUEL_TANKS, 499.2),
     "Atmospheric Fuel Tank S": otherElement("Atmospheric Fuel Tank S", Category.FUEL_TANKS, 92.6),
+    "Atmospheric Fuel Tank XS": otherElement("Atmospheric Fuel Tank XS", Category.FUEL_TANKS, 17.8),
     "Space Fuel Tank L": otherElement("Space Fuel Tank L", Category.FUEL_TANKS, 2755.4),
     "Space Fuel Tank M": otherElement("Space Fuel Tank M", Category.FUEL_TANKS, 499.2),
     "Space Fuel Tank S": otherElement("Space Fuel Tank S", Category.FUEL_TANKS, 92.6),
