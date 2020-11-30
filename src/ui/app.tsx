@@ -1,9 +1,3 @@
-/**
- * ui/app.ts
- * React component for main application
- * lgfrbcsgo & Nikolaus - October 2020
- */
-
 import * as React from "react"
 import { Button } from "antd"
 import { Info } from "./info"
@@ -27,6 +21,13 @@ export function App() {
         default:
             content = (
                 <React.Fragment>
+                    <ul>
+                        <li>Start a New Factory: Set up a new factory from scratch</li>
+                        <li>
+                            Start From Existing Factory: Start from a factory previously generated
+                            by this tool
+                        </li>
+                    </ul>
                     <Button type="primary" onClick={() => setAppState(AppState.NEWFACTORY)}>
                         Start a New Factory
                     </Button>
@@ -48,12 +49,7 @@ export function App() {
             break
     }
 
-    return (
-        <React.Fragment>
-            <h2>Dual Universe Factory Generator</h2>
-            {content}
-        </React.Fragment>
-    )
+    return content
 }
 
 /**

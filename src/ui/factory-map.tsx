@@ -1,16 +1,9 @@
-/**
- * ui/render-factory.ts
- * React component for visualizing a factory graph
- * lgfrbcsgo & Nikolaus - October 2020
- */
-
 import * as React from "react"
 import { renderToStaticMarkup } from "react-dom/server"
 import { Button } from "antd"
 import { UncontrolledReactSVGPanZoom } from "react-svg-pan-zoom"
-import { isContainerNode, isTransferContainerNode } from "../graph"
-import { FactoryInstruction } from "./factory-instruction"
 import { FONTSIZE, FactoryVisualizationComponentProps } from "./render-factory"
+import { FactoryInstruction } from "./generate-instructions"
 
 const MAX_IMAGE_SIZE = 12500
 
@@ -95,10 +88,10 @@ export function FactoryMap({ instructions }: FactoryVisualizationComponentProps)
             >
                 Download Image as SVG
             </Button>
-            <div style={{ border: "1px solid black", width: 0.95 * window.innerWidth + 2 }}>
+            <div style={{ border: "1px solid black", width: 0.9 * window.innerWidth + 2 }}>
                 <UncontrolledReactSVGPanZoom
-                    width={0.95 * window.innerWidth}
-                    height={window.innerHeight - 100}
+                    width={0.9 * window.innerWidth}
+                    height={0.9 * window.innerHeight}
                 >
                     <svg height={height} width={width}>
                         {innerSVG}
@@ -139,7 +132,7 @@ export function generateInnerSVG(
         const translate =
             "translate(" + (x + maxInputWidth - instruction.maxInputWidth) + "," + y + ")"
         const element = (
-            <g key={instruction.container.name + "group"} transform={translate}>
+            <g key={instruction.name + "group"} transform={translate}>
                 {instruction.render()}
             </g>
         )
@@ -155,17 +148,7 @@ export function generateInnerSVG(
         let nextInstruction: FactoryInstruction | undefined
         if (instruction_i < instructions.length - 1) {
             nextInstruction = instructions[instruction_i + 1]
-            if (
-                (isContainerNode(instruction.container) &&
-                    !isContainerNode(nextInstruction.container)) ||
-                (!isContainerNode(instruction.container) &&
-                    isContainerNode(nextInstruction.container)) ||
-                (isContainerNode(instruction.container) &&
-                    isContainerNode(nextInstruction.container) &&
-                    (instruction.container.item.category !=
-                        nextInstruction.container.item.category ||
-                        instruction.container.item.tier != nextInstruction.container.item.tier))
-            ) {
+            if (nextInstruction.section !== instruction.section) {
                 endSection = true
             }
         } else {
@@ -194,26 +177,12 @@ export function generateInnerSVG(
                         dominantBaseline="middle"
                         textAnchor="middle"
                     >
-                        {isContainerNode(instruction.container) && (
-                            <React.Fragment>
-                                <tspan x="0" dy="1em">
-                                    {instruction.container.item.category}
-                                </tspan>
-                                <tspan x="0" dy="1em">
-                                    {instruction.container.item.tier}
-                                </tspan>
-                            </React.Fragment>
-                        )}
-                        {isTransferContainerNode(instruction.container) && (
-                            <React.Fragment>
-                                <tspan x="0" dy="1em">
-                                    Transfer
-                                </tspan>
-                                <tspan x="0" dy="1em">
-                                    Containers
-                                </tspan>
-                            </React.Fragment>
-                        )}
+                        <tspan x="0" dy="1em">
+                            {instruction.header1}
+                        </tspan>
+                        <tspan x="0" dy="1em">
+                            {instruction.header2}
+                        </tspan>
                     </text>
                 </g>
             )

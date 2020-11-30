@@ -1,9 +1,3 @@
-/**
- * ui/item-select.ts
- * React components and utilities for selecting items to craft
- * lgfrbcsgo & Nikolaus - October 2020
- */
-
 import { Item } from "../items"
 import * as React from "react"
 import { useMemo } from "react"

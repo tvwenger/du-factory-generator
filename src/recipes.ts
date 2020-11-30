@@ -1,13 +1,7 @@
-/**
- * recipes.ts
- * All recipes
- * lgfrbcsgo & Nikolaus - October 2020
- */
-
-import { Item, ITEMS, Minutes, OtherElement, Ore, Quantity } from "./items"
+import { Craftable, Item, ITEMS, Minutes, OtherElement, Quantity } from "./items"
 
 /**
- * Batch holds a product and the production batch size
+ * Batch holds a product and a quantity
  */
 export interface Batch {
     readonly item: Item
@@ -37,7 +31,11 @@ export function batch(item: Item, quantity: Quantity): Batch {
     }
 }
 
-export function findRecipe(item: Exclude<Item, Ore>): Recipe {
+/**
+ * Get an item's recipe
+ * @param item The item for which to get a recipe
+ */
+export function findRecipe(item: Craftable): Recipe {
     const recipe = RECIPES.find((process) => process.product.item === item)
     if (recipe) {
         return recipe
@@ -46,11 +44,21 @@ export function findRecipe(item: Exclude<Item, Ore>): Recipe {
     }
 }
 
-/**
- * Recipe list (TODO: complete)
- */
-
 export const RECIPES: Recipe[] = [
+    {
+        product: batch(ITEMS["Hydrogen"], 50),
+        time: 120,
+        industry: ITEMS["Recycler M"],
+        ingredients: [],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Oxygen"], 50),
+        time: 120,
+        industry: ITEMS["Recycler M"],
+        ingredients: [],
+        byproducts: [],
+    },
     {
         product: batch(ITEMS["Aluminium"], 45),
         time: 25,

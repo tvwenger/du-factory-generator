@@ -1,30 +1,44 @@
-/**
- * serialize.ts
- * Serialize and unserialize a factory object
- * lgfrbcsgo & Nikolaus - October 2020
- */
-
+import { Container, isContainer } from "./container"
 import {
-    ContainerNode,
-    TransferContainerNode,
     FactoryGraph,
-    isContainerNode,
-    isOutputNode,
-    isIndustryNode,
-    isTransferNode,
-    isTransferContainerNode,
+    FactoryNode,
+    isProductionNode,
+    ProductionNode,
+    DumpRoute,
+    RelayRoute,
 } from "./graph"
-import { Craftable, Item, ITEMS } from "./items"
+import { Industry, isIndustry } from "./industry"
+import { Craftable, isOre, Item, ITEMS } from "./items"
+import { isTransferContainer, TransferContainer } from "./transfer-container"
+import { isTransferUnit, TransferUnit } from "./transfer-unit"
+
+// Factory JSON version number
+const VERSION = 2
 
 /**
- * Saved properties for each ContainerNode
+ * Saved properties for each FactoryNode
  */
-interface SaveContainerNode {
-    id: string
+interface SaveFactoryNode {
     item: Item
-    split: number
-    outputRate: number | undefined
-    maintainedOutput: number | undefined
+    consumers: number[]
+    outputRate: number
+    maintainedOutput: number
+    relayRouteContainers: number[]
+    relayRouteTransferUnits: number[]
+    dumpRouteRelays: number[][]
+    dumpRouteContainers: number[]
+    dumpRouteIndustries: number[][]
+}
+
+/**
+ * Saved properties for each Container
+ */
+interface SaveContainer {
+    id: string
+    merged: boolean
+    item: Item
+    outputRate: number
+    maintainedOutput: number
     maintain: number
     containers: Item[]
     producerIndustries: number[]
@@ -34,33 +48,9 @@ interface SaveContainerNode {
 }
 
 /**
- * Saved properties for each IndustryNode
+ * Saved properties for each TransferContainer
  */
-interface SaveIndustryNode {
-    id: string
-    industry: string
-    item: Item
-    inputContainers: number[]
-    inputTransferContainers: number[]
-    output: number | undefined
-}
-
-/**
- * Saved properties for each TransferNode
- */
-interface SaveTransferNode {
-    id: string
-    item: Item
-    inputs: number[]
-    rates: (number | undefined)[]
-    outputContainerNode: number | undefined
-    outputTransferContainerNode: number | undefined
-}
-
-/**
- * Saved properties for each TransferContainerNode
- */
-interface SaveTransferContainerNode {
+interface SaveTransferContainer {
     id: string
     items: Item[]
     maintain: number[]
@@ -70,48 +60,76 @@ interface SaveTransferContainerNode {
 }
 
 /**
+ * Saved properties for each Industry
+ */
+interface SaveIndustry {
+    id: string
+    industry: string
+    item: Item
+    inputContainers: number[]
+    inputTransferContainers: number[]
+    output: number
+}
+
+/**
+ * Saved properties for each TransferUnit
+ */
+interface SaveTransferUnit {
+    id: string
+    merged: boolean
+    item: Item
+    inputs: number[]
+    rates: number[]
+    outputContainer: number | undefined
+    outputTransferContainer: number | undefined
+}
+
+/**
  * Serialize a factory as a JSON string
  * @param factory the FactoryGraph to serialize
  */
 export function serialize(factory: FactoryGraph): string {
+    const factoryNodes = Array.from(factory.nodes.values())
     const factoryContainers = Array.from(factory.containers)
     const factoryIndustries = Array.from(factory.industries)
     const factoryTransferUnits = Array.from(factory.transferUnits)
     const factoryTransferContainers = Array.from(factory.transferContainers)
 
     const saveFactory = {
-        containers: [] as SaveContainerNode[],
-        industries: [] as SaveIndustryNode[],
-        transferUnits: [] as SaveTransferNode[],
-        transferContainers: [] as SaveTransferContainerNode[],
+        version: VERSION,
+        nodes: [] as SaveFactoryNode[],
+        containers: [] as SaveContainer[],
+        transferContainers: [] as SaveTransferContainer[],
+        industries: [] as SaveIndustry[],
+        transferUnits: [] as SaveTransferUnit[],
     }
 
     /**
-     * Save ContainerNodes by replacing cyclic references with indicies
+     * Save Containers by replacing cyclic references with indicies
      */
     for (const container of factoryContainers) {
-        const saveContainer: SaveContainerNode = {
+        const saveContainer: SaveContainer = {
             id: container.id,
+            merged: container.merged,
             item: container.item,
-            split: container.split,
-            outputRate: isOutputNode(container) ? container.outputRate : undefined,
-            maintainedOutput: isOutputNode(container) ? container.maintainedOutput : undefined,
+            outputRate: container.outputRate,
+            maintainedOutput: container.maintainedOutput,
             maintain: container.maintain,
             containers: container.containers,
             producerIndustries: Array.from(container.producers)
-                .filter(isIndustryNode)
+                .filter(isIndustry)
                 .map((node) => factoryIndustries.indexOf(node))
                 .sort(),
             producerTransferUnits: Array.from(container.producers)
-                .filter(isTransferNode)
+                .filter(isTransferUnit)
                 .map((node) => factoryTransferUnits.indexOf(node))
                 .sort(),
             consumerIndustries: Array.from(container.consumers)
-                .filter(isIndustryNode)
+                .filter(isIndustry)
                 .map((node) => factoryIndustries.indexOf(node))
                 .sort(),
             consumerTransferUnits: Array.from(container.consumers)
-                .filter(isTransferNode)
+                .filter(isTransferUnit)
                 .map((node) => factoryTransferUnits.indexOf(node))
                 .sort(),
         }
@@ -119,65 +137,59 @@ export function serialize(factory: FactoryGraph): string {
     }
 
     /**
-     * Save IndustryNodes by replacing cyclic references with indicies
+     * Save Industries by replacing cyclic references with indicies
      */
     for (const industry of factoryIndustries) {
-        const saveIndustry: SaveIndustryNode = {
+        const saveIndustry: SaveIndustry = {
             id: industry.id,
             item: industry.item,
-            industry: industry.industry.name,
+            industry: industry.recipe.industry.name,
             inputContainers: Array.from(industry.inputs)
-                .filter(isContainerNode)
+                .filter(isContainer)
                 .map((node) => factoryContainers.indexOf(node))
                 .sort(),
             inputTransferContainers: Array.from(industry.inputs)
-                .filter(isTransferContainerNode)
+                .filter(isTransferContainer)
                 .map((node) => factoryTransferContainers.indexOf(node))
                 .sort(),
-            output:
-                industry.output !== undefined
-                    ? factoryContainers.indexOf(industry.output)
-                    : undefined,
+            output: factoryContainers.indexOf(industry.output),
         }
         saveFactory.industries.push(saveIndustry)
     }
 
     /**
-     * Save TransferNodes by replacing cyclic references with indicies
+     * Save TransferUnits by replacing cyclic references with indicies
      */
     for (const transferUnit of factoryTransferUnits) {
-        const inputs = Array.from(transferUnit.inputs)
-            .map((node) => factoryContainers.indexOf(node))
-            .sort()
-        const rates = inputs.map((input) => transferUnit.rates.get(factoryContainers[input]))
-        const saveTransferUnit: SaveTransferNode = {
+        const saveTransferUnit: SaveTransferUnit = {
             id: transferUnit.id,
+            merged: transferUnit.merged,
             item: transferUnit.item,
-            inputs: inputs,
-            rates: rates,
-            outputContainerNode:
-                transferUnit.output !== undefined && isContainerNode(transferUnit.output)
-                    ? factoryContainers.indexOf(transferUnit.output)
-                    : undefined,
-            outputTransferContainerNode:
-                transferUnit.output !== undefined && isTransferContainerNode(transferUnit.output)
-                    ? factoryTransferContainers.indexOf(transferUnit.output)
-                    : undefined,
+            inputs: Array.from(transferUnit.inputs).map((node) => factoryContainers.indexOf(node)),
+            rates: Array.from(transferUnit.inputs).map(
+                (input) => transferUnit.transferRates.get(input)!,
+            ),
+            outputContainer: isContainer(transferUnit.output)
+                ? factoryContainers.indexOf(transferUnit.output)
+                : undefined,
+            outputTransferContainer: isTransferContainer(transferUnit.output)
+                ? factoryTransferContainers.indexOf(transferUnit.output)
+                : undefined,
         }
         saveFactory.transferUnits.push(saveTransferUnit)
     }
 
     /**
-     * Save TransferContainerNodes by replacing cyclic references with indicies
+     * Save TransferContainers by replacing cyclic references with indicies
      */
     for (const transferContainer of factoryTransferContainers) {
         const items: Item[] = []
         const maintain: number[] = []
-        for (const [key, value] of transferContainer.maintain.entries()) {
-            items.push(key)
-            maintain.push(value)
+        for (const item of transferContainer.items) {
+            items.push(item)
+            maintain.push(transferContainer.maintain(item))
         }
-        const saveTransferContainer: SaveTransferContainerNode = {
+        const saveTransferContainer: SaveTransferContainer = {
             id: transferContainer.id,
             items: items,
             maintain: maintain,
@@ -192,7 +204,51 @@ export function serialize(factory: FactoryGraph): string {
         saveFactory.transferContainers.push(saveTransferContainer)
     }
 
-    return JSON.stringify(saveFactory, null, 0)
+    /**
+     * Save FactoryNodes by replacing cyclic references with indicies
+     */
+    for (const node of factoryNodes) {
+        const saveRelayContainers: number[] = []
+        const saveRelayTransferUnits: number[] = []
+        for (const relayRoute of node.getRelayRoutes()) {
+            saveRelayContainers.push(factoryContainers.indexOf(relayRoute.container))
+            saveRelayTransferUnits.push(factoryTransferUnits.indexOf(relayRoute.transferUnit))
+        }
+
+        const saveDumpRelays: number[][] = []
+        const saveDumpContainers: number[] = []
+        const saveDumpIndustries: number[][] = []
+        if (isProductionNode(node)) {
+            for (const dumpRoute of node.getDumpRoutes()) {
+                saveDumpRelays.push(
+                    dumpRoute.relayRoutes.map((relayRoute) =>
+                        node.getRelayRoutes().indexOf(relayRoute),
+                    ),
+                )
+                saveDumpContainers.push(factoryContainers.indexOf(dumpRoute.container))
+                saveDumpIndustries.push(
+                    dumpRoute.industries.map((industry) => factoryIndustries.indexOf(industry)),
+                )
+            }
+        }
+
+        const saveFactoryNode: SaveFactoryNode = {
+            item: node.item,
+            consumers: Array.from(node.consumers)
+                .map((consumer) => factoryNodes.indexOf(consumer))
+                .sort(),
+            outputRate: node.outputRate,
+            maintainedOutput: node.maintainedOutput,
+            relayRouteContainers: saveRelayContainers,
+            relayRouteTransferUnits: saveRelayTransferUnits,
+            dumpRouteRelays: saveDumpRelays,
+            dumpRouteContainers: saveDumpContainers,
+            dumpRouteIndustries: saveDumpIndustries,
+        }
+        saveFactory.nodes.push(saveFactoryNode)
+    }
+
+    return JSON.stringify(saveFactory, null, 4)
 }
 
 /**
@@ -202,34 +258,27 @@ export function serialize(factory: FactoryGraph): string {
 export function deserialize(serializedFactory: string): FactoryGraph {
     const factory = new FactoryGraph()
     const saveFactory = JSON.parse(serializedFactory)
-    const factoryContainers: ContainerNode[] = []
-    const factoryTransferContainers: TransferContainerNode[] = []
+    if (saveFactory.version !== VERSION) {
+        throw new Error("Invalid JSON version: " + saveFactory.version + ". Expected: " + VERSION)
+    }
 
-    // Unpack ContainerNodes
+    const factoryContainers: Container[] = []
+    const factoryTransferContainers: TransferContainer[] = []
+    const factoryIndustries: Industry[] = []
+    const factoryTransferUnits: TransferUnit[] = []
+    const factoryNodes: FactoryNode[] = []
+
+    // Unpack Containers
     for (const saveContainer of saveFactory.containers) {
-        let container: ContainerNode
         const item = ITEMS[saveContainer.item.name as keyof typeof ITEMS]
-        if (saveContainer.outputRate !== undefined) {
-            container = factory.createOutput(
-                item as Craftable,
-                saveContainer.outputRate,
-                saveContainer.maintainedOutput,
-                saveContainer.id,
-            )
-        } else if (saveContainer.split !== 1.0) {
-            container = factory.createSplitContainer(item, saveContainer.split, saveContainer.id)
-        } else {
-            container = factory.createContainer(item, saveContainer.id)
-        }
-        container.originalMaintain = saveContainer.maintain
-        const containers = saveContainer.containers.map(
-            (item: Item) => ITEMS[item.name as keyof typeof ITEMS],
-        )
-        container.originalContainers = containers
+        const container = factory.createRelayContainer(item, saveContainer.id)
+        container.merged = saveContainer.merged
+        container.outputRate = saveContainer.outputRate
+        container.maintainedOutput = saveContainer.maintainedOutput
         factoryContainers.push(container)
     }
 
-    // Unpack TransferContainerNodes
+    // Unpack TransferContainers
     for (const saveTransferContainer of saveFactory.transferContainers) {
         const items = saveTransferContainer.items.map(
             (item: Item) => ITEMS[item.name as keyof typeof ITEMS],
@@ -238,37 +287,47 @@ export function deserialize(serializedFactory: string): FactoryGraph {
         factoryTransferContainers.push(transferContainer)
     }
 
-    // Unpack IndustryNodes
+    // Unpack Industries
     for (const saveIndustry of saveFactory.industries) {
         const item = ITEMS[saveIndustry.item.name as keyof typeof ITEMS]
-        const industry = factory.createIndustry(item as Craftable, saveIndustry.id)
+        const industry = factory.createIndustry(
+            item as Craftable,
+            factoryContainers[saveIndustry.output],
+            saveIndustry.id,
+        )
 
         // Add links
         for (const input of saveIndustry.inputContainers) {
-            industry.takeFrom(factoryContainers[input])
+            industry.addInput(factoryContainers[input])
         }
         for (const input of saveIndustry.inputTransferContainers) {
-            industry.takeFrom(factoryTransferContainers[input])
+            industry.addInput(factoryTransferContainers[input])
         }
-        industry.outputTo(factoryContainers[saveIndustry.output])
+
+        factoryIndustries.push(industry)
     }
 
-    // Unpack TransferNodes
+    // Unpack TransferUnits
     for (const saveTransferUnit of saveFactory.transferUnits) {
         const item = ITEMS[saveTransferUnit.item.name as keyof typeof ITEMS]
-        const transferUnit = factory.createTransferUnit(item, saveTransferUnit.id)
-
-        // Add links
-        for (const [input_i, input] of saveTransferUnit.inputs.entries()) {
-            transferUnit.takeFrom(factoryContainers[input], saveTransferUnit.rates[input_i])
+        let output: Container | TransferContainer =
+            factoryContainers[saveTransferUnit.outputContainer]
+        if (output === undefined) {
+            output = factoryTransferContainers[saveTransferUnit.outputTransferContainer]
         }
-        if (saveTransferUnit.outputContainerNode !== undefined) {
-            transferUnit.outputTo(factoryContainers[saveTransferUnit.outputContainerNode])
-        } else {
-            transferUnit.outputTo(
-                factoryTransferContainers[saveTransferUnit.outputTransferContainerNode],
+        const transferUnit = factory.createTransferUnit(item, output, saveTransferUnit.id)
+        transferUnit.merged = saveTransferUnit.merged
+
+        // Add inputs and rates
+        for (let i = 0; i < saveTransferUnit.inputs.length; i++) {
+            transferUnit.addInput(factoryContainers[saveTransferUnit.inputs[i]])
+            transferUnit.increaseTransferRate(
+                factoryContainers[saveTransferUnit.inputs[i]],
+                saveTransferUnit.rates[i],
             )
         }
+
+        factoryTransferUnits.push(transferUnit)
     }
 
     // set changed=false for all loaded factory nodes
@@ -283,6 +342,50 @@ export function deserialize(serializedFactory: string): FactoryGraph {
     }
     for (const node of factory.transferContainers) {
         node.changed = false
+    }
+
+    // Add FactoryNodes
+    for (const saveNode of saveFactory.nodes) {
+        const item = ITEMS[saveNode.item.name as keyof typeof ITEMS]
+        let node: FactoryNode
+        if (isOre(item)) {
+            node = factory.createOreNode(item)
+        } else {
+            node = factory.createProductionNode(item)
+        }
+        node.outputRate = saveNode.outputRate
+        node.maintainedOutput = saveNode.maintainedOutput
+
+        for (let i = 0; i < saveNode.relayRouteContainers.length; i++) {
+            const relayRoute: RelayRoute = {
+                container: factoryContainers[saveNode.relayRouteContainers[i]],
+                transferUnit: factoryTransferUnits[saveNode.relayRouteTransferUnits[i]],
+            }
+            node.relayRoutes.push(relayRoute)
+        }
+
+        if (isProductionNode(node)) {
+            for (let i = 0; i < saveNode.dumpRouteContainers.length; i++) {
+                const dumpRoute: DumpRoute = {
+                    relayRoutes: saveNode.dumpRouteRelays[i].map(
+                        (idx: number) => node.relayRoutes[idx],
+                    ),
+                    container: factoryContainers[saveNode.dumpRouteContainers[i]],
+                    industries: saveNode.dumpRouteIndustries[i].map(
+                        (idx: number) => factoryIndustries[idx],
+                    ),
+                }
+                node.dumpRoutes.push(dumpRoute)
+            }
+        }
+        factoryNodes.push(node)
+    }
+
+    // Link nodes
+    for (const [i, saveNode] of saveFactory.nodes.entries()) {
+        for (const consumer of saveNode.consumers) {
+            factoryNodes[i].addConsumer(factoryNodes[consumer] as ProductionNode)
+        }
     }
 
     return factory
