@@ -3407,6 +3407,18 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
+        product: batch(ITEMS["Atmospheric Fuel Tank XS"], 1),
+        time: 120,
+        industry: ITEMS["Assembly Line XS"],
+        ingredients: [
+            batch(ITEMS["Basic Pipe"], 1),
+            batch(ITEMS["Basic Injector"], 1),
+            batch(ITEMS["Basic Chemical Container XS"], 1),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
+        ],
+        byproducts: [],
+    },
+    {
         product: batch(ITEMS["Space Fuel Tank L"], 1),
         time: 7200,
         industry: ITEMS["Assembly Line L"],
