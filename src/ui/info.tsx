@@ -1,14 +1,7 @@
-/**
- * ui/info.ts
- * React component for displaying application information
- * lgfrbcsgo & Nikolaus - October 2020
- */
-
 import * as React from "react"
 import { Button } from "antd"
 import { AppState } from "./app"
-const exampleInstruction1 = require("../assets/example-instruction-1.png")
-const exampleInstruction2 = require("../assets/example-instruction-2.png")
+const example = require("../assets/example.png")
 
 /**
  * Properties of the Info component
@@ -26,7 +19,6 @@ export interface InfoProps {
  * @param props {@link InfoProps}
  */
 export function Info({ setAppState }: InfoProps) {
-    console.log(exampleInstruction1)
     return (
         <React.Fragment>
             <Button onClick={() => setAppState(AppState.HOME)}>Back</Button>
@@ -47,13 +39,12 @@ export function Info({ setAppState }: InfoProps) {
                     "Next"
                 </li>
                 <li>
-                    Enter the number of assemblers you would like to dedicate to producing each
-                    item, as well as the quantity you would like to maintain in the output
-                    container(s), then click "Next"
+                    Enter the requested production rate of each item, as well as the quantity you
+                    would like to maintain in the output container(s), then click "Next"
                 </li>
                 <li>
-                    Wait while your factory plan is generated. This can take up to a minute for
-                    large factories.
+                    Wait while your factory plan is generated. This can take a while (up to a few
+                    minutes) for large factories.
                 </li>
                 <li>
                     Click "Factory Map" to see an interactive schematic of the entire factory, which
@@ -68,12 +59,12 @@ export function Info({ setAppState }: InfoProps) {
                 </li>
             </ul>
             <b>Note:</b> You can also select the factory production list using a comma separated
-            values (CSV) file. Create a plain text file formatted like: Item Name, Number of
-            Assemblers, Maintain Value. For example:
+            values (CSV) file. Create a plain text file formatted like:
+            <pre>Item Name, Number Produced per Day, Maintain Value</pre>. For example:
             <pre>
-                Container S, 1, 10
+                Container S, 10, 50
                 <br />
-                Container M, 1, 10
+                Container M, 10, 50
                 <br />
                 Container L, 2, 10
             </pre>
@@ -91,15 +82,13 @@ export function Info({ setAppState }: InfoProps) {
                     to produce more of them, then click "Next"
                 </li>
                 <li>
-                    Enter the number of new assemblers you would like to dedicate to producing each
-                    item, as well as the additional quantity you would like to maintain in the
-                    output container(s), then click "Next"
+                    Enter the requested production rate, as well as the additional quantity you
+                    would like to maintain in the output container(s), then click "Next"
                 </li>
                 <li>Visualize and save the factory as before</li>
             </ul>
             <h2>Factory Instruction Example</h2>
-            <img src={exampleInstruction1.default} width="300px" />
-            <img src={exampleInstruction2.default} width="300px" />
+            <img src={example.default} width="600px" />
             <ul>
                 <li>
                     The text above each row shows the produced item type (e.g., "Uncommon LED").
@@ -109,47 +98,45 @@ export function Info({ setAppState }: InfoProps) {
                     named by the container contents (e.g., Hydrogen) and the identifier (e.g., "C0")
                 </li>
                 <li>
-                    The circles show the industries and transfer units, and the text inside
+                    The circles are industries, the diamonds are transfer units, and the text inside
                     indicates the industry type (i.e., "Chem" for "Chemical Industry M"). Multiple
                     industries can output to a single container. The text above the circle (e.g.,
-                    "P0") is the identifier for the industry.
+                    "P0") is the identifier for the industry or transfer unit.
                 </li>
                 <li>
                     The green text above the arrow (e.g., "25/min") is the production rate of all
-                    industries outputing to the container.
+                    industries and the output rate of all transfer units outputing to the container.
                 </li>
                 <li>
                     The squares show the containers, and the text inside indicates the required
                     container size (i.e., "L" for "Container L"). Some outputs may require multiple
                     containers connected via a Container Hub (e.g., "L+M" requires a "Container L"
                     and "Container M" connected via a "Container Hub"). The text above the circle
-                    (e.g., C0) is the indentifier for the container. The text below the circle is
+                    (e.g., D0) is the indentifier for the container. The text below the circle is
                     the required maintain value.
                 </li>
                 <li>
                     The red text above the arrow (e.g., "12/day") is the consumption rate of all
-                    industries consuming from the container.
+                    industries or transfer units consuming from the container.
                 </li>
                 <li>
                     The rightmost arrows show the consumers from the container. Each link is named
-                    by the produced item (e.g., "Transfer Unit") and the identifier (e.g., "P0").
+                    by the produced item (e.g., "Aluminium") and the identifier (e.g., "P0").
+                </li>
+                <li>
+                    <b>Dashed Arrows and Labels:</b> Dashed arrows indicate byproducts that are
+                    transfered out via the labeled transfer units.
                 </li>
                 <li>
                     <b>Blue Boxes and Text:</b> A blue border around a container represents a
                     factory "output". This is an item that you requested your factory to produce.
-                    The maintain amount below the container includes the requested maintain amount
-                    (shown below in blue text) as well as what is required by the consuming
-                    industries. The blue text below the output arrow shows the the "reserved
-                    production rate." This is the rate at which your requested maintain amount will
-                    be filled.
                 </li>
                 <li>
                     <b>Filled Circles and Boxes:</b> When you start from an existing factory, some
-                    industries and containers will be filled with red and green, respectively. This
-                    is to highlight new entities or entities that have been changed from the
-                    existing factory. No existing links are removed, but there may be new
-                    industries, new links, a different maintain amount, or a different container
-                    size.
+                    industries, transfer units, and containers will be filled. This is to highlight
+                    new entities or entities that have been changed from the existing factory. No
+                    existing links are removed, but there may be new industries, new links, a
+                    different maintain amount, or a different container size.
                 </li>
                 <li>
                     <b>Transfer Containers:</b> Some recipes require more than seven ingredients

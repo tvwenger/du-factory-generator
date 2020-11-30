@@ -1,13 +1,7 @@
-/**
- * recipes.ts
- * All recipes
- * lgfrbcsgo & Nikolaus - October 2020
- */
-
-import { Item, ITEMS, Minutes, OtherElement, Ore, Quantity } from "./items"
+import { Craftable, Item, ITEMS, Minutes, OtherElement, Quantity } from "./items"
 
 /**
- * Batch holds a product and the production batch size
+ * Batch holds a product and a quantity
  */
 export interface Batch {
     readonly item: Item
@@ -37,7 +31,11 @@ export function batch(item: Item, quantity: Quantity): Batch {
     }
 }
 
-export function findRecipe(item: Exclude<Item, Ore>): Recipe {
+/**
+ * Get an item's recipe
+ * @param item The item for which to get a recipe
+ */
+export function findRecipe(item: Craftable): Recipe {
     const recipe = RECIPES.find((process) => process.product.item === item)
     if (recipe) {
         return recipe
@@ -46,11 +44,21 @@ export function findRecipe(item: Exclude<Item, Ore>): Recipe {
     }
 }
 
-/**
- * Recipe list (TODO: complete)
- */
-
 export const RECIPES: Recipe[] = [
+    {
+        product: batch(ITEMS["Hydrogen"], 50),
+        time: 120,
+        industry: ITEMS["Recycler M"],
+        ingredients: [],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Oxygen"], 50),
+        time: 120,
+        industry: ITEMS["Recycler M"],
+        ingredients: [],
+        byproducts: [],
+    },
     {
         product: batch(ITEMS["Aluminium"], 45),
         time: 25,
@@ -815,6 +823,13 @@ export const RECIPES: Recipe[] = [
         time: 660,
         industry: ITEMS["Metalwork Industry M"],
         ingredients: [batch(ITEMS["Steel"], 1), batch(ITEMS["Inconel"], 1)],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Advanced Standard Frame XL"], 1),
+        time: 50400,
+        industry: ITEMS["Metalwork Industry M"],
+        ingredients: [batch(ITEMS["Silumin"], 1201), batch(ITEMS["Al-Li Alloy"], 2401)],
         byproducts: [],
     },
     {
@@ -2383,6 +2398,19 @@ export const RECIPES: Recipe[] = [
             batch(ITEMS["Polycalcite Plastic"], 49),
             batch(ITEMS["Basic Electronics"], 8),
             batch(ITEMS["Basic LED"], 8),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Uncommon Screen L"], 1),
+        time: 6480,
+        industry: ITEMS["3D Printer M"],
+        ingredients: [
+            batch(ITEMS["Uncommon Electronics"], 88),
+            batch(ITEMS["Uncommon LED"], 88),
+            batch(ITEMS["Polycalcite Plastic"], 343),
+            batch(ITEMS["Basic Electronics"], 38),
+            batch(ITEMS["Basic LED"], 38),
         ],
         byproducts: [],
     },

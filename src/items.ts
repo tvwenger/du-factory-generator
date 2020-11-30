@@ -1,20 +1,15 @@
-/**
- * items.ts
- * All available items and their properties
- * lgfrbcsgo & Nikolaus - October 2020
- */
-
 export type Liter = number
 export type Minutes = number
 export type Quantity = number
 
 export type Element = ContainerElement | OtherElement
-export type Item = Ore | Catalyst | Product | Element
+export type Item = Ore | Gas | Catalyst | Product | Element
 
 export type Craftable = Exclude<Item, Ore>
 
 export enum ItemType {
     ORE = "ore",
+    GAS = "gas",
     CATALYST = "catalyst",
     PRODUCT = "product",
     ELEMENT = "element",
@@ -31,6 +26,7 @@ export enum Tier {
 
 export enum Category {
     ORE = "ore",
+    GAS = "gas",
     PURE = "pure",
     PRODUCT = "product",
     CATALYST = "catalyst",
@@ -72,7 +68,7 @@ export enum ElementType {
 }
 
 /**
- * Properties commen to each item type
+ * Properties common to each item type
  */
 export interface CommonProperties {
     readonly name: string
@@ -86,6 +82,10 @@ export interface CommonProperties {
  */
 export interface Ore extends CommonProperties {
     readonly type: ItemType.ORE
+}
+
+export interface Gas extends CommonProperties {
+    readonly type: ItemType.GAS
 }
 
 export interface Catalyst extends CommonProperties {
@@ -113,6 +113,14 @@ export interface OtherElement extends CommonProperties {
  */
 export function isOre(item: Item): item is Ore {
     return item.type === ItemType.ORE
+}
+
+/**
+ * Gas type guard
+ * @param item Item to check
+ */
+export function isGas(item: Item): item is Gas {
+    return item.type === ItemType.GAS
 }
 
 /**
@@ -150,6 +158,20 @@ export function ore(name: string, tier: Tier): Ore {
         name,
         tier,
         category: Category.ORE,
+        volume: 1,
+    }
+}
+
+/**
+ * Returns a new Gas type
+ * @param name Ore name
+ */
+export function gas(name: string): Gas {
+    return {
+        type: ItemType.GAS,
+        name,
+        tier: Tier.BASIC,
+        category: Category.GAS,
         volume: 1,
     }
 }
@@ -227,16 +249,10 @@ export function containerElement(
     }
 }
 
-/**
- * Item list (TODO: complete)
- */
-
 export const ITEMS = {
     Bauxite: ore("Bauxite", Tier.BASIC),
     Coal: ore("Coal", Tier.BASIC),
     Hematite: ore("Hematite", Tier.BASIC),
-    Hydrogen: ore("Hydrogen", Tier.BASIC),
-    Oxygen: ore("Oxygen", Tier.BASIC),
     Quartz: ore("Quartz", Tier.BASIC),
     Chromite: ore("Chromite", Tier.UNCOMMON),
     Limestone: ore("Limestone", Tier.UNCOMMON),
@@ -254,6 +270,8 @@ export const ITEMS = {
     Illmenite: ore("Illmenite", Tier.EXOTIC),
     Rhodonite: ore("Rhodonite", Tier.EXOTIC),
     Vanadinite: ore("Vanadinite", Tier.EXOTIC),
+    Hydrogen: gas("Hydrogen"),
+    Oxygen: gas("Oxygen"),
     Aluminium: product("Aluminium", Tier.BASIC, Category.PURE, 1),
     Carbon: product("Carbon", Tier.BASIC, Category.PURE, 1),
     Iron: product("Iron", Tier.BASIC, Category.PURE, 1),
@@ -485,6 +503,12 @@ export const ITEMS = {
         Tier.ADVANCED,
         Category.STRUCTURAL_PARTS,
         2,
+    ),
+    "Advanced Standard Frame XL": product(
+        "Advanced Standard Frame XL",
+        Tier.ADVANCED,
+        Category.STRUCTURAL_PARTS,
+        3602,
     ),
     "Advanced Standard Frame L": product(
         "Advanced Standard Frame L",
@@ -1177,6 +1201,12 @@ export const ITEMS = {
         Category.FUNCTIONAL_PARTS,
         143.2,
     ),
+    "Uncommon Screen L": product(
+        "Uncommon Screen L",
+        Tier.UNCOMMON,
+        Category.FUNCTIONAL_PARTS,
+        778.4,
+    ),
     "Uncommon Screen XL": product(
         "Uncommon Screen XL",
         Tier.UNCOMMON,
@@ -1483,7 +1513,7 @@ export const ITEMS = {
     "Container S": containerElement("Container S", Category.ITEM_CONTAINERS, 342, 8000),
     "Container XS": containerElement("Container XS", Category.ITEM_CONTAINERS, 64, 1000),
     "Light Dispenser": otherElement("Light Dispenser", Category.ITEM_CONTAINERS, 479.2),
-    "Medium Dispenser": otherElement("Medium Dispenser", Category.ITEM_CONTAINERS, 2659.40),
+    "Medium Dispenser": otherElement("Medium Dispenser", Category.ITEM_CONTAINERS, 2659.4),
     "Heavy Dispenser": otherElement("Heavy Dispenser", Category.ITEM_CONTAINERS, 15070),
     "Ammo Container XS": otherElement("Ammo Container XS", Category.ITEM_CONTAINERS, 67),
     "Ammo Container S": otherElement("Ammo Container S", Category.ITEM_CONTAINERS, 360),

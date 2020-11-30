@@ -1,17 +1,12 @@
-/**
- * ui/render-factory.ts
- * React component for visualizing a factory graph
- * lgfrbcsgo & Nikolaus - October 2020
- */
-
 import * as React from "react"
 import { Button, Row, Col } from "antd"
 import { Category, Tier, ITEMS, OtherElement, ContainerElement } from "../items"
-import { FactoryGraph, IndustryNode, MAX_CONTAINER_LINKS } from "../graph"
+import { FactoryGraph, MAX_CONTAINER_LINKS } from "../graph"
 import { FactoryState } from "./factory"
 import { serialize } from "../serialize"
-import { sortName, FactoryInstruction } from "./factory-instruction"
+import { FactoryInstruction, sortName } from "./generate-instructions"
 import { FactoryMap } from "./factory-map"
+const example = require("../assets/example.png")
 
 enum VisualizationState {
     LIST = "list",
@@ -23,8 +18,9 @@ enum VisualizationState {
 export const CATEGORY_ORDER = [
     Category.ORE,
     Category.PURE,
-    Category.PRODUCT,
+    Category.GAS,
     Category.CATALYST,
+    Category.PRODUCT,
     Category.STRUCTURAL_PARTS,
     Category.INTERMEDIARY_PARTS,
     Category.COMPLEX_PARTS,
@@ -77,6 +73,7 @@ export const INDUSTRYLABELS = new Map([
     [ITEMS["Electronics Industry M"], "Elec"],
     [ITEMS["Glass Furnace M"], "Glass"],
     [ITEMS["Metalwork Industry M"], "Metal"],
+    [ITEMS["Recycler M"], "Recycle"],
     [ITEMS["Refiner M"], "Refine"],
     [ITEMS["Smelter M"], "Smelt"],
 ])
@@ -90,13 +87,13 @@ export const CONTAINERLABELS = new Map([
 ])
 
 // The size (in pixels) of a node item in the visualization
-export const SIZE = 50
+export const SIZE = 60
 
 // The size (in pt) of the font
 export const FONTSIZE = 10
 
 // Spacing between link lines
-export const LINKSPACING = (2.0 * SIZE) / MAX_CONTAINER_LINKS
+export const LINKSPACING = 1.1 * FONTSIZE
 
 /**
  * Properties of the FactoryVisualization components
@@ -142,37 +139,64 @@ export function FactoryVisualization({
 }: FactoryVisualizationProps) {
     // The state of the visualization
     const [visualizationState, setVisualizationState] = React.useState<VisualizationState>()
+    // Flag to show the legend
+    const [showLegend, setShowLegend] = React.useState<boolean>(false)
 
     let content = null
     switch (visualizationState) {
         default:
             // get count of industry and container types
             const industryCount = new Map<OtherElement, number>()
+            let totalIndustries = 0
             const containerCount = new Map<ContainerElement, number>()
+            let totalContainers = 0
+
             if (factory !== undefined) {
                 Array.from(factory.industries).map((node) => {
-                    if (industryCount.has(node.industry)) {
-                        industryCount.set(node.industry, industryCount.get(node.industry)! + 1)
+                    totalIndustries += 1
+                    if (industryCount.has(node.recipe.industry)) {
+                        industryCount.set(
+                            node.recipe.industry,
+                            industryCount.get(node.recipe.industry)! + 1,
+                        )
                     } else {
-                        industryCount.set(node.industry, 1)
+                        industryCount.set(node.recipe.industry, 1)
                     }
                 })
-                industryCount.set(ITEMS["Transfer Unit"], factory.transferUnits.size)
-                Array.from(factory.containers).map((node) => {
-                    for (const container of node.containers) {
-                        if (containerCount.has(container)) {
-                            containerCount.set(container, containerCount.get(container)! + 1)
-                        } else {
-                            containerCount.set(container, 1)
+                industryCount.set(
+                    ITEMS["Transfer Unit"],
+                    Array.from(factory.transferUnits).filter((transferUnit) => !transferUnit.merged)
+                        .length,
+                )
+                totalIndustries += Array.from(factory.transferUnits).filter(
+                    (transferUnit) => !transferUnit.merged,
+                ).length
+
+                Array.from(factory.containers)
+                    .filter((container) => !container.merged)
+                    .map((container) => {
+                        for (const containerSize of container.containers) {
+                            totalContainers += 1
+                            if (containerCount.has(containerSize)) {
+                                containerCount.set(
+                                    containerSize,
+                                    containerCount.get(containerSize)! + 1,
+                                )
+                            } else {
+                                containerCount.set(containerSize, 1)
+                            }
                         }
-                    }
-                })
-                Array.from(factory.transferContainers).map((node) => {
-                    for (const container of node.containers) {
-                        if (containerCount.has(container)) {
-                            containerCount.set(container, containerCount.get(container)! + 1)
+                    })
+                Array.from(factory.transferContainers).map((container) => {
+                    for (const containerSize of container.containers) {
+                        totalContainers += 1
+                        if (containerCount.has(containerSize)) {
+                            containerCount.set(
+                                containerSize,
+                                containerCount.get(containerSize)! + 1,
+                            )
                         } else {
-                            containerCount.set(container, 1)
+                            containerCount.set(containerSize, 1)
                         }
                     }
                 })
@@ -187,7 +211,7 @@ export function FactoryVisualization({
                         Factory Map
                     </Button>
                     <br />
-                    <h2>Factory Industries:</h2>
+                    <h2>Factory Industries ({totalIndustries}):</h2>
                     <Row>
                         <Col span={4}>Industry Type</Col>
                         <Col span={4}>Count</Col>
@@ -200,7 +224,7 @@ export function FactoryVisualization({
                                 <Col span={4}>{value}</Col>
                             </Row>
                         ))}
-                    <h2>Factory Containers:</h2>
+                    <h2>Factory Containers ({totalContainers}):</h2>
                     <Row>
                         <Col span={4}>Container Type</Col>
                         <Col span={4}>Count</Col>
@@ -225,6 +249,17 @@ export function FactoryVisualization({
                     <Button onClick={() => setVisualizationState(VisualizationState.MAP)}>
                         Factory Map
                     </Button>
+                    {showLegend && (
+                        <React.Fragment>
+                            <Button onClick={() => setShowLegend(false)}>Hide Legend</Button>
+                            <br />
+                            <img src={example.default} width="600px" />
+                        </React.Fragment>
+                    )}
+                    {!showLegend && (
+                        <Button onClick={() => setShowLegend(true)}>Show Legend</Button>
+                    )}
+                    <br />
                     <FactoryInstructions instructions={instructions} />
                 </React.Fragment>
             )
@@ -238,6 +273,17 @@ export function FactoryVisualization({
                     <Button onClick={() => setVisualizationState(VisualizationState.INSTRUCTIONS)}>
                         Building Instructions
                     </Button>
+                    {showLegend && (
+                        <React.Fragment>
+                            <Button onClick={() => setShowLegend(false)}>Hide Legend</Button>
+                            <br />
+                            <img src={example.default} width="600px" />
+                        </React.Fragment>
+                    )}
+                    {!showLegend && (
+                        <Button onClick={() => setShowLegend(true)}>Show Legend</Button>
+                    )}
+                    <br />
                     <FactoryMap instructions={instructions} />
                 </React.Fragment>
             )
@@ -246,6 +292,15 @@ export function FactoryVisualization({
 
     return (
         <React.Fragment>
+            <ul>
+                <li>Factory Summary: List the required industries and containers</li>
+                <li>
+                    Download Factory as JSON: Save the factory to a file and start new factory
+                    additions from the current state
+                </li>
+                <li>Building Instructions: Step-by-step instructions for building the factory</li>
+                <li>Factory Map: Visualize the entire factory plan at once</li>
+            </ul>
             <Button
                 onClick={() => {
                     setFactory(startingFactory)
@@ -275,6 +330,12 @@ export function FactoryInstructions({ instructions }: FactoryVisualizationCompon
 
     return (
         <React.Fragment>
+            <br />
+            {step < instructions.length - 1 && (
+                <Button onClick={() => setStep(step + 1)}>Next Step</Button>
+            )}
+            {step > 0 && <Button onClick={() => setStep(step - 1)}>Previous Step</Button>}
+            <br />
             <svg height={instructions[step].height} width={instructions[step].width}>
                 <marker
                     id="arrowhead"
@@ -289,11 +350,6 @@ export function FactoryInstructions({ instructions }: FactoryVisualizationCompon
                 <rect width="100%" height="100%" fill="lightgray" />
                 {instructions[step].render()}
             </svg>
-            <br />
-            {step > 0 && <Button onClick={() => setStep(step - 1)}>Previous Step</Button>}
-            {step < instructions.length - 1 && (
-                <Button onClick={() => setStep(step + 1)}>Next Step</Button>
-            )}
         </React.Fragment>
     )
 }

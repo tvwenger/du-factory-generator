@@ -1,16 +1,10 @@
-/**
- * factory-count.tsx
- * Component for selecting new factory assembler quantities and maintain values
- * lgfrbcsgo & Nikolaus - October 2020
- */
-
 import * as React from "react"
 import { Button, Row, Col, InputNumber } from "antd"
 import { Craftable } from "../items"
 import { FactoryState } from "./factory"
-import { buildFactory } from "../factory"
-import { FactoryGraph } from "../graph"
-import { FactoryInstruction, generateInstructions } from "./factory-instruction"
+import { buildFactory } from "../generator"
+import { FactoryGraph, PerSecond } from "../graph"
+import { FactoryInstruction, generateInstructions } from "./generate-instructions"
 import { Recipe } from "../recipes"
 
 /**
@@ -30,16 +24,16 @@ interface FactoryCountProps {
     recipes: Map<Craftable, Recipe>
 
     /**
-     * Set the number of assemblers for a given item
+     * Set the production rate for a given item
      * @param item Item to set the number of assemblers
      */
-    setIndustryCount: (item: Craftable, num: number) => void
+    setProductionRate: (item: Craftable, rate: PerSecond) => void
 
     /**
-     * Get the assembler count for a given item
+     * Get the production rate for a given item
      * @param item Item to get assembler count
      */
-    getIndustryCount: (item: Craftable) => number
+    getProductionRate: (item: Craftable) => PerSecond
 
     /**
      * Set the maintain value for a given item
@@ -56,7 +50,7 @@ interface FactoryCountProps {
     /**
      * Get factory production requirements
      */
-    getRequirements: () => Map<Craftable, { count: number; maintain: number }>
+    getRequirements: () => Map<Craftable, { rate: PerSecond; maintain: number }>
 
     // the current FactoryGraph
     factory: FactoryGraph | undefined
@@ -71,7 +65,7 @@ interface FactoryCountProps {
      * Set the factory instructions
      * @param factoryInstructions the FactoryInstructions
      */
-    setFactoryInstructions: (factory: FactoryInstruction[]) => void
+    setFactoryInstructions: (instructions: FactoryInstruction[]) => void
 
     // flag to show differences from original factory
     showDifferences: boolean
@@ -85,38 +79,41 @@ export function FactoryCount(props: FactoryCountProps) {
     return (
         <React.Fragment>
             <h2>Select production quantity:</h2>
+            <ul>
+                <li>
+                    Produce Per Day: How many items to produce per day. Default value is the
+                    production rate for a single industry.
+                </li>
+                <li>Maintain: How many items to maintain in the factory output container</li>
+                <li>
+                    Required Industries: The required number of industries producing this item to
+                    fulfill the requested production rate
+                </li>
+            </ul>
             <Row>
                 <Col span={3}>Item</Col>
-                <Col span={2}>Assemblers</Col>
+                <Col span={3}>Produce Per Day</Col>
                 <Col span={2}>Maintain</Col>
-                <Col span={4}>Production Rate</Col>
+                <Col span={4}>Required Industries</Col>
             </Row>
             {props.selection.map(function (item) {
                 const recipe = props.recipes.get(item)!
-                // per minute
-                let productionRate =
-                    (60.0 * props.getIndustryCount(item) * recipe.product.quantity) / recipe.time
-                let unit = "minute"
-                if (productionRate < 1.0) {
-                    productionRate *= 60.0
-                    unit = "hour"
-                }
-                if (productionRate < 1.0) {
-                    productionRate *= 24.0
-                    unit = "day"
-                }
-                // round to 2 decimals
-                productionRate = Math.round(productionRate * 100) / 100
+                // Get the number of industries required to satisfy production rate
+                const numIndustries = Math.ceil(
+                    props.getProductionRate(item) / (recipe.product.quantity / recipe.time),
+                )
                 return (
                     <Row key={item.name}>
                         <Col span={3}>
                             <label>{item.name}</label>
                         </Col>
-                        <Col span={2}>
+                        <Col span={3}>
                             <InputNumber
-                                min={1}
-                                value={props.getIndustryCount(item)}
-                                onChange={(value) => props.setIndustryCount(item, Number(value))}
+                                min={0}
+                                value={props.getProductionRate(item) * (24.0 * 3600.0)}
+                                onChange={(value) =>
+                                    props.setProductionRate(item, Number(value) / (24.0 * 3600.0))
+                                }
                             />
                         </Col>
                         <Col span={2}>
@@ -126,7 +123,7 @@ export function FactoryCount(props: FactoryCountProps) {
                                 onChange={(value) => props.setMaintainValue(item, Number(value))}
                             />
                         </Col>
-                        <Col span={4}>{productionRate + " / " + unit}</Col>
+                        <Col span={4}>{numIndustries}</Col>
                     </Row>
                 )
             })}

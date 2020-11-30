@@ -1,790 +1,259 @@
-/**
- * graph.ts
- * Define the factory graph and its components
- * lgfrbcsgo & Nikolaus - October 2020
- */
-import {
-    ContainerElement,
-    CONTAINERS_ASCENDING_BY_CAPACITY,
-    Craftable,
-    isOre,
-    Item,
-    Liter,
-    Quantity,
-} from "./items"
+import { Container, isDumpContainer } from "./container"
+import { Industry } from "./industry"
+import { Craftable, isGas, Item, Ore, Quantity } from "./items"
 import { findRecipe, Recipe } from "./recipes"
+import { generateDumpRoutes, generateRelayRoutes } from "./router"
+import { TransferContainer } from "./transfer-container"
+import { isByproductTransferUnit, TransferUnit } from "./transfer-unit"
 
-/** Maximum number of incoming/outgoing container links */
 export const MAX_CONTAINER_LINKS = 10
-
-/** Maximum number of incoming industry links */
 export const MAX_INDUSTRY_LINKS = 7
 
-export type PerMinute = number
-
-export type FactoryNode = ContainerNode | TransferContainerNode | IndustryNode | TransferNode
+export type PerSecond = number
 
 /**
- * Container holding components. A set of producers is filling
- * this container, and a set of consumers is drawing from this container.
+ * RelayRoute holds the consuming nodes and the number of consuming industries
  */
-export class ContainerNode {
-    readonly producers = new Set<IndustryNode | TransferNode>()
-    readonly consumers = new Set<IndustryNode | TransferNode>()
-    changed: boolean = false
-    originalMaintain: number | undefined
-    originalContainers: ContainerElement[] | undefined
+export interface RelayRoute {
+    container: Container
+    transferUnit: TransferUnit
+}
+
+/**
+ * DumpRoute holds the consuming relay routes and egress along each route
+ */
+export interface DumpRoute {
+    relayRoutes: RelayRoute[]
+    container: Container
+    industries: Industry[]
+}
+
+/**
+ * A node of the factory graph either stores raw materials or handles
+ * the production of a single item.
+ */
+export class FactoryNode {
+    // ProductionNodes consuming from this node
+    consumers: Set<ProductionNode> = new Set()
+    // Requested factory output of this item
+    outputRate: PerSecond = 0
+    // Requested maintain value
+    maintainedOutput: Quantity = 0
+    // Relay routing
+    relayRoutes: RelayRoute[] = []
+    isRelayRouted = false
 
     /**
-     * Initialize a new ContainerNode
-     * @param id Identfier for this container
-     * @param item Item stored in this container
-     * @param split If not 1.0, the fraction of some consumer's input supplied
-     * by this container. In some cases the
-     * number of input links exceeds the limit, so we needed to split
-     * the container in two (or more). To prevent an upstream backup,
-     * split containers can only link to one industry.
+     * Create a new FactoryNode which stores or produces a given item
+     * @param factory the factory
+     * @param item Item to store or produce in this FactoryNode
      */
-    constructor(readonly id: string, readonly item: Item, readonly split: number) {}
+    constructor(readonly factory: FactoryGraph, readonly item: Item) {}
 
     /**
-     * Return a unique identifier for the node
+     * Add a consumer to this FactoryNode
+     * @param node consumer to add
      */
-    get name(): string {
-        return this.item.name + " " + this.id
+    addConsumer(node: ProductionNode) {
+        this.consumers.add(node)
     }
 
     /**
-     * Return the number of producers filling this container
+     * Check if this node already has an output relay
      */
-    get incomingLinkCount(): number {
-        return this.producers.size
+    get outputRelay(): RelayRoute | undefined {
+        return this.relayRoutes.find((route) => route.container.outputRate > 0)
     }
 
     /**
-     * Return the number of consumers drawing from this container
+     * Route the relay containers
      */
-    get outgoingLinkCount(): number {
-        return this.consumers.size
-    }
-
-    /**
-     * Return the rate at which the producers are filling this container.
-     */
-    get ingress(): PerMinute {
-        // Assume infinite ore availablility
-        if (isOre(this.item)) {
-            return Infinity
+    getRelayRoutes(): RelayRoute[] {
+        // Check if we've already routed this node
+        if (this.isRelayRouted) {
+            return this.relayRoutes
         }
-        return Array.from(this.producers)
-            .map((producer) => {
-                if (isIndustryNode(producer)) {
-                    return producer.getOutput(this.item)
-                } else if (producer.item === this.item) {
-                    return producer.outflowRate
-                } else {
-                    return 0
-                }
-            })
-            .reduce((totalIngress, ingress) => totalIngress + ingress, 0)
-    }
 
-    /**
-     * Return the rate at which a given consumer is drawing from this container
-     */
-    egressTo(consumer: IndustryNode | TransferNode) {
-        if (this.consumers.has(consumer)) {
-            if (isIndustryNode(consumer)) {
-                return this.split * consumer.getInput(this.item)
-            } else {
-                return consumer.inflowRate(this)
-            }
-        }
-        return 0
-    }
+        generateRelayRoutes(this)
 
-    /**
-     * Return the rate at which the consumers are drawing from this container.
-     */
-    get egress(): PerMinute {
-        return Array.from(this.consumers)
-            .map((consumer) => this.egressTo(consumer))
-            .reduce((totalEgress, egress) => totalEgress + egress, 0)
-    }
-
-    /**
-     * Return the required maintain value to store the required components for all consumers
-     */
-    get maintain(): Quantity {
-        let maintain = 0
-        for (const consumer of this.consumers) {
-            /* Skip transfer units */
-            if (isTransferNode(consumer)) {
-                continue
-            }
-            for (const ingredient of findRecipe(consumer.item).ingredients) {
-                if (ingredient.item === this.item) {
-                    maintain += ingredient.quantity
-                }
-            }
-        }
-        return maintain * this.split
-    }
-
-    /**
-     * Return the required containers (sizes) to hold the maintain value
-     */
-    get containers(): ContainerElement[] {
-        if (CONTAINERS_ASCENDING_BY_CAPACITY.length < 1) {
-            throw new Error("CONTAINERS_ASCENDING_BY_CAPACITY is empty")
-        }
-        const requiredContainers: ContainerElement[] = []
-        let remainingCapacity = this.maintain * this.item.volume
-        while (remainingCapacity > 0) {
-            let foundContainer = false
-            for (const container of CONTAINERS_ASCENDING_BY_CAPACITY) {
-                if (remainingCapacity <= container.capacity) {
-                    requiredContainers.push(container)
-                    remainingCapacity += -container.capacity
-                    foundContainer = true
-                    break
-                }
-            }
-            if (!foundContainer) {
-                // Add one large container
-                requiredContainers.push(
-                    CONTAINERS_ASCENDING_BY_CAPACITY[CONTAINERS_ASCENDING_BY_CAPACITY.length - 1],
-                )
-                remainingCapacity += -CONTAINERS_ASCENDING_BY_CAPACITY[
-                    CONTAINERS_ASCENDING_BY_CAPACITY.length - 1
-                ].capacity
-            }
-        }
-        return requiredContainers
-    }
-
-    /**
-     * Return if this is a split container
-     */
-    get isSplit(): boolean {
-        return this.split !== 1.0
-    }
-
-    /**
-     * Check if a container can support additional incoming links
-     * @param count Number of new incoming links
-     */
-    canAddIncomingLinks(count: number) {
-        return this.incomingLinkCount + count <= MAX_CONTAINER_LINKS
-    }
-
-    /**
-     * Check if a container can support additional outgoing links
-     * @param count Number of new outgoing links
-     */
-    canAddOutgoingLinks(count: number) {
-        /* Check if this is a split input container */
-        if (this.isSplit) {
-            return false
-        }
-        /* Ore containers have no byproducts */
-        if (isOre(this.item)) {
-            return this.outgoingLinkCount + count <= MAX_CONTAINER_LINKS
-        }
-        /* Get byproducts stored in this container */
-        const recipe = findRecipe(this.item)
-        let reservedByproductLinks = recipe.byproducts.length
-        for (const byproduct of recipe.byproducts) {
-            /* Check if this container already has a consumer for this byproduct */
-            for (const consumer of this.consumers) {
-                if (consumer.item === byproduct.item) {
-                    reservedByproductLinks += -1
-                }
-            }
-        }
-        return this.outgoingLinkCount + count + reservedByproductLinks <= MAX_CONTAINER_LINKS
+        this.isRelayRouted = true
+        return this.relayRoutes
     }
 }
 
 /**
- * ContainerNode type guard
+ * A FactoryNode that only stores raw ores.
+ */
+class OreNode extends FactoryNode {
+    /**
+     * Create a new OreNode that stores a given item
+     * @param factory the factory
+     * @param item Ore to store
+     */
+    constructor(readonly factory: FactoryGraph, readonly item: Ore) {
+        super(factory, item)
+    }
+}
+
+/**
+ * Check if a given node is an OreNode
  * @param node Node to check
  */
-export function isContainerNode(
-    node: ContainerNode | TransferContainerNode,
-): node is ContainerNode {
-    return node instanceof ContainerNode
+export function isOreNode(node: FactoryNode): node is OreNode {
+    return node instanceof OreNode
 }
 
 /**
- * Container holding components to handle industry link limits (when industries require
- * more than 7 ingredients, for example). A set of TransferNodes is filling
- * this container, and a set of IndustryNodes is drawing from this container.
+ * A FactoryNode that produces an item
  */
-export class TransferContainerNode {
-    readonly producers = new Set<TransferNode>()
-    readonly consumers = new Set<IndustryNode>()
-    changed = false
+export class ProductionNode extends FactoryNode {
+    // Item's recipe
+    recipe: Recipe
+    // Dump container routing
+    dumpRoutes: DumpRoute[] = []
+    isDumpRouted = false
 
     /**
-     * Initialize a new TransferContainerNode
-     * @param id Identifier for this TransferContainer
-     * @param items Items stored in this container
+     * Create a new ProductionNode that produces a given item
+     * @param factory the factory
+     * @param item Item to produce
      */
-    constructor(readonly id: string, readonly items: Item[]) {}
-
-    /**
-     * Return a unique identifier for the node
-     */
-    get name(): string {
-        return this.id
-    }
-
-    /**
-     * Return the number of producers filling this container
-     */
-    get incomingLinkCount(): number {
-        return this.producers.size
-    }
-
-    /**
-     * Return the number of consumers drawing from this container
-     */
-    get outgoingLinkCount(): number {
-        return this.consumers.size
-    }
-
-    /**
-     * Return the required maintain value to store the required components for all consumers
-     */
-    get maintain(): Map<Item, Quantity> {
-        const maintain: Map<Item, Quantity> = new Map()
-        for (const item of this.items) {
-            for (const consumer of this.consumers) {
-                for (const ingredient of findRecipe(consumer.item).ingredients) {
-                    if (ingredient.item === item) {
-                        if (maintain.has(item)) {
-                            maintain.set(item, maintain.get(item)! + ingredient.quantity)
-                        } else {
-                            maintain.set(item, ingredient.quantity)
-                        }
-                    }
-                }
-            }
-        }
-        return maintain
-    }
-
-    /**
-     * Return the required containers (size)s to hold the maintain values
-     */
-    get containers(): ContainerElement[] {
-        if (CONTAINERS_ASCENDING_BY_CAPACITY.length < 1) {
-            throw new Error("CONTAINERS_ASCENDING_BY_CAPACITY is empty")
-        }
-        let remainingCapacity = 0
-        const maintain = this.maintain
-        for (const [item, quantity] of maintain.entries()) {
-            remainingCapacity += quantity * item.volume
-        }
-        const requiredContainers: ContainerElement[] = []
-        while (remainingCapacity > 0) {
-            let foundContainer = false
-            for (const container of CONTAINERS_ASCENDING_BY_CAPACITY) {
-                if (remainingCapacity <= container.capacity) {
-                    requiredContainers.push(container)
-                    remainingCapacity += -container.capacity
-                    foundContainer = true
-                    break
-                }
-            }
-            if (!foundContainer) {
-                // Add one large container
-                requiredContainers.push(
-                    CONTAINERS_ASCENDING_BY_CAPACITY[CONTAINERS_ASCENDING_BY_CAPACITY.length - 1],
-                )
-                remainingCapacity += -CONTAINERS_ASCENDING_BY_CAPACITY[
-                    CONTAINERS_ASCENDING_BY_CAPACITY.length - 1
-                ].capacity
-            }
-        }
-        return requiredContainers
-    }
-
-    /**
-     * Check if a container can support additional incoming links
-     * @param count Number of new incoming links
-     */
-    canAddIncomingLinks(count: number) {
-        return this.incomingLinkCount + count <= MAX_CONTAINER_LINKS
-    }
-
-    /**
-     * Check if a container can support additional outgoing links
-     * @param count Number of new outgoing links
-     */
-    canAddOutgoingLinks(count: number) {
-        return this.outgoingLinkCount + count <= MAX_CONTAINER_LINKS
-    }
-}
-
-/**
- * TransferContainerNode type guard
- * @param node Node to check
- */
-export function isTransferContainerNode(
-    node: ContainerNode | TransferContainerNode,
-): node is TransferContainerNode {
-    return node instanceof TransferContainerNode
-}
-
-/**
- * Factory output node
- */
-export class OutputNode extends ContainerNode {
-    outputRate: PerMinute
-    maintainedOutput: Quantity
-    changed = false
-
-    /**
-     * Initialize a new OutputNode
-     * @param id Node identifier
-     * @param item Item stored in this container
-     * @param outputRate Required production rate
-     * @param maintainedOutput The number of items to maintain
-     * @param split The split fraction
-     */
-    constructor(
-        id: string,
-        item: Craftable,
-        outputRate: PerMinute,
-        maintainedOutput: Quantity,
-        split: number,
-    ) {
-        super(id, item, split)
-        this.outputRate = outputRate
-        this.maintainedOutput = maintainedOutput
-    }
-
-    get egress(): PerMinute {
-        return super.egress + this.outputRate
-    }
-
-    get maintain(): Quantity {
-        return super.maintain + this.maintainedOutput
-    }
-}
-
-/**
- * OutputNode type guard
- * @param node Node to check
- */
-export function isOutputNode(node: ContainerNode | TransferContainerNode): node is OutputNode {
-    return node instanceof OutputNode
-}
-
-/**
- * Industry producing components. Draws inputs from a set of containers, and outputs
- * to a single container.
- */
-export class IndustryNode {
-    readonly inputs: Set<ContainerNode | TransferContainerNode> = new Set()
-    readonly recipe: Recipe
-    output: ContainerNode | undefined
-    changed = false
-
-    /**
-     * Create a new industry node
-     * @param id Industry identifier
-     * @param item Item produced
-     */
-    constructor(readonly id: string, item: Craftable) {
+    constructor(readonly factory: FactoryGraph, readonly item: Craftable) {
+        super(factory, item)
         this.recipe = findRecipe(item)
     }
 
     /**
-     * Get the type of industry
+     * Get production rate per industry
      */
-    get industry() {
-        return this.recipe.industry
-    }
-
-    get item(): Craftable {
-        // TODO: remove cast then gases are craftable
-        return this.recipe.product.item as Craftable
+    get rate(): PerSecond {
+        return this.recipe.product.quantity / this.recipe.time
     }
 
     /**
-     * Return the number of inputs to this industry
+     * Route the dump containers
      */
-    get incomingLinkCount(): number {
-        return this.inputs.size
-    }
-
-    /**
-     * Return a unique identifier for the node
-     */
-    get name(): string {
-        return this.item.name + " " + this.id
-    }
-
-    /**
-     * Add input container for an item
-     * @param container Input container
-     */
-    takeFrom(container: ContainerNode | TransferContainerNode) {
-        this.changed = true
-        container.changed = true
-        this.inputs.add(container)
-        container.consumers.add(this)
-    }
-
-    /**
-     * Add or replace output container
-     * @param container Output container
-     */
-    outputTo(container: ContainerNode) {
-        this.changed = true
-        container.changed = true
-        if (this.output) {
-            this.output.changed = true
-            this.output.producers.delete(this)
+    getDumpRoutes(): DumpRoute[] {
+        // Check if we've already routed this node
+        if (this.isDumpRouted) {
+            return this.dumpRoutes
         }
-        this.output = container
-        container.producers.add(this)
+
+        generateDumpRoutes(this)
+
+        this.isDumpRouted = true
+        return this.dumpRoutes
     }
 
     /**
-     * Return the production rate of a given item
-     * @param item Item for which the production rate is calculated
+     * Return all industries not currently supplied by the given item
      */
-    getOutput(item: Item): PerMinute {
-        let quantity = 0
-        const recipe = findRecipe(this.item)
-        for (const produced of [...recipe.byproducts, recipe.product]) {
-            if (item === produced.item) {
-                quantity += produced.quantity
-            }
-        }
-        return quantity / recipe.time
-    }
-
-    /**
-     * Return the consumption rate of a given item
-     * @param item Item for which the consumption rate is calculated
-     */
-    getInput(item: Item): PerMinute {
-        let quantity = 0
-        const recipe = findRecipe(this.item)
-        for (const ingredient of recipe.ingredients) {
-            if (ingredient.item === item) {
-                quantity += ingredient.quantity
-            }
-        }
-        return quantity / recipe.time
-    }
-
-    /**
-     * Check if a industry can support additional incoming links
-     * @param count Number of new incoming links
-     */
-    canAddIncomingLinks(count: number) {
-        return this.incomingLinkCount + count <= MAX_INDUSTRY_LINKS
-    }
-}
-
-/**
- * IndustryNode type guard
- * @param node Node to check
- */
-export function isIndustryNode(node: IndustryNode | TransferNode): node is IndustryNode {
-    return node instanceof IndustryNode
-}
-
-export class TransferNode {
-    /**
-     * Transfer Unit moving components. Draws inputs from a set of containers, and outputs
-     * to a single container.
-     */
-    readonly inputs = new Set<ContainerNode>()
-    readonly rates = new Map<ContainerNode, PerMinute | undefined>()
-    readonly transferRate = Infinity // TODO: transfer rate is not infinite
-    output: ContainerNode | TransferContainerNode | undefined
-    changed = false
-
-    /**
-     * Initialize a new TransferNode
-     * @param id Node identifier
-     * @param item Item produced by this industry
-     */
-    constructor(readonly id: string, readonly item: Item) {}
-
-    /**
-     * Return a unique identifier for the node
-     */
-    get name(): string {
-        return this.item.name + " " + this.id
-    }
-
-    /**
-     * Return the number of inputs to this transfer unit
-     */
-    get incomingLinkCount(): number {
-        return this.inputs.size
-    }
-
-    /**
-     * Return the transfer rate into the output container.
-     */
-    get outflowRate(): PerMinute {
-        let consumptionRate = 0
-        if (this.output !== undefined) {
-            for (const consumer of this.output.consumers) {
-                if (isIndustryNode(consumer)) {
-                    // add the industry consumer input rate
-                    consumptionRate += consumer.getInput(this.item)
-                } else {
-                    // the only time we get here is when the output's consumer is a transfer unit,
-                    // in which case it is simply moving byproduct.
-                    consumptionRate += 0
+    getIndustriesNeeding(item: Item): Industry[] {
+        const industries: Industry[] = []
+        for (const dumpRoute of this.getDumpRoutes()) {
+            for (const industry of dumpRoute.industries) {
+                if (!industry.isSuppliedWith(item)) {
+                    industries.push(industry)
                 }
             }
         }
-        return Math.min(consumptionRate, this.transferRate)
-    }
-
-    /**
-     * Return the transfer inflow rate for a given container,
-     */
-    inflowRate(container: ContainerNode): PerMinute {
-        if (this.rates.has(container) && this.rates.get(container) !== undefined) {
-            return this.rates.get(container)!
-        }
-        return 0
-    }
-
-    /**
-     * Add an input container for an item
-     * @param container Input container
-     * @param rate For transfers to transfer containers, rate at which original consumer industry requested product
-     */
-    takeFrom(container: ContainerNode, rate?: PerMinute) {
-        this.changed = true
-        container.changed = true
-        this.inputs.add(container)
-        this.rates.set(container, rate)
-        container.consumers.add(this)
-    }
-
-    /**
-     * Add or replace output container
-     * @param container Output container
-     */
-    outputTo(container: ContainerNode | TransferContainerNode) {
-        this.changed = true
-        container.changed = true
-        if (this.output) {
-            this.output.changed = true
-            this.output.producers.delete(this)
-        }
-        this.output = container
-        container.producers.add(this)
-    }
-
-    /**
-     * Check if a transfer unit can support additional incoming links
-     * @param count Number of new incoming links
-     */
-    canAddIncomingLinks(count: number) {
-        return this.incomingLinkCount + count <= MAX_INDUSTRY_LINKS
+        return industries
     }
 }
 
 /**
- * TransferNode type guard
+ * Check if a given node is a ProductionNode
  * @param node Node to check
  */
-export function isTransferNode(node: IndustryNode | TransferNode): node is TransferNode {
-    return node instanceof TransferNode
+export function isProductionNode(node: FactoryNode): node is ProductionNode {
+    return node instanceof ProductionNode
 }
 
 /**
- * Graph containing factory components (industries and containers).
+ * The factory graph stores all nodes and elements in a factory
  */
 export class FactoryGraph {
-    containers = new Set<ContainerNode>()
-    industries = new Set<IndustryNode>()
-    transferUnits = new Set<TransferNode>()
-    transferContainers = new Set<TransferContainerNode>()
-    temporaryContainers = new Set<ContainerNode>()
+    nodes: Map<Item, FactoryNode> = new Map()
+    containers: Set<Container> = new Set()
+    industries: Set<Industry> = new Set()
+    transferUnits: Set<TransferUnit> = new Set()
+    transferContainers: Set<TransferContainer> = new Set()
 
     /**
-     * Return the set of all products produced or stored in this factory
+     * Return a node that stores or produces a given item
+     * @param item Item to find
      */
-    get products(): Set<Item> {
-        return new Set(Array.from(this.containers).map((node) => node.item))
+    getNode(item: Item): FactoryNode | undefined {
+        return this.nodes.get(item)
     }
 
     /**
-     * Add an industry to the factory graph
-     * @see {@link IndustryNode}
+     * Return the factory's OreNodes
      */
-    createIndustry(item: Craftable, id: string | undefined = undefined): IndustryNode {
-        const industries = this.getIndustries(item)
-        if (id === undefined) {
-            id = `P${industries.size}`
-        }
-        const industry = new IndustryNode(id, item)
-        industry.changed = true
-        this.industries.add(industry)
-        return industry
+    get oreNodes(): OreNode[] {
+        return Array.from(this.nodes.values()).filter(isOreNode)
     }
 
     /**
-     * Add a transfer unit to the factory graph
-     * @see {@link TransferNode}
+     * Return the factory's nodes storing gas
      */
-    createTransferUnit(item: Item, id: string | undefined = undefined) {
-        const transfers = this.getTransferUnits(item)
-        if (id === undefined) {
-            id = `T${transfers.size}`
-        }
-        const transfer = new TransferNode(id, item)
-        transfer.changed = true
-        this.transferUnits.add(transfer)
-        return transfer
+    get gasNodes(): ProductionNode[] {
+        return Array.from(this.nodes.values())
+            .filter(isProductionNode)
+            .filter((node) => isGas(node.item))
     }
 
     /**
-     * Add a temporary container to the factory graph
-     * @see {@link ContainerNode}
+     * Return all dump containers in the factory
      */
-    createTemporaryContainer(item: Item): ContainerNode {
-        const container = new ContainerNode("", item, 1.0)
-        container.changed = true
-        this.temporaryContainers.add(container)
-        return container
+    get dumpContainers(): Container[] {
+        return Array.from(this.containers).filter(isDumpContainer)
     }
 
     /**
-     * Add a container to the factory graph
-     * @see {@link ContainerNode}
+     * Return all dump containers storing a given item
+     * @param item Item to find
      */
-    createContainer(item: Item, id?: string): ContainerNode {
-        const containers = this.getContainers(item)
-        if (id === undefined) {
-            id = `C${containers.size}`
-        }
-        const container = new ContainerNode(id, item, 1.0)
-        container.changed = true
-        this.containers.add(container)
-        return container
+    getDumpContainers(item: Item): Container[] {
+        return Array.from(this.containers)
+            .filter(isDumpContainer)
+            .filter((node) => node.item === item)
     }
 
     /**
-     * Add a split container to the factory graph
-     * @see {@link ContainerNode}
+     * Return all relay containers storing a given item
+     * @param item Item to find
      */
-    createSplitContainer(item: Item, split: number, id?: string): ContainerNode {
-        const containers = this.getContainers(item)
-        if (id === undefined) {
-            id = `C${containers.size}`
-        }
-        const container = new ContainerNode(id, item, split)
-        container.changed = true
-        this.containers.add(container)
-        return container
+    getRelayContainers(item: Item): Container[] {
+        return Array.from(this.containers)
+            .filter((node) => !isDumpContainer(node))
+            .filter((node) => node.item === item)
     }
 
     /**
-     * Add a transfer container to the factory graph
-     * @see {@link TransferContainerNode}
+     * Return all transfer units moving a given item
+     * @param item Item to find
      */
-    createTransferContainer(items: Item[], id?: string): TransferContainerNode {
-        if (id === undefined) {
-            id = `Trans Container${this.transferContainers.size}`
-        }
-        const container = new TransferContainerNode(id, items)
-        container.changed = true
-        this.transferContainers.add(container)
-        return container
+    getTransferUnits(item: Item): TransferUnit[] {
+        return Array.from(this.transferUnits).filter((node) => node.item === item)
     }
 
     /**
-     * Add an output node to the factory graph
-     * @see {@link OutputNode}
+     * Return all byproduct transfer units moving a given item
+     * @param item Item to find
      */
-    createOutput(
-        item: Craftable,
-        outputRate: PerMinute,
-        maintainedOutput: Quantity,
-        id?: string,
-    ): OutputNode {
-        const containers = this.getContainers(item)
-        if (id === undefined) {
-            id = `C${containers.size}`
-        }
-        const output = new OutputNode(id, item, outputRate, maintainedOutput, 1.0)
-        output.changed = true
-        this.containers.add(output)
-        return output
+    getByproductTransferUnits(item: Item): TransferUnit[] {
+        return Array.from(this.transferUnits)
+            .filter(isByproductTransferUnit)
+            .filter((node) => node.item === item)
     }
 
     /**
-     * Add a split output node to the factory graph
-     * @see {@link OutputNode}
+     * Return all industries producing a given item
+     * @param item Item to find
      */
-    createSplitOutput(
-        item: Craftable,
-        outputRate: PerMinute,
-        maintainedOutput: Quantity,
-        split: number,
-        id?: string,
-    ): OutputNode {
-        const containers = this.getContainers(item)
-        if (id === undefined) {
-            id = `C${containers.size}`
-        }
-        const output = new OutputNode(id, item, outputRate, maintainedOutput, split)
-        output.changed = true
-        this.containers.add(output)
-        return output
-    }
-
-    /**
-     * Return the set of all industries producing a given item
-     * @param item Item for which to find the industries
-     */
-    getIndustries(item: Item): Set<IndustryNode> {
-        return new Set(Array.from(this.industries).filter((node) => node.item === item))
-    }
-
-    /**
-     * Return the set of all consumers of a given item
-     * @param item Item for which to find the consumers
-     */
-    getConsumers(item: Item): Set<IndustryNode> {
-        return new Set(
-            Array.from(this.industries).filter((node) =>
-                findRecipe(node.item).ingredients.some((ingredient) => ingredient.item === item),
-            ),
-        )
-    }
-
-    /**
-     * Return the set of all transfer units of a given item
-     * @param item Item for which to find the consumers
-     */
-    getTransferUnits(item: Item): Set<TransferNode> {
-        return new Set(Array.from(this.transferUnits).filter((node) => node.item === item))
-    }
-
-    /**
-     * Return the set of all containers holding a given item
-     * @param item Item for which to find the containers
-     */
-    getContainers(item: Item): Set<ContainerNode> {
-        return new Set(Array.from(this.containers).filter((node) => node.item === item))
+    getIndustries(item: Item): Industry[] {
+        return Array.from(this.industries).filter((node) => node.item === item)
     }
 
     /**
@@ -792,7 +261,7 @@ export class FactoryGraph {
      * given items and no other items
      * @param items Items for which to find the TransferContainers
      */
-    getTransferContainers(items: Set<Item>): Set<TransferContainerNode> {
+    getTransferContainers(items: Set<Item>): Set<TransferContainer> {
         let transferContainers = Array.from(this.transferContainers)
         // Filter only those containing one or more of items
         transferContainers = transferContainers.filter((node) =>
@@ -806,14 +275,100 @@ export class FactoryGraph {
     }
 
     /**
-     * Return the set of all OutputNodes holding a given item
-     * @param item Item for which to find the OutputNodes
+     * Add an OreNode to the factory
+     * @param item Ore stored in this node
      */
-    getOutputNodes(item: Item): Set<OutputNode> {
-        return new Set(
-            Array.from(this.containers)
-                .filter(isOutputNode)
-                .filter((node) => node.item === item),
-        )
+    createOreNode(item: Ore): OreNode {
+        const node = new OreNode(this, item)
+        this.nodes.set(item, node)
+        return node
+    }
+
+    /**
+     * Add a ProductionNode to the factory
+     * @param item Item to produce in this node
+     */
+    createProductionNode(item: Craftable): ProductionNode {
+        const node = new ProductionNode(this, item)
+        this.nodes.set(item, node)
+        return node
+    }
+
+    /**
+     * Add a relay container to the factory
+     * @param item Item to store
+     * @param id Identifier
+     */
+    createRelayContainer(item: Item, id?: string): Container {
+        if (id === undefined) {
+            const containers = this.getRelayContainers(item)
+            id = `R${containers.length}`
+        }
+        const container = new Container(id, item)
+        this.containers.add(container)
+        return container
+    }
+
+    /**
+     * Add a dump container to the factory
+     * @param item Item to store
+     * @param id Identifier
+
+     */
+    createDumpContainer(item: Craftable, id?: string): Container {
+        if (id === undefined) {
+            const containers = this.getDumpContainers(item)
+            id = `D${containers.length}`
+        }
+        const container = new Container(id, item)
+        this.containers.add(container)
+        return container
+    }
+
+    /**
+     * Add a transfer container to the factory
+     * @param items Items to store
+     */
+    createTransferContainer(items: Item[], id?: string): TransferContainer {
+        if (id === undefined) {
+            id = `TC${this.transferContainers.size}`
+        }
+        const container = new TransferContainer(id, items)
+        this.transferContainers.add(container)
+        return container
+    }
+
+    /**
+     * Add an Industry to the factory
+     * @param item Item to produce
+     * @param output Output container
+     */
+    createIndustry(item: Craftable, output: Container, id?: string): Industry {
+        if (id === undefined) {
+            const industries = this.getIndustries(item)
+            id = `P${industries.length}`
+        }
+        const industry = new Industry(id, item, output)
+        this.industries.add(industry)
+        return industry
+    }
+
+    /**
+     * Add a TransferUnit to the factory
+     * @param item Item to move
+     * @param output Output container
+     */
+    createTransferUnit(
+        item: Item,
+        output: Container | TransferContainer,
+        id?: string,
+    ): TransferUnit {
+        if (id === undefined) {
+            const transferUnits = this.getTransferUnits(item)
+            id = `T${transferUnits.length}`
+        }
+        const transferUnit = new TransferUnit(id, item, output)
+        this.transferUnits.add(transferUnit)
+        return transferUnit
     }
 }

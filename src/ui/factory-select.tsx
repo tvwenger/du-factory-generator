@@ -1,14 +1,9 @@
-/**
- * factory-select.tsx
- * Component for selecting new factory production items
- * lgfrbcsgo & Nikolaus - October 2020
- */
-
 import * as React from "react"
 import { Button, Upload } from "antd"
 import { ItemSelect } from "./item-select"
 import { Craftable } from "../items"
 import { FactoryState } from "./factory"
+import { PerSecond } from "../graph"
 
 /**
  * Properties of the FactorySelect component
@@ -33,14 +28,14 @@ interface FactorySelectProps {
     setSelection: (selection: Craftable[]) => void
 
     /**
-     * Set the number of assemblers map
-     * @param item Item to set the number of assemblers
+     * Set the production rate map map
+     * @param map the production rate map
      */
-    setIndustryCountMap: (map: Map<Craftable, number>) => void
+    setProductionRateMap: (map: Map<Craftable, PerSecond>) => void
 
     /**
      * Set the maintain value map
-     * @param item Item to set the maintain value
+     * @param map the maintain value map
      */
     setMaintainValueMap: (map: Map<Craftable, number>) => void
 }
@@ -52,7 +47,16 @@ interface FactorySelectProps {
 export function FactorySelect(props: FactorySelectProps) {
     return (
         <React.Fragment>
-            <h2>Select elements to build:</h2>
+            <h2>Select items to build:</h2>
+            <ul>
+                <li>Start typing the item name to filter</li>
+                <li>
+                    Or, upload a CSV file formatted like:{" "}
+                    <pre>
+                        Item Name, Number to produce per day, Number to maintain in output contanier
+                    </pre>
+                </li>
+            </ul>
             <ItemSelect items={props.items} value={props.selection} onChange={props.setSelection} />
             <Button type="primary" onClick={() => props.setFactoryState(FactoryState.COUNT)}>
                 Next
@@ -66,7 +70,7 @@ export function FactorySelect(props: FactorySelectProps) {
                         const result = reader.result as string
                         const lines = result.split("\n")
                         const myItems: Craftable[] = []
-                        const assemblerMap: Map<Craftable, number> = new Map()
+                        const productionMap: Map<Craftable, PerSecond> = new Map()
                         const maintainMap: Map<Craftable, number> = new Map()
                         for (const line of lines) {
                             const parts = line.split(",")
@@ -85,11 +89,11 @@ export function FactorySelect(props: FactorySelectProps) {
                                 continue
                             }
                             myItems.push(item)
-                            assemblerMap.set(item, Number(parts[1].trim()))
+                            productionMap.set(item, Number(parts[1].trim()) / (24 * 3600))
                             maintainMap.set(item, Number(parts[2].trim()))
                         }
                         props.setSelection(myItems)
-                        props.setIndustryCountMap(assemblerMap)
+                        props.setProductionRateMap(productionMap)
                         props.setMaintainValueMap(maintainMap)
                         props.setFactoryState(FactoryState.COUNT)
                     }
