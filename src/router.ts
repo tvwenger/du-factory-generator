@@ -55,8 +55,8 @@ export function generateRelayRoutes(node: FactoryNode) {
             container.setOutputRate(node.outputRate)
             container.setMaintainedOutput(node.maintainedOutput)
             const relayRoute: RelayRoute = {
-                container: container,
-                transferUnit: transferUnit,
+                container,
+                transferUnit,
             }
             node.relayRoutes.push(relayRoute)
         } else {
