@@ -68,6 +68,7 @@ Join our [Discord server](https://discord.gg/gXSWKqVnHx) and look for
 
 * [lgfrbcsgo](https://github.com/lgfrbcsgo)
 * [tvwenger](https://github.com/tvwenger)
+* [ShadowLordAlpha](https://github.com/ShadowLordAlpha)
 
 ## License
 
