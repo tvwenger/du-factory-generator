@@ -167,21 +167,11 @@ export function generateDumpRoutes(node: ProductionNode) {
 
             // if node dump route is feeding a relay that is supplied by more than
             // one dump route, then we cannot add any new routes to node dump container
-            let splitDump = false
-            for (const checkRelayRoute of dumpRoute.relayRoutes) {
-                for (const checkDumpRoute of node.dumpRoutes) {
-                    if (checkDumpRoute === dumpRoute) {
-                        continue
-                    }
-                    if (checkDumpRoute.relayRoutes.includes(checkRelayRoute)) {
-                        splitDump = true
-                        break
-                    }
-                }
-                if (splitDump) {
-                    break
-                }
-            }
+            const splitDump = dumpRoute.relayRoutes.some(checkRelayRoute =>
+                node.dumpRoutes.some(checkDumpRoute => 
+                    checkDumpRoute !== dumpRoute 
+                    && checkDumpRoute.relayRoutes.includes(checkRelayRoute))
+            )
             if (splitDump) {
                 continue
             }
