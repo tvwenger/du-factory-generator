@@ -179,16 +179,9 @@ export function generateDumpRoutes(node: ProductionNode) {
             // if node relay container is already fed by a dump container and node dump
             // container isn't one of the dump containers feeding node relay, then we
             // can't add a different existing dump container to node relay
-            let splitRelay = false
-            for (const checkDumpRoute of node.dumpRoutes) {
-                if (checkDumpRoute === dumpRoute) {
-                    continue
-                }
-                if (checkDumpRoute.relayRoutes.includes(relayRoute)) {
-                    splitRelay = true
-                    break
-                }
-            }
+            const splitRelay = node.dumpRoutes.some(checkDumpRoute =>
+                checkDumpRoute !== dumpRoute && checkDumpRoute.relayRoutes.includes(relayRoute)
+            )
             if (splitRelay) {
                 continue
             }
