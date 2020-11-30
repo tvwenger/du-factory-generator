@@ -1,6 +1,6 @@
 # Dual Universe Factory Generator
 
-Use the application here: https://lgfrbcsgo.github.io/du-factory-generator/
+Use the application here: https://lgfrbcsgo.github.io/du-factory-generator/latest/
 
 This is an application for generating a factory plan for [Dual
 Universe](https://www.dualuniverse.game/). Given a set of items, the
@@ -16,8 +16,10 @@ Container L, Nitron Fuel, and Polycarbonate Plastic:
 ![Example Factory Plan](./src/assets/example-map.svg)
 
 [Load the
-application](https://lgfrbcsgo.github.io/du-factory-generator/) and
+application](https://lgfrbcsgo.github.io/du-factory-generator/latest/) and
 click "Help Information" for information about using this tool.
+
+Previous versions of the tool [can be found here](https://lgfrbcsgo.github.io/du-factory-generator/).
 
 ## Frequently Asked Questions
 
