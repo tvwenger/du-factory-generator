@@ -38,8 +38,8 @@ export function generateRelayRoutes(node: FactoryNode) {
 
             // Add relay route
             const relayRoute: RelayRoute = {
-                container: container,
-                transferUnit: transferUnit,
+                container,
+                transferUnit,
             }
             node.relayRoutes.push(relayRoute)
         }
