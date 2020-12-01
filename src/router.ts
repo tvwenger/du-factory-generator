@@ -13,6 +13,11 @@ export function generateRelayRoutes(node: FactoryNode) {
 
         // Add to existing route if links are available
         for (const relayRoute of node.relayRoutes) {
+            // skip output nodes
+            if (relayRoute.container.outputRate > 0) {
+                continue
+            }
+
             const addIndustries = Math.min(
                 industries.length,
                 relayRoute.container.outgoingLinksFree,
@@ -160,11 +165,6 @@ export function generateDumpRoutes(node: ProductionNode) {
 
         // Add to existing route if possible
         for (const dumpRoute of node.dumpRoutes) {
-            // skip factory outputs
-            if (dumpRoute.container.outputRate > 0) {
-                continue
-            }
-
             // skip if this dump route is full
             if (!dumpRoute.container.canAddOutgoingLinks(1)) {
                 continue
