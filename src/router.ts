@@ -160,6 +160,11 @@ export function generateDumpRoutes(node: ProductionNode) {
 
         // Add to existing route if possible
         for (const dumpRoute of node.dumpRoutes) {
+            // skip factory outputs
+            if (dumpRoute.container.outputRate > 0) {
+                continue
+            }
+
             // skip if this dump route is full
             if (!dumpRoute.container.canAddOutgoingLinks(1)) {
                 continue
