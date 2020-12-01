@@ -133,7 +133,7 @@ export function generateDumpRoutes(node: ProductionNode) {
                     Math.ceil((newEgress - currentSurplus) / node.rate),
                     dumpRoute.container.incomingLinksFree,
                 )
-                newEgress = currentSurplus + newIndustries * node.rate
+                newEgress = Math.min(currentSurplus + newIndustries * node.rate, relayEgress)
                 for (let i = 0; i < newIndustries; i++) {
                     const industry = node.factory.createIndustry(node.item, dumpRoute.container)
                     dumpRoute.industries.push(industry)
@@ -167,10 +167,12 @@ export function generateDumpRoutes(node: ProductionNode) {
 
             // if node dump route is feeding a relay that is supplied by more than
             // one dump route, then we cannot add any new routes to node dump container
-            const splitDump = dumpRoute.relayRoutes.some(checkRelayRoute =>
-                node.dumpRoutes.some(checkDumpRoute => 
-                    checkDumpRoute !== dumpRoute 
-                    && checkDumpRoute.relayRoutes.includes(checkRelayRoute))
+            const splitDump = dumpRoute.relayRoutes.some((checkRelayRoute) =>
+                node.dumpRoutes.some(
+                    (checkDumpRoute) =>
+                        checkDumpRoute !== dumpRoute &&
+                        checkDumpRoute.relayRoutes.includes(checkRelayRoute),
+                ),
             )
             if (splitDump) {
                 continue
@@ -179,8 +181,9 @@ export function generateDumpRoutes(node: ProductionNode) {
             // if node relay container is already fed by a dump container and node dump
             // container isn't one of the dump containers feeding node relay, then we
             // can't add a different existing dump container to node relay
-            const splitRelay = node.dumpRoutes.some(checkDumpRoute =>
-                checkDumpRoute !== dumpRoute && checkDumpRoute.relayRoutes.includes(relayRoute)
+            const splitRelay = node.dumpRoutes.some(
+                (checkDumpRoute) =>
+                    checkDumpRoute !== dumpRoute && checkDumpRoute.relayRoutes.includes(relayRoute),
             )
             if (splitRelay) {
                 continue
@@ -199,7 +202,7 @@ export function generateDumpRoutes(node: ProductionNode) {
                     Math.ceil((relayEgress - currentSurplus) / node.rate),
                     dumpRoute.container.incomingLinksFree,
                 )
-                const newEgress = currentSurplus + newIndustries * node.rate
+                const newEgress = Math.min(currentSurplus + newIndustries * node.rate, relayEgress)
                 for (let i = 0; i < newIndustries; i++) {
                     const industry = node.factory.createIndustry(node.item, dumpRoute.container)
                     dumpRoute.industries.push(industry)
