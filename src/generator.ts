@@ -6,7 +6,7 @@ import {
     MAX_INDUSTRY_LINKS,
     PerSecond,
 } from "./graph"
-import { CATALYSTS, Craftable, isOre, Item } from "./items"
+import { CATALYSTS, Craftable, isGas, isOre, Item } from "./items"
 import { findRecipe } from "./recipes"
 import { isTransferContainer, TransferContainer } from "./transfer-container"
 import { isTransferUnit } from "./transfer-unit"
@@ -259,6 +259,31 @@ function handleTransferContainers(factory: FactoryGraph) {
 }
 
 /**
+ * Add gas producers as necessary to containers
+ * @param factory the factory graph
+ */
+function handleGas(factory: FactoryGraph) {
+    // Get gas containers
+    const containers = Array.from(factory.containers).filter(
+        (container) =>
+            isGas(container.item) &&
+            container.egress(container.item) > container.ingress(container.item),
+    )
+
+    for (const container of containers) {
+        // Number of industries required
+        const numIndustries = Math.ceil(
+            (container.egress(container.item) - container.ingress(container.item)) /
+                (container.recipe!.product.quantity / container.recipe!.time),
+        )
+
+        for (let i = 0; i < numIndustries; i++) {
+            factory.createIndustry(container.item as Craftable, container)
+        }
+    }
+}
+
+/**
  * Build a new factory graph or add to an existing graph
  * @param requirements The items and rates of new items to produce
  * @param factory The existing factory graph, if any
@@ -300,6 +325,9 @@ export function buildFactory(
 
     // Merge dump and relay containers
     mergeFactory(factory)
+
+    // Add gas producers if necessary
+    handleGas(factory)
 
     // sanity check
     sanityCheck(factory)
