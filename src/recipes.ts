@@ -3245,9 +3245,31 @@ export const RECIPES: Recipe[] = [
         ],
         byproducts: [],
     },
+	{
+        product: batch(ITEMS["Expanded Container XL"], 1),
+        time: 46080,
+        industry: ITEMS["Assembly Line XL"],
+        ingredients: [
+            batch(ITEMS["Basic Reinforced Frame XL"], 2),
+            batch(ITEMS["Basic Hydraulics"], 1250),
+            batch(ITEMS["Basic Component"], 2592),
+        ],
+        byproducts: [],
+    },
+	{
+        product: batch(ITEMS["Container XL"], 1),
+        time: 23040,
+        industry: ITEMS["Assembly Line XL"],
+        ingredients: [
+            batch(ITEMS["Basic Reinforced Frame XL"], 1),
+            batch(ITEMS["Basic Hydraulics"], 625),
+            batch(ITEMS["Basic Component"], 1296),
+        ],
+        byproducts: [],
+    },
     {
         product: batch(ITEMS["Container L"], 1),
-        time: 5760,
+        time: 11520,
         industry: ITEMS["Assembly Line L"],
         ingredients: [
             batch(ITEMS["Basic Reinforced Frame L"], 2),
