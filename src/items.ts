@@ -1509,6 +1509,8 @@ export const ITEMS = {
     ),
     "Anti-Gravity Pulsor": otherElement("Anti-Gravity Pulsor", Category.ANTI_GRAVITY, 804.93),
     "Container Hub": otherElement("Container Hub", Category.ITEM_CONTAINERS, 44.3),
+    "Expanded Container XL": containerElement("Expanded Container XL", Category.ITEM_CONTAINERS, 21000, 512000),
+    "Container XL": containerElement("Container XL", Category.ITEM_CONTAINERS, 10500, 256000),
     "Container L": containerElement("Container L", Category.ITEM_CONTAINERS, 3746, 128000),
     "Container M": containerElement("Container M", Category.ITEM_CONTAINERS, 1873, 64000),
     "Container S": containerElement("Container S", Category.ITEM_CONTAINERS, 342, 8000),
