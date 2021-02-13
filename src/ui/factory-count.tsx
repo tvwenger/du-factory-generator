@@ -17,6 +17,12 @@ interface FactoryCountProps {
      */
     setFactoryState: (state: FactoryState) => void
 
+    /**
+     * Set the error message
+     * @param error error message
+     */
+    setErrorMessage: (error: string) => void
+
     // Items selected to build
     selection: Craftable[]
 
@@ -130,12 +136,17 @@ export function FactoryCount(props: FactoryCountProps) {
             <Button
                 type="primary"
                 onClick={() => {
-                    const newFactory = buildFactory(props.getRequirements(), props.factory)
-                    props.setFactory(newFactory)
-                    props.setFactoryInstructions(
-                        generateInstructions(newFactory, props.showDifferences),
-                    )
-                    props.setFactoryState(FactoryState.RENDER)
+                    try {
+                        const newFactory = buildFactory(props.getRequirements(), props.factory)
+                        props.setFactory(newFactory)
+                        props.setFactoryInstructions(
+                            generateInstructions(newFactory, props.showDifferences),
+                        )
+                        props.setFactoryState(FactoryState.RENDER)
+                    } catch (e) {
+                        props.setFactoryState(FactoryState.ERROR)
+                        props.setErrorMessage(e.message)
+                    }
                 }}
             >
                 Next
