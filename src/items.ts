@@ -25,41 +25,39 @@ export enum Tier {
 }
 
 export enum Category {
-    ORE = "ore",
-    GAS = "gas",
-    PURE = "pure",
-    PRODUCT = "product",
-    CATALYST = "catalyst",
-    STRUCTURAL_PARTS = "structural parts",
-    INTERMEDIARY_PARTS = "intermediary parts",
-    COMPLEX_PARTS = "complex parts",
-    EXCEPTIONAL_PARTS = "exceptional parts",
-    FUNCTIONAL_PARTS = "functional parts",
     AMMO = "ammo",
-    FUEL = "fuel",
-    ANTI_GRAVITY = "anti-gravity",
-    ITEM_CONTAINERS = "item containers",
-    FUEL_TANKS = "fuel tanks",
-    CONTROL = "control",
-    DECORATIVE = "decorative",
-    FLIGHT_CONTROL = "flight control",
-    AIRFOIL = "airfoil",
-    ENGINES = "engines",
+    CANNON = "cannon",
+    CATALYST = "catalyst",
+    CHAIRS = "chairs",
+    COMBAT_AND_DEFENCE = "combat and defence",
+    COMPLEX_PARTS = "complex parts",
+    CONTAINER = "container",
+    DECORATION = "decoration",
+    DISPLAY = "display",
+    DOORS = "doors",
+    ELECTRONIC = "electronic",
+    EXCEPTIONAL_PARTS = "exceptional parts",
+    FUELS = "fuels",
+    FUNCTIONAL_PARTS = "functional parts",
+    GAS = "gas",
+    HONEYCOMB = "honeycomb",
     INDUSTRY = "industry",
-    INSTRUMENTS = "instruments",
-    INTERACTIVE = "interactive",
-    LIGHT = "light",
-    LOGIC = "logic",
-    PROJECTOR = "projector",
-    REPAIR = "repair",
-    RESURRECTION = "resurrection",
-    SEAT = "seat",
-    SENSOR = "sensor",
-    SURROGATE = "surrogate",
-    WARP = "warp",
-    WEAPON = "weapon",
-    CORE_UNIT = "core unit",
-    TERRITORY_UNIT = "territory_unit",
+    INTERMEDIARY_PARTS = "intermediary parts",
+    LASER = "laser",
+    MISSILE = "missile",
+    ORE = "ore",
+    PLANET_ELEMENTS = "planet elements",
+    PLANTS = "plants",
+    PRODUCT = "product",
+    PURE = "pure",
+    RADAR = "radar",
+    RAILGUN = "railgun",
+    SCRAPS = "scraps",
+    STRUCTURAL_PARTS = "structural parts",
+    SYSTEMS = "systems",
+    TRANSPORTATION_ELEMENTS = "transportation_elements",
+    WARP_CELL = "warp cell",
+    WINDOW = "window",
 }
 
 export enum ElementType {
@@ -75,6 +73,8 @@ export interface CommonProperties {
     readonly tier: Tier
     readonly category: Category
     readonly volume: Liter
+    readonly transferBatchSize: Quantity
+    readonly transferTime: Minutes
 }
 
 /**
@@ -152,13 +152,20 @@ export function isCatalyst(item: Item): item is Catalyst {
  * @param name Ore name
  * @param tier Ore tier
  */
-export function ore(name: string, tier: Tier): Ore {
+export function ore(
+    name: string,
+    tier: Tier,
+    transferBatchSize: Quantity,
+    transferTime: Minutes,
+): Ore {
     return {
         type: ItemType.ORE,
         name,
         tier,
         category: Category.ORE,
         volume: 1,
+        transferBatchSize,
+        transferTime,
     }
 }
 
@@ -166,13 +173,15 @@ export function ore(name: string, tier: Tier): Ore {
  * Returns a new Gas type
  * @param name Ore name
  */
-export function gas(name: string): Gas {
+export function gas(name: string, transferBatchSize: Quantity, transferTime: Minutes): Gas {
     return {
         type: ItemType.GAS,
         name,
         tier: Tier.BASIC,
         category: Category.GAS,
         volume: 1,
+        transferBatchSize,
+        transferTime,
     }
 }
 
@@ -182,13 +191,21 @@ export function gas(name: string): Gas {
  * @param tier Catalyst tier
  * @param volume Catalyst volume
  */
-export function catalyst(name: string, tier: Tier, volume: Liter): Catalyst {
+export function catalyst(
+    name: string,
+    tier: Tier,
+    volume: Liter,
+    transferBatchSize: Quantity,
+    transferTime: Minutes,
+): Catalyst {
     return {
         type: ItemType.CATALYST,
         name,
         tier,
         category: Category.CATALYST,
         volume,
+        transferBatchSize,
+        transferTime,
     }
 }
 
@@ -199,13 +216,22 @@ export function catalyst(name: string, tier: Tier, volume: Liter): Catalyst {
  * @param category Product category
  * @param volume Product volume
  */
-export function product(name: string, tier: Tier, category: Category, volume: Liter): Product {
+export function product(
+    name: string,
+    tier: Tier,
+    category: Category,
+    volume: Liter,
+    transferBatchSize: Quantity,
+    transferTime: Minutes,
+): Product {
     return {
         type: ItemType.PRODUCT,
         name,
         tier,
         category,
         volume,
+        transferBatchSize,
+        transferTime,
     }
 }
 
@@ -215,7 +241,13 @@ export function product(name: string, tier: Tier, category: Category, volume: Li
  * @param category Element category
  * @param volume Element volume
  */
-export function otherElement(name: string, category: Category, volume: Liter): OtherElement {
+export function otherElement(
+    name: string,
+    category: Category,
+    volume: Liter,
+    transferBatchSize: Quantity,
+    transferTime: Minutes,
+): OtherElement {
     return {
         type: ItemType.ELEMENT,
         elementType: ElementType.OTHER,
@@ -223,6 +255,8 @@ export function otherElement(name: string, category: Category, volume: Liter): O
         tier: Tier.ELEMENT,
         category,
         volume,
+        transferBatchSize,
+        transferTime,
     }
 }
 
@@ -238,6 +272,8 @@ export function containerElement(
     category: Category,
     volume: Liter,
     capacity: Liter,
+    transferBatchSize: Quantity,
+    transferTime: Minutes,
 ): ContainerElement {
     return {
         type: ItemType.ELEMENT,
@@ -247,6 +283,8 @@ export function containerElement(
         category,
         volume,
         capacity,
+        transferBatchSize,
+        transferTime,
     }
 }
 
@@ -1509,7 +1547,12 @@ export const ITEMS = {
     ),
     "Anti-Gravity Pulsor": otherElement("Anti-Gravity Pulsor", Category.ANTI_GRAVITY, 804.93),
     "Container Hub": otherElement("Container Hub", Category.ITEM_CONTAINERS, 44.3),
-    "Expanded Container XL": containerElement("Expanded Container XL", Category.ITEM_CONTAINERS, 21000, 512000),
+    "Expanded Container XL": containerElement(
+        "Expanded Container XL",
+        Category.ITEM_CONTAINERS,
+        21000,
+        512000,
+    ),
     "Container XL": containerElement("Container XL", Category.ITEM_CONTAINERS, 10500, 256000),
     "Container L": containerElement("Container L", Category.ITEM_CONTAINERS, 3746, 128000),
     "Container M": containerElement("Container M", Category.ITEM_CONTAINERS, 1873, 64000),
