@@ -32,15 +32,18 @@ TBD
 [NodeJS](https://nodejs.org/en/)
 
 ### Install Dependencies and Build
+
 ```bash
 $ npm install
 $ npm run build
 ```
 
 ### Launch Development Server
+
 ```bash
 $ npm start
 ```
+
 Navigate your browser to http://localhost:8080/
 
 ## Bugs & Feature Requests
@@ -66,9 +69,10 @@ Join our [Discord server](https://discord.gg/gXSWKqVnHx) and look for
 
 ## Contributors
 
-* [lgfrbcsgo](https://github.com/lgfrbcsgo)
-* [tvwenger](https://github.com/tvwenger)
-* [ShadowLordAlpha](https://github.com/ShadowLordAlpha)
+-   [lgfrbcsgo](https://github.com/lgfrbcsgo)
+-   [tvwenger](https://github.com/tvwenger)
+-   [ShadowLordAlpha](https://github.com/ShadowLordAlpha)
+-   "The Prospectors" for compiling item information
 
 ## License
 
