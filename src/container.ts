@@ -207,15 +207,8 @@ export class Container {
             }
 
             if (isTransferUnit(consumer)) {
-                // For transfer units, get the maintain value of the transfer unit output
-                // divided by the number of transfer unit inputs
-                if (isTransferContainer(consumer.output)) {
-                    maintain += Math.ceil(
-                        consumer.output.maintain(this.item) / consumer.incomingLinkCount,
-                    )
-                } else {
-                    maintain += Math.ceil(consumer.output.maintain / consumer.incomingLinkCount)
-                }
+                // For transfer units, get the transfer batch size
+                maintain += consumer.item.transferBatchSize
             } else {
                 // For industries, get the required input
                 for (const ingredient of findRecipe(consumer.item).ingredients) {
