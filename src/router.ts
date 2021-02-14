@@ -79,8 +79,9 @@ export function generateRelayRoutes(node: FactoryNode) {
 /**
  * Route a node's dump containers
  * @param node Node to route
+ * @param singleGas if True, only create one industry for new gas nodes
  */
-export function generateDumpRoutes(node: ProductionNode) {
+export function generateDumpRoutes(node: ProductionNode, singleGas: boolean) {
     // delta to avoid rounding errors
     const delta = 1.0e-8
 
@@ -94,7 +95,7 @@ export function generateDumpRoutes(node: ProductionNode) {
         }
 
         // If this is a catalyst or gas node, try to satisfy from an existing dump container
-        if (isCatalyst(node.item) || isGas(node.item)) {
+        if (isCatalyst(node.item) || (isGas(node.item) && singleGas)) {
             let found = false
             for (const dumpRoute of node.dumpRoutes) {
                 if (dumpRoute.container.canAddOutgoingLinks(1)) {
