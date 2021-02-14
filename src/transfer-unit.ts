@@ -123,7 +123,10 @@ export class TransferUnit {
             return 0
         }
 
-        return this.transferRates.get(container)!
+        // maximum transfer rate
+        const maxRate = this.item.transferBatchSize / this.item.transferTime
+
+        return Math.min(maxRate, this.transferRates.get(container)!)
     }
 
     /**
@@ -139,9 +142,12 @@ export class TransferUnit {
             return 0
         }
 
-        return Array.from(this.transferRates.values()).reduce(
-            (total, current) => total + current,
-            0,
+        // maximum transfer rate
+        const maxRate = this.item.transferBatchSize / this.item.transferTime
+
+        return Math.min(
+            maxRate,
+            Array.from(this.transferRates.values()).reduce((total, current) => total + current, 0),
         )
     }
 }
