@@ -266,14 +266,25 @@ function handleTransferContainers(factory: FactoryGraph) {
 function handleGas(factory: FactoryGraph) {
     // Loop over gas nodes
     for (const node of factory.gasNodes) {
-        // update relate node transfer unit transfer rate
-        // to match actual production
+        // update relay node transfer unit transfer rate
+        // to match fractional production normalized by
+        // relay throughput, or actual consumption rate,
+        // whichever is smaller
+        const totalEgress = node
+            .getRelayRoutes()
+            .map((route) => route.container.egress(node.item))
+            .reduce((total, current) => total + current, 0)
+
         for (const relayRoute of node.getRelayRoutes()) {
             for (const dumpRoute of node.dumpRoutes) {
-                relayRoute.transferUnit.setTransferRate(
-                    dumpRoute.container,
-                    dumpRoute.container.ingress(node.item),
+                const transferRate = Math.min(
+                    relayRoute.container.egress(node.item),
+                    (dumpRoute.container.ingress(node.item) *
+                        relayRoute.container.egress(node.item)) /
+                        totalEgress,
                 )
+
+                relayRoute.transferUnit.setTransferRate(dumpRoute.container, transferRate)
             }
         }
 
