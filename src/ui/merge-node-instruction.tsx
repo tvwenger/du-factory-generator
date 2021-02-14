@@ -400,7 +400,13 @@ export class MergedNodeInstruction {
         }
 
         // Get output links
-        const outputs = Array.from(this.container.consumers)
+        const outputs = Array.from(this.container.consumers).filter(
+            (consumer) =>
+                !(
+                    isTransferUnit(consumer) &&
+                    (isByproductTransferUnit(consumer) || isCatalystBalancer(consumer))
+                ),
+        )
         // Sort by name
         outputs.sort((a, b) => sortName(a, b))
 
