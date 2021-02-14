@@ -8,6 +8,7 @@ import {
 } from "./graph"
 import { CATALYSTS, Craftable, isGas, isOre, Item } from "./items"
 import { findRecipe } from "./recipes"
+import { generateDumpRoutes } from "./router"
 import { isTransferContainer, TransferContainer } from "./transfer-container"
 import { isTransferUnit } from "./transfer-unit"
 import { sanityCheck, mergeFactory, unmergeFactory } from "./utils"
@@ -259,27 +260,25 @@ function handleTransferContainers(factory: FactoryGraph) {
 }
 
 /**
- * Add gas producers as necessary to containers
+ * Add gas producers to satisfy gas nodes
  * @param factory the factory graph
  */
 function handleGas(factory: FactoryGraph) {
-    // Get gas containers
-    const containers = Array.from(factory.containers).filter(
-        (container) =>
-            isGas(container.item) &&
-            container.egress(container.item) > container.ingress(container.item),
-    )
-
-    for (const container of containers) {
-        // Number of industries required
-        const numIndustries = Math.ceil(
-            (container.egress(container.item) - container.ingress(container.item)) /
-                (container.recipe!.product.quantity / container.recipe!.time),
-        )
-
-        for (let i = 0; i < numIndustries; i++) {
-            factory.createIndustry(container.item as Craftable, container)
+    // Loop over gas nodes
+    for (const node of factory.gasNodes) {
+        // update relate node transfer unit transfer rate
+        // to match actual production
+        for (const relayRoute of node.getRelayRoutes()) {
+            for (const dumpRoute of node.dumpRoutes) {
+                relayRoute.transferUnit.setTransferRate(
+                    dumpRoute.container,
+                    dumpRoute.container.ingress(node.item),
+                )
+            }
         }
+
+        // update dump routes allowing gas nodes to have multiple industries
+        generateDumpRoutes(node, false)
     }
 }
 
@@ -323,11 +322,11 @@ export function buildFactory(
     // Handle transfer contianers
     handleTransferContainers(factory)
 
-    // Merge dump and relay containers
-    mergeFactory(factory)
-
     // Add gas producers if necessary
     handleGas(factory)
+
+    // Merge dump and relay containers
+    mergeFactory(factory)
 
     // sanity check
     sanityCheck(factory)

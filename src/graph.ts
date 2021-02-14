@@ -139,7 +139,7 @@ export class ProductionNode extends FactoryNode {
             return this.dumpRoutes
         }
 
-        generateDumpRoutes(this)
+        generateDumpRoutes(this, true)
 
         this.isDumpRouted = true
         return this.dumpRoutes
