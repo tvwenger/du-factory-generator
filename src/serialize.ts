@@ -13,7 +13,7 @@ import { isTransferContainer, TransferContainer } from "./transfer-container"
 import { isTransferUnit, TransferUnit } from "./transfer-unit"
 
 // Factory JSON version number
-const VERSION = 2
+const VERSION = "3.0"
 
 /**
  * Saved properties for each FactoryNode

@@ -1,11 +1,20 @@
 import * as React from "react"
 import { Button, Row, Col } from "antd"
-import { Category, Tier, ITEMS, OtherElement, ContainerElement } from "../items"
-import { FactoryGraph, MAX_CONTAINER_LINKS } from "../graph"
+import {
+    Category,
+    Tier,
+    ITEMS,
+    OtherElement,
+    ContainerElement,
+    CONTAINERS_ASCENDING_BY_CAPACITY,
+} from "../items"
+import { FactoryGraph } from "../graph"
 import { FactoryState } from "./factory"
 import { serialize } from "../serialize"
 import { FactoryInstruction, sortName } from "./generate-instructions"
 import { FactoryMap } from "./factory-map"
+import { Container } from "../container"
+import { TransferContainer } from "../transfer-container"
 const example = require("../assets/example.png")
 
 enum VisualizationState {
@@ -62,18 +71,57 @@ export const TIER_ORDER = [
 // industry labels
 export const INDUSTRYLABELS = new Map([
     [ITEMS["Assembly Line XS"], "XS"],
+    [ITEMS["Uncommon Assembly Line XS"], "Unc. XS"],
+    [ITEMS["Advanced Assembly Line XS"], "Adv. XS"],
+    [ITEMS["Rare Assembly Line XS"], "Rare XS"],
     [ITEMS["Assembly Line S"], "S"],
+    [ITEMS["Uncommon Assembly Line S"], "Unc. S"],
+    [ITEMS["Advanced Assembly Line S"], "Adv. S"],
+    [ITEMS["Rare Assembly Line S"], "Rare S"],
     [ITEMS["Assembly Line M"], "M"],
+    [ITEMS["Uncommon Assembly Line M"], "Unc. M"],
+    [ITEMS["Advanced Assembly Line M"], "Adv. M"],
+    [ITEMS["Rare Assembly Line M"], "Rare M"],
     [ITEMS["Assembly Line L"], "L"],
+    [ITEMS["Uncommon Assembly Line L"], "Unc. L"],
+    [ITEMS["Advanced Assembly Line L"], "Adv. L"],
+    [ITEMS["Rare Assembly Line L"], "Rare L"],
     [ITEMS["Assembly Line XL"], "XL"],
+    [ITEMS["Uncommon Assembly Line XL"], "Unc. XL"],
+    [ITEMS["Advanced Assembly Line XL"], "Adv. XL"],
+    [ITEMS["Rare Assembly Line XL"], "Rare XL"],
     [ITEMS["3D Printer M"], "3D"],
+    [ITEMS["Uncommon 3D Printer M"], "Unc. 3D"],
+    [ITEMS["Advanced 3D Printer M"], "Adv. 3D"],
+    [ITEMS["Rare 3D Printer M"], "Rare 3D"],
     [ITEMS["Chemical Industry M"], "Chem"],
+    [ITEMS["Uncommon Chemical Industry M"], "Unc. Chem"],
+    [ITEMS["Advanced Chemical Industry M"], "Adv. Chem"],
+    [ITEMS["Rare Chemical Industry M"], "Rare Chem"],
     [ITEMS["Electronics Industry M"], "Elec"],
+    [ITEMS["Uncommon Electronics Industry M"], "Unc. Elec"],
+    [ITEMS["Advanced Electronics Industry M"], "Adv. Elec"],
+    [ITEMS["Rare Electronics Industry M"], "Rare Elec"],
     [ITEMS["Glass Furnace M"], "Glass"],
+    [ITEMS["Uncommon Glass Furnace M"], "Unc. Glass"],
+    [ITEMS["Advanced Glass Furnace M"], "Adv. Glass"],
+    [ITEMS["Rare Glass Furnace M"], "Rare Glass"],
     [ITEMS["Metalwork Industry M"], "Metal"],
+    [ITEMS["Uncommon Metalwork Industry M"], "Unc. Metal"],
+    [ITEMS["Advanced Metalwork Industry M"], "Adv. Metal"],
+    [ITEMS["Rare Metalwork Industry M"], "Rare Metal"],
     [ITEMS["Recycler M"], "Recycle"],
+    [ITEMS["Uncommon Recycler M"], "Unc. Recycle"],
+    [ITEMS["Advanced Recycler M"], "Adv. Recycle"],
+    [ITEMS["Rare Recycler M"], "Rare Recycle"],
     [ITEMS["Refiner M"], "Refine"],
+    [ITEMS["Uncommon Refiner M"], "Unc. Refine"],
+    [ITEMS["Advanced Refiner M"], "Adv. Refine"],
+    [ITEMS["Rare Refiner M"], "Rare Refine"],
     [ITEMS["Smelter M"], "Smelt"],
+    [ITEMS["Uncommon Smelter M"], "Unc. Smelt"],
+    [ITEMS["Advanced Smelter M"], "Adv. Smelt"],
+    [ITEMS["Rare Smelter M"], "Rare Smelt"],
 ])
 
 // container labels
@@ -82,6 +130,8 @@ export const CONTAINERLABELS = new Map([
     [ITEMS["Container S"], "S"],
     [ITEMS["Container M"], "M"],
     [ITEMS["Container L"], "L"],
+    [ITEMS["Container XL"], "XL"],
+    [ITEMS["Expanded Container XL"], "EXL"],
 ])
 
 // The size (in pixels) of a node item in the visualization
@@ -92,6 +142,31 @@ export const FONTSIZE = 10
 
 // Spacing between link lines
 export const LINKSPACING = 1.1 * FONTSIZE
+
+/**
+ * Generate string representation of required container size(s)
+ */
+export function containerLabel(container: Container | TransferContainer) {
+    let labels = []
+
+    // Loop over container sizes from large to small
+    if (CONTAINERS_ASCENDING_BY_CAPACITY.length < 1) {
+        throw new Error("CONTAINERS_ASCENDING_BY_CAPACITY is empty")
+    }
+    for (let i = CONTAINERS_ASCENDING_BY_CAPACITY.length - 1; i >= 0; i--) {
+        const containerCount = container.containers.reduce(
+            (total, current) =>
+                current === CONTAINERS_ASCENDING_BY_CAPACITY[i] ? total + 1 : total,
+            0,
+        )
+        if (containerCount > 1) {
+            labels.push(containerCount + CONTAINERLABELS.get(CONTAINERS_ASCENDING_BY_CAPACITY[i])!)
+        } else if (containerCount > 0) {
+            labels.push(CONTAINERLABELS.get(CONTAINERS_ASCENDING_BY_CAPACITY[i]))
+        }
+    }
+    return labels.join("+")
+}
 
 /**
  * Properties of the FactoryVisualization components
