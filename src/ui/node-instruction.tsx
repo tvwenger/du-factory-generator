@@ -215,7 +215,7 @@ export class NodeInstruction {
                             textAnchor="middle"
                         >
                             {isIndustry(producer) && INDUSTRYLABELS.get(producer.recipe.industry)}
-                            {isTransferUnit(producer) && "Trans"}
+                            {isTransferUnit(producer) && producer.number + "xTU"}
                         </text>
                         <text
                             x={x + SIZE / 2}
@@ -501,7 +501,7 @@ export class NodeInstruction {
                         dominantBaseline="middle"
                         textAnchor="middle"
                     >
-                        Trans
+                        {relayRoute.transferUnit.number + "xTU"}
                     </text>
                     <text
                         x={x + SIZE / 2}

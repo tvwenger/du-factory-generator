@@ -59,14 +59,18 @@ export class Container {
      * Count the number of producers
      */
     get incomingLinkCount(): number {
-        return this.producers.size
+        return Array.from(this.producers)
+            .map((producer) => (isTransferUnit(producer) ? producer.number : 1))
+            .reduce((total, current) => total + current, 0)
     }
 
     /**
      * Count the number of consumers
      */
     get outgoingLinkCount(): number {
-        return this.consumers.size
+        return Array.from(this.consumers)
+            .map((consumer) => (isTransferUnit(consumer) ? consumer.number : 1))
+            .reduce((total, current) => total + current, 0)
     }
 
     /**
