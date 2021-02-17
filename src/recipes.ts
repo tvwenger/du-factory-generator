@@ -43,6 +43,7 @@ export function findRecipe(item: Craftable): Recipe {
         throw new Error(`No recipe found for product "${item.name}".`)
     }
 }
+
 export const RECIPES: Recipe[] = [
     {
         product: batch(ITEMS["Cannon Agile Kinetic XS"], 40),
@@ -51,7 +52,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 1),
             batch(ITEMS["Uncommon Explosive Module"], 1),
-            batch(ITEMS["Al-Li Alloy"], 1.0),
+            batch(ITEMS["Al-Li Alloy"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -63,7 +64,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 1),
             batch(ITEMS["Uncommon Explosive Module"], 1),
-            batch(ITEMS["Polysulfide Plastic"], 1.0),
+            batch(ITEMS["Polysulfide Plastic"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -75,7 +76,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 1),
             batch(ITEMS["Uncommon Explosive Module"], 1),
-            batch(ITEMS["Inconel"], 1.0),
+            batch(ITEMS["Inconel"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -87,7 +88,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 1),
             batch(ITEMS["Basic Explosive Module"], 1),
-            batch(ITEMS["Basic Reinforced Frame XS"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -98,7 +99,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 1),
             batch(ITEMS["Uncommon Explosive Module"], 1),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 1.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -110,7 +111,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 1),
             batch(ITEMS["Uncommon Explosive Module"], 1),
-            batch(ITEMS["Al-Li Alloy"], 1.0),
+            batch(ITEMS["Al-Li Alloy"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -122,7 +123,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 1),
             batch(ITEMS["Uncommon Explosive Module"], 1),
-            batch(ITEMS["Polysulfide Plastic"], 1.0),
+            batch(ITEMS["Polysulfide Plastic"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -134,7 +135,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 1),
             batch(ITEMS["Uncommon Explosive Module"], 1),
-            batch(ITEMS["Inconel"], 1.0),
+            batch(ITEMS["Inconel"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -146,7 +147,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 1),
             batch(ITEMS["Uncommon Explosive Module"], 1),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 1.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -158,7 +159,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Explosive Module"], 1),
             batch(ITEMS["Basic Explosive Module"], 1),
-            batch(ITEMS["Basic Reinforced Frame XS"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -169,7 +170,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 8),
             batch(ITEMS["Uncommon Explosive Module"], 8),
-            batch(ITEMS["Al-Li Alloy"], 8.0),
+            batch(ITEMS["Al-Li Alloy"], 8),
             batch(ITEMS["Uncommon Reinforced Frame S"], 2),
         ],
         byproducts: [],
@@ -181,7 +182,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 8),
             batch(ITEMS["Uncommon Explosive Module"], 8),
-            batch(ITEMS["Polysulfide Plastic"], 8.0),
+            batch(ITEMS["Polysulfide Plastic"], 8),
             batch(ITEMS["Uncommon Reinforced Frame S"], 2),
         ],
         byproducts: [],
@@ -193,7 +194,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 8),
             batch(ITEMS["Uncommon Explosive Module"], 8),
-            batch(ITEMS["Inconel"], 8.0),
+            batch(ITEMS["Inconel"], 8),
             batch(ITEMS["Uncommon Reinforced Frame S"], 2),
         ],
         byproducts: [],
@@ -205,7 +206,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Solid Warhead"], 8),
             batch(ITEMS["Basic Explosive Module"], 8),
-            batch(ITEMS["Basic Reinforced Frame S"], 2.0),
+            batch(ITEMS["Basic Reinforced Frame S"], 2),
         ],
         byproducts: [],
     },
@@ -216,7 +217,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 8),
             batch(ITEMS["Uncommon Explosive Module"], 8),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 8.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 8),
             batch(ITEMS["Uncommon Reinforced Frame S"], 2),
         ],
         byproducts: [],
@@ -228,7 +229,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 8),
             batch(ITEMS["Uncommon Explosive Module"], 8),
-            batch(ITEMS["Al-Li Alloy"], 8.0),
+            batch(ITEMS["Al-Li Alloy"], 8),
             batch(ITEMS["Uncommon Reinforced Frame S"], 2),
         ],
         byproducts: [],
@@ -240,7 +241,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 8),
             batch(ITEMS["Uncommon Explosive Module"], 8),
-            batch(ITEMS["Polysulfide Plastic"], 8.0),
+            batch(ITEMS["Polysulfide Plastic"], 8),
             batch(ITEMS["Uncommon Reinforced Frame S"], 2),
         ],
         byproducts: [],
@@ -252,7 +253,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 8),
             batch(ITEMS["Uncommon Explosive Module"], 8),
-            batch(ITEMS["Inconel"], 8.0),
+            batch(ITEMS["Inconel"], 8),
             batch(ITEMS["Uncommon Reinforced Frame S"], 2),
         ],
         byproducts: [],
@@ -264,7 +265,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 8),
             batch(ITEMS["Uncommon Explosive Module"], 8),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 8.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 8),
             batch(ITEMS["Uncommon Reinforced Frame S"], 2),
         ],
         byproducts: [],
@@ -276,7 +277,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Explosive Module"], 8),
             batch(ITEMS["Basic Explosive Module"], 8),
-            batch(ITEMS["Basic Reinforced Frame S"], 2.0),
+            batch(ITEMS["Basic Reinforced Frame S"], 2),
         ],
         byproducts: [],
     },
@@ -287,7 +288,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 4),
             batch(ITEMS["Uncommon Explosive Module"], 4),
-            batch(ITEMS["Al-Li Alloy"], 4.0),
+            batch(ITEMS["Al-Li Alloy"], 4),
             batch(ITEMS["Uncommon Reinforced Frame S"], 2),
         ],
         byproducts: [],
@@ -299,7 +300,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 4),
             batch(ITEMS["Uncommon Explosive Module"], 4),
-            batch(ITEMS["Polysulfide Plastic"], 4.0),
+            batch(ITEMS["Polysulfide Plastic"], 4),
             batch(ITEMS["Uncommon Reinforced Frame S"], 2),
         ],
         byproducts: [],
@@ -311,7 +312,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 4),
             batch(ITEMS["Uncommon Explosive Module"], 4),
-            batch(ITEMS["Inconel"], 4.0),
+            batch(ITEMS["Inconel"], 4),
             batch(ITEMS["Uncommon Reinforced Frame S"], 2),
         ],
         byproducts: [],
@@ -323,7 +324,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Solid Warhead"], 4),
             batch(ITEMS["Basic Explosive Module"], 4),
-            batch(ITEMS["Basic Reinforced Frame S"], 2.0),
+            batch(ITEMS["Basic Reinforced Frame S"], 2),
         ],
         byproducts: [],
     },
@@ -334,7 +335,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 4),
             batch(ITEMS["Uncommon Explosive Module"], 4),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 4.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 4),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -346,7 +347,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 4),
             batch(ITEMS["Uncommon Explosive Module"], 4),
-            batch(ITEMS["Al-Li Alloy"], 4.0),
+            batch(ITEMS["Al-Li Alloy"], 4),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -358,7 +359,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 4),
             batch(ITEMS["Uncommon Explosive Module"], 4),
-            batch(ITEMS["Polysulfide Plastic"], 4.0),
+            batch(ITEMS["Polysulfide Plastic"], 4),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -370,7 +371,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 4),
             batch(ITEMS["Uncommon Explosive Module"], 4),
-            batch(ITEMS["Inconel"], 4.0),
+            batch(ITEMS["Inconel"], 4),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -382,7 +383,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 4),
             batch(ITEMS["Uncommon Explosive Module"], 4),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 4.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 4),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -394,7 +395,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Explosive Module"], 4),
             batch(ITEMS["Basic Explosive Module"], 4),
-            batch(ITEMS["Basic Reinforced Frame S"], 2.0),
+            batch(ITEMS["Basic Reinforced Frame S"], 2),
         ],
         byproducts: [],
     },
@@ -405,7 +406,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 2),
             batch(ITEMS["Uncommon Explosive Module"], 2),
-            batch(ITEMS["Al-Li Alloy"], 2.0),
+            batch(ITEMS["Al-Li Alloy"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 2),
         ],
         byproducts: [],
@@ -417,7 +418,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 2),
             batch(ITEMS["Uncommon Explosive Module"], 2),
-            batch(ITEMS["Polysulfide Plastic"], 2.0),
+            batch(ITEMS["Polysulfide Plastic"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 2),
         ],
         byproducts: [],
@@ -429,7 +430,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 2),
             batch(ITEMS["Uncommon Explosive Module"], 2),
-            batch(ITEMS["Inconel"], 2.0),
+            batch(ITEMS["Inconel"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 2),
         ],
         byproducts: [],
@@ -441,7 +442,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Solid Warhead"], 2),
             batch(ITEMS["Basic Explosive Module"], 2),
-            batch(ITEMS["Basic Reinforced Frame S"], 2.0),
+            batch(ITEMS["Basic Reinforced Frame S"], 2),
         ],
         byproducts: [],
     },
@@ -452,7 +453,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 2),
             batch(ITEMS["Uncommon Explosive Module"], 2),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 2.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 2),
         ],
         byproducts: [],
@@ -464,7 +465,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 2),
             batch(ITEMS["Uncommon Explosive Module"], 2),
-            batch(ITEMS["Al-Li Alloy"], 2.0),
+            batch(ITEMS["Al-Li Alloy"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 2),
         ],
         byproducts: [],
@@ -476,7 +477,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 2),
             batch(ITEMS["Uncommon Explosive Module"], 2),
-            batch(ITEMS["Polysulfide Plastic"], 2.0),
+            batch(ITEMS["Polysulfide Plastic"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 2),
         ],
         byproducts: [],
@@ -488,7 +489,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 2),
             batch(ITEMS["Uncommon Explosive Module"], 2),
-            batch(ITEMS["Inconel"], 2.0),
+            batch(ITEMS["Inconel"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 2),
         ],
         byproducts: [],
@@ -500,7 +501,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 2),
             batch(ITEMS["Uncommon Explosive Module"], 2),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 2.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 2),
         ],
         byproducts: [],
@@ -512,7 +513,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Explosive Module"], 2),
             batch(ITEMS["Basic Explosive Module"], 2),
-            batch(ITEMS["Basic Reinforced Frame XS"], 2.0),
+            batch(ITEMS["Basic Reinforced Frame XS"], 2),
         ],
         byproducts: [],
     },
@@ -523,7 +524,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 1),
             batch(ITEMS["Uncommon Optics"], 1),
-            batch(ITEMS["Uncommon Casing XS"], 1.0),
+            batch(ITEMS["Uncommon Casing XS"], 1),
             batch(ITEMS["Al-Li Alloy"], 1),
         ],
         byproducts: [],
@@ -535,7 +536,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 1),
             batch(ITEMS["Uncommon Optics"], 1),
-            batch(ITEMS["Uncommon Casing XS"], 1.0),
+            batch(ITEMS["Uncommon Casing XS"], 1),
             batch(ITEMS["Polysulfide Plastic"], 1),
         ],
         byproducts: [],
@@ -547,7 +548,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Magnet"], 1),
             batch(ITEMS["Basic Optics"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -558,7 +559,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 1),
             batch(ITEMS["Uncommon Optics"], 1),
-            batch(ITEMS["Uncommon Casing XS"], 1.0),
+            batch(ITEMS["Uncommon Casing XS"], 1),
             batch(ITEMS["Inconel"], 1),
         ],
         byproducts: [],
@@ -570,7 +571,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 1),
             batch(ITEMS["Uncommon Optics"], 1),
-            batch(ITEMS["Uncommon Casing XS"], 1.0),
+            batch(ITEMS["Uncommon Casing XS"], 1),
             batch(ITEMS["Ag-Li Reinforced Glass"], 1),
         ],
         byproducts: [],
@@ -582,7 +583,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 1),
             batch(ITEMS["Uncommon Optics"], 1),
-            batch(ITEMS["Uncommon Casing XS"], 1.0),
+            batch(ITEMS["Uncommon Casing XS"], 1),
             batch(ITEMS["Al-Li Alloy"], 1),
         ],
         byproducts: [],
@@ -594,7 +595,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 1),
             batch(ITEMS["Uncommon Optics"], 1),
-            batch(ITEMS["Uncommon Casing XS"], 1.0),
+            batch(ITEMS["Uncommon Casing XS"], 1),
             batch(ITEMS["Polysulfide Plastic"], 1),
         ],
         byproducts: [],
@@ -606,7 +607,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Explosive Module"], 1),
             batch(ITEMS["Basic Optics"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -617,7 +618,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 1),
             batch(ITEMS["Uncommon Optics"], 1),
-            batch(ITEMS["Uncommon Casing XS"], 1.0),
+            batch(ITEMS["Uncommon Casing XS"], 1),
             batch(ITEMS["Inconel"], 1),
         ],
         byproducts: [],
@@ -629,7 +630,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 1),
             batch(ITEMS["Uncommon Optics"], 1),
-            batch(ITEMS["Uncommon Casing XS"], 2.0),
+            batch(ITEMS["Uncommon Casing XS"], 2),
             batch(ITEMS["Ag-Li Reinforced Glass"], 8),
         ],
         byproducts: [],
@@ -641,7 +642,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 8),
             batch(ITEMS["Uncommon Optics"], 8),
-            batch(ITEMS["Uncommon Casing S"], 2.0),
+            batch(ITEMS["Uncommon Casing S"], 2),
             batch(ITEMS["Al-Li Alloy"], 8),
         ],
         byproducts: [],
@@ -653,7 +654,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 8),
             batch(ITEMS["Uncommon Optics"], 8),
-            batch(ITEMS["Uncommon Casing S"], 2.0),
+            batch(ITEMS["Uncommon Casing S"], 2),
             batch(ITEMS["Polysulfide Plastic"], 8),
         ],
         byproducts: [],
@@ -665,7 +666,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Magnet"], 8),
             batch(ITEMS["Basic Optics"], 8),
-            batch(ITEMS["Basic Casing S"], 2.0),
+            batch(ITEMS["Basic Casing S"], 2),
         ],
         byproducts: [],
     },
@@ -676,7 +677,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 8),
             batch(ITEMS["Uncommon Optics"], 8),
-            batch(ITEMS["Uncommon Casing S"], 2.0),
+            batch(ITEMS["Uncommon Casing S"], 2),
             batch(ITEMS["Inconel"], 8),
         ],
         byproducts: [],
@@ -688,7 +689,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 8),
             batch(ITEMS["Uncommon Optics"], 8),
-            batch(ITEMS["Uncommon Casing S"], 2.0),
+            batch(ITEMS["Uncommon Casing S"], 2),
             batch(ITEMS["Ag-Li Reinforced Glass"], 8),
         ],
         byproducts: [],
@@ -700,7 +701,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 8),
             batch(ITEMS["Uncommon Optics"], 8),
-            batch(ITEMS["Uncommon Casing S"], 2.0),
+            batch(ITEMS["Uncommon Casing S"], 2),
             batch(ITEMS["Al-Li Alloy"], 8),
         ],
         byproducts: [],
@@ -712,7 +713,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 8),
             batch(ITEMS["Uncommon Optics"], 8),
-            batch(ITEMS["Uncommon Casing S"], 2.0),
+            batch(ITEMS["Uncommon Casing S"], 2),
             batch(ITEMS["Polysulfide Plastic"], 8),
         ],
         byproducts: [],
@@ -724,7 +725,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Explosive Module"], 8),
             batch(ITEMS["Basic Optics"], 8),
-            batch(ITEMS["Basic Casing S"], 2.0),
+            batch(ITEMS["Basic Casing S"], 2),
         ],
         byproducts: [],
     },
@@ -735,7 +736,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 8),
             batch(ITEMS["Uncommon Optics"], 8),
-            batch(ITEMS["Uncommon Casing S"], 2.0),
+            batch(ITEMS["Uncommon Casing S"], 2),
             batch(ITEMS["Inconel"], 8),
         ],
         byproducts: [],
@@ -747,7 +748,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 8),
             batch(ITEMS["Uncommon Optics"], 8),
-            batch(ITEMS["Uncommon Casing S"], 2.0),
+            batch(ITEMS["Uncommon Casing S"], 2),
             batch(ITEMS["Ag-Li Reinforced Glass"], 8),
         ],
         byproducts: [],
@@ -759,7 +760,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 4),
             batch(ITEMS["Uncommon Optics"], 4),
-            batch(ITEMS["Uncommon Casing S"], 1.0),
+            batch(ITEMS["Uncommon Casing S"], 1),
             batch(ITEMS["Al-Li Alloy"], 4),
         ],
         byproducts: [],
@@ -771,7 +772,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 4),
             batch(ITEMS["Uncommon Optics"], 4),
-            batch(ITEMS["Uncommon Casing S"], 1.0),
+            batch(ITEMS["Uncommon Casing S"], 1),
             batch(ITEMS["Polysulfide Plastic"], 4),
         ],
         byproducts: [],
@@ -783,7 +784,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Magnet"], 4),
             batch(ITEMS["Basic Optics"], 4),
-            batch(ITEMS["Basic Casing S"], 1.0),
+            batch(ITEMS["Basic Casing S"], 1),
         ],
         byproducts: [],
     },
@@ -794,7 +795,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 4),
             batch(ITEMS["Uncommon Optics"], 4),
-            batch(ITEMS["Uncommon Casing S"], 1.0),
+            batch(ITEMS["Uncommon Casing S"], 1),
             batch(ITEMS["Inconel"], 4),
         ],
         byproducts: [],
@@ -806,7 +807,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 4),
             batch(ITEMS["Uncommon Optics"], 4),
-            batch(ITEMS["Uncommon Casing S"], 1.0),
+            batch(ITEMS["Uncommon Casing S"], 1),
             batch(ITEMS["Ag-Li Reinforced Glass"], 4),
         ],
         byproducts: [],
@@ -818,7 +819,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 4),
             batch(ITEMS["Uncommon Optics"], 4),
-            batch(ITEMS["Uncommon Casing S"], 1.0),
+            batch(ITEMS["Uncommon Casing S"], 1),
             batch(ITEMS["Al-Li Alloy"], 4),
         ],
         byproducts: [],
@@ -830,7 +831,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 4),
             batch(ITEMS["Uncommon Optics"], 4),
-            batch(ITEMS["Uncommon Casing S"], 1.0),
+            batch(ITEMS["Uncommon Casing S"], 1),
             batch(ITEMS["Polysulfide Plastic"], 4),
         ],
         byproducts: [],
@@ -842,7 +843,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Explosive Module"], 4),
             batch(ITEMS["Basic Optics"], 4),
-            batch(ITEMS["Basic Casing S"], 1.0),
+            batch(ITEMS["Basic Casing S"], 1),
         ],
         byproducts: [],
     },
@@ -853,7 +854,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 4),
             batch(ITEMS["Uncommon Optics"], 4),
-            batch(ITEMS["Uncommon Casing S"], 1.0),
+            batch(ITEMS["Uncommon Casing S"], 1),
             batch(ITEMS["Inconel"], 4),
         ],
         byproducts: [],
@@ -865,7 +866,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 4),
             batch(ITEMS["Uncommon Optics"], 4),
-            batch(ITEMS["Uncommon Casing S"], 1.0),
+            batch(ITEMS["Uncommon Casing S"], 1),
             batch(ITEMS["Ag-Li Reinforced Glass"], 4),
         ],
         byproducts: [],
@@ -877,7 +878,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 2),
             batch(ITEMS["Uncommon Optics"], 2),
-            batch(ITEMS["Uncommon Casing XS"], 2.0),
+            batch(ITEMS["Uncommon Casing XS"], 2),
             batch(ITEMS["Al-Li Alloy"], 2),
         ],
         byproducts: [],
@@ -889,7 +890,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 2),
             batch(ITEMS["Uncommon Optics"], 2),
-            batch(ITEMS["Uncommon Casing XS"], 2.0),
+            batch(ITEMS["Uncommon Casing XS"], 2),
             batch(ITEMS["Polysulfide Plastic"], 2),
         ],
         byproducts: [],
@@ -901,7 +902,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Magnet"], 2),
             batch(ITEMS["Basic Optics"], 2),
-            batch(ITEMS["Basic Casing XS"], 2.0),
+            batch(ITEMS["Basic Casing XS"], 2),
         ],
         byproducts: [],
     },
@@ -912,7 +913,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 2),
             batch(ITEMS["Uncommon Optics"], 2),
-            batch(ITEMS["Uncommon Casing XS"], 2.0),
+            batch(ITEMS["Uncommon Casing XS"], 2),
             batch(ITEMS["Inconel"], 2),
         ],
         byproducts: [],
@@ -924,7 +925,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 2),
             batch(ITEMS["Uncommon Optics"], 2),
-            batch(ITEMS["Uncommon Casing XS"], 2.0),
+            batch(ITEMS["Uncommon Casing XS"], 2),
             batch(ITEMS["Ag-Li Reinforced Glass"], 2),
         ],
         byproducts: [],
@@ -936,7 +937,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 2),
             batch(ITEMS["Uncommon Optics"], 2),
-            batch(ITEMS["Uncommon Casing XS"], 2.0),
+            batch(ITEMS["Uncommon Casing XS"], 2),
             batch(ITEMS["Al-Li Alloy"], 2),
         ],
         byproducts: [],
@@ -948,7 +949,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 2),
             batch(ITEMS["Uncommon Optics"], 2),
-            batch(ITEMS["Uncommon Casing XS"], 2.0),
+            batch(ITEMS["Uncommon Casing XS"], 2),
             batch(ITEMS["Polysulfide Plastic"], 2),
         ],
         byproducts: [],
@@ -960,7 +961,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Explosive Module"], 2),
             batch(ITEMS["Basic Optics"], 2),
-            batch(ITEMS["Basic Casing XS"], 2.0),
+            batch(ITEMS["Basic Casing XS"], 2),
         ],
         byproducts: [],
     },
@@ -971,7 +972,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 2),
             batch(ITEMS["Uncommon Optics"], 2),
-            batch(ITEMS["Uncommon Casing XS"], 2.0),
+            batch(ITEMS["Uncommon Casing XS"], 2),
             batch(ITEMS["Inconel"], 2),
         ],
         byproducts: [],
@@ -983,7 +984,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Explosive Module"], 2),
             batch(ITEMS["Uncommon Optics"], 2),
-            batch(ITEMS["Uncommon Casing XS"], 2.0),
+            batch(ITEMS["Uncommon Casing XS"], 2),
             batch(ITEMS["Ag-Li Reinforced Glass"], 2),
         ],
         byproducts: [],
@@ -995,7 +996,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 1),
             batch(ITEMS["Uncommon Processor"], 1),
-            batch(ITEMS["Al-Li Alloy"], 1.0),
+            batch(ITEMS["Al-Li Alloy"], 1),
             batch(ITEMS["Uncommon Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -1007,7 +1008,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Anti-Matter Capsule"], 1),
             batch(ITEMS["Basic Processor"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -1018,7 +1019,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 1),
             batch(ITEMS["Uncommon Processor"], 1),
-            batch(ITEMS["Polysulfide Plastic"], 1.0),
+            batch(ITEMS["Polysulfide Plastic"], 1),
             batch(ITEMS["Uncommon Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -1030,7 +1031,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 1),
             batch(ITEMS["Uncommon Processor"], 1),
-            batch(ITEMS["Inconel"], 1.0),
+            batch(ITEMS["Inconel"], 1),
             batch(ITEMS["Uncommon Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -1042,7 +1043,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 1),
             batch(ITEMS["Uncommon Processor"], 1),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 1.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 1),
             batch(ITEMS["Uncommon Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -1054,7 +1055,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 1),
             batch(ITEMS["Uncommon Processor"], 1),
-            batch(ITEMS["Al-Li Alloy"], 1.0),
+            batch(ITEMS["Al-Li Alloy"], 1),
             batch(ITEMS["Uncommon Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -1066,7 +1067,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 1),
             batch(ITEMS["Uncommon Processor"], 1),
-            batch(ITEMS["Polysulfide Plastic"], 1.0),
+            batch(ITEMS["Polysulfide Plastic"], 1),
             batch(ITEMS["Uncommon Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -1078,7 +1079,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 1),
             batch(ITEMS["Uncommon Processor"], 1),
-            batch(ITEMS["Inconel"], 1.0),
+            batch(ITEMS["Inconel"], 1),
             batch(ITEMS["Uncommon Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -1090,7 +1091,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 1),
             batch(ITEMS["Basic Processor"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -1101,7 +1102,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 1),
             batch(ITEMS["Uncommon Processor"], 1),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 1.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 1),
             batch(ITEMS["Uncommon Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -1113,7 +1114,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 8),
             batch(ITEMS["Uncommon Processor"], 8),
-            batch(ITEMS["Al-Li Alloy"], 1.0),
+            batch(ITEMS["Al-Li Alloy"], 1),
             batch(ITEMS["Uncommon Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -1125,7 +1126,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Anti-Matter Capsule"], 8),
             batch(ITEMS["Basic Processor"], 8),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -1136,7 +1137,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 8),
             batch(ITEMS["Uncommon Processor"], 8),
-            batch(ITEMS["Polysulfide Plastic"], 1.0),
+            batch(ITEMS["Polysulfide Plastic"], 1),
             batch(ITEMS["Uncommon Standard Frame S"], 2),
         ],
         byproducts: [],
@@ -1148,7 +1149,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 8),
             batch(ITEMS["Uncommon Processor"], 8),
-            batch(ITEMS["Inconel"], 1.0),
+            batch(ITEMS["Inconel"], 1),
             batch(ITEMS["Uncommon Standard Frame S"], 2),
         ],
         byproducts: [],
@@ -1160,7 +1161,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 8),
             batch(ITEMS["Uncommon Processor"], 8),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 1.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 1),
             batch(ITEMS["Uncommon Standard Frame S"], 2),
         ],
         byproducts: [],
@@ -1172,7 +1173,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 8),
             batch(ITEMS["Uncommon Processor"], 8),
-            batch(ITEMS["Al-Li Alloy"], 1.0),
+            batch(ITEMS["Al-Li Alloy"], 1),
             batch(ITEMS["Uncommon Standard Frame S"], 2),
         ],
         byproducts: [],
@@ -1184,7 +1185,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 8),
             batch(ITEMS["Uncommon Processor"], 8),
-            batch(ITEMS["Polysulfide Plastic"], 1.0),
+            batch(ITEMS["Polysulfide Plastic"], 1),
             batch(ITEMS["Uncommon Standard Frame S"], 2),
         ],
         byproducts: [],
@@ -1196,7 +1197,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 8),
             batch(ITEMS["Uncommon Processor"], 8),
-            batch(ITEMS["Inconel"], 1.0),
+            batch(ITEMS["Inconel"], 1),
             batch(ITEMS["Uncommon Standard Frame S"], 2),
         ],
         byproducts: [],
@@ -1208,7 +1209,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 8),
             batch(ITEMS["Basic Processor"], 8),
-            batch(ITEMS["Basic Standard Frame S"], 2.0),
+            batch(ITEMS["Basic Standard Frame S"], 2),
         ],
         byproducts: [],
     },
@@ -1219,7 +1220,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 8),
             batch(ITEMS["Uncommon Processor"], 8),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 1.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 1),
             batch(ITEMS["Uncommon Standard Frame S"], 2),
         ],
         byproducts: [],
@@ -1231,7 +1232,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 4),
             batch(ITEMS["Uncommon Processor"], 4),
-            batch(ITEMS["Al-Li Alloy"], 4.0),
+            batch(ITEMS["Al-Li Alloy"], 4),
             batch(ITEMS["Uncommon Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -1243,7 +1244,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Anti-Matter Capsule"], 4),
             batch(ITEMS["Basic Processor"], 4),
-            batch(ITEMS["Basic Standard Frame XS"], 4.0),
+            batch(ITEMS["Basic Standard Frame XS"], 4),
         ],
         byproducts: [],
     },
@@ -1254,7 +1255,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 4),
             batch(ITEMS["Uncommon Processor"], 4),
-            batch(ITEMS["Polysulfide Plastic"], 4.0),
+            batch(ITEMS["Polysulfide Plastic"], 4),
             batch(ITEMS["Uncommon Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -1266,7 +1267,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 4),
             batch(ITEMS["Uncommon Processor"], 4),
-            batch(ITEMS["Inconel"], 4.0),
+            batch(ITEMS["Inconel"], 4),
             batch(ITEMS["Uncommon Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -1278,7 +1279,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 4),
             batch(ITEMS["Uncommon Processor"], 4),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 4.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 4),
             batch(ITEMS["Uncommon Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -1290,7 +1291,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 4),
             batch(ITEMS["Uncommon Processor"], 4),
-            batch(ITEMS["Al-Li Alloy"], 4.0),
+            batch(ITEMS["Al-Li Alloy"], 4),
             batch(ITEMS["Uncommon Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -1302,7 +1303,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 4),
             batch(ITEMS["Uncommon Processor"], 4),
-            batch(ITEMS["Polysulfide Plastic"], 4.0),
+            batch(ITEMS["Polysulfide Plastic"], 4),
             batch(ITEMS["Uncommon Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -1314,7 +1315,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 4),
             batch(ITEMS["Uncommon Processor"], 4),
-            batch(ITEMS["Inconel"], 4.0),
+            batch(ITEMS["Inconel"], 4),
             batch(ITEMS["Uncommon Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -1326,7 +1327,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 4),
             batch(ITEMS["Basic Processor"], 4),
-            batch(ITEMS["Basic Standard Frame S"], 1.0),
+            batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -1337,7 +1338,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 4),
             batch(ITEMS["Uncommon Processor"], 4),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 4.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 4),
             batch(ITEMS["Uncommon Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -1349,7 +1350,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 2),
             batch(ITEMS["Uncommon Processor"], 2),
-            batch(ITEMS["Al-Li Alloy"], 2.0),
+            batch(ITEMS["Al-Li Alloy"], 2),
             batch(ITEMS["Uncommon Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -1361,7 +1362,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Anti-Matter Capsule"], 2),
             batch(ITEMS["Basic Processor"], 2),
-            batch(ITEMS["Basic Standard Frame XS"], 2.0),
+            batch(ITEMS["Basic Standard Frame XS"], 2),
         ],
         byproducts: [],
     },
@@ -1372,7 +1373,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 2),
             batch(ITEMS["Uncommon Processor"], 2),
-            batch(ITEMS["Polysulfide Plastic"], 2.0),
+            batch(ITEMS["Polysulfide Plastic"], 2),
             batch(ITEMS["Uncommon Standard Frame XS"], 2),
         ],
         byproducts: [],
@@ -1384,7 +1385,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 2),
             batch(ITEMS["Uncommon Processor"], 2),
-            batch(ITEMS["Inconel"], 2.0),
+            batch(ITEMS["Inconel"], 2),
             batch(ITEMS["Uncommon Standard Frame XS"], 2),
         ],
         byproducts: [],
@@ -1396,7 +1397,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 2),
             batch(ITEMS["Uncommon Processor"], 2),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 2.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 2),
             batch(ITEMS["Uncommon Standard Frame XS"], 2),
         ],
         byproducts: [],
@@ -1408,7 +1409,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 2),
             batch(ITEMS["Uncommon Processor"], 2),
-            batch(ITEMS["Al-Li Alloy"], 2.0),
+            batch(ITEMS["Al-Li Alloy"], 2),
             batch(ITEMS["Uncommon Standard Frame XS"], 2),
         ],
         byproducts: [],
@@ -1420,7 +1421,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 2),
             batch(ITEMS["Uncommon Processor"], 2),
-            batch(ITEMS["Polysulfide Plastic"], 2.0),
+            batch(ITEMS["Polysulfide Plastic"], 2),
             batch(ITEMS["Uncommon Standard Frame XS"], 2),
         ],
         byproducts: [],
@@ -1432,7 +1433,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 2),
             batch(ITEMS["Uncommon Processor"], 2),
-            batch(ITEMS["Inconel"], 2.0),
+            batch(ITEMS["Inconel"], 2),
             batch(ITEMS["Uncommon Standard Frame XS"], 2),
         ],
         byproducts: [],
@@ -1444,7 +1445,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 2),
             batch(ITEMS["Basic Processor"], 2),
-            batch(ITEMS["Basic Standard Frame XS"], 2.0),
+            batch(ITEMS["Basic Standard Frame XS"], 2),
         ],
         byproducts: [],
     },
@@ -1455,7 +1456,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Solid Warhead"], 2),
             batch(ITEMS["Uncommon Processor"], 2),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 2.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 2),
             batch(ITEMS["Uncommon Standard Frame XS"], 2),
         ],
         byproducts: [],
@@ -1467,7 +1468,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 1),
             batch(ITEMS["Uncommon Magnet"], 1),
-            batch(ITEMS["Al-Li Alloy"], 1.0),
+            batch(ITEMS["Al-Li Alloy"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -1479,7 +1480,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Anti-Matter Capsule"], 1),
             batch(ITEMS["Basic Magnet"], 1),
-            batch(ITEMS["Basic Reinforced Frame XS"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -1490,7 +1491,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 1),
             batch(ITEMS["Uncommon Magnet"], 1),
-            batch(ITEMS["Polysulfide Plastic"], 1.0),
+            batch(ITEMS["Polysulfide Plastic"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -1502,7 +1503,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 1),
             batch(ITEMS["Uncommon Magnet"], 1),
-            batch(ITEMS["Inconel"], 1.0),
+            batch(ITEMS["Inconel"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -1514,7 +1515,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 1),
             batch(ITEMS["Uncommon Magnet"], 1),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 1.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -1526,7 +1527,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 1),
             batch(ITEMS["Uncommon Magnet"], 1),
-            batch(ITEMS["Al-Li Alloy"], 1.0),
+            batch(ITEMS["Al-Li Alloy"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -1538,7 +1539,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 1),
             batch(ITEMS["Uncommon Magnet"], 1),
-            batch(ITEMS["Polysulfide Plastic"], 1.0),
+            batch(ITEMS["Polysulfide Plastic"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -1550,7 +1551,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Magnet"], 1),
             batch(ITEMS["Basic Magnet"], 1),
-            batch(ITEMS["Basic Reinforced Frame XS"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -1561,7 +1562,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 1),
             batch(ITEMS["Uncommon Magnet"], 1),
-            batch(ITEMS["Inconel"], 1.0),
+            batch(ITEMS["Inconel"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -1573,7 +1574,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 1),
             batch(ITEMS["Uncommon Magnet"], 1),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 1.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -1585,7 +1586,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 8),
             batch(ITEMS["Uncommon Magnet"], 8),
-            batch(ITEMS["Al-Li Alloy"], 8.0),
+            batch(ITEMS["Al-Li Alloy"], 8),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -1597,7 +1598,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Anti-Matter Capsule"], 8),
             batch(ITEMS["Basic Magnet"], 8),
-            batch(ITEMS["Basic Reinforced Frame XS"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -1608,7 +1609,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 8),
             batch(ITEMS["Uncommon Magnet"], 8),
-            batch(ITEMS["Polysulfide Plastic"], 8.0),
+            batch(ITEMS["Polysulfide Plastic"], 8),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -1620,7 +1621,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 8),
             batch(ITEMS["Uncommon Magnet"], 8),
-            batch(ITEMS["Inconel"], 8.0),
+            batch(ITEMS["Inconel"], 8),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -1632,7 +1633,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 8),
             batch(ITEMS["Uncommon Magnet"], 8),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 8.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 8),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -1644,7 +1645,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 8),
             batch(ITEMS["Uncommon Magnet"], 8),
-            batch(ITEMS["Al-Li Alloy"], 8.0),
+            batch(ITEMS["Al-Li Alloy"], 8),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -1656,7 +1657,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 8),
             batch(ITEMS["Uncommon Magnet"], 8),
-            batch(ITEMS["Polysulfide Plastic"], 8.0),
+            batch(ITEMS["Polysulfide Plastic"], 8),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -1668,7 +1669,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Magnet"], 8),
             batch(ITEMS["Basic Magnet"], 8),
-            batch(ITEMS["Basic Reinforced Frame S"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -1679,7 +1680,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 8),
             batch(ITEMS["Uncommon Magnet"], 8),
-            batch(ITEMS["Inconel"], 8.0),
+            batch(ITEMS["Inconel"], 8),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -1691,7 +1692,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 8),
             batch(ITEMS["Uncommon Magnet"], 8),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 8.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 8),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -1703,7 +1704,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 4),
             batch(ITEMS["Uncommon Magnet"], 4),
-            batch(ITEMS["Al-Li Alloy"], 4.0),
+            batch(ITEMS["Al-Li Alloy"], 4),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -1715,7 +1716,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Anti-Matter Capsule"], 4),
             batch(ITEMS["Basic Magnet"], 4),
-            batch(ITEMS["Basic Reinforced Frame XS"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -1726,7 +1727,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 4),
             batch(ITEMS["Uncommon Magnet"], 4),
-            batch(ITEMS["Polysulfide Plastic"], 4.0),
+            batch(ITEMS["Polysulfide Plastic"], 4),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -1738,7 +1739,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 4),
             batch(ITEMS["Uncommon Magnet"], 4),
-            batch(ITEMS["Inconel"], 4.0),
+            batch(ITEMS["Inconel"], 4),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -1750,7 +1751,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 4),
             batch(ITEMS["Uncommon Magnet"], 4),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 4.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 4),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -1762,7 +1763,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 4),
             batch(ITEMS["Uncommon Magnet"], 4),
-            batch(ITEMS["Al-Li Alloy"], 4.0),
+            batch(ITEMS["Al-Li Alloy"], 4),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -1774,7 +1775,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 4),
             batch(ITEMS["Uncommon Magnet"], 4),
-            batch(ITEMS["Polysulfide Plastic"], 4.0),
+            batch(ITEMS["Polysulfide Plastic"], 4),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -1786,7 +1787,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Magnet"], 4),
             batch(ITEMS["Basic Magnet"], 4),
-            batch(ITEMS["Basic Reinforced Frame S"], 4.0),
+            batch(ITEMS["Basic Reinforced Frame S"], 4),
         ],
         byproducts: [],
     },
@@ -1797,7 +1798,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 4),
             batch(ITEMS["Uncommon Magnet"], 4),
-            batch(ITEMS["Inconel"], 2.0),
+            batch(ITEMS["Inconel"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -1809,7 +1810,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 4),
             batch(ITEMS["Uncommon Magnet"], 4),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 2.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -1821,7 +1822,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 2),
             batch(ITEMS["Uncommon Magnet"], 2),
-            batch(ITEMS["Al-Li Alloy"], 2.0),
+            batch(ITEMS["Al-Li Alloy"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -1833,7 +1834,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Anti-Matter Capsule"], 2),
             batch(ITEMS["Basic Magnet"], 2),
-            batch(ITEMS["Basic Reinforced Frame XS"], 2.0),
+            batch(ITEMS["Basic Reinforced Frame XS"], 2),
         ],
         byproducts: [],
     },
@@ -1844,7 +1845,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 2),
             batch(ITEMS["Uncommon Magnet"], 2),
-            batch(ITEMS["Polysulfide Plastic"], 2.0),
+            batch(ITEMS["Polysulfide Plastic"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 2),
         ],
         byproducts: [],
@@ -1856,7 +1857,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 2),
             batch(ITEMS["Uncommon Magnet"], 2),
-            batch(ITEMS["Inconel"], 2.0),
+            batch(ITEMS["Inconel"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 2),
         ],
         byproducts: [],
@@ -1868,7 +1869,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Anti-Matter Capsule"], 2),
             batch(ITEMS["Uncommon Magnet"], 2),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 2.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 2),
         ],
         byproducts: [],
@@ -1880,7 +1881,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 2),
             batch(ITEMS["Uncommon Magnet"], 2),
-            batch(ITEMS["Al-Li Alloy"], 2.0),
+            batch(ITEMS["Al-Li Alloy"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 2),
         ],
         byproducts: [],
@@ -1892,7 +1893,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 2),
             batch(ITEMS["Uncommon Magnet"], 2),
-            batch(ITEMS["Polysulfide Plastic"], 2.0),
+            batch(ITEMS["Polysulfide Plastic"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 2),
         ],
         byproducts: [],
@@ -1904,7 +1905,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Magnet"], 2),
             batch(ITEMS["Basic Magnet"], 2),
-            batch(ITEMS["Basic Reinforced Frame XS"], 2.0),
+            batch(ITEMS["Basic Reinforced Frame XS"], 2),
         ],
         byproducts: [],
     },
@@ -1915,7 +1916,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 2),
             batch(ITEMS["Uncommon Magnet"], 2),
-            batch(ITEMS["Inconel"], 2.0),
+            batch(ITEMS["Inconel"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 2),
         ],
         byproducts: [],
@@ -1927,7 +1928,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Magnet"], 2),
             batch(ITEMS["Uncommon Magnet"], 2),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 2.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 2),
         ],
         byproducts: [],
@@ -2089,7 +2090,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 3),
             batch(ITEMS["Uncommon LED"], 3),
-            batch(ITEMS["Uncommon Magnet"], 5.0),
+            batch(ITEMS["Uncommon Magnet"], 5),
             batch(ITEMS["Uncommon Antenna S"], 1),
             batch(ITEMS["Uncommon Standard Frame S"], 1),
         ],
@@ -2102,7 +2103,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 18),
             batch(ITEMS["Uncommon LED"], 18),
-            batch(ITEMS["Uncommon Magnet"], 25.0),
+            batch(ITEMS["Uncommon Magnet"], 25),
             batch(ITEMS["Uncommon Antenna M"], 1),
             batch(ITEMS["Uncommon Standard Frame M"], 1),
         ],
@@ -2115,7 +2116,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 108),
             batch(ITEMS["Uncommon LED"], 108),
-            batch(ITEMS["Uncommon Magnet"], 125.0),
+            batch(ITEMS["Uncommon Magnet"], 125),
             batch(ITEMS["Uncommon Antenna L"], 1),
             batch(ITEMS["Uncommon Standard Frame L"], 1),
         ],
@@ -2128,7 +2129,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 3),
             batch(ITEMS["Uncommon LED"], 3),
-            batch(ITEMS["Uncommon Processor"], 5.0),
+            batch(ITEMS["Uncommon Processor"], 5),
             batch(ITEMS["Uncommon Antenna S"], 1),
             batch(ITEMS["Uncommon Standard Frame S"], 1),
         ],
@@ -2141,7 +2142,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 18),
             batch(ITEMS["Uncommon LED"], 18),
-            batch(ITEMS["Uncommon Processor"], 25.0),
+            batch(ITEMS["Uncommon Processor"], 25),
             batch(ITEMS["Uncommon Antenna M"], 1),
             batch(ITEMS["Uncommon Standard Frame M"], 1),
         ],
@@ -2154,7 +2155,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 108),
             batch(ITEMS["Uncommon LED"], 108),
-            batch(ITEMS["Uncommon Processor"], 125.0),
+            batch(ITEMS["Uncommon Processor"], 125),
             batch(ITEMS["Uncommon Antenna L"], 1),
             batch(ITEMS["Uncommon Standard Frame L"], 1),
         ],
@@ -2167,7 +2168,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 6),
             batch(ITEMS["Advanced Magnet"], 5),
-            batch(ITEMS["Advanced Antenna S"], 1.0),
+            batch(ITEMS["Advanced Antenna S"], 1),
             batch(ITEMS["Advanced Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -2179,7 +2180,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 36),
             batch(ITEMS["Advanced Magnet"], 25),
-            batch(ITEMS["Advanced Antenna M"], 1.0),
+            batch(ITEMS["Advanced Antenna M"], 1),
             batch(ITEMS["Advanced Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -2191,7 +2192,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 216),
             batch(ITEMS["Advanced Magnet"], 125),
-            batch(ITEMS["Advanced Antenna L"], 1.0),
+            batch(ITEMS["Advanced Antenna L"], 1),
             batch(ITEMS["Advanced Standard Frame L"], 1),
         ],
         byproducts: [],
@@ -2203,7 +2204,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 6),
             batch(ITEMS["Advanced Magnet"], 5),
-            batch(ITEMS["Advanced Antenna S"], 1.0),
+            batch(ITEMS["Advanced Antenna S"], 1),
             batch(ITEMS["Advanced Standard Frame S"], -1),
         ],
         byproducts: [],
@@ -2215,7 +2216,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 36),
             batch(ITEMS["Advanced Magnet"], 25),
-            batch(ITEMS["Advanced Antenna M"], 1.0),
+            batch(ITEMS["Advanced Antenna M"], 1),
             batch(ITEMS["Advanced Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -2227,7 +2228,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 216),
             batch(ITEMS["Advanced Magnet"], 125),
-            batch(ITEMS["Advanced Antenna L"], 1.0),
+            batch(ITEMS["Advanced Antenna L"], 1),
             batch(ITEMS["Advanced Standard Frame L"], 1),
         ],
         byproducts: [],
@@ -2239,7 +2240,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 6),
             batch(ITEMS["Advanced Magnet"], 5),
-            batch(ITEMS["Advanced Antenna S"], 1.0),
+            batch(ITEMS["Advanced Antenna S"], 1),
             batch(ITEMS["Advanced Standard Frame S"], -1),
         ],
         byproducts: [],
@@ -2251,7 +2252,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 36),
             batch(ITEMS["Advanced Magnet"], 25),
-            batch(ITEMS["Advanced Antenna M"], 1.0),
+            batch(ITEMS["Advanced Antenna M"], 1),
             batch(ITEMS["Advanced Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -2263,7 +2264,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 216),
             batch(ITEMS["Advanced Magnet"], 125),
-            batch(ITEMS["Advanced Antenna L"], 1.0),
+            batch(ITEMS["Advanced Antenna L"], 1),
             batch(ITEMS["Advanced Standard Frame L"], 1),
         ],
         byproducts: [],
@@ -2275,7 +2276,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 3),
             batch(ITEMS["Advanced LED"], 3),
-            batch(ITEMS["Rare Magnet"], 5.0),
+            batch(ITEMS["Rare Magnet"], 5),
             batch(ITEMS["Rare Antenna S"], 1),
             batch(ITEMS["Rare Standard Frame S"], 1),
         ],
@@ -2288,7 +2289,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 18),
             batch(ITEMS["Advanced LED"], 18),
-            batch(ITEMS["Rare Magnet"], 25.0),
+            batch(ITEMS["Rare Magnet"], 25),
             batch(ITEMS["Rare Antenna M"], 1),
             batch(ITEMS["Rare Standard Frame M"], 1),
         ],
@@ -2301,7 +2302,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 108),
             batch(ITEMS["Advanced LED"], 108),
-            batch(ITEMS["Rare Magnet"], 125.0),
+            batch(ITEMS["Rare Magnet"], 125),
             batch(ITEMS["Rare Antenna L"], 1),
             batch(ITEMS["Rare Standard Frame L"], 1),
         ],
@@ -2314,7 +2315,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 3),
             batch(ITEMS["Advanced LED"], 3),
-            batch(ITEMS["Rare Magnet"], 5.0),
+            batch(ITEMS["Rare Magnet"], 5),
             batch(ITEMS["Rare Antenna S"], 1),
             batch(ITEMS["Rare Standard Frame S"], 1),
         ],
@@ -2327,7 +2328,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 18),
             batch(ITEMS["Advanced LED"], 18),
-            batch(ITEMS["Rare Magnet"], 25.0),
+            batch(ITEMS["Rare Magnet"], 25),
             batch(ITEMS["Rare Antenna M"], 1),
             batch(ITEMS["Rare Standard Frame M"], 1),
         ],
@@ -2340,7 +2341,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 108),
             batch(ITEMS["Advanced LED"], 108),
-            batch(ITEMS["Rare Magnet"], 125.0),
+            batch(ITEMS["Rare Magnet"], 125),
             batch(ITEMS["Rare Antenna L"], 1),
             batch(ITEMS["Rare Standard Frame L"], 1),
         ],
@@ -2353,7 +2354,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 3),
             batch(ITEMS["Advanced LED"], 3),
-            batch(ITEMS["Rare Magnet"], 5.0),
+            batch(ITEMS["Rare Magnet"], 5),
             batch(ITEMS["Rare Antenna S"], 1),
             batch(ITEMS["Rare Standard Frame S"], 1),
         ],
@@ -2366,7 +2367,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 18),
             batch(ITEMS["Advanced LED"], 18),
-            batch(ITEMS["Rare Magnet"], 25.0),
+            batch(ITEMS["Rare Magnet"], 25),
             batch(ITEMS["Rare Antenna M"], 1),
             batch(ITEMS["Rare Standard Frame M"], 1),
         ],
@@ -2379,7 +2380,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 108),
             batch(ITEMS["Advanced LED"], 108),
-            batch(ITEMS["Rare Magnet"], 125.0),
+            batch(ITEMS["Rare Magnet"], 125),
             batch(ITEMS["Rare Antenna L"], 1),
             batch(ITEMS["Rare Standard Frame L"], 1),
         ],
@@ -2392,7 +2393,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced LED"], 6),
             batch(ITEMS["Exotic Magnet"], 5),
-            batch(ITEMS["Exotic Antenna S"], 1.0),
+            batch(ITEMS["Exotic Antenna S"], 1),
             batch(ITEMS["Exotic Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -2404,7 +2405,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced LED"], 36),
             batch(ITEMS["Exotic Magnet"], 25),
-            batch(ITEMS["Exotic Antenna M"], 1.0),
+            batch(ITEMS["Exotic Antenna M"], 1),
             batch(ITEMS["Exotic Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -2416,7 +2417,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced LED"], 216),
             batch(ITEMS["Exotic Magnet"], 125),
-            batch(ITEMS["Exotic Antenna L"], 1.0),
+            batch(ITEMS["Exotic Antenna L"], 1),
             batch(ITEMS["Exotic Standard Frame L"], 1),
         ],
         byproducts: [],
@@ -2428,7 +2429,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced LED"], 6),
             batch(ITEMS["Exotic Magnet"], 5),
-            batch(ITEMS["Exotic Antenna S"], 1.0),
+            batch(ITEMS["Exotic Antenna S"], 1),
             batch(ITEMS["Exotic Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -2440,7 +2441,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced LED"], 36),
             batch(ITEMS["Exotic Magnet"], 25),
-            batch(ITEMS["Exotic Antenna M"], 1.0),
+            batch(ITEMS["Exotic Antenna M"], 1),
             batch(ITEMS["Exotic Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -2452,7 +2453,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced LED"], 216),
             batch(ITEMS["Exotic Magnet"], 125),
-            batch(ITEMS["Exotic Antenna L"], 1.0),
+            batch(ITEMS["Exotic Antenna L"], 1),
             batch(ITEMS["Exotic Standard Frame L"], 1),
         ],
         byproducts: [],
@@ -2464,7 +2465,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced LED"], 6),
             batch(ITEMS["Exotic Magnet"], 5),
-            batch(ITEMS["Exotic Antenna S"], 1.0),
+            batch(ITEMS["Exotic Antenna S"], 1),
             batch(ITEMS["Exotic Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -2476,7 +2477,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced LED"], 36),
             batch(ITEMS["Exotic Magnet"], 25),
-            batch(ITEMS["Exotic Antenna M"], 1.0),
+            batch(ITEMS["Exotic Antenna M"], 1),
             batch(ITEMS["Exotic Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -2488,7 +2489,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced LED"], 216),
             batch(ITEMS["Exotic Magnet"], 125),
-            batch(ITEMS["Exotic Antenna L"], 1.0),
+            batch(ITEMS["Exotic Antenna L"], 1),
             batch(ITEMS["Exotic Standard Frame L"], 1),
         ],
         byproducts: [],
@@ -2500,7 +2501,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 216),
             batch(ITEMS["Advanced Hydraulics"], 125),
-            batch(ITEMS["Advanced Magnetic Rail L"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail L"], 1),
             batch(ITEMS["Advanced Anti-Matter Core"], 64),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
@@ -2513,7 +2514,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Processor"], 5),
-            batch(ITEMS["Advanced Antenna S"], 1.0),
+            batch(ITEMS["Advanced Antenna S"], 1),
             batch(ITEMS["Advanced Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -2525,7 +2526,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Electronics"], 1),
-            batch(ITEMS["Advanced Firing System XS"], 1.0),
+            batch(ITEMS["Advanced Firing System XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -2537,7 +2538,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Electronics"], 1),
-            batch(ITEMS["Advanced Firing System XS"], 1.0),
+            batch(ITEMS["Advanced Firing System XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -2549,7 +2550,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Electronics"], 1),
-            batch(ITEMS["Advanced Firing System XS"], 1.0),
+            batch(ITEMS["Advanced Firing System XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -2561,7 +2562,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Electronics"], 1),
-            batch(ITEMS["Advanced Firing System XS"], 1.0),
+            batch(ITEMS["Advanced Firing System XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -2573,7 +2574,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Electronics"], 1),
-            batch(ITEMS["Advanced Firing System XS"], 1.0),
+            batch(ITEMS["Advanced Firing System XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -2585,7 +2586,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 1),
             batch(ITEMS["Exotic Electronics"], 1),
-            batch(ITEMS["Exotic Firing System XS"], 1.0),
+            batch(ITEMS["Exotic Firing System XS"], 1),
             batch(ITEMS["Exotic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -2597,7 +2598,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 1),
             batch(ITEMS["Exotic Electronics"], 1),
-            batch(ITEMS["Exotic Firing System XS"], 1.0),
+            batch(ITEMS["Exotic Firing System XS"], 1),
             batch(ITEMS["Exotic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -2609,7 +2610,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 1),
             batch(ITEMS["Exotic Electronics"], 1),
-            batch(ITEMS["Exotic Firing System XS"], 1.0),
+            batch(ITEMS["Exotic Firing System XS"], 1),
             batch(ITEMS["Exotic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -2621,7 +2622,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 1),
             batch(ITEMS["Exotic Electronics"], 1),
-            batch(ITEMS["Exotic Firing System XS"], 1.0),
+            batch(ITEMS["Exotic Firing System XS"], 1),
             batch(ITEMS["Exotic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -2633,7 +2634,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Electronics"], 1.0),
+            batch(ITEMS["Rare Electronics"], 1),
             batch(ITEMS["Rare Firing System XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -2646,7 +2647,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Electronics"], 1.0),
+            batch(ITEMS["Rare Electronics"], 1),
             batch(ITEMS["Rare Firing System XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -2659,7 +2660,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Electronics"], 1.0),
+            batch(ITEMS["Rare Electronics"], 1),
             batch(ITEMS["Rare Firing System XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -2672,7 +2673,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Electronics"], 1.0),
+            batch(ITEMS["Rare Electronics"], 1),
             batch(ITEMS["Rare Firing System XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -2685,7 +2686,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Electronics"], 125),
-            batch(ITEMS["Advanced Firing System L"], 1.0),
+            batch(ITEMS["Advanced Firing System L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -2697,7 +2698,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Electronics"], 125),
-            batch(ITEMS["Advanced Firing System L"], 1.0),
+            batch(ITEMS["Advanced Firing System L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -2709,7 +2710,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Electronics"], 125),
-            batch(ITEMS["Advanced Firing System L"], 1.0),
+            batch(ITEMS["Advanced Firing System L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -2721,7 +2722,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Electronics"], 125),
-            batch(ITEMS["Advanced Firing System L"], 1.0),
+            batch(ITEMS["Advanced Firing System L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -2733,7 +2734,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Electronics"], 125),
-            batch(ITEMS["Advanced Firing System L"], 1.0),
+            batch(ITEMS["Advanced Firing System L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -2745,7 +2746,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 216),
             batch(ITEMS["Exotic Electronics"], 125),
-            batch(ITEMS["Exotic Firing System L"], 1.0),
+            batch(ITEMS["Exotic Firing System L"], 1),
             batch(ITEMS["Exotic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -2757,7 +2758,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 216),
             batch(ITEMS["Exotic Electronics"], 125),
-            batch(ITEMS["Exotic Firing System L"], 1.0),
+            batch(ITEMS["Exotic Firing System L"], 1),
             batch(ITEMS["Exotic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -2769,7 +2770,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 216),
             batch(ITEMS["Exotic Electronics"], 125),
-            batch(ITEMS["Exotic Firing System L"], 1.0),
+            batch(ITEMS["Exotic Firing System L"], 1),
             batch(ITEMS["Exotic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -2781,7 +2782,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 216),
             batch(ITEMS["Exotic Electronics"], 125),
-            batch(ITEMS["Exotic Firing System L"], 1.0),
+            batch(ITEMS["Exotic Firing System L"], 1),
             batch(ITEMS["Exotic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -2793,7 +2794,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Advanced Screw"], 108),
-            batch(ITEMS["Rare Electronics"], 125.0),
+            batch(ITEMS["Rare Electronics"], 125),
             batch(ITEMS["Rare Firing System L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -2806,7 +2807,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Advanced Screw"], 108),
-            batch(ITEMS["Rare Electronics"], 125.0),
+            batch(ITEMS["Rare Electronics"], 125),
             batch(ITEMS["Rare Firing System L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -2819,7 +2820,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Advanced Screw"], 108),
-            batch(ITEMS["Rare Electronics"], 125.0),
+            batch(ITEMS["Rare Electronics"], 125),
             batch(ITEMS["Rare Firing System L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -2832,7 +2833,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Advanced Screw"], 108),
-            batch(ITEMS["Rare Electronics"], 125.0),
+            batch(ITEMS["Rare Electronics"], 125),
             batch(ITEMS["Rare Firing System L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -2845,7 +2846,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 36),
             batch(ITEMS["Advanced Electronics"], 25),
-            batch(ITEMS["Advanced Firing System M"], 1.0),
+            batch(ITEMS["Advanced Firing System M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -2857,7 +2858,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 36),
             batch(ITEMS["Advanced Electronics"], 25),
-            batch(ITEMS["Advanced Firing System M"], 1.0),
+            batch(ITEMS["Advanced Firing System M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -2869,7 +2870,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 36),
             batch(ITEMS["Advanced Electronics"], 25),
-            batch(ITEMS["Advanced Firing System M"], 1.0),
+            batch(ITEMS["Advanced Firing System M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -2881,7 +2882,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 36),
             batch(ITEMS["Advanced Electronics"], 25),
-            batch(ITEMS["Advanced Firing System M"], 1.0),
+            batch(ITEMS["Advanced Firing System M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -2893,7 +2894,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 36),
             batch(ITEMS["Advanced Electronics"], 25),
-            batch(ITEMS["Advanced Firing System M"], 1.0),
+            batch(ITEMS["Advanced Firing System M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -2905,7 +2906,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 36),
             batch(ITEMS["Exotic Electronics"], 25),
-            batch(ITEMS["Exotic Firing System M"], 1.0),
+            batch(ITEMS["Exotic Firing System M"], 1),
             batch(ITEMS["Exotic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -2917,7 +2918,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 36),
             batch(ITEMS["Exotic Electronics"], 25),
-            batch(ITEMS["Exotic Firing System M"], 1.0),
+            batch(ITEMS["Exotic Firing System M"], 1),
             batch(ITEMS["Exotic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -2929,7 +2930,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 36),
             batch(ITEMS["Exotic Electronics"], 25),
-            batch(ITEMS["Exotic Firing System M"], 1.0),
+            batch(ITEMS["Exotic Firing System M"], 1),
             batch(ITEMS["Exotic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -2941,7 +2942,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 36),
             batch(ITEMS["Exotic Electronics"], 25),
-            batch(ITEMS["Exotic Firing System M"], 1.0),
+            batch(ITEMS["Exotic Firing System M"], 1),
             batch(ITEMS["Exotic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -2953,7 +2954,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Advanced Screw"], 18),
-            batch(ITEMS["Rare Electronics"], 25.0),
+            batch(ITEMS["Rare Electronics"], 25),
             batch(ITEMS["Rare Firing System M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -2966,7 +2967,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Advanced Screw"], 18),
-            batch(ITEMS["Rare Electronics"], 25.0),
+            batch(ITEMS["Rare Electronics"], 25),
             batch(ITEMS["Rare Firing System M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -2979,7 +2980,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Advanced Screw"], 18),
-            batch(ITEMS["Rare Electronics"], 25.0),
+            batch(ITEMS["Rare Electronics"], 25),
             batch(ITEMS["Rare Firing System M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -2992,7 +2993,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Advanced Screw"], 18),
-            batch(ITEMS["Rare Electronics"], 25.0),
+            batch(ITEMS["Rare Electronics"], 25),
             batch(ITEMS["Rare Firing System M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -3005,7 +3006,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Electronics"], 5),
-            batch(ITEMS["Advanced Firing System S"], 1.0),
+            batch(ITEMS["Advanced Firing System S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3017,7 +3018,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Electronics"], 5),
-            batch(ITEMS["Advanced Firing System S"], 1.0),
+            batch(ITEMS["Advanced Firing System S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3029,7 +3030,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Electronics"], 5),
-            batch(ITEMS["Advanced Firing System S"], 1.0),
+            batch(ITEMS["Advanced Firing System S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3041,7 +3042,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Electronics"], 5),
-            batch(ITEMS["Advanced Firing System S"], 1.0),
+            batch(ITEMS["Advanced Firing System S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3053,7 +3054,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Electronics"], 5),
-            batch(ITEMS["Advanced Firing System S"], 1.0),
+            batch(ITEMS["Advanced Firing System S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3065,7 +3066,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 6),
             batch(ITEMS["Exotic Electronics"], 5),
-            batch(ITEMS["Exotic Firing System S"], 1.0),
+            batch(ITEMS["Exotic Firing System S"], 1),
             batch(ITEMS["Exotic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3077,7 +3078,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 6),
             batch(ITEMS["Exotic Electronics"], 5),
-            batch(ITEMS["Exotic Firing System S"], 1.0),
+            batch(ITEMS["Exotic Firing System S"], 1),
             batch(ITEMS["Exotic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3089,7 +3090,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 6),
             batch(ITEMS["Exotic Electronics"], 5),
-            batch(ITEMS["Exotic Firing System S"], 1.0),
+            batch(ITEMS["Exotic Firing System S"], 1),
             batch(ITEMS["Exotic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3101,7 +3102,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 6),
             batch(ITEMS["Exotic Electronics"], 5),
-            batch(ITEMS["Exotic Firing System S"], 1.0),
+            batch(ITEMS["Exotic Firing System S"], 1),
             batch(ITEMS["Exotic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3113,7 +3114,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Electronics"], 1.0),
+            batch(ITEMS["Rare Electronics"], 1),
             batch(ITEMS["Rare Firing System S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -3126,7 +3127,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Electronics"], 1.0),
+            batch(ITEMS["Rare Electronics"], 1),
             batch(ITEMS["Rare Firing System S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -3139,7 +3140,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Electronics"], 1.0),
+            batch(ITEMS["Rare Electronics"], 1),
             batch(ITEMS["Rare Firing System S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -3152,7 +3153,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Electronics"], 1.0),
+            batch(ITEMS["Rare Electronics"], 1),
             batch(ITEMS["Rare Firing System S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -3165,7 +3166,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Power System"], 1),
-            batch(ITEMS["Advanced Laser Chamber XS"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3177,7 +3178,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Power System"], 1),
-            batch(ITEMS["Advanced Laser Chamber XS"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3189,7 +3190,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Power System"], 1),
-            batch(ITEMS["Advanced Laser Chamber XS"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3201,7 +3202,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Power System"], 1),
-            batch(ITEMS["Advanced Laser Chamber XS"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3213,7 +3214,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 1),
             batch(ITEMS["Exotic Power System"], 1),
-            batch(ITEMS["Exotic Laser Chamber XS"], 1.0),
+            batch(ITEMS["Exotic Laser Chamber XS"], 1),
             batch(ITEMS["Exotic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3225,7 +3226,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 1),
             batch(ITEMS["Exotic Power System"], 1),
-            batch(ITEMS["Exotic Laser Chamber XS"], 1.0),
+            batch(ITEMS["Exotic Laser Chamber XS"], 1),
             batch(ITEMS["Exotic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3237,7 +3238,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 1),
             batch(ITEMS["Exotic Power System"], 1),
-            batch(ITEMS["Exotic Laser Chamber XS"], 1.0),
+            batch(ITEMS["Exotic Laser Chamber XS"], 1),
             batch(ITEMS["Exotic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3249,7 +3250,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 1),
             batch(ITEMS["Exotic Power System"], 1),
-            batch(ITEMS["Exotic Laser Chamber XS"], 1.0),
+            batch(ITEMS["Exotic Laser Chamber XS"], 1),
             batch(ITEMS["Exotic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3261,7 +3262,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Power System"], 1),
-            batch(ITEMS["Advanced Laser Chamber XS"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3273,7 +3274,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Connector"], 1),
-            batch(ITEMS["Rare Power System"], 1.0),
+            batch(ITEMS["Rare Power System"], 1),
             batch(ITEMS["Rare Laser Chamber XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -3286,7 +3287,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Connector"], 1),
-            batch(ITEMS["Rare Power System"], 1.0),
+            batch(ITEMS["Rare Power System"], 1),
             batch(ITEMS["Rare Laser Chamber XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -3299,7 +3300,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Connector"], 1),
-            batch(ITEMS["Rare Power System"], 1.0),
+            batch(ITEMS["Rare Power System"], 1),
             batch(ITEMS["Rare Laser Chamber XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -3312,7 +3313,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Connector"], 1),
-            batch(ITEMS["Rare Power System"], 1.0),
+            batch(ITEMS["Rare Power System"], 1),
             batch(ITEMS["Rare Laser Chamber XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -3325,7 +3326,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 216),
             batch(ITEMS["Advanced Power System"], 125),
-            batch(ITEMS["Advanced Laser Chamber L"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -3337,7 +3338,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 216),
             batch(ITEMS["Advanced Power System"], 125),
-            batch(ITEMS["Advanced Laser Chamber L"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -3349,7 +3350,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 216),
             batch(ITEMS["Advanced Power System"], 125),
-            batch(ITEMS["Advanced Laser Chamber L"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -3361,7 +3362,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 216),
             batch(ITEMS["Advanced Power System"], 125),
-            batch(ITEMS["Advanced Laser Chamber L"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -3373,7 +3374,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 216),
             batch(ITEMS["Exotic Power System"], 125),
-            batch(ITEMS["Exotic Laser Chamber L"], 1.0),
+            batch(ITEMS["Exotic Laser Chamber L"], 1),
             batch(ITEMS["Exotic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -3385,7 +3386,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 216),
             batch(ITEMS["Exotic Power System"], 125),
-            batch(ITEMS["Exotic Laser Chamber L"], 1.0),
+            batch(ITEMS["Exotic Laser Chamber L"], 1),
             batch(ITEMS["Exotic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -3397,7 +3398,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 216),
             batch(ITEMS["Exotic Power System"], 125),
-            batch(ITEMS["Exotic Laser Chamber L"], 1.0),
+            batch(ITEMS["Exotic Laser Chamber L"], 1),
             batch(ITEMS["Exotic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -3409,7 +3410,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 216),
             batch(ITEMS["Exotic Power System"], 125),
-            batch(ITEMS["Exotic Laser Chamber L"], 1.0),
+            batch(ITEMS["Exotic Laser Chamber L"], 1),
             batch(ITEMS["Exotic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -3421,7 +3422,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 216),
             batch(ITEMS["Advanced Power System"], 125),
-            batch(ITEMS["Advanced Laser Chamber L"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -3433,7 +3434,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 108),
             batch(ITEMS["Advanced Connector"], 108),
-            batch(ITEMS["Rare Power System"], 125.0),
+            batch(ITEMS["Rare Power System"], 125),
             batch(ITEMS["Rare Laser Chamber L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -3446,7 +3447,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 108),
             batch(ITEMS["Advanced Connector"], 108),
-            batch(ITEMS["Rare Power System"], 125.0),
+            batch(ITEMS["Rare Power System"], 125),
             batch(ITEMS["Rare Laser Chamber L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -3459,7 +3460,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 108),
             batch(ITEMS["Advanced Connector"], 108),
-            batch(ITEMS["Rare Power System"], 125.0),
+            batch(ITEMS["Rare Power System"], 125),
             batch(ITEMS["Rare Laser Chamber L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -3472,7 +3473,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 108),
             batch(ITEMS["Advanced Connector"], 108),
-            batch(ITEMS["Rare Power System"], 125.0),
+            batch(ITEMS["Rare Power System"], 125),
             batch(ITEMS["Rare Laser Chamber L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -3485,7 +3486,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 36),
             batch(ITEMS["Advanced Power System"], 25),
-            batch(ITEMS["Advanced Laser Chamber M"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -3497,7 +3498,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 36),
             batch(ITEMS["Advanced Power System"], 25),
-            batch(ITEMS["Advanced Laser Chamber M"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -3509,7 +3510,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 36),
             batch(ITEMS["Advanced Power System"], 25),
-            batch(ITEMS["Advanced Laser Chamber M"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -3521,7 +3522,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 36),
             batch(ITEMS["Advanced Power System"], 25),
-            batch(ITEMS["Advanced Laser Chamber M"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -3533,7 +3534,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 36),
             batch(ITEMS["Exotic Power System"], 25),
-            batch(ITEMS["Exotic Laser Chamber M"], 1.0),
+            batch(ITEMS["Exotic Laser Chamber M"], 1),
             batch(ITEMS["Exotic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -3545,7 +3546,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 36),
             batch(ITEMS["Exotic Power System"], 25),
-            batch(ITEMS["Exotic Laser Chamber M"], 1.0),
+            batch(ITEMS["Exotic Laser Chamber M"], 1),
             batch(ITEMS["Exotic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -3557,7 +3558,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 36),
             batch(ITEMS["Exotic Power System"], 25),
-            batch(ITEMS["Exotic Laser Chamber M"], 1.0),
+            batch(ITEMS["Exotic Laser Chamber M"], 1),
             batch(ITEMS["Exotic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -3569,7 +3570,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 36),
             batch(ITEMS["Exotic Power System"], 25),
-            batch(ITEMS["Exotic Laser Chamber M"], 1.0),
+            batch(ITEMS["Exotic Laser Chamber M"], 1),
             batch(ITEMS["Exotic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -3581,7 +3582,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 36),
             batch(ITEMS["Advanced Power System"], 25),
-            batch(ITEMS["Advanced Laser Chamber M"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -3593,7 +3594,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 18),
             batch(ITEMS["Advanced Connector"], 18),
-            batch(ITEMS["Rare Power System"], 25.0),
+            batch(ITEMS["Rare Power System"], 25),
             batch(ITEMS["Rare Laser Chamber M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -3606,7 +3607,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 18),
             batch(ITEMS["Advanced Connector"], 18),
-            batch(ITEMS["Rare Power System"], 25.0),
+            batch(ITEMS["Rare Power System"], 25),
             batch(ITEMS["Rare Laser Chamber M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -3619,7 +3620,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 18),
             batch(ITEMS["Advanced Connector"], 18),
-            batch(ITEMS["Rare Power System"], 25.0),
+            batch(ITEMS["Rare Power System"], 25),
             batch(ITEMS["Rare Laser Chamber M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -3632,7 +3633,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 18),
             batch(ITEMS["Advanced Connector"], 18),
-            batch(ITEMS["Rare Power System"], 25.0),
+            batch(ITEMS["Rare Power System"], 25),
             batch(ITEMS["Rare Laser Chamber M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -3645,7 +3646,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 6),
             batch(ITEMS["Advanced Power System"], 5),
-            batch(ITEMS["Advanced Laser Chamber S"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3657,7 +3658,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 6),
             batch(ITEMS["Advanced Power System"], 5),
-            batch(ITEMS["Advanced Laser Chamber S"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3669,7 +3670,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 6),
             batch(ITEMS["Advanced Power System"], 5),
-            batch(ITEMS["Advanced Laser Chamber S"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3681,7 +3682,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 6),
             batch(ITEMS["Advanced Power System"], 5),
-            batch(ITEMS["Advanced Laser Chamber S"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3693,7 +3694,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 6),
             batch(ITEMS["Exotic Power System"], 5),
-            batch(ITEMS["Exotic Laser Chamber S"], 1.0),
+            batch(ITEMS["Exotic Laser Chamber S"], 1),
             batch(ITEMS["Exotic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3705,7 +3706,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 6),
             batch(ITEMS["Exotic Power System"], 5),
-            batch(ITEMS["Exotic Laser Chamber S"], 1.0),
+            batch(ITEMS["Exotic Laser Chamber S"], 1),
             batch(ITEMS["Exotic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3717,7 +3718,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 6),
             batch(ITEMS["Exotic Power System"], 5),
-            batch(ITEMS["Exotic Laser Chamber S"], 1.0),
+            batch(ITEMS["Exotic Laser Chamber S"], 1),
             batch(ITEMS["Exotic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3729,7 +3730,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 6),
             batch(ITEMS["Exotic Power System"], 5),
-            batch(ITEMS["Exotic Laser Chamber S"], 1.0),
+            batch(ITEMS["Exotic Laser Chamber S"], 1),
             batch(ITEMS["Exotic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3741,7 +3742,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 6),
             batch(ITEMS["Advanced Power System"], 5),
-            batch(ITEMS["Advanced Laser Chamber S"], 1.0),
+            batch(ITEMS["Advanced Laser Chamber S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -3753,7 +3754,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 3),
             batch(ITEMS["Advanced Connector"], 3),
-            batch(ITEMS["Rare Power System"], 5.0),
+            batch(ITEMS["Rare Power System"], 5),
             batch(ITEMS["Rare Laser Chamber S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -3766,7 +3767,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 3),
             batch(ITEMS["Advanced Connector"], 3),
-            batch(ITEMS["Rare Power System"], 5.0),
+            batch(ITEMS["Rare Power System"], 5),
             batch(ITEMS["Rare Laser Chamber S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -3779,7 +3780,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 3),
             batch(ITEMS["Advanced Connector"], 3),
-            batch(ITEMS["Rare Power System"], 5.0),
+            batch(ITEMS["Rare Power System"], 5),
             batch(ITEMS["Rare Laser Chamber S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -3792,7 +3793,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 3),
             batch(ITEMS["Advanced Connector"], 3),
-            batch(ITEMS["Rare Power System"], 5.0),
+            batch(ITEMS["Rare Power System"], 5),
             batch(ITEMS["Rare Laser Chamber S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -3805,7 +3806,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Hydraulics"], 1),
-            batch(ITEMS["Advanced Missile Silo XS"], 1.0),
+            batch(ITEMS["Advanced Missile Silo XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3817,7 +3818,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Hydraulics"], 1),
-            batch(ITEMS["Advanced Missile Silo XS"], 1.0),
+            batch(ITEMS["Advanced Missile Silo XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3829,7 +3830,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Hydraulics"], 1),
-            batch(ITEMS["Advanced Missile Silo XS"], 1.0),
+            batch(ITEMS["Advanced Missile Silo XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3841,7 +3842,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Hydraulics"], 1),
-            batch(ITEMS["Advanced Missile Silo XS"], 1.0),
+            batch(ITEMS["Advanced Missile Silo XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3853,7 +3854,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 1),
             batch(ITEMS["Exotic Hydraulics"], 1),
-            batch(ITEMS["Exotic Missile Silo XS"], 1.0),
+            batch(ITEMS["Exotic Missile Silo XS"], 1),
             batch(ITEMS["Exotic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3865,7 +3866,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 1),
             batch(ITEMS["Exotic Hydraulics"], 1),
-            batch(ITEMS["Exotic Missile Silo XS"], 1.0),
+            batch(ITEMS["Exotic Missile Silo XS"], 1),
             batch(ITEMS["Exotic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3877,7 +3878,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 1),
             batch(ITEMS["Exotic Hydraulics"], 1),
-            batch(ITEMS["Exotic Missile Silo XS"], 1.0),
+            batch(ITEMS["Exotic Missile Silo XS"], 1),
             batch(ITEMS["Exotic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3889,7 +3890,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 1),
             batch(ITEMS["Exotic Hydraulics"], 1),
-            batch(ITEMS["Exotic Missile Silo XS"], 1.0),
+            batch(ITEMS["Exotic Missile Silo XS"], 1),
             batch(ITEMS["Exotic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3901,7 +3902,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Hydraulics"], 1),
-            batch(ITEMS["Advanced Missile Silo XS"], 1.0),
+            batch(ITEMS["Advanced Missile Silo XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -3913,7 +3914,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Hydraulics"], 1.0),
+            batch(ITEMS["Rare Hydraulics"], 1),
             batch(ITEMS["Rare Missile Silo XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -3926,7 +3927,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Hydraulics"], 1.0),
+            batch(ITEMS["Rare Hydraulics"], 1),
             batch(ITEMS["Rare Missile Silo XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -3939,7 +3940,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Hydraulics"], 1.0),
+            batch(ITEMS["Rare Hydraulics"], 1),
             batch(ITEMS["Rare Missile Silo XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -3952,7 +3953,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Hydraulics"], 1.0),
+            batch(ITEMS["Rare Hydraulics"], 1),
             batch(ITEMS["Rare Missile Silo XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -3965,7 +3966,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Hydraulics"], 125),
-            batch(ITEMS["Advanced Missile Silo L"], 1.0),
+            batch(ITEMS["Advanced Missile Silo L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -3977,7 +3978,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Hydraulics"], 125),
-            batch(ITEMS["Advanced Missile Silo L"], 1.0),
+            batch(ITEMS["Advanced Missile Silo L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -3989,7 +3990,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Hydraulics"], 125),
-            batch(ITEMS["Advanced Missile Silo L"], 1.0),
+            batch(ITEMS["Advanced Missile Silo L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -4001,7 +4002,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Hydraulics"], 125),
-            batch(ITEMS["Advanced Missile Silo L"], 1.0),
+            batch(ITEMS["Advanced Missile Silo L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -4013,7 +4014,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 216),
             batch(ITEMS["Exotic Hydraulics"], 125),
-            batch(ITEMS["Exotic Missile Silo L"], 1.0),
+            batch(ITEMS["Exotic Missile Silo L"], 1),
             batch(ITEMS["Exotic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -4025,7 +4026,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 216),
             batch(ITEMS["Exotic Hydraulics"], 125),
-            batch(ITEMS["Exotic Missile Silo L"], 1.0),
+            batch(ITEMS["Exotic Missile Silo L"], 1),
             batch(ITEMS["Exotic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -4037,7 +4038,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 216),
             batch(ITEMS["Exotic Hydraulics"], 125),
-            batch(ITEMS["Exotic Missile Silo L"], 1.0),
+            batch(ITEMS["Exotic Missile Silo L"], 1),
             batch(ITEMS["Exotic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -4049,7 +4050,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 216),
             batch(ITEMS["Exotic Hydraulics"], 125),
-            batch(ITEMS["Exotic Missile Silo L"], 1.0),
+            batch(ITEMS["Exotic Missile Silo L"], 1),
             batch(ITEMS["Exotic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -4061,7 +4062,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Hydraulics"], 125),
-            batch(ITEMS["Advanced Missile Silo L"], 1.0),
+            batch(ITEMS["Advanced Missile Silo L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -4073,7 +4074,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Advanced Screw"], 108),
-            batch(ITEMS["Rare Hydraulics"], 125.0),
+            batch(ITEMS["Rare Hydraulics"], 125),
             batch(ITEMS["Rare Missile Silo L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -4086,7 +4087,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Advanced Screw"], 108),
-            batch(ITEMS["Rare Hydraulics"], 125.0),
+            batch(ITEMS["Rare Hydraulics"], 125),
             batch(ITEMS["Rare Missile Silo L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -4099,7 +4100,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Advanced Screw"], 108),
-            batch(ITEMS["Rare Hydraulics"], 125.0),
+            batch(ITEMS["Rare Hydraulics"], 125),
             batch(ITEMS["Rare Missile Silo L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -4112,7 +4113,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Advanced Screw"], 108),
-            batch(ITEMS["Rare Hydraulics"], 125.0),
+            batch(ITEMS["Rare Hydraulics"], 125),
             batch(ITEMS["Rare Missile Silo L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -4125,7 +4126,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 36),
             batch(ITEMS["Advanced Hydraulics"], 25),
-            batch(ITEMS["Advanced Missile Silo M"], 1.0),
+            batch(ITEMS["Advanced Missile Silo M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4137,7 +4138,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 36),
             batch(ITEMS["Advanced Hydraulics"], 25),
-            batch(ITEMS["Advanced Missile Silo M"], 1.0),
+            batch(ITEMS["Advanced Missile Silo M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4149,7 +4150,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 36),
             batch(ITEMS["Advanced Hydraulics"], 25),
-            batch(ITEMS["Advanced Missile Silo M"], 1.0),
+            batch(ITEMS["Advanced Missile Silo M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4161,7 +4162,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 36),
             batch(ITEMS["Advanced Hydraulics"], 25),
-            batch(ITEMS["Advanced Missile Silo M"], 1.0),
+            batch(ITEMS["Advanced Missile Silo M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4173,7 +4174,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 36),
             batch(ITEMS["Exotic Hydraulics"], 25),
-            batch(ITEMS["Exotic Missile Silo M"], 1.0),
+            batch(ITEMS["Exotic Missile Silo M"], 1),
             batch(ITEMS["Exotic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4185,7 +4186,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 36),
             batch(ITEMS["Exotic Hydraulics"], 25),
-            batch(ITEMS["Exotic Missile Silo M"], 1.0),
+            batch(ITEMS["Exotic Missile Silo M"], 1),
             batch(ITEMS["Exotic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4197,7 +4198,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 36),
             batch(ITEMS["Exotic Hydraulics"], 25),
-            batch(ITEMS["Exotic Missile Silo M"], 1.0),
+            batch(ITEMS["Exotic Missile Silo M"], 1),
             batch(ITEMS["Exotic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4209,7 +4210,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 36),
             batch(ITEMS["Exotic Hydraulics"], 25),
-            batch(ITEMS["Exotic Missile Silo M"], 1.0),
+            batch(ITEMS["Exotic Missile Silo M"], 1),
             batch(ITEMS["Exotic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4221,7 +4222,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 36),
             batch(ITEMS["Advanced Hydraulics"], 25),
-            batch(ITEMS["Advanced Missile Silo M"], 1.0),
+            batch(ITEMS["Advanced Missile Silo M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4233,7 +4234,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Advanced Screw"], 18),
-            batch(ITEMS["Rare Hydraulics"], 25.0),
+            batch(ITEMS["Rare Hydraulics"], 25),
             batch(ITEMS["Rare Missile Silo M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -4246,7 +4247,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Advanced Screw"], 18),
-            batch(ITEMS["Rare Hydraulics"], 25.0),
+            batch(ITEMS["Rare Hydraulics"], 25),
             batch(ITEMS["Rare Missile Silo M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -4259,7 +4260,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Advanced Screw"], 18),
-            batch(ITEMS["Rare Hydraulics"], 25.0),
+            batch(ITEMS["Rare Hydraulics"], 25),
             batch(ITEMS["Rare Missile Silo M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -4272,7 +4273,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Advanced Screw"], 18),
-            batch(ITEMS["Rare Hydraulics"], 25.0),
+            batch(ITEMS["Rare Hydraulics"], 25),
             batch(ITEMS["Rare Missile Silo M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -4285,7 +4286,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Hydraulics"], 5),
-            batch(ITEMS["Advanced Missile Silo S"], 1.0),
+            batch(ITEMS["Advanced Missile Silo S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -4297,7 +4298,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Hydraulics"], 5),
-            batch(ITEMS["Advanced Missile Silo S"], 1.0),
+            batch(ITEMS["Advanced Missile Silo S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -4309,7 +4310,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Hydraulics"], 5),
-            batch(ITEMS["Advanced Missile Silo S"], 1.0),
+            batch(ITEMS["Advanced Missile Silo S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -4321,7 +4322,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Hydraulics"], 5),
-            batch(ITEMS["Advanced Missile Silo S"], 1.0),
+            batch(ITEMS["Advanced Missile Silo S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -4333,7 +4334,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 6),
             batch(ITEMS["Exotic Hydraulics"], 5),
-            batch(ITEMS["Exotic Missile Silo S"], 1.0),
+            batch(ITEMS["Exotic Missile Silo S"], 1),
             batch(ITEMS["Exotic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -4345,7 +4346,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 6),
             batch(ITEMS["Exotic Hydraulics"], 5),
-            batch(ITEMS["Exotic Missile Silo S"], 1.0),
+            batch(ITEMS["Exotic Missile Silo S"], 1),
             batch(ITEMS["Exotic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -4357,7 +4358,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 6),
             batch(ITEMS["Exotic Hydraulics"], 5),
-            batch(ITEMS["Exotic Missile Silo S"], 1.0),
+            batch(ITEMS["Exotic Missile Silo S"], 1),
             batch(ITEMS["Exotic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -4369,7 +4370,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 6),
             batch(ITEMS["Exotic Hydraulics"], 5),
-            batch(ITEMS["Exotic Missile Silo S"], 1.0),
+            batch(ITEMS["Exotic Missile Silo S"], 1),
             batch(ITEMS["Exotic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -4381,7 +4382,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Hydraulics"], 5),
-            batch(ITEMS["Advanced Missile Silo S"], 1.0),
+            batch(ITEMS["Advanced Missile Silo S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -4393,7 +4394,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Hydraulics"], 5.0),
+            batch(ITEMS["Rare Hydraulics"], 5),
             batch(ITEMS["Rare Missile Silo S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -4406,7 +4407,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Hydraulics"], 5.0),
+            batch(ITEMS["Rare Hydraulics"], 5),
             batch(ITEMS["Rare Missile Silo S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -4419,7 +4420,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Hydraulics"], 5.0),
+            batch(ITEMS["Rare Hydraulics"], 5),
             batch(ITEMS["Rare Missile Silo S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -4432,7 +4433,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Hydraulics"], 5.0),
+            batch(ITEMS["Rare Hydraulics"], 5),
             batch(ITEMS["Rare Missile Silo S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -4445,7 +4446,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Optics"], 1),
-            batch(ITEMS["Advanced Magnetic Rail XS"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -4457,7 +4458,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Optics"], 1),
-            batch(ITEMS["Advanced Magnetic Rail XS"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -4469,7 +4470,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Optics"], 1),
-            batch(ITEMS["Advanced Magnetic Rail XS"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -4481,7 +4482,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Optics"], 1),
-            batch(ITEMS["Advanced Magnetic Rail XS"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -4493,7 +4494,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 1),
             batch(ITEMS["Exotic Optics"], 1),
-            batch(ITEMS["Exotic Magnetic Rail XS"], 1.0),
+            batch(ITEMS["Exotic Magnetic Rail XS"], 1),
             batch(ITEMS["Exotic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -4505,7 +4506,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 1),
             batch(ITEMS["Exotic Optics"], 1),
-            batch(ITEMS["Exotic Magnetic Rail XS"], 1.0),
+            batch(ITEMS["Exotic Magnetic Rail XS"], 1),
             batch(ITEMS["Exotic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -4517,7 +4518,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 1),
             batch(ITEMS["Exotic Optics"], 1),
-            batch(ITEMS["Exotic Magnetic Rail XS"], 1.0),
+            batch(ITEMS["Exotic Magnetic Rail XS"], 1),
             batch(ITEMS["Exotic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -4529,7 +4530,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 1),
             batch(ITEMS["Exotic Optics"], 1),
-            batch(ITEMS["Exotic Magnetic Rail XS"], 1.0),
+            batch(ITEMS["Exotic Magnetic Rail XS"], 1),
             batch(ITEMS["Exotic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -4541,7 +4542,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Optics"], 1),
-            batch(ITEMS["Advanced Magnetic Rail XS"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -4553,7 +4554,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Connector"], 1),
-            batch(ITEMS["Rare Optics"], 1.0),
+            batch(ITEMS["Rare Optics"], 1),
             batch(ITEMS["Rare Magnetic Rail XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -4566,7 +4567,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Connector"], 1),
-            batch(ITEMS["Rare Optics"], 1.0),
+            batch(ITEMS["Rare Optics"], 1),
             batch(ITEMS["Rare Magnetic Rail XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -4579,7 +4580,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Connector"], 1),
-            batch(ITEMS["Rare Optics"], 1.0),
+            batch(ITEMS["Rare Optics"], 1),
             batch(ITEMS["Rare Magnetic Rail XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -4592,7 +4593,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Advanced Connector"], 1),
-            batch(ITEMS["Rare Optics"], 1.0),
+            batch(ITEMS["Rare Optics"], 1),
             batch(ITEMS["Rare Magnetic Rail XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -4605,7 +4606,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 216),
             batch(ITEMS["Advanced Optics"], 125),
-            batch(ITEMS["Advanced Magnetic Rail L"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -4617,7 +4618,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 216),
             batch(ITEMS["Advanced Optics"], 125),
-            batch(ITEMS["Advanced Magnetic Rail L"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -4629,7 +4630,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 216),
             batch(ITEMS["Advanced Optics"], 125),
-            batch(ITEMS["Advanced Magnetic Rail L"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -4641,7 +4642,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 216),
             batch(ITEMS["Advanced Optics"], 125),
-            batch(ITEMS["Advanced Magnetic Rail L"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -4653,7 +4654,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 216),
             batch(ITEMS["Exotic Optics"], 125),
-            batch(ITEMS["Exotic Magnetic Rail L"], 1.0),
+            batch(ITEMS["Exotic Magnetic Rail L"], 1),
             batch(ITEMS["Exotic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -4665,7 +4666,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 216),
             batch(ITEMS["Exotic Optics"], 125),
-            batch(ITEMS["Exotic Magnetic Rail L"], 1.0),
+            batch(ITEMS["Exotic Magnetic Rail L"], 1),
             batch(ITEMS["Exotic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -4677,7 +4678,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 216),
             batch(ITEMS["Exotic Optics"], 125),
-            batch(ITEMS["Exotic Magnetic Rail L"], 1.0),
+            batch(ITEMS["Exotic Magnetic Rail L"], 1),
             batch(ITEMS["Exotic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -4689,7 +4690,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 216),
             batch(ITEMS["Exotic Optics"], 125),
-            batch(ITEMS["Exotic Magnetic Rail L"], 1.0),
+            batch(ITEMS["Exotic Magnetic Rail L"], 1),
             batch(ITEMS["Exotic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -4701,7 +4702,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 216),
             batch(ITEMS["Advanced Optics"], 125),
-            batch(ITEMS["Advanced Magnetic Rail L"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -4713,7 +4714,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 108),
             batch(ITEMS["Advanced Connector"], 108),
-            batch(ITEMS["Rare Optics"], 125.0),
+            batch(ITEMS["Rare Optics"], 125),
             batch(ITEMS["Rare Magnetic Rail L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -4726,7 +4727,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 108),
             batch(ITEMS["Advanced Connector"], 108),
-            batch(ITEMS["Rare Optics"], 125.0),
+            batch(ITEMS["Rare Optics"], 125),
             batch(ITEMS["Rare Magnetic Rail L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -4739,7 +4740,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 108),
             batch(ITEMS["Advanced Connector"], 108),
-            batch(ITEMS["Rare Optics"], 125.0),
+            batch(ITEMS["Rare Optics"], 125),
             batch(ITEMS["Rare Magnetic Rail L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -4752,7 +4753,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 108),
             batch(ITEMS["Advanced Connector"], 108),
-            batch(ITEMS["Rare Optics"], 125.0),
+            batch(ITEMS["Rare Optics"], 125),
             batch(ITEMS["Rare Magnetic Rail L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -4765,7 +4766,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 36),
             batch(ITEMS["Advanced Optics"], 25),
-            batch(ITEMS["Advanced Magnetic Rail M"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4777,7 +4778,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 36),
             batch(ITEMS["Advanced Optics"], 25),
-            batch(ITEMS["Advanced Magnetic Rail M"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4789,7 +4790,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 36),
             batch(ITEMS["Advanced Optics"], 25),
-            batch(ITEMS["Advanced Magnetic Rail M"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4801,7 +4802,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 36),
             batch(ITEMS["Advanced Optics"], 25),
-            batch(ITEMS["Advanced Magnetic Rail M"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4813,7 +4814,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 36),
             batch(ITEMS["Exotic Optics"], 25),
-            batch(ITEMS["Exotic Magnetic Rail M"], 1.0),
+            batch(ITEMS["Exotic Magnetic Rail M"], 1),
             batch(ITEMS["Exotic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4825,7 +4826,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 36),
             batch(ITEMS["Exotic Optics"], 25),
-            batch(ITEMS["Exotic Magnetic Rail M"], 1.0),
+            batch(ITEMS["Exotic Magnetic Rail M"], 1),
             batch(ITEMS["Exotic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4837,7 +4838,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 36),
             batch(ITEMS["Exotic Optics"], 25),
-            batch(ITEMS["Exotic Magnetic Rail M"], 1.0),
+            batch(ITEMS["Exotic Magnetic Rail M"], 1),
             batch(ITEMS["Exotic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4849,7 +4850,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 36),
             batch(ITEMS["Exotic Optics"], 25),
-            batch(ITEMS["Exotic Magnetic Rail M"], 1.0),
+            batch(ITEMS["Exotic Magnetic Rail M"], 1),
             batch(ITEMS["Exotic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4861,7 +4862,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 36),
             batch(ITEMS["Advanced Optics"], 25),
-            batch(ITEMS["Advanced Magnetic Rail M"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -4873,7 +4874,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 18),
             batch(ITEMS["Advanced Connector"], 18),
-            batch(ITEMS["Rare Optics"], 25.0),
+            batch(ITEMS["Rare Optics"], 25),
             batch(ITEMS["Rare Magnetic Rail M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -4886,7 +4887,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 18),
             batch(ITEMS["Advanced Connector"], 18),
-            batch(ITEMS["Rare Optics"], 25.0),
+            batch(ITEMS["Rare Optics"], 25),
             batch(ITEMS["Rare Magnetic Rail M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -4899,7 +4900,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 18),
             batch(ITEMS["Advanced Connector"], 18),
-            batch(ITEMS["Rare Optics"], 25.0),
+            batch(ITEMS["Rare Optics"], 25),
             batch(ITEMS["Rare Magnetic Rail M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -4912,7 +4913,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 18),
             batch(ITEMS["Advanced Connector"], 18),
-            batch(ITEMS["Rare Optics"], 25.0),
+            batch(ITEMS["Rare Optics"], 25),
             batch(ITEMS["Rare Magnetic Rail M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -4925,7 +4926,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 6),
             batch(ITEMS["Advanced Optics"], 5),
-            batch(ITEMS["Advanced Magnetic Rail S"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -4937,7 +4938,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 6),
             batch(ITEMS["Advanced Optics"], 5),
-            batch(ITEMS["Advanced Magnetic Rail S"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -4949,7 +4950,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 6),
             batch(ITEMS["Advanced Optics"], 5),
-            batch(ITEMS["Advanced Magnetic Rail S"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -4961,7 +4962,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 6),
             batch(ITEMS["Advanced Optics"], 5),
-            batch(ITEMS["Advanced Magnetic Rail S"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -4973,7 +4974,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 6),
             batch(ITEMS["Exotic Optics"], 5),
-            batch(ITEMS["Exotic Magnetic Rail S"], 1.0),
+            batch(ITEMS["Exotic Magnetic Rail S"], 1),
             batch(ITEMS["Exotic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -4985,7 +4986,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 6),
             batch(ITEMS["Exotic Optics"], 5),
-            batch(ITEMS["Exotic Magnetic Rail S"], 1.0),
+            batch(ITEMS["Exotic Magnetic Rail S"], 1),
             batch(ITEMS["Exotic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -4997,7 +4998,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 6),
             batch(ITEMS["Exotic Optics"], 5),
-            batch(ITEMS["Exotic Magnetic Rail S"], 1.0),
+            batch(ITEMS["Exotic Magnetic Rail S"], 1),
             batch(ITEMS["Exotic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -5009,7 +5010,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Connector"], 6),
             batch(ITEMS["Exotic Optics"], 5),
-            batch(ITEMS["Exotic Magnetic Rail S"], 1.0),
+            batch(ITEMS["Exotic Magnetic Rail S"], 1),
             batch(ITEMS["Exotic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -5021,7 +5022,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 6),
             batch(ITEMS["Advanced Optics"], 5),
-            batch(ITEMS["Advanced Magnetic Rail S"], 1.0),
+            batch(ITEMS["Advanced Magnetic Rail S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -5033,7 +5034,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 3),
             batch(ITEMS["Advanced Connector"], 3),
-            batch(ITEMS["Rare Optics"], 5.0),
+            batch(ITEMS["Rare Optics"], 5),
             batch(ITEMS["Rare Magnetic Rail S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -5046,7 +5047,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 3),
             batch(ITEMS["Advanced Connector"], 3),
-            batch(ITEMS["Rare Optics"], 5.0),
+            batch(ITEMS["Rare Optics"], 5),
             batch(ITEMS["Rare Magnetic Rail S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -5059,7 +5060,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 3),
             batch(ITEMS["Advanced Connector"], 3),
-            batch(ITEMS["Rare Optics"], 5.0),
+            batch(ITEMS["Rare Optics"], 5),
             batch(ITEMS["Rare Magnetic Rail S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -5072,7 +5073,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 3),
             batch(ITEMS["Advanced Connector"], 3),
-            batch(ITEMS["Rare Optics"], 5.0),
+            batch(ITEMS["Rare Optics"], 5),
             batch(ITEMS["Rare Magnetic Rail S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -5085,7 +5086,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 7),
             batch(ITEMS["Basic Screw"], 6),
-            batch(ITEMS["Basic Reinforced Frame XS"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5096,7 +5097,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 1),
             batch(ITEMS["Basic Screw"], 1),
-            batch(ITEMS["Basic Reinforced Frame XS"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5114,7 +5115,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 7),
             batch(ITEMS["Basic Fixation"], 6),
-            batch(ITEMS["Basic Standard Frame S"], 1.0),
+            batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -5132,7 +5133,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Fixation"], 1),
             batch(ITEMS["Basic Injector"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5143,7 +5144,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 7),
             batch(ITEMS["Basic Fixation"], 6),
-            batch(ITEMS["Basic Standard Frame S"], 1.0),
+            batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -5154,7 +5155,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5165,7 +5166,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5176,7 +5177,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Silumin"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5201,7 +5202,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 7),
             batch(ITEMS["Basic Fixation"], 6),
-            batch(ITEMS["Basic Standard Frame S"], 1.0),
+            batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -5212,7 +5213,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 1),
             batch(ITEMS["Basic Screw"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5223,7 +5224,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 1),
             batch(ITEMS["Basic Screw"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5234,7 +5235,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 1),
             batch(ITEMS["Basic Screw"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5245,7 +5246,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 6),
             batch(ITEMS["Basic Screw"], 1),
-            batch(ITEMS["Basic Standard Frame S"], 1.0),
+            batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -5256,7 +5257,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 7),
             batch(ITEMS["Basic Fixation"], 6),
-            batch(ITEMS["Basic Reinforced Frame S"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -5267,7 +5268,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Calcium Reinforced Copper"], 49),
             batch(ITEMS["Basic Fixation"], 18),
-            batch(ITEMS["Uncommon Fixation"], 18.0),
+            batch(ITEMS["Uncommon Fixation"], 18),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -5279,7 +5280,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Cu-Ag Alloy"], 343),
             batch(ITEMS["Uncommon Fixation"], 216),
-            batch(ITEMS["Advanced Reinforced Frame L"], 1.0),
+            batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
     },
@@ -5290,7 +5291,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 1),
             batch(ITEMS["Basic Screw"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5301,7 +5302,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 1),
             batch(ITEMS["Basic Screw"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5312,7 +5313,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 1),
             batch(ITEMS["Basic Pipe"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5323,7 +5324,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5334,7 +5335,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 1),
             batch(ITEMS["Basic Connector"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5345,7 +5346,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 1),
             batch(ITEMS["Basic Pipe"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5356,7 +5357,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 1),
             batch(ITEMS["Basic Pipe"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5367,7 +5368,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 1),
             batch(ITEMS["Basic Pipe"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5378,7 +5379,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 1),
             batch(ITEMS["Basic Pipe"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5389,7 +5390,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 1),
             batch(ITEMS["Basic Pipe"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5400,7 +5401,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 1),
             batch(ITEMS["Basic Pipe"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5411,7 +5412,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 1),
             batch(ITEMS["Basic Pipe"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5422,7 +5423,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 1),
             batch(ITEMS["Basic Pipe"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5433,7 +5434,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 1),
             batch(ITEMS["Basic Pipe"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5444,7 +5445,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Fluoropolymer"], 1),
             batch(ITEMS["Uncommon Fixation"], 1),
-            batch(ITEMS["Advanced Fixation"], 1.0),
+            batch(ITEMS["Advanced Fixation"], 1),
             batch(ITEMS["Rare Casing XS"], 1),
         ],
         byproducts: [],
@@ -5456,7 +5457,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Fluoropolymer"], 1),
             batch(ITEMS["Uncommon Fixation"], 1),
-            batch(ITEMS["Advanced Fixation"], 1.0),
+            batch(ITEMS["Advanced Fixation"], 1),
             batch(ITEMS["Rare Casing XS"], 1),
         ],
         byproducts: [],
@@ -5468,7 +5469,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Fluoropolymer"], 1),
             batch(ITEMS["Uncommon Fixation"], 1),
-            batch(ITEMS["Advanced Fixation"], 1.0),
+            batch(ITEMS["Advanced Fixation"], 1),
             batch(ITEMS["Rare Casing XS"], 1),
         ],
         byproducts: [],
@@ -5480,7 +5481,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Silumin"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5491,7 +5492,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5509,7 +5510,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Silumin"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5520,7 +5521,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Silumin"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5531,7 +5532,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Silumin"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5549,7 +5550,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 49),
             batch(ITEMS["Basic Fixation"], 36),
-            batch(ITEMS["Basic Standard Frame M"], 1.0),
+            batch(ITEMS["Basic Standard Frame M"], 1),
         ],
         byproducts: [],
     },
@@ -5560,7 +5561,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5571,7 +5572,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 7),
             batch(ITEMS["Basic Fixation"], 6),
-            batch(ITEMS["Basic Standard Frame S"], 1.0),
+            batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -5582,7 +5583,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Wood"], 7),
             batch(ITEMS["Basic Fixation"], 6),
-            batch(ITEMS["Basic Standard Frame S"], 1.0),
+            batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -5593,7 +5594,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Wood"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5604,7 +5605,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Wood"], 7),
             batch(ITEMS["Basic Fixation"], 6),
-            batch(ITEMS["Basic Standard Frame S"], 1.0),
+            batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -5615,7 +5616,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Wood"], 7),
             batch(ITEMS["Basic Fixation"], 6),
-            batch(ITEMS["Basic Standard Frame S"], 1.0),
+            batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -5626,7 +5627,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 7),
             batch(ITEMS["Basic Fixation"], 6),
-            batch(ITEMS["Basic Standard Frame S"], 1.0),
+            batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -5637,7 +5638,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 6),
             batch(ITEMS["Basic Optics"], 5),
-            batch(ITEMS["Basic Casing S"], 1.0),
+            batch(ITEMS["Basic Casing S"], 1),
         ],
         byproducts: [],
     },
@@ -5648,7 +5649,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Basic Optics"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5659,7 +5660,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Basic Optics"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5670,7 +5671,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Optics"], 1.0),
+            batch(ITEMS["Uncommon Optics"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
         byproducts: [],
@@ -5682,7 +5683,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 1),
             batch(ITEMS["Advanced Optics"], 1),
-            batch(ITEMS["Advanced Casing XS"], 1.0),
+            batch(ITEMS["Advanced Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5693,7 +5694,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 1),
             batch(ITEMS["Basic Pipe"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5704,7 +5705,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 1),
             batch(ITEMS["Basic Pipe"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5715,7 +5716,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 1),
             batch(ITEMS["Basic Pipe"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5726,7 +5727,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5737,7 +5738,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Standard Frame XS"], 1.0),
+            batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -5748,7 +5749,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 343),
             batch(ITEMS["Basic Pipe"], 216),
-            batch(ITEMS["Basic Reinforced Frame L"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame L"], 1),
         ],
         byproducts: [],
     },
@@ -5759,7 +5760,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 343),
             batch(ITEMS["Basic Pipe"], 216),
-            batch(ITEMS["Basic Reinforced Frame L"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame L"], 1),
         ],
         byproducts: [],
     },
@@ -5770,7 +5771,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 343),
             batch(ITEMS["Basic Pipe"], 216),
-            batch(ITEMS["Basic Reinforced Frame L"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame L"], 1),
         ],
         byproducts: [],
     },
@@ -5781,7 +5782,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 343),
             batch(ITEMS["Basic Pipe"], 216),
-            batch(ITEMS["Basic Reinforced Frame L"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame L"], 1),
         ],
         byproducts: [],
     },
@@ -5792,7 +5793,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 343),
             batch(ITEMS["Basic Pipe"], 216),
-            batch(ITEMS["Basic Reinforced Frame L"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame L"], 1),
         ],
         byproducts: [],
     },
@@ -5803,7 +5804,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 343),
             batch(ITEMS["Basic Pipe"], 216),
-            batch(ITEMS["Basic Reinforced Frame L"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame L"], 1),
         ],
         byproducts: [],
     },
@@ -5814,7 +5815,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Biological Matter"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5825,7 +5826,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Biological Matter"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5836,7 +5837,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Fixation"], 6),
             batch(ITEMS["Exotic Magnet"], 5),
-            batch(ITEMS["Exotic Core System S"], 1.0),
+            batch(ITEMS["Exotic Core System S"], 1),
             batch(ITEMS["Exotic Anti-Gravity Core"], 1),
             batch(ITEMS["Exotic Casing S"], 1),
         ],
@@ -5849,7 +5850,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 7),
             batch(ITEMS["Basic Pipe"], 6),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5860,7 +5861,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 7),
             batch(ITEMS["Basic Pipe"], 6),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5871,7 +5872,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 7),
             batch(ITEMS["Basic Pipe"], 6),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5882,7 +5883,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 7),
             batch(ITEMS["Basic Pipe"], 6),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5893,7 +5894,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 7),
             batch(ITEMS["Basic Pipe"], 6),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5904,7 +5905,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Biological Matter"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5915,7 +5916,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 7),
             batch(ITEMS["Basic Pipe"], 6),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5926,7 +5927,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 7),
             batch(ITEMS["Basic Pipe"], 6),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5937,7 +5938,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Biological Matter"], 7),
             batch(ITEMS["Basic Fixation"], 6),
-            batch(ITEMS["Basic Casing S"], 1.0),
+            batch(ITEMS["Basic Casing S"], 1),
         ],
         byproducts: [],
     },
@@ -5948,7 +5949,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Biological Matter"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5959,7 +5960,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Biological Matter"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5970,7 +5971,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Biological Matter"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5981,7 +5982,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Biological Matter"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -5992,7 +5993,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 7),
             batch(ITEMS["Basic Pipe"], 6),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -6003,7 +6004,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 7),
             batch(ITEMS["Basic Pipe"], 6),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -6014,7 +6015,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Biological Matter"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -6025,7 +6026,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Biological Matter"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -6036,7 +6037,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Biological Matter"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -6047,7 +6048,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Glass"], 7),
             batch(ITEMS["Basic Fixation"], 3),
-            batch(ITEMS["Uncommon Fixation"], 3.0),
+            batch(ITEMS["Uncommon Fixation"], 3),
             batch(ITEMS["Uncommon Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -6059,7 +6060,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Glass"], 14),
             batch(ITEMS["Basic Fixation"], 6),
-            batch(ITEMS["Uncommon Fixation"], 6.0),
+            batch(ITEMS["Uncommon Fixation"], 6),
             batch(ITEMS["Uncommon Standard Frame S"], 2),
         ],
         byproducts: [],
@@ -6071,7 +6072,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Glass"], 28),
             batch(ITEMS["Basic Fixation"], 12),
-            batch(ITEMS["Uncommon Fixation"], 12.0),
+            batch(ITEMS["Uncommon Fixation"], 12),
             batch(ITEMS["Uncommon Standard Frame S"], 4),
         ],
         byproducts: [],
@@ -6083,7 +6084,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Glass"], 56),
             batch(ITEMS["Basic Fixation"], 24),
-            batch(ITEMS["Uncommon Fixation"], 24.0),
+            batch(ITEMS["Uncommon Fixation"], 24),
             batch(ITEMS["Uncommon Standard Frame S"], 8),
         ],
         byproducts: [],
@@ -6095,7 +6096,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Glass"], 784),
             batch(ITEMS["Basic Fixation"], 576),
-            batch(ITEMS["Basic Standard Frame M"], 16.0),
+            batch(ITEMS["Basic Standard Frame M"], 16),
         ],
         byproducts: [],
     },
@@ -6106,7 +6107,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Glass"], 49),
             batch(ITEMS["Basic Screw"], 18),
-            batch(ITEMS["Uncommon Screw"], 18.0),
+            batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -6118,7 +6119,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Glass"], 49),
             batch(ITEMS["Basic Screw"], 18),
-            batch(ITEMS["Uncommon Screw"], 18.0),
+            batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -6130,7 +6131,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Glass"], 49),
             batch(ITEMS["Basic Screw"], 18),
-            batch(ITEMS["Uncommon Screw"], 18.0),
+            batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -6142,7 +6143,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Glass"], 343),
             batch(ITEMS["Basic Screw"], 108),
-            batch(ITEMS["Uncommon Screw"], 108.0),
+            batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Uncommon Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -6154,7 +6155,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Glass"], 343),
             batch(ITEMS["Basic Screw"], 108),
-            batch(ITEMS["Uncommon Screw"], 108.0),
+            batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Uncommon Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -6166,7 +6167,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Glass"], 343),
             batch(ITEMS["Basic Screw"], 108),
-            batch(ITEMS["Uncommon Screw"], 108.0),
+            batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Uncommon Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -6178,7 +6179,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Glass"], 7),
             batch(ITEMS["Basic Screw"], 3),
-            batch(ITEMS["Uncommon Screw"], 3.0),
+            batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -6190,7 +6191,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Glass"], 7),
             batch(ITEMS["Basic Screw"], 3),
-            batch(ITEMS["Uncommon Screw"], 3.0),
+            batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -6202,7 +6203,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Glass"], 7),
             batch(ITEMS["Basic Screw"], 3),
-            batch(ITEMS["Uncommon Screw"], 3.0),
+            batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -6214,7 +6215,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Glass"], 7),
             batch(ITEMS["Basic Screw"], 3),
-            batch(ITEMS["Uncommon Screw"], 3.0),
+            batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -6226,7 +6227,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Glass"], 49),
             batch(ITEMS["Basic Screw"], 18),
-            batch(ITEMS["Uncommon Screw"], 18.0),
+            batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -6238,7 +6239,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Glass"], 343),
             batch(ITEMS["Basic Screw"], 108),
-            batch(ITEMS["Uncommon Screw"], 108.0),
+            batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Uncommon Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -6250,7 +6251,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Glass"], 1),
             batch(ITEMS["Basic Fixation"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -6261,7 +6262,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Glass"], 4),
             batch(ITEMS["Basic Fixation"], 4),
-            batch(ITEMS["Basic Casing XS"], 4.0),
+            batch(ITEMS["Basic Casing XS"], 4),
         ],
         byproducts: [],
     },
@@ -6272,7 +6273,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Glass"], 7),
             batch(ITEMS["Basic Fixation"], 6),
-            batch(ITEMS["Basic Casing S"], 1.0),
+            batch(ITEMS["Basic Casing S"], 1),
         ],
         byproducts: [],
     },
@@ -6283,7 +6284,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Glass"], 7),
             batch(ITEMS["Basic Fixation"], 6),
-            batch(ITEMS["Basic Standard Frame S"], 1.0),
+            batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -6294,7 +6295,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Glass"], 14),
             batch(ITEMS["Basic Fixation"], 12),
-            batch(ITEMS["Basic Standard Frame S"], 2.0),
+            batch(ITEMS["Basic Standard Frame S"], 2),
         ],
         byproducts: [],
     },
@@ -6305,7 +6306,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Glass"], 28),
             batch(ITEMS["Basic Fixation"], 24),
-            batch(ITEMS["Basic Standard Frame S"], 4.0),
+            batch(ITEMS["Basic Standard Frame S"], 4),
         ],
         byproducts: [],
     },
@@ -6316,7 +6317,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Glass"], 56),
             batch(ITEMS["Basic Fixation"], 48),
-            batch(ITEMS["Basic Standard Frame S"], 8.0),
+            batch(ITEMS["Basic Standard Frame S"], 8),
         ],
         byproducts: [],
     },
@@ -6327,7 +6328,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 1),
             batch(ITEMS["Uncommon LED"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
             batch(ITEMS["Uncommon Antenna XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -6340,7 +6341,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
             batch(ITEMS["Uncommon Screen XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -6353,7 +6354,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
             batch(ITEMS["Uncommon Screen XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -6366,7 +6367,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
             batch(ITEMS["Uncommon Screen XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -6379,7 +6380,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 648),
             batch(ITEMS["Uncommon Component"], 648),
-            batch(ITEMS["Uncommon Electronics"], 625.0),
+            batch(ITEMS["Uncommon Electronics"], 625),
             batch(ITEMS["Uncommon Screen XL"], 1),
             batch(ITEMS["Uncommon Casing XL"], 1),
         ],
@@ -6392,7 +6393,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
             batch(ITEMS["Uncommon Screen XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -6405,7 +6406,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
             batch(ITEMS["Uncommon Screen XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -6418,7 +6419,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
             batch(ITEMS["Uncommon Screen XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -6431,7 +6432,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
             batch(ITEMS["Uncommon Screen XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -6444,7 +6445,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
             batch(ITEMS["Uncommon Screen XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -6457,7 +6458,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
             batch(ITEMS["Uncommon Screen XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -6470,7 +6471,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
             batch(ITEMS["Uncommon Screen XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -6483,7 +6484,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
             batch(ITEMS["Uncommon Screen XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -6496,7 +6497,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
             batch(ITEMS["Uncommon Screen XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -6509,7 +6510,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
             batch(ITEMS["Uncommon Screen XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -6522,7 +6523,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
             batch(ITEMS["Uncommon Screen XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -6535,7 +6536,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 36),
             batch(ITEMS["Basic Power System"], 25),
-            batch(ITEMS["Basic Electric Engine M"], 1.0),
+            batch(ITEMS["Basic Electric Engine M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -6547,7 +6548,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1296),
             batch(ITEMS["Uncommon Screw"], 1296),
-            batch(ITEMS["Uncommon Power System"], 1250.0),
+            batch(ITEMS["Uncommon Power System"], 1250),
             batch(ITEMS["Uncommon Electric Engine XL"], 2),
             batch(ITEMS["Uncommon Reinforced Frame XL"], 2),
         ],
@@ -6560,7 +6561,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 3240),
             batch(ITEMS["Uncommon Screw"], 3240),
-            batch(ITEMS["Uncommon Power System"], 3125.0),
+            batch(ITEMS["Uncommon Power System"], 3125),
             batch(ITEMS["Uncommon Electric Engine XL"], 5),
             batch(ITEMS["Uncommon Reinforced Frame XL"], 5),
         ],
@@ -6580,7 +6581,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 648),
             batch(ITEMS["Uncommon Screw"], 648),
-            batch(ITEMS["Uncommon Power System"], 625.0),
+            batch(ITEMS["Uncommon Power System"], 625),
             batch(ITEMS["Uncommon Electric Engine XL"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XL"], 1),
         ],
@@ -6593,7 +6594,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 2592),
             batch(ITEMS["Uncommon Screw"], 2592),
-            batch(ITEMS["Uncommon Power System"], 2500.0),
+            batch(ITEMS["Uncommon Power System"], 2500),
             batch(ITEMS["Uncommon Electric Engine XL"], 4),
             batch(ITEMS["Uncommon Reinforced Frame XL"], 4),
         ],
@@ -6606,7 +6607,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 5184),
             batch(ITEMS["Uncommon Screw"], 5184),
-            batch(ITEMS["Uncommon Power System"], 5000.0),
+            batch(ITEMS["Uncommon Power System"], 5000),
             batch(ITEMS["Uncommon Electric Engine XL"], 8),
             batch(ITEMS["Uncommon Reinforced Frame XL"], 8),
         ],
@@ -6619,7 +6620,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Silumin"], 7),
             batch(ITEMS["Basic Fixation"], 6),
-            batch(ITEMS["Basic Standard Frame S"], 1.0),
+            batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -6630,7 +6631,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 36),
             batch(ITEMS["Basic Power System"], 25),
-            batch(ITEMS["Basic Electric Engine M"], 1.0),
+            batch(ITEMS["Basic Electric Engine M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -6642,7 +6643,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 36),
             batch(ITEMS["Basic Power System"], 25),
-            batch(ITEMS["Basic Electric Engine M"], 1.0),
+            batch(ITEMS["Basic Electric Engine M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -6654,7 +6655,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 6),
             batch(ITEMS["Basic Power System"], 5),
-            batch(ITEMS["Basic Electric Engine S"], 1.0),
+            batch(ITEMS["Basic Electric Engine S"], 1),
             batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -6666,7 +6667,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 49),
             batch(ITEMS["Basic Connector"], 36),
-            batch(ITEMS["Basic Reinforced Frame M"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
     },
@@ -6677,7 +6678,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
         ],
         byproducts: [],
     },
@@ -6688,7 +6689,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
         ],
         byproducts: [],
     },
@@ -6699,7 +6700,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
         ],
         byproducts: [],
     },
@@ -6710,7 +6711,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
         ],
         byproducts: [],
     },
@@ -6721,7 +6722,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
         ],
         byproducts: [],
     },
@@ -6739,7 +6740,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Basic Electronics"], 1),
-            batch(ITEMS["Basic Antenna XS"], 1.0),
+            batch(ITEMS["Basic Antenna XS"], 1),
             batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
@@ -6751,7 +6752,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 3),
             batch(ITEMS["Uncommon Component"], 3),
-            batch(ITEMS["Uncommon Electronics"], 5.0),
+            batch(ITEMS["Uncommon Electronics"], 5),
             batch(ITEMS["Uncommon Antenna S"], 1),
             batch(ITEMS["Uncommon Casing S"], 1),
         ],
@@ -6764,7 +6765,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 18),
             batch(ITEMS["Uncommon Component"], 18),
-            batch(ITEMS["Uncommon Electronics"], 25.0),
+            batch(ITEMS["Uncommon Electronics"], 25),
             batch(ITEMS["Uncommon Antenna M"], 1),
             batch(ITEMS["Uncommon Casing M"], 1),
         ],
@@ -6784,7 +6785,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Basic Electronics"], 1.0),
+            batch(ITEMS["Basic Electronics"], 1),
         ],
         byproducts: [],
     },
@@ -6802,7 +6803,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Uncommon Screw"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
         ],
         byproducts: [],
     },
@@ -6813,7 +6814,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Uncommon Screw"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
         ],
         byproducts: [],
     },
@@ -6824,7 +6825,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Uncommon Screw"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
         ],
         byproducts: [],
     },
@@ -6835,7 +6836,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
         ],
         byproducts: [],
     },
@@ -6846,7 +6847,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
         ],
         byproducts: [],
     },
@@ -6857,7 +6858,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], -1),
             batch(ITEMS["Uncommon Screw"], 1),
-            batch(ITEMS["Uncommon Electronics"], 1.0),
+            batch(ITEMS["Uncommon Electronics"], 1),
         ],
         byproducts: [],
     },
@@ -6875,7 +6876,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 3),
             batch(ITEMS["Uncommon Screw"], 3),
-            batch(ITEMS["Uncommon Electronics"], 5.0),
+            batch(ITEMS["Uncommon Electronics"], 5),
             batch(ITEMS["Uncommon Antenna S"], 1),
             batch(ITEMS["Uncommon Standard Frame S"], 1),
         ],
@@ -6887,8 +6888,8 @@ export const RECIPES: Recipe[] = [
         industry: ITEMS["Assembly Line L"],
         ingredients: [
             batch(ITEMS["Basic Screw"], 108),
-            batch(ITEMS["Uncommon Screw"], 1 - 8),
-            batch(ITEMS["Uncommon Electronics"], 125.0),
+            batch(ITEMS["Uncommon Screw"], 108),
+            batch(ITEMS["Uncommon Electronics"], 125),
             batch(ITEMS["Uncommon Antenna L"], 1),
             batch(ITEMS["Uncommon Standard Frame L"], 1),
         ],
@@ -6901,7 +6902,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Basic Electronics"], 1),
-            batch(ITEMS["Basic Casing XS"], 1.0),
+            batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
     },
@@ -6912,7 +6913,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Basic Electronics"], 1.0),
+            batch(ITEMS["Basic Electronics"], 1),
         ],
         byproducts: [],
     },
@@ -6923,7 +6924,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Basic Electronics"], 1.0),
+            batch(ITEMS["Basic Electronics"], 1),
         ],
         byproducts: [],
     },
@@ -6934,7 +6935,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Uncommon Optics"], 1.0),
+            batch(ITEMS["Uncommon Optics"], 1),
             batch(ITEMS["Uncommon Laser Chamber XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -7008,7 +7009,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Basic Electronics"], 1),
-            batch(ITEMS["Basic Mechanical Sensor XS"], 1.0),
+            batch(ITEMS["Basic Mechanical Sensor XS"], 1),
             batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
@@ -7020,7 +7021,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 1),
             batch(ITEMS["Advanced Power System"], 1),
-            batch(ITEMS["Advanced Mechanical Sensor XS"], 1.0),
+            batch(ITEMS["Advanced Mechanical Sensor XS"], 1),
             batch(ITEMS["Advanced Quantum Alignment Unit"], 1),
             batch(ITEMS["Advanced Standard Frame XS"], 1),
         ],
@@ -7033,7 +7034,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 1),
             batch(ITEMS["Advanced Power System"], 1),
-            batch(ITEMS["Advanced Quantum Barrier"], 1.0),
+            batch(ITEMS["Advanced Quantum Barrier"], 1),
         ],
         byproducts: [],
     },
@@ -7044,7 +7045,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 1),
             batch(ITEMS["Advanced Power System"], 1),
-            batch(ITEMS["Advanced Quantum Barrier"], 1.0),
+            batch(ITEMS["Advanced Quantum Barrier"], 1),
         ],
         byproducts: [],
     },
@@ -7055,7 +7056,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 1),
             batch(ITEMS["Advanced Power System"], 1),
-            batch(ITEMS["Advanced Quantum Barrier"], 1.0),
+            batch(ITEMS["Advanced Quantum Barrier"], 1),
         ],
         byproducts: [],
     },
@@ -7066,7 +7067,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 1),
             batch(ITEMS["Advanced Power System"], 1),
-            batch(ITEMS["Advanced Quantum Barrier"], 1.0),
+            batch(ITEMS["Advanced Quantum Barrier"], 1),
         ],
         byproducts: [],
     },
@@ -7077,7 +7078,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 6),
             batch(ITEMS["Basic Optics"], 5),
-            batch(ITEMS["Basic Laser Chamber S"], 1.0),
+            batch(ITEMS["Basic Laser Chamber S"], 1),
             batch(ITEMS["Basic Casing S"], 1),
         ],
         byproducts: [],
@@ -7089,7 +7090,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Uncommon Connector"], 1),
-            batch(ITEMS["Uncommon Power System"], 1.0),
+            batch(ITEMS["Uncommon Power System"], 1),
             batch(ITEMS["Uncommon Light XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -7102,7 +7103,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Uncommon Connector"], 1),
-            batch(ITEMS["Uncommon Power System"], 1.0),
+            batch(ITEMS["Uncommon Power System"], 1),
         ],
         byproducts: [],
     },
@@ -7113,7 +7114,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Uncommon Connector"], 1),
-            batch(ITEMS["Uncommon Power System"], 1.0),
+            batch(ITEMS["Uncommon Power System"], 1),
             batch(ITEMS["Uncommon Light XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -7126,7 +7127,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Uncommon Connector"], 1),
-            batch(ITEMS["Uncommon Power System"], 1.0),
+            batch(ITEMS["Uncommon Power System"], 1),
             batch(ITEMS["Uncommon Light XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -7139,7 +7140,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Uncommon Connector"], 1),
-            batch(ITEMS["Uncommon Power System"], 1.0),
+            batch(ITEMS["Uncommon Power System"], 1),
             batch(ITEMS["Uncommon Light XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -7152,7 +7153,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Uncommon Connector"], 1),
-            batch(ITEMS["Uncommon Power System"], 1.0),
+            batch(ITEMS["Uncommon Power System"], 1),
         ],
         byproducts: [],
     },
@@ -7163,7 +7164,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Uncommon Connector"], 1),
-            batch(ITEMS["Uncommon Power System"], 1.0),
+            batch(ITEMS["Uncommon Power System"], 1),
             batch(ITEMS["Uncommon Light XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -7176,7 +7177,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Uncommon Connector"], 1),
-            batch(ITEMS["Uncommon Power System"], 1.0),
+            batch(ITEMS["Uncommon Power System"], 1),
             batch(ITEMS["Uncommon Light XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -7189,7 +7190,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Uncommon Connector"], 1),
-            batch(ITEMS["Uncommon Power System"], 1.0),
+            batch(ITEMS["Uncommon Power System"], 1),
             batch(ITEMS["Uncommon Light XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -7202,7 +7203,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Uncommon Connector"], 1),
-            batch(ITEMS["Uncommon Power System"], 1.0),
+            batch(ITEMS["Uncommon Power System"], 1),
         ],
         byproducts: [],
     },
@@ -7213,7 +7214,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Uncommon Connector"], 1),
-            batch(ITEMS["Uncommon Power System"], 1.0),
+            batch(ITEMS["Uncommon Power System"], 1),
             batch(ITEMS["Uncommon Light XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -7226,7 +7227,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Uncommon Connector"], 1),
-            batch(ITEMS["Uncommon Power System"], 1.0),
+            batch(ITEMS["Uncommon Power System"], 1),
             batch(ITEMS["Uncommon Light XS"], 1),
             batch(ITEMS["Uncommon Casing XS"], 1),
         ],
@@ -7239,7 +7240,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 3),
             batch(ITEMS["Uncommon Connector"], 3),
-            batch(ITEMS["Uncommon Power System"], 5.0),
+            batch(ITEMS["Uncommon Power System"], 5),
             batch(ITEMS["Uncommon Light S"], 1),
             batch(ITEMS["Uncommon Casing S"], 1),
         ],
@@ -7252,7 +7253,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 216),
             batch(ITEMS["Basic Hydraulics"], 125),
-            batch(ITEMS["Basic Standard Frame L"], 1.0),
+            batch(ITEMS["Basic Standard Frame L"], 1),
         ],
         byproducts: [],
     },
@@ -7263,7 +7264,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 36),
             batch(ITEMS["Basic Hydraulics"], 25),
-            batch(ITEMS["Basic Standard Frame M"], 1.0),
+            batch(ITEMS["Basic Standard Frame M"], 1),
         ],
         byproducts: [],
     },
@@ -7274,7 +7275,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 6),
             batch(ITEMS["Basic Hydraulics"], 5),
-            batch(ITEMS["Basic Standard Frame S"], 1.0),
+            batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -7285,7 +7286,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 432),
             batch(ITEMS["Basic Hydraulics"], 250),
-            batch(ITEMS["Basic Standard Frame L"], 2.0),
+            batch(ITEMS["Basic Standard Frame L"], 2),
         ],
         byproducts: [],
     },
@@ -7296,7 +7297,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 36),
             batch(ITEMS["Basic Power System"], 25),
-            batch(ITEMS["Basic Screen M"], 1.0),
+            batch(ITEMS["Basic Screen M"], 1),
             batch(ITEMS["Basic Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -7308,7 +7309,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 36),
             batch(ITEMS["Basic Power System"], 25),
-            batch(ITEMS["Basic Screen M"], 1.0),
+            batch(ITEMS["Basic Screen M"], 1),
             batch(ITEMS["Basic Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -7320,7 +7321,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 1),
             batch(ITEMS["Basic Injector"], 1),
-            batch(ITEMS["Basic Chemical Container XS"], 1.0),
+            batch(ITEMS["Basic Chemical Container XS"], 1),
             batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -7332,7 +7333,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 6),
             batch(ITEMS["Basic Injector"], 5),
-            batch(ITEMS["Basic Chemical Container S"], 1.0),
+            batch(ITEMS["Basic Chemical Container S"], 1),
             batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -7344,7 +7345,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 36),
             batch(ITEMS["Basic Injector"], 25),
-            batch(ITEMS["Basic Chemical Container M"], 1.0),
+            batch(ITEMS["Basic Chemical Container M"], 1),
             batch(ITEMS["Basic Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -7356,7 +7357,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 216),
             batch(ITEMS["Basic Injector"], 125),
-            batch(ITEMS["Basic Chemical Container L"], 1.0),
+            batch(ITEMS["Basic Chemical Container L"], 1),
             batch(ITEMS["Basic Standard Frame L"], 1),
         ],
         byproducts: [],
@@ -7368,7 +7369,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 6),
             batch(ITEMS["Advanced Injector"], 5),
-            batch(ITEMS["Advanced Chemical Container S"], 1.0),
+            batch(ITEMS["Advanced Chemical Container S"], 1),
             batch(ITEMS["Advanced Casing S"], 1),
         ],
         byproducts: [],
@@ -7380,7 +7381,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 36),
             batch(ITEMS["Advanced Injector"], 25),
-            batch(ITEMS["Advanced Chemical Container M"], 1.0),
+            batch(ITEMS["Advanced Chemical Container M"], 1),
             batch(ITEMS["Advanced Casing M"], 1),
         ],
         byproducts: [],
@@ -7392,7 +7393,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 216),
             batch(ITEMS["Advanced Injector"], 125),
-            batch(ITEMS["Advanced Chemical Container L"], 1.0),
+            batch(ITEMS["Advanced Chemical Container L"], 1),
             batch(ITEMS["Advanced Casing L"], 1),
         ],
         byproducts: [],
@@ -7404,7 +7405,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 1296),
             batch(ITEMS["Advanced Injector"], 625),
-            batch(ITEMS["Advanced Chemical Container XL"], 1.0),
+            batch(ITEMS["Advanced Chemical Container XL"], 1),
             batch(ITEMS["Advanced Casing XL"], 1),
         ],
         byproducts: [],
@@ -7416,7 +7417,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 6),
             batch(ITEMS["Basic Injector"], 5),
-            batch(ITEMS["Basic Chemical Container S"], 1.0),
+            batch(ITEMS["Basic Chemical Container S"], 1),
             batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -7428,7 +7429,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 36),
             batch(ITEMS["Basic Injector"], 25),
-            batch(ITEMS["Basic Chemical Container M"], 1.0),
+            batch(ITEMS["Basic Chemical Container M"], 1),
             batch(ITEMS["Basic Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -7440,7 +7441,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 216),
             batch(ITEMS["Basic Injector"], 125),
-            batch(ITEMS["Basic Chemical Container L"], 1.0),
+            batch(ITEMS["Basic Chemical Container L"], 1),
             batch(ITEMS["Basic Standard Frame L"], 1),
         ],
         byproducts: [],
@@ -7452,7 +7453,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 6),
             batch(ITEMS["Basic Hydraulics"], 5),
-            batch(ITEMS["Basic Reinforced Frame S"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -7463,7 +7464,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 36),
             batch(ITEMS["Basic Hydraulics"], 25),
-            batch(ITEMS["Basic Reinforced Frame M"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
     },
@@ -7474,7 +7475,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 216),
             batch(ITEMS["Basic Hydraulics"], 125),
-            batch(ITEMS["Basic Reinforced Frame L"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame L"], 1),
         ],
         byproducts: [],
     },
@@ -7485,7 +7486,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 432),
             batch(ITEMS["Basic Hydraulics"], 250),
-            batch(ITEMS["Basic Reinforced Frame L"], 2.0),
+            batch(ITEMS["Basic Reinforced Frame L"], 2),
         ],
         byproducts: [],
     },
@@ -7496,7 +7497,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1296),
             batch(ITEMS["Basic Hydraulics"], 625),
-            batch(ITEMS["Basic Reinforced Frame XL"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame XL"], 1),
         ],
         byproducts: [],
     },
@@ -7507,7 +7508,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 1),
             batch(ITEMS["Advanced Electronics"], 1),
-            batch(ITEMS["Advanced Screen XS"], 1.0),
+            batch(ITEMS["Advanced Screen XS"], 1),
             batch(ITEMS["Advanced Quantum Alignment Unit"], 1),
             batch(ITEMS["Advanced Casing XS"], 1),
         ],
@@ -7520,7 +7521,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 2592),
             batch(ITEMS["Basic Hydraulics"], 1250),
-            batch(ITEMS["Basic Reinforced Frame XL"], 2.0),
+            batch(ITEMS["Basic Reinforced Frame XL"], 2),
         ],
         byproducts: [],
     },
@@ -7531,7 +7532,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 36),
             batch(ITEMS["Advanced Injector"], 25),
-            batch(ITEMS["Advanced Robotic Arm M"], 1.0),
+            batch(ITEMS["Advanced Robotic Arm M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7543,7 +7544,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Power System"], 1),
-            batch(ITEMS["Advanced Mobile Panel XS"], 1.0),
+            batch(ITEMS["Advanced Mobile Panel XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -7555,7 +7556,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Power System"], 5),
-            batch(ITEMS["Advanced Mobile Panel S"], 1.0),
+            batch(ITEMS["Advanced Mobile Panel S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -7567,7 +7568,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 36),
             batch(ITEMS["Advanced Power System"], 25),
-            batch(ITEMS["Advanced Mobile Panel M"], 1.0),
+            batch(ITEMS["Advanced Mobile Panel M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7579,7 +7580,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Power System"], 125),
-            batch(ITEMS["Advanced Mobile Panel L"], 1.0),
+            batch(ITEMS["Advanced Mobile Panel L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -7591,7 +7592,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1296),
             batch(ITEMS["Advanced Power System"], 625),
-            batch(ITEMS["Advanced Mobile Panel XL"], 1.0),
+            batch(ITEMS["Advanced Mobile Panel XL"], 1),
             batch(ITEMS["Advanced Reinforced Frame XL"], 1),
         ],
         byproducts: [],
@@ -7603,7 +7604,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 36),
             batch(ITEMS["Advanced Power System"], 25),
-            batch(ITEMS["Advanced Chemical Container M"], 1.0),
+            batch(ITEMS["Advanced Chemical Container M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7615,7 +7616,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 36),
             batch(ITEMS["Advanced Electronics"], 25),
-            batch(ITEMS["Advanced Robotic Arm M"], 1.0),
+            batch(ITEMS["Advanced Robotic Arm M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7627,7 +7628,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 36),
             batch(ITEMS["Advanced Burner"], 25),
-            batch(ITEMS["Advanced Power Transformer M"], 1.0),
+            batch(ITEMS["Advanced Power Transformer M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7639,7 +7640,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 36),
             batch(ITEMS["Advanced Power System"], 25),
-            batch(ITEMS["Advanced Robotic Arm M"], 1.0),
+            batch(ITEMS["Advanced Robotic Arm M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7651,7 +7652,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 36),
             batch(ITEMS["Advanced Power System"], 25),
-            batch(ITEMS["Advanced Mobile Panel M"], 1.0),
+            batch(ITEMS["Advanced Mobile Panel M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7663,7 +7664,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 36),
             batch(ITEMS["Advanced Burner"], 25),
-            batch(ITEMS["Advanced Mobile Panel M"], 1.0),
+            batch(ITEMS["Advanced Mobile Panel M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7675,7 +7676,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 36),
             batch(ITEMS["Advanced Power System"], 25),
-            batch(ITEMS["Advanced Chemical Container M"], 1.0),
+            batch(ITEMS["Advanced Chemical Container M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7687,7 +7688,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 36),
             batch(ITEMS["Advanced Burner"], 25),
-            batch(ITEMS["Advanced Chemical Container M"], 1.0),
+            batch(ITEMS["Advanced Chemical Container M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7699,7 +7700,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 36),
             batch(ITEMS["Basic Injector"], 25),
-            batch(ITEMS["Basic Robotic Arm M"], 1.0),
+            batch(ITEMS["Basic Robotic Arm M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7711,7 +7712,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Basic Power System"], 1),
-            batch(ITEMS["Basic Mobile Panel XS"], 1.0),
+            batch(ITEMS["Basic Mobile Panel XS"], 1),
             batch(ITEMS["Basic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -7723,7 +7724,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 6),
             batch(ITEMS["Basic Power System"], 5),
-            batch(ITEMS["Basic Mobile Panel S"], 1.0),
+            batch(ITEMS["Basic Mobile Panel S"], 1),
             batch(ITEMS["Basic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -7735,7 +7736,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 36),
             batch(ITEMS["Basic Power System"], 25),
-            batch(ITEMS["Basic Mobile Panel M"], 1.0),
+            batch(ITEMS["Basic Mobile Panel M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7747,7 +7748,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 216),
             batch(ITEMS["Basic Power System"], 125),
-            batch(ITEMS["Basic Mobile Panel L"], 1.0),
+            batch(ITEMS["Basic Mobile Panel L"], 1),
             batch(ITEMS["Basic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -7759,7 +7760,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1296),
             batch(ITEMS["Basic Power System"], 625),
-            batch(ITEMS["Basic Mobile Panel XL"], 1.0),
+            batch(ITEMS["Basic Mobile Panel XL"], 1),
             batch(ITEMS["Basic Reinforced Frame XL"], 1),
         ],
         byproducts: [],
@@ -7771,7 +7772,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 36),
             batch(ITEMS["Basic Power System"], 25),
-            batch(ITEMS["Basic Chemical Container M"], 1.0),
+            batch(ITEMS["Basic Chemical Container M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7783,7 +7784,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 36),
             batch(ITEMS["Basic Electronics"], 25),
-            batch(ITEMS["Basic Robotic Arm M"], 1.0),
+            batch(ITEMS["Basic Robotic Arm M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7795,7 +7796,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 36),
             batch(ITEMS["Basic Burner"], 25),
-            batch(ITEMS["Basic Power Transformer M"], 1.0),
+            batch(ITEMS["Basic Power Transformer M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7807,7 +7808,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 36),
             batch(ITEMS["Basic Power System"], 25),
-            batch(ITEMS["Basic Robotic Arm M"], 1.0),
+            batch(ITEMS["Basic Robotic Arm M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7819,7 +7820,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 36),
             batch(ITEMS["Basic Power System"], 25),
-            batch(ITEMS["Basic Mobile Panel M"], 1.0),
+            batch(ITEMS["Basic Mobile Panel M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7831,7 +7832,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 36),
             batch(ITEMS["Basic Burner"], 25),
-            batch(ITEMS["Basic Mobile Panel M"], 1.0),
+            batch(ITEMS["Basic Mobile Panel M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7843,7 +7844,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 36),
             batch(ITEMS["Basic Power System"], 25),
-            batch(ITEMS["Basic Chemical Container M"], 1.0),
+            batch(ITEMS["Basic Chemical Container M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7855,7 +7856,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 36),
             batch(ITEMS["Basic Burner"], 25),
-            batch(ITEMS["Basic Chemical Container M"], 1.0),
+            batch(ITEMS["Basic Chemical Container M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -7867,7 +7868,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 18),
             batch(ITEMS["Advanced Pipe"], 18),
-            batch(ITEMS["Rare Injector"], 25.0),
+            batch(ITEMS["Rare Injector"], 25),
             batch(ITEMS["Rare Robotic Arm M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -7880,7 +7881,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Power System"], 1.0),
+            batch(ITEMS["Rare Power System"], 1),
             batch(ITEMS["Rare Mobile Panel XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -7893,7 +7894,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Power System"], 5.0),
+            batch(ITEMS["Rare Power System"], 5),
             batch(ITEMS["Rare Mobile Panel S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -7906,7 +7907,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Advanced Screw"], 18),
-            batch(ITEMS["Rare Power System"], 25.0),
+            batch(ITEMS["Rare Power System"], 25),
             batch(ITEMS["Rare Mobile Panel M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -7919,7 +7920,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Advanced Screw"], 108),
-            batch(ITEMS["Rare Power System"], 125.0),
+            batch(ITEMS["Rare Power System"], 125),
             batch(ITEMS["Rare Mobile Panel L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -7932,7 +7933,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 648),
             batch(ITEMS["Advanced Screw"], 648),
-            batch(ITEMS["Rare Power System"], 625.0),
+            batch(ITEMS["Rare Power System"], 625),
             batch(ITEMS["Rare Mobile Panel XL"], 1),
             batch(ITEMS["Rare Reinforced Frame XL"], 1),
         ],
@@ -7945,7 +7946,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 18),
             batch(ITEMS["Advanced Pipe"], 18),
-            batch(ITEMS["Rare Power System"], 25.0),
+            batch(ITEMS["Rare Power System"], 25),
             batch(ITEMS["Rare Chemical Container M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -7958,7 +7959,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 18),
             batch(ITEMS["Advanced Pipe"], 18),
-            batch(ITEMS["Rare Electronics"], 25.0),
+            batch(ITEMS["Rare Electronics"], 25),
             batch(ITEMS["Rare Robotic Arm M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -7971,7 +7972,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 18),
             batch(ITEMS["Advanced Pipe"], 18),
-            batch(ITEMS["Rare Burner"], 25.0),
+            batch(ITEMS["Rare Burner"], 25),
             batch(ITEMS["Rare Power Transformer M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -7984,7 +7985,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 18),
             batch(ITEMS["Advanced Pipe"], 18),
-            batch(ITEMS["Rare Power System"], 25.0),
+            batch(ITEMS["Rare Power System"], 25),
             batch(ITEMS["Rare Robotic Arm M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -7997,7 +7998,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 18),
             batch(ITEMS["Advanced Pipe"], 18),
-            batch(ITEMS["Rare Power System"], 25.0),
+            batch(ITEMS["Rare Power System"], 25),
             batch(ITEMS["Rare Mobile Panel M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -8010,7 +8011,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 18),
             batch(ITEMS["Advanced Pipe"], 18),
-            batch(ITEMS["Rare Burner"], 25.0),
+            batch(ITEMS["Rare Burner"], 25),
             batch(ITEMS["Rare Mobile Panel M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -8023,7 +8024,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 18),
             batch(ITEMS["Advanced Pipe"], 18),
-            batch(ITEMS["Rare Power System"], 25.0),
+            batch(ITEMS["Rare Power System"], 25),
             batch(ITEMS["Rare Chemical Container M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -8036,7 +8037,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 18),
             batch(ITEMS["Advanced Pipe"], 18),
-            batch(ITEMS["Rare Burner"], 25.0),
+            batch(ITEMS["Rare Burner"], 25),
             batch(ITEMS["Rare Chemical Container M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -8049,7 +8050,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 216),
             batch(ITEMS["Basic Hydraulics"], 125),
-            batch(ITEMS["Basic Robotic Arm L"], 1.0),
+            batch(ITEMS["Basic Robotic Arm L"], 1),
             batch(ITEMS["Basic Standard Frame L"], 1),
         ],
         byproducts: [],
@@ -8061,7 +8062,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 18),
             batch(ITEMS["Uncommon Pipe"], 18),
-            batch(ITEMS["Uncommon Injector"], 25.0),
+            batch(ITEMS["Uncommon Injector"], 25),
             batch(ITEMS["Uncommon Robotic Arm M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -8074,7 +8075,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Uncommon Screw"], 1),
-            batch(ITEMS["Uncommon Power System"], 1.0),
+            batch(ITEMS["Uncommon Power System"], 1),
             batch(ITEMS["Uncommon Mobile Panel XS"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
@@ -8087,7 +8088,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 3),
             batch(ITEMS["Uncommon Screw"], 3),
-            batch(ITEMS["Uncommon Power System"], 5.0),
+            batch(ITEMS["Uncommon Power System"], 5),
             batch(ITEMS["Uncommon Mobile Panel S"], 1),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
@@ -8100,7 +8101,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 18),
             batch(ITEMS["Uncommon Screw"], 18),
-            batch(ITEMS["Uncommon Power System"], 25.0),
+            batch(ITEMS["Uncommon Power System"], 25),
             batch(ITEMS["Uncommon Mobile Panel M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -8113,7 +8114,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 108),
             batch(ITEMS["Uncommon Screw"], 108),
-            batch(ITEMS["Uncommon Power System"], 125.0),
+            batch(ITEMS["Uncommon Power System"], 125),
             batch(ITEMS["Uncommon Mobile Panel L"], 1),
             batch(ITEMS["Uncommon Reinforced Frame L"], 1),
         ],
@@ -8126,7 +8127,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 648),
             batch(ITEMS["Uncommon Screw"], 648),
-            batch(ITEMS["Uncommon Power System"], 625.0),
+            batch(ITEMS["Uncommon Power System"], 625),
             batch(ITEMS["Uncommon Mobile Panel XL"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XL"], 1),
         ],
@@ -8139,7 +8140,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 18),
             batch(ITEMS["Uncommon Pipe"], 18),
-            batch(ITEMS["Uncommon Power System"], 25.0),
+            batch(ITEMS["Uncommon Power System"], 25),
             batch(ITEMS["Uncommon Chemical Container M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -8152,7 +8153,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 18),
             batch(ITEMS["Uncommon Pipe"], 18),
-            batch(ITEMS["Uncommon Electronics"], 25.0),
+            batch(ITEMS["Uncommon Electronics"], 25),
             batch(ITEMS["Uncommon Robotic Arm M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -8165,7 +8166,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 18),
             batch(ITEMS["Uncommon Pipe"], 18),
-            batch(ITEMS["Uncommon Burner"], 25.0),
+            batch(ITEMS["Uncommon Burner"], 25),
             batch(ITEMS["Uncommon Power Transformer M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -8178,7 +8179,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 18),
             batch(ITEMS["Uncommon Pipe"], 18),
-            batch(ITEMS["Uncommon Power System"], 25.0),
+            batch(ITEMS["Uncommon Power System"], 25),
             batch(ITEMS["Uncommon Robotic Arm M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -8191,7 +8192,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 18),
             batch(ITEMS["Uncommon Pipe"], 18),
-            batch(ITEMS["Uncommon Power System"], 25.0),
+            batch(ITEMS["Uncommon Power System"], 25),
             batch(ITEMS["Uncommon Mobile Panel M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -8204,7 +8205,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 18),
             batch(ITEMS["Uncommon Pipe"], 18),
-            batch(ITEMS["Uncommon Burner"], 25.0),
+            batch(ITEMS["Uncommon Burner"], 25),
             batch(ITEMS["Uncommon Mobile Panel M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -8217,7 +8218,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 18),
             batch(ITEMS["Uncommon Pipe"], 18),
-            batch(ITEMS["Uncommon Power System"], 25.0),
+            batch(ITEMS["Uncommon Power System"], 25),
             batch(ITEMS["Uncommon Chemical Container M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -8230,7 +8231,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 18),
             batch(ITEMS["Uncommon Pipe"], 18),
-            batch(ITEMS["Uncommon Burner"], 25.0),
+            batch(ITEMS["Uncommon Burner"], 25),
             batch(ITEMS["Uncommon Chemical Container M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -8243,7 +8244,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Basic Power System"], 1),
-            batch(ITEMS["Basic Core System XS"], 1.0),
+            batch(ITEMS["Basic Core System XS"], 1),
             batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -8255,7 +8256,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 3),
             batch(ITEMS["Uncommon Component"], 3),
-            batch(ITEMS["Uncommon Power System"], 5.0),
+            batch(ITEMS["Uncommon Power System"], 5),
             batch(ITEMS["Uncommon Core System S"], 1),
             batch(ITEMS["Uncommon Standard Frame S"], -1),
         ],
@@ -8268,7 +8269,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 36),
             batch(ITEMS["Advanced Power System"], 25),
-            batch(ITEMS["Advanced Core System M"], 1.0),
+            batch(ITEMS["Advanced Core System M"], 1),
             batch(ITEMS["Advanced Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -8280,7 +8281,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 108),
             batch(ITEMS["Advanced Component"], 108),
-            batch(ITEMS["Rare Power System"], 125.0),
+            batch(ITEMS["Rare Power System"], 125),
             batch(ITEMS["Rare Core System L"], 1),
             batch(ITEMS["Rare Standard Frame L"], -1),
         ],
@@ -8293,7 +8294,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Basic Power System"], 1),
-            batch(ITEMS["Basic Core System XS"], 1.0),
+            batch(ITEMS["Basic Core System XS"], 1),
             batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -8305,7 +8306,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 3),
             batch(ITEMS["Uncommon Component"], 3),
-            batch(ITEMS["Uncommon Power System"], 5.0),
+            batch(ITEMS["Uncommon Power System"], 5),
             batch(ITEMS["Uncommon Core System S"], 1),
             batch(ITEMS["Uncommon Standard Frame S"], -1),
         ],
@@ -8318,7 +8319,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 36),
             batch(ITEMS["Advanced Power System"], 25),
-            batch(ITEMS["Advanced Core System M"], 1.0),
+            batch(ITEMS["Advanced Core System M"], 1),
             batch(ITEMS["Advanced Anti-Gravity Core"], 16),
             batch(ITEMS["Advanced Standard Frame M"], 1),
         ],
@@ -8331,7 +8332,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 108),
             batch(ITEMS["Advanced Component"], 108),
-            batch(ITEMS["Rare Power System"], 125.0),
+            batch(ITEMS["Rare Power System"], 125),
             batch(ITEMS["Rare Core System L"], 1),
             batch(ITEMS["Rare Anti-Gravity Core"], 64),
             batch(ITEMS["Rare Standard Frame L"], 1),
@@ -8345,7 +8346,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Basic Power System"], 1),
-            batch(ITEMS["Basic Core System XS"], 1.0),
+            batch(ITEMS["Basic Core System XS"], 1),
             batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -8357,7 +8358,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 6),
             batch(ITEMS["Basic Power System"], 5),
-            batch(ITEMS["Basic Core System S"], 1.0),
+            batch(ITEMS["Basic Core System S"], 1),
             batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -8369,7 +8370,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 18),
             batch(ITEMS["Uncommon Component"], 18),
-            batch(ITEMS["Uncommon Power System"], 25.0),
+            batch(ITEMS["Uncommon Power System"], 25),
             batch(ITEMS["Uncommon Core System M"], 1),
             batch(ITEMS["Uncommon Standard Frame M"], -1),
         ],
@@ -8382,7 +8383,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 108),
             batch(ITEMS["Uncommon Component"], 108),
-            batch(ITEMS["Uncommon Power System"], 125.0),
+            batch(ITEMS["Uncommon Power System"], 125),
             batch(ITEMS["Uncommon Core System L"], 1),
             batch(ITEMS["Uncommon Standard Frame L"], 1),
         ],
@@ -8395,7 +8396,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Fixation"], 18),
             batch(ITEMS["Uncommon Fixation"], 18),
-            batch(ITEMS["Uncommon Processor"], 25.0),
+            batch(ITEMS["Uncommon Processor"], 25),
             batch(ITEMS["Uncommon Power Transformer M"], 1),
             batch(ITEMS["Uncommon Standard Frame M"], 1),
         ],
@@ -8418,7 +8419,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Basic Processor"], 1),
-            batch(ITEMS["Basic Control System XS"], 1.0),
+            batch(ITEMS["Basic Control System XS"], 1),
             batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
@@ -8430,7 +8431,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 6),
             batch(ITEMS["Advanced Power System"], 5),
-            batch(ITEMS["Advanced Control System S"], 1.0),
+            batch(ITEMS["Advanced Control System S"], 1),
             batch(ITEMS["Advanced Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -8442,7 +8443,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 36),
             batch(ITEMS["Advanced Power System"], 25),
-            batch(ITEMS["Advanced Control System M"], 1.0),
+            batch(ITEMS["Advanced Control System M"], 1),
             batch(ITEMS["Advanced Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -8454,7 +8455,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 216),
             batch(ITEMS["Advanced Power System"], 125),
-            batch(ITEMS["Advanced Control System L"], 1.0),
+            batch(ITEMS["Advanced Control System L"], 1),
             batch(ITEMS["Advanced Standard Frame L"], 1),
         ],
         byproducts: [],
@@ -8466,7 +8467,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 36),
             batch(ITEMS["Basic Hydraulics"], 25),
-            batch(ITEMS["Basic Control System M"], 1.0),
+            batch(ITEMS["Basic Control System M"], 1),
             batch(ITEMS["Basic Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -8478,7 +8479,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 6),
             batch(ITEMS["Basic Processor"], 5),
-            batch(ITEMS["Basic Control System S"], 1.0),
+            batch(ITEMS["Basic Control System S"], 1),
             batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -8490,7 +8491,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 6),
             batch(ITEMS["Basic Electronics"], 5),
-            batch(ITEMS["Basic Control System S"], 1.0),
+            batch(ITEMS["Basic Control System S"], 1),
             batch(ITEMS["Basic Standard Frame S"], -1),
         ],
         byproducts: [],
@@ -8512,7 +8513,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 3),
             batch(ITEMS["Uncommon Component"], 3),
-            batch(ITEMS["Uncommon Power System"], 5.0),
+            batch(ITEMS["Uncommon Power System"], 5),
             batch(ITEMS["Uncommon Power Transformer S"], 1),
             batch(ITEMS["Uncommon Standard Frame S"], 1),
         ],
@@ -8525,7 +8526,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 6),
             batch(ITEMS["Advanced Hydraulics"], 5),
-            batch(ITEMS["Advanced Antenna S"], 1.0),
+            batch(ITEMS["Advanced Antenna S"], 1),
             batch(ITEMS["Advanced Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -8537,7 +8538,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 6),
             batch(ITEMS["Basic Processor"], 5),
-            batch(ITEMS["Basic Screen S"], 1.0),
+            batch(ITEMS["Basic Screen S"], 1),
             batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -8549,7 +8550,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 648),
             batch(ITEMS["Uncommon Component"], 648),
-            batch(ITEMS["Uncommon Power System"], 625.0),
+            batch(ITEMS["Uncommon Power System"], 625),
             batch(ITEMS["Uncommon Ore Scanner XL"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XL"], 1),
         ],
@@ -8562,7 +8563,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 2),
             batch(ITEMS["Basic Hydraulics"], 2),
-            batch(ITEMS["Basic Mobile Panel XS"], 2.0),
+            batch(ITEMS["Basic Mobile Panel XS"], 2),
             batch(ITEMS["Basic Standard Frame XS"], 2),
         ],
         byproducts: [],
@@ -8574,7 +8575,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 12),
             batch(ITEMS["Basic Hydraulics"], 10),
-            batch(ITEMS["Basic Mobile Panel S"], 2.0),
+            batch(ITEMS["Basic Mobile Panel S"], 2),
             batch(ITEMS["Basic Standard Frame S"], 2),
         ],
         byproducts: [],
@@ -8586,7 +8587,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 72),
             batch(ITEMS["Basic Hydraulics"], 50),
-            batch(ITEMS["Basic Mobile Panel M"], 2.0),
+            batch(ITEMS["Basic Mobile Panel M"], 2),
             batch(ITEMS["Basic Standard Frame M"], 2),
         ],
         byproducts: [],
@@ -8598,7 +8599,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Basic Hydraulics"], 1),
-            batch(ITEMS["Basic Mobile Panel XS"], 1.0),
+            batch(ITEMS["Basic Mobile Panel XS"], 1),
             batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -8610,7 +8611,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 6),
             batch(ITEMS["Basic Hydraulics"], 5),
-            batch(ITEMS["Basic Mobile Panel S"], 1.0),
+            batch(ITEMS["Basic Mobile Panel S"], 1),
             batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -8622,7 +8623,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 36),
             batch(ITEMS["Basic Hydraulics"], 25),
-            batch(ITEMS["Basic Mobile Panel M"], 1.0),
+            batch(ITEMS["Basic Mobile Panel M"], 1),
             batch(ITEMS["Basic Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -8634,7 +8635,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Basic Hydraulics"], 1),
-            batch(ITEMS["Basic Mobile Panel XS"], 1.0),
+            batch(ITEMS["Basic Mobile Panel XS"], 1),
             batch(ITEMS["Basic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -8646,7 +8647,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 6),
             batch(ITEMS["Basic Hydraulics"], 5),
-            batch(ITEMS["Basic Mobile Panel S"], 1.0),
+            batch(ITEMS["Basic Mobile Panel S"], 1),
             batch(ITEMS["Basic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -8658,7 +8659,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 36),
             batch(ITEMS["Basic Hydraulics"], 25),
-            batch(ITEMS["Basic Mobile Panel M"], 1.0),
+            batch(ITEMS["Basic Mobile Panel M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -8670,7 +8671,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 216),
             batch(ITEMS["Basic Hydraulics"], 125),
-            batch(ITEMS["Basic Mobile Panel L"], 1.0),
+            batch(ITEMS["Basic Mobile Panel L"], 1),
             batch(ITEMS["Basic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -8682,7 +8683,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Basic Hydraulics"], 1),
-            batch(ITEMS["Basic Mobile Panel XS"], 1.0),
+            batch(ITEMS["Basic Mobile Panel XS"], 1),
             batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -8694,7 +8695,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 6),
             batch(ITEMS["Basic Hydraulics"], 5),
-            batch(ITEMS["Basic Mobile Panel S"], 1.0),
+            batch(ITEMS["Basic Mobile Panel S"], 1),
             batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -8706,7 +8707,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 36),
             batch(ITEMS["Basic Hydraulics"], 25),
-            batch(ITEMS["Basic Mobile Panel M"], 1.0),
+            batch(ITEMS["Basic Mobile Panel M"], 1),
             batch(ITEMS["Basic Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -8718,7 +8719,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 36),
             batch(ITEMS["Basic Hydraulics"], 25),
-            batch(ITEMS["Basic Mobile Panel M"], 1.0),
+            batch(ITEMS["Basic Mobile Panel M"], 1),
             batch(ITEMS["Basic Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -8730,7 +8731,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 1),
             batch(ITEMS["Basic Hydraulics"], 1),
-            batch(ITEMS["Basic Mobile Panel XS"], 1.0),
+            batch(ITEMS["Basic Mobile Panel XS"], 1),
             batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -8742,7 +8743,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 6),
             batch(ITEMS["Basic Hydraulics"], 5),
-            batch(ITEMS["Basic Mobile Panel S"], 1.0),
+            batch(ITEMS["Basic Mobile Panel S"], 1),
             batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -8754,7 +8755,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 36),
             batch(ITEMS["Basic Hydraulics"], 25),
-            batch(ITEMS["Basic Mobile Panel M"], 1.0),
+            batch(ITEMS["Basic Mobile Panel M"], 1),
             batch(ITEMS["Basic Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -8766,7 +8767,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Basic Burner"], 1),
-            batch(ITEMS["Basic Ionic Chamber XS"], 1.0),
+            batch(ITEMS["Basic Ionic Chamber XS"], 1),
             batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -8778,7 +8779,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 6),
             batch(ITEMS["Basic Burner"], 5),
-            batch(ITEMS["Basic Ionic Chamber S"], 1.0),
+            batch(ITEMS["Basic Ionic Chamber S"], 1),
             batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -8790,7 +8791,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 36),
             batch(ITEMS["Basic Burner"], 25),
-            batch(ITEMS["Basic Ionic Chamber M"], 1.0),
+            batch(ITEMS["Basic Ionic Chamber M"], 1),
             batch(ITEMS["Basic Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -8809,7 +8810,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 1),
             batch(ITEMS["Basic Injector"], 1),
-            batch(ITEMS["Basic Gas Cylinder XS"], 1.0),
+            batch(ITEMS["Basic Gas Cylinder XS"], 1),
             batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -8821,7 +8822,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 6),
             batch(ITEMS["Basic Injector"], 5),
-            batch(ITEMS["Basic Gas Cylinder S"], 1.0),
+            batch(ITEMS["Basic Gas Cylinder S"], 1),
             batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -8833,7 +8834,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 36),
             batch(ITEMS["Basic Injector"], 25),
-            batch(ITEMS["Basic Gas Cylinder M"], 1.0),
+            batch(ITEMS["Basic Gas Cylinder M"], 1),
             batch(ITEMS["Basic Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -8845,7 +8846,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Injector"], 1),
-            batch(ITEMS["Advanced Combustion Chamber XS"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -8857,7 +8858,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Injector"], 1),
-            batch(ITEMS["Advanced Combustion Chamber XS"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -8869,7 +8870,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Injector"], 1),
-            batch(ITEMS["Advanced Combustion Chamber XS"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -8881,7 +8882,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Injector"], 1),
-            batch(ITEMS["Advanced Combustion Chamber XS"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -8893,7 +8894,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Basic Injector"], 1),
-            batch(ITEMS["Basic Combustion Chamber XS"], 1.0),
+            batch(ITEMS["Basic Combustion Chamber XS"], 1),
             batch(ITEMS["Basic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -8905,7 +8906,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Uncommon Screw"], 1),
-            batch(ITEMS["Uncommon Injector"], 1.0),
+            batch(ITEMS["Uncommon Injector"], 1),
             batch(ITEMS["Uncommon Combustion Chamber XS"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
@@ -8918,7 +8919,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Uncommon Screw"], 1),
-            batch(ITEMS["Uncommon Injector"], 1.0),
+            batch(ITEMS["Uncommon Injector"], 1),
             batch(ITEMS["Uncommon Combustion Chamber XS"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
@@ -8931,7 +8932,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Uncommon Screw"], 1),
-            batch(ITEMS["Uncommon Injector"], 1.0),
+            batch(ITEMS["Uncommon Injector"], 1),
             batch(ITEMS["Uncommon Combustion Chamber XS"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
@@ -8944,7 +8945,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Injector"], 1.0),
+            batch(ITEMS["Rare Injector"], 1),
             batch(ITEMS["Rare Combustion Chamber XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -8957,7 +8958,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Injector"], 1.0),
+            batch(ITEMS["Rare Injector"], 1),
             batch(ITEMS["Rare Combustion Chamber XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -8970,7 +8971,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Injector"], 1.0),
+            batch(ITEMS["Rare Injector"], 1),
             batch(ITEMS["Rare Combustion Chamber XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -8983,7 +8984,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Injector"], 1.0),
+            batch(ITEMS["Rare Injector"], 1),
             batch(ITEMS["Rare Combustion Chamber XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -8996,7 +8997,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Uncommon Screw"], 1),
-            batch(ITEMS["Uncommon Injector"], 1.0),
+            batch(ITEMS["Uncommon Injector"], 1),
             batch(ITEMS["Uncommon Combustion Chamber XS"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
@@ -9009,7 +9010,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Injector"], 125),
-            batch(ITEMS["Advanced Combustion Chamber L"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -9021,7 +9022,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Injector"], 125),
-            batch(ITEMS["Advanced Combustion Chamber L"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -9033,7 +9034,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Injector"], 125),
-            batch(ITEMS["Advanced Combustion Chamber L"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -9045,7 +9046,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Injector"], 125),
-            batch(ITEMS["Advanced Combustion Chamber L"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber L"], 1),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -9057,7 +9058,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 216),
             batch(ITEMS["Advanced Injector"], 125),
-            batch(ITEMS["Basic Combustion Chamber L"], 1.0),
+            batch(ITEMS["Basic Combustion Chamber L"], 1),
             batch(ITEMS["Basic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -9069,7 +9070,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 108),
             batch(ITEMS["Uncommon Screw"], 108),
-            batch(ITEMS["Uncommon Injector"], 125.0),
+            batch(ITEMS["Uncommon Injector"], 125),
             batch(ITEMS["Uncommon Combustion Chamber L"], 1),
             batch(ITEMS["Uncommon Reinforced Frame L"], 1),
         ],
@@ -9082,7 +9083,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 108),
             batch(ITEMS["Uncommon Screw"], 108),
-            batch(ITEMS["Uncommon Injector"], 125.0),
+            batch(ITEMS["Uncommon Injector"], 125),
             batch(ITEMS["Uncommon Combustion Chamber L"], 1),
             batch(ITEMS["Uncommon Reinforced Frame L"], 1),
         ],
@@ -9095,7 +9096,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 108),
             batch(ITEMS["Uncommon Screw"], 108),
-            batch(ITEMS["Uncommon Injector"], 125.0),
+            batch(ITEMS["Uncommon Injector"], 125),
             batch(ITEMS["Uncommon Combustion Chamber L"], 1),
             batch(ITEMS["Uncommon Reinforced Frame L"], 1),
         ],
@@ -9108,7 +9109,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Advanced Screw"], 108),
-            batch(ITEMS["Rare Injector"], 108.0),
+            batch(ITEMS["Rare Injector"], 108),
             batch(ITEMS["Rare Combustion Chamber L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -9121,7 +9122,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Injector"], 108.0),
+            batch(ITEMS["Rare Injector"], 108),
             batch(ITEMS["Rare Combustion Chamber L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -9134,7 +9135,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Injector"], 108.0),
+            batch(ITEMS["Rare Injector"], 108),
             batch(ITEMS["Rare Combustion Chamber L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -9147,7 +9148,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Injector"], 108.0),
+            batch(ITEMS["Rare Injector"], 108),
             batch(ITEMS["Rare Combustion Chamber L"], 1),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
         ],
@@ -9160,7 +9161,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 108),
             batch(ITEMS["Uncommon Screw"], 108),
-            batch(ITEMS["Uncommon Injector"], 125.0),
+            batch(ITEMS["Uncommon Injector"], 125),
             batch(ITEMS["Uncommon Combustion Chamber L"], 1),
             batch(ITEMS["Uncommon Reinforced Frame L"], 1),
         ],
@@ -9173,7 +9174,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 36),
             batch(ITEMS["Advanced Injector"], 25),
-            batch(ITEMS["Advanced Combustion Chamber M"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -9185,7 +9186,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 36),
             batch(ITEMS["Advanced Injector"], 25),
-            batch(ITEMS["Advanced Combustion Chamber M"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -9197,7 +9198,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 36),
             batch(ITEMS["Advanced Injector"], 25),
-            batch(ITEMS["Advanced Combustion Chamber M"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -9209,7 +9210,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 36),
             batch(ITEMS["Advanced Injector"], 25),
-            batch(ITEMS["Advanced Combustion Chamber M"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -9221,7 +9222,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 36),
             batch(ITEMS["Basic Injector"], 25),
-            batch(ITEMS["Basic Combustion Chamber M"], 1.0),
+            batch(ITEMS["Basic Combustion Chamber M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -9233,7 +9234,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 18),
             batch(ITEMS["Uncommon Screw"], 18),
-            batch(ITEMS["Uncommon Injector"], 25.0),
+            batch(ITEMS["Uncommon Injector"], 25),
             batch(ITEMS["Uncommon Combustion Chamber M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -9246,7 +9247,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 18),
             batch(ITEMS["Uncommon Screw"], 18),
-            batch(ITEMS["Uncommon Injector"], 25.0),
+            batch(ITEMS["Uncommon Injector"], 25),
             batch(ITEMS["Uncommon Combustion Chamber M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -9259,7 +9260,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 18),
             batch(ITEMS["Uncommon Screw"], 18),
-            batch(ITEMS["Uncommon Injector"], 25.0),
+            batch(ITEMS["Uncommon Injector"], 25),
             batch(ITEMS["Uncommon Combustion Chamber M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -9272,7 +9273,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Advanced Screw"], 18),
-            batch(ITEMS["Rare Injector"], 25.0),
+            batch(ITEMS["Rare Injector"], 25),
             batch(ITEMS["Rare Combustion Chamber M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -9285,7 +9286,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Advanced Screw"], 18),
-            batch(ITEMS["Rare Injector"], 25.0),
+            batch(ITEMS["Rare Injector"], 25),
             batch(ITEMS["Rare Combustion Chamber M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -9298,7 +9299,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Advanced Screw"], 18),
-            batch(ITEMS["Rare Injector"], 25.0),
+            batch(ITEMS["Rare Injector"], 25),
             batch(ITEMS["Rare Combustion Chamber M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -9311,7 +9312,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Advanced Screw"], 18),
-            batch(ITEMS["Rare Injector"], 25.0),
+            batch(ITEMS["Rare Injector"], 25),
             batch(ITEMS["Rare Combustion Chamber M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -9324,7 +9325,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 18),
             batch(ITEMS["Uncommon Screw"], 18),
-            batch(ITEMS["Uncommon Injector"], 25.0),
+            batch(ITEMS["Uncommon Injector"], 25),
             batch(ITEMS["Uncommon Combustion Chamber M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -9337,7 +9338,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Injector"], 5),
-            batch(ITEMS["Advanced Combustion Chamber S"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -9349,7 +9350,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Injector"], 5),
-            batch(ITEMS["Advanced Combustion Chamber S"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -9361,7 +9362,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Injector"], 5),
-            batch(ITEMS["Advanced Combustion Chamber S"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -9373,7 +9374,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Injector"], 5),
-            batch(ITEMS["Advanced Combustion Chamber S"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -9385,7 +9386,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 6),
             batch(ITEMS["Basic Injector"], 5),
-            batch(ITEMS["Basic Combustion Chamber S"], 1.0),
+            batch(ITEMS["Basic Combustion Chamber S"], 1),
             batch(ITEMS["Basic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -9397,7 +9398,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 3),
             batch(ITEMS["Uncommon Screw"], 3),
-            batch(ITEMS["Uncommon Injector"], 5.0),
+            batch(ITEMS["Uncommon Injector"], 5),
             batch(ITEMS["Uncommon Combustion Chamber S"], 1),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
@@ -9410,7 +9411,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 3),
             batch(ITEMS["Uncommon Screw"], 3),
-            batch(ITEMS["Uncommon Injector"], 5.0),
+            batch(ITEMS["Uncommon Injector"], 5),
             batch(ITEMS["Uncommon Combustion Chamber S"], 1),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
@@ -9423,7 +9424,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 3),
             batch(ITEMS["Uncommon Screw"], 3),
-            batch(ITEMS["Uncommon Injector"], 5.0),
+            batch(ITEMS["Uncommon Injector"], 5),
             batch(ITEMS["Uncommon Combustion Chamber S"], 1),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
@@ -9436,7 +9437,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Injector"], 5.0),
+            batch(ITEMS["Rare Injector"], 5),
             batch(ITEMS["Rare Combustion Chamber S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -9449,7 +9450,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Injector"], 5.0),
+            batch(ITEMS["Rare Injector"], 5),
             batch(ITEMS["Rare Combustion Chamber S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -9462,7 +9463,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Injector"], 5.0),
+            batch(ITEMS["Rare Injector"], 5),
             batch(ITEMS["Rare Combustion Chamber S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -9475,7 +9476,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Injector"], 5.0),
+            batch(ITEMS["Rare Injector"], 5),
             batch(ITEMS["Rare Combustion Chamber S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -9488,7 +9489,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 3),
             batch(ITEMS["Uncommon Screw"], 3),
-            batch(ITEMS["Uncommon Injector"], 5.0),
+            batch(ITEMS["Uncommon Injector"], 5),
             batch(ITEMS["Uncommon Combustion Chamber S"], 1),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
@@ -9501,7 +9502,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 36),
             batch(ITEMS["Basic Injector"], 25),
-            batch(ITEMS["Basic Gas Cylinder M"], 1.0),
+            batch(ITEMS["Basic Gas Cylinder M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -9513,7 +9514,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Basic Injector"], 1),
-            batch(ITEMS["Basic Gas Cylinder XS"], 1.0),
+            batch(ITEMS["Basic Gas Cylinder XS"], 1),
             batch(ITEMS["Basic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -9525,7 +9526,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 6),
             batch(ITEMS["Basic Injector"], 5),
-            batch(ITEMS["Basic Gas Cylinder S"], 1.0),
+            batch(ITEMS["Basic Gas Cylinder S"], 1),
             batch(ITEMS["Basic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -9537,7 +9538,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 36),
             batch(ITEMS["Basic Injector"], 25),
-            batch(ITEMS["Basic Gas Cylinder M"], 1.0),
+            batch(ITEMS["Basic Gas Cylinder M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -9556,7 +9557,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 1),
             batch(ITEMS["Basic Injector"], 1),
-            batch(ITEMS["Basic Ionic Chamber XS"], 1.0),
+            batch(ITEMS["Basic Ionic Chamber XS"], 1),
             batch(ITEMS["Basic Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -9568,7 +9569,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 6),
             batch(ITEMS["Basic Injector"], 5),
-            batch(ITEMS["Basic Ionic Chamber S"], 1.0),
+            batch(ITEMS["Basic Ionic Chamber S"], 1),
             batch(ITEMS["Basic Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -9580,7 +9581,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 36),
             batch(ITEMS["Basic Injector"], 25),
-            batch(ITEMS["Basic Ionic Chamber M"], 1.0),
+            batch(ITEMS["Basic Ionic Chamber M"], 1),
             batch(ITEMS["Basic Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -9592,7 +9593,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Burner"], 1),
-            batch(ITEMS["Advanced Combustion Chamber XS"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber XS"], 1),
             batch(ITEMS["Advanced Standard Frame XS"], 1),
         ],
         byproducts: [],
@@ -9604,7 +9605,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Burner"], 5),
-            batch(ITEMS["Advanced Combustion Chamber S"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber S"], 1),
             batch(ITEMS["Advanced Standard Frame S"], 1),
         ],
         byproducts: [],
@@ -9616,7 +9617,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 36),
             batch(ITEMS["Advanced Burner"], 25),
-            batch(ITEMS["Advanced Combustion Chamber M"], 1.0),
+            batch(ITEMS["Advanced Combustion Chamber M"], 1),
             batch(ITEMS["Advanced Standard Frame M"], 1),
         ],
         byproducts: [],
@@ -9628,7 +9629,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1296),
             batch(ITEMS["Advanced Burner"], 625),
-            batch(ITEMS["Advanced Ionic Chamber XL"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber XL"], 1),
             batch(ITEMS["Advanced Reinforced Frame XL"], 1),
         ],
         byproducts: [],
@@ -9640,7 +9641,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1296),
             batch(ITEMS["Advanced Burner"], 625),
-            batch(ITEMS["Advanced Ionic Chamber XL"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber XL"], 1),
             batch(ITEMS["Advanced Reinforced Frame XL"], 1),
         ],
         byproducts: [],
@@ -9652,7 +9653,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1296),
             batch(ITEMS["Advanced Burner"], 625),
-            batch(ITEMS["Advanced Ionic Chamber XL"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber XL"], 1),
             batch(ITEMS["Advanced Reinforced Frame XL"], 1),
         ],
         byproducts: [],
@@ -9664,7 +9665,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1296),
             batch(ITEMS["Advanced Burner"], 625),
-            batch(ITEMS["Advanced Ionic Chamber XL"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber XL"], 1),
             batch(ITEMS["Advanced Reinforced Frame XL"], 1),
         ],
         byproducts: [],
@@ -9676,7 +9677,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1296),
             batch(ITEMS["Basic Burner"], 625),
-            batch(ITEMS["Basic Ionic Chamber XL"], 1.0),
+            batch(ITEMS["Basic Ionic Chamber XL"], 1),
             batch(ITEMS["Basic Reinforced Frame XL"], 1),
         ],
         byproducts: [],
@@ -9688,7 +9689,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 648),
             batch(ITEMS["Uncommon Screw"], 648),
-            batch(ITEMS["Uncommon Burner"], 625.0),
+            batch(ITEMS["Uncommon Burner"], 625),
             batch(ITEMS["Uncommon Ionic Chamber XL"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XL"], 1),
         ],
@@ -9701,7 +9702,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 648),
             batch(ITEMS["Uncommon Screw"], 648),
-            batch(ITEMS["Uncommon Burner"], 625.0),
+            batch(ITEMS["Uncommon Burner"], 625),
             batch(ITEMS["Uncommon Ionic Chamber XL"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XL"], 1),
         ],
@@ -9714,7 +9715,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 648),
             batch(ITEMS["Uncommon Screw"], 648),
-            batch(ITEMS["Uncommon Burner"], 625.0),
+            batch(ITEMS["Uncommon Burner"], 625),
             batch(ITEMS["Uncommon Ionic Chamber XL"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XL"], 1),
         ],
@@ -9727,7 +9728,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 648),
             batch(ITEMS["Advanced Screw"], 648),
-            batch(ITEMS["Rare Burner"], 625.0),
+            batch(ITEMS["Rare Burner"], 625),
             batch(ITEMS["Rare Ionic Chamber XL"], 1),
             batch(ITEMS["Rare Reinforced Frame XL"], 1),
         ],
@@ -9740,7 +9741,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 648),
             batch(ITEMS["Advanced Screw"], 648),
-            batch(ITEMS["Rare Burner"], 625.0),
+            batch(ITEMS["Rare Burner"], 625),
             batch(ITEMS["Rare Ionic Chamber XL"], 1),
             batch(ITEMS["Rare Reinforced Frame XL"], 1),
         ],
@@ -9753,7 +9754,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 648),
             batch(ITEMS["Advanced Screw"], 648),
-            batch(ITEMS["Rare Burner"], 625.0),
+            batch(ITEMS["Rare Burner"], 625),
             batch(ITEMS["Rare Ionic Chamber XL"], 1),
             batch(ITEMS["Rare Reinforced Frame XL"], 1),
         ],
@@ -9766,7 +9767,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 648),
             batch(ITEMS["Advanced Screw"], 648),
-            batch(ITEMS["Rare Burner"], 625.0),
+            batch(ITEMS["Rare Burner"], 625),
             batch(ITEMS["Rare Ionic Chamber XL"], 1),
             batch(ITEMS["Rare Reinforced Frame XL"], 1),
         ],
@@ -9779,7 +9780,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 648),
             batch(ITEMS["Uncommon Screw"], 648),
-            batch(ITEMS["Uncommon Burner"], 625.0),
+            batch(ITEMS["Uncommon Burner"], 625),
             batch(ITEMS["Uncommon Ionic Chamber XL"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XL"], 1),
         ],
@@ -9792,7 +9793,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Burner"], 1),
-            batch(ITEMS["Advanced Ionic Chamber XS"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -9804,7 +9805,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Burner"], 1),
-            batch(ITEMS["Advanced Ionic Chamber XS"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -9816,7 +9817,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Burner"], 1),
-            batch(ITEMS["Advanced Ionic Chamber XS"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -9828,7 +9829,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Burner"], 1),
-            batch(ITEMS["Advanced Ionic Chamber XS"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber XS"], 1),
             batch(ITEMS["Advanced Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -9840,7 +9841,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Basic Burner"], 1),
-            batch(ITEMS["Basic Ionic Chamber XS"], 1.0),
+            batch(ITEMS["Basic Ionic Chamber XS"], 1),
             batch(ITEMS["Basic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
@@ -9852,7 +9853,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Uncommon Screw"], 1),
-            batch(ITEMS["Uncommon Burner"], 1.0),
+            batch(ITEMS["Uncommon Burner"], 1),
             batch(ITEMS["Uncommon Ionic Chamber XS"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
@@ -9865,7 +9866,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Uncommon Screw"], 1),
-            batch(ITEMS["Uncommon Burner"], 1.0),
+            batch(ITEMS["Uncommon Burner"], 1),
             batch(ITEMS["Uncommon Ionic Chamber XS"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
@@ -9878,7 +9879,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Uncommon Screw"], 1),
-            batch(ITEMS["Uncommon Burner"], 1.0),
+            batch(ITEMS["Uncommon Burner"], 1),
             batch(ITEMS["Uncommon Ionic Chamber XS"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
@@ -9891,7 +9892,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Burner"], 1.0),
+            batch(ITEMS["Rare Burner"], 1),
             batch(ITEMS["Rare Ionic Chamber XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -9904,7 +9905,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Burner"], 1.0),
+            batch(ITEMS["Rare Burner"], 1),
             batch(ITEMS["Rare Ionic Chamber XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -9917,7 +9918,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Burner"], 1.0),
+            batch(ITEMS["Rare Burner"], 1),
             batch(ITEMS["Rare Ionic Chamber XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -9930,7 +9931,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Advanced Screw"], 1),
-            batch(ITEMS["Rare Burner"], 1.0),
+            batch(ITEMS["Rare Burner"], 1),
             batch(ITEMS["Rare Ionic Chamber XS"], 1),
             batch(ITEMS["Rare Reinforced Frame XS"], 1),
         ],
@@ -9943,7 +9944,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Uncommon Screw"], 1),
-            batch(ITEMS["Uncommon Burner"], 1.0),
+            batch(ITEMS["Uncommon Burner"], 1),
             batch(ITEMS["Uncommon Ionic Chamber XS"], 1),
             batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
         ],
@@ -9956,7 +9957,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 216),
             batch(ITEMS["Basic Burner"], 125),
-            batch(ITEMS["Basic Ionic Chamber L"], 1.0),
+            batch(ITEMS["Basic Ionic Chamber L"], 1),
             batch(ITEMS["Basic Reinforced Frame L"], 1),
         ],
         byproducts: [],
@@ -9968,7 +9969,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 108),
             batch(ITEMS["Uncommon Screw"], 108),
-            batch(ITEMS["Uncommon Burner"], 125.0),
+            batch(ITEMS["Uncommon Burner"], 125),
             batch(ITEMS["Uncommon Ionic Chamber L"], 1),
             batch(ITEMS["Uncommon Reinforced Frame L"], 1),
         ],
@@ -9981,7 +9982,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 108),
             batch(ITEMS["Uncommon Screw"], 108),
-            batch(ITEMS["Uncommon Burner"], 125.0),
+            batch(ITEMS["Uncommon Burner"], 125),
             batch(ITEMS["Uncommon Ionic Chamber L"], 1),
             batch(ITEMS["Uncommon Reinforced Frame L"], 1),
         ],
@@ -9994,7 +9995,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 108),
             batch(ITEMS["Uncommon Screw"], 108),
-            batch(ITEMS["Uncommon Burner"], 125.0),
+            batch(ITEMS["Uncommon Burner"], 125),
             batch(ITEMS["Uncommon Ionic Chamber L"], 1),
             batch(ITEMS["Uncommon Reinforced Frame L"], 1),
         ],
@@ -10007,7 +10008,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 108),
             batch(ITEMS["Uncommon Screw"], 108),
-            batch(ITEMS["Uncommon Burner"], 125.0),
+            batch(ITEMS["Uncommon Burner"], 125),
             batch(ITEMS["Uncommon Ionic Chamber L"], 1),
             batch(ITEMS["Uncommon Reinforced Frame L"], 1),
         ],
@@ -10020,7 +10021,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Burner"], 125),
-            batch(ITEMS["Advanced Ionic Chamber M"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -10032,7 +10033,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Burner"], 125),
-            batch(ITEMS["Advanced Ionic Chamber M"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -10044,7 +10045,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Burner"], 125),
-            batch(ITEMS["Advanced Ionic Chamber M"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -10056,7 +10057,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Burner"], 125),
-            batch(ITEMS["Advanced Ionic Chamber M"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber M"], 1),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -10068,7 +10069,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 36),
             batch(ITEMS["Basic Burner"], 25),
-            batch(ITEMS["Basic Ionic Chamber M"], 1.0),
+            batch(ITEMS["Basic Ionic Chamber M"], 1),
             batch(ITEMS["Basic Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -10080,7 +10081,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 18),
             batch(ITEMS["Uncommon Screw"], 18),
-            batch(ITEMS["Uncommon Burner"], 25.0),
+            batch(ITEMS["Uncommon Burner"], 25),
             batch(ITEMS["Uncommon Ionic Chamber M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -10093,7 +10094,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 18),
             batch(ITEMS["Uncommon Screw"], 18),
-            batch(ITEMS["Uncommon Burner"], 25.0),
+            batch(ITEMS["Uncommon Burner"], 25),
             batch(ITEMS["Uncommon Ionic Chamber M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -10106,7 +10107,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 18),
             batch(ITEMS["Uncommon Screw"], 18),
-            batch(ITEMS["Uncommon Burner"], 25.0),
+            batch(ITEMS["Uncommon Burner"], 25),
             batch(ITEMS["Uncommon Ionic Chamber M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -10119,7 +10120,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Advanced Screw"], 108),
-            batch(ITEMS["Rare Burner"], 125.0),
+            batch(ITEMS["Rare Burner"], 125),
             batch(ITEMS["Rare Ionic Chamber M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -10132,7 +10133,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Advanced Screw"], 108),
-            batch(ITEMS["Rare Burner"], 125.0),
+            batch(ITEMS["Rare Burner"], 125),
             batch(ITEMS["Rare Ionic Chamber M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -10145,7 +10146,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Advanced Screw"], 108),
-            batch(ITEMS["Rare Burner"], 125.0),
+            batch(ITEMS["Rare Burner"], 125),
             batch(ITEMS["Rare Ionic Chamber M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -10158,7 +10159,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 108),
             batch(ITEMS["Advanced Screw"], 108),
-            batch(ITEMS["Rare Burner"], 125.0),
+            batch(ITEMS["Rare Burner"], 125),
             batch(ITEMS["Rare Ionic Chamber M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
         ],
@@ -10171,7 +10172,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 18),
             batch(ITEMS["Uncommon Screw"], 18),
-            batch(ITEMS["Uncommon Burner"], 25.0),
+            batch(ITEMS["Uncommon Burner"], 25),
             batch(ITEMS["Uncommon Ionic Chamber M"], 1),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
@@ -10184,7 +10185,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Burner"], 5),
-            batch(ITEMS["Advanced Ionic Chamber S"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -10196,7 +10197,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Burner"], 5),
-            batch(ITEMS["Advanced Ionic Chamber S"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -10208,7 +10209,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Burner"], 5),
-            batch(ITEMS["Advanced Ionic Chamber S"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -10220,7 +10221,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 6),
             batch(ITEMS["Advanced Burner"], 5),
-            batch(ITEMS["Advanced Ionic Chamber S"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber S"], 1),
             batch(ITEMS["Advanced Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -10232,7 +10233,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 6),
             batch(ITEMS["Basic Burner"], 5),
-            batch(ITEMS["Basic Ionic Chamber S"], 1.0),
+            batch(ITEMS["Basic Ionic Chamber S"], 1),
             batch(ITEMS["Basic Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -10244,7 +10245,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 3),
             batch(ITEMS["Uncommon Screw"], 3),
-            batch(ITEMS["Uncommon Burner"], 5.0),
+            batch(ITEMS["Uncommon Burner"], 5),
             batch(ITEMS["Uncommon Ionic Chamber S"], 1),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
@@ -10257,7 +10258,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 3),
             batch(ITEMS["Uncommon Screw"], 3),
-            batch(ITEMS["Uncommon Burner"], 5.0),
+            batch(ITEMS["Uncommon Burner"], 5),
             batch(ITEMS["Uncommon Ionic Chamber S"], 1),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
@@ -10270,7 +10271,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 3),
             batch(ITEMS["Uncommon Screw"], 3),
-            batch(ITEMS["Uncommon Burner"], 5.0),
+            batch(ITEMS["Uncommon Burner"], 5),
             batch(ITEMS["Uncommon Ionic Chamber S"], 1),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
@@ -10283,7 +10284,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Burner"], 5.0),
+            batch(ITEMS["Rare Burner"], 5),
             batch(ITEMS["Rare Ionic Chamber S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -10296,7 +10297,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Burner"], 5.0),
+            batch(ITEMS["Rare Burner"], 5),
             batch(ITEMS["Rare Ionic Chamber S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -10309,7 +10310,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Burner"], 5.0),
+            batch(ITEMS["Rare Burner"], 5),
             batch(ITEMS["Rare Ionic Chamber S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -10322,7 +10323,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Advanced Screw"], 3),
-            batch(ITEMS["Rare Burner"], 5.0),
+            batch(ITEMS["Rare Burner"], 5),
             batch(ITEMS["Rare Ionic Chamber S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
         ],
@@ -10335,7 +10336,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 3),
             batch(ITEMS["Uncommon Screw"], 3),
-            batch(ITEMS["Uncommon Burner"], 5.0),
+            batch(ITEMS["Uncommon Burner"], 5),
             batch(ITEMS["Uncommon Ionic Chamber S"], 1),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
@@ -10348,7 +10349,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 108),
             batch(ITEMS["Advanced Component"], 108),
-            batch(ITEMS["Rare Power System"], 125.0),
+            batch(ITEMS["Rare Power System"], 125),
             batch(ITEMS["Rare Power Transformer L"], 1),
             batch(ITEMS["Rare Anti-Gravity Core"], 64),
             batch(ITEMS["Rare Reinforced Frame L"], 1),
@@ -10362,7 +10363,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 648),
             batch(ITEMS["Advanced Component"], 648),
-            batch(ITEMS["Rare Power System"], 625.0),
+            batch(ITEMS["Rare Power System"], 625),
             batch(ITEMS["Rare Power Transformer XL"], 1),
             batch(ITEMS["Rare Anti-Gravity Core"], 64),
             batch(ITEMS["Rare Reinforced Frame XL"], 1),
@@ -10376,7 +10377,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 2592),
             batch(ITEMS["Advanced Component"], 2592),
-            batch(ITEMS["Rare Power System"], 2500.0),
+            batch(ITEMS["Rare Power System"], 2500),
             batch(ITEMS["Rare Power Transformer XL"], 4),
             batch(ITEMS["Rare Anti-Gravity Core"], 1024),
             batch(ITEMS["Rare Reinforced Frame XL"], 4),
@@ -10390,7 +10391,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 36),
             batch(ITEMS["Advanced Magnet"], 25),
-            batch(ITEMS["Advanced Ionic Chamber M"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber M"], 1),
             batch(ITEMS["Advanced Anti-Gravity Core"], 16),
             batch(ITEMS["Advanced Reinforced Frame M"], 1),
         ],
@@ -10403,7 +10404,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced LED"], 1296),
             batch(ITEMS["Exotic Power System"], 625),
-            batch(ITEMS["Exotic Antenna XL"], 1.0),
+            batch(ITEMS["Exotic Antenna XL"], 1),
             batch(ITEMS["Exotic Quantum Alignment Unit"], 256),
             batch(ITEMS["Exotic Reinforced Frame XL"], 1),
         ],
@@ -10416,7 +10417,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 216),
             batch(ITEMS["Advanced Magnet"], 125),
-            batch(ITEMS["Advanced Ionic Chamber L"], 1.0),
+            batch(ITEMS["Advanced Ionic Chamber L"], 1),
             batch(ITEMS["Advanced Anti-Matter Core"], 64),
             batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
@@ -10429,7 +10430,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Basic Magnet"], 1),
-            batch(ITEMS["Basic Mechanical Sensor XS"], 1.0),
+            batch(ITEMS["Basic Mechanical Sensor XS"], 1),
             batch(ITEMS["Basic Casing XS"], 1),
         ],
         byproducts: [],
@@ -10441,7 +10442,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Basic Hydraulics"], 1),
-            batch(ITEMS["Basic Reinforced Frame XS"], 1.0),
+            batch(ITEMS["Basic Reinforced Frame XS"], 1),
         ],
         byproducts: [],
     },
@@ -10452,7 +10453,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 3),
             batch(ITEMS["Uncommon Screw"], 3),
-            batch(ITEMS["Uncommon Hydraulics"], 5.0),
+            batch(ITEMS["Uncommon Hydraulics"], 5),
             batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
@@ -10464,7 +10465,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 18),
             batch(ITEMS["Uncommon Screw"], 18),
-            batch(ITEMS["Uncommon Hydraulics"], 25.0),
+            batch(ITEMS["Uncommon Hydraulics"], 25),
             batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
         byproducts: [],
@@ -10476,20 +10477,20 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 108),
             batch(ITEMS["Uncommon Screw"], 108),
-            batch(ITEMS["Uncommon Hydraulics"], 125.0),
+            batch(ITEMS["Uncommon Hydraulics"], 125),
             batch(ITEMS["Uncommon Reinforced Frame L"], 1),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Nitron Fuel"], 100),
-        time: 60,
+        product: batch(ITEMS["Nitron Fuel"], 500),
+        time: 300,
         industry: ITEMS["Chemical Industry M"],
         ingredients: [
-            batch(ITEMS["Pure Silicon"], 20),
-            batch(ITEMS["Pure Carbon"], 20),
-            batch(ITEMS["Pure Oxygen"], 40.0),
-            batch(ITEMS["Pure Hydrogen"], 20),
+            batch(ITEMS["Pure Silicon"], 100),
+            batch(ITEMS["Pure Carbon"], 100),
+            batch(ITEMS["Oxygen"], 200),
+            batch(ITEMS["Hydrogen"], 100),
         ],
         byproducts: [],
     },
@@ -10500,52 +10501,52 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Pure Chromium"], 10),
             batch(ITEMS["Pure Sodium"], 10),
-            batch(ITEMS["Pure Oxygen"], 20.0),
-            batch(ITEMS["Pure Hydrogen"], 60),
+            batch(ITEMS["Oxygen"], 20),
+            batch(ITEMS["Hydrogen"], 60),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Kergon-X1 Fuel"], 100),
-        time: 120,
+        product: batch(ITEMS["Kergon-X1 Fuel"], 200),
+        time: 240,
         industry: ITEMS["Chemical Industry M"],
         ingredients: [
-            batch(ITEMS["Pure Sodium"], 40),
-            batch(ITEMS["Pure Oxygen"], 30),
-            batch(ITEMS["Pure Hydrogen"], 30.0),
+            batch(ITEMS["Pure Sodium"], 80),
+            batch(ITEMS["Oxygen"], 60),
+            batch(ITEMS["Hydrogen"], 60),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Kergon-X2 Fuel"], 100),
-        time: 120,
+        product: batch(ITEMS["Kergon-X2 Fuel"], 200),
+        time: 240,
         industry: ITEMS["Chemical Industry M"],
         ingredients: [
-            batch(ITEMS["Pure Calcium"], 40),
-            batch(ITEMS["Pure Oxygen"], 25),
-            batch(ITEMS["Pure Hydrogen"], 35.0),
+            batch(ITEMS["Pure Calcium"], 80),
+            batch(ITEMS["Oxygen"], 50),
+            batch(ITEMS["Hydrogen"], 70),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Kergon-X3 Fuel"], 100),
-        time: 120,
+        product: batch(ITEMS["Kergon-X3 Fuel"], 200),
+        time: 240,
         industry: ITEMS["Chemical Industry M"],
         ingredients: [
-            batch(ITEMS["Pure Chromium"], 40),
-            batch(ITEMS["Pure Oxygen"], 35),
-            batch(ITEMS["Pure Hydrogen"], 25.0),
+            batch(ITEMS["Pure Chromium"], 80),
+            batch(ITEMS["Oxygen"], 70),
+            batch(ITEMS["Hydrogen"], 50),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Kergon-X4 Fuel"], 100),
-        time: 120,
+        product: batch(ITEMS["Kergon-X4 Fuel"], 200),
+        time: 240,
         industry: ITEMS["Chemical Industry M"],
         ingredients: [
-            batch(ITEMS["Pure Copper"], 40),
-            batch(ITEMS["Pure Oxygen"], 30),
-            batch(ITEMS["Pure Hydrogen"], 30.0),
+            batch(ITEMS["Pure Copper"], 80),
+            batch(ITEMS["Oxygen"], 60),
+            batch(ITEMS["Hydrogen"], 60),
         ],
         byproducts: [],
     },
@@ -10557,31 +10558,31 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Brick Honeycomb"], 10),
-        time: 10,
+        product: batch(ITEMS["Brick Honeycomb"], 220),
+        time: 220,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Brick"], 100)],
+        ingredients: [batch(ITEMS["Brick"], 2200)],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Carbon Fiber Honeycomb"], 10),
-        time: 10,
+        product: batch(ITEMS["Carbon Fiber Honeycomb"], 220),
+        time: 220,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Carbon Fiber"], 100)],
+        ingredients: [batch(ITEMS["Carbon Fiber"], 2200)],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Concrete Honeycomb"], 10),
-        time: 10,
+        product: batch(ITEMS["Concrete Honeycomb"], 180),
+        time: 180,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Concrete"], 100)],
+        ingredients: [batch(ITEMS["Concrete"], 1800)],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Duralumin Honeycomb"], 10),
-        time: 30,
+        product: batch(ITEMS["Duralumin Honeycomb"], 60),
+        time: 180,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Duralumin"], 100)],
+        ingredients: [batch(ITEMS["Duralumin"], 600)],
         byproducts: [],
     },
     {
@@ -10620,17 +10621,17 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Marble Honeycomb"], 10),
-        time: 30,
+        product: batch(ITEMS["Marble Honeycomb"], 60),
+        time: 180,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Marble"], 100)],
+        ingredients: [batch(ITEMS["Marble"], 600)],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Plastic Honeycomb"], 10),
-        time: 10,
+        product: batch(ITEMS["Plastic Honeycomb"], 220),
+        time: 220,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Polycarbonate Plastic"], 100)],
+        ingredients: [batch(ITEMS["Polycarbonate Plastic"], 2200)],
         byproducts: [],
     },
     {
@@ -10641,59 +10642,59 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Silumin Honeycomb"], 10),
-        time: 10,
+        product: batch(ITEMS["Silumin Honeycomb"], 220),
+        time: 220,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Silumin"], 100)],
+        ingredients: [batch(ITEMS["Silumin"], 2200)],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Stainless Steel Honeycomb"], 10),
-        time: 30,
+        product: batch(ITEMS["Stainless Steel Honeycomb"], 60),
+        time: 180,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Stainless Steel"], 100)],
+        ingredients: [batch(ITEMS["Stainless Steel"], 600)],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Steel Honeycomb"], 10),
-        time: 10,
+        product: batch(ITEMS["Steel Honeycomb"], 220),
+        time: 220,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Steel"], 100)],
+        ingredients: [batch(ITEMS["Steel"], 2200)],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Wood Honeycomb"], 10),
-        time: 10,
+        product: batch(ITEMS["Wood Honeycomb"], 220),
+        time: 220,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Wood"], 100)],
+        ingredients: [batch(ITEMS["Wood"], 2200)],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Aluminim Honeycomb"], 10),
-        time: 10,
+        product: batch(ITEMS["Aluminim Honeycomb"], 220),
+        time: 220,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Pure Aluminium"], 100)],
+        ingredients: [batch(ITEMS["Pure Aluminium"], 2200)],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Calcium Honeycomb"], 10),
-        time: 30,
+        product: batch(ITEMS["Calcium Honeycomb"], 100),
+        time: 300,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Pure Calcium"], 100)],
+        ingredients: [batch(ITEMS["Pure Calcium"], 1000)],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Carbon Honeycomb"], 10),
-        time: 10,
+        product: batch(ITEMS["Carbon Honeycomb"], 220),
+        time: 220,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Pure Carbon"], 100)],
+        ingredients: [batch(ITEMS["Pure Carbon"], 2200)],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Chromium Honeycomb"], 10),
-        time: 30,
+        product: batch(ITEMS["Chromium Honeycomb"], 100),
+        time: 300,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Pure Chromium"], 100)],
+        ingredients: [batch(ITEMS["Pure Chromium"], 1000)],
         byproducts: [],
     },
     {
@@ -10704,10 +10705,10 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Copper Honeycomb"], 10),
-        time: 30,
+        product: batch(ITEMS["Copper Honeycomb"], 100),
+        time: 300,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Pure Copper"], 100)],
+        ingredients: [batch(ITEMS["Pure Copper"], 1000)],
         byproducts: [],
     },
     {
@@ -10725,10 +10726,10 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Iron Honeycomb"], 10),
-        time: 10,
+        product: batch(ITEMS["Iron Honeycomb"], 220),
+        time: 220,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Pure Iron"], 100)],
+        ingredients: [batch(ITEMS["Pure Iron"], 2200)],
         byproducts: [],
     },
     {
@@ -10767,10 +10768,10 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Silicon Honeycomb"], 10),
-        time: 10,
+        product: batch(ITEMS["Silicon Honeycomb"], 220),
+        time: 220,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Pure Silicon"], 100)],
+        ingredients: [batch(ITEMS["Pure Silicon"], 2200)],
         byproducts: [],
     },
     {
@@ -10781,10 +10782,10 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Sodium Honeycomb"], 10),
-        time: 30,
+        product: batch(ITEMS["Sodium Honeycomb"], 100),
+        time: 300,
         industry: ITEMS["Honeycomb Refinery M"],
-        ingredients: [batch(ITEMS["Pure Sodium"], 100)],
+        ingredients: [batch(ITEMS["Pure Sodium"], 1000)],
         byproducts: [],
     },
     {
@@ -10813,9 +10814,9 @@ export const RECIPES: Recipe[] = [
         time: 2500,
         industry: ITEMS["Uncommon Chemical Industry M"],
         ingredients: [
-            batch(ITEMS["Pure Hydrogen"], 300),
+            batch(ITEMS["Hydrogen"], 300),
             batch(ITEMS["Pure Iron"], 200),
-            batch(ITEMS["Pure Sodium"], 100.0),
+            batch(ITEMS["Pure Sodium"], 100),
             batch(ITEMS["Pure Sulfur"], 50),
         ],
         byproducts: [],
@@ -10825,9 +10826,9 @@ export const RECIPES: Recipe[] = [
         time: 12480,
         industry: ITEMS["Advanced Chemical Industry M"],
         ingredients: [
-            batch(ITEMS["Pure Hydrogen"], 300),
+            batch(ITEMS["Hydrogen"], 300),
             batch(ITEMS["Pure Iron"], 500),
-            batch(ITEMS["Pure Sodium"], 200.0),
+            batch(ITEMS["Pure Sodium"], 200),
             batch(ITEMS["Pure Sulfur"], 100),
             batch(ITEMS["Pure Fluorine"], 50),
         ],
@@ -10838,9 +10839,9 @@ export const RECIPES: Recipe[] = [
         time: 62520,
         industry: ITEMS["Rare Chemical Industry M"],
         ingredients: [
-            batch(ITEMS["Pure Hydrogen"], 300),
+            batch(ITEMS["Hydrogen"], 300),
             batch(ITEMS["Pure Iron"], 1000),
-            batch(ITEMS["Pure Sodium"], 500.0),
+            batch(ITEMS["Pure Sodium"], 500),
             batch(ITEMS["Pure Sulfur"], 200),
             batch(ITEMS["Pure Fluorine"], 100),
             batch(ITEMS["Pure Manganese"], 50),
@@ -10853,8 +10854,8 @@ export const RECIPES: Recipe[] = [
         industry: ITEMS["Chemical Industry M"],
         ingredients: [
             batch(ITEMS["Pure Carbon"], 100),
-            batch(ITEMS["Pure Oxygen"], 50),
-            batch(ITEMS["Pure Hydrogen"], 50.0),
+            batch(ITEMS["Oxygen"], 50),
+            batch(ITEMS["Hydrogen"], 50),
         ],
         byproducts: [],
     },
@@ -10865,7 +10866,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Pure Silicon"], 50),
             batch(ITEMS["Pure Aluminium"], 50),
-            batch(ITEMS["Pure Oxygen"], 50.0),
+            batch(ITEMS["Oxygen"], 50),
         ],
         byproducts: [],
     },
@@ -10882,8 +10883,8 @@ export const RECIPES: Recipe[] = [
         industry: ITEMS["Refiner M"],
         ingredients: [
             batch(ITEMS["Pure Calcium"], 5),
-            batch(ITEMS["Pure Carbon"], 37.5),
-            batch(ITEMS["Pure Silicon"], 37.5),
+            batch(ITEMS["Pure Carbon"], 37),
+            batch(ITEMS["Pure Silicon"], 37),
         ],
         byproducts: [],
     },
@@ -10908,9 +10909,9 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Silver Pure"], 100),
             batch(ITEMS["Pure Copper"], 50),
-            batch(ITEMS["Catalyst 3"], 1.0),
+            batch(ITEMS["Catalyst 3"], 1),
         ],
-        byproducts: [batch(ITEMS["Catalyst 3"], 1.0)],
+        byproducts: [batch(ITEMS["Catalyst 3"], 1)],
     },
     {
         product: batch(ITEMS["Red Gold"], 75),
@@ -10919,9 +10920,9 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Pure Gold"], 100),
             batch(ITEMS["Pure Copper"], 50),
-            batch(ITEMS["Catalyst 4"], 1.0),
+            batch(ITEMS["Catalyst 4"], 1),
         ],
-        byproducts: [batch(ITEMS["Catalyst 4"], 1.0)],
+        byproducts: [batch(ITEMS["Catalyst 4"], 1)],
     },
     {
         product: batch(ITEMS["Ti-Nb Supraconductor"], 75),
@@ -10930,9 +10931,9 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Niobium Pure"], 100),
             batch(ITEMS["Pure Titanium"], 50),
-            batch(ITEMS["Catalyst 5"], 1.0),
+            batch(ITEMS["Catalyst 5"], 1),
         ],
-        byproducts: [batch(ITEMS["Catalyst 5"], 1.0)],
+        byproducts: [batch(ITEMS["Catalyst 5"], 1)],
     },
     {
         product: batch(ITEMS["Advanced Glass"], 75),
@@ -10941,8 +10942,8 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Pure Sodium"], 100),
             batch(ITEMS["Pure Calcium"], 50),
-            batch(ITEMS["Pure Silicon"], 50.0),
-            batch(ITEMS["Pure Oxygen"], 50),
+            batch(ITEMS["Pure Silicon"], 50),
+            batch(ITEMS["Oxygen"], 50),
         ],
         byproducts: [],
     },
@@ -10953,17 +10954,17 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Silver Pure"], 100),
             batch(ITEMS["Pure Lithium"], 50),
-            batch(ITEMS["Pure Silicon"], 50.0),
-            batch(ITEMS["Pure Oxygen"], 50),
+            batch(ITEMS["Pure Silicon"], 50),
+            batch(ITEMS["Oxygen"], 50),
             batch(ITEMS["Catalyst 3"], 1),
         ],
-        byproducts: [batch(ITEMS["Catalyst 3"], 1.0)],
+        byproducts: [batch(ITEMS["Catalyst 3"], 1)],
     },
     {
         product: batch(ITEMS["Glass"], 75),
         time: 150,
         industry: ITEMS["Glass Furnace M"],
-        ingredients: [batch(ITEMS["Pure Silicon"], 100), batch(ITEMS["Pure Oxygen"], 50)],
+        ingredients: [batch(ITEMS["Pure Silicon"], 100), batch(ITEMS["Oxygen"], 50)],
         byproducts: [],
     },
     {
@@ -10973,11 +10974,11 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Pure Gold"], 100),
             batch(ITEMS["Pure Silicon"], 50),
-            batch(ITEMS["Pure Sodium"], 50.0),
-            batch(ITEMS["Pure Oxygen"], 50),
+            batch(ITEMS["Pure Sodium"], 50),
+            batch(ITEMS["Oxygen"], 50),
             batch(ITEMS["Catalyst 4"], 1),
         ],
-        byproducts: [batch(ITEMS["Catalyst 4"], 1.0)],
+        byproducts: [batch(ITEMS["Catalyst 4"], 1)],
     },
     {
         product: batch(ITEMS["Manganese Reinforced Glass"], 75),
@@ -10986,11 +10987,11 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Pure Manganese"], 100),
             batch(ITEMS["Pure Calcium"], 50),
-            batch(ITEMS["Pure Silicon"], 50.0),
-            batch(ITEMS["Pure Oxygen"], 50),
+            batch(ITEMS["Pure Silicon"], 50),
+            batch(ITEMS["Oxygen"], 50),
             batch(ITEMS["Catalyst 5"], 1),
         ],
-        byproducts: [batch(ITEMS["Catalyst 5"], 1.0)],
+        byproducts: [batch(ITEMS["Catalyst 5"], 1)],
     },
     {
         product: batch(ITEMS["Inconel"], 75),
@@ -10999,10 +11000,10 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Nickel Pure"], 100),
             batch(ITEMS["Pure Chromium"], 50),
-            batch(ITEMS["Pure Iron"], 50.0),
+            batch(ITEMS["Pure Iron"], 50),
             batch(ITEMS["Catalyst 3"], 1),
         ],
-        byproducts: [batch(ITEMS["Catalyst 3"], 1.0)],
+        byproducts: [batch(ITEMS["Catalyst 3"], 1)],
     },
     {
         product: batch(ITEMS["Mangalloy"], 75),
@@ -11011,10 +11012,10 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Pure Manganese"], 100),
             batch(ITEMS["Niobium Pure"], 50),
-            batch(ITEMS["Pure Iron"], 50.0),
+            batch(ITEMS["Pure Iron"], 50),
             batch(ITEMS["Catalyst 5"], 1),
         ],
-        byproducts: [batch(ITEMS["Catalyst 5"], 1.0)],
+        byproducts: [batch(ITEMS["Catalyst 5"], 1)],
     },
     {
         product: batch(ITEMS["Maraging Steel"], 75),
@@ -11023,10 +11024,10 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Pure Cobalt"], 100),
             batch(ITEMS["Nickel Pure"], 50),
-            batch(ITEMS["Pure Iron"], 50.0),
+            batch(ITEMS["Pure Iron"], 50),
             batch(ITEMS["Catalyst 4"], 1),
         ],
-        byproducts: [batch(ITEMS["Catalyst 4"], 1.0)],
+        byproducts: [batch(ITEMS["Catalyst 4"], 1)],
     },
     {
         product: batch(ITEMS["Stainless Steel"], 75),
@@ -11035,7 +11036,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Pure Chromium"], 100),
             batch(ITEMS["Pure Iron"], 50),
-            batch(ITEMS["Pure Carbon"], 50.0),
+            batch(ITEMS["Pure Carbon"], 50),
         ],
         byproducts: [],
     },
@@ -11053,9 +11054,9 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Pure Lithium"], 100),
             batch(ITEMS["Pure Aluminium"], 50),
-            batch(ITEMS["Catalyst 3"], 1.0),
+            batch(ITEMS["Catalyst 3"], 1),
         ],
-        byproducts: [batch(ITEMS["Catalyst 3"], 1.0)],
+        byproducts: [batch(ITEMS["Catalyst 3"], 1)],
     },
     {
         product: batch(ITEMS["Duralumin"], 75),
@@ -11071,10 +11072,10 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Pure Titanium"], 100),
             batch(ITEMS["Vanadium Pure"], 50),
-            batch(ITEMS["Pure Aluminium"], 50.0),
+            batch(ITEMS["Pure Aluminium"], 50),
             batch(ITEMS["Catalyst 5"], 1),
         ],
-        byproducts: [batch(ITEMS["Catalyst 5"], 1.0)],
+        byproducts: [batch(ITEMS["Catalyst 5"], 1)],
     },
     {
         product: batch(ITEMS["Sc-AL Alloy"], 75),
@@ -11083,10 +11084,10 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Scandium Pure"], 100),
             batch(ITEMS["Pure Aluminium"], 50),
-            batch(ITEMS["Pure Lithium"], 50.0),
+            batch(ITEMS["Pure Lithium"], 50),
             batch(ITEMS["Catalyst 4"], 1),
         ],
-        byproducts: [batch(ITEMS["Catalyst 4"], 1.0)],
+        byproducts: [batch(ITEMS["Catalyst 4"], 1)],
     },
     {
         product: batch(ITEMS["Silumin"], 75),
@@ -11102,7 +11103,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Pure Calcium"], 50),
             batch(ITEMS["Pure Carbon"], 50),
-            batch(ITEMS["Pure Oxygen"], 50.0),
+            batch(ITEMS["Oxygen"], 50),
         ],
         byproducts: [],
     },
@@ -11113,10 +11114,10 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Pure Fluorine"], 100),
             batch(ITEMS["Pure Carbon"], 50),
-            batch(ITEMS["Pure Hydrogen"], 50.0),
+            batch(ITEMS["Hydrogen"], 50),
             batch(ITEMS["Catalyst 4"], 1),
         ],
-        byproducts: [batch(ITEMS["Catalyst 4"], 1.0)],
+        byproducts: [batch(ITEMS["Catalyst 4"], 1)],
     },
     {
         product: batch(ITEMS["Polycalcite Plastic"], 75),
@@ -11125,7 +11126,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Pure Calcium"], 100),
             batch(ITEMS["Pure Carbon"], 50),
-            batch(ITEMS["Pure Hydrogen"], 50.0),
+            batch(ITEMS["Hydrogen"], 50),
         ],
         byproducts: [],
     },
@@ -11133,7 +11134,7 @@ export const RECIPES: Recipe[] = [
         product: batch(ITEMS["Polycarbonate Plastic"], 75),
         time: 150,
         industry: ITEMS["Chemical Industry M"],
-        ingredients: [batch(ITEMS["Pure Carbon"], 100), batch(ITEMS["Pure Hydrogen"], 50)],
+        ingredients: [batch(ITEMS["Pure Carbon"], 100), batch(ITEMS["Hydrogen"], 50)],
         byproducts: [],
     },
     {
@@ -11143,10 +11144,10 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Pure Sulfur"], 100),
             batch(ITEMS["Pure Carbon"], 50),
-            batch(ITEMS["Pure Hydrogen"], 50.0),
+            batch(ITEMS["Hydrogen"], 50),
             batch(ITEMS["Catalyst 3"], 1),
         ],
-        byproducts: [batch(ITEMS["Catalyst 3"], 1.0)],
+        byproducts: [batch(ITEMS["Catalyst 3"], 1)],
     },
     {
         product: batch(ITEMS["Vanamer"], 75),
@@ -11155,17 +11156,17 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Vanadium Pure"], 100),
             batch(ITEMS["Pure Sulfur"], 50),
-            batch(ITEMS["Pure Carbon"], 50.0),
-            batch(ITEMS["Pure Hydrogen"], 50),
+            batch(ITEMS["Pure Carbon"], 50),
+            batch(ITEMS["Hydrogen"], 50),
             batch(ITEMS["Catalyst 5"], 1),
         ],
-        byproducts: [batch(ITEMS["Catalyst 5"], 1.0)],
+        byproducts: [batch(ITEMS["Catalyst 5"], 1)],
     },
     {
         product: batch(ITEMS["Wood"], 75),
         time: 150,
         industry: ITEMS["Refiner M"],
-        ingredients: [batch(ITEMS["Pure Carbon"], 50), batch(ITEMS["Pure Oxygen"], 50)],
+        ingredients: [batch(ITEMS["Pure Carbon"], 50), batch(ITEMS["Oxygen"], 50)],
         byproducts: [],
     },
     {
@@ -11173,56 +11174,56 @@ export const RECIPES: Recipe[] = [
         time: 625,
         industry: ITEMS["Uncommon Refiner M"],
         ingredients: [batch(ITEMS["Garnierite"], 65)],
-        byproducts: [batch(ITEMS["Pure Silicon"], 7.5), batch(ITEMS["Pure Oxygen"], 7.5)],
+        byproducts: [batch(ITEMS["Pure Silicon"], 7), batch(ITEMS["Oxygen"], 7)],
     },
     {
         product: batch(ITEMS["Pure Lithium"], 45),
         time: 625,
         industry: ITEMS["Uncommon Refiner M"],
         ingredients: [batch(ITEMS["Petalite"], 65)],
-        byproducts: [batch(ITEMS["Pure Aluminium"], 7.5), batch(ITEMS["Pure Silicon"], 7.5)],
+        byproducts: [batch(ITEMS["Pure Aluminium"], 7), batch(ITEMS["Pure Silicon"], 7)],
     },
     {
         product: batch(ITEMS["Pure Sulfur"], 45),
         time: 625,
         industry: ITEMS["Uncommon Refiner M"],
         ingredients: [batch(ITEMS["Pyrite"], 65)],
-        byproducts: [batch(ITEMS["Pure Iron"], 15.0)],
+        byproducts: [batch(ITEMS["Pure Iron"], 15)],
     },
     {
         product: batch(ITEMS["Silver Pure"], 45),
         time: 625,
         industry: ITEMS["Uncommon Refiner M"],
         ingredients: [batch(ITEMS["Acanthite"], 65)],
-        byproducts: [batch(ITEMS["Pure Sulfur"], 15.0)],
+        byproducts: [batch(ITEMS["Pure Sulfur"], 15)],
     },
     {
-        product: batch(ITEMS["Pure Aluminium"], 45),
-        time: 25,
+        product: batch(ITEMS["Pure Aluminium"], 405),
+        time: 225,
         industry: ITEMS["Refiner M"],
-        ingredients: [batch(ITEMS["Bauxite"], 65)],
-        byproducts: [batch(ITEMS["Pure Hydrogen"], 15.0)],
+        ingredients: [batch(ITEMS["Bauxite"], 585)],
+        byproducts: [batch(ITEMS["Hydrogen"], 135)],
     },
     {
-        product: batch(ITEMS["Pure Carbon"], 45),
-        time: 25,
+        product: batch(ITEMS["Pure Carbon"], 405),
+        time: 225,
         industry: ITEMS["Refiner M"],
-        ingredients: [batch(ITEMS["Coal"], 65)],
-        byproducts: [batch(ITEMS["Pure Oxygen"], 7.5), batch(ITEMS["Pure Hydrogen"], 7.5)],
+        ingredients: [batch(ITEMS["Coal"], 585)],
+        byproducts: [batch(ITEMS["Oxygen"], 63), batch(ITEMS["Hydrogen"], 63)],
     },
     {
-        product: batch(ITEMS["Pure Iron"], 45),
-        time: 25,
+        product: batch(ITEMS["Pure Iron"], 405),
+        time: 225,
         industry: ITEMS["Refiner M"],
-        ingredients: [batch(ITEMS["Hematite"], 65)],
-        byproducts: [batch(ITEMS["Pure Oxygen"], 15.0)],
+        ingredients: [batch(ITEMS["Hematite"], 585)],
+        byproducts: [batch(ITEMS["Oxygen"], 135)],
     },
     {
-        product: batch(ITEMS["Pure Silicon"], 45),
-        time: 25,
+        product: batch(ITEMS["Pure Silicon"], 405),
+        time: 225,
         industry: ITEMS["Refiner M"],
-        ingredients: [batch(ITEMS["Quartz"], 65)],
-        byproducts: [batch(ITEMS["Pure Oxygen"], 15.0)],
+        ingredients: [batch(ITEMS["Quartz"], 585)],
+        byproducts: [batch(ITEMS["Oxygen"], 135)],
     },
     {
         product: batch(ITEMS["Niobium Pure"], 45),
@@ -11230,9 +11231,9 @@ export const RECIPES: Recipe[] = [
         industry: ITEMS["Rare Refiner M"],
         ingredients: [batch(ITEMS["Columbite"], 65)],
         byproducts: [
-            batch(ITEMS["Pure Iron"], 5.0),
-            batch(ITEMS["Pure Manganese"], 5.0),
-            batch(ITEMS["Pure Oxygen"], 5),
+            batch(ITEMS["Pure Iron"], 5),
+            batch(ITEMS["Pure Manganese"], 5),
+            batch(ITEMS["Oxygen"], 5),
         ],
     },
     {
@@ -11241,9 +11242,9 @@ export const RECIPES: Recipe[] = [
         industry: ITEMS["Rare Refiner M"],
         ingredients: [batch(ITEMS["Rhodonite"], 65)],
         byproducts: [
-            batch(ITEMS["Pure Calcium"], 5.0),
-            batch(ITEMS["Pure Silicon"], 5.0),
-            batch(ITEMS["Pure Oxygen"], 5),
+            batch(ITEMS["Pure Calcium"], 5),
+            batch(ITEMS["Pure Silicon"], 5),
+            batch(ITEMS["Oxygen"], 5),
         ],
     },
     {
@@ -11251,24 +11252,24 @@ export const RECIPES: Recipe[] = [
         time: 15600,
         industry: ITEMS["Rare Refiner M"],
         ingredients: [batch(ITEMS["Illmenite"], 65)],
-        byproducts: [batch(ITEMS["Pure Iron"], 7.5), batch(ITEMS["Pure Oxygen"], 7.5)],
+        byproducts: [batch(ITEMS["Pure Iron"], 7), batch(ITEMS["Oxygen"], 7)],
     },
     {
         product: batch(ITEMS["Vanadium Pure"], 45),
         time: 15600,
         industry: ITEMS["Rare Refiner M"],
         ingredients: [batch(ITEMS["Vanadinite"], 65)],
-        byproducts: [batch(ITEMS["Pure Oxygen"], 15.0)],
+        byproducts: [batch(ITEMS["Oxygen"], 15)],
     },
     {
-        product: batch(ITEMS["Pure Hydrogen"], 50),
+        product: batch(ITEMS["Hydrogen"], 50),
         time: 100,
         industry: ITEMS["Recycler M"],
         ingredients: [],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Pure Oxygen"], 50),
+        product: batch(ITEMS["Oxygen"], 50),
         time: 100,
         industry: ITEMS["Recycler M"],
         ingredients: [],
@@ -11279,14 +11280,14 @@ export const RECIPES: Recipe[] = [
         time: 3125,
         industry: ITEMS["Advanced Refiner M"],
         ingredients: [batch(ITEMS["Cryolite"], 65)],
-        byproducts: [batch(ITEMS["Pure Sodium"], 7.5), batch(ITEMS["Pure Aluminium"], 7.5)],
+        byproducts: [batch(ITEMS["Pure Sodium"], 7), batch(ITEMS["Pure Aluminium"], 7)],
     },
     {
         product: batch(ITEMS["Pure Cobalt"], 45),
         time: 3125,
         industry: ITEMS["Advanced Refiner M"],
         ingredients: [batch(ITEMS["Cobaltite"], 65)],
-        byproducts: [batch(ITEMS["Pure Sulfur"], 15.0)],
+        byproducts: [batch(ITEMS["Pure Sulfur"], 15)],
     },
     {
         product: batch(ITEMS["Pure Gold"], 45),
@@ -11300,35 +11301,35 @@ export const RECIPES: Recipe[] = [
         time: 3125,
         industry: ITEMS["Advanced Refiner M"],
         ingredients: [batch(ITEMS["Kolbeckite"], 65)],
-        byproducts: [batch(ITEMS["Pure Oxygen"], 7.5), batch(ITEMS["Pure Hydrogen"], 7.5)],
+        byproducts: [batch(ITEMS["Oxygen"], 7), batch(ITEMS["Hydrogen"], 7)],
     },
     {
         product: batch(ITEMS["Pure Calcium"], 45),
         time: 125,
         industry: ITEMS["Refiner M"],
         ingredients: [batch(ITEMS["Limestone"], 65)],
-        byproducts: [batch(ITEMS["Pure Carbon"], 7.5), batch(ITEMS["Pure Oxygen"], 7.5)],
+        byproducts: [batch(ITEMS["Pure Carbon"], 7), batch(ITEMS["Oxygen"], 7)],
     },
     {
         product: batch(ITEMS["Pure Chromium"], 45),
         time: 125,
         industry: ITEMS["Refiner M"],
         ingredients: [batch(ITEMS["Chromite"], 65)],
-        byproducts: [batch(ITEMS["Pure Iron"], 7.5), batch(ITEMS["Pure Oxygen"], 7.5)],
+        byproducts: [batch(ITEMS["Pure Iron"], 7), batch(ITEMS["Oxygen"], 7)],
     },
     {
         product: batch(ITEMS["Pure Copper"], 45),
         time: 125,
         industry: ITEMS["Refiner M"],
         ingredients: [batch(ITEMS["Malachite"], 65)],
-        byproducts: [batch(ITEMS["Pure Carbon"], 7.5), batch(ITEMS["Pure Hydrogen"], 7.5)],
+        byproducts: [batch(ITEMS["Pure Carbon"], 7), batch(ITEMS["Hydrogen"], 7)],
     },
     {
         product: batch(ITEMS["Pure Sodium"], 45),
         time: 125,
         industry: ITEMS["Refiner M"],
         ingredients: [batch(ITEMS["Natron"], 65)],
-        byproducts: [batch(ITEMS["Pure Carbon"], 7.5), batch(ITEMS["Pure Hydrogen"], 7.5)],
+        byproducts: [batch(ITEMS["Pure Carbon"], 7), batch(ITEMS["Hydrogen"], 7)],
     },
     {
         product: batch(ITEMS["Advanced Anti-Matter Capsule"], 1),
@@ -11337,17 +11338,17 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Glass"], 2),
             batch(ITEMS["Basic Connector"], 2),
-            batch(ITEMS["Advanced Glass"], 2.0),
+            batch(ITEMS["Advanced Glass"], 2),
             batch(ITEMS["Uncommon Connector"], 2),
             batch(ITEMS["Ag-Li Reinforced Glass"], 2),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Anti-Matter Capsule"], 1),
-        time: 60,
+        product: batch(ITEMS["Basic Anti-Matter Capsule"], 5),
+        time: 300,
         industry: ITEMS["Glass Furnace M"],
-        ingredients: [batch(ITEMS["Glass"], 6), batch(ITEMS["Basic Connector"], 4)],
+        ingredients: [batch(ITEMS["Glass"], 30), batch(ITEMS["Basic Connector"], 20)],
         byproducts: [],
     },
     {
@@ -11357,7 +11358,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Glass"], 2),
             batch(ITEMS["Basic Connector"], 4),
-            batch(ITEMS["Advanced Glass"], 4.0),
+            batch(ITEMS["Advanced Glass"], 4),
         ],
         byproducts: [],
     },
@@ -11368,17 +11369,17 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Silumin"], 2),
             batch(ITEMS["Basic Screw"], 2),
-            batch(ITEMS["Duralumin"], 2.0),
+            batch(ITEMS["Duralumin"], 2),
             batch(ITEMS["Uncommon Screw"], 2),
             batch(ITEMS["Al-Li Alloy"], 2),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Burner"], 1),
-        time: 60,
+        product: batch(ITEMS["Basic Burner"], 5),
+        time: 300,
         industry: ITEMS["Metalwork Industry M"],
-        ingredients: [batch(ITEMS["Silumin"], 6), batch(ITEMS["Basic Screw"], 4)],
+        ingredients: [batch(ITEMS["Silumin"], 30), batch(ITEMS["Basic Screw"], 20)],
         byproducts: [],
     },
     {
@@ -11388,7 +11389,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Uncommon Screw"], 1),
-            batch(ITEMS["Al-Li Alloy"], 2.0),
+            batch(ITEMS["Al-Li Alloy"], 2),
             batch(ITEMS["Advanced Screw"], 2),
             batch(ITEMS["Sc-AL Alloy"], 2),
             batch(ITEMS["Grade 5 Titanium Alloy"], 2),
@@ -11402,7 +11403,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Duralumin"], 2),
-            batch(ITEMS["Uncommon Screw"], 3.0),
+            batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Al-Li Alloy"], 2),
             batch(ITEMS["Sc-AL Alloy"], 2),
         ],
@@ -11415,7 +11416,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Silumin"], 2),
             batch(ITEMS["Basic Screw"], 4),
-            batch(ITEMS["Duralumin"], 4.0),
+            batch(ITEMS["Duralumin"], 4),
         ],
         byproducts: [],
     },
@@ -11426,17 +11427,20 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 2),
             batch(ITEMS["Basic Component"], 2),
-            batch(ITEMS["Polycalcite Plastic"], 2.0),
+            batch(ITEMS["Polycalcite Plastic"], 2),
             batch(ITEMS["Uncommon Component"], 2),
             batch(ITEMS["Polysulfide Plastic"], 2),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Electronics"], 1),
-        time: 60,
+        product: batch(ITEMS["Basic Electronics"], 5),
+        time: 300,
         industry: ITEMS["Electronics Industry M"],
-        ingredients: [batch(ITEMS["Polycarbonate Plastic"], 6), batch(ITEMS["Basic Component"], 4)],
+        ingredients: [
+            batch(ITEMS["Polycarbonate Plastic"], 30),
+            batch(ITEMS["Basic Component"], 20),
+        ],
         byproducts: [],
     },
     {
@@ -11446,7 +11450,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Polysulfide Plastic"], 2.0),
+            batch(ITEMS["Polysulfide Plastic"], 2),
             batch(ITEMS["Advanced Component"], 2),
             batch(ITEMS["Fluoropolymer"], 2),
             batch(ITEMS["Vanamer"], 2),
@@ -11460,7 +11464,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Polycalcite Plastic"], 2),
-            batch(ITEMS["Uncommon Component"], 3.0),
+            batch(ITEMS["Uncommon Component"], 3),
             batch(ITEMS["Polysulfide Plastic"], 2),
             batch(ITEMS["Fluoropolymer"], 2),
         ],
@@ -11473,7 +11477,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 2),
             batch(ITEMS["Basic Component"], 4),
-            batch(ITEMS["Polycalcite Plastic"], 4.0),
+            batch(ITEMS["Polycalcite Plastic"], 4),
         ],
         byproducts: [],
     },
@@ -11484,17 +11488,20 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 2),
             batch(ITEMS["Basic Connector"], 2),
-            batch(ITEMS["Polycalcite Plastic"], 2.0),
+            batch(ITEMS["Polycalcite Plastic"], 2),
             batch(ITEMS["Uncommon Connector"], 2),
             batch(ITEMS["Polysulfide Plastic"], 2),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Explosive Module"], 1),
-        time: 60,
+        product: batch(ITEMS["Basic Explosive Module"], 5),
+        time: 300,
         industry: ITEMS["Chemical Industry M"],
-        ingredients: [batch(ITEMS["Polycarbonate Plastic"], 6), batch(ITEMS["Basic Connector"], 4)],
+        ingredients: [
+            batch(ITEMS["Polycarbonate Plastic"], 30),
+            batch(ITEMS["Basic Connector"], 20),
+        ],
         byproducts: [],
     },
     {
@@ -11504,7 +11511,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 2),
             batch(ITEMS["Basic Connector"], 4),
-            batch(ITEMS["Polycalcite Plastic"], 4.0),
+            batch(ITEMS["Polycalcite Plastic"], 4),
         ],
         byproducts: [],
     },
@@ -11515,17 +11522,17 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 2),
             batch(ITEMS["Basic Pipe"], 2),
-            batch(ITEMS["Stainless Steel"], 2.0),
+            batch(ITEMS["Stainless Steel"], 2),
             batch(ITEMS["Uncommon Pipe"], 2),
             batch(ITEMS["Inconel"], 2),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Hydraulics"], 1),
-        time: 60,
+        product: batch(ITEMS["Basic Hydraulics"], 5),
+        time: 300,
         industry: ITEMS["Metalwork Industry M"],
-        ingredients: [batch(ITEMS["Steel"], 6), batch(ITEMS["Basic Pipe"], 4)],
+        ingredients: [batch(ITEMS["Steel"], 30), batch(ITEMS["Basic Pipe"], 20)],
         byproducts: [],
     },
     {
@@ -11535,7 +11542,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 1),
             batch(ITEMS["Uncommon Pipe"], 1),
-            batch(ITEMS["Inconel"], 2.0),
+            batch(ITEMS["Inconel"], 2),
             batch(ITEMS["Advanced Pipe"], 2),
             batch(ITEMS["Maraging Steel"], 2),
             batch(ITEMS["Mangalloy"], 2),
@@ -11549,7 +11556,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 1),
             batch(ITEMS["Stainless Steel"], 2),
-            batch(ITEMS["Uncommon Pipe"], 3.0),
+            batch(ITEMS["Uncommon Pipe"], 3),
             batch(ITEMS["Inconel"], 2),
             batch(ITEMS["Maraging Steel"], 2),
         ],
@@ -11562,7 +11569,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 2),
             batch(ITEMS["Basic Pipe"], 4),
-            batch(ITEMS["Stainless Steel"], 4.0),
+            batch(ITEMS["Stainless Steel"], 4),
         ],
         byproducts: [],
     },
@@ -11573,17 +11580,17 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 2),
             batch(ITEMS["Basic Screw"], 2),
-            batch(ITEMS["Polycalcite Plastic"], 2.0),
+            batch(ITEMS["Polycalcite Plastic"], 2),
             batch(ITEMS["Uncommon Screw"], 2),
             batch(ITEMS["Polysulfide Plastic"], 2),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Injector"], 1),
-        time: 60,
+        product: batch(ITEMS["Basic Injector"], 5),
+        time: 300,
         industry: ITEMS["3D Printer M"],
-        ingredients: [batch(ITEMS["Polycarbonate Plastic"], 6), batch(ITEMS["Basic Screw"], 4)],
+        ingredients: [batch(ITEMS["Polycarbonate Plastic"], 30), batch(ITEMS["Basic Screw"], 20)],
         byproducts: [],
     },
     {
@@ -11593,7 +11600,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Polycalcite Plastic"], 2),
-            batch(ITEMS["Uncommon Screw"], 3.0),
+            batch(ITEMS["Uncommon Screw"], 3),
             batch(ITEMS["Polysulfide Plastic"], 2),
             batch(ITEMS["Fluoropolymer"], 2),
         ],
@@ -11606,7 +11613,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 2),
             batch(ITEMS["Basic Screw"], 4),
-            batch(ITEMS["Polycalcite Plastic"], 4.0),
+            batch(ITEMS["Polycalcite Plastic"], 4),
         ],
         byproducts: [],
     },
@@ -11617,17 +11624,17 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 2),
             batch(ITEMS["Basic Connector"], 2),
-            batch(ITEMS["Stainless Steel"], 2.0),
+            batch(ITEMS["Stainless Steel"], 2),
             batch(ITEMS["Uncommon Connector"], 2),
             batch(ITEMS["Inconel"], 2),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Magnet"], 1),
-        time: 60,
+        product: batch(ITEMS["Basic Magnet"], 5),
+        time: 300,
         industry: ITEMS["Metalwork Industry M"],
-        ingredients: [batch(ITEMS["Steel"], 6), batch(ITEMS["Basic Connector"], 4)],
+        ingredients: [batch(ITEMS["Steel"], 30), batch(ITEMS["Basic Connector"], 20)],
         byproducts: [],
     },
     {
@@ -11637,7 +11644,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Uncommon Connector"], 1),
-            batch(ITEMS["Inconel"], 2.0),
+            batch(ITEMS["Inconel"], 2),
             batch(ITEMS["Advanced Connector"], 2),
             batch(ITEMS["Maraging Steel"], 2),
             batch(ITEMS["Mangalloy"], 2),
@@ -11651,7 +11658,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Stainless Steel"], 2),
-            batch(ITEMS["Uncommon Connector"], 3.0),
+            batch(ITEMS["Uncommon Connector"], 3),
             batch(ITEMS["Inconel"], 2),
             batch(ITEMS["Maraging Steel"], 2),
         ],
@@ -11664,7 +11671,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 2),
             batch(ITEMS["Basic Connector"], 4),
-            batch(ITEMS["Stainless Steel"], 4.0),
+            batch(ITEMS["Stainless Steel"], 4),
         ],
         byproducts: [],
     },
@@ -11675,17 +11682,17 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Glass"], 2),
             batch(ITEMS["Basic Fixation"], 2),
-            batch(ITEMS["Advanced Glass"], 2.0),
+            batch(ITEMS["Advanced Glass"], 2),
             batch(ITEMS["Uncommon Fixation"], 2),
             batch(ITEMS["Ag-Li Reinforced Glass"], 2),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Optics"], 1),
-        time: 60,
+        product: batch(ITEMS["Basic Optics"], 5),
+        time: 300,
         industry: ITEMS["Glass Furnace M"],
-        ingredients: [batch(ITEMS["Glass"], 6), batch(ITEMS["Basic Fixation"], 4)],
+        ingredients: [batch(ITEMS["Glass"], 30), batch(ITEMS["Basic Fixation"], 20)],
         byproducts: [],
     },
     {
@@ -11695,7 +11702,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Fixation"], 1),
             batch(ITEMS["Uncommon Fixation"], 1),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 2.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 2),
             batch(ITEMS["Advanced Fixation"], 2),
             batch(ITEMS["Gold Coated Glass"], 2),
             batch(ITEMS["Manganese Reinforced Glass"], 2),
@@ -11709,7 +11716,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Fixation"], 1),
             batch(ITEMS["Advanced Glass"], 2),
-            batch(ITEMS["Uncommon Fixation"], 3.0),
+            batch(ITEMS["Uncommon Fixation"], 3),
             batch(ITEMS["Ag-Li Reinforced Glass"], 2),
             batch(ITEMS["Gold Coated Glass"], 2),
         ],
@@ -11722,7 +11729,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Glass"], 2),
             batch(ITEMS["Basic Fixation"], 4),
-            batch(ITEMS["Advanced Glass"], 4.0),
+            batch(ITEMS["Advanced Glass"], 4),
         ],
         byproducts: [],
     },
@@ -11733,17 +11740,17 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 2),
             batch(ITEMS["Basic Connector"], 2),
-            batch(ITEMS["Calcium Reinforced Copper"], 2.0),
+            batch(ITEMS["Calcium Reinforced Copper"], 2),
             batch(ITEMS["Uncommon Connector"], 2),
             batch(ITEMS["Cu-Ag Alloy"], 2),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Power System"], 1),
-        time: 60,
+        product: batch(ITEMS["Basic Power System"], 5),
+        time: 300,
         industry: ITEMS["Electronics Industry M"],
-        ingredients: [batch(ITEMS["Al-Fe Alloy"], 6), batch(ITEMS["Basic Connector"], 4)],
+        ingredients: [batch(ITEMS["Al-Fe Alloy"], 30), batch(ITEMS["Basic Connector"], 20)],
         byproducts: [],
     },
     {
@@ -11753,7 +11760,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Uncommon Connector"], 1),
-            batch(ITEMS["Cu-Ag Alloy"], 2.0),
+            batch(ITEMS["Cu-Ag Alloy"], 2),
             batch(ITEMS["Advanced Connector"], 2),
             batch(ITEMS["Red Gold"], 2),
             batch(ITEMS["Ti-Nb Supraconductor"], 2),
@@ -11767,7 +11774,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Calcium Reinforced Copper"], 2),
-            batch(ITEMS["Uncommon Connector"], 3.0),
+            batch(ITEMS["Uncommon Connector"], 3),
             batch(ITEMS["Cu-Ag Alloy"], 2),
             batch(ITEMS["Red Gold"], 2),
         ],
@@ -11780,7 +11787,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 2),
             batch(ITEMS["Basic Connector"], 4),
-            batch(ITEMS["Calcium Reinforced Copper"], 4.0),
+            batch(ITEMS["Calcium Reinforced Copper"], 4),
         ],
         byproducts: [],
     },
@@ -11791,17 +11798,17 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 2),
             batch(ITEMS["Basic Fixation"], 2),
-            batch(ITEMS["Calcium Reinforced Copper"], 2.0),
+            batch(ITEMS["Calcium Reinforced Copper"], 2),
             batch(ITEMS["Uncommon Fixation"], 2),
             batch(ITEMS["Cu-Ag Alloy"], 2),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Processor"], 1),
-        time: 60,
+        product: batch(ITEMS["Basic Processor"], 5),
+        time: 300,
         industry: ITEMS["Electronics Industry M"],
-        ingredients: [batch(ITEMS["Al-Fe Alloy"], 6), batch(ITEMS["Basic Fixation"], 4)],
+        ingredients: [batch(ITEMS["Al-Fe Alloy"], 30), batch(ITEMS["Basic Fixation"], 20)],
         byproducts: [],
     },
     {
@@ -11811,7 +11818,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 2),
             batch(ITEMS["Basic Fixation"], 4),
-            batch(ITEMS["Calcium Reinforced Copper"], 4.0),
+            batch(ITEMS["Calcium Reinforced Copper"], 4),
         ],
         byproducts: [],
     },
@@ -11822,17 +11829,17 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 2),
             batch(ITEMS["Basic LED"], 2),
-            batch(ITEMS["Polycalcite Plastic"], 2.0),
+            batch(ITEMS["Polycalcite Plastic"], 2),
             batch(ITEMS["Uncommon LED"], 2),
             batch(ITEMS["Polysulfide Plastic"], 2),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Quantum Core"], 1),
-        time: 60,
+        product: batch(ITEMS["Basic Quantum Core"], 5),
+        time: 300,
         industry: ITEMS["3D Printer M"],
-        ingredients: [batch(ITEMS["Polycarbonate Plastic"], 6), batch(ITEMS["Basic LED"], 4)],
+        ingredients: [batch(ITEMS["Polycarbonate Plastic"], 30), batch(ITEMS["Basic LED"], 20)],
         byproducts: [],
     },
     {
@@ -11842,7 +11849,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 1),
             batch(ITEMS["Uncommon LED"], 1),
-            batch(ITEMS["Polysulfide Plastic"], 2.0),
+            batch(ITEMS["Polysulfide Plastic"], 2),
             batch(ITEMS["Advanced LED"], 2),
             batch(ITEMS["Fluoropolymer"], 2),
             batch(ITEMS["Vanamer"], 2),
@@ -11856,7 +11863,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 1),
             batch(ITEMS["Polycalcite Plastic"], 2),
-            batch(ITEMS["Uncommon LED"], 3.0),
+            batch(ITEMS["Uncommon LED"], 3),
             batch(ITEMS["Polysulfide Plastic"], 2),
             batch(ITEMS["Fluoropolymer"], 2),
         ],
@@ -11869,7 +11876,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 2),
             batch(ITEMS["Basic LED"], 4),
-            batch(ITEMS["Polycalcite Plastic"], 4.0),
+            batch(ITEMS["Polycalcite Plastic"], 4),
         ],
         byproducts: [],
     },
@@ -11880,17 +11887,17 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 2),
             batch(ITEMS["Basic Component"], 2),
-            batch(ITEMS["Stainless Steel"], 2.0),
+            batch(ITEMS["Stainless Steel"], 2),
             batch(ITEMS["Uncommon Component"], 2),
             batch(ITEMS["Inconel"], 2),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Singularity Container"], 1),
-        time: 60,
+        product: batch(ITEMS["Basic Singularity Container"], 5),
+        time: 300,
         industry: ITEMS["Metalwork Industry M"],
-        ingredients: [batch(ITEMS["Steel"], 6), batch(ITEMS["Basic Component"], 4)],
+        ingredients: [batch(ITEMS["Steel"], 30), batch(ITEMS["Basic Component"], 20)],
         byproducts: [],
     },
     {
@@ -11900,7 +11907,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Uncommon Component"], 1),
-            batch(ITEMS["Inconel"], 2.0),
+            batch(ITEMS["Inconel"], 2),
             batch(ITEMS["Advanced Component"], 2),
             batch(ITEMS["Maraging Steel"], 2),
             batch(ITEMS["Mangalloy"], 2),
@@ -11914,7 +11921,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 1),
             batch(ITEMS["Stainless Steel"], 2),
-            batch(ITEMS["Uncommon Component"], 3.0),
+            batch(ITEMS["Uncommon Component"], 3),
             batch(ITEMS["Inconel"], 2),
             batch(ITEMS["Maraging Steel"], 2),
         ],
@@ -11927,7 +11934,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 2),
             batch(ITEMS["Basic Component"], 4),
-            batch(ITEMS["Stainless Steel"], 4.0),
+            batch(ITEMS["Stainless Steel"], 4),
         ],
         byproducts: [],
     },
@@ -11938,7 +11945,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 2),
             batch(ITEMS["Basic Pipe"], 2),
-            batch(ITEMS["Stainless Steel"], 2.0),
+            batch(ITEMS["Stainless Steel"], 2),
             batch(ITEMS["Uncommon Pipe"], 2),
             batch(ITEMS["Inconel"], 2),
         ],
@@ -11951,7 +11958,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 2),
             batch(ITEMS["Basic Pipe"], 4),
-            batch(ITEMS["Stainless Steel"], 4.0),
+            batch(ITEMS["Stainless Steel"], 4),
         ],
         byproducts: [],
     },
@@ -11962,7 +11969,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Silumin"], 5),
             batch(ITEMS["Basic Component"], 10),
-            batch(ITEMS["Basic Singularity Container"], 3.0),
+            batch(ITEMS["Basic Singularity Container"], 3),
             batch(ITEMS["Duralumin"], 5),
             batch(ITEMS["Uncommon Singularity Container"], 1),
             batch(ITEMS["Al-Li Alloy"], 5),
@@ -11977,7 +11984,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Silumin"], 5),
             batch(ITEMS["Basic Singularity Container"], 1),
-            batch(ITEMS["Duralumin"], 5.0),
+            batch(ITEMS["Duralumin"], 5),
             batch(ITEMS["Uncommon Component"], 5),
             batch(ITEMS["Uncommon Singularity Container"], 1),
             batch(ITEMS["Al-Li Alloy"], 5),
@@ -11997,7 +12004,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Silumin"], 5),
             batch(ITEMS["Basic Component"], 5),
-            batch(ITEMS["Basic Singularity Container"], 2.0),
+            batch(ITEMS["Basic Singularity Container"], 2),
             batch(ITEMS["Duralumin"], 5),
             batch(ITEMS["Uncommon Component"], 5),
             batch(ITEMS["Uncommon Singularity Container"], 1),
@@ -12015,7 +12022,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 5),
             batch(ITEMS["Basic Component"], 10),
-            batch(ITEMS["Basic Anti-Matter Capsule"], 3.0),
+            batch(ITEMS["Basic Anti-Matter Capsule"], 3),
             batch(ITEMS["Calcium Reinforced Copper"], 5),
             batch(ITEMS["Uncommon Anti-Matter Capsule"], 1),
             batch(ITEMS["Cu-Ag Alloy"], 5),
@@ -12030,7 +12037,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 5),
             batch(ITEMS["Basic LED"], 10),
-            batch(ITEMS["Basic Quantum Core"], 3.0),
+            batch(ITEMS["Basic Quantum Core"], 3),
             batch(ITEMS["Polycalcite Plastic"], 5),
             batch(ITEMS["Uncommon Quantum Core"], 1),
             batch(ITEMS["Polysulfide Plastic"], 5),
@@ -12045,7 +12052,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 5),
             batch(ITEMS["Basic Quantum Core"], 1),
-            batch(ITEMS["Polycalcite Plastic"], 5.0),
+            batch(ITEMS["Polycalcite Plastic"], 5),
             batch(ITEMS["Uncommon LED"], 5),
             batch(ITEMS["Uncommon Quantum Core"], 1),
             batch(ITEMS["Polysulfide Plastic"], 5),
@@ -12065,7 +12072,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Silumin"], 5),
             batch(ITEMS["Basic LED"], 10),
-            batch(ITEMS["Basic Quantum Core"], 3.0),
+            batch(ITEMS["Basic Quantum Core"], 3),
             batch(ITEMS["Duralumin"], 5),
             batch(ITEMS["Uncommon Quantum Core"], 1),
             batch(ITEMS["Al-Li Alloy"], 5),
@@ -12080,7 +12087,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 2),
             batch(ITEMS["Basic Power System"], 2),
-            batch(ITEMS["Uncommon Screw"], 2.0),
+            batch(ITEMS["Uncommon Screw"], 2),
             batch(ITEMS["Uncommon Power System"], 2),
             batch(ITEMS["Cu-Ag Alloy"], 7),
             batch(ITEMS["Advanced Screw"], 2),
@@ -12095,7 +12102,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 8),
             batch(ITEMS["Basic Power System"], 8),
-            batch(ITEMS["Uncommon Screw"], 8.0),
+            batch(ITEMS["Uncommon Screw"], 8),
             batch(ITEMS["Uncommon Power System"], 8),
             batch(ITEMS["Cu-Ag Alloy"], 49),
             batch(ITEMS["Advanced Screw"], 10),
@@ -12110,7 +12117,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 38),
             batch(ITEMS["Basic Power System"], 38),
-            batch(ITEMS["Uncommon Screw"], 38.0),
+            batch(ITEMS["Uncommon Screw"], 38),
             batch(ITEMS["Uncommon Power System"], 38),
             batch(ITEMS["Cu-Ag Alloy"], 343),
             batch(ITEMS["Advanced Screw"], 50),
@@ -12139,7 +12146,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 5),
             batch(ITEMS["Advanced Power System"], 2),
-            batch(ITEMS["Rare Power System"], 2.0),
+            batch(ITEMS["Rare Power System"], 2),
             batch(ITEMS["Ti-Nb Supraconductor"], 7),
             batch(ITEMS["Exotic Power System"], 2),
         ],
@@ -12152,7 +12159,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 25),
             batch(ITEMS["Advanced Power System"], 8),
-            batch(ITEMS["Rare Power System"], 8.0),
+            batch(ITEMS["Rare Power System"], 8),
             batch(ITEMS["Ti-Nb Supraconductor"], 49),
             batch(ITEMS["Exotic Power System"], 10),
         ],
@@ -12165,7 +12172,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 125),
             batch(ITEMS["Advanced Power System"], 38),
-            batch(ITEMS["Rare Power System"], 38.0),
+            batch(ITEMS["Rare Power System"], 38),
             batch(ITEMS["Ti-Nb Supraconductor"], 343),
             batch(ITEMS["Exotic Power System"], 50),
         ],
@@ -12178,7 +12185,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Screw"], 625),
             batch(ITEMS["Advanced Power System"], 188),
-            batch(ITEMS["Rare Power System"], 188.0),
+            batch(ITEMS["Rare Power System"], 188),
             batch(ITEMS["Ti-Nb Supraconductor"], 2401),
             batch(ITEMS["Exotic Power System"], 250),
         ],
@@ -12191,7 +12198,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 2),
             batch(ITEMS["Uncommon Power System"], 2),
-            batch(ITEMS["Advanced Screw"], 4.0),
+            batch(ITEMS["Advanced Screw"], 4),
             batch(ITEMS["Advanced Power System"], 2),
             batch(ITEMS["Red Gold"], 7),
             batch(ITEMS["Rare Power System"], 2),
@@ -12205,7 +12212,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 8),
             batch(ITEMS["Uncommon Power System"], 8),
-            batch(ITEMS["Advanced Screw"], 18.0),
+            batch(ITEMS["Advanced Screw"], 18),
             batch(ITEMS["Advanced Power System"], 8),
             batch(ITEMS["Red Gold"], 49),
             batch(ITEMS["Rare Power System"], 10),
@@ -12219,7 +12226,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 38),
             batch(ITEMS["Uncommon Power System"], 38),
-            batch(ITEMS["Advanced Screw"], 88.0),
+            batch(ITEMS["Advanced Screw"], 88),
             batch(ITEMS["Advanced Power System"], 38),
             batch(ITEMS["Red Gold"], 343),
             batch(ITEMS["Rare Power System"], 50),
@@ -12233,7 +12240,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Basic Power System"], 1),
-            batch(ITEMS["Calcium Reinforced Copper"], 1.0),
+            batch(ITEMS["Calcium Reinforced Copper"], 1),
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Uncommon Power System"], 1),
         ],
@@ -12246,7 +12253,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 2),
             batch(ITEMS["Basic Power System"], 2),
-            batch(ITEMS["Calcium Reinforced Copper"], 7.0),
+            batch(ITEMS["Calcium Reinforced Copper"], 7),
             batch(ITEMS["Uncommon Screw"], 4),
             batch(ITEMS["Uncommon Power System"], 4),
         ],
@@ -12259,7 +12266,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 8),
             batch(ITEMS["Basic Power System"], 8),
-            batch(ITEMS["Calcium Reinforced Copper"], 49.0),
+            batch(ITEMS["Calcium Reinforced Copper"], 49),
             batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Uncommon Power System"], 18),
         ],
@@ -12272,7 +12279,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 38),
             batch(ITEMS["Basic Power System"], 38),
-            batch(ITEMS["Calcium Reinforced Copper"], 343.0),
+            batch(ITEMS["Calcium Reinforced Copper"], 343),
             batch(ITEMS["Uncommon Screw"], 88),
             batch(ITEMS["Uncommon Power System"], 88),
         ],
@@ -12285,7 +12292,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 2),
             batch(ITEMS["Basic Electronics"], 2),
-            batch(ITEMS["Uncommon Screw"], 2.0),
+            batch(ITEMS["Uncommon Screw"], 2),
             batch(ITEMS["Uncommon Electronics"], 2),
             batch(ITEMS["Al-Li Alloy"], 7),
             batch(ITEMS["Advanced Screw"], 2),
@@ -12300,7 +12307,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 8),
             batch(ITEMS["Basic Electronics"], 8),
-            batch(ITEMS["Uncommon Screw"], 8.0),
+            batch(ITEMS["Uncommon Screw"], 8),
             batch(ITEMS["Uncommon Electronics"], 8),
             batch(ITEMS["Al-Li Alloy"], 49),
             batch(ITEMS["Advanced Screw"], 10),
@@ -12315,7 +12322,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 38),
             batch(ITEMS["Basic Electronics"], 38),
-            batch(ITEMS["Uncommon Screw"], 38.0),
+            batch(ITEMS["Uncommon Screw"], 38),
             batch(ITEMS["Uncommon Electronics"], 38),
             batch(ITEMS["Al-Li Alloy"], 343),
             batch(ITEMS["Advanced Screw"], 50),
@@ -12330,7 +12337,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 188),
             batch(ITEMS["Basic Electronics"], 188),
-            batch(ITEMS["Uncommon Screw"], 188.0),
+            batch(ITEMS["Uncommon Screw"], 188),
             batch(ITEMS["Uncommon Electronics"], 188),
             batch(ITEMS["Al-Li Alloy"], 2401),
             batch(ITEMS["Advanced Screw"], 250),
@@ -12380,7 +12387,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 8),
             batch(ITEMS["Uncommon Electronics"], 8),
-            batch(ITEMS["Advanced Screw"], 18.0),
+            batch(ITEMS["Advanced Screw"], 18),
             batch(ITEMS["Advanced Electronics"], 8),
             batch(ITEMS["Sc-AL Alloy"], 49),
             batch(ITEMS["Rare Electronics"], 10),
@@ -12394,7 +12401,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 8),
             batch(ITEMS["Basic Electronics"], 8),
-            batch(ITEMS["Duralumin"], 49.0),
+            batch(ITEMS["Duralumin"], 49),
             batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Uncommon Electronics"], 18),
         ],
@@ -12407,7 +12414,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 1),
             batch(ITEMS["Basic Burner"], 1),
-            batch(ITEMS["Uncommon Pipe"], 1.0),
+            batch(ITEMS["Uncommon Pipe"], 1),
             batch(ITEMS["Uncommon Burner"], 1),
             batch(ITEMS["Inconel"], 1),
             batch(ITEMS["Advanced Pipe"], 1),
@@ -12422,7 +12429,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 2),
             batch(ITEMS["Basic Burner"], 2),
-            batch(ITEMS["Uncommon Pipe"], 2.0),
+            batch(ITEMS["Uncommon Pipe"], 2),
             batch(ITEMS["Uncommon Burner"], 2),
             batch(ITEMS["Inconel"], 7),
             batch(ITEMS["Advanced Pipe"], 2),
@@ -12437,7 +12444,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 8),
             batch(ITEMS["Basic Burner"], 8),
-            batch(ITEMS["Uncommon Pipe"], 8.0),
+            batch(ITEMS["Uncommon Pipe"], 8),
             batch(ITEMS["Uncommon Burner"], 8),
             batch(ITEMS["Inconel"], 49),
             batch(ITEMS["Advanced Pipe"], 10),
@@ -12452,7 +12459,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], -1),
             batch(ITEMS["Basic Burner"], 38),
-            batch(ITEMS["Uncommon Pipe"], 38.0),
+            batch(ITEMS["Uncommon Pipe"], 38),
             batch(ITEMS["Uncommon Burner"], 38),
             batch(ITEMS["Inconel"], 343),
             batch(ITEMS["Advanced Pipe"], 50),
@@ -12495,7 +12502,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 1),
             batch(ITEMS["Uncommon Burner"], 1),
-            batch(ITEMS["Advanced Pipe"], 1.0),
+            batch(ITEMS["Advanced Pipe"], 1),
             batch(ITEMS["Advanced Burner"], 1),
             batch(ITEMS["Maraging Steel"], 1),
             batch(ITEMS["Rare Burner"], 1),
@@ -12509,7 +12516,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 2),
             batch(ITEMS["Uncommon Burner"], 2),
-            batch(ITEMS["Advanced Pipe"], 4.0),
+            batch(ITEMS["Advanced Pipe"], 4),
             batch(ITEMS["Advanced Burner"], 2),
             batch(ITEMS["Maraging Steel"], 7),
             batch(ITEMS["Rare Burner"], 2),
@@ -12523,7 +12530,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 8),
             batch(ITEMS["Uncommon Burner"], 8),
-            batch(ITEMS["Advanced Pipe"], 18.0),
+            batch(ITEMS["Advanced Pipe"], 18),
             batch(ITEMS["Advanced Burner"], 8),
             batch(ITEMS["Maraging Steel"], 49),
             batch(ITEMS["Rare Burner"], 10),
@@ -12537,7 +12544,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 38),
             batch(ITEMS["Uncommon Burner"], 38),
-            batch(ITEMS["Advanced Pipe"], 88.0),
+            batch(ITEMS["Advanced Pipe"], 88),
             batch(ITEMS["Advanced Burner"], 38),
             batch(ITEMS["Maraging Steel"], 343),
             batch(ITEMS["Rare Burner"], 50),
@@ -12551,7 +12558,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 1),
             batch(ITEMS["Basic Burner"], 1),
-            batch(ITEMS["Stainless Steel"], 1.0),
+            batch(ITEMS["Stainless Steel"], 1),
             batch(ITEMS["Uncommon Pipe"], 1),
             batch(ITEMS["Uncommon Burner"], 1),
         ],
@@ -12564,7 +12571,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 2),
             batch(ITEMS["Basic Burner"], 2),
-            batch(ITEMS["Stainless Steel"], 7.0),
+            batch(ITEMS["Stainless Steel"], 7),
             batch(ITEMS["Uncommon Pipe"], 4),
             batch(ITEMS["Uncommon Burner"], 4),
         ],
@@ -12577,7 +12584,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 8),
             batch(ITEMS["Basic Burner"], 8),
-            batch(ITEMS["Stainless Steel"], 49.0),
+            batch(ITEMS["Stainless Steel"], 49),
             batch(ITEMS["Uncommon Pipe"], 18),
             batch(ITEMS["Uncommon Burner"], 18),
         ],
@@ -12590,7 +12597,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 38),
             batch(ITEMS["Basic Burner"], 38),
-            batch(ITEMS["Stainless Steel"], 343.0),
+            batch(ITEMS["Stainless Steel"], 343),
             batch(ITEMS["Uncommon Pipe"], 88),
             batch(ITEMS["Uncommon Burner"], 88),
         ],
@@ -12603,7 +12610,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 2),
             batch(ITEMS["Basic Processor"], 2),
-            batch(ITEMS["Uncommon Component"], 2.0),
+            batch(ITEMS["Uncommon Component"], 2),
             batch(ITEMS["Uncommon Processor"], 2),
             batch(ITEMS["Polysulfide Plastic"], 7),
             batch(ITEMS["Advanced Component"], 2),
@@ -12618,7 +12625,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 8),
             batch(ITEMS["Basic Processor"], 8),
-            batch(ITEMS["Uncommon Component"], 8.0),
+            batch(ITEMS["Uncommon Component"], 8),
             batch(ITEMS["Uncommon Processor"], 8),
             batch(ITEMS["Polysulfide Plastic"], 49),
             batch(ITEMS["Advanced Component"], 10),
@@ -12633,7 +12640,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 38),
             batch(ITEMS["Basic Processor"], 38),
-            batch(ITEMS["Uncommon Component"], 38.0),
+            batch(ITEMS["Uncommon Component"], 38),
             batch(ITEMS["Uncommon Processor"], 38),
             batch(ITEMS["Polysulfide Plastic"], 343),
             batch(ITEMS["Advanced Component"], 50),
@@ -12672,7 +12679,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 8),
             batch(ITEMS["Basic Electronics"], 8),
-            batch(ITEMS["Uncommon Component"], 8.0),
+            batch(ITEMS["Uncommon Component"], 8),
             batch(ITEMS["Uncommon Electronics"], 8),
             batch(ITEMS["Polysulfide Plastic"], 49),
             batch(ITEMS["Advanced Component"], 10),
@@ -12701,7 +12708,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Component"], 5),
             batch(ITEMS["Advanced Electronics"], 2),
-            batch(ITEMS["Rare Electronics"], 2.0),
+            batch(ITEMS["Rare Electronics"], 2),
             batch(ITEMS["Vanamer"], 7),
             batch(ITEMS["Exotic Electronics"], 2),
         ],
@@ -12714,7 +12721,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 38),
             batch(ITEMS["Uncommon Electronics"], 38),
-            batch(ITEMS["Advanced Component"], 88.0),
+            batch(ITEMS["Advanced Component"], 88),
             batch(ITEMS["Advanced Electronics"], 38),
             batch(ITEMS["Fluoropolymer"], 343),
             batch(ITEMS["Rare Electronics"], 50),
@@ -12728,7 +12735,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 2),
             batch(ITEMS["Basic Electronics"], 2),
-            batch(ITEMS["Polycalcite Plastic"], 7.0),
+            batch(ITEMS["Polycalcite Plastic"], 7),
             batch(ITEMS["Uncommon Component"], 4),
             batch(ITEMS["Uncommon Electronics"], 4),
         ],
@@ -12741,7 +12748,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 8),
             batch(ITEMS["Basic Electronics"], 8),
-            batch(ITEMS["Polycalcite Plastic"], 49.0),
+            batch(ITEMS["Polycalcite Plastic"], 49),
             batch(ITEMS["Uncommon Component"], 18),
             batch(ITEMS["Uncommon Electronics"], 18),
         ],
@@ -12754,7 +12761,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 38),
             batch(ITEMS["Basic Electronics"], 38),
-            batch(ITEMS["Polycalcite Plastic"], 343.0),
+            batch(ITEMS["Polycalcite Plastic"], 343),
             batch(ITEMS["Uncommon Component"], 88),
             batch(ITEMS["Uncommon Electronics"], 88),
         ],
@@ -12781,7 +12788,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 188),
             batch(ITEMS["Basic Magnet"], 188),
-            batch(ITEMS["Duralumin"], 2401.0),
+            batch(ITEMS["Duralumin"], 2401),
             batch(ITEMS["Uncommon Screw"], 438),
             batch(ITEMS["Uncommon Magnet"], 438),
         ],
@@ -12794,7 +12801,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 1),
             batch(ITEMS["Basic Burner"], 1),
-            batch(ITEMS["Uncommon Pipe"], 1.0),
+            batch(ITEMS["Uncommon Pipe"], 1),
             batch(ITEMS["Uncommon Burner"], 1),
             batch(ITEMS["Inconel"], 1),
             batch(ITEMS["Advanced Pipe"], 1),
@@ -12809,7 +12816,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 2),
             batch(ITEMS["Basic Burner"], 2),
-            batch(ITEMS["Uncommon Pipe"], 2.0),
+            batch(ITEMS["Uncommon Pipe"], 2),
             batch(ITEMS["Uncommon Burner"], 2),
             batch(ITEMS["Inconel"], 7),
             batch(ITEMS["Advanced Pipe"], 2),
@@ -12824,7 +12831,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 8),
             batch(ITEMS["Basic Burner"], 8),
-            batch(ITEMS["Uncommon Pipe"], 8.0),
+            batch(ITEMS["Uncommon Pipe"], 8),
             batch(ITEMS["Uncommon Burner"], 8),
             batch(ITEMS["Inconel"], 49),
             batch(ITEMS["Advanced Pipe"], 10),
@@ -12839,7 +12846,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 38),
             batch(ITEMS["Basic Burner"], 38),
-            batch(ITEMS["Uncommon Pipe"], 38.0),
+            batch(ITEMS["Uncommon Pipe"], 38),
             batch(ITEMS["Uncommon Burner"], 38),
             batch(ITEMS["Inconel"], 343),
             batch(ITEMS["Advanced Pipe"], 50),
@@ -12861,7 +12868,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Pipe"], 1),
             batch(ITEMS["Advanced Burner"], 1),
-            batch(ITEMS["Rare Burner"], 1.0),
+            batch(ITEMS["Rare Burner"], 1),
             batch(ITEMS["Mangalloy"], 1),
             batch(ITEMS["Exotic Burner"], 1),
         ],
@@ -12874,7 +12881,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Pipe"], 5),
             batch(ITEMS["Advanced Burner"], 2),
-            batch(ITEMS["Rare Burner"], 2.0),
+            batch(ITEMS["Rare Burner"], 2),
             batch(ITEMS["Mangalloy"], 7),
             batch(ITEMS["Exotic Burner"], 2),
         ],
@@ -12887,7 +12894,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Pipe"], 25),
             batch(ITEMS["Advanced Burner"], 8),
-            batch(ITEMS["Rare Burner"], 8.0),
+            batch(ITEMS["Rare Burner"], 8),
             batch(ITEMS["Mangalloy"], 49),
             batch(ITEMS["Exotic Burner"], 10),
         ],
@@ -12900,7 +12907,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Pipe"], 125),
             batch(ITEMS["Advanced Burner"], 38),
-            batch(ITEMS["Rare Burner"], 38.0),
+            batch(ITEMS["Rare Burner"], 38),
             batch(ITEMS["Mangalloy"], 343),
             batch(ITEMS["Exotic Burner"], 50),
         ],
@@ -12913,7 +12920,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 1),
             batch(ITEMS["Uncommon Burner"], 1),
-            batch(ITEMS["Advanced Pipe"], 1.0),
+            batch(ITEMS["Advanced Pipe"], 1),
             batch(ITEMS["Advanced Burner"], 1),
             batch(ITEMS["Maraging Steel"], 1),
             batch(ITEMS["Rare Burner"], 1),
@@ -12927,7 +12934,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 2),
             batch(ITEMS["Uncommon Burner"], 2),
-            batch(ITEMS["Advanced Pipe"], 4.0),
+            batch(ITEMS["Advanced Pipe"], 4),
             batch(ITEMS["Advanced Burner"], 2),
             batch(ITEMS["Maraging Steel"], 7),
             batch(ITEMS["Rare Burner"], 2),
@@ -12941,7 +12948,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 8),
             batch(ITEMS["Uncommon Burner"], 8),
-            batch(ITEMS["Advanced Pipe"], 18.0),
+            batch(ITEMS["Advanced Pipe"], 18),
             batch(ITEMS["Advanced Burner"], 8),
             batch(ITEMS["Maraging Steel"], 49),
             batch(ITEMS["Rare Burner"], 10),
@@ -12955,7 +12962,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 38),
             batch(ITEMS["Uncommon Burner"], 38),
-            batch(ITEMS["Advanced Pipe"], 88.0),
+            batch(ITEMS["Advanced Pipe"], 88),
             batch(ITEMS["Advanced Burner"], 38),
             batch(ITEMS["Maraging Steel"], 343),
             batch(ITEMS["Rare Burner"], 50),
@@ -12990,7 +12997,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Basic Magnet"], 1),
-            batch(ITEMS["Uncommon Connector"], 1.0),
+            batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Uncommon Magnet"], 1),
             batch(ITEMS["Inconel"], 1),
             batch(ITEMS["Advanced Connector"], 1),
@@ -13005,7 +13012,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 2),
             batch(ITEMS["Basic Magnet"], 2),
-            batch(ITEMS["Uncommon Connector"], 2.0),
+            batch(ITEMS["Uncommon Connector"], 2),
             batch(ITEMS["Uncommon Magnet"], 2),
             batch(ITEMS["Inconel"], 7),
             batch(ITEMS["Advanced Connector"], 2),
@@ -13020,7 +13027,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 8),
             batch(ITEMS["Basic Magnet"], 8),
-            batch(ITEMS["Uncommon Connector"], 8.0),
+            batch(ITEMS["Uncommon Connector"], 8),
             batch(ITEMS["Uncommon Magnet"], 8),
             batch(ITEMS["Inconel"], 49),
             batch(ITEMS["Advanced Connector"], 10),
@@ -13035,7 +13042,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 38),
             batch(ITEMS["Basic Magnet"], 38),
-            batch(ITEMS["Uncommon Connector"], 38.0),
+            batch(ITEMS["Uncommon Connector"], 38),
             batch(ITEMS["Uncommon Magnet"], 38),
             batch(ITEMS["Inconel"], 343),
             batch(ITEMS["Advanced Connector"], 50),
@@ -13050,7 +13057,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 188),
             batch(ITEMS["Basic Magnet"], 188),
-            batch(ITEMS["Uncommon Connector"], 188.0),
+            batch(ITEMS["Uncommon Connector"], 188),
             batch(ITEMS["Uncommon Magnet"], 188),
             batch(ITEMS["Inconel"], 2401),
             batch(ITEMS["Advanced Connector"], 250),
@@ -13100,7 +13107,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 1),
             batch(ITEMS["Uncommon Magnet"], 1),
-            batch(ITEMS["Advanced Connector"], 1.0),
+            batch(ITEMS["Advanced Connector"], 1),
             batch(ITEMS["Advanced Magnet"], 1),
             batch(ITEMS["Maraging Steel"], 1),
             batch(ITEMS["Rare Magnet"], 1),
@@ -13114,7 +13121,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 2),
             batch(ITEMS["Uncommon Magnet"], 2),
-            batch(ITEMS["Advanced Connector"], 4.0),
+            batch(ITEMS["Advanced Connector"], 4),
             batch(ITEMS["Advanced Magnet"], 2),
             batch(ITEMS["Maraging Steel"], 7),
             batch(ITEMS["Rare Magnet"], 2),
@@ -13128,7 +13135,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 8),
             batch(ITEMS["Uncommon Magnet"], 8),
-            batch(ITEMS["Advanced Connector"], 18.0),
+            batch(ITEMS["Advanced Connector"], 18),
             batch(ITEMS["Advanced Magnet"], 8),
             batch(ITEMS["Maraging Steel"], 49),
             batch(ITEMS["Rare Magnet"], 10),
@@ -13142,7 +13149,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 38),
             batch(ITEMS["Uncommon Magnet"], 38),
-            batch(ITEMS["Advanced Connector"], 88.0),
+            batch(ITEMS["Advanced Connector"], 88),
             batch(ITEMS["Advanced Magnet"], 38),
             batch(ITEMS["Maraging Steel"], 343),
             batch(ITEMS["Rare Magnet"], 50),
@@ -13156,7 +13163,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Connector"], 188),
             batch(ITEMS["Uncommon Magnet"], 188),
-            batch(ITEMS["Advanced Connector"], 438.0),
+            batch(ITEMS["Advanced Connector"], 438),
             batch(ITEMS["Advanced Magnet"], 188),
             batch(ITEMS["Maraging Steel"], 2401),
             batch(ITEMS["Rare Magnet"], 250),
@@ -13170,7 +13177,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 1),
             batch(ITEMS["Basic Magnet"], 1),
-            batch(ITEMS["Stainless Steel"], 1.0),
+            batch(ITEMS["Stainless Steel"], 1),
             batch(ITEMS["Uncommon Magnet"], 1),
             batch(ITEMS["Uncommon Connector"], 1),
         ],
@@ -13183,7 +13190,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 2),
             batch(ITEMS["Basic Magnet"], 2),
-            batch(ITEMS["Stainless Steel"], 7.0),
+            batch(ITEMS["Stainless Steel"], 7),
             batch(ITEMS["Uncommon Magnet"], 4),
             batch(ITEMS["Uncommon Connector"], 4),
         ],
@@ -13196,7 +13203,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 8),
             batch(ITEMS["Basic Magnet"], 8),
-            batch(ITEMS["Stainless Steel"], 49.0),
+            batch(ITEMS["Stainless Steel"], 49),
             batch(ITEMS["Uncommon Magnet"], 18),
             batch(ITEMS["Uncommon Connector"], 18),
         ],
@@ -13209,7 +13216,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 38),
             batch(ITEMS["Basic Magnet"], 38),
-            batch(ITEMS["Stainless Steel"], 343.0),
+            batch(ITEMS["Stainless Steel"], 343),
             batch(ITEMS["Uncommon Magnet"], 88),
             batch(ITEMS["Uncommon Connector"], 88),
         ],
@@ -13222,7 +13229,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 188),
             batch(ITEMS["Basic Magnet"], 188),
-            batch(ITEMS["Stainless Steel"], 2401.0),
+            batch(ITEMS["Stainless Steel"], 2401),
             batch(ITEMS["Uncommon Magnet"], 438),
             batch(ITEMS["Uncommon Connector"], 438),
         ],
@@ -13235,7 +13242,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 1),
             batch(ITEMS["Basic Optics"], 1),
-            batch(ITEMS["Uncommon LED"], 1.0),
+            batch(ITEMS["Uncommon LED"], 1),
             batch(ITEMS["Uncommon Optics"], 1),
             batch(ITEMS["Ag-Li Reinforced Glass"], 1),
             batch(ITEMS["Advanced LED"], 1),
@@ -13250,7 +13257,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 2),
             batch(ITEMS["Basic Optics"], 2),
-            batch(ITEMS["Uncommon LED"], 2.0),
+            batch(ITEMS["Uncommon LED"], 2),
             batch(ITEMS["Uncommon Optics"], 2),
             batch(ITEMS["Ag-Li Reinforced Glass"], 7),
             batch(ITEMS["Advanced LED"], 2),
@@ -13265,7 +13272,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 8),
             batch(ITEMS["Basic Optics"], 8),
-            batch(ITEMS["Uncommon LED"], 8.0),
+            batch(ITEMS["Uncommon LED"], 8),
             batch(ITEMS["Uncommon Optics"], 8),
             batch(ITEMS["Ag-Li Reinforced Glass"], 49),
             batch(ITEMS["Advanced LED"], 10),
@@ -13280,7 +13287,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 38),
             batch(ITEMS["Basic Optics"], 38),
-            batch(ITEMS["Uncommon LED"], 38.0),
+            batch(ITEMS["Uncommon LED"], 38),
             batch(ITEMS["Uncommon Optics"], 38),
             batch(ITEMS["Ag-Li Reinforced Glass"], 343),
             batch(ITEMS["Advanced LED"], 50),
@@ -13302,7 +13309,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced LED"], 1),
             batch(ITEMS["Advanced Optics"], 1),
-            batch(ITEMS["Rare Optics"], 1.0),
+            batch(ITEMS["Rare Optics"], 1),
             batch(ITEMS["Manganese Reinforced Glass"], 1),
             batch(ITEMS["Exotic Optics"], 1),
         ],
@@ -13315,7 +13322,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced LED"], 5),
             batch(ITEMS["Advanced Optics"], 2),
-            batch(ITEMS["Rare Optics"], 2.0),
+            batch(ITEMS["Rare Optics"], 2),
             batch(ITEMS["Manganese Reinforced Glass"], 7),
             batch(ITEMS["Exotic Optics"], 2),
         ],
@@ -13328,7 +13335,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced LED"], 25),
             batch(ITEMS["Advanced Optics"], 8),
-            batch(ITEMS["Rare Optics"], 8.0),
+            batch(ITEMS["Rare Optics"], 8),
             batch(ITEMS["Manganese Reinforced Glass"], 49),
             batch(ITEMS["Exotic Optics"], 10),
         ],
@@ -13341,7 +13348,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced LED"], 125),
             batch(ITEMS["Advanced Optics"], 38),
-            batch(ITEMS["Rare Optics"], 38.0),
+            batch(ITEMS["Rare Optics"], 38),
             batch(ITEMS["Manganese Reinforced Glass"], 343),
             batch(ITEMS["Exotic Optics"], 50),
         ],
@@ -13354,7 +13361,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 1),
             batch(ITEMS["Uncommon Optics"], 1),
-            batch(ITEMS["Advanced LED"], 1.0),
+            batch(ITEMS["Advanced LED"], 1),
             batch(ITEMS["Advanced Optics"], 1),
             batch(ITEMS["Gold Coated Glass"], 1),
             batch(ITEMS["Rare Optics"], 1),
@@ -13368,7 +13375,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 2),
             batch(ITEMS["Uncommon Optics"], 2),
-            batch(ITEMS["Advanced LED"], 4.0),
+            batch(ITEMS["Advanced LED"], 4),
             batch(ITEMS["Advanced Optics"], 2),
             batch(ITEMS["Gold Coated Glass"], 7),
             batch(ITEMS["Rare Optics"], 2),
@@ -13382,7 +13389,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 8),
             batch(ITEMS["Uncommon Optics"], 8),
-            batch(ITEMS["Advanced LED"], 18.0),
+            batch(ITEMS["Advanced LED"], 18),
             batch(ITEMS["Advanced Optics"], 8),
             batch(ITEMS["Gold Coated Glass"], 49),
             batch(ITEMS["Rare Optics"], 10),
@@ -13396,7 +13403,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon LED"], 38),
             batch(ITEMS["Uncommon Optics"], 38),
-            batch(ITEMS["Advanced LED"], 88.0),
+            batch(ITEMS["Advanced LED"], 88),
             batch(ITEMS["Advanced Optics"], 38),
             batch(ITEMS["Gold Coated Glass"], 343),
             batch(ITEMS["Rare Optics"], 50),
@@ -13410,7 +13417,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 1),
             batch(ITEMS["Basic Optics"], 1),
-            batch(ITEMS["Advanced Glass"], 1.0),
+            batch(ITEMS["Advanced Glass"], 1),
             batch(ITEMS["Uncommon LED"], 1),
             batch(ITEMS["Uncommon Optics"], 1),
         ],
@@ -13423,7 +13430,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 1),
             batch(ITEMS["Basic Electronics"], 1),
-            batch(ITEMS["Advanced Glass"], 1.0),
+            batch(ITEMS["Advanced Glass"], 1),
             batch(ITEMS["Uncommon LED"], 1),
             batch(ITEMS["Uncommon Electronics"], 1),
         ],
@@ -13436,7 +13443,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 2),
             batch(ITEMS["Basic Electronics"], 2),
-            batch(ITEMS["Advanced Glass"], 7.0),
+            batch(ITEMS["Advanced Glass"], 7),
             batch(ITEMS["Uncommon LED"], 4),
             batch(ITEMS["Uncommon Electronics"], 4),
         ],
@@ -13449,7 +13456,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 1),
             batch(ITEMS["Basic Magnet"], 1),
-            batch(ITEMS["Uncommon Pipe"], 1.0),
+            batch(ITEMS["Uncommon Pipe"], 1),
             batch(ITEMS["Uncommon Magnet"], 1),
             batch(ITEMS["Inconel"], 1),
             batch(ITEMS["Advanced Pipe"], 1),
@@ -13464,7 +13471,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 2),
             batch(ITEMS["Basic Magnet"], 2),
-            batch(ITEMS["Uncommon Pipe"], 2.0),
+            batch(ITEMS["Uncommon Pipe"], 2),
             batch(ITEMS["Uncommon Magnet"], 2),
             batch(ITEMS["Inconel"], 7),
             batch(ITEMS["Advanced Pipe"], 2),
@@ -13479,7 +13486,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 8),
             batch(ITEMS["Basic Magnet"], 8),
-            batch(ITEMS["Uncommon Pipe"], 8.0),
+            batch(ITEMS["Uncommon Pipe"], 8),
             batch(ITEMS["Uncommon Magnet"], 8),
             batch(ITEMS["Inconel"], 49),
             batch(ITEMS["Advanced Pipe"], 10),
@@ -13494,7 +13501,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 38),
             batch(ITEMS["Basic Magnet"], 38),
-            batch(ITEMS["Uncommon Pipe"], 38.0),
+            batch(ITEMS["Uncommon Pipe"], 38),
             batch(ITEMS["Uncommon Magnet"], 38),
             batch(ITEMS["Inconel"], 343),
             batch(ITEMS["Advanced Pipe"], 50),
@@ -13509,7 +13516,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Pipe"], 1),
             batch(ITEMS["Advanced Magnet"], 1),
-            batch(ITEMS["Rare Magnet"], 1.0),
+            batch(ITEMS["Rare Magnet"], 1),
             batch(ITEMS["Mangalloy"], 1),
             batch(ITEMS["Exotic Magnet"], 1),
         ],
@@ -13522,7 +13529,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Pipe"], 5),
             batch(ITEMS["Advanced Magnet"], 2),
-            batch(ITEMS["Rare Magnet"], 2.0),
+            batch(ITEMS["Rare Magnet"], 2),
             batch(ITEMS["Mangalloy"], 7),
             batch(ITEMS["Exotic Magnet"], 2),
         ],
@@ -13535,7 +13542,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Pipe"], 25),
             batch(ITEMS["Advanced Magnet"], 8),
-            batch(ITEMS["Rare Magnet"], 8.0),
+            batch(ITEMS["Rare Magnet"], 8),
             batch(ITEMS["Mangalloy"], 49),
             batch(ITEMS["Exotic Magnet"], 10),
         ],
@@ -13548,7 +13555,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Pipe"], 125),
             batch(ITEMS["Advanced Magnet"], 38),
-            batch(ITEMS["Rare Magnet"], 38.0),
+            batch(ITEMS["Rare Magnet"], 38),
             batch(ITEMS["Mangalloy"], 343),
             batch(ITEMS["Exotic Magnet"], 50),
         ],
@@ -13561,7 +13568,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 1),
             batch(ITEMS["Uncommon Magnet"], 1),
-            batch(ITEMS["Advanced Pipe"], 1.0),
+            batch(ITEMS["Advanced Pipe"], 1),
             batch(ITEMS["Advanced Magnet"], 1),
             batch(ITEMS["Maraging Steel"], 1),
             batch(ITEMS["Rare Magnet"], 1),
@@ -13575,7 +13582,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 2),
             batch(ITEMS["Uncommon Magnet"], 2),
-            batch(ITEMS["Advanced Pipe"], 4.0),
+            batch(ITEMS["Advanced Pipe"], 4),
             batch(ITEMS["Advanced Magnet"], 2),
             batch(ITEMS["Maraging Steel"], 7),
             batch(ITEMS["Rare Magnet"], 2),
@@ -13589,7 +13596,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 8),
             batch(ITEMS["Uncommon Magnet"], 8),
-            batch(ITEMS["Advanced Pipe"], 18.0),
+            batch(ITEMS["Advanced Pipe"], 18),
             batch(ITEMS["Advanced Magnet"], 8),
             batch(ITEMS["Maraging Steel"], 49),
             batch(ITEMS["Rare Magnet"], 10),
@@ -13603,7 +13610,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 38),
             batch(ITEMS["Uncommon Magnet"], 38),
-            batch(ITEMS["Advanced Pipe"], 88.0),
+            batch(ITEMS["Advanced Pipe"], 88),
             batch(ITEMS["Advanced Magnet"], 38),
             batch(ITEMS["Maraging Steel"], 343),
             batch(ITEMS["Rare Magnet"], 50),
@@ -13617,7 +13624,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Fixation"], 1),
             batch(ITEMS["Basic Magnet"], 1),
-            batch(ITEMS["Uncommon Fixation"], 1.0),
+            batch(ITEMS["Uncommon Fixation"], 1),
             batch(ITEMS["Uncommon Magnet"], 1),
             batch(ITEMS["Cu-Ag Alloy"], 1),
             batch(ITEMS["Advanced Fixation"], 1),
@@ -13639,7 +13646,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Fixation"], 1),
             batch(ITEMS["Advanced Magnet"], 1),
-            batch(ITEMS["Rare Magnet"], 1.0),
+            batch(ITEMS["Rare Magnet"], 1),
             batch(ITEMS["Ti-Nb Supraconductor"], 1),
             batch(ITEMS["Exotic Magnet"], 1),
         ],
@@ -13652,7 +13659,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 1),
             batch(ITEMS["Basic Burner"], 1),
-            batch(ITEMS["Uncommon Pipe"], 1.0),
+            batch(ITEMS["Uncommon Pipe"], 1),
             batch(ITEMS["Uncommon Burner"], 1),
             batch(ITEMS["Al-Li Alloy"], 1),
             batch(ITEMS["Advanced Pipe"], 1),
@@ -13667,7 +13674,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 2),
             batch(ITEMS["Basic Burner"], 2),
-            batch(ITEMS["Uncommon Pipe"], 2.0),
+            batch(ITEMS["Uncommon Pipe"], 2),
             batch(ITEMS["Uncommon Burner"], 2),
             batch(ITEMS["Al-Li Alloy"], 7),
             batch(ITEMS["Advanced Pipe"], 2),
@@ -13682,7 +13689,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 8),
             batch(ITEMS["Basic Burner"], 8),
-            batch(ITEMS["Uncommon Pipe"], 8.0),
+            batch(ITEMS["Uncommon Pipe"], 8),
             batch(ITEMS["Uncommon Burner"], 8),
             batch(ITEMS["Al-Li Alloy"], 49),
             batch(ITEMS["Advanced Pipe"], 10),
@@ -13697,7 +13704,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Pipe"], 38),
             batch(ITEMS["Basic Burner"], 38),
-            batch(ITEMS["Uncommon Pipe"], 38.0),
+            batch(ITEMS["Uncommon Pipe"], 38),
             batch(ITEMS["Uncommon Burner"], 38),
             batch(ITEMS["Al-Li Alloy"], 343),
             batch(ITEMS["Advanced Pipe"], 50),
@@ -13712,7 +13719,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Pipe"], 1),
             batch(ITEMS["Advanced Burner"], 1),
-            batch(ITEMS["Rare Burner"], 1.0),
+            batch(ITEMS["Rare Burner"], 1),
             batch(ITEMS["Grade 5 Titanium Alloy"], 1),
             batch(ITEMS["Exotic Burner"], 1),
         ],
@@ -13725,7 +13732,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Pipe"], 5),
             batch(ITEMS["Advanced Burner"], 2),
-            batch(ITEMS["Rare Burner"], 2.0),
+            batch(ITEMS["Rare Burner"], 2),
             batch(ITEMS["Grade 5 Titanium Alloy"], 7),
             batch(ITEMS["Exotic Burner"], 2),
         ],
@@ -13738,7 +13745,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Pipe"], 25),
             batch(ITEMS["Advanced Burner"], 8),
-            batch(ITEMS["Rare Burner"], 8.0),
+            batch(ITEMS["Rare Burner"], 8),
             batch(ITEMS["Grade 5 Titanium Alloy"], 49),
             batch(ITEMS["Exotic Burner"], 10),
         ],
@@ -13751,7 +13758,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Advanced Pipe"], 125),
             batch(ITEMS["Advanced Burner"], 38),
-            batch(ITEMS["Rare Burner"], 38.0),
+            batch(ITEMS["Rare Burner"], 38),
             batch(ITEMS["Grade 5 Titanium Alloy"], 343),
             batch(ITEMS["Exotic Burner"], 50),
         ],
@@ -13764,7 +13771,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 1),
             batch(ITEMS["Uncommon Burner"], 1),
-            batch(ITEMS["Advanced Pipe"], 1.0),
+            batch(ITEMS["Advanced Pipe"], 1),
             batch(ITEMS["Advanced Burner"], 1),
             batch(ITEMS["Sc-AL Alloy"], 1),
             batch(ITEMS["Rare Burner"], 1),
@@ -13778,7 +13785,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 2),
             batch(ITEMS["Uncommon Burner"], 2),
-            batch(ITEMS["Advanced Pipe"], 4.0),
+            batch(ITEMS["Advanced Pipe"], 4),
             batch(ITEMS["Advanced Burner"], 2),
             batch(ITEMS["Sc-AL Alloy"], 7),
             batch(ITEMS["Rare Burner"], 2),
@@ -13792,7 +13799,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 8),
             batch(ITEMS["Uncommon Burner"], 8),
-            batch(ITEMS["Advanced Pipe"], 18.0),
+            batch(ITEMS["Advanced Pipe"], 18),
             batch(ITEMS["Advanced Burner"], 8),
             batch(ITEMS["Sc-AL Alloy"], 49),
             batch(ITEMS["Rare Burner"], 10),
@@ -13806,7 +13813,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Pipe"], 38),
             batch(ITEMS["Uncommon Burner"], 38),
-            batch(ITEMS["Advanced Pipe"], 38.0),
+            batch(ITEMS["Advanced Pipe"], 38),
             batch(ITEMS["Advanced Burner"], 38),
             batch(ITEMS["Sc-AL Alloy"], 343),
             batch(ITEMS["Rare Burner"], 50),
@@ -13820,7 +13827,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Basic Hydraulics"], 1),
-            batch(ITEMS["Uncommon Screw"], 1.0),
+            batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Uncommon Hydraulics"], 1),
             batch(ITEMS["Al-Li Alloy"], 1),
             batch(ITEMS["Advanced Screw"], 1),
@@ -13835,7 +13842,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 2),
             batch(ITEMS["Basic Hydraulics"], 2),
-            batch(ITEMS["Uncommon Screw"], 2.0),
+            batch(ITEMS["Uncommon Screw"], 2),
             batch(ITEMS["Uncommon Hydraulics"], 2),
             batch(ITEMS["Al-Li Alloy"], 7),
             batch(ITEMS["Advanced Screw"], 2),
@@ -13850,7 +13857,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 8),
             batch(ITEMS["Basic Hydraulics"], 8),
-            batch(ITEMS["Uncommon Screw"], 8.0),
+            batch(ITEMS["Uncommon Screw"], 8),
             batch(ITEMS["Uncommon Hydraulics"], 8),
             batch(ITEMS["Al-Li Alloy"], 49),
             batch(ITEMS["Advanced Screw"], 10),
@@ -13865,7 +13872,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 38),
             batch(ITEMS["Basic Hydraulics"], 38),
-            batch(ITEMS["Uncommon Screw"], 38.0),
+            batch(ITEMS["Uncommon Screw"], 38),
             batch(ITEMS["Uncommon Hydraulics"], 38),
             batch(ITEMS["Al-Li Alloy"], 343),
             batch(ITEMS["Advanced Screw"], 50),
@@ -13880,7 +13887,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 188),
             batch(ITEMS["Basic Hydraulics"], 188),
-            batch(ITEMS["Uncommon Screw"], 188.0),
+            batch(ITEMS["Uncommon Screw"], 188),
             batch(ITEMS["Uncommon Hydraulics"], 188),
             batch(ITEMS["Al-Li Alloy"], 2401),
             batch(ITEMS["Advanced Screw"], 250),
@@ -13930,7 +13937,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Uncommon Hydraulics"], 1),
-            batch(ITEMS["Advanced Screw"], 1.0),
+            batch(ITEMS["Advanced Screw"], 1),
             batch(ITEMS["Advanced Hydraulics"], 1),
             batch(ITEMS["Sc-AL Alloy"], 1),
             batch(ITEMS["Rare Hydraulics"], 1),
@@ -13944,7 +13951,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 2),
             batch(ITEMS["Uncommon Hydraulics"], 2),
-            batch(ITEMS["Advanced Screw"], 4.0),
+            batch(ITEMS["Advanced Screw"], 4),
             batch(ITEMS["Advanced Hydraulics"], 2),
             batch(ITEMS["Sc-AL Alloy"], 7),
             batch(ITEMS["Rare Hydraulics"], 2),
@@ -13958,7 +13965,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 8),
             batch(ITEMS["Uncommon Hydraulics"], 8),
-            batch(ITEMS["Advanced Screw"], 18.0),
+            batch(ITEMS["Advanced Screw"], 18),
             batch(ITEMS["Advanced Hydraulics"], 8),
             batch(ITEMS["Sc-AL Alloy"], 49),
             batch(ITEMS["Rare Hydraulics"], 10),
@@ -13972,7 +13979,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 38),
             batch(ITEMS["Uncommon Hydraulics"], 38),
-            batch(ITEMS["Advanced Screw"], 88.0),
+            batch(ITEMS["Advanced Screw"], 88),
             batch(ITEMS["Advanced Hydraulics"], 38),
             batch(ITEMS["Sc-AL Alloy"], 343),
             batch(ITEMS["Rare Hydraulics"], 50),
@@ -13986,7 +13993,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Screw"], 188),
             batch(ITEMS["Uncommon Hydraulics"], 188),
-            batch(ITEMS["Advanced Screw"], 438.0),
+            batch(ITEMS["Advanced Screw"], 438),
             batch(ITEMS["Advanced Hydraulics"], 188),
             batch(ITEMS["Sc-AL Alloy"], 2401),
             batch(ITEMS["Rare Hydraulics"], 250),
@@ -14000,7 +14007,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 1),
             batch(ITEMS["Basic Hydraulics"], 1),
-            batch(ITEMS["Duralumin"], 1.0),
+            batch(ITEMS["Duralumin"], 1),
             batch(ITEMS["Uncommon Screw"], 1),
             batch(ITEMS["Uncommon Hydraulics"], 1),
         ],
@@ -14013,7 +14020,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 2),
             batch(ITEMS["Basic Hydraulics"], 2),
-            batch(ITEMS["Duralumin"], 7.0),
+            batch(ITEMS["Duralumin"], 7),
             batch(ITEMS["Uncommon Screw"], 4),
             batch(ITEMS["Uncommon Hydraulics"], 4),
         ],
@@ -14026,7 +14033,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 8),
             batch(ITEMS["Basic Hydraulics"], 8),
-            batch(ITEMS["Duralumin"], 49.0),
+            batch(ITEMS["Duralumin"], 49),
             batch(ITEMS["Uncommon Screw"], 18),
             batch(ITEMS["Uncommon Hydraulics"], 18),
         ],
@@ -14039,7 +14046,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 38),
             batch(ITEMS["Basic Hydraulics"], 38),
-            batch(ITEMS["Duralumin"], 343.0),
+            batch(ITEMS["Duralumin"], 343),
             batch(ITEMS["Uncommon Screw"], 88),
             batch(ITEMS["Uncommon Hydraulics"], 88),
         ],
@@ -14052,7 +14059,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Screw"], 188),
             batch(ITEMS["Basic Hydraulics"], 188),
-            batch(ITEMS["Duralumin"], 2401.0),
+            batch(ITEMS["Duralumin"], 2401),
             batch(ITEMS["Uncommon Screw"], 438),
             batch(ITEMS["Uncommon Hydraulics"], 438),
         ],
@@ -14065,7 +14072,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 8),
             batch(ITEMS["Basic Processor"], 8),
-            batch(ITEMS["Uncommon Component"], 8.0),
+            batch(ITEMS["Uncommon Component"], 8),
             batch(ITEMS["Uncommon Processor"], 8),
             batch(ITEMS["Polysulfide Plastic"], 49),
             batch(ITEMS["Advanced Component"], 10),
@@ -14080,7 +14087,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Connector"], 188),
             batch(ITEMS["Basic Electronics"], 188),
-            batch(ITEMS["Polycalcite Plastic"], 2401.0),
+            batch(ITEMS["Polycalcite Plastic"], 2401),
             batch(ITEMS["Uncommon Connector"], 438),
             batch(ITEMS["Uncommon Electronics"], 438),
         ],
@@ -14093,7 +14100,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 8),
             batch(ITEMS["Basic Magnet"], 8),
-            batch(ITEMS["Uncommon Component"], 8.0),
+            batch(ITEMS["Uncommon Component"], 8),
             batch(ITEMS["Uncommon Magnet"], 8),
             batch(ITEMS["Inconel"], 49),
             batch(ITEMS["Advanced Component"], 10),
@@ -14119,7 +14126,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 8),
             batch(ITEMS["Uncommon Magnet"], 8),
-            batch(ITEMS["Advanced Component"], 18.0),
+            batch(ITEMS["Advanced Component"], 18),
             batch(ITEMS["Advanced Magnet"], 8),
             batch(ITEMS["Maraging Steel"], 49),
             batch(ITEMS["Rare Magnet"], 10),
@@ -14134,7 +14141,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 38),
             batch(ITEMS["Uncommon Magnet"], 38),
-            batch(ITEMS["Advanced Component"], 88.0),
+            batch(ITEMS["Advanced Component"], 88),
             batch(ITEMS["Advanced Magnet"], 38),
             batch(ITEMS["Maraging Steel"], 343),
             batch(ITEMS["Rare Magnet"], 50),
@@ -14149,7 +14156,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 188),
             batch(ITEMS["Uncommon Magnet"], 188),
-            batch(ITEMS["Advanced Component"], 438.0),
+            batch(ITEMS["Advanced Component"], 438),
             batch(ITEMS["Advanced Magnet"], 188),
             batch(ITEMS["Maraging Steel"], 2401),
             batch(ITEMS["Rare Magnet"], 250),
@@ -14164,7 +14171,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 2),
             batch(ITEMS["Basic Magnet"], 2),
-            batch(ITEMS["Stainless Steel"], 7.0),
+            batch(ITEMS["Stainless Steel"], 7),
             batch(ITEMS["Uncommon Component"], 4),
             batch(ITEMS["Uncommon Magnet"], 4),
             batch(ITEMS["Advanced Magnet"], -1),
@@ -14178,7 +14185,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 8),
             batch(ITEMS["Basic Magnet"], 8),
-            batch(ITEMS["Stainless Steel"], 49.0),
+            batch(ITEMS["Stainless Steel"], 49),
             batch(ITEMS["Uncommon Component"], 18),
             batch(ITEMS["Uncommon Magnet"], 18),
             batch(ITEMS["Advanced Magnet"], -1),
@@ -14192,7 +14199,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 8),
             batch(ITEMS["Basic Hydraulics"], 8),
-            batch(ITEMS["Uncommon Component"], 8.0),
+            batch(ITEMS["Uncommon Component"], 8),
             batch(ITEMS["Uncommon Hydraulics"], 8),
             batch(ITEMS["Al-Li Alloy"], 49),
             batch(ITEMS["Advanced Component"], 10),
@@ -14240,7 +14247,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Uncommon Component"], 8),
             batch(ITEMS["Uncommon Hydraulics"], 8),
-            batch(ITEMS["Advanced Component"], 18.0),
+            batch(ITEMS["Advanced Component"], 18),
             batch(ITEMS["Advanced Hydraulics"], 8),
             batch(ITEMS["Sc-AL Alloy"], 49),
             batch(ITEMS["Rare Hydraulics"], 10),
@@ -14255,7 +14262,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic Component"], 8),
             batch(ITEMS["Basic Hydraulics"], 8),
-            batch(ITEMS["Duralumin"], 49.0),
+            batch(ITEMS["Duralumin"], 49),
             batch(ITEMS["Uncommon Component"], 18),
             batch(ITEMS["Uncommon Hydraulics"], 18),
             batch(ITEMS["Advanced Hydraulics"], -1),
@@ -14269,7 +14276,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 1),
             batch(ITEMS["Basic Electronics"], 1),
-            batch(ITEMS["Uncommon LED"], 1.0),
+            batch(ITEMS["Uncommon LED"], 1),
             batch(ITEMS["Uncommon Electronics"], 1),
             batch(ITEMS["Polysulfide Plastic"], 1),
             batch(ITEMS["Advanced LED"], 1),
@@ -14284,7 +14291,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 188),
             batch(ITEMS["Basic Electronics"], 188),
-            batch(ITEMS["Uncommon LED"], 188.0),
+            batch(ITEMS["Uncommon LED"], 188),
             batch(ITEMS["Uncommon Electronics"], 188),
             batch(ITEMS["Polysulfide Plastic"], 2401),
             batch(ITEMS["Advanced LED"], 250),
@@ -14313,7 +14320,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 1),
             batch(ITEMS["Basic Electronics"], 1),
-            batch(ITEMS["Polycalcite Plastic"], 1.0),
+            batch(ITEMS["Polycalcite Plastic"], 1),
             batch(ITEMS["Uncommon LED"], 1),
             batch(ITEMS["Uncommon Electronics"], 1),
         ],
@@ -14326,7 +14333,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 38),
             batch(ITEMS["Basic Electronics"], 38),
-            batch(ITEMS["Polycalcite Plastic"], 343.0),
+            batch(ITEMS["Polycalcite Plastic"], 343),
             batch(ITEMS["Uncommon LED"], 88),
             batch(ITEMS["Uncommon Electronics"], 88),
         ],
@@ -14339,7 +14346,7 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Basic LED"], 188),
             batch(ITEMS["Basic Electronics"], 188),
-            batch(ITEMS["Polycalcite Plastic"], 2401.0),
+            batch(ITEMS["Polycalcite Plastic"], 2401),
             batch(ITEMS["Uncommon LED"], 438),
             batch(ITEMS["Uncommon Electronics"], 438),
         ],
@@ -14352,15 +14359,15 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 3),
             batch(ITEMS["Calcium Reinforced Copper"], 3),
-            batch(ITEMS["Cu-Ag Alloy"], 4.0),
+            batch(ITEMS["Cu-Ag Alloy"], 4),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Component"], 10),
-        time: 120,
+        product: batch(ITEMS["Basic Component"], 20),
+        time: 240,
         industry: ITEMS["Electronics Industry M"],
-        ingredients: [batch(ITEMS["Al-Fe Alloy"], 10)],
+        ingredients: [batch(ITEMS["Al-Fe Alloy"], 20)],
         byproducts: [],
     },
     {
@@ -14377,15 +14384,15 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Al-Fe Alloy"], 3),
             batch(ITEMS["Calcium Reinforced Copper"], 3),
-            batch(ITEMS["Cu-Ag Alloy"], 4.0),
+            batch(ITEMS["Cu-Ag Alloy"], 4),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Connector"], 10),
-        time: 120,
+        product: batch(ITEMS["Basic Connector"], 20),
+        time: 240,
         industry: ITEMS["Electronics Industry M"],
-        ingredients: [batch(ITEMS["Al-Fe Alloy"], 10)],
+        ingredients: [batch(ITEMS["Al-Fe Alloy"], 20)],
         byproducts: [],
     },
     {
@@ -14402,15 +14409,15 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Polycarbonate Plastic"], 3),
             batch(ITEMS["Polycalcite Plastic"], 3),
-            batch(ITEMS["Polysulfide Plastic"], 4.0),
+            batch(ITEMS["Polysulfide Plastic"], 4),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Fixation"], 10),
-        time: 120,
+        product: batch(ITEMS["Basic Fixation"], 20),
+        time: 240,
         industry: ITEMS["3D Printer M"],
-        ingredients: [batch(ITEMS["Polycarbonate Plastic"], 10)],
+        ingredients: [batch(ITEMS["Polycarbonate Plastic"], 20)],
         byproducts: [],
     },
     {
@@ -14430,15 +14437,15 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Glass"], 3),
             batch(ITEMS["Advanced Glass"], 3),
-            batch(ITEMS["Ag-Li Reinforced Glass"], 4.0),
+            batch(ITEMS["Ag-Li Reinforced Glass"], 4),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic LED"], 10),
-        time: 120,
+        product: batch(ITEMS["Basic LED"], 20),
+        time: 240,
         industry: ITEMS["Glass Furnace M"],
-        ingredients: [batch(ITEMS["Glass"], 10)],
+        ingredients: [batch(ITEMS["Glass"], 20)],
         byproducts: [],
     },
     {
@@ -14455,15 +14462,15 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Silumin"], 3),
             batch(ITEMS["Duralumin"], 3),
-            batch(ITEMS["Al-Li Alloy"], 4.0),
+            batch(ITEMS["Al-Li Alloy"], 4),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Pipe"], 10),
-        time: 120,
+        product: batch(ITEMS["Basic Pipe"], 20),
+        time: 240,
         industry: ITEMS["Metalwork Industry M"],
-        ingredients: [batch(ITEMS["Silumin"], 10)],
+        ingredients: [batch(ITEMS["Silumin"], 20)],
         byproducts: [],
     },
     {
@@ -14480,15 +14487,15 @@ export const RECIPES: Recipe[] = [
         ingredients: [
             batch(ITEMS["Steel"], 3),
             batch(ITEMS["Stainless Steel"], 3),
-            batch(ITEMS["Inconel"], 4.0),
+            batch(ITEMS["Inconel"], 4),
         ],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Screw"], 10),
-        time: 120,
+        product: batch(ITEMS["Basic Screw"], 20),
+        time: 240,
         industry: ITEMS["Metalwork Industry M"],
-        ingredients: [batch(ITEMS["Steel"], 10)],
+        ingredients: [batch(ITEMS["Steel"], 20)],
         byproducts: [],
     },
     {
@@ -14549,17 +14556,17 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Casing XS"], 1),
-        time: 40,
+        product: batch(ITEMS["Basic Casing XS"], 7),
+        time: 280,
         industry: ITEMS["3D Printer M"],
-        ingredients: [batch(ITEMS["Polycarbonate Plastic"], 2)],
+        ingredients: [batch(ITEMS["Polycarbonate Plastic"], 14)],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Casing S"], 1),
-        time: 120,
+        product: batch(ITEMS["Basic Casing S"], 2),
+        time: 240,
         industry: ITEMS["3D Printer M"],
-        ingredients: [batch(ITEMS["Polycarbonate Plastic"], 11)],
+        ingredients: [batch(ITEMS["Polycarbonate Plastic"], 22)],
         byproducts: [],
     },
     {
@@ -14652,17 +14659,17 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Reinforced Frame XS"], 1),
-        time: 40,
+        product: batch(ITEMS["Basic Reinforced Frame XS"], 7),
+        time: 280,
         industry: ITEMS["Metalwork Industry M"],
-        ingredients: [batch(ITEMS["Steel"], 2)],
+        ingredients: [batch(ITEMS["Steel"], 14)],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Reinforced Frame S"], 1),
-        time: 120,
+        product: batch(ITEMS["Basic Reinforced Frame S"], 2),
+        time: 240,
         industry: ITEMS["Metalwork Industry M"],
-        ingredients: [batch(ITEMS["Steel"], 11)],
+        ingredients: [batch(ITEMS["Steel"], 22)],
         byproducts: [],
     },
     {
@@ -14827,17 +14834,17 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Standard Frame XS"], 1),
-        time: 40,
+        product: batch(ITEMS["Basic Standard Frame XS"], 7),
+        time: 280,
         industry: ITEMS["Metalwork Industry M"],
-        ingredients: [batch(ITEMS["Silumin"], 2)],
+        ingredients: [batch(ITEMS["Silumin"], 14)],
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Basic Standard Frame S"], 1),
-        time: 120,
+        product: batch(ITEMS["Basic Standard Frame S"], 2),
+        time: 240,
         industry: ITEMS["Metalwork Industry M"],
-        ingredients: [batch(ITEMS["Silumin"], 11)],
+        ingredients: [batch(ITEMS["Silumin"], 22)],
         byproducts: [],
     },
     {

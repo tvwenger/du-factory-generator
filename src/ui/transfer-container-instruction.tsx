@@ -1,7 +1,7 @@
 import * as React from "react"
 import { TransferContainer } from "../transfer-container"
 import { sortName } from "./generate-instructions"
-import { CONTAINERLABELS, FONTSIZE, LINKSPACING, SIZE } from "./render-factory"
+import { containerLabel, FONTSIZE, LINKSPACING, SIZE } from "./render-factory"
 
 /**
  * Instruction centered on a transfer container
@@ -146,7 +146,7 @@ export class TransferContainerInstruction {
                         x={x + SIZE / 2}
                         y={y + SIZE / 2}
                         fill="black"
-                        fontSize={1.5 * FONTSIZE}
+                        fontSize={1.0 * FONTSIZE}
                         dominantBaseline="middle"
                         textAnchor="middle"
                     >
@@ -230,13 +230,11 @@ export class TransferContainerInstruction {
                     x={x + SIZE / 2}
                     y={y}
                     fill="black"
-                    fontSize={2 * FONTSIZE}
+                    fontSize={1.0 * FONTSIZE}
                     dominantBaseline="middle"
                     textAnchor="middle"
                 >
-                    {this.container.containers
-                        .map((container) => CONTAINERLABELS.get(container))
-                        .join("+")}
+                    {containerLabel(this.container)}
                 </text>
                 <line
                     x1={x + SIZE}

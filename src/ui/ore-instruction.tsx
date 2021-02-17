@@ -1,7 +1,7 @@
 import * as React from "react"
 import { FactoryNode } from "../graph"
 import { sortName } from "./generate-instructions"
-import { CONTAINERLABELS, FONTSIZE, LINKSPACING, SIZE } from "./render-factory"
+import { containerLabel, FONTSIZE, LINKSPACING, SIZE } from "./render-factory"
 
 /**
  * Instruction centered on a transfer container
@@ -154,13 +154,11 @@ export class OreInstruction {
                         x={x + SIZE / 2}
                         y={y + SIZE / 2}
                         fill="black"
-                        fontSize={2 * FONTSIZE}
+                        fontSize={1.0 * FONTSIZE}
                         dominantBaseline="middle"
                         textAnchor="middle"
                     >
-                        {relayRoute.container.containers
-                            .map((container) => CONTAINERLABELS.get(container))
-                            .join("+")}
+                        {containerLabel(relayRoute.container)}
                     </text>
                     {relayRoute.container.consumers.size > 0 && (
                         <React.Fragment>
