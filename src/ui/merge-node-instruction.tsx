@@ -165,7 +165,7 @@ export class MergedNodeInstruction {
                         textAnchor="middle"
                     >
                         {isIndustry(producer) && INDUSTRYLABELS.get(producer.recipe.industry)}
-                        {isTransferUnit(producer) && producer.number + "xTrans"}
+                        {isTransferUnit(producer) && producer.number + "xTU"}
                     </text>
                     <text
                         x={x + SIZE / 2}

@@ -150,7 +150,7 @@ export class TransferContainerInstruction {
                         dominantBaseline="middle"
                         textAnchor="middle"
                     >
-                        {producer.number + "xTrans"}
+                        {producer.number + "xTU"}
                     </text>
                     <text
                         x={x + SIZE / 2}
