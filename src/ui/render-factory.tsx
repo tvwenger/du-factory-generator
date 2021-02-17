@@ -163,8 +163,10 @@ export function FactoryVisualization({
                 })
                 industryCount.set(
                     ITEMS["Transfer Unit"],
-                    Array.from(factory.transferUnits).filter((transferUnit) => !transferUnit.merged)
-                        .length,
+                    Array.from(factory.transferUnits)
+                        .filter((transferUnit) => !transferUnit.merged)
+                        .map((transferUnit) => transferUnit.number)
+                        .reduce((total, current) => total + current, 0),
                 )
                 totalIndustries += Array.from(factory.transferUnits).filter(
                     (transferUnit) => !transferUnit.merged,
