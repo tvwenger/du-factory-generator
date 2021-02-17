@@ -210,7 +210,7 @@ export class NodeInstruction {
                             x={x + SIZE / 2}
                             y={y + SIZE / 2}
                             fill="black"
-                            fontSize={1.25 * FONTSIZE}
+                            fontSize={1.0 * FONTSIZE}
                             dominantBaseline="middle"
                             textAnchor="middle"
                         >
@@ -335,7 +335,7 @@ export class NodeInstruction {
                         x={x + SIZE / 2}
                         y={y}
                         fill="black"
-                        fontSize={2 * FONTSIZE}
+                        fontSize={1.0 * FONTSIZE}
                         dominantBaseline="middle"
                         textAnchor="middle"
                     >
@@ -495,7 +495,7 @@ export class NodeInstruction {
                         x={x + SIZE / 2}
                         y={y + SIZE / 2}
                         fill="black"
-                        fontSize={1.5 * FONTSIZE}
+                        fontSize={1.0 * FONTSIZE}
                         dominantBaseline="middle"
                         textAnchor="middle"
                     >
@@ -601,7 +601,7 @@ export class NodeInstruction {
                         x={x + SIZE / 2}
                         y={y + SIZE / 2}
                         fill="black"
-                        fontSize={2 * FONTSIZE}
+                        fontSize={1.0 * FONTSIZE}
                         dominantBaseline="middle"
                         textAnchor="middle"
                     >
