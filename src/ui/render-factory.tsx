@@ -3,6 +3,7 @@ import { Button, Row, Col } from "antd"
 import {
     Category,
     Tier,
+    Item,
     ITEMS,
     OtherElement,
     ContainerElement,
@@ -218,11 +219,12 @@ export function FactoryVisualization({
     let content = null
     switch (visualizationState) {
         default:
-            // get count of industry and container types
+            // get count of industry, schematic, and container types
             const industryCount = new Map<OtherElement, number>()
             let totalIndustries = 0
             const containerCount = new Map<ContainerElement, number>()
             let totalContainers = 0
+            const schematicCount = new Map<Item, number>()
 
             if (factory !== undefined) {
                 Array.from(factory.industries).map((node) => {
@@ -234,6 +236,11 @@ export function FactoryVisualization({
                         )
                     } else {
                         industryCount.set(node.recipe.industry, 1)
+                    }
+                    if (schematicCount.has(node.item)) {
+                        schematicCount.set(node.item, schematicCount.get(node.item)! + 1)
+                    } else {
+                        schematicCount.set(node.item, 1)
                     }
                 })
                 industryCount.set(
@@ -312,6 +319,19 @@ export function FactoryVisualization({
                                 <Col span={4}>{value}</Col>
                             </Row>
                         ))}
+                    <h2>Factory Schematics:</h2>
+                    <Row>
+                        <Col span={4}>Item</Col>
+                        <Col span={4}>Count</Col>
+                    </Row>
+                    {Array.from(schematicCount)
+                        .sort((a, b) => sortName(a[0], b[0]))
+                        .map(([key, value]) => (
+                            <Row key={key.name}>
+                                <Col span={4}>{key.name}</Col>
+                                <Col span={4}>{value}</Col>
+                            </Row>
+                        ))}
                 </React.Fragment>
             )
             break
@@ -368,7 +388,7 @@ export function FactoryVisualization({
     return (
         <React.Fragment>
             <ul>
-                <li>Factory Summary: List the required industries and containers</li>
+                <li>Factory Summary: List the required industries, containers, and schematics</li>
                 <li>
                     Download Factory as JSON: Save the factory to a file and start new factory
                     additions from the current state
