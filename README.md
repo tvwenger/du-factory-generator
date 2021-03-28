@@ -10,8 +10,7 @@ line from ores to the requested items. The designed factory plan will
 ensure that all production rates are satisfied, so that the factory
 will run at full capacity. Each item type is stored in an individual
 container so that factory monitor scripts can monitor their contents.
-Here is an example factory plan, where one assembler was requested for
-Container L, Nitron Fuel, and Polycarbonate Plastic:
+Here is an example factory plan, where we produce each type of fuel:
 
 ![Example Factory Plan](./src/assets/example-map.svg)
 
@@ -32,15 +31,18 @@ TBD
 [NodeJS](https://nodejs.org/en/)
 
 ### Install Dependencies and Build
+
 ```bash
 $ npm install
 $ npm run build
 ```
 
 ### Launch Development Server
+
 ```bash
 $ npm start
 ```
+
 Navigate your browser to http://localhost:8080/
 
 ## Bugs & Feature Requests
@@ -62,13 +64,14 @@ styles.
 ## Contact
 
 Join our [Discord server](https://discord.gg/gXSWKqVnHx) and look for
-`lgfrbcsgo` and `Nikolaus`.
+`Nikolaus`.
 
 ## Contributors
 
-* [lgfrbcsgo](https://github.com/lgfrbcsgo)
-* [tvwenger](https://github.com/tvwenger)
-* [ShadowLordAlpha](https://github.com/ShadowLordAlpha)
+-   [lgfrbcsgo](https://github.com/lgfrbcsgo)
+-   [tvwenger](https://github.com/tvwenger) AKA Nikolaus
+-   [ShadowLordAlpha](https://github.com/ShadowLordAlpha)
+-   "The Prospectors" for compiling item information
 
 ## License
 

@@ -16,6 +16,7 @@ export enum FactoryState {
     SELECT = "select",
     COUNT = "count",
     RENDER = "render",
+    ERROR = "error",
 }
 
 /**
@@ -41,6 +42,8 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
     const items = React.useMemo(() => values(ITEMS).filter(isCraftable), [ITEMS])
     // current and previous factory state
     const [factoryState, setFactoryState] = React.useState<FactoryState>(startFactoryState)
+    // error message
+    const [errorMessage, setErrorMessage] = React.useState<string>()
     //  factory building instructions instructions
     const [factoryInstructions, setFactoryInstructions] = React.useState<FactoryInstruction[]>([])
     // produced items, industry count, and maintain count
@@ -128,6 +131,7 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                         selection={selection}
                         recipes={recipes}
                         setFactoryState={setFactoryState}
+                        setErrorMessage={setErrorMessage}
                         setProductionRate={setProductionRate}
                         getProductionRate={getProductionRate}
                         setMaintainValue={setMaintainValue}
@@ -149,6 +153,17 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                     setFactoryState={setFactoryState}
                     instructions={factoryInstructions!}
                 />
+            )
+        case FactoryState.ERROR:
+            return (
+                <React.Fragment>
+                    <Button onClick={() => setFactoryState(FactoryState.COUNT)}>Back</Button>
+                    <h2>
+                        <div id="error">Factory Error</div>
+                    </h2>
+                    {errorMessage} <br />
+                    <div id="error">Please report this to the developers!</div>
+                </React.Fragment>
             )
     }
 }

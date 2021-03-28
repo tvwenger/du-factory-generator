@@ -3,7 +3,7 @@ import { Container } from "../container"
 import { isIndustry } from "../industry"
 import { isByproductTransferUnit, isCatalystBalancer, isTransferUnit } from "../transfer-unit"
 import { sortName } from "./generate-instructions"
-import { CONTAINERLABELS, FONTSIZE, INDUSTRYLABELS, LINKSPACING, SIZE } from "./render-factory"
+import { containerLabel, FONTSIZE, INDUSTRYLABELS, LINKSPACING, SIZE } from "./render-factory"
 
 /**
  * Instruction centered on a merged node
@@ -160,12 +160,12 @@ export class MergedNodeInstruction {
                         x={x + SIZE / 2}
                         y={y + SIZE / 2}
                         fill="black"
-                        fontSize={1.5 * FONTSIZE}
+                        fontSize={1.0 * FONTSIZE}
                         dominantBaseline="middle"
                         textAnchor="middle"
                     >
                         {isIndustry(producer) && INDUSTRYLABELS.get(producer.recipe.industry)}
-                        {isTransferUnit(producer) && "Trans"}
+                        {isTransferUnit(producer) && producer.number + "xTU"}
                     </text>
                     <text
                         x={x + SIZE / 2}
@@ -310,13 +310,11 @@ export class MergedNodeInstruction {
                     x={x + SIZE / 2}
                     y={y}
                     fill="black"
-                    fontSize={2 * FONTSIZE}
+                    fontSize={1.0 * FONTSIZE}
                     dominantBaseline="middle"
                     textAnchor="middle"
                 >
-                    {this.container.containers
-                        .map((container) => CONTAINERLABELS.get(container))
-                        .join("+")}
+                    {containerLabel(this.container)}
                 </text>
                 {this.container.consumers.size > 0 && (
                     <React.Fragment>
@@ -400,7 +398,13 @@ export class MergedNodeInstruction {
         }
 
         // Get output links
-        const outputs = Array.from(this.container.consumers)
+        const outputs = Array.from(this.container.consumers).filter(
+            (consumer) =>
+                !(
+                    isTransferUnit(consumer) &&
+                    (isByproductTransferUnit(consumer) || isCatalystBalancer(consumer))
+                ),
+        )
         // Sort by name
         outputs.sort((a, b) => sortName(a, b))
 

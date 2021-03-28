@@ -3,7 +3,7 @@ import { DumpRoute, FactoryNode } from "../graph"
 import { isIndustry } from "../industry"
 import { isByproductTransferUnit, isCatalystBalancer, isTransferUnit } from "../transfer-unit"
 import { sortName } from "./generate-instructions"
-import { CONTAINERLABELS, FONTSIZE, INDUSTRYLABELS, LINKSPACING, SIZE } from "./render-factory"
+import { containerLabel, FONTSIZE, INDUSTRYLABELS, LINKSPACING, SIZE } from "./render-factory"
 
 /**
  * Instruction centered on a transfer container
@@ -210,12 +210,12 @@ export class NodeInstruction {
                             x={x + SIZE / 2}
                             y={y + SIZE / 2}
                             fill="black"
-                            fontSize={1.5 * FONTSIZE}
+                            fontSize={1.0 * FONTSIZE}
                             dominantBaseline="middle"
                             textAnchor="middle"
                         >
                             {isIndustry(producer) && INDUSTRYLABELS.get(producer.recipe.industry)}
-                            {isTransferUnit(producer) && "Trans"}
+                            {isTransferUnit(producer) && producer.number + "xTU"}
                         </text>
                         <text
                             x={x + SIZE / 2}
@@ -335,13 +335,11 @@ export class NodeInstruction {
                         x={x + SIZE / 2}
                         y={y}
                         fill="black"
-                        fontSize={2 * FONTSIZE}
+                        fontSize={1.0 * FONTSIZE}
                         dominantBaseline="middle"
                         textAnchor="middle"
                     >
-                        {dumpRoute.container.containers
-                            .map((container) => CONTAINERLABELS.get(container))
-                            .join("+")}
+                        {containerLabel(dumpRoute.container)}
                     </text>
                     {dumpRoute.container.consumers.size > 0 && (
                         <React.Fragment>
@@ -497,11 +495,11 @@ export class NodeInstruction {
                         x={x + SIZE / 2}
                         y={y + SIZE / 2}
                         fill="black"
-                        fontSize={1.5 * FONTSIZE}
+                        fontSize={1.0 * FONTSIZE}
                         dominantBaseline="middle"
                         textAnchor="middle"
                     >
-                        Trans
+                        {relayRoute.transferUnit.number + "xTU"}
                     </text>
                     <text
                         x={x + SIZE / 2}
@@ -603,13 +601,11 @@ export class NodeInstruction {
                         x={x + SIZE / 2}
                         y={y + SIZE / 2}
                         fill="black"
-                        fontSize={2 * FONTSIZE}
+                        fontSize={1.0 * FONTSIZE}
                         dominantBaseline="middle"
                         textAnchor="middle"
                     >
-                        {relayRoute.container.containers
-                            .map((container) => CONTAINERLABELS.get(container))
-                            .join("+")}
+                        {containerLabel(relayRoute.container)}
                     </text>
                     {relayRoute.container.consumers.size > 0 && (
                         <React.Fragment>

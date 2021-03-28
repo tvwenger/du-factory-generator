@@ -144,6 +144,18 @@ export class TransferUnit {
             0,
         )
     }
+
+    /**
+     * The number of transfer units required to satisfy transfer rate
+     */
+    get number(): number {
+        const outflowRate = Array.from(this.transferRates.values()).reduce(
+            (total, current) => total + current,
+            0,
+        )
+        const maxTransferRate = this.item.transferBatchSize / this.item.transferTime
+        return Math.ceil(outflowRate / maxTransferRate)
+    }
 }
 
 /**

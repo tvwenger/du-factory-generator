@@ -1,11 +1,21 @@
 import * as React from "react"
 import { Button, Row, Col } from "antd"
-import { Category, Tier, ITEMS, OtherElement, ContainerElement } from "../items"
-import { FactoryGraph, MAX_CONTAINER_LINKS } from "../graph"
+import {
+    Category,
+    Tier,
+    Item,
+    ITEMS,
+    OtherElement,
+    ContainerElement,
+    CONTAINERS_ASCENDING_BY_CAPACITY,
+} from "../items"
+import { FactoryGraph } from "../graph"
 import { FactoryState } from "./factory"
 import { serialize } from "../serialize"
 import { FactoryInstruction, sortName } from "./generate-instructions"
 import { FactoryMap } from "./factory-map"
+import { Container } from "../container"
+import { TransferContainer } from "../transfer-container"
 const example = require("../assets/example.png")
 
 enum VisualizationState {
@@ -27,30 +37,28 @@ export const CATEGORY_ORDER = [
     Category.EXCEPTIONAL_PARTS,
     Category.FUNCTIONAL_PARTS,
     Category.AMMO,
+    Category.CANNON,
+    Category.CHAIR,
+    Category.COMBAT_AND_DEFENCE,
+    Category.CONTAINER,
+    Category.DECORATION,
+    Category.DISPLAY,
+    Category.DOOR,
+    Category.ELECTRONIC,
     Category.FUEL,
-    Category.ANTI_GRAVITY,
-    Category.ITEM_CONTAINERS,
-    Category.FUEL_TANKS,
-    Category.CONTROL,
-    Category.DECORATIVE,
-    Category.FLIGHT_CONTROL,
-    Category.AIRFOIL,
-    Category.ENGINES,
+    Category.HONEYCOMB,
     Category.INDUSTRY,
-    Category.INSTRUMENTS,
-    Category.INTERACTIVE,
-    Category.LIGHT,
-    Category.LOGIC,
-    Category.PROJECTOR,
-    Category.REPAIR,
-    Category.RESURRECTION,
-    Category.SEAT,
-    Category.SENSOR,
-    Category.SURROGATE,
-    Category.WARP,
-    Category.WEAPON,
-    Category.CORE_UNIT,
-    Category.TERRITORY_UNIT,
+    Category.LASER,
+    Category.MISSILE,
+    Category.PLANET_ELEMENT,
+    Category.PLANT,
+    Category.RADAR,
+    Category.RAILGUN,
+    Category.SCRAP,
+    Category.SYSTEM,
+    Category.TRANSPORTATION_ELEMENT,
+    Category.WARP_CELL,
+    Category.WINDOW,
 ]
 export const TIER_ORDER = [
     Tier.BASIC,
@@ -64,18 +72,57 @@ export const TIER_ORDER = [
 // industry labels
 export const INDUSTRYLABELS = new Map([
     [ITEMS["Assembly Line XS"], "XS"],
+    [ITEMS["Uncommon Assembly Line XS"], "Unc. XS"],
+    [ITEMS["Advanced Assembly Line XS"], "Adv. XS"],
+    [ITEMS["Rare Assembly Line XS"], "Rare XS"],
     [ITEMS["Assembly Line S"], "S"],
+    [ITEMS["Uncommon Assembly Line S"], "Unc. S"],
+    [ITEMS["Advanced Assembly Line S"], "Adv. S"],
+    [ITEMS["Rare Assembly Line S"], "Rare S"],
     [ITEMS["Assembly Line M"], "M"],
+    [ITEMS["Uncommon Assembly Line M"], "Unc. M"],
+    [ITEMS["Advanced Assembly Line M"], "Adv. M"],
+    [ITEMS["Rare Assembly Line M"], "Rare M"],
     [ITEMS["Assembly Line L"], "L"],
+    [ITEMS["Uncommon Assembly Line L"], "Unc. L"],
+    [ITEMS["Advanced Assembly Line L"], "Adv. L"],
+    [ITEMS["Rare Assembly Line L"], "Rare L"],
     [ITEMS["Assembly Line XL"], "XL"],
+    [ITEMS["Uncommon Assembly Line XL"], "Unc. XL"],
+    [ITEMS["Advanced Assembly Line XL"], "Adv. XL"],
+    [ITEMS["Rare Assembly Line XL"], "Rare XL"],
     [ITEMS["3D Printer M"], "3D"],
-    [ITEMS["Chemical Industry M"], "Chem"],
-    [ITEMS["Electronics Industry M"], "Elec"],
-    [ITEMS["Glass Furnace M"], "Glass"],
-    [ITEMS["Metalwork Industry M"], "Metal"],
-    [ITEMS["Recycler M"], "Recycle"],
-    [ITEMS["Refiner M"], "Refine"],
-    [ITEMS["Smelter M"], "Smelt"],
+    [ITEMS["Uncommon 3D Printer M"], "Unc. 3D"],
+    [ITEMS["Advanced 3D Printer M"], "Adv. 3D"],
+    [ITEMS["Rare 3D Printer M"], "Rare 3D"],
+    [ITEMS["Chemical Industry M"], "Che"],
+    [ITEMS["Uncommon Chemical Industry M"], "Unc. Che"],
+    [ITEMS["Advanced Chemical Industry M"], "Adv. Che"],
+    [ITEMS["Rare Chemical Industry M"], "Rare Che"],
+    [ITEMS["Electronics Industry M"], "Ele"],
+    [ITEMS["Uncommon Electronics Industry M"], "Unc. Ele"],
+    [ITEMS["Advanced Electronics Industry M"], "Adv. Ele"],
+    [ITEMS["Rare Electronics Industry M"], "Rare Ele"],
+    [ITEMS["Glass Furnace M"], "Gla"],
+    [ITEMS["Uncommon Glass Furnace M"], "Unc. Gla"],
+    [ITEMS["Advanced Glass Furnace M"], "Adv. Gla"],
+    [ITEMS["Rare Glass Furnace M"], "Rare Gla"],
+    [ITEMS["Metalwork Industry M"], "Met"],
+    [ITEMS["Uncommon Metalwork Industry M"], "Unc. Met"],
+    [ITEMS["Advanced Metalwork Industry M"], "Adv. Met"],
+    [ITEMS["Rare Metalwork Industry M"], "Rare Met"],
+    [ITEMS["Recycler M"], "Rec"],
+    [ITEMS["Uncommon Recycler M"], "Unc. Rec"],
+    [ITEMS["Advanced Recycler M"], "Adv. Rec"],
+    [ITEMS["Rare Recycler M"], "Rare Rec"],
+    [ITEMS["Refiner M"], "Ref"],
+    [ITEMS["Uncommon Refiner M"], "Unc. Ref"],
+    [ITEMS["Advanced Refiner M"], "Adv. Ref"],
+    [ITEMS["Rare Refiner M"], "Rare Ref"],
+    [ITEMS["Smelter M"], "Sme"],
+    [ITEMS["Uncommon Smelter M"], "Unc. Sme"],
+    [ITEMS["Advanced Smelter M"], "Adv. Sme"],
+    [ITEMS["Rare Smelter M"], "Rare Sme"],
 ])
 
 // container labels
@@ -84,6 +131,8 @@ export const CONTAINERLABELS = new Map([
     [ITEMS["Container S"], "S"],
     [ITEMS["Container M"], "M"],
     [ITEMS["Container L"], "L"],
+    [ITEMS["Container XL"], "XL"],
+    [ITEMS["Expanded Container XL"], "EX"],
 ])
 
 // The size (in pixels) of a node item in the visualization
@@ -94,6 +143,31 @@ export const FONTSIZE = 10
 
 // Spacing between link lines
 export const LINKSPACING = 1.1 * FONTSIZE
+
+/**
+ * Generate string representation of required container size(s)
+ */
+export function containerLabel(container: Container | TransferContainer) {
+    let labels = []
+
+    // Loop over container sizes from large to small
+    if (CONTAINERS_ASCENDING_BY_CAPACITY.length < 1) {
+        throw new Error("CONTAINERS_ASCENDING_BY_CAPACITY is empty")
+    }
+    for (let i = CONTAINERS_ASCENDING_BY_CAPACITY.length - 1; i >= 0; i--) {
+        const containerCount = container.containers.reduce(
+            (total, current) =>
+                current === CONTAINERS_ASCENDING_BY_CAPACITY[i] ? total + 1 : total,
+            0,
+        )
+        if (containerCount > 1) {
+            labels.push(containerCount + CONTAINERLABELS.get(CONTAINERS_ASCENDING_BY_CAPACITY[i])!)
+        } else if (containerCount > 0) {
+            labels.push(CONTAINERLABELS.get(CONTAINERS_ASCENDING_BY_CAPACITY[i]))
+        }
+    }
+    return labels.join("+")
+}
 
 /**
  * Properties of the FactoryVisualization components
@@ -145,11 +219,12 @@ export function FactoryVisualization({
     let content = null
     switch (visualizationState) {
         default:
-            // get count of industry and container types
+            // get count of industry, schematic, and container types
             const industryCount = new Map<OtherElement, number>()
             let totalIndustries = 0
             const containerCount = new Map<ContainerElement, number>()
             let totalContainers = 0
+            const schematicCount = new Map<Item, number>()
 
             if (factory !== undefined) {
                 Array.from(factory.industries).map((node) => {
@@ -162,11 +237,18 @@ export function FactoryVisualization({
                     } else {
                         industryCount.set(node.recipe.industry, 1)
                     }
+                    if (schematicCount.has(node.item)) {
+                        schematicCount.set(node.item, schematicCount.get(node.item)! + 1)
+                    } else {
+                        schematicCount.set(node.item, 1)
+                    }
                 })
                 industryCount.set(
                     ITEMS["Transfer Unit"],
-                    Array.from(factory.transferUnits).filter((transferUnit) => !transferUnit.merged)
-                        .length,
+                    Array.from(factory.transferUnits)
+                        .filter((transferUnit) => !transferUnit.merged)
+                        .map((transferUnit) => transferUnit.number)
+                        .reduce((total, current) => total + current, 0),
                 )
                 totalIndustries += Array.from(factory.transferUnits).filter(
                     (transferUnit) => !transferUnit.merged,
@@ -237,6 +319,19 @@ export function FactoryVisualization({
                                 <Col span={4}>{value}</Col>
                             </Row>
                         ))}
+                    <h2>Factory Schematics:</h2>
+                    <Row>
+                        <Col span={4}>Item</Col>
+                        <Col span={4}>Count</Col>
+                    </Row>
+                    {Array.from(schematicCount)
+                        .sort((a, b) => sortName(a[0], b[0]))
+                        .map(([key, value]) => (
+                            <Row key={key.name}>
+                                <Col span={4}>{key.name}</Col>
+                                <Col span={4}>{value}</Col>
+                            </Row>
+                        ))}
                 </React.Fragment>
             )
             break
@@ -293,7 +388,7 @@ export function FactoryVisualization({
     return (
         <React.Fragment>
             <ul>
-                <li>Factory Summary: List the required industries and containers</li>
+                <li>Factory Summary: List the required industries, containers, and schematics</li>
                 <li>
                     Download Factory as JSON: Save the factory to a file and start new factory
                     additions from the current state
