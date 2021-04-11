@@ -12,6 +12,8 @@ import { shortenName } from "./utils"
 export class TransferUnit {
     inputs: Set<Container> = new Set()
     output: Container | TransferContainer
+    // the required transfer rate
+    requiredTransferRate = 0.0
     // the transfer rate from each input
     transferRates: Map<Container, PerSecond> = new Map()
     // if this element has changed
@@ -89,6 +91,22 @@ export class TransferUnit {
     }
 
     /**
+     * Increase the required transfer rate
+     * @param rate transfer rate increase
+     */
+    increaseRequiredTransferRate(rate: PerSecond) {
+        this.requiredTransferRate += rate
+    }
+
+    /**
+     * Decrease the required transfer rate
+     * @param rate transfer rate increase
+     */
+    decreaseRequiredTransferRate(rate: PerSecond) {
+        this.requiredTransferRate -= rate
+    }
+
+    /**
      * Set the transfer rate from a given container
      * @param container container
      * @param rate new transfer rate
@@ -149,12 +167,8 @@ export class TransferUnit {
      * The number of transfer units required to satisfy transfer rate
      */
     get number(): number {
-        const outflowRate = Array.from(this.transferRates.values()).reduce(
-            (total, current) => total + current,
-            0,
-        )
-        const maxTransferRate = this.item.transferBatchSize / this.item.transferTime
-        return Math.ceil(outflowRate / maxTransferRate)
+        const transferRatePer = this.item.transferBatchSize / this.item.transferTime
+        return Math.ceil(this.requiredTransferRate / transferRatePer)
     }
 }
 
