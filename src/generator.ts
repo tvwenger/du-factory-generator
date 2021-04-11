@@ -129,6 +129,7 @@ function handleByproducts(factory: FactoryGraph) {
 
             // Add new transfer unit
             const transferUnit = factory.createTransferUnit(byproduct.item, outputContainer)
+            transferUnit.increaseRequiredTransferRate(container.ingress(byproduct.item))
             transferUnit.addInput(container)
             transferUnit.increaseTransferRate(container, container.ingress(byproduct.item))
         }
@@ -150,6 +151,7 @@ function handleByproducts(factory: FactoryGraph) {
                 .filter((node) => node.output === container)
             if (transferUnits.length === 0) {
                 const transferUnit = factory.createTransferUnit(catalyst, container)
+                transferUnit.increaseRequiredTransferRate(lastContainer.ingress(catalyst))
                 transferUnit.addInput(lastContainer)
                 transferUnit.increaseTransferRate(lastContainer, lastContainer.ingress(catalyst))
             }
@@ -160,6 +162,7 @@ function handleByproducts(factory: FactoryGraph) {
                 .filter((node) => node.output === lastContainer)
             if (transferUnits.length === 0) {
                 const transferUnit = factory.createTransferUnit(catalyst, lastContainer)
+                transferUnit.increaseRequiredTransferRate(container.ingress(catalyst))
                 transferUnit.addInput(container)
                 transferUnit.increaseTransferRate(container, container.ingress(catalyst))
             }
@@ -242,6 +245,7 @@ function handleTransferContainers(factory: FactoryGraph) {
                     const transferRate = industry.inflowRateFrom(container, container.item)
                     industry.removeInput(container)
                     transferUnit.addInput(container)
+                    transferUnit.increaseRequiredTransferRate(transferRate)
                     transferUnit.increaseTransferRate(container, transferRate)
                     check = true
                     break
