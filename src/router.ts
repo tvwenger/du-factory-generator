@@ -1,11 +1,26 @@
 import { FactoryNode, ProductionNode, DumpRoute, RelayRoute } from "./graph"
-import { isCatalyst, isGas } from "./items"
+import { isCatalyst, isGas, isOre } from "./items"
+import { MAX_CONTAINER_LINKS } from "./graph"
+import { findRecipe } from "./recipes"
 
 /**
  * Route a node's relay containers
  * @param node Node to route
  */
 export function generateRelayRoutes(node: FactoryNode) {
+    // delta to avoid rounding errors
+    const delta = 1.0e-8
+
+    // maximum number of supported transfer units, considering byproducts
+    let maxTransferNumber = MAX_CONTAINER_LINKS
+    if (!isOre(node.item)) {
+        maxTransferNumber = MAX_CONTAINER_LINKS - findRecipe(node.item).byproducts.length
+    }
+
+    // maximum rate supported by transfer units
+    const maxTransferRate =
+        (maxTransferNumber * node.item.transferBatchSize) / node.item.transferTime
+
     // Satisfy all consumers
     for (const consumer of node.consumers) {
         // Get consuming industries that need node item
@@ -24,11 +39,27 @@ export function generateRelayRoutes(node: FactoryNode) {
             )
             for (let i = 0; i < addIndustries; i++) {
                 industries[i].addInput(relayRoute.container)
+                relayRoute.transferUnit.increaseRequiredTransferRate(
+                    industries[i].inflowRateOf(node.item),
+                )
+                // check that the number of transfer units can be supported
+                // by the relay container incoming link limit as well as the
+                // dump container outgoing link limit, considering byproducts
+                if (
+                    relayRoute.container.incomingLinksFree < 0 ||
+                    relayRoute.transferUnit.number > maxTransferNumber
+                ) {
+                    industries[i].removeInput(relayRoute.container)
+                    relayRoute.transferUnit.decreaseRequiredTransferRate(
+                        industries[i].inflowRateOf(node.item),
+                    )
+                }
             }
             industries = consumer.getIndustriesNeeding(node.item)
         }
 
         // Add new relays if necessary
+        let lastLength = industries.length
         while (industries.length > 0) {
             // Create container and transfer unit
             const container = node.factory.createRelayContainer(node.item)
@@ -38,8 +69,20 @@ export function generateRelayRoutes(node: FactoryNode) {
             const addIndustries = Math.min(industries.length, container.outgoingLinksFree)
             for (let i = 0; i < addIndustries; i++) {
                 industries[i].addInput(container)
+                transferUnit.increaseRequiredTransferRate(industries[i].inflowRateOf(node.item))
+                // check that the number of transfer units can be supported
+                // by the relay container incoming link limit as well as the
+                // dump container outgoing link limit, considering byproducts
+                if (container.incomingLinksFree < 0 || transferUnit.number > maxTransferNumber) {
+                    industries[i].removeInput(container)
+                    transferUnit.decreaseRequiredTransferRate(industries[i].inflowRateOf(node.item))
+                }
             }
             industries = consumer.getIndustriesNeeding(node.item)
+            if (industries.length == lastLength) {
+                throw new Error("Recursion error in relay route assignment")
+            }
+            lastLength = industries.length
 
             // Add relay route
             const relayRoute: RelayRoute = {
@@ -52,26 +95,46 @@ export function generateRelayRoutes(node: FactoryNode) {
 
     // Route the output relay
     if (node.outputRate > 0) {
-        if (node.outputRelay === undefined) {
-            // Create container and transfer Unit
+        let rateDiff = node.outputRate - node.outputRelaysRate
+        let maintainDiff = node.maintainedOutput - node.outputRelaysMaintain
+
+        // increase output rate of existing relays if any
+        for (const route of node.outputRelays) {
+            const increaseRate = Math.min(rateDiff, maxTransferRate - route.container.outputRate)
+            let increaseMaintain = maintainDiff
+            if (rateDiff > 0) {
+                increaseMaintain = (maintainDiff * increaseRate) / rateDiff
+            }
+            route.container.setOutputRate(route.container.outputRate + increaseRate)
+            route.container.setMaintainedOutput(route.container.maintainedOutput + increaseMaintain)
+            route.transferUnit.increaseRequiredTransferRate(increaseRate)
+            rateDiff = rateDiff - increaseRate
+            maintainDiff = maintainDiff - increaseMaintain
+        }
+
+        // Add new output relays as necessary
+        let lastRateDiff = rateDiff
+        while (rateDiff > delta) {
             const container = node.factory.createRelayContainer(node.item)
             const transferUnit = node.factory.createTransferUnit(node.item, container)
 
-            container.setOutputRate(node.outputRate)
-            container.setMaintainedOutput(node.maintainedOutput)
+            const increaseRate = Math.min(rateDiff, maxTransferRate)
+            let increaseMaintain = maintainDiff
+            increaseMaintain = (maintainDiff * increaseRate) / rateDiff
+            container.setOutputRate(increaseRate)
+            container.setMaintainedOutput(increaseMaintain)
+            transferUnit.increaseRequiredTransferRate(increaseRate)
             const relayRoute: RelayRoute = {
                 container,
                 transferUnit,
             }
             node.relayRoutes.push(relayRoute)
-        } else {
-            if (
-                node.outputRate !== node.outputRelay.container.outputRate ||
-                node.maintainedOutput != node.outputRelay.container.maintainedOutput
-            ) {
-                node.outputRelay.container.setOutputRate(node.outputRate)
-                node.outputRelay.container.setMaintainedOutput(node.maintainedOutput)
+            rateDiff = rateDiff - increaseRate
+            maintainDiff = maintainDiff - increaseMaintain
+            if (Math.abs(rateDiff - lastRateDiff) < delta) {
+                throw new Error("Recursion error in output relay assignment")
             }
+            lastRateDiff = rateDiff
         }
     }
 }
@@ -98,7 +161,7 @@ export function generateDumpRoutes(node: ProductionNode, singleGas: boolean) {
         if (isCatalyst(node.item) || (isGas(node.item) && singleGas)) {
             let found = false
             for (const dumpRoute of node.dumpRoutes) {
-                if (dumpRoute.container.canAddOutgoingLinks(1)) {
+                if (dumpRoute.container.canAddOutgoingLinks(relayRoute.transferUnit.number)) {
                     relayRoute.transferUnit.addInput(dumpRoute.container)
                     relayRoute.transferUnit.increaseTransferRate(dumpRoute.container, relayEgress)
                     dumpRoute.relayRoutes.push(relayRoute)
@@ -131,7 +194,7 @@ export function generateDumpRoutes(node: ProductionNode, singleGas: boolean) {
                 // How much more ingress can we produce
                 const newIngress = dumpRoute.container.incomingLinksFree * node.rate
 
-                // New industries we require
+                // New egress we require
                 let newEgress = Math.min(newIngress + currentSurplus, relayEgress)
 
                 // New industries we require
@@ -166,8 +229,8 @@ export function generateDumpRoutes(node: ProductionNode, singleGas: boolean) {
 
         // Add to existing route if possible
         for (const dumpRoute of node.dumpRoutes) {
-            // skip if this dump route is full
-            if (!dumpRoute.container.canAddOutgoingLinks(1)) {
+            // skip if this dump route cannot support relay
+            if (!dumpRoute.container.canAddOutgoingLinks(relayRoute.transferUnit.number)) {
                 continue
             }
 
@@ -223,6 +286,7 @@ export function generateDumpRoutes(node: ProductionNode, singleGas: boolean) {
         }
 
         // Create new dump route if necessary
+        let lastEgress = relayEgress
         while (relayEgress > delta) {
             const dumpContainer = node.factory.createDumpContainer(node.item)
 
@@ -245,6 +309,10 @@ export function generateDumpRoutes(node: ProductionNode, singleGas: boolean) {
             relayRoute.transferUnit.increaseTransferRate(dumpContainer, newEgress)
             relayEgress =
                 relayRoute.container.egress(node.item) - relayRoute.container.ingress(node.item)
+            if (Math.abs(relayEgress - lastEgress) < delta) {
+                throw new Error("Recursion error in output relay assignments")
+            }
+            lastEgress = relayEgress
         }
     }
 }

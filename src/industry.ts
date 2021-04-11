@@ -94,6 +94,19 @@ export class Industry {
     }
 
     /**
+     * Calculate the rate at which an ingredient is consumed
+     * @param item Item to check
+     */
+    inflowRateOf(item: Item): PerSecond {
+        for (const ingredient of this.recipe.ingredients) {
+            if (ingredient.item === item) {
+                return ingredient.quantity / this.recipe.time
+            }
+        }
+        return 0
+    }
+
+    /**
      * Calculate the rate at which an ingredient is consumed from a given container
      * @param container Container to check
      * @param item Item to check
@@ -109,12 +122,7 @@ export class Industry {
             return 0
         }
 
-        for (const ingredient of this.recipe.ingredients) {
-            if (ingredient.item === item) {
-                return ingredient.quantity / this.recipe.time
-            }
-        }
-        return 0
+        return this.inflowRateOf(item)
     }
 
     /**
