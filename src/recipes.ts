@@ -8900,7 +8900,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Freight Atmospheric Engine XS"], 1),
+        product: batch(ITEMS["Uncommon Freight Atmospheric Engine XS"], 1),
         time: 360,
         industry: ITEMS["Assembly Line XS"],
         ingredients: [
@@ -8913,7 +8913,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Maneuver Atmospheric Engine XS"], 1),
+        product: batch(ITEMS["Uncommon Maneuver Atmospheric Engine XS"], 1),
         time: 360,
         industry: ITEMS["Assembly Line XS"],
         ingredients: [
@@ -8926,7 +8926,20 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Military Atmospheric Engine XS"], 1),
+        product: batch(ITEMS["Uncommon Military Atmospheric Engine XS"], 1),
+        time: 360,
+        industry: ITEMS["Assembly Line XS"],
+        ingredients: [
+            batch(ITEMS["Basic Screw"], 1),
+            batch(ITEMS["Uncommon Screw"], 1),
+            batch(ITEMS["Uncommon Injector"], 1),
+            batch(ITEMS["Uncommon Combustion Chamber XS"], 1),
+            batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Uncommon Safe Atmospheric Engine XS"], 1),
         time: 360,
         industry: ITEMS["Assembly Line XS"],
         ingredients: [
@@ -8991,19 +9004,6 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Safe Atmospheric Engine XS"], 1),
-        time: 360,
-        industry: ITEMS["Assembly Line XS"],
-        ingredients: [
-            batch(ITEMS["Basic Screw"], 1),
-            batch(ITEMS["Uncommon Screw"], 1),
-            batch(ITEMS["Uncommon Injector"], 1),
-            batch(ITEMS["Uncommon Combustion Chamber XS"], 1),
-            batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
-        ],
-        byproducts: [],
-    },
-    {
         product: batch(ITEMS["Advanced Freight Atmospheric Engine L"], 1),
         time: 69120,
         industry: ITEMS["Uncommon Assembly Line L"],
@@ -9064,7 +9064,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Freight Atmospheric Engine L"], 1),
+        product: batch(ITEMS["Uncommon Freight Atmospheric Engine L"], 1),
         time: 23040,
         industry: ITEMS["Assembly Line L"],
         ingredients: [
@@ -9077,7 +9077,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Maneuver Atmospheric Engine L"], 1),
+        product: batch(ITEMS["Uncommon Maneuver Atmospheric Engine L"], 1),
         time: 23040,
         industry: ITEMS["Assembly Line L"],
         ingredients: [
@@ -9090,7 +9090,20 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Military Atmospheric Engine L"], 1),
+        product: batch(ITEMS["Uncommon Military Atmospheric Engine L"], 1),
+        time: 23040,
+        industry: ITEMS["Assembly Line L"],
+        ingredients: [
+            batch(ITEMS["Basic Screw"], 108),
+            batch(ITEMS["Uncommon Screw"], 108),
+            batch(ITEMS["Uncommon Injector"], 125),
+            batch(ITEMS["Uncommon Combustion Chamber L"], 1),
+            batch(ITEMS["Uncommon Reinforced Frame L"], 1),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Uncommon Safe Atmospheric Engine L"], 1),
         time: 23040,
         industry: ITEMS["Assembly Line L"],
         ingredients: [
@@ -9155,19 +9168,6 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Safe Atmospheric Engine L"], 1),
-        time: 23040,
-        industry: ITEMS["Assembly Line L"],
-        ingredients: [
-            batch(ITEMS["Basic Screw"], 108),
-            batch(ITEMS["Uncommon Screw"], 108),
-            batch(ITEMS["Uncommon Injector"], 125),
-            batch(ITEMS["Uncommon Combustion Chamber L"], 1),
-            batch(ITEMS["Uncommon Reinforced Frame L"], 1),
-        ],
-        byproducts: [],
-    },
-    {
         product: batch(ITEMS["Advanced Freight Atmospheric Engine M"], 1),
         time: 17280,
         industry: ITEMS["Uncommon Assembly Line M"],
@@ -9228,7 +9228,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Freight Atmospheric Engine M"], 1),
+        product: batch(ITEMS["Uncommon Freight Atmospheric Engine M"], 1),
         time: 5760,
         industry: ITEMS["Assembly Line M"],
         ingredients: [
@@ -9241,7 +9241,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Maneuver Atmospheric Engine M"], 1),
+        product: batch(ITEMS["Uncommon Maneuver Atmospheric Engine M"], 1),
         time: 5760,
         industry: ITEMS["Assembly Line M"],
         ingredients: [
@@ -9254,7 +9254,20 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Military Atmospheric Engine M"], 1),
+        product: batch(ITEMS["Uncommon Military Atmospheric Engine M"], 1),
+        time: 5760,
+        industry: ITEMS["Assembly Line M"],
+        ingredients: [
+            batch(ITEMS["Basic Screw"], 18),
+            batch(ITEMS["Uncommon Screw"], 18),
+            batch(ITEMS["Uncommon Injector"], 25),
+            batch(ITEMS["Uncommon Combustion Chamber M"], 1),
+            batch(ITEMS["Uncommon Reinforced Frame M"], 1),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Uncommon Safe Atmospheric Engine M"], 1),
         time: 5760,
         industry: ITEMS["Assembly Line M"],
         ingredients: [
@@ -9319,19 +9332,6 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Safe Atmospheric Engine M"], 1),
-        time: 5760,
-        industry: ITEMS["Assembly Line M"],
-        ingredients: [
-            batch(ITEMS["Basic Screw"], 18),
-            batch(ITEMS["Uncommon Screw"], 18),
-            batch(ITEMS["Uncommon Injector"], 25),
-            batch(ITEMS["Uncommon Combustion Chamber M"], 1),
-            batch(ITEMS["Uncommon Reinforced Frame M"], 1),
-        ],
-        byproducts: [],
-    },
-    {
         product: batch(ITEMS["Advanced Freight Atmospheric Engine S"], 1),
         time: 4320,
         industry: ITEMS["Uncommon Assembly Line S"],
@@ -9392,7 +9392,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Freight Atmospheric Engine S"], 1),
+        product: batch(ITEMS["Uncommon Freight Atmospheric Engine S"], 1),
         time: 1440,
         industry: ITEMS["Assembly Line S"],
         ingredients: [
@@ -9405,7 +9405,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Maneuver Atmospheric Engine S"], 1),
+        product: batch(ITEMS["Uncommon Maneuver Atmospheric Engine S"], 1),
         time: 1440,
         industry: ITEMS["Assembly Line S"],
         ingredients: [
@@ -9418,7 +9418,20 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Military Atmospheric Engine S"], 1),
+        product: batch(ITEMS["Uncommon Military Atmospheric Engine S"], 1),
+        time: 1440,
+        industry: ITEMS["Assembly Line S"],
+        ingredients: [
+            batch(ITEMS["Basic Screw"], 3),
+            batch(ITEMS["Uncommon Screw"], 3),
+            batch(ITEMS["Uncommon Injector"], 5),
+            batch(ITEMS["Uncommon Combustion Chamber S"], 1),
+            batch(ITEMS["Uncommon Reinforced Frame S"], 1),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Uncommon Safe Atmospheric Engine S"], 1),
         time: 1440,
         industry: ITEMS["Assembly Line S"],
         ingredients: [
@@ -9479,19 +9492,6 @@ export const RECIPES: Recipe[] = [
             batch(ITEMS["Rare Injector"], 5),
             batch(ITEMS["Rare Combustion Chamber S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
-        ],
-        byproducts: [],
-    },
-    {
-        product: batch(ITEMS["Safe Atmospheric Engine S"], 1),
-        time: 1440,
-        industry: ITEMS["Assembly Line S"],
-        ingredients: [
-            batch(ITEMS["Basic Screw"], 3),
-            batch(ITEMS["Uncommon Screw"], 3),
-            batch(ITEMS["Uncommon Injector"], 5),
-            batch(ITEMS["Uncommon Combustion Chamber S"], 1),
-            batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
     },
@@ -9647,7 +9647,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Advanced MIlitary Space Engine XL"], 1),
+        product: batch(ITEMS["Advanced Military Space Engine XL"], 1),
         time: 277200,
         industry: ITEMS["Uncommon Assembly Line XL"],
         ingredients: [
@@ -9683,7 +9683,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Freight Space Engine XL"], 1),
+        product: batch(ITEMS["Uncommon Freight Space Engine XL"], 1),
         time: 92160,
         industry: ITEMS["Assembly Line XL"],
         ingredients: [
@@ -9696,7 +9696,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Maneuver Space Engine XL"], 1),
+        product: batch(ITEMS["Uncommon Maneuver Space Engine XL"], 1),
         time: 92160,
         industry: ITEMS["Assembly Line XL"],
         ingredients: [
@@ -9709,7 +9709,20 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Military Space Engine XL"], 1),
+        product: batch(ITEMS["Uncommon Military Space Engine XL"], 1),
+        time: 92160,
+        industry: ITEMS["Assembly Line XL"],
+        ingredients: [
+            batch(ITEMS["Basic Screw"], 648),
+            batch(ITEMS["Uncommon Screw"], 648),
+            batch(ITEMS["Uncommon Burner"], 625),
+            batch(ITEMS["Uncommon Ionic Chamber XL"], 1),
+            batch(ITEMS["Uncommon Reinforced Frame XL"], 1),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Uncommon Safe Space Engine XL"], 1),
         time: 92160,
         industry: ITEMS["Assembly Line XL"],
         ingredients: [
@@ -9748,7 +9761,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Rare MIlitary Space Engine XL"], 1),
+        product: batch(ITEMS["Rare Military Space Engine XL"], 1),
         time: 828000,
         industry: ITEMS["Advanced Assembly Line XL"],
         ingredients: [
@@ -9770,19 +9783,6 @@ export const RECIPES: Recipe[] = [
             batch(ITEMS["Rare Burner"], 625),
             batch(ITEMS["Rare Ionic Chamber XL"], 1),
             batch(ITEMS["Rare Reinforced Frame XL"], 1),
-        ],
-        byproducts: [],
-    },
-    {
-        product: batch(ITEMS["Safe Space Engine XL"], 1),
-        time: 92160,
-        industry: ITEMS["Assembly Line XL"],
-        ingredients: [
-            batch(ITEMS["Basic Screw"], 648),
-            batch(ITEMS["Uncommon Screw"], 648),
-            batch(ITEMS["Uncommon Burner"], 625),
-            batch(ITEMS["Uncommon Ionic Chamber XL"], 1),
-            batch(ITEMS["Uncommon Reinforced Frame XL"], 1),
         ],
         byproducts: [],
     },
@@ -9811,7 +9811,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Advanced MIlitary Space Engine XS"], 1),
+        product: batch(ITEMS["Advanced Military Space Engine XS"], 1),
         time: 1080,
         industry: ITEMS["Uncommon Assembly Line XS"],
         ingredients: [
@@ -9847,7 +9847,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Freight Space Engine XS"], 1),
+        product: batch(ITEMS["Uncommon Freight Space Engine XS"], 1),
         time: 360,
         industry: ITEMS["Assembly Line XS"],
         ingredients: [
@@ -9860,7 +9860,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Maneuver Space Engine XS"], 1),
+        product: batch(ITEMS["Uncommon Maneuver Space Engine XS"], 1),
         time: 360,
         industry: ITEMS["Assembly Line XS"],
         ingredients: [
@@ -9873,7 +9873,20 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Military Space Engine XS"], 1),
+        product: batch(ITEMS["Uncommon Military Space Engine XS"], 1),
+        time: 360,
+        industry: ITEMS["Assembly Line XS"],
+        ingredients: [
+            batch(ITEMS["Basic Screw"], 1),
+            batch(ITEMS["Uncommon Screw"], 1),
+            batch(ITEMS["Uncommon Burner"], 1),
+            batch(ITEMS["Uncommon Ionic Chamber XS"], 1),
+            batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Uncommon Safe Space Engine XS"], 1),
         time: 360,
         industry: ITEMS["Assembly Line XS"],
         ingredients: [
@@ -9912,7 +9925,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Rare MIlitary Space Engine XS"], 1),
+        product: batch(ITEMS["Rare Military Space Engine XS"], 1),
         time: 3240,
         industry: ITEMS["Advanced Assembly Line XS"],
         ingredients: [
@@ -9938,15 +9951,50 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Safe Space Engine XS"], 1),
-        time: 360,
-        industry: ITEMS["Assembly Line XS"],
+        product: batch(ITEMS["Advanced Freight Space Engine L"], 1),
+        time: 69120,
+        industry: ITEMS["Uncommon Assembly Line L"],
         ingredients: [
-            batch(ITEMS["Basic Screw"], 1),
-            batch(ITEMS["Uncommon Screw"], 1),
-            batch(ITEMS["Uncommon Burner"], 1),
-            batch(ITEMS["Uncommon Ionic Chamber XS"], 1),
-            batch(ITEMS["Uncommon Reinforced Frame XS"], 1),
+            batch(ITEMS["Uncommon Screw"], 216),
+            batch(ITEMS["Advanced Burner"], 125),
+            batch(ITEMS["Advanced Ionic Chamber L"], 1),
+            batch(ITEMS["Advanced Reinforced Frame L"], 1),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Advanced Maneuver Space Engine L"], 1),
+        time: 69120,
+        industry: ITEMS["Uncommon Assembly Line L"],
+        ingredients: [
+            batch(ITEMS["Advanced Screw"], 108),
+            batch(ITEMS["Advanced Burner"], 125),
+            batch(ITEMS["Advanced Ionic Chamber L"], 1),
+            batch(ITEMS["Advanced Reinforced Frame L"], 1),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Advanced Military Space Engine L"], 1),
+        time: 69120,
+        industry: ITEMS["Uncommon Assembly Line L"],
+        ingredients: [
+            batch(ITEMS["Advanced Screw"], 108),
+            batch(ITEMS["Advanced Burner"], 125),
+            batch(ITEMS["Advanced Ionic Chamber L"], 1),
+            batch(ITEMS["Advanced Reinforced Frame L"], 1),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Advanced Safe Space Engine L"], 1),
+        time: 69120,
+        industry: ITEMS["Uncommon Assembly Line L"],
+        ingredients: [
+            batch(ITEMS["Advanced Screw"], 108),
+            batch(ITEMS["Advanced Burner"], 125),
+            batch(ITEMS["Advanced Ionic Chamber L"], 1),
+            batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
     },
@@ -9963,7 +10011,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Freight Space Engine L"], 1),
+        product: batch(ITEMS["Uncommon Freight Space Engine L"], 1),
         time: 23040,
         industry: ITEMS["Assembly Line L"],
         ingredients: [
@@ -9976,7 +10024,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Maneuver Space Engine L"], 1),
+        product: batch(ITEMS["Uncommon Maneuver Space Engine L"], 1),
         time: 23040,
         industry: ITEMS["Assembly Line L"],
         ingredients: [
@@ -9989,7 +10037,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Military Space Engine L"], 1),
+        product: batch(ITEMS["Uncommon Military Space Engine L"], 1),
         time: 23040,
         industry: ITEMS["Assembly Line L"],
         ingredients: [
@@ -10002,7 +10050,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Safe Space Engine L"], 1),
+        product: batch(ITEMS["Uncommon Safe Space Engine L"], 1),
         time: 23040,
         industry: ITEMS["Assembly Line L"],
         ingredients: [
@@ -10011,6 +10059,58 @@ export const RECIPES: Recipe[] = [
             batch(ITEMS["Uncommon Burner"], 125),
             batch(ITEMS["Uncommon Ionic Chamber L"], 1),
             batch(ITEMS["Uncommon Reinforced Frame L"], 1),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Rare Freight Space Engine L"], 1),
+        time: 208800,
+        industry: ITEMS["Advanced Assembly Line L"],
+        ingredients: [
+            batch(ITEMS["Uncommon Screw"], 108),
+            batch(ITEMS["Advanced Screw"], 108),
+            batch(ITEMS["Advanced Burner"], 125),
+            batch(ITEMS["Advanced Ionic Chamber L"], 1),
+            batch(ITEMS["Advanced Reinforced Frame L"], 1),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Rare Maneuver Space Engine L"], 1),
+        time: 208800,
+        industry: ITEMS["Advanced Assembly Line L"],
+        ingredients: [
+            batch(ITEMS["Uncommon Screw"], 108),
+            batch(ITEMS["Advanced Screw"], 108),
+            batch(ITEMS["Advanced Burner"], 125),
+            batch(ITEMS["Advanced Ionic Chamber L"], 1),
+            batch(ITEMS["Advanced Reinforced Frame L"], 1),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Rare Military Space Engine L"], 1),
+        time: 208800,
+        industry: ITEMS["Advanced Assembly Line L"],
+        ingredients: [
+            batch(ITEMS["Uncommon Screw"], 108),
+            batch(ITEMS["Advanced Screw"], 108),
+            batch(ITEMS["Advanced Burner"], 125),
+            batch(ITEMS["Advanced Ionic Chamber L"], 1),
+            batch(ITEMS["Advanced Reinforced Frame L"], 1),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Rare Safe Space Engine L"], 1),
+        time: 208800,
+        industry: ITEMS["Advanced Assembly Line L"],
+        ingredients: [
+            batch(ITEMS["Uncommon Screw"], 108),
+            batch(ITEMS["Advanced Screw"], 108),
+            batch(ITEMS["Advanced Burner"], 125),
+            batch(ITEMS["Advanced Ionic Chamber L"], 1),
+            batch(ITEMS["Advanced Reinforced Frame L"], 1),
         ],
         byproducts: [],
     },
@@ -10039,7 +10139,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Advanced MIlitary Space Engine M"], 1),
+        product: batch(ITEMS["Advanced Military Space Engine M"], 1),
         time: 69120,
         industry: ITEMS["Uncommon Assembly Line M"],
         ingredients: [
@@ -10075,7 +10175,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Freight Space Engine M"], 1),
+        product: batch(ITEMS["Uncommon Freight Space Engine M"], 1),
         time: 5760,
         industry: ITEMS["Assembly Line M"],
         ingredients: [
@@ -10088,7 +10188,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Maneuver Space Engine M"], 1),
+        product: batch(ITEMS["Uncommon Maneuver Space Engine M"], 1),
         time: 5760,
         industry: ITEMS["Assembly Line M"],
         ingredients: [
@@ -10101,7 +10201,20 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Military Space Engine M"], 1),
+        product: batch(ITEMS["Uncommon Military Space Engine M"], 1),
+        time: 5760,
+        industry: ITEMS["Assembly Line M"],
+        ingredients: [
+            batch(ITEMS["Basic Screw"], 18),
+            batch(ITEMS["Uncommon Screw"], 18),
+            batch(ITEMS["Uncommon Burner"], 25),
+            batch(ITEMS["Uncommon Ionic Chamber M"], 1),
+            batch(ITEMS["Uncommon Reinforced Frame M"], 1),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Uncommon Safe Space Engine M"], 1),
         time: 5760,
         industry: ITEMS["Assembly Line M"],
         ingredients: [
@@ -10140,7 +10253,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Rare MIlitary Space Engine M"], 1),
+        product: batch(ITEMS["Rare Military Space Engine M"], 1),
         time: 208800,
         industry: ITEMS["Advanced Assembly Line M"],
         ingredients: [
@@ -10162,19 +10275,6 @@ export const RECIPES: Recipe[] = [
             batch(ITEMS["Rare Burner"], 125),
             batch(ITEMS["Rare Ionic Chamber M"], 1),
             batch(ITEMS["Rare Reinforced Frame M"], 1),
-        ],
-        byproducts: [],
-    },
-    {
-        product: batch(ITEMS["Safe Space Engine M"], 1),
-        time: 5760,
-        industry: ITEMS["Assembly Line M"],
-        ingredients: [
-            batch(ITEMS["Basic Screw"], 18),
-            batch(ITEMS["Uncommon Screw"], 18),
-            batch(ITEMS["Uncommon Burner"], 25),
-            batch(ITEMS["Uncommon Ionic Chamber M"], 1),
-            batch(ITEMS["Uncommon Reinforced Frame M"], 1),
         ],
         byproducts: [],
     },
@@ -10203,7 +10303,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Advanced MIlitary Space Engine S"], 1),
+        product: batch(ITEMS["Advanced Military Space Engine S"], 1),
         time: 4320,
         industry: ITEMS["Uncommon Assembly Line S"],
         ingredients: [
@@ -10239,7 +10339,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Freight Space Engine S"], 1),
+        product: batch(ITEMS["Uncommon Freight Space Engine S"], 1),
         time: 1440,
         industry: ITEMS["Assembly Line S"],
         ingredients: [
@@ -10252,7 +10352,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Maneuver Space Engine S"], 1),
+        product: batch(ITEMS["Uncommon Maneuver Space Engine S"], 1),
         time: 1440,
         industry: ITEMS["Assembly Line S"],
         ingredients: [
@@ -10265,7 +10365,20 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Military Space Engine S"], 1),
+        product: batch(ITEMS["Uncommon Military Space Engine S"], 1),
+        time: 1440,
+        industry: ITEMS["Assembly Line S"],
+        ingredients: [
+            batch(ITEMS["Basic Screw"], 3),
+            batch(ITEMS["Uncommon Screw"], 3),
+            batch(ITEMS["Uncommon Burner"], 5),
+            batch(ITEMS["Uncommon Ionic Chamber S"], 1),
+            batch(ITEMS["Uncommon Reinforced Frame S"], 1),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Uncommon Safe Space Engine S"], 1),
         time: 1440,
         industry: ITEMS["Assembly Line S"],
         ingredients: [
@@ -10304,7 +10417,7 @@ export const RECIPES: Recipe[] = [
         byproducts: [],
     },
     {
-        product: batch(ITEMS["Rare MIlitary Space Engine S"], 1),
+        product: batch(ITEMS["Rare Military Space Engine S"], 1),
         time: 12960,
         industry: ITEMS["Advanced Assembly Line S"],
         ingredients: [
@@ -10326,19 +10439,6 @@ export const RECIPES: Recipe[] = [
             batch(ITEMS["Rare Burner"], 5),
             batch(ITEMS["Rare Ionic Chamber S"], 1),
             batch(ITEMS["Rare Reinforced Frame S"], 1),
-        ],
-        byproducts: [],
-    },
-    {
-        product: batch(ITEMS["Safe Space Engine S"], 1),
-        time: 1440,
-        industry: ITEMS["Assembly Line S"],
-        ingredients: [
-            batch(ITEMS["Basic Screw"], 3),
-            batch(ITEMS["Uncommon Screw"], 3),
-            batch(ITEMS["Uncommon Burner"], 5),
-            batch(ITEMS["Uncommon Ionic Chamber S"], 1),
-            batch(ITEMS["Uncommon Reinforced Frame S"], 1),
         ],
         byproducts: [],
     },
