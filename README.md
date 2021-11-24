@@ -72,6 +72,7 @@ Join our [Discord server](https://discord.gg/gXSWKqVnHx) and look for
 -   [tvwenger](https://github.com/tvwenger) AKA Nikolaus
 -   [ShadowLordAlpha](https://github.com/ShadowLordAlpha)
 -   "The Prospectors" for compiling item information
+-   [wokka1](https://github.com/wokka1)
 
 ## License
 
