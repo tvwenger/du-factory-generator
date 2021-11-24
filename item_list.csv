@@ -639,6 +639,24 @@ Container L
 Container XL
 Container Hub
 Expanded Container XL
+Parcel Container XS
+Parcel Container S
+Parcel Container M
+Parcel Container L
+Parcel Container XL
+Expanded Parcel Container XL
+Basic Ore Scanner S
+Basic Ore Scanner L
+Uncommon Ore Scanner L
+Advanced Ore Scanner L
+Rare Ore Scanner L
+Exotic Ore Scanner L
+Basic Mining Unit S
+Basic Mining Unit L
+Uncommon Mining Unit L
+Advanced Mining Unit L
+Rare Mining Unit L
+Exotic Mining Unit L
 Advanced 3D Printer M
 Advanced Assembly Line XS
 Advanced Assembly Line S
@@ -1066,6 +1084,7 @@ Exotic Anti-Gravity Core
 Rare Anti-Gravity Core
 Advanced Anti-Matter Core
 Advanced Quantum Alignment Unit
+Rare Quantum Alignment Unit
 Exotic Quantum Alignment Unit
 Advanced Quantum Barrier
 Advanced Antenna S

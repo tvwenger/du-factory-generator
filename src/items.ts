@@ -6596,20 +6596,8 @@ export const ITEMS = {
         1,
         2700,
     ),
-    "Basic Mining Unit S": otherElement(
-        "Basic Mining Unit S",
-        Category.SYSTEM,
-        70.0,
-        1,
-        10,
-    ),
-    "Basic Mining Unit L": otherElement(
-        "Basic Mining Unit L",
-        Category.SYSTEM,
-        2200.0,
-        1,
-        10,
-    ),
+    "Basic Mining Unit S": otherElement("Basic Mining Unit S", Category.SYSTEM, 70.0, 1, 10),
+    "Basic Mining Unit L": otherElement("Basic Mining Unit L", Category.SYSTEM, 2200.0, 1, 10),
     "Uncommon Mining Unit L": otherElement(
         "Uncommon Mining Unit L",
         Category.SYSTEM,
@@ -6624,20 +6612,8 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Rare Mining Unit L": otherElement(
-        "Rare Mining Unit L",
-        Category.SYSTEM,
-        2200.0,
-        1,
-        10,
-    ),
-    "Exotic Mining Unit L": otherElement(
-        "Exotic Mining Unit L",
-        Category.SYSTEM,
-        2200.0,
-        1,
-        10,
-    ),
+    "Rare Mining Unit L": otherElement("Rare Mining Unit L", Category.SYSTEM, 2200.0, 1, 10),
+    "Exotic Mining Unit L": otherElement("Exotic Mining Unit L", Category.SYSTEM, 2200.0, 1, 10),
 }
 
 /**
