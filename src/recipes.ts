@@ -15254,4 +15254,26 @@ export const RECIPES: Recipe[] = [
         ],
         byproducts: [],
     },
+    {
+        product: batch(ITEMS["Basic Antenna XL"], 1),
+        time: 60,
+        industry: ITEMS["Electronics Industry M"],
+        ingredients: [
+            batch(ITEMS["Al-Fe Alloy"], 2401),
+            batch(ITEMS["Basic Screw"], 625),
+        ],
+        byproducts: [],
+    },
+    {
+        product: batch(ITEMS["Deep Space Asteroid Tracker"], 1),
+        time: 698400,
+        industry: ITEMS["Assembly Line XL"],
+        ingredients: [
+            batch(ITEMS["Basic LED"], 1296),
+            batch(ITEMS["Basic Processor"], 625),
+            batch(ITEMS["Basic Antenna XL"], 1),
+            batch(ITEMS["Basic Reinforced Frame XL"], 1),
+        ],
+        byproducts: [],
+    },
 ]
