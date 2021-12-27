@@ -2904,22 +2904,29 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Freight Atmospheric Engine XS": otherElement(
-        "Freight Atmospheric Engine XS",
+    "Uncommon Freight Atmospheric Engine XS": otherElement(
+        "Uncommon Freight Atmospheric Engine XS",
         Category.TRANSPORTATION_ELEMENT,
         22.6,
         1,
         10,
     ),
-    "Maneuver Atmospheric Engine XS": otherElement(
-        "Maneuver Atmospheric Engine XS",
+    "Uncommon Maneuver Atmospheric Engine XS": otherElement(
+        "Uncommon Maneuver Atmospheric Engine XS",
         Category.TRANSPORTATION_ELEMENT,
         22.6,
         1,
         10,
     ),
-    "Military Atmospheric Engine XS": otherElement(
-        "Military Atmospheric Engine XS",
+    "Uncommon Military Atmospheric Engine XS": otherElement(
+        "Uncommon Military Atmospheric Engine XS",
+        Category.TRANSPORTATION_ELEMENT,
+        22.6,
+        1,
+        10,
+    ),
+    "Uncommon Safe Atmospheric Engine XS": otherElement(
+        "Uncommon Safe Atmospheric Engine XS",
         Category.TRANSPORTATION_ELEMENT,
         22.6,
         1,
@@ -2948,13 +2955,6 @@ export const ITEMS = {
     ),
     "Rare Safe Atmospheric Engine XS": otherElement(
         "Rare Safe Atmospheric Engine XS",
-        Category.TRANSPORTATION_ELEMENT,
-        22.6,
-        1,
-        10,
-    ),
-    "Safe Atmospheric Engine XS": otherElement(
-        "Safe Atmospheric Engine XS",
         Category.TRANSPORTATION_ELEMENT,
         22.6,
         1,
@@ -2995,22 +2995,29 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Freight Atmospheric Engine L": otherElement(
-        "Freight Atmospheric Engine L",
+    "Uncommon Freight Atmospheric Engine L": otherElement(
+        "Uncommon Freight Atmospheric Engine L",
         Category.TRANSPORTATION_ELEMENT,
         3355.4,
         1,
         10,
     ),
-    "Maneuver Atmospheric Engine L": otherElement(
-        "Maneuver Atmospheric Engine L",
+    "Uncommon Maneuver Atmospheric Engine L": otherElement(
+        "Uncommon Maneuver Atmospheric Engine L",
         Category.TRANSPORTATION_ELEMENT,
         3355.4,
         1,
         10,
     ),
-    "Military Atmospheric Engine L": otherElement(
-        "Military Atmospheric Engine L",
+    "Uncommon Military Atmospheric Engine L": otherElement(
+        "Uncommon Military Atmospheric Engine L",
+        Category.TRANSPORTATION_ELEMENT,
+        3355.4,
+        1,
+        10,
+    ),
+    "Uncommon Safe Atmospheric Engine L": otherElement(
+        "Uncommon Safe Atmospheric Engine L",
         Category.TRANSPORTATION_ELEMENT,
         3355.4,
         1,
@@ -3039,13 +3046,6 @@ export const ITEMS = {
     ),
     "Rare Safe Atmospheric Engine L": otherElement(
         "Rare Safe Atmospheric Engine L",
-        Category.TRANSPORTATION_ELEMENT,
-        3355.4,
-        1,
-        10,
-    ),
-    "Safe Atmospheric Engine L": otherElement(
-        "Safe Atmospheric Engine L",
         Category.TRANSPORTATION_ELEMENT,
         3355.4,
         1,
@@ -3086,22 +3086,29 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Freight Atmospheric Engine M": otherElement(
-        "Freight Atmospheric Engine M",
+    "Uncommon Freight Atmospheric Engine M": otherElement(
+        "Uncommon Freight Atmospheric Engine M",
         Category.TRANSPORTATION_ELEMENT,
         619.2,
         1,
         10,
     ),
-    "Maneuver Atmospheric Engine M": otherElement(
-        "Maneuver Atmospheric Engine M",
+    "Uncommon Maneuver Atmospheric Engine M": otherElement(
+        "Uncommon Maneuver Atmospheric Engine M",
         Category.TRANSPORTATION_ELEMENT,
         619.2,
         1,
         10,
     ),
-    "Military Atmospheric Engine M": otherElement(
-        "Military Atmospheric Engine M",
+    "Uncommon Military Atmospheric Engine M": otherElement(
+        "Uncommon Military Atmospheric Engine M",
+        Category.TRANSPORTATION_ELEMENT,
+        619.2,
+        1,
+        10,
+    ),
+    "Uncommon Safe Atmospheric Engine M": otherElement(
+        "Uncommon Safe Atmospheric Engine M",
         Category.TRANSPORTATION_ELEMENT,
         619.2,
         1,
@@ -3130,13 +3137,6 @@ export const ITEMS = {
     ),
     "Rare Safe Atmospheric Engine M": otherElement(
         "Rare Safe Atmospheric Engine M",
-        Category.TRANSPORTATION_ELEMENT,
-        619.2,
-        1,
-        10,
-    ),
-    "Safe Atmospheric Engine M": otherElement(
-        "Safe Atmospheric Engine M",
         Category.TRANSPORTATION_ELEMENT,
         619.2,
         1,
@@ -3177,22 +3177,29 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Freight Atmospheric Engine S": otherElement(
-        "Freight Atmospheric Engine S",
+    "Uncommon Freight Atmospheric Engine S": otherElement(
+        "Uncommon Freight Atmospheric Engine S",
         Category.TRANSPORTATION_ELEMENT,
         116.6,
         1,
         10,
     ),
-    "Maneuver Atmospheric Engine S": otherElement(
-        "Maneuver Atmospheric Engine S",
+    "Uncommon Maneuver Atmospheric Engine S": otherElement(
+        "Uncommon Maneuver Atmospheric Engine S",
         Category.TRANSPORTATION_ELEMENT,
         116.6,
         1,
         10,
     ),
-    "Military Atmospheric Engine S": otherElement(
-        "Military Atmospheric Engine S",
+    "Uncommon Military Atmospheric Engine S": otherElement(
+        "Uncommon Military Atmospheric Engine S",
+        Category.TRANSPORTATION_ELEMENT,
+        116.6,
+        1,
+        10,
+    ),
+    "Uncommon Safe Atmospheric Engine S": otherElement(
+        "Uncommon Safe Atmospheric Engine S",
         Category.TRANSPORTATION_ELEMENT,
         116.6,
         1,
@@ -3221,13 +3228,6 @@ export const ITEMS = {
     ),
     "Rare Safe Atmospheric Engine S": otherElement(
         "Rare Safe Atmospheric Engine S",
-        Category.TRANSPORTATION_ELEMENT,
-        116.6,
-        1,
-        10,
-    ),
-    "Safe Atmospheric Engine S": otherElement(
-        "Safe Atmospheric Engine S",
         Category.TRANSPORTATION_ELEMENT,
         116.6,
         1,
@@ -3306,8 +3306,8 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Advanced MIlitary Space Engine XL": otherElement(
-        "Advanced MIlitary Space Engine XL",
+    "Advanced Military Space Engine XL": otherElement(
+        "Advanced Military Space Engine XL",
         Category.TRANSPORTATION_ELEMENT,
         17150.0,
         1,
@@ -3327,22 +3327,29 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Freight Space Engine XL": otherElement(
-        "Freight Space Engine XL",
+    "Uncommon Freight Space Engine XL": otherElement(
+        "Uncommon Freight Space Engine XL",
         Category.TRANSPORTATION_ELEMENT,
         17150.0,
         1,
         10,
     ),
-    "Maneuver Space Engine XL": otherElement(
-        "Maneuver Space Engine XL",
+    "Uncommon Maneuver Space Engine XL": otherElement(
+        "Uncommon Maneuver Space Engine XL",
         Category.TRANSPORTATION_ELEMENT,
         17150.0,
         1,
         10,
     ),
-    "Military Space Engine XL": otherElement(
-        "Military Space Engine XL",
+    "Uncommon Military Space Engine XL": otherElement(
+        "Uncommon Military Space Engine XL",
+        Category.TRANSPORTATION_ELEMENT,
+        17150.0,
+        1,
+        10,
+    ),
+    "Uncommon Safe Space Engine XL": otherElement(
+        "Uncommon Safe Space Engine XL",
         Category.TRANSPORTATION_ELEMENT,
         17150.0,
         1,
@@ -3362,8 +3369,8 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Rare MIlitary Space Engine XL": otherElement(
-        "Rare MIlitary Space Engine XL",
+    "Rare Military Space Engine XL": otherElement(
+        "Rare Military Space Engine XL",
         Category.TRANSPORTATION_ELEMENT,
         17150.0,
         1,
@@ -3371,13 +3378,6 @@ export const ITEMS = {
     ),
     "Rare Safe Space Engine XL": otherElement(
         "Rare Safe Space Engine XL",
-        Category.TRANSPORTATION_ELEMENT,
-        17150.0,
-        1,
-        10,
-    ),
-    "Safe Space Engine XL": otherElement(
-        "Safe Space Engine XL",
         Category.TRANSPORTATION_ELEMENT,
         17150.0,
         1,
@@ -3397,8 +3397,8 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Advanced MIlitary Space Engine XS": otherElement(
-        "Advanced MIlitary Space Engine XS",
+    "Advanced Military Space Engine XS": otherElement(
+        "Advanced Military Space Engine XS",
         Category.TRANSPORTATION_ELEMENT,
         20.33,
         1,
@@ -3418,22 +3418,29 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Freight Space Engine XS": otherElement(
-        "Freight Space Engine XS",
+    "Uncommon Freight Space Engine XS": otherElement(
+        "Uncommon Freight Space Engine XS",
         Category.TRANSPORTATION_ELEMENT,
         20.33,
         1,
         10,
     ),
-    "Maneuver Space Engine XS": otherElement(
-        "Maneuver Space Engine XS",
+    "Uncommon Maneuver Space Engine XS": otherElement(
+        "Uncommon Maneuver Space Engine XS",
         Category.TRANSPORTATION_ELEMENT,
         20.33,
         1,
         10,
     ),
-    "Military Space Engine XS": otherElement(
-        "Military Space Engine XS",
+    "Uncommon Military Space Engine XS": otherElement(
+        "Uncommon Military Space Engine XS",
+        Category.TRANSPORTATION_ELEMENT,
+        20.33,
+        1,
+        10,
+    ),
+    "Uncommon Safe Space Engine XS": otherElement(
+        "Uncommon Safe Space Engine XS",
         Category.TRANSPORTATION_ELEMENT,
         20.33,
         1,
@@ -3453,8 +3460,8 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Rare MIlitary Space Engine XS": otherElement(
-        "Rare MIlitary Space Engine XS",
+    "Rare Military Space Engine XS": otherElement(
+        "Rare Military Space Engine XS",
         Category.TRANSPORTATION_ELEMENT,
         20.33,
         1,
@@ -3467,10 +3474,31 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Safe Space Engine XS": otherElement(
-        "Safe Space Engine XS",
+    "Advanced Freight Space Engine L": otherElement(
+        "Advanced Freight Space Engine L",
         Category.TRANSPORTATION_ELEMENT,
-        20.33,
+        3071.4,
+        1,
+        10,
+    ),
+    "Advanced Maneuver Space Engine L": otherElement(
+        "Advanced Maneuver Space Engine L",
+        Category.TRANSPORTATION_ELEMENT,
+        3071.4,
+        1,
+        10,
+    ),
+    "Advanced Military Space Engine L": otherElement(
+        "Advanced Military Space Engine L",
+        Category.TRANSPORTATION_ELEMENT,
+        3071.4,
+        1,
+        10,
+    ),
+    "Advanced Safe Space Engine L": otherElement(
+        "Advanced Safe Space Engine L",
+        Category.TRANSPORTATION_ELEMENT,
+        3071.4,
         1,
         10,
     ),
@@ -3481,29 +3509,57 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Freight Space Engine L": otherElement(
-        "Freight Space Engine L",
+    "Uncommon Freight Space Engine L": otherElement(
+        "Uncommon Freight Space Engine L",
         Category.TRANSPORTATION_ELEMENT,
         3071.4,
         1,
         10,
     ),
-    "Maneuver Space Engine L": otherElement(
-        "Maneuver Space Engine L",
+    "Uncommon Maneuver Space Engine L": otherElement(
+        "Uncommon Maneuver Space Engine L",
         Category.TRANSPORTATION_ELEMENT,
         3071.4,
         1,
         10,
     ),
-    "Military Space Engine L": otherElement(
-        "Military Space Engine L",
+    "Uncommon Military Space Engine L": otherElement(
+        "Uncommon Military Space Engine L",
         Category.TRANSPORTATION_ELEMENT,
         3071.4,
         1,
         10,
     ),
-    "Safe Space Engine L": otherElement(
-        "Safe Space Engine L",
+    "Uncommon Safe Space Engine L": otherElement(
+        "Uncommon Safe Space Engine L",
+        Category.TRANSPORTATION_ELEMENT,
+        3071.4,
+        1,
+        10,
+    ),
+    "Rare Freight Space Engine L": otherElement(
+        "Rare Freight Space Engine L",
+        Category.TRANSPORTATION_ELEMENT,
+        3071.4,
+        1,
+        10,
+    ),
+    "Rare Maneuver Space Engine L": otherElement(
+        "Rare Maneuver Space Engine L",
+        Category.TRANSPORTATION_ELEMENT,
+        3071.4,
+        1,
+        10,
+    ),
+    "Rare Military Space Engine L": otherElement(
+        "Rare Military Space Engine L",
+        Category.TRANSPORTATION_ELEMENT,
+        3071.4,
+        1,
+        10,
+    ),
+    "Rare Safe Space Engine L": otherElement(
+        "Rare Safe Space Engine L",
         Category.TRANSPORTATION_ELEMENT,
         3071.4,
         1,
@@ -3523,8 +3579,8 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Advanced MIlitary Space Engine M": otherElement(
-        "Advanced MIlitary Space Engine M",
+    "Advanced Military Space Engine M": otherElement(
+        "Advanced Military Space Engine M",
         Category.TRANSPORTATION_ELEMENT,
         562.4,
         1,
@@ -3544,22 +3600,29 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Freight Space Engine M": otherElement(
-        "Freight Space Engine M",
+    "Uncommon Freight Space Engine M": otherElement(
+        "Uncommon Freight Space Engine M",
         Category.TRANSPORTATION_ELEMENT,
         562.4,
         1,
         10,
     ),
-    "Maneuver Space Engine M": otherElement(
-        "Maneuver Space Engine M",
+    "Uncommon Maneuver Space Engine M": otherElement(
+        "Uncommon Maneuver Space Engine M",
         Category.TRANSPORTATION_ELEMENT,
         562.4,
         1,
         10,
     ),
-    "Military Space Engine M": otherElement(
-        "Military Space Engine M",
+    "Uncommon Military Space Engine M": otherElement(
+        "Uncommon Military Space Engine M",
+        Category.TRANSPORTATION_ELEMENT,
+        562.4,
+        1,
+        10,
+    ),
+    "Uncommon Safe Space Engine M": otherElement(
+        "Uncommon Safe Space Engine M",
         Category.TRANSPORTATION_ELEMENT,
         562.4,
         1,
@@ -3579,8 +3642,8 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Rare MIlitary Space Engine M": otherElement(
-        "Rare MIlitary Space Engine M",
+    "Rare Military Space Engine M": otherElement(
+        "Rare Military Space Engine M",
         Category.TRANSPORTATION_ELEMENT,
         562.4,
         1,
@@ -3588,13 +3651,6 @@ export const ITEMS = {
     ),
     "Rare Safe Space Engine M": otherElement(
         "Rare Safe Space Engine M",
-        Category.TRANSPORTATION_ELEMENT,
-        562.4,
-        1,
-        10,
-    ),
-    "Safe Space Engine M": otherElement(
-        "Safe Space Engine M",
         Category.TRANSPORTATION_ELEMENT,
         562.4,
         1,
@@ -3614,8 +3670,8 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Advanced MIlitary Space Engine S": otherElement(
-        "Advanced MIlitary Space Engine S",
+    "Advanced Military Space Engine S": otherElement(
+        "Advanced Military Space Engine S",
         Category.TRANSPORTATION_ELEMENT,
         105.24,
         1,
@@ -3635,22 +3691,29 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Freight Space Engine S": otherElement(
-        "Freight Space Engine S",
+    "Uncommon Freight Space Engine S": otherElement(
+        "Uncommon Freight Space Engine S",
         Category.TRANSPORTATION_ELEMENT,
         105.24,
         1,
         10,
     ),
-    "Maneuver Space Engine S": otherElement(
-        "Maneuver Space Engine S",
+    "Uncommon Maneuver Space Engine S": otherElement(
+        "Uncommon Maneuver Space Engine S",
         Category.TRANSPORTATION_ELEMENT,
         105.24,
         1,
         10,
     ),
-    "Military Space Engine S": otherElement(
-        "Military Space Engine S",
+    "Uncommon Military Space Engine S": otherElement(
+        "Uncommon Military Space Engine S",
+        Category.TRANSPORTATION_ELEMENT,
+        105.24,
+        1,
+        10,
+    ),
+    "Uncommon Safe Space Engine S": otherElement(
+        "Uncommon Safe Space Engine S",
         Category.TRANSPORTATION_ELEMENT,
         105.24,
         1,
@@ -3670,8 +3733,8 @@ export const ITEMS = {
         1,
         10,
     ),
-    "Rare MIlitary Space Engine S": otherElement(
-        "Rare MIlitary Space Engine S",
+    "Rare Military Space Engine S": otherElement(
+        "Rare Military Space Engine S",
         Category.TRANSPORTATION_ELEMENT,
         105.24,
         1,
@@ -3679,13 +3742,6 @@ export const ITEMS = {
     ),
     "Rare Safe Space Engine S": otherElement(
         "Rare Safe Space Engine S",
-        Category.TRANSPORTATION_ELEMENT,
-        105.24,
-        1,
-        10,
-    ),
-    "Safe Space Engine S": otherElement(
-        "Safe Space Engine S",
         Category.TRANSPORTATION_ELEMENT,
         105.24,
         1,
@@ -4415,6 +4471,14 @@ export const ITEMS = {
     "Advanced Quantum Alignment Unit": product(
         "Advanced Quantum Alignment Unit",
         Tier.ADVANCED,
+        Category.EXCEPTIONAL_PARTS,
+        25.0,
+        1,
+        25,
+    ),
+    "Rare Quantum Alignment Unit": product(
+        "Rare Quantum Alignment Unit",
+        Tier.RARE,
         Category.EXCEPTIONAL_PARTS,
         25.0,
         1,
@@ -6435,6 +6499,135 @@ export const ITEMS = {
         515.0,
         1,
         3600,
+    ),
+    "Parcel Container XS": containerElement(
+        "Parcel Container XS",
+        Category.CONTAINER,
+        64.0,
+        1000.0,
+        1,
+        10,
+    ),
+    "Parcel Container S": containerElement(
+        "Parcel Container S",
+        Category.CONTAINER,
+        342.0,
+        8000.0,
+        1,
+        10,
+    ),
+    "Parcel Container M": containerElement(
+        "Parcel Container M",
+        Category.CONTAINER,
+        1873.0,
+        64000.0,
+        1,
+        10,
+    ),
+    "Parcel Container L": containerElement(
+        "Parcel Container L",
+        Category.CONTAINER,
+        3746.0,
+        128000.0,
+        1,
+        10,
+    ),
+    "Parcel Container XL": containerElement(
+        "Parcel Container XL",
+        Category.CONTAINER,
+        10500.0,
+        256000.0,
+        1,
+        10,
+    ),
+    "Expanded Parcel Container XL": containerElement(
+        "Expanded Parcel Container XL",
+        Category.CONTAINER,
+        21000.0,
+        512000.0,
+        1,
+        10,
+    ),
+    "Basic Ore Scanner S": product(
+        "Basic Ore Scanner S",
+        Tier.BASIC,
+        Category.FUNCTIONAL_PARTS,
+        15.5,
+        1,
+        2700,
+    ),
+    "Basic Ore Scanner L": product(
+        "Basic Ore Scanner L",
+        Tier.BASIC,
+        Category.FUNCTIONAL_PARTS,
+        471.5,
+        1,
+        2700,
+    ),
+    "Uncommon Ore Scanner L": product(
+        "Uncommon Ore Scanner L",
+        Tier.UNCOMMON,
+        Category.FUNCTIONAL_PARTS,
+        473.9,
+        1,
+        2700,
+    ),
+    "Advanced Ore Scanner L": product(
+        "Advanced Ore Scanner L",
+        Tier.ADVANCED,
+        Category.EXCEPTIONAL_PARTS,
+        473.9,
+        1,
+        2700,
+    ),
+    "Rare Ore Scanner L": product(
+        "Rare Ore Scanner L",
+        Tier.RARE,
+        Category.EXCEPTIONAL_PARTS,
+        473.9,
+        1,
+        2700,
+    ),
+    "Exotic Ore Scanner L": product(
+        "Exotic Ore Scanner L",
+        Tier.EXOTIC,
+        Category.EXCEPTIONAL_PARTS,
+        473.5,
+        1,
+        2700,
+    ),
+    "Basic Mining Unit S": otherElement("Basic Mining Unit S", Category.SYSTEM, 70.0, 1, 10),
+    "Basic Mining Unit L": otherElement("Basic Mining Unit L", Category.SYSTEM, 2200.0, 1, 10),
+    "Uncommon Mining Unit L": otherElement(
+        "Uncommon Mining Unit L",
+        Category.SYSTEM,
+        2200.0,
+        1,
+        10,
+    ),
+    "Advanced Mining Unit L": otherElement(
+        "Advanced Mining Unit L",
+        Category.SYSTEM,
+        2200.0,
+        1,
+        10,
+    ),
+    "Rare Mining Unit L": otherElement("Rare Mining Unit L", Category.SYSTEM, 2200.0, 1, 10),
+    "Exotic Mining Unit L": otherElement("Exotic Mining Unit L", Category.SYSTEM, 2200.0, 1, 10),
+    "Basic Antenna XL": product(
+        "Basic Antenna XL",
+        Tier.BASIC,
+        Category.FUNCTIONAL_PARTS,
+        7020.8,
+        1,
+        2892,
+    ),
+    "Deep Space Asteroid Tracker": otherElement(
+        "Deep Space Asteroid Tracker",
+        Category.FUNCTIONAL_PARTS,
+        20500,
+        1,
+        18300,
     ),
 }
 

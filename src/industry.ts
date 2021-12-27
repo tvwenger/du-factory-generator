@@ -94,6 +94,37 @@ export class Industry {
     }
 
     /**
+     * Calculate the rate at which an ingredient is consumed
+     * @param item Item to check
+     */
+    inflowRateOf(item: Item): PerSecond {
+        for (const ingredient of this.recipe.ingredients) {
+            if (ingredient.item === item) {
+                return ingredient.quantity / this.recipe.time
+            }
+        }
+        return 0
+    }
+
+    /**
+     * Calculate the rate at which an ingredient is consumed
+     * in the steady state limit (after the factory has been running for some time)
+     * @param item Item to check
+     */
+    steadyStateInflowRateOf(item: Item): PerSecond {
+        // get actual egress of produced item from output container
+        let outputEgress = this.output.steadyStateEgress(this.item)
+        // estimate that each producer contributes equally
+        let numProducers = this.output.producers.size
+        for (const ingredient of this.recipe.ingredients) {
+            if (ingredient.item === item) {
+                return ingredient.quantity / this.recipe.product.quantity * outputEgress / numProducers
+            }
+        }
+        return 0
+    }
+
+    /**
      * Calculate the rate at which an ingredient is consumed from a given container
      * @param container Container to check
      * @param item Item to check
@@ -109,12 +140,27 @@ export class Industry {
             return 0
         }
 
-        for (const ingredient of this.recipe.ingredients) {
-            if (ingredient.item === item) {
-                return ingredient.quantity / this.recipe.time
-            }
+        return this.inflowRateOf(item)
+    }
+
+    /**
+     * Calculate the rate at which an ingredient is consumed from a given container
+     * in the steady state limit (after the factory has been running for some time)
+     * @param container Container to check
+     * @param item The item
+     */
+    steadyStateInflowRateFrom(container: Container | TransferContainer, item: Item): PerSecond {
+        if (!this.inputs.has(container)) {
+            return 0
         }
-        return 0
+        if (isContainer(container) && container.item !== item) {
+            return 0
+        }
+        if (isTransferContainer(container) && !container.items.includes(item)) {
+            return 0
+        }
+
+        return this.steadyStateInflowRateOf(item)
     }
 
     /**

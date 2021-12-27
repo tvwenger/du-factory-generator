@@ -13,7 +13,7 @@ import { isTransferContainer, TransferContainer } from "./transfer-container"
 import { isTransferUnit, TransferUnit } from "./transfer-unit"
 
 // Factory JSON version number
-const VERSION = "3.0"
+const VERSION = "3.3"
 
 /**
  * Saved properties for each FactoryNode
@@ -321,6 +321,7 @@ export function deserialize(serializedFactory: string): FactoryGraph {
         // Add inputs and rates
         for (let i = 0; i < saveTransferUnit.inputs.length; i++) {
             transferUnit.addInput(factoryContainers[saveTransferUnit.inputs[i]])
+            transferUnit.increaseRequiredTransferRate(saveTransferUnit.rates[i])
             transferUnit.increaseTransferRate(
                 factoryContainers[saveTransferUnit.inputs[i]],
                 saveTransferUnit.rates[i],

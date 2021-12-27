@@ -77,6 +77,26 @@ export function sanityCheck(factory: FactoryGraph) {
             }
         }
     }
+
+    // Check that required transfer rate is satisfied
+    for (const transferUnit of factory.transferUnits) {
+        // skip ore transfer units
+        if (isOre(transferUnit.item)) {
+            continue
+        }
+
+        // get actual transfer rate
+        let transferRate = 0.0
+        for (const [container, rate] of transferUnit.transferRates) {
+            transferRate += rate
+        }
+        if (transferUnit.requiredTransferRate - transferRate > delta) {
+            console.log(transferUnit)
+            console.log("Required transfer rate: " + transferUnit.requiredTransferRate)
+            console.log("Actual transfer rate: " + transferRate)
+            throw new Error("Transfer Unit required transfer rate not satisfied")
+        }
+    }
 }
 
 /**

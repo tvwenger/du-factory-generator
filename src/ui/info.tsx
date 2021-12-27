@@ -30,7 +30,7 @@ export function Info({ setAppState }: InfoProps) {
             you encouter any problems or would like to request new features, please submit an{" "}
             <a href="https://github.com/lgfrbcsgo/du-factory-generator/issues">issue on Github</a>,
             or <a href="https://discord.gg/gXSWKqVnHx">join our Discord server</a> and look for
-            lgfrbcsgo and Nikolaus.
+            Nikolaus.
             <h2>Instructions: Starting a new factory</h2>
             <ul>
                 <li>Click "Start a New Factory."</li>
@@ -44,7 +44,8 @@ export function Info({ setAppState }: InfoProps) {
                 </li>
                 <li>
                     Wait while your factory plan is generated. This can take a while (up to a few
-                    minutes) for large factories.
+                    minutes) for large factories. Once complete, you will see a list of the required
+                    industries, containers, and schematics for your factory.
                 </li>
                 <li>
                     Click "Factory Map" to see an interactive schematic of the entire factory, which
@@ -99,7 +100,7 @@ export function Info({ setAppState }: InfoProps) {
                 </li>
                 <li>
                     The circles are industries, the diamonds are transfer units, and the text inside
-                    indicates the industry type (i.e., "Chem" for "Chemical Industry M"). Multiple
+                    indicates the industry type (i.e., "Che" for "Chemical Industry M"). Multiple
                     industries can output to a single container. The text above the circle (e.g.,
                     "P0") is the identifier for the industry or transfer unit.
                 </li>
@@ -110,9 +111,9 @@ export function Info({ setAppState }: InfoProps) {
                 <li>
                     The squares show the containers, and the text inside indicates the required
                     container size (i.e., "L" for "Container L"). Some outputs may require multiple
-                    containers connected via a Container Hub (e.g., "L+M" requires a "Container L"
-                    and "Container M" connected via a "Container Hub"). The text above the circle
-                    (e.g., D0) is the indentifier for the container. The text below the circle is
+                    containers connected via a Container Hub (e.g., "XL+M" requires a "Container XL"
+                    and "Container M" connected via a "Container Hub"). The text above the square
+                    (e.g., D0) is the indentifier for the container. The text below the square is
                     the required maintain value.
                 </li>
                 <li>

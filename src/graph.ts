@@ -59,10 +59,28 @@ export class FactoryNode {
     }
 
     /**
-     * Check if this node already has an output relay
+     * Get this node's output relay(s)
      */
-    get outputRelay(): RelayRoute | undefined {
-        return this.relayRoutes.find((route) => route.container.outputRate > 0)
+    get outputRelays(): RelayRoute[] {
+        return this.relayRoutes.filter((route) => route.container.outputRate > 0)
+    }
+
+    /**
+     * Get the total output rate of this node's output relay containers
+     */
+    get outputRelaysRate(): PerSecond {
+        return this.outputRelays
+            .map((relay) => relay.container.outputRate)
+            .reduce((total, current) => total + current, 0)
+    }
+
+    /**
+     * Get the total maintain value of this node's output relay containers
+     */
+    get outputRelaysMaintain(): Quantity {
+        return this.outputRelays
+            .map((relay) => relay.container.maintainedOutput)
+            .reduce((total, current) => total + current, 0)
     }
 
     /**

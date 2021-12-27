@@ -220,28 +220,33 @@ export class MergedNodeInstruction {
         y = start_y + relayHeight / 2 - SIZE / 4
         let ingress = this.container.ingress(this.container.item)
         let egress = this.container.egress(this.container.item)
+        let steadyStateEgress = this.container.steadyStateEgress(this.container.item)
         let outputRate = this.container.outputRate
         let unit = "sec"
-        if (ingress < 1) {
+        if (steadyStateEgress < 1) {
             ingress *= 60.0
             egress *= 60.0
+            steadyStateEgress *= 60.0
             outputRate *= 60.0
             unit = "min"
         }
-        if (ingress < 1) {
+        if (steadyStateEgress < 1) {
             ingress *= 60.0
             egress *= 60.0
+            steadyStateEgress *= 60.0
             outputRate *= 60.0
             unit = "hour"
         }
-        if (ingress < 1) {
+        if (steadyStateEgress < 1) {
             ingress *= 24.0
             egress *= 24.0
+            steadyStateEgress *= 24.0
             outputRate *= 24.0
             unit = "day"
         }
         ingress = Math.round(ingress * 100) / 100
         egress = Math.round(egress * 100) / 100
+        steadyStateEgress = Math.round(steadyStateEgress * 100) / 100
         outputRate = Math.round(outputRate * 100) / 100
         element = (
             <React.Fragment key={this.container.name}>
@@ -336,6 +341,16 @@ export class MergedNodeInstruction {
                             textAnchor="start"
                         >
                             {egress + "/" + unit}
+                        </text>
+                        <text
+                            x={x + SIZE + 2}
+                            y={y + 10}
+                            fill="blue"
+                            fontSize="10"
+                            dominantBaseline="auto"
+                            textAnchor="start"
+                        >
+                            {steadyStateEgress + "/" + unit}
                         </text>
                     </React.Fragment>
                 )}

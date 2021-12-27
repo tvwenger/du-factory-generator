@@ -639,6 +639,24 @@ Container L
 Container XL
 Container Hub
 Expanded Container XL
+Parcel Container XS
+Parcel Container S
+Parcel Container M
+Parcel Container L
+Parcel Container XL
+Expanded Parcel Container XL
+Basic Ore Scanner S
+Basic Ore Scanner L
+Uncommon Ore Scanner L
+Advanced Ore Scanner L
+Rare Ore Scanner L
+Exotic Ore Scanner L
+Basic Mining Unit S
+Basic Mining Unit L
+Uncommon Mining Unit L
+Advanced Mining Unit L
+Rare Mining Unit L
+Exotic Mining Unit L
 Advanced 3D Printer M
 Advanced Assembly Line XS
 Advanced Assembly Line S
@@ -751,53 +769,53 @@ Advanced Maneuver Atmospheric Engine XS
 Advanced Military Atmospheric Engine XS
 Advanced Safe Atmospheric Engine XS
 Basic Atmospheric Engine XS
-Freight Atmospheric Engine XS
-Maneuver Atmospheric Engine XS
-Military Atmospheric Engine XS
+Uncommon Freight Atmospheric Engine XS
+Uncommon Maneuver Atmospheric Engine XS
+Uncommon Military Atmospheric Engine XS
+Uncommon Safe Atmospheric Engine XS
 Rare Freight Atmospheric Engine XS
 Rare Maneuver Atmospheric Engine XS
 Rare Military Atmospheric Engine XS
 Rare Safe Atmospheric Engine XS
-Safe Atmospheric Engine XS
 Advanced Freight Atmospheric Engine L
 Advanced Maneuver Atmospheric Engine L
 Advanced Military Atmospheric Engine L
 Advanced Safe Atmospheric Engine L
 Basic Atmospheric Engine L
-Freight Atmospheric Engine L
-Maneuver Atmospheric Engine L
-Military Atmospheric Engine L
+Uncommon Freight Atmospheric Engine L
+Uncommon Maneuver Atmospheric Engine L
+Uncommon Military Atmospheric Engine L
+Uncommon Safe Atmospheric Engine L
 Rare Freight Atmospheric Engine L
 Rare Maneuver Atmospheric Engine L
 Rare Military Atmospheric Engine L
 Rare Safe Atmospheric Engine L
-Safe Atmospheric Engine L
 Advanced Freight Atmospheric Engine M
 Advanced Maneuver Atmospheric Engine M
 Advanced Military Atmospheric Engine M
 Advanced Safe Atmospheric Engine M
 Basic Atmospheric Engine M
-Freight Atmospheric Engine M
-Maneuver Atmospheric Engine M
-Military Atmospheric Engine M
+Uncommon Freight Atmospheric Engine M
+Uncommon Maneuver Atmospheric Engine M
+Uncommon Military Atmospheric Engine M
+Uncommon Safe Atmospheric Engine M
 Rare Freight Atmospheric Engine M
 Rare Maneuver Atmospheric Engine M
 Rare Military Atmospheric Engine M
 Rare Safe Atmospheric Engine M
-Safe Atmospheric Engine M
 Advanced Freight Atmospheric Engine S
 Advanced Maneuver Atmospheric Engine S
 Advanced Military Atmospheric Engine S
 Advanced Safe Atmospheric Engine S
 Basic Atmospheric Engine S
-Freight Atmospheric Engine S
-Maneuver Atmospheric Engine S
-Military Atmospheric Engine S
+Uncommon Freight Atmospheric Engine S
+Uncommon Maneuver Atmospheric Engine S
+Uncommon Military Atmospheric Engine S
+Uncommon Safe Atmospheric Engine S
 Rare Freight Atmospheric Engine S
 Rare Maneuver Atmospheric Engine S
 Rare Military Atmospheric Engine S
 Rare Safe Atmospheric Engine S
-Safe Atmospheric Engine S
 Flat Hover Engine L
 Hover Engine S
 Hover Engine M
@@ -811,61 +829,69 @@ Rocket Engine M
 Rocket Engine L
 Advanced Freight Space Engine XL
 Advanced Maneuver Space Engine XL
-Advanced MIlitary Space Engine XL
+Advanced Military Space Engine XL
 Advanced Safe Space Engine XL
 Basic Space Engine XL
-Freight Space Engine XL
-Maneuver Space Engine XL
-Military Space Engine XL
+Uncommon Freight Space Engine XL
+Uncommon Maneuver Space Engine XL
+Uncommon Military Space Engine XL
+Uncommon Safe Space Engine XL
 Rare Freight Space Engine XL
 Rare Maneuver Space Engine XL
-Rare MIlitary Space Engine XL
+Rare Military Space Engine XL
 Rare Safe Space Engine XL
-Safe Space Engine XL
 Advanced Freight Space Engine XS
 Advanced Maneuver Space Engine XS
-Advanced MIlitary Space Engine XS
+Advanced Military Space Engine XS
 Advanced Safe Space Engine XS
 Basic Space Engine XS
-Freight Space Engine XS
-Maneuver Space Engine XS
-Military Space Engine XS
+Uncommon Freight Space Engine XS
+Uncommon Maneuver Space Engine XS
+Uncommon Military Space Engine XS
+Uncommon Safe Space Engine XS
 Rare Freight Space Engine XS
 Rare Maneuver Space Engine XS
-Rare MIlitary Space Engine XS
+Rare Military Space Engine XS
 Rare Safe Space Engine XS
-Safe Space Engine XS
+Advanced Freight Space Engine L
+Advanced Maneuver Space Engine L
+Advanced Military Space Engine L
+Advanced Safe Space Engine L
 Basic Space Engine L
-Freight Space Engine L
-Maneuver Space Engine L
-Military Space Engine L
-Safe Space Engine L
+Uncommon Freight Space Engine L
+Uncommon Maneuver Space Engine L
+Uncommon Military Space Engine L
+Uncommon Safe Space Engine L
+Rare Freight Space Engine L
+Rare Maneuver Space Engine L
+Rare Military Space Engine L
+Rare Safe Space Engine L
 Advanced Freight Space Engine M
 Advanced Maneuver Space Engine M
-Advanced MIlitary Space Engine M
+Advanced Military Space Engine M
 Advanced Safe Space Engine M
 Basic Space Engine M
-Freight Space Engine M
-Maneuver Space Engine M
-Military Space Engine M
+Uncommon Freight Space Engine M
+Uncommon Maneuver Space Engine M
+Uncommon Military Space Engine M
+Uncommon Safe Space Engine M
 Rare Freight Space Engine M
 Rare Maneuver Space Engine M
-Rare MIlitary Space Engine M
+Rare Military Space Engine M
 Rare Safe Space Engine M
-Safe Space Engine M
 Advanced Freight Space Engine S
 Advanced Maneuver Space Engine S
-Advanced MIlitary Space Engine S
+Advanced Military Space Engine S
 Advanced Safe Space Engine S
 Basic Space Engine S
-Freight Space Engine S
-Maneuver Space Engine S
-Military Space Engine S
+Uncommon Freight Space Engine S
+Uncommon Maneuver Space Engine S
+Uncommon Military Space Engine S
+Uncommon Safe Space Engine S
 Rare Freight Space Engine S
 Rare Maneuver Space Engine S
-Rare MIlitary Space Engine S
+Rare Military Space Engine S
 Rare Safe Space Engine S
-Safe Space Engine S
 Anti-Gravity Generator S
 Anti-Gravity Generator M
 Anti-Gravity Generator L
@@ -1013,14 +1039,14 @@ Rare Electronics
 Uncommon Electronics
 Advanced Explosive Module
 Basic Explosive Module
-Uncommon Explosive Module 
+Uncommon Explosive Module
 Advanced Hydraulics
 Basic Hydraulics
 Exotic Hydraulics
 Rare Hydraulics
 Uncommon Hydraulics
 Advanced Injector
-Basic Injector 
+Basic Injector
 Rare Injector
 Uncommon Injector
 Advanced Magnet
@@ -1043,7 +1069,7 @@ Basic Processor
 Uncommon Processor
 Advanced Quantum Core
 Basic Quantum Core
-Exotic Quantum Core 
+Exotic Quantum Core
 Rare Quantum Core
 Uncommon Quantum Core
 Advanced Singularity Container
@@ -1058,6 +1084,7 @@ Exotic Anti-Gravity Core
 Rare Anti-Gravity Core
 Advanced Anti-Matter Core
 Advanced Quantum Alignment Unit
+Rare Quantum Alignment Unit
 Exotic Quantum Alignment Unit
 Advanced Quantum Barrier
 Advanced Antenna S
@@ -1065,6 +1092,7 @@ Advanced Antenna M
 Advanced Antenna L
 Basic Antenna XS
 Basic Antenna S
+Basic Antenna XL
 Exotic Antenna S
 Exotic Antenna M
 Exotic Antenna L
@@ -1237,7 +1265,7 @@ Uncommon Robotic Arm M
 Advanced Screen XS
 Advanced Screen XL
 Basic Screen S
-Basic Screen M 
+Basic Screen M
 Uncommon Screen XS
 Uncommon Screen L
 Uncommon Screen XL
@@ -1317,3 +1345,4 @@ Uncommon Standard Frame XS
 Uncommon Standard Frame S
 Uncommon Standard Frame M
 Uncommon Standard Frame L
+Deep Space Asteroid Tracker
