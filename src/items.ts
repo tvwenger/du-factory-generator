@@ -6614,6 +6614,21 @@ export const ITEMS = {
     ),
     "Rare Mining Unit L": otherElement("Rare Mining Unit L", Category.SYSTEM, 2200.0, 1, 10),
     "Exotic Mining Unit L": otherElement("Exotic Mining Unit L", Category.SYSTEM, 2200.0, 1, 10),
+    "Basic Antenna XL": product(
+        "Basic Antenna XL",
+        Tier.BASIC,
+        Category.FUNCTIONAL_PARTS,
+        7020.8,
+        1,
+        2892,
+    ),
+    "Deep Space Asteroid Tracker": otherElement(
+        "Deep Space Asteroid Tracker",
+        Category.FUNCTIONAL_PARTS,
+        20500,
+        1,
+        18300,
+    ),
 }
 
 /**
