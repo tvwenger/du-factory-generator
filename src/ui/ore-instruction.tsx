@@ -100,24 +100,29 @@ export class OreInstruction {
             x = start_x
             y = relayStart_y + SIZE / 2
             let egress = relayRoute.container.egress(relayRoute.container.item)
+            let steadyStateEgress = relayRoute.container.steadyStateEgress(relayRoute.container.item)
             let outputRate = relayRoute.container.outputRate
             let unit = "sec"
-            if (egress < 1) {
+            if (steadyStateEgress < 1) {
                 egress *= 60.0
+                steadyStateEgress *= 60.0
                 outputRate *= 60.0
                 unit = "min"
             }
-            if (egress < 1) {
+            if (steadyStateEgress < 1) {
                 egress *= 60.0
+                steadyStateEgress *= 60.0
                 outputRate *= 60.0
                 unit = "hour"
             }
-            if (egress < 1) {
+            if (steadyStateEgress < 1) {
                 egress *= 24.0
+                steadyStateEgress *= 24.0
                 outputRate *= 24.0
                 unit = "day"
             }
             egress = Math.round(egress * 100) / 100
+            steadyStateEgress = Math.round(steadyStateEgress * 100) / 100
             outputRate = Math.round(outputRate * 100) / 100
             element = (
                 <React.Fragment key={relayRoute.container.name}>
@@ -180,6 +185,16 @@ export class OreInstruction {
                                 textAnchor="start"
                             >
                                 {egress + "/" + unit}
+                            </text>
+                            <text
+                                x={x + SIZE + 2}
+                                y={y + SIZE / 2 + 10}
+                                fill="blue"
+                                fontSize="10"
+                                dominantBaseline="auto"
+                                textAnchor="start"
+                            >
+                                {steadyStateEgress + "/" + unit}
                             </text>
                         </React.Fragment>
                     )}
