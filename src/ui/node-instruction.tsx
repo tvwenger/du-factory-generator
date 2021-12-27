@@ -254,28 +254,33 @@ export class NodeInstruction {
             lastDump_y.push(y)
             let ingress = dumpRoute.container.ingress(dumpRoute.container.item)
             let egress = dumpRoute.container.egress(dumpRoute.container.item)
+            let steadyStateEgress = dumpRoute.container.steadyStateEgress(dumpRoute.container.item)
             let outputRate = dumpRoute.container.outputRate
             let unit = "sec"
-            if (ingress < 1) {
+            if (steadyStateEgress < 1) {
                 ingress *= 60.0
                 egress *= 60.0
+                steadyStateEgress *= 60.0
                 outputRate *= 60.0
                 unit = "min"
             }
-            if (ingress < 1) {
+            if (steadyStateEgress < 1) {
                 ingress *= 60.0
                 egress *= 60.0
+                steadyStateEgress *= 60.0
                 outputRate *= 60.0
                 unit = "hour"
             }
-            if (ingress < 1) {
+            if (steadyStateEgress < 1) {
                 ingress *= 24.0
                 egress *= 24.0
+                steadyStateEgress *= 24.0
                 outputRate *= 24.0
                 unit = "day"
             }
             ingress = Math.round(ingress * 100) / 100
             egress = Math.round(egress * 100) / 100
+            steadyStateEgress = Math.round(steadyStateEgress * 100) / 100
             outputRate = Math.round(outputRate * 100) / 100
             element = (
                 <React.Fragment key={dumpRoute.container.name}>
@@ -360,6 +365,16 @@ export class NodeInstruction {
                                 textAnchor="start"
                             >
                                 {egress + "/" + unit}
+                            </text>
+                            <text
+                                x={x + SIZE + 2}
+                                y={y + 10}
+                                fill="blue"
+                                fontSize="10"
+                                dominantBaseline="auto"
+                                textAnchor="start"
+                            >
+                                {steadyStateEgress + "/" + unit}
                             </text>
                         </React.Fragment>
                     )}
@@ -520,28 +535,33 @@ export class NodeInstruction {
             y = relayStart_y + SIZE / 2
             let ingress = relayRoute.container.ingress(relayRoute.container.item)
             let egress = relayRoute.container.egress(relayRoute.container.item)
+            let steadyStateEgress = relayRoute.container.steadyStateEgress(relayRoute.container.item)
             let outputRate = relayRoute.container.outputRate
             let unit = "sec"
-            if (ingress < 1) {
+            if (steadyStateEgress < 1) {
                 ingress *= 60.0
                 egress *= 60.0
+                steadyStateEgress *= 60.0
                 outputRate *= 60.0
                 unit = "min"
             }
-            if (ingress < 1) {
+            if (steadyStateEgress < 1) {
                 ingress *= 60.0
                 egress *= 60.0
+                steadyStateEgress *= 60.0
                 outputRate *= 60.0
                 unit = "hour"
             }
-            if (ingress < 1) {
+            if (steadyStateEgress < 1) {
                 ingress *= 24.0
                 egress *= 24.0
+                steadyStateEgress *= 24.0
                 outputRate *= 24.0
                 unit = "day"
             }
             ingress = Math.round(ingress * 100) / 100
             egress = Math.round(egress * 100) / 100
+            steadyStateEgress = Math.round(steadyStateEgress * 100) / 100
             outputRate = Math.round(outputRate * 100) / 100
             element = (
                 <React.Fragment key={relayRoute.container.name}>
@@ -627,6 +647,16 @@ export class NodeInstruction {
                                 textAnchor="start"
                             >
                                 {egress + "/" + unit}
+                            </text>
+                            <text
+                                x={x + SIZE + 2}
+                                y={y + SIZE / 2 + 10}
+                                fill="blue"
+                                fontSize="10"
+                                dominantBaseline="auto"
+                                textAnchor="start"
+                            >
+                                {steadyStateEgress + "/" + unit}
                             </text>
                         </React.Fragment>
                     )}

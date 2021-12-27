@@ -136,12 +136,38 @@ export class TransferUnit {
         if (this.item !== item) {
             return 0
         }
-
         if (!this.transferRates.has(container)) {
             return 0
         }
 
         return this.transferRates.get(container)!
+    }
+
+    /**
+     * Calculate the rate at which an item is transferred from a given container
+     * in the steady state limit (after the factory has been running for some time)
+     * @param container Container to check
+     * @param item Item to check
+     */
+    steadyStateInflowRateFrom(container: Container, item: Item): PerSecond {
+        if (!this.inputs.has(container)) {
+            return 0
+        }
+        if (this.item !== item) {
+            return 0
+        }
+        if (!this.transferRates.has(container)) {
+            return 0
+        }
+
+        // estimate that the inflow rate from this container is proportional
+        // to the maximum inflow rate from this container.
+        let totalInflow = Array.from(this.transferRates.values()).reduce(
+            (total, current) => total + current,
+            0,
+        )
+        let fraction = this.inflowRateFrom(container, item) / totalInflow
+        return this.output.steadyStateEgress(item) * fraction
     }
 
     /**

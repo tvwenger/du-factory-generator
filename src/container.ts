@@ -197,6 +197,24 @@ export class Container {
     }
 
     /**
+     * Calculate the rate at which this container is emptied of a given item
+     * in the steady state limit (after the factory has been running for some time)
+     * @param item The item
+     */
+    steadyStateEgress(item: Item): PerSecond {
+        let egress = 0
+        if (this.item === item) {
+            egress += this.outputRate
+        }
+        // ignore catalyst balancer egress
+        egress += Array.from(this.consumers)
+            .filter((node) => !isTransferUnit(node) || !isCatalystBalancer(node))
+            .map((node) => node.steadyStateInflowRateFrom(this, item))
+            .reduce((totalEgress, egressTo) => totalEgress + egressTo, 0)
+        return egress
+    }
+
+    /**
      * Return the required maintain value to store the required components for all consumers
      */
     get maintain(): Quantity {

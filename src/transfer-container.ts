@@ -108,6 +108,17 @@ export class TransferContainer {
     }
 
     /**
+     * Calculate the rate at which this container is emptied of a given item
+     * in the steady state limit (after the factory has been running for some time)
+     * @param item The item
+     */
+    steadyStateEgress(item: Item): PerSecond {
+        return Array.from(this.consumers)
+            .map((node) => node.steadyStateInflowRateFrom(this, item))
+            .reduce((totalEgress, egressTo) => totalEgress + egressTo, 0)
+    }
+
+    /**
      * Return the required maintain value of a given item to satisfy all consumers
      * @param item Item for which to calculate maintain value
      */
