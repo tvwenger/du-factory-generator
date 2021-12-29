@@ -1,6 +1,6 @@
 import * as React from "react"
 import { Button, Row, Col } from "antd"
-import { Category, Tier, Item, ITEMS, CONTAINERS_ASCENDING_BY_CAPACITY } from "../items"
+import { Category, Tier, Item, CONTAINERS_ASCENDING_BY_CAPACITY } from "../items"
 import { FactoryGraph } from "../graph"
 import { FactoryState } from "./factory"
 import { serialize } from "../serialize"
@@ -60,11 +60,24 @@ export const INDUSTRYLABELS: { [key: string]: string } = {
     "3D Printer M": "3D",
     "Chemical Industry M": "Che",
     "Electronics Industry M": "Ele",
-    "Glass Furance M": "Gla",
+    "Glass Furnace M": "Gla",
     "Metalwork Industry M": "Met",
-    "Recylcer M": "Rec",
+    "Recycler M": "Rec",
     "Refiner M": "Ref",
     "Smelter M": "Sme",
+}
+
+// Full tier names
+const TIER = ["", "", "", "Uncommon ", "Advanced ", "Rare "]
+
+// Abbreviated tier labels
+export const TIERLABELS: { [key: number]: string } = {
+    0: "",
+    1: "",
+    2: "",
+    3: "Unc ",
+    4: "Adv ",
+    5: "Rare ",
 }
 
 // container labels
@@ -169,14 +182,12 @@ export function FactoryVisualization({
 
             if (factory !== undefined) {
                 Array.from(factory.industries).map((node) => {
+                    const industry = TIER[node.item.tier] + node.recipe.industry
                     totalIndustries += 1
-                    if (industryCount.has(node.recipe.industry)) {
-                        industryCount.set(
-                            node.recipe.industry,
-                            industryCount.get(node.recipe.industry)! + 1,
-                        )
+                    if (industryCount.has(industry)) {
+                        industryCount.set(industry, industryCount.get(industry)! + 1)
                     } else {
-                        industryCount.set(node.recipe.industry, 1)
+                        industryCount.set(industry, 1)
                     }
                     if (schematicCount.has(node.item)) {
                         schematicCount.set(node.item, schematicCount.get(node.item)! + 1)

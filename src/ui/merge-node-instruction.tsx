@@ -3,7 +3,14 @@ import { Container } from "../container"
 import { isIndustry } from "../industry"
 import { isByproductTransferUnit, isCatalystBalancer, isTransferUnit } from "../transfer-unit"
 import { sortName } from "./generate-instructions"
-import { containerLabel, FONTSIZE, INDUSTRYLABELS, LINKSPACING, SIZE } from "./render-factory"
+import {
+    containerLabel,
+    FONTSIZE,
+    INDUSTRYLABELS,
+    TIERLABELS,
+    LINKSPACING,
+    SIZE,
+} from "./render-factory"
 
 /**
  * Instruction centered on a merged node
@@ -164,7 +171,9 @@ export class MergedNodeInstruction {
                         dominantBaseline="middle"
                         textAnchor="middle"
                     >
-                        {isIndustry(producer) && INDUSTRYLABELS[producer.recipe.industry]}
+                        {isIndustry(producer) &&
+                            TIERLABELS[producer.item.tier] +
+                                INDUSTRYLABELS[producer.recipe.industry]}
                         {isTransferUnit(producer) && producer.number + "xTU"}
                     </text>
                     <text
