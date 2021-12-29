@@ -1,6 +1,6 @@
 # Dual Universe Factory Generator
 
-Use the application here: https://lgfrbcsgo.github.io/du-factory-generator/latest/
+Use the application here: https://tvwenger.github.io/du-factory-generator/latest/
 
 This is an application for generating a factory plan for [Dual
 Universe](https://www.dualuniverse.game/). Given a set of items, the
