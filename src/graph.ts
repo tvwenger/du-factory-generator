@@ -1,7 +1,6 @@
 import { Container, isDumpContainer } from "./container"
 import { Industry } from "./industry"
-import { Craftable, isGas, Item, Ore, Quantity } from "./items"
-import { findRecipe, Recipe } from "./recipes"
+import { isGas, Item, Quantity, Recipe, RECIPES } from "./items"
 import { generateDumpRoutes, generateRelayRoutes } from "./router"
 import { TransferContainer } from "./transfer-container"
 import { isByproductTransferUnit, TransferUnit } from "./transfer-unit"
@@ -108,7 +107,7 @@ class OreNode extends FactoryNode {
      * @param factory the factory
      * @param item Ore to store
      */
-    constructor(readonly factory: FactoryGraph, readonly item: Ore) {
+    constructor(readonly factory: FactoryGraph, readonly item: Item) {
         super(factory, item)
     }
 }
@@ -136,16 +135,16 @@ export class ProductionNode extends FactoryNode {
      * @param factory the factory
      * @param item Item to produce
      */
-    constructor(readonly factory: FactoryGraph, readonly item: Craftable) {
+    constructor(readonly factory: FactoryGraph, readonly item: Item) {
         super(factory, item)
-        this.recipe = findRecipe(item)
+        this.recipe = RECIPES[item.name]
     }
 
     /**
      * Get production rate per industry
      */
     get rate(): PerSecond {
-        return this.recipe.product.quantity / this.recipe.time
+        return this.recipe.quantity / this.recipe.time
     }
 
     /**
@@ -296,7 +295,7 @@ export class FactoryGraph {
      * Add an OreNode to the factory
      * @param item Ore stored in this node
      */
-    createOreNode(item: Ore): OreNode {
+    createOreNode(item: Item): OreNode {
         const node = new OreNode(this, item)
         this.nodes.set(item, node)
         return node
@@ -306,7 +305,7 @@ export class FactoryGraph {
      * Add a ProductionNode to the factory
      * @param item Item to produce in this node
      */
-    createProductionNode(item: Craftable): ProductionNode {
+    createProductionNode(item: Item): ProductionNode {
         const node = new ProductionNode(this, item)
         this.nodes.set(item, node)
         return node
@@ -333,7 +332,7 @@ export class FactoryGraph {
      * @param id Identifier
 
      */
-    createDumpContainer(item: Craftable, id?: string): Container {
+    createDumpContainer(item: Item, id?: string): Container {
         if (id === undefined) {
             const containers = this.getDumpContainers(item)
             id = `D${containers.length}`
@@ -361,7 +360,7 @@ export class FactoryGraph {
      * @param item Item to produce
      * @param output Output container
      */
-    createIndustry(item: Craftable, output: Container, id?: string): Industry {
+    createIndustry(item: Item, output: Container, id?: string): Industry {
         if (id === undefined) {
             const industries = this.getIndustries(item)
             id = `P${industries.length}`

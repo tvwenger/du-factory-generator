@@ -6,8 +6,7 @@ import {
     MAX_INDUSTRY_LINKS,
     PerSecond,
 } from "./graph"
-import { CATALYSTS, Craftable, isGas, isOre, Item } from "./items"
-import { findRecipe } from "./recipes"
+import { CATALYSTS, isOre, Item, RECIPES } from "./items"
 import { generateDumpRoutes } from "./router"
 import { isTransferContainer, TransferContainer } from "./transfer-container"
 import { isTransferUnit } from "./transfer-unit"
@@ -36,10 +35,10 @@ function addProductionNode(item: Item, factory: FactoryGraph): FactoryNode {
     const productionNode = factory.createProductionNode(item)
 
     // Add all ingredients
-    const recipe = findRecipe(item)
-    for (const ingredient of recipe.ingredients) {
+    const recipe = RECIPES[item.name]
+    for (const [ingredient, quantity] of recipe.ingredients.entries()) {
         // Add ingredients to tree
-        const inputNode = addProductionNode(ingredient.item, factory)
+        const inputNode = addProductionNode(ingredient, factory)
 
         // Link ingredients to node
         inputNode.addConsumer(productionNode)
@@ -61,11 +60,11 @@ function handleByproducts(factory: FactoryGraph) {
             continue
         }
 
-        for (const byproduct of container.recipe.byproducts) {
+        for (const [byproduct, quantity] of container.recipe.byproducts.entries()) {
             // Check if this container already has a transfer unit for the byproduct
             let found = false
             for (const consumer of container.consumers) {
-                if (isTransferUnit(consumer) && consumer.item == byproduct.item) {
+                if (isTransferUnit(consumer) && consumer.item == byproduct) {
                     found = true
                     // ensure that the transfer rate is set
                     consumer.setTransferRate(container, container.ingress(consumer.item))
@@ -77,11 +76,11 @@ function handleByproducts(factory: FactoryGraph) {
 
             // Look for an existing transfer unit
             let foundTransferUnit = false
-            const transferUnits = factory.getByproductTransferUnits(byproduct.item)
+            const transferUnits = factory.getByproductTransferUnits(byproduct)
             for (const transferUnit of transferUnits) {
                 if (transferUnit.canAddIncomingLink) {
                     transferUnit.addInput(container)
-                    transferUnit.increaseTransferRate(container, container.ingress(byproduct.item))
+                    transferUnit.increaseTransferRate(container, container.ingress(byproduct))
                     foundTransferUnit = true
                     break
                 }
@@ -92,7 +91,7 @@ function handleByproducts(factory: FactoryGraph) {
 
             // Find a dump container storing byproduct that doesn't already have
             // a transfer unit dumping into it and can support an additional incoming link
-            const dumpContainers = factory.getDumpContainers(byproduct.item)
+            const dumpContainers = factory.getDumpContainers(byproduct)
             let outputContainer = undefined
             let minTransferUnits = MAX_CONTAINER_LINKS
             for (const checkContainer of dumpContainers) {
@@ -124,14 +123,14 @@ function handleByproducts(factory: FactoryGraph) {
 
             // Create a new DumpContainer for this product if necessary
             if (outputContainer === undefined) {
-                outputContainer = factory.createDumpContainer(byproduct.item as Craftable)
+                outputContainer = factory.createDumpContainer(byproduct)
             }
 
             // Add new transfer unit
-            const transferUnit = factory.createTransferUnit(byproduct.item, outputContainer)
-            transferUnit.increaseRequiredTransferRate(container.ingress(byproduct.item))
+            const transferUnit = factory.createTransferUnit(byproduct, outputContainer)
+            transferUnit.increaseRequiredTransferRate(container.ingress(byproduct))
             transferUnit.addInput(container)
-            transferUnit.increaseTransferRate(container, container.ingress(byproduct.item))
+            transferUnit.increaseTransferRate(container, container.ingress(byproduct))
         }
     }
 
@@ -184,9 +183,9 @@ function handleTransferContainers(factory: FactoryGraph) {
         }
 
         // Sort ingredients by quantity
-        const recipeIngredients = industry.recipe.ingredients
-        recipeIngredients.sort((a, b) => a.quantity - b.quantity)
-        const ingredients = recipeIngredients.map((ingredient) => ingredient.item)
+        const ingredients = Array.from(
+            new Map([...industry.recipe.ingredients.entries()].sort((a, b) => a[1] - b[1])).keys(),
+        )
 
         // Try to use an existing transfer container
         const transferContainers = factory.getTransferContainers(new Set(ingredients))
@@ -303,7 +302,7 @@ function handleGas(factory: FactoryGraph) {
  * @param factory The existing factory graph, if any
  */
 export function buildFactory(
-    requirements: Map<Craftable, { rate: PerSecond; maintain: number }>,
+    requirements: Map<Item, { rate: PerSecond; maintain: number }>,
     factory?: FactoryGraph,
 ) {
     // Start a new graph if necessary

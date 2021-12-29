@@ -214,7 +214,7 @@ export class NodeInstruction {
                             dominantBaseline="middle"
                             textAnchor="middle"
                         >
-                            {isIndustry(producer) && INDUSTRYLABELS.get(producer.recipe.industry)}
+                            {isIndustry(producer) && INDUSTRYLABELS[producer.recipe.industry]}
                             {isTransferUnit(producer) && producer.number + "xTU"}
                         </text>
                         <text
@@ -535,7 +535,9 @@ export class NodeInstruction {
             y = relayStart_y + SIZE / 2
             let ingress = relayRoute.container.ingress(relayRoute.container.item)
             let egress = relayRoute.container.egress(relayRoute.container.item)
-            let steadyStateEgress = relayRoute.container.steadyStateEgress(relayRoute.container.item)
+            let steadyStateEgress = relayRoute.container.steadyStateEgress(
+                relayRoute.container.item,
+            )
             let outputRate = relayRoute.container.outputRate
             let unit = "sec"
             if (steadyStateEgress < 1) {

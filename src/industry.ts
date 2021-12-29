@@ -1,7 +1,6 @@
 import { Container, isContainer } from "./container"
 import { PerSecond } from "./graph"
-import { Craftable, Item } from "./items"
-import { findRecipe, Recipe } from "./recipes"
+import { Item, Recipe, RECIPES } from "./items"
 import { isTransferContainer, TransferContainer } from "./transfer-container"
 import { TransferUnit } from "./transfer-unit"
 import { shortenName } from "./utils"
@@ -24,8 +23,8 @@ export class Industry {
      * @param item Item to producer
      * @param output Output container
      */
-    constructor(readonly id: string, readonly item: Craftable, output: Container) {
-        this.recipe = findRecipe(item)
+    constructor(readonly id: string, readonly item: Item, output: Container) {
+        this.recipe = RECIPES[item.name]
         this.output = output
         output.addProducer(this)
     }
@@ -98,9 +97,9 @@ export class Industry {
      * @param item Item to check
      */
     inflowRateOf(item: Item): PerSecond {
-        for (const ingredient of this.recipe.ingredients) {
-            if (ingredient.item === item) {
-                return ingredient.quantity / this.recipe.time
+        for (const [ingredient, quantity] of this.recipe.ingredients.entries()) {
+            if (ingredient === item) {
+                return quantity / this.recipe.time
             }
         }
         return 0
@@ -116,9 +115,9 @@ export class Industry {
         let outputEgress = this.output.steadyStateEgress(this.item)
         // estimate that each producer contributes equally
         let numProducers = this.output.producers.size
-        for (const ingredient of this.recipe.ingredients) {
-            if (ingredient.item === item) {
-                return ingredient.quantity / this.recipe.product.quantity * outputEgress / numProducers
+        for (const [ingredient, quantity] of this.recipe.ingredients.entries()) {
+            if (ingredient === item) {
+                return ((quantity / this.recipe.quantity) * outputEgress) / numProducers
             }
         }
         return 0
@@ -174,12 +173,12 @@ export class Industry {
         }
 
         if (this.item === item) {
-            return this.recipe.product.quantity / this.recipe.time
+            return this.recipe.quantity / this.recipe.time
         }
 
-        for (const byproduct of this.recipe.byproducts) {
-            if (byproduct.item === item) {
-                return byproduct.quantity / this.recipe.time
+        for (const [byproduct, quantity] of this.recipe.byproducts.entries()) {
+            if (byproduct === item) {
+                return quantity / this.recipe.time
             }
         }
 

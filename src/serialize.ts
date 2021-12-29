@@ -8,7 +8,7 @@ import {
     RelayRoute,
 } from "./graph"
 import { Industry, isIndustry } from "./industry"
-import { Craftable, isOre, Item, ITEMS } from "./items"
+import { isOre, Item, ITEMS } from "./items"
 import { isTransferContainer, TransferContainer } from "./transfer-container"
 import { isTransferUnit, TransferUnit } from "./transfer-unit"
 
@@ -40,7 +40,7 @@ interface SaveContainer {
     outputRate: number
     maintainedOutput: number
     maintain: number
-    containers: Item[]
+    containers: string[]
     producerIndustries: number[]
     producerTransferUnits: number[]
     consumerIndustries: number[]
@@ -54,7 +54,7 @@ interface SaveTransferContainer {
     id: string
     items: Item[]
     maintain: number[]
-    containers: Item[]
+    containers: string[]
     producers: number[]
     consumers: number[]
 }
@@ -143,7 +143,7 @@ export function serialize(factory: FactoryGraph): string {
         const saveIndustry: SaveIndustry = {
             id: industry.id,
             item: industry.item,
-            industry: industry.recipe.industry.name,
+            industry: industry.recipe.industry,
             inputContainers: Array.from(industry.inputs)
                 .filter(isContainer)
                 .map((node) => factoryContainers.indexOf(node))
@@ -291,7 +291,7 @@ export function deserialize(serializedFactory: string): FactoryGraph {
     for (const saveIndustry of saveFactory.industries) {
         const item = ITEMS[saveIndustry.item.name as keyof typeof ITEMS]
         const industry = factory.createIndustry(
-            item as Craftable,
+            item,
             factoryContainers[saveIndustry.output],
             saveIndustry.id,
         )

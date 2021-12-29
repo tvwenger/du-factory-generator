@@ -164,7 +164,7 @@ export class MergedNodeInstruction {
                         dominantBaseline="middle"
                         textAnchor="middle"
                     >
-                        {isIndustry(producer) && INDUSTRYLABELS.get(producer.recipe.industry)}
+                        {isIndustry(producer) && INDUSTRYLABELS[producer.recipe.industry]}
                         {isTransferUnit(producer) && producer.number + "xTU"}
                     </text>
                     <text

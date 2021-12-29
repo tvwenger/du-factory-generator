@@ -1,8 +1,8 @@
 import * as React from "react"
 import { Button, Upload } from "antd"
 import { ItemSelect } from "./item-select"
-import { Craftable } from "../items"
 import { FactoryState } from "./factory"
+import { Item } from "../items"
 import { PerSecond } from "../graph"
 
 /**
@@ -16,28 +16,28 @@ interface FactorySelectProps {
     setFactoryState: (state: FactoryState) => void
 
     // all craftable items
-    items: Craftable[]
+    items: Item[]
 
     // items to craft
-    selection: Craftable[]
+    selection: Item[]
 
     /**
      * Set the selection of items to craft
      * @param selection items to craft
      */
-    setSelection: (selection: Craftable[]) => void
+    setSelection: (selection: Item[]) => void
 
     /**
      * Set the production rate map map
      * @param map the production rate map
      */
-    setProductionRateMap: (map: Map<Craftable, PerSecond>) => void
+    setProductionRateMap: (map: Map<Item, PerSecond>) => void
 
     /**
      * Set the maintain value map
      * @param map the maintain value map
      */
-    setMaintainValueMap: (map: Map<Craftable, number>) => void
+    setMaintainValueMap: (map: Map<Item, number>) => void
 }
 
 /**
@@ -69,9 +69,9 @@ export function FactorySelect(props: FactorySelectProps) {
                     reader.onload = () => {
                         const result = reader.result as string
                         const lines = result.split("\n")
-                        const myItems: Craftable[] = []
-                        const productionMap: Map<Craftable, PerSecond> = new Map()
-                        const maintainMap: Map<Craftable, number> = new Map()
+                        const myItems: Item[] = []
+                        const productionMap: Map<Item, PerSecond> = new Map()
+                        const maintainMap: Map<Item, number> = new Map()
                         for (const line of lines) {
                             const parts = line.split(",")
                             if (

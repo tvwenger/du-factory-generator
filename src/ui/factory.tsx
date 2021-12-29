@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Craftable, isCraftable, ITEMS } from "../items"
+import { isCraftable, Item, ITEMS, Recipe, RECIPES } from "../items"
 import { values } from "ramda"
 import { useMap, AppState } from "./app"
 import { Button, Upload, Row, Col } from "antd"
@@ -8,7 +8,6 @@ import { FactoryCount } from "./factory-count"
 import { FactoryGraph, PerSecond } from "../graph"
 import { FactoryVisualization } from "./render-factory"
 import { deserialize } from "../serialize"
-import { findRecipe, Recipe } from "../recipes"
 import { FactoryInstruction } from "./generate-instructions"
 
 export enum FactoryState {
@@ -47,12 +46,12 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
     //  factory building instructions instructions
     const [factoryInstructions, setFactoryInstructions] = React.useState<FactoryInstruction[]>([])
     // produced items, industry count, and maintain count
-    const [selection, setSelection] = React.useState<Craftable[]>([])
-    const [productionRate, setProductionRate, setProductionRateMap] = useMap<Craftable, PerSecond>()
-    const [maintainValue, setMaintainValue, setMaintainValueMap] = useMap<Craftable, number>()
+    const [selection, setSelection] = React.useState<Item[]>([])
+    const [productionRate, setProductionRate, setProductionRateMap] = useMap<Item, PerSecond>()
+    const [maintainValue, setMaintainValue, setMaintainValueMap] = useMap<Item, number>()
     // the recipes for all produced items
     const recipes = React.useMemo(
-        () => new Map<Craftable, Recipe>(selection.map((item) => [item, findRecipe(item)])),
+        () => new Map<Item, Recipe>(selection.map((item) => [item, RECIPES[item.name]])),
         [selection],
     )
     // the FactoryGraph and a flag to show differences
@@ -60,12 +59,12 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
     const [startingFactory, setStartingFactory] = React.useState<FactoryGraph>()
     const [factory, setFactory] = React.useState<FactoryGraph>()
     // parse the production rate and maintain values, generate requirements
-    const getProductionRate = (item: Craftable) =>
-        productionRate.get(item) || recipes.get(item)!.product.quantity / recipes.get(item)!.time
-    const getMaintainValue = (item: Craftable) =>
+    const getProductionRate = (item: Item) =>
+        productionRate.get(item) || recipes.get(item)!.quantity / recipes.get(item)!.time
+    const getMaintainValue = (item: Item) =>
         maintainValue.get(item) || Math.ceil(getProductionRate(item) * 24 * 3600)
     const getRequirements = () =>
-        new Map<Craftable, { rate: PerSecond; maintain: number }>(
+        new Map<Item, { rate: PerSecond; maintain: number }>(
             selection.map((item) => [
                 item,
                 { rate: getProductionRate(item), maintain: getMaintainValue(item) },
