@@ -118,7 +118,13 @@ export function generateInstructions(
                 for (const dumpGroup of dumpGroups) {
                     if (dumpGroup.length === 0) {
                         instructions.push(
-                            new OreInstruction(node, showDifferences, section, category, tier),
+                            new OreInstruction(
+                                node,
+                                showDifferences,
+                                section,
+                                category,
+                                "Tier " + tier,
+                            ),
                         )
                     } else if (dumpGroup.length === 1 && dumpGroup[0].container.merged) {
                         instructions.push(
@@ -127,7 +133,7 @@ export function generateInstructions(
                                 showDifferences,
                                 section,
                                 category,
-                                tier,
+                                "Tier " + tier,
                             ),
                         )
                     } else {
@@ -138,7 +144,7 @@ export function generateInstructions(
                                 showDifferences,
                                 section,
                                 category,
-                                tier,
+                                "Tier " + tier,
                             ),
                         )
                     }

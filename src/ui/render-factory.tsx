@@ -1,14 +1,6 @@
 import * as React from "react"
 import { Button, Row, Col } from "antd"
-import {
-    Category,
-    Tier,
-    Item,
-    ITEMS,
-    OtherElement,
-    ContainerElement,
-    CONTAINERS_ASCENDING_BY_CAPACITY,
-} from "../items"
+import { Category, Tier, Item, CONTAINERS_ASCENDING_BY_CAPACITY } from "../items"
 import { FactoryGraph } from "../graph"
 import { FactoryState } from "./factory"
 import { serialize } from "../serialize"
@@ -28,112 +20,74 @@ enum VisualizationState {
 export const CATEGORY_ORDER = [
     Category.ORE,
     Category.PURE,
-    Category.GAS,
     Category.CATALYST,
     Category.PRODUCT,
-    Category.STRUCTURAL_PARTS,
-    Category.INTERMEDIARY_PARTS,
-    Category.COMPLEX_PARTS,
-    Category.EXCEPTIONAL_PARTS,
-    Category.FUNCTIONAL_PARTS,
-    Category.AMMO,
-    Category.CANNON,
-    Category.CHAIR,
-    Category.COMBAT_AND_DEFENCE,
-    Category.CONTAINER,
-    Category.DECORATION,
-    Category.DISPLAY,
-    Category.DOOR,
-    Category.ELECTRONIC,
-    Category.FUEL,
-    Category.HONEYCOMB,
-    Category.INDUSTRY,
-    Category.LASER,
-    Category.MISSILE,
-    Category.PLANET_ELEMENT,
-    Category.PLANT,
-    Category.RADAR,
-    Category.RAILGUN,
+    Category.STRUCTURAL_PART,
+    Category.INTERMEDIARY_PART,
+    Category.COMPLEX_PART,
+    Category.EXCEPTIONAL_PART,
+    Category.FUNCTIONAL_PART,
     Category.SCRAP,
-    Category.SYSTEM,
-    Category.TRANSPORTATION_ELEMENT,
-    Category.WARP_CELL,
-    Category.WINDOW,
+    Category.PURE_HONEYCOMB,
+    Category.PRODUCT_HONEYCOMB,
+    Category.FUEL,
+    Category.WARP_CELLS,
+    Category.AMMO,
+    Category.COMBAT_ELEMENT,
+    Category.FURNITURE_AND_APPLIANCES_ELEMENT,
+    Category.INDUSTRY_AND_INFRASTRUCTURE_ELEMENT,
+    Category.PILOTING_ELEMENT,
+    Category.PLANET_ELEMENT,
+    Category.SYSTEMS_ELEMENT,
 ]
+
 export const TIER_ORDER = [
+    Tier.GAS,
     Tier.BASIC,
     Tier.UNCOMMON,
     Tier.ADVANCED,
     Tier.RARE,
     Tier.EXOTIC,
-    Tier.ELEMENT,
 ]
 
 // industry labels
-export const INDUSTRYLABELS = new Map([
-    [ITEMS["Assembly Line XS"], "XS"],
-    [ITEMS["Uncommon Assembly Line XS"], "Unc. XS"],
-    [ITEMS["Advanced Assembly Line XS"], "Adv. XS"],
-    [ITEMS["Rare Assembly Line XS"], "Rare XS"],
-    [ITEMS["Assembly Line S"], "S"],
-    [ITEMS["Uncommon Assembly Line S"], "Unc. S"],
-    [ITEMS["Advanced Assembly Line S"], "Adv. S"],
-    [ITEMS["Rare Assembly Line S"], "Rare S"],
-    [ITEMS["Assembly Line M"], "M"],
-    [ITEMS["Uncommon Assembly Line M"], "Unc. M"],
-    [ITEMS["Advanced Assembly Line M"], "Adv. M"],
-    [ITEMS["Rare Assembly Line M"], "Rare M"],
-    [ITEMS["Assembly Line L"], "L"],
-    [ITEMS["Uncommon Assembly Line L"], "Unc. L"],
-    [ITEMS["Advanced Assembly Line L"], "Adv. L"],
-    [ITEMS["Rare Assembly Line L"], "Rare L"],
-    [ITEMS["Assembly Line XL"], "XL"],
-    [ITEMS["Uncommon Assembly Line XL"], "Unc. XL"],
-    [ITEMS["Advanced Assembly Line XL"], "Adv. XL"],
-    [ITEMS["Rare Assembly Line XL"], "Rare XL"],
-    [ITEMS["3D Printer M"], "3D"],
-    [ITEMS["Uncommon 3D Printer M"], "Unc. 3D"],
-    [ITEMS["Advanced 3D Printer M"], "Adv. 3D"],
-    [ITEMS["Rare 3D Printer M"], "Rare 3D"],
-    [ITEMS["Chemical Industry M"], "Che"],
-    [ITEMS["Uncommon Chemical Industry M"], "Unc. Che"],
-    [ITEMS["Advanced Chemical Industry M"], "Adv. Che"],
-    [ITEMS["Rare Chemical Industry M"], "Rare Che"],
-    [ITEMS["Electronics Industry M"], "Ele"],
-    [ITEMS["Uncommon Electronics Industry M"], "Unc. Ele"],
-    [ITEMS["Advanced Electronics Industry M"], "Adv. Ele"],
-    [ITEMS["Rare Electronics Industry M"], "Rare Ele"],
-    [ITEMS["Glass Furnace M"], "Gla"],
-    [ITEMS["Uncommon Glass Furnace M"], "Unc. Gla"],
-    [ITEMS["Advanced Glass Furnace M"], "Adv. Gla"],
-    [ITEMS["Rare Glass Furnace M"], "Rare Gla"],
-    [ITEMS["Metalwork Industry M"], "Met"],
-    [ITEMS["Uncommon Metalwork Industry M"], "Unc. Met"],
-    [ITEMS["Advanced Metalwork Industry M"], "Adv. Met"],
-    [ITEMS["Rare Metalwork Industry M"], "Rare Met"],
-    [ITEMS["Recycler M"], "Rec"],
-    [ITEMS["Uncommon Recycler M"], "Unc. Rec"],
-    [ITEMS["Advanced Recycler M"], "Adv. Rec"],
-    [ITEMS["Rare Recycler M"], "Rare Rec"],
-    [ITEMS["Refiner M"], "Ref"],
-    [ITEMS["Uncommon Refiner M"], "Unc. Ref"],
-    [ITEMS["Advanced Refiner M"], "Adv. Ref"],
-    [ITEMS["Rare Refiner M"], "Rare Ref"],
-    [ITEMS["Smelter M"], "Sme"],
-    [ITEMS["Uncommon Smelter M"], "Unc. Sme"],
-    [ITEMS["Advanced Smelter M"], "Adv. Sme"],
-    [ITEMS["Rare Smelter M"], "Rare Sme"],
-])
+export const INDUSTRYLABELS: { [key: string]: string } = {
+    "Assembly Line XS": "XS",
+    "Assembly Line S": "S",
+    "Assembly Line M": "M",
+    "Assembly Line L": "L",
+    "Assembly Line XL": "XL",
+    "3D Printer M": "3D",
+    "Chemical Industry M": "Che",
+    "Electronics Industry M": "Ele",
+    "Glass Furnace M": "Gla",
+    "Metalwork Industry M": "Met",
+    "Recycler M": "Rec",
+    "Refiner M": "Ref",
+    "Smelter M": "Sme",
+}
+
+// Full tier names
+const TIER = ["", "", "", "Uncommon ", "Advanced ", "Rare "]
+
+// Abbreviated tier labels
+export const TIERLABELS: { [key: number]: string } = {
+    0: "",
+    1: "",
+    2: "",
+    3: "Unc ",
+    4: "Adv ",
+    5: "Rare ",
+}
 
 // container labels
-export const CONTAINERLABELS = new Map([
-    [ITEMS["Container XS"], "XS"],
-    [ITEMS["Container S"], "S"],
-    [ITEMS["Container M"], "M"],
-    [ITEMS["Container L"], "L"],
-    [ITEMS["Container XL"], "XL"],
-    [ITEMS["Expanded Container XL"], "EX"],
-])
+export const CONTAINERLABELS: { [key: string]: string } = {
+    "Container XS": "XS",
+    "Container S": "S",
+    "Container M": "M",
+    "Container L": "L",
+    "Container XL": "XL",
+}
 
 // The size (in pixels) of a node item in the visualization
 export const SIZE = 60
@@ -157,13 +111,13 @@ export function containerLabel(container: Container | TransferContainer) {
     for (let i = CONTAINERS_ASCENDING_BY_CAPACITY.length - 1; i >= 0; i--) {
         const containerCount = container.containers.reduce(
             (total, current) =>
-                current === CONTAINERS_ASCENDING_BY_CAPACITY[i] ? total + 1 : total,
+                current === CONTAINERS_ASCENDING_BY_CAPACITY[i].name ? total + 1 : total,
             0,
         )
         if (containerCount > 1) {
-            labels.push(containerCount + CONTAINERLABELS.get(CONTAINERS_ASCENDING_BY_CAPACITY[i])!)
+            labels.push(containerCount + CONTAINERLABELS[CONTAINERS_ASCENDING_BY_CAPACITY[i].name])
         } else if (containerCount > 0) {
-            labels.push(CONTAINERLABELS.get(CONTAINERS_ASCENDING_BY_CAPACITY[i]))
+            labels.push(CONTAINERLABELS[CONTAINERS_ASCENDING_BY_CAPACITY[i].name])
         }
     }
     return labels.join("+")
@@ -220,22 +174,20 @@ export function FactoryVisualization({
     switch (visualizationState) {
         default:
             // get count of industry, schematic, and container types
-            const industryCount = new Map<OtherElement, number>()
+            const industryCount = new Map<string, number>()
             let totalIndustries = 0
-            const containerCount = new Map<ContainerElement, number>()
+            const containerCount = new Map<string, number>()
             let totalContainers = 0
             const schematicCount = new Map<Item, number>()
 
             if (factory !== undefined) {
                 Array.from(factory.industries).map((node) => {
+                    const industry = TIER[node.item.tier] + node.recipe.industry
                     totalIndustries += 1
-                    if (industryCount.has(node.recipe.industry)) {
-                        industryCount.set(
-                            node.recipe.industry,
-                            industryCount.get(node.recipe.industry)! + 1,
-                        )
+                    if (industryCount.has(industry)) {
+                        industryCount.set(industry, industryCount.get(industry)! + 1)
                     } else {
-                        industryCount.set(node.recipe.industry, 1)
+                        industryCount.set(industry, 1)
                     }
                     if (schematicCount.has(node.item)) {
                         schematicCount.set(node.item, schematicCount.get(node.item)! + 1)
@@ -244,7 +196,7 @@ export function FactoryVisualization({
                     }
                 })
                 industryCount.set(
-                    ITEMS["Transfer Unit"],
+                    "Transfer Unit",
                     Array.from(factory.transferUnits)
                         .filter((transferUnit) => !transferUnit.merged)
                         .map((transferUnit) => transferUnit.number)
@@ -299,10 +251,10 @@ export function FactoryVisualization({
                         <Col span={4}>Count</Col>
                     </Row>
                     {Array.from(industryCount)
-                        .sort((a, b) => sortName(a[0], b[0]))
+                        .sort()
                         .map(([key, value]) => (
-                            <Row key={key.name}>
-                                <Col span={4}>{key.name}</Col>
+                            <Row key={key}>
+                                <Col span={4}>{key}</Col>
                                 <Col span={4}>{value}</Col>
                             </Row>
                         ))}
@@ -312,10 +264,10 @@ export function FactoryVisualization({
                         <Col span={4}>Count</Col>
                     </Row>
                     {Array.from(containerCount)
-                        .sort((a, b) => sortName(a[0], b[0]))
+                        .sort()
                         .map(([key, value]) => (
-                            <Row key={key.name}>
-                                <Col span={4}>{key.name}</Col>
+                            <Row key={key}>
+                                <Col span={4}>{key}</Col>
                                 <Col span={4}>{value}</Col>
                             </Row>
                         ))}

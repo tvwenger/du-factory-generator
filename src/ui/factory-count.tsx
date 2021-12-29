@@ -1,11 +1,10 @@
 import * as React from "react"
 import { Button, Row, Col, InputNumber } from "antd"
-import { Craftable } from "../items"
+import { Item, Recipe } from "../items"
 import { FactoryState } from "./factory"
 import { buildFactory } from "../generator"
 import { FactoryGraph, PerSecond } from "../graph"
 import { FactoryInstruction, generateInstructions } from "./generate-instructions"
-import { Recipe } from "../recipes"
 
 /**
  * Properties of the FactoryCount component
@@ -24,39 +23,39 @@ interface FactoryCountProps {
     setErrorMessage: (error: string) => void
 
     // Items selected to build
-    selection: Craftable[]
+    selection: Item[]
 
     // Recipes for selected items
-    recipes: Map<Craftable, Recipe>
+    recipes: Map<Item, Recipe>
 
     /**
      * Set the production rate for a given item
      * @param item Item to set the number of assemblers
      */
-    setProductionRate: (item: Craftable, rate: PerSecond) => void
+    setProductionRate: (item: Item, rate: PerSecond) => void
 
     /**
      * Get the production rate for a given item
      * @param item Item to get assembler count
      */
-    getProductionRate: (item: Craftable) => PerSecond
+    getProductionRate: (item: Item) => PerSecond
 
     /**
      * Set the maintain value for a given item
      * @param item Item to set the maintain value
      */
-    setMaintainValue: (item: Craftable, num: number) => void
+    setMaintainValue: (item: Item, num: number) => void
 
     /**
      * Get the maintain value for a given item
      * @param item Item to get maintain value
      */
-    getMaintainValue: (item: Craftable) => number
+    getMaintainValue: (item: Item) => number
 
     /**
      * Get factory production requirements
      */
-    getRequirements: () => Map<Craftable, { rate: PerSecond; maintain: number }>
+    getRequirements: () => Map<Item, { rate: PerSecond; maintain: number }>
 
     // the current FactoryGraph
     factory: FactoryGraph | undefined
@@ -106,7 +105,7 @@ export function FactoryCount(props: FactoryCountProps) {
                 const recipe = props.recipes.get(item)!
                 // Get the number of industries required to satisfy production rate
                 const numIndustries = Math.ceil(
-                    props.getProductionRate(item) / (recipe.product.quantity / recipe.time),
+                    props.getProductionRate(item) / (recipe.quantity / recipe.time),
                 )
                 return (
                     <Row key={item.name}>

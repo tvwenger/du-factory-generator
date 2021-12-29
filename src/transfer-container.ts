@@ -1,8 +1,7 @@
 import { Container } from "./container"
 import { MAX_CONTAINER_LINKS, PerSecond } from "./graph"
 import { Industry } from "./industry"
-import { ContainerElement, CONTAINERS_ASCENDING_BY_CAPACITY, Item, Quantity } from "./items"
-import { findRecipe } from "./recipes"
+import { CONTAINERS_ASCENDING_BY_CAPACITY, Item, Quantity, RECIPES } from "./items"
 import { isByproductTransferUnit, isTransferUnit, TransferUnit } from "./transfer-unit"
 
 /**
@@ -146,9 +145,11 @@ export class TransferContainer {
                 }
             } else {
                 // For industries, get the required input
-                for (const ingredient of findRecipe(consumer.item).ingredients) {
-                    if (ingredient.item === item) {
-                        maintain += ingredient.quantity
+                for (const [ingredient, quantity] of RECIPES[
+                    consumer.item.name
+                ].ingredients.entries()) {
+                    if (ingredient === item) {
+                        maintain += quantity
                     }
                 }
             }
@@ -159,21 +160,17 @@ export class TransferContainer {
     /**
      * Return the required containers (size)s to hold the maintain values
      */
-    get containers(): ContainerElement[] {
-        if (CONTAINERS_ASCENDING_BY_CAPACITY.length < 1) {
-            throw new Error("CONTAINERS_ASCENDING_BY_CAPACITY is empty")
-        }
+    get containers(): string[] {
         let remainingCapacity = 0
-        const maintain = this.maintain
         for (const item of this.items) {
             remainingCapacity += this.maintain(item) * item.volume
         }
-        const requiredContainers: ContainerElement[] = []
+        const requiredContainers: string[] = []
         while (remainingCapacity > 0) {
             let foundContainer = false
             for (const container of CONTAINERS_ASCENDING_BY_CAPACITY) {
                 if (remainingCapacity <= container.capacity) {
-                    requiredContainers.push(container)
+                    requiredContainers.push(container.name)
                     remainingCapacity += -container.capacity
                     foundContainer = true
                     break
@@ -182,7 +179,8 @@ export class TransferContainer {
             if (!foundContainer) {
                 // Add one large container
                 requiredContainers.push(
-                    CONTAINERS_ASCENDING_BY_CAPACITY[CONTAINERS_ASCENDING_BY_CAPACITY.length - 1],
+                    CONTAINERS_ASCENDING_BY_CAPACITY[CONTAINERS_ASCENDING_BY_CAPACITY.length - 1]
+                        .name,
                 )
                 remainingCapacity += -CONTAINERS_ASCENDING_BY_CAPACITY[
                     CONTAINERS_ASCENDING_BY_CAPACITY.length - 1

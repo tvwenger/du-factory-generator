@@ -216,7 +216,9 @@ export function isByproductTransferUnit(node: TransferUnit): boolean {
         if (input.recipe === undefined) {
             return false
         }
-        return input.recipe.byproducts.some((byproduct) => byproduct.item === node.item)
+        return Array.from(input.recipe.byproducts.keys()).some(
+            (byproduct) => byproduct === node.item,
+        )
     })
 }
 

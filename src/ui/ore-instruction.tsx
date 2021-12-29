@@ -100,7 +100,9 @@ export class OreInstruction {
             x = start_x
             y = relayStart_y + SIZE / 2
             let egress = relayRoute.container.egress(relayRoute.container.item)
-            let steadyStateEgress = relayRoute.container.steadyStateEgress(relayRoute.container.item)
+            let steadyStateEgress = relayRoute.container.steadyStateEgress(
+                relayRoute.container.item,
+            )
             let outputRate = relayRoute.container.outputRate
             let unit = "sec"
             if (steadyStateEgress < 1) {

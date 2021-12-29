@@ -1,15 +1,15 @@
 import { MAX_CONTAINER_LINKS, PerSecond } from "./graph"
 import { Industry, isIndustry } from "./industry"
 import {
-    ContainerElement,
     CONTAINERS_ASCENDING_BY_CAPACITY,
     isCatalyst,
     isCraftable,
     Item,
     Quantity,
+    Recipe,
+    RECIPES,
 } from "./items"
-import { findRecipe, Recipe } from "./recipes"
-import { isTransferContainer, TransferContainer } from "./transfer-container"
+import { TransferContainer } from "./transfer-container"
 import {
     isByproductTransferUnit,
     isCatalystBalancer,
@@ -44,7 +44,7 @@ export class Container {
      */
     constructor(readonly id: string, readonly item: Item) {
         if (isCraftable(item)) {
-            this.recipe = findRecipe(item)
+            this.recipe = RECIPES[item.name]
         }
     }
 
@@ -88,7 +88,7 @@ export class Container {
     get outgoingLinksFree(): number {
         // need to reserve one link per byproduct if this is a dump container
         let numReserved =
-            isDumpContainer(this) && this.recipe !== undefined ? this.recipe.byproducts.length : 0
+            isDumpContainer(this) && this.recipe !== undefined ? this.recipe.byproducts.size : 0
         // need to reserve two outgoing links for catalyst balancer if this is a catalyst container
         numReserved += isCatalyst(this.item) ? 2 : 0
         // need to reserve one link per catalyst if this is a dump container
@@ -233,9 +233,11 @@ export class Container {
                 maintain += consumer.item.transferBatchSize
             } else {
                 // For industries, get the required input
-                for (const ingredient of findRecipe(consumer.item).ingredients) {
-                    if (ingredient.item === this.item) {
-                        maintain += ingredient.quantity
+                for (const [ingredient, quantity] of RECIPES[
+                    consumer.item.name
+                ].ingredients.entries()) {
+                    if (ingredient === this.item) {
+                        maintain += quantity
                     }
                 }
             }
@@ -246,17 +248,14 @@ export class Container {
     /**
      * Return the required containers (sizes) to hold the maintain value
      */
-    get containers(): ContainerElement[] {
-        if (CONTAINERS_ASCENDING_BY_CAPACITY.length < 1) {
-            throw new Error("CONTAINERS_ASCENDING_BY_CAPACITY is empty")
-        }
-        const requiredContainers: ContainerElement[] = []
+    get containers(): string[] {
+        const requiredContainers: string[] = []
         let remainingCapacity = this.maintain * this.item.volume
         while (remainingCapacity > 0) {
             let foundContainer = false
             for (const container of CONTAINERS_ASCENDING_BY_CAPACITY) {
                 if (remainingCapacity <= container.capacity) {
-                    requiredContainers.push(container)
+                    requiredContainers.push(container.name)
                     remainingCapacity += -container.capacity
                     foundContainer = true
                     break
@@ -265,7 +264,8 @@ export class Container {
             if (!foundContainer) {
                 // Add one large container
                 requiredContainers.push(
-                    CONTAINERS_ASCENDING_BY_CAPACITY[CONTAINERS_ASCENDING_BY_CAPACITY.length - 1],
+                    CONTAINERS_ASCENDING_BY_CAPACITY[CONTAINERS_ASCENDING_BY_CAPACITY.length - 1]
+                        .name,
                 )
                 remainingCapacity += -CONTAINERS_ASCENDING_BY_CAPACITY[
                     CONTAINERS_ASCENDING_BY_CAPACITY.length - 1
