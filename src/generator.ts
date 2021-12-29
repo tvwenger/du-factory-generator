@@ -37,6 +37,11 @@ function addProductionNode(item: Item, factory: FactoryGraph): FactoryNode {
     // Add all ingredients
     const recipe = RECIPES[item.name]
     for (const [ingredient, quantity] of recipe.ingredients.entries()) {
+        // Catch empty recipes (e.g., gas)
+        if (ingredient === undefined) {
+            continue
+        }
+
         // Add ingredients to tree
         const inputNode = addProductionNode(ingredient, factory)
 
