@@ -1,6 +1,6 @@
 import { Container, isContainer } from "./container"
 import { PerSecond } from "./graph"
-import { Item, Recipe, RECIPES } from "./items"
+import { Item, Recipe } from "./items"
 import { isTransferContainer, TransferContainer } from "./transfer-container"
 import { TransferUnit } from "./transfer-unit"
 import { shortenName } from "./utils"
@@ -12,8 +12,6 @@ import { shortenName } from "./utils"
 export class Industry {
     inputs: Set<Container | TransferContainer> = new Set()
     output: Container
-    // Recipe of the item being produced
-    recipe: Recipe
     // if this element has changed
     changed = true
 
@@ -21,10 +19,15 @@ export class Industry {
      * Create a new Industry producing a given item to a given contianer
      * @param id Identifier
      * @param item Item to producer
+     * @param recipe Recipe
      * @param output Output container
      */
-    constructor(readonly id: string, readonly item: Item, output: Container) {
-        this.recipe = RECIPES[item.name]
+    constructor(
+        readonly id: string,
+        readonly item: Item,
+        readonly recipe: Recipe,
+        output: Container,
+    ) {
         this.output = output
         output.addProducer(this)
     }

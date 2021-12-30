@@ -256,11 +256,11 @@ export function serialize(factory: FactoryGraph): string {
  * @param serializedFactory the serialized FactoryGraph
  */
 export function deserialize(serializedFactory: string): FactoryGraph {
-    const factory = new FactoryGraph()
     const saveFactory = JSON.parse(serializedFactory)
     if (saveFactory.version !== VERSION) {
         throw new Error("Invalid JSON version: " + saveFactory.version + ". Expected: " + VERSION)
     }
+    const factory = new FactoryGraph(saveFactory.talentLevels)
 
     const factoryContainers: Container[] = []
     const factoryTransferContainers: TransferContainer[] = []

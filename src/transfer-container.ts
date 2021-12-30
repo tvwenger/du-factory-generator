@@ -1,7 +1,7 @@
 import { Container } from "./container"
 import { MAX_CONTAINER_LINKS, PerSecond } from "./graph"
 import { Industry } from "./industry"
-import { CONTAINERS_ASCENDING_BY_CAPACITY, Item, Quantity, RECIPES } from "./items"
+import { CONTAINERS_ASCENDING_BY_CAPACITY, Item, Quantity } from "./items"
 import { isByproductTransferUnit, isTransferUnit, TransferUnit } from "./transfer-unit"
 
 /**
@@ -145,9 +145,7 @@ export class TransferContainer {
                 }
             } else {
                 // For industries, get the required input
-                for (const [ingredient, quantity] of RECIPES[
-                    consumer.item.name
-                ].ingredients.entries()) {
+                for (const [ingredient, quantity] of consumer.recipe.ingredients.entries()) {
                     if (ingredient === item) {
                         maintain += quantity
                     }

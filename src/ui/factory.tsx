@@ -1,8 +1,10 @@
 import * as React from "react"
-import { isCraftable, Item, ITEMS, Recipe, RECIPES } from "../items"
+import { isCraftable, Item, ITEMS, Recipe, getRecipe } from "../items"
+import { Talent, TALENTS } from "../talents"
 import { values } from "ramda"
-import { useMap, AppState } from "./app"
+import { AppState } from "./app"
 import { Button, Upload, Row, Col } from "antd"
+import { FactoryTalents } from "./factory-talents"
 import { FactorySelect } from "./factory-select"
 import { FactoryCount } from "./factory-count"
 import { FactoryGraph, PerSecond } from "../graph"
@@ -12,6 +14,7 @@ import { FactoryInstruction } from "./generate-instructions"
 
 export enum FactoryState {
     UPLOAD = "upload",
+    TALENTS = "talents",
     SELECT = "select",
     COUNT = "count",
     RENDER = "render",
@@ -45,13 +48,15 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
     const [errorMessage, setErrorMessage] = React.useState<string>()
     //  factory building instructions instructions
     const [factoryInstructions, setFactoryInstructions] = React.useState<FactoryInstruction[]>([])
+    // Talents and talent levels
+    const [talentLevels, setTalentLevels] = React.useState<{ [key: string]: number }>({})
     // produced items, industry count, and maintain count
     const [selection, setSelection] = React.useState<Item[]>([])
-    const [productionRate, setProductionRate, setProductionRateMap] = useMap<Item, PerSecond>()
-    const [maintainValue, setMaintainValue, setMaintainValueMap] = useMap<Item, number>()
+    const [productionRate, setProductionRate] = React.useState<{ [key: string]: PerSecond }>({})
+    const [maintainValue, setMaintainValue] = React.useState<{ [key: string]: number }>({})
     // the recipes for all produced items
     const recipes = React.useMemo(
-        () => new Map<Item, Recipe>(selection.map((item) => [item, RECIPES[item.name]])),
+        () => new Map<Item, Recipe>(selection.map((item) => [item, getRecipe(item, talentLevels)])),
         [selection],
     )
     // the FactoryGraph and a flag to show differences
@@ -60,9 +65,9 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
     const [factory, setFactory] = React.useState<FactoryGraph>()
     // parse the production rate and maintain values, generate requirements
     const getProductionRate = (item: Item) =>
-        productionRate.get(item) || recipes.get(item)!.quantity / recipes.get(item)!.time
+        productionRate[item.name] || recipes.get(item)!.quantity / recipes.get(item)!.time
     const getMaintainValue = (item: Item) =>
-        maintainValue.get(item) || Math.ceil(getProductionRate(item) * 24 * 3600)
+        maintainValue[item.name] || Math.ceil(getProductionRate(item) * 24 * 3600)
     const getRequirements = () =>
         new Map<Item, { rate: PerSecond; maintain: number }>(
             selection.map((item) => [
@@ -76,14 +81,28 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
             return (
                 <React.Fragment>
                     <Button onClick={() => setAppState(AppState.HOME)}>Back</Button>
+                    <FactoryTalents
+                        setFactoryState={setFactoryState}
+                        talents={TALENTS}
+                        talentLevels={talentLevels}
+                        setTalentLevels={setTalentLevels}
+                        factory={factory}
+                        setFactory={setFactory}
+                    />
+                </React.Fragment>
+            )
+        case FactoryState.SELECT:
+            return (
+                <React.Fragment>
+                    <Button onClick={() => setFactoryState(FactoryState.TALENTS)}>Back</Button>
                     <ExistingFactorySummary factory={startingFactory} />
                     <FactorySelect
                         setFactoryState={setFactoryState}
                         items={items}
                         selection={selection}
                         setSelection={setSelection}
-                        setProductionRateMap={setProductionRateMap}
-                        setMaintainValueMap={setMaintainValueMap}
+                        setProductionRate={setProductionRate}
+                        setMaintainValue={setMaintainValue}
                     />
                 </React.Fragment>
             )
@@ -106,7 +125,7 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                                 setFactory(uploadedFactoryCopy)
                                 setShowDifferences(true)
                                 setStartingFactory(uploadedFactory)
-                                setFactoryState(FactoryState.SELECT)
+                                setFactoryState(FactoryState.TALENTS)
                             }
                             reader.readAsText(file)
                             // skip upload
@@ -136,6 +155,7 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                         setMaintainValue={setMaintainValue}
                         getMaintainValue={getMaintainValue}
                         getRequirements={getRequirements}
+                        talentLevels={talentLevels}
                         factory={factory}
                         setFactory={setFactory}
                         setFactoryInstructions={setFactoryInstructions}

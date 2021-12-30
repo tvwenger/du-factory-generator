@@ -5,6 +5,7 @@ import { FactoryState } from "./factory"
 import { buildFactory } from "../generator"
 import { FactoryGraph, PerSecond } from "../graph"
 import { FactoryInstruction, generateInstructions } from "./generate-instructions"
+import { Talent } from "../talents"
 
 /**
  * Properties of the FactoryCount component
@@ -29,22 +30,16 @@ interface FactoryCountProps {
     recipes: Map<Item, Recipe>
 
     /**
-     * Set the production rate for a given item
-     * @param item Item to set the number of assemblers
+     * Set the production rate and maintain value
      */
-    setProductionRate: (item: Item, rate: PerSecond) => void
+    setProductionRate: React.Dispatch<React.SetStateAction<{ [key: string]: number }>>
+    setMaintainValue: React.Dispatch<React.SetStateAction<{ [key: string]: number }>>
 
     /**
      * Get the production rate for a given item
      * @param item Item to get assembler count
      */
     getProductionRate: (item: Item) => PerSecond
-
-    /**
-     * Set the maintain value for a given item
-     * @param item Item to set the maintain value
-     */
-    setMaintainValue: (item: Item, num: number) => void
 
     /**
      * Get the maintain value for a given item
@@ -56,6 +51,9 @@ interface FactoryCountProps {
      * Get factory production requirements
      */
     getRequirements: () => Map<Item, { rate: PerSecond; maintain: number }>
+
+    // Talent levels
+    talentLevels: { [key: string]: number }
 
     // the current FactoryGraph
     factory: FactoryGraph | undefined
@@ -107,36 +105,40 @@ export function FactoryCount(props: FactoryCountProps) {
                 const numIndustries = Math.ceil(
                     props.getProductionRate(item) / (recipe.quantity / recipe.time),
                 )
+                const setProductionRate = (value: number) => {
+                    props.setProductionRate((prevState: { [key: string]: number }) => ({
+                        ...prevState,
+                        [item.name]: value,
+                    }))
+                }
+                const setMaintainValue = (value: number) => {
+                    props.setMaintainValue((prevState: { [key: string]: number }) => ({
+                        ...prevState,
+                        [item.name]: value,
+                    }))
+                }
                 return (
-                    <Row key={item.name}>
-                        <Col span={3}>
-                            <label>{item.name}</label>
-                        </Col>
-                        <Col span={3}>
-                            <InputNumber
-                                min={0}
-                                value={props.getProductionRate(item) * (24.0 * 3600.0)}
-                                onChange={(value) =>
-                                    props.setProductionRate(item, Number(value) / (24.0 * 3600.0))
-                                }
-                            />
-                        </Col>
-                        <Col span={2}>
-                            <InputNumber
-                                min={1}
-                                value={props.getMaintainValue(item)}
-                                onChange={(value) => props.setMaintainValue(item, Number(value))}
-                            />
-                        </Col>
-                        <Col span={4}>{numIndustries}</Col>
-                    </Row>
+                    <React.Fragment key={item.name}>
+                        <MemorizedFactoryCountRow
+                            setProductionRate={setProductionRate}
+                            setMaintainValue={setMaintainValue}
+                            item={item}
+                            rate={props.getProductionRate(item) * (24.0 * 3600.0)}
+                            value={props.getMaintainValue(item)}
+                            numIndustries={numIndustries}
+                        />
+                    </React.Fragment>
                 )
             })}
             <Button
                 type="primary"
                 onClick={() => {
                     try {
-                        const newFactory = buildFactory(props.getRequirements(), props.factory)
+                        const newFactory = buildFactory(
+                            props.getRequirements(),
+                            props.talentLevels,
+                            props.factory,
+                        )
                         props.setFactory(newFactory)
                         props.setFactoryInstructions(
                             generateInstructions(newFactory, props.showDifferences),
@@ -153,3 +155,47 @@ export function FactoryCount(props: FactoryCountProps) {
         </React.Fragment>
     )
 }
+
+/**
+ * Properties of the FactoryCountRow
+ */
+interface FactoryCountRowProps {
+    setProductionRate: (rate: number) => void
+    setMaintainValue: (value: number) => void
+    item: Item
+    rate: number
+    value: number
+    numIndustries: number
+}
+
+/**
+ * Single row of the factory count
+ */
+function FactoryCountRow(props: FactoryCountRowProps) {
+    return (
+        <Row>
+            <Col span={3}>
+                <label>{props.item.name}</label>
+            </Col>
+            <Col span={3}>
+                <InputNumber
+                    min={0}
+                    value={props.rate}
+                    onChange={(value) => props.setProductionRate(Number(value) / (24.0 * 3600.0))}
+                />
+            </Col>
+            <Col span={2}>
+                <InputNumber
+                    min={1}
+                    value={props.value}
+                    onChange={(value) => props.setMaintainValue(Number(value))}
+                />
+            </Col>
+            <Col span={4}>{props.numIndustries}</Col>
+        </Row>
+    )
+}
+function sameRow(oldProps: FactoryCountRowProps, newProps: FactoryCountRowProps) {
+    return oldProps.rate === newProps.rate && oldProps.value === newProps.value
+}
+const MemorizedFactoryCountRow = React.memo(FactoryCountRow, sameRow)
