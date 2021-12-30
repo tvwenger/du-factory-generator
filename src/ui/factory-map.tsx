@@ -92,6 +92,7 @@ export function FactoryMap({ instructions }: FactoryVisualizationComponentProps)
                 <UncontrolledReactSVGPanZoom
                     width={0.9 * window.innerWidth}
                     height={0.9 * window.innerHeight}
+                    defaultTool="pan"
                 >
                     <svg height={height} width={width}>
                         {innerSVG}
