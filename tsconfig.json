@@ -5,6 +5,7 @@
         "target": "es6",
         "sourceMap": true,
         "strict": true,
+        "useUnknownInCatchVariables": false,
         "jsx": "react",
         "lib": ["es6", "dom"]
     },
