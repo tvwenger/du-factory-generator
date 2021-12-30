@@ -1,5 +1,5 @@
 import { FactoryNode, ProductionNode, DumpRoute, RelayRoute } from "./graph"
-import { isCatalyst, isGas, isOre, RECIPES } from "./items"
+import { isCatalyst, isGas, isOre, getRecipe } from "./items"
 import { MAX_CONTAINER_LINKS } from "./graph"
 
 /**
@@ -13,7 +13,8 @@ export function generateRelayRoutes(node: FactoryNode) {
     // maximum number of supported transfer units, considering byproducts
     let maxTransferNumber = MAX_CONTAINER_LINKS
     if (!isOre(node.item)) {
-        maxTransferNumber = MAX_CONTAINER_LINKS - RECIPES[node.item.name].byproducts.size
+        maxTransferNumber =
+            MAX_CONTAINER_LINKS - getRecipe(node.item, node.factory.talentLevels).byproducts.size
     }
 
     // maximum rate supported by transfer units

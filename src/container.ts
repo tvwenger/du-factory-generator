@@ -7,7 +7,7 @@ import {
     Item,
     Quantity,
     Recipe,
-    RECIPES,
+    getRecipe,
 } from "./items"
 import { TransferContainer } from "./transfer-container"
 import {
@@ -40,12 +40,10 @@ export class Container {
      * Create a new Container
      * @param id Identifier
      * @param item The item to store
-     * @param outputRate The factory output rate
+     * @param recipe Item recipe
      */
-    constructor(readonly id: string, readonly item: Item) {
-        if (isCraftable(item)) {
-            this.recipe = RECIPES[item.name]
-        }
+    constructor(readonly id: string, readonly item: Item, recipe: Recipe | undefined) {
+        this.recipe = recipe
     }
 
     /**
@@ -233,9 +231,7 @@ export class Container {
                 maintain += consumer.item.transferBatchSize
             } else {
                 // For industries, get the required input
-                for (const [ingredient, quantity] of RECIPES[
-                    consumer.item.name
-                ].ingredients.entries()) {
+                for (const [ingredient, quantity] of consumer.recipe.ingredients.entries()) {
                     if (ingredient === this.item) {
                         maintain += quantity
                     }

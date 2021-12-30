@@ -1,15 +1,16 @@
 import { Category, Tier } from "./items"
 
 export enum TalentType {
-    TIME = "time",
-    EFFICIENCY = "efficiency",
-    PRODUCTIVITY = "productivity",
+    TIME = "Time",
+    INPUT = "Input",
+    OUTPUT = "Output",
 }
 
 export enum TalentSubject {
-    TIER = "tier",
-    ITEM = "item",
-    INDUSTRY = "industry",
+    TIER = "Tier",
+    ITEM = "Item",
+    INDUSTRY = "Industry",
+    TYPE = "Type",
 }
 
 /**
@@ -20,7 +21,7 @@ export interface Talent {
     readonly group: string
     readonly type: TalentType
     readonly subject: TalentSubject
-    readonly modifier: Number
+    readonly modifier: number
     readonly category: Category
     readonly tier: Tier
     readonly target: string | undefined
@@ -80,6 +81,15 @@ for (const outer of data) {
                 skill.name !== undefined ? skill.name : inner.name,
             )
         }
+    }
+}
+// Validate
+for (const [name, talent] of Object.entries(talents)) {
+    if (!Object.values(TalentType).includes(talent.type)) {
+        throw new Error("Invalid talent type" + talent.type)
+    }
+    if (!Object.values(TalentSubject).includes(talent.subject)) {
+        throw new Error("Invalid talent subject" + talent.subject)
     }
 }
 export const TALENTS = talents

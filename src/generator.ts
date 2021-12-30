@@ -6,8 +6,9 @@ import {
     MAX_INDUSTRY_LINKS,
     PerSecond,
 } from "./graph"
-import { CATALYSTS, isOre, Item, RECIPES } from "./items"
+import { CATALYSTS, isOre, Item, getRecipe } from "./items"
 import { generateDumpRoutes } from "./router"
+import { Talent } from "./talents"
 import { isTransferContainer, TransferContainer } from "./transfer-container"
 import { isTransferUnit } from "./transfer-unit"
 import { sanityCheck, mergeFactory, unmergeFactory } from "./utils"
@@ -35,7 +36,7 @@ function addProductionNode(item: Item, factory: FactoryGraph): FactoryNode {
     const productionNode = factory.createProductionNode(item)
 
     // Add all ingredients
-    const recipe = RECIPES[item.name]
+    const recipe = getRecipe(item, factory.talentLevels)
     for (const [ingredient, quantity] of recipe.ingredients.entries()) {
         // Catch empty recipes (e.g., gas)
         if (ingredient === undefined) {
@@ -308,11 +309,12 @@ function handleGas(factory: FactoryGraph) {
  */
 export function buildFactory(
     requirements: Map<Item, { rate: PerSecond; maintain: number }>,
+    talentLevels: Map<Talent, number>,
     factory?: FactoryGraph,
 ) {
     // Start a new graph if necessary
     if (factory === undefined) {
-        factory = new FactoryGraph()
+        factory = new FactoryGraph(talentLevels)
     } else {
         // Umerge dump and relay containers
         unmergeFactory(factory)

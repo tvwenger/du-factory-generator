@@ -1,3 +1,5 @@
+import { Talent, TalentSubject, TalentType } from "./talents"
+
 export type Liter = number
 export type Seconds = number
 export type Quantity = number
@@ -214,8 +216,78 @@ for (const name in data) {
         ingredients,
     )
 }
+// Validate
+for (const [name, item] of Object.entries(items)) {
+    if (!Object.values(Tier).includes(item.tier)) {
+        throw new Error("Invalid item tier" + item.tier)
+    }
+    if (!Object.values(Category).includes(item.category)) {
+        throw new Error("Invalid item category" + item.category)
+    }
+}
+
 export const ITEMS = items
-export const RECIPES = recipes
+const RECIPES = recipes
+
+/**
+ * Get recipe for an item, and apply talents
+ * @param item Item
+ * @param talentLevels Talents
+ */
+export function getRecipe(item: Item, talentLevels: Map<Talent, number>) {
+    const oldRecipe = RECIPES[item.name]
+    let time_mod = 0
+    let input_mod = 0
+    let output_mod = 0
+
+    for (const [talent, level] of talentLevels.entries()) {
+        let applicable = false
+        // Check industry talent
+        if (talent.subject === TalentSubject.INDUSTRY && talent.target === oldRecipe.industry) {
+            applicable = true
+        }
+        // Check specific item talent
+        else if (talent.subject === TalentSubject.ITEM && talent.target === item.name) {
+            applicable = true
+        }
+        // Check category
+        else if (talent.subject === TalentSubject.TYPE && talent.category === item.category) {
+            applicable = true
+        }
+        // Check category & tier talent
+        else if (
+            talent.subject === TalentSubject.TIER &&
+            talent.tier === item.tier &&
+            talent.category === item.category
+        ) {
+            applicable = true
+        }
+
+        if (applicable) {
+            if (talent.type === TalentType.TIME) {
+                time_mod += level * talent.modifier
+            } else if (talent.type === TalentType.INPUT) {
+                input_mod += level * talent.modifier
+            } else if (talent.type === TalentType.OUTPUT) {
+                output_mod += level * talent.modifier
+            }
+        }
+    }
+
+    // Create and return modified recipe
+    const quantity = oldRecipe.quantity * (1.0 + output_mod)
+    const time = oldRecipe.time * (1.0 - time_mod)
+    const ingredients = oldRecipe.ingredients
+    for (const [key, value] of ingredients.entries()) {
+        ingredients.set(key, value * (1.0 - input_mod))
+    }
+    const byproducts = oldRecipe.byproducts
+    for (const [key, value] of byproducts.entries()) {
+        byproducts.set(key, value * (1.0 + output_mod))
+    }
+    const newRecipe = recipe(item, quantity, time, oldRecipe.industry, byproducts, ingredients)
+    return newRecipe
+}
 
 /**
  * Containers sorted by capacity from smallest to largest

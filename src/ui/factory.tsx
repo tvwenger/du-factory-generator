@@ -1,5 +1,5 @@
 import * as React from "react"
-import { isCraftable, Item, ITEMS, Recipe, RECIPES } from "../items"
+import { isCraftable, Item, ITEMS, Recipe, getRecipe } from "../items"
 import { Talent, TALENTS } from "../talents"
 import { values } from "ramda"
 import { useMap, AppState } from "./app"
@@ -49,15 +49,15 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
     //  factory building instructions instructions
     const [factoryInstructions, setFactoryInstructions] = React.useState<FactoryInstruction[]>([])
     // Talents and talent levels
-    const [talentLevel, setTalentLevel, setTalentLevelMap] = useMap<Talent, number>()
-    const getTalentLevel = (talent: Talent) => talentLevel.get(talent) || 0
+    const [talentLevels, setTalentLevel, setTalentLevelMap] = useMap<Talent, number>()
+    const getTalentLevel = (talent: Talent) => talentLevels.get(talent) || 0
     // produced items, industry count, and maintain count
     const [selection, setSelection] = React.useState<Item[]>([])
     const [productionRate, setProductionRate, setProductionRateMap] = useMap<Item, PerSecond>()
     const [maintainValue, setMaintainValue, setMaintainValueMap] = useMap<Item, number>()
     // the recipes for all produced items
     const recipes = React.useMemo(
-        () => new Map<Item, Recipe>(selection.map((item) => [item, RECIPES[item.name]])),
+        () => new Map<Item, Recipe>(selection.map((item) => [item, getRecipe(item, talentLevels)])),
         [selection],
     )
     // the FactoryGraph and a flag to show differences
@@ -156,6 +156,7 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                         setMaintainValue={setMaintainValue}
                         getMaintainValue={getMaintainValue}
                         getRequirements={getRequirements}
+                        talentLevels={talentLevels}
                         factory={factory}
                         setFactory={setFactory}
                         setFactoryInstructions={setFactoryInstructions}

@@ -5,6 +5,7 @@ import { FactoryState } from "./factory"
 import { buildFactory } from "../generator"
 import { FactoryGraph, PerSecond } from "../graph"
 import { FactoryInstruction, generateInstructions } from "./generate-instructions"
+import { Talent } from "../talents"
 
 /**
  * Properties of the FactoryCount component
@@ -56,6 +57,9 @@ interface FactoryCountProps {
      * Get factory production requirements
      */
     getRequirements: () => Map<Item, { rate: PerSecond; maintain: number }>
+
+    // Talent levels
+    talentLevels: Map<Talent, number>
 
     // the current FactoryGraph
     factory: FactoryGraph | undefined
@@ -124,7 +128,11 @@ export function FactoryCount(props: FactoryCountProps) {
                 type="primary"
                 onClick={() => {
                     try {
-                        const newFactory = buildFactory(props.getRequirements(), props.factory)
+                        const newFactory = buildFactory(
+                            props.getRequirements(),
+                            props.talentLevels,
+                            props.factory,
+                        )
                         props.setFactory(newFactory)
                         props.setFactoryInstructions(
                             generateInstructions(newFactory, props.showDifferences),

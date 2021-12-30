@@ -1,7 +1,8 @@
 import { Container, isDumpContainer } from "./container"
 import { Industry } from "./industry"
-import { isGas, Item, Quantity, Recipe, RECIPES } from "./items"
+import { isGas, Item, Quantity, Recipe, getRecipe, isCraftable } from "./items"
 import { generateDumpRoutes, generateRelayRoutes } from "./router"
+import { Talent } from "./talents"
 import { TransferContainer } from "./transfer-container"
 import { isByproductTransferUnit, TransferUnit } from "./transfer-unit"
 
@@ -137,7 +138,7 @@ export class ProductionNode extends FactoryNode {
      */
     constructor(readonly factory: FactoryGraph, readonly item: Item) {
         super(factory, item)
-        this.recipe = RECIPES[item.name]
+        this.recipe = getRecipe(item, factory.talentLevels)
     }
 
     /**
@@ -195,6 +196,12 @@ export class FactoryGraph {
     industries: Set<Industry> = new Set()
     transferUnits: Set<TransferUnit> = new Set()
     transferContainers: Set<TransferContainer> = new Set()
+
+    /**
+     * Create a new FactoryGraph
+     * @param talentLevels Talent levels
+     */
+    constructor(readonly talentLevels: Map<Talent, number>) {}
 
     /**
      * Return a node that stores or produces a given item
@@ -321,7 +328,11 @@ export class FactoryGraph {
             const containers = this.getRelayContainers(item)
             id = `R${containers.length}`
         }
-        const container = new Container(id, item)
+        let recipe = undefined
+        if (isCraftable(item)) {
+            recipe = getRecipe(item, this.talentLevels)
+        }
+        const container = new Container(id, item, recipe)
         this.containers.add(container)
         return container
     }
@@ -337,7 +348,11 @@ export class FactoryGraph {
             const containers = this.getDumpContainers(item)
             id = `D${containers.length}`
         }
-        const container = new Container(id, item)
+        let recipe = undefined
+        if (isCraftable(item)) {
+            recipe = getRecipe(item, this.talentLevels)
+        }
+        const container = new Container(id, item, recipe)
         this.containers.add(container)
         return container
     }
@@ -365,7 +380,7 @@ export class FactoryGraph {
             const industries = this.getIndustries(item)
             id = `P${industries.length}`
         }
-        const industry = new Industry(id, item, output)
+        const industry = new Industry(id, item, getRecipe(item, this.talentLevels), output)
         this.industries.add(industry)
         return industry
     }
