@@ -23,8 +23,7 @@ module.exports = ({ ifDev, ifProd }) => ({
         }),
     },
     devServer: {
-        publicPath: "/",
-        contentBase: "./dist",
+        static: "./dist",
         port: 8080,
         historyApiFallback: true,
     },
