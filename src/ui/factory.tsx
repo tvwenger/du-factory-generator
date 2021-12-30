@@ -1,8 +1,10 @@
 import * as React from "react"
 import { isCraftable, Item, ITEMS, Recipe, RECIPES } from "../items"
+import { Talent, TALENTS } from "../talents"
 import { values } from "ramda"
 import { useMap, AppState } from "./app"
 import { Button, Upload, Row, Col } from "antd"
+import { FactoryTalents } from "./factory-talents"
 import { FactorySelect } from "./factory-select"
 import { FactoryCount } from "./factory-count"
 import { FactoryGraph, PerSecond } from "../graph"
@@ -12,6 +14,7 @@ import { FactoryInstruction } from "./generate-instructions"
 
 export enum FactoryState {
     UPLOAD = "upload",
+    TALENTS = "talents",
     SELECT = "select",
     COUNT = "count",
     RENDER = "render",
@@ -45,6 +48,9 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
     const [errorMessage, setErrorMessage] = React.useState<string>()
     //  factory building instructions instructions
     const [factoryInstructions, setFactoryInstructions] = React.useState<FactoryInstruction[]>([])
+    // Talents and talent levels
+    const [talentLevel, setTalentLevel, setTalentLevelMap] = useMap<Talent, number>()
+    const getTalentLevel = (talent: Talent) => talentLevel.get(talent) || 0
     // produced items, industry count, and maintain count
     const [selection, setSelection] = React.useState<Item[]>([])
     const [productionRate, setProductionRate, setProductionRateMap] = useMap<Item, PerSecond>()
@@ -76,6 +82,20 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
             return (
                 <React.Fragment>
                     <Button onClick={() => setAppState(AppState.HOME)}>Back</Button>
+                    <FactoryTalents
+                        setFactoryState={setFactoryState}
+                        talents={TALENTS}
+                        setTalentLevel={setTalentLevel}
+                        getTalentLevel={getTalentLevel}
+                        factory={factory}
+                        setFactory={setFactory}
+                    />
+                </React.Fragment>
+            )
+        case FactoryState.SELECT:
+            return (
+                <React.Fragment>
+                    <Button onClick={() => setFactoryState(FactoryState.TALENTS)}>Back</Button>
                     <ExistingFactorySummary factory={startingFactory} />
                     <FactorySelect
                         setFactoryState={setFactoryState}
@@ -106,7 +126,7 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                                 setFactory(uploadedFactoryCopy)
                                 setShowDifferences(true)
                                 setStartingFactory(uploadedFactory)
-                                setFactoryState(FactoryState.SELECT)
+                                setFactoryState(FactoryState.TALENTS)
                             }
                             reader.readAsText(file)
                             // skip upload

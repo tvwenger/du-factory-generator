@@ -42,7 +42,7 @@ export function App() {
             content = <Info setAppState={setAppState} />
             break
         case AppState.NEWFACTORY:
-            content = <Factory setAppState={setAppState} startFactoryState={FactoryState.SELECT} />
+            content = <Factory setAppState={setAppState} startFactoryState={FactoryState.TALENTS} />
             break
         case AppState.OLDFACTORY:
             content = <Factory setAppState={setAppState} startFactoryState={FactoryState.UPLOAD} />

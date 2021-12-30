@@ -108,28 +108,16 @@ export function FactoryCount(props: FactoryCountProps) {
                     props.getProductionRate(item) / (recipe.quantity / recipe.time),
                 )
                 return (
-                    <Row key={item.name}>
-                        <Col span={3}>
-                            <label>{item.name}</label>
-                        </Col>
-                        <Col span={3}>
-                            <InputNumber
-                                min={0}
-                                value={props.getProductionRate(item) * (24.0 * 3600.0)}
-                                onChange={(value) =>
-                                    props.setProductionRate(item, Number(value) / (24.0 * 3600.0))
-                                }
-                            />
-                        </Col>
-                        <Col span={2}>
-                            <InputNumber
-                                min={1}
-                                value={props.getMaintainValue(item)}
-                                onChange={(value) => props.setMaintainValue(item, Number(value))}
-                            />
-                        </Col>
-                        <Col span={4}>{numIndustries}</Col>
-                    </Row>
+                    <React.Fragment key={item.name}>
+                        <MemorizedFactoryCountRow
+                            setProductionRate={props.setProductionRate}
+                            setMaintainValue={props.setMaintainValue}
+                            item={item}
+                            rate={props.getProductionRate(item) * (24.0 * 3600.0)}
+                            value={props.getMaintainValue(item)}
+                            numIndustries={numIndustries}
+                        />
+                    </React.Fragment>
                 )
             })}
             <Button
@@ -153,3 +141,49 @@ export function FactoryCount(props: FactoryCountProps) {
         </React.Fragment>
     )
 }
+
+/**
+ * Properties of the FactoryCountRow
+ */
+interface FactoryCountRowProps {
+    setProductionRate: (item: Item, rate: number) => void
+    setMaintainValue: (item: Item, value: number) => void
+    item: Item
+    rate: number
+    value: number
+    numIndustries: number
+}
+
+/**
+ * Single row of the factory count
+ */
+function FactoryCountRow(props: FactoryCountRowProps) {
+    return (
+        <Row>
+            <Col span={3}>
+                <label>{props.item.name}</label>
+            </Col>
+            <Col span={3}>
+                <InputNumber
+                    min={0}
+                    value={props.rate}
+                    onChange={(value) =>
+                        props.setProductionRate(props.item, Number(value) / (24.0 * 3600.0))
+                    }
+                />
+            </Col>
+            <Col span={2}>
+                <InputNumber
+                    min={1}
+                    value={props.value}
+                    onChange={(value) => props.setMaintainValue(props.item, Number(value))}
+                />
+            </Col>
+            <Col span={4}>{props.numIndustries}</Col>
+        </Row>
+    )
+}
+function sameRow(oldProps: FactoryCountRowProps, newProps: FactoryCountRowProps) {
+    return oldProps.rate === newProps.rate && oldProps.value === newProps.value
+}
+const MemorizedFactoryCountRow = React.memo(FactoryCountRow, sameRow)
