@@ -3,7 +3,7 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin")
 const { BundleAnalyzerPlugin } = require("webpack-bundle-analyzer")
 const TerserJSPlugin = require("terser-webpack-plugin")
 const MiniCssExtractPlugin = require("mini-css-extract-plugin")
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin")
+const OptimizeCSSAssetsPlugin = require("css-minimizer-webpack-plugin")
 const path = require("path")
 
 module.exports = ({ ifDev, ifProd }) => ({
@@ -17,7 +17,7 @@ module.exports = ({ ifDev, ifProd }) => ({
     }),
     output: {
         path: path.join(__dirname, "./dist"),
-        filename: "[name].[hash].js",
+        filename: "[name].[fullhash].js",
         ...ifProd({
             publicPath: "/du-factory-generator/v3.3/",
         }),
@@ -70,7 +70,7 @@ module.exports = ({ ifDev, ifProd }) => ({
             template: "./public/index.html",
         }),
         new MiniCssExtractPlugin({
-            filename: "[name].[hash].css",
+            filename: "[name].[fullhash].css",
         }),
         new BundleAnalyzerPlugin({
             analyzerMode: "static",
