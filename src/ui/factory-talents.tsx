@@ -1,6 +1,6 @@
 import * as React from "react"
-import { Button, Row, Col, InputNumber } from "antd"
-import { Talent, TalentSubject } from "../talents"
+import { Button, Row, Col, InputNumber, Upload } from "antd"
+import { Talent } from "../talents"
 import { FactoryGraph } from "../graph"
 import { FactoryState } from "./factory"
 
@@ -41,6 +41,36 @@ export function FactoryTalents(props: FactoryTalentsProps) {
     return (
         <React.Fragment>
             <h2>Set talent levels:</h2>
+            <ul>
+                <li>
+                    Set talents of user who is placing and running industries. Export talents as
+                    JSON file at the bottom of this page.
+                </li>
+                <li>Or, upload a JSON file that was previously exported from this page.</li>
+            </ul>
+            <Upload
+                accept=".json"
+                showUploadList={false}
+                beforeUpload={(file) => {
+                    const reader = new FileReader()
+                    reader.onload = () => {
+                        const result = reader.result as string
+                        const data = JSON.parse(result) as { [key: string]: number }
+                        for (const [talent, level] of Object.entries(data)) {
+                            console.log(talent, level)
+                            props.setTalentLevels((prevState: { [key: string]: number }) => ({
+                                ...prevState,
+                                [talent]: level,
+                            }))
+                        }
+                    }
+                    reader.readAsText(file)
+                    // skip upload
+                    return false
+                }}
+            >
+                <Button>Upload Talent JSON</Button>
+            </Upload>
             <Row>
                 <Col span={6}>Talent</Col>
                 <Col span={3}>Level</Col>
@@ -70,6 +100,14 @@ export function FactoryTalents(props: FactoryTalentsProps) {
                 }}
             >
                 Next
+            </Button>
+            <Button
+                href={`data:text/json;charset=utf-8,${encodeURIComponent(
+                    JSON.stringify(props.talentLevels),
+                )}`}
+                download="talents.json"
+            >
+                Download Talents as JSON
             </Button>
         </React.Fragment>
     )

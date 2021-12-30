@@ -3,7 +3,6 @@ import { Button, Upload } from "antd"
 import { ItemSelect } from "./item-select"
 import { FactoryState } from "./factory"
 import { Item } from "../items"
-import { PerSecond } from "../graph"
 
 /**
  * Properties of the FactorySelect component
