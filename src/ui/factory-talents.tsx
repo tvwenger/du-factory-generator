@@ -14,20 +14,14 @@ interface FactoryTalentsProps {
      */
     setFactoryState: (state: FactoryState) => void
 
-    // factory talents
+    // factory talents and levels
     talents: { [key: string]: Talent }
+    talentLevels: { [key: string]: number }
 
     /**
      * Set the level for a given talent
-     * @param talent Talent to set the level
      */
-    setTalentLevel: (talent: Talent, level: number) => void
-
-    /**
-     * Get the level for a given talent
-     * @param talent Talent to get level
-     */
-    getTalentLevel: (talent: Talent) => number
+    setTalentLevels: React.Dispatch<React.SetStateAction<{ [key: string]: number }>>
 
     // the current FactoryGraph
     factory: FactoryGraph | undefined
@@ -52,12 +46,19 @@ export function FactoryTalents(props: FactoryTalentsProps) {
                 <Col span={3}>Level</Col>
             </Row>
             {Object.keys(props.talents).map(function (talent) {
+                // handle update of talent level state
+                const setTalentLevels = (value: number) => {
+                    props.setTalentLevels((prevState: { [key: string]: number }) => ({
+                        ...prevState,
+                        [talent]: value,
+                    }))
+                }
                 return (
                     <React.Fragment key={talent}>
                         <MemorizedFactoryTalentsRow
-                            setTalentLevel={props.setTalentLevel}
+                            setTalentLevels={setTalentLevels}
                             talent={props.talents[talent]}
-                            value={props.getTalentLevel(props.talents[talent])}
+                            value={props.talentLevels[talent] || 0}
                         />
                     </React.Fragment>
                 )
@@ -78,7 +79,7 @@ export function FactoryTalents(props: FactoryTalentsProps) {
  * Properties of the FactoryTalentRow
  */
 interface FactoryTalentRowProps {
-    setTalentLevel: (talent: Talent, value: number) => void
+    setTalentLevels: (value: number) => void
     talent: Talent
     value: number
 }
@@ -98,7 +99,7 @@ function FactoryTalentsRow(props: FactoryTalentRowProps) {
                     max={5}
                     value={props.value}
                     onChange={(value: string | number | undefined) =>
-                        props.setTalentLevel(props.talent, Number(value))
+                        props.setTalentLevels(Number(value))
                     }
                 />
             </Col>

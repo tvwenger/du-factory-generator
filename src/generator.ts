@@ -305,11 +305,12 @@ function handleGas(factory: FactoryGraph) {
 /**
  * Build a new factory graph or add to an existing graph
  * @param requirements The items and rates of new items to produce
+ * @param talentLevels Talent levels
  * @param factory The existing factory graph, if any
  */
 export function buildFactory(
     requirements: Map<Item, { rate: PerSecond; maintain: number }>,
-    talentLevels: Map<Talent, number>,
+    talentLevels: { [key: string]: number },
     factory?: FactoryGraph,
 ) {
     // Start a new graph if necessary

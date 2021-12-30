@@ -201,7 +201,7 @@ export class FactoryGraph {
      * Create a new FactoryGraph
      * @param talentLevels Talent levels
      */
-    constructor(readonly talentLevels: Map<Talent, number>) {}
+    constructor(readonly talentLevels: { [key: string]: number }) {}
 
     /**
      * Return a node that stores or produces a given item

@@ -28,16 +28,10 @@ interface FactorySelectProps {
     setSelection: (selection: Item[]) => void
 
     /**
-     * Set the production rate map map
-     * @param map the production rate map
+     * Set the production rate and maintain value
      */
-    setProductionRateMap: (map: Map<Item, PerSecond>) => void
-
-    /**
-     * Set the maintain value map
-     * @param map the maintain value map
-     */
-    setMaintainValueMap: (map: Map<Item, number>) => void
+    setProductionRate: React.Dispatch<React.SetStateAction<{ [key: string]: number }>>
+    setMaintainValue: React.Dispatch<React.SetStateAction<{ [key: string]: number }>>
 }
 
 /**
@@ -70,8 +64,6 @@ export function FactorySelect(props: FactorySelectProps) {
                         const result = reader.result as string
                         const lines = result.split("\n")
                         const myItems: Item[] = []
-                        const productionMap: Map<Item, PerSecond> = new Map()
-                        const maintainMap: Map<Item, number> = new Map()
                         for (const line of lines) {
                             const parts = line.split(",")
                             if (
@@ -89,12 +81,16 @@ export function FactorySelect(props: FactorySelectProps) {
                                 continue
                             }
                             myItems.push(item)
-                            productionMap.set(item, Number(parts[1].trim()) / (24 * 3600))
-                            maintainMap.set(item, Number(parts[2].trim()))
+                            props.setProductionRate((prevState: { [key: string]: number }) => ({
+                                ...prevState,
+                                [item.name]: Number(parts[1].trim()) / (24 * 3600),
+                            }))
+                            props.setMaintainValue((prevState: { [key: string]: number }) => ({
+                                ...prevState,
+                                [item.name]: Number(parts[2].trim()),
+                            }))
                         }
                         props.setSelection(myItems)
-                        props.setProductionRateMap(productionMap)
-                        props.setMaintainValueMap(maintainMap)
                         props.setFactoryState(FactoryState.COUNT)
                     }
                     reader.readAsText(file)

@@ -2,7 +2,7 @@ import * as React from "react"
 import { isCraftable, Item, ITEMS, Recipe, getRecipe } from "../items"
 import { Talent, TALENTS } from "../talents"
 import { values } from "ramda"
-import { useMap, AppState } from "./app"
+import { AppState } from "./app"
 import { Button, Upload, Row, Col } from "antd"
 import { FactoryTalents } from "./factory-talents"
 import { FactorySelect } from "./factory-select"
@@ -49,12 +49,11 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
     //  factory building instructions instructions
     const [factoryInstructions, setFactoryInstructions] = React.useState<FactoryInstruction[]>([])
     // Talents and talent levels
-    const [talentLevels, setTalentLevel, setTalentLevelMap] = useMap<Talent, number>()
-    const getTalentLevel = (talent: Talent) => talentLevels.get(talent) || 0
+    const [talentLevels, setTalentLevels] = React.useState<{ [key: string]: number }>({})
     // produced items, industry count, and maintain count
     const [selection, setSelection] = React.useState<Item[]>([])
-    const [productionRate, setProductionRate, setProductionRateMap] = useMap<Item, PerSecond>()
-    const [maintainValue, setMaintainValue, setMaintainValueMap] = useMap<Item, number>()
+    const [productionRate, setProductionRate] = React.useState<{ [key: string]: PerSecond }>({})
+    const [maintainValue, setMaintainValue] = React.useState<{ [key: string]: number }>({})
     // the recipes for all produced items
     const recipes = React.useMemo(
         () => new Map<Item, Recipe>(selection.map((item) => [item, getRecipe(item, talentLevels)])),
@@ -66,9 +65,9 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
     const [factory, setFactory] = React.useState<FactoryGraph>()
     // parse the production rate and maintain values, generate requirements
     const getProductionRate = (item: Item) =>
-        productionRate.get(item) || recipes.get(item)!.quantity / recipes.get(item)!.time
+        productionRate[item.name] || recipes.get(item)!.quantity / recipes.get(item)!.time
     const getMaintainValue = (item: Item) =>
-        maintainValue.get(item) || Math.ceil(getProductionRate(item) * 24 * 3600)
+        maintainValue[item.name] || Math.ceil(getProductionRate(item) * 24 * 3600)
     const getRequirements = () =>
         new Map<Item, { rate: PerSecond; maintain: number }>(
             selection.map((item) => [
@@ -85,8 +84,8 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                     <FactoryTalents
                         setFactoryState={setFactoryState}
                         talents={TALENTS}
-                        setTalentLevel={setTalentLevel}
-                        getTalentLevel={getTalentLevel}
+                        talentLevels={talentLevels}
+                        setTalentLevels={setTalentLevels}
                         factory={factory}
                         setFactory={setFactory}
                     />
@@ -102,8 +101,8 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                         items={items}
                         selection={selection}
                         setSelection={setSelection}
-                        setProductionRateMap={setProductionRateMap}
-                        setMaintainValueMap={setMaintainValueMap}
+                        setProductionRate={setProductionRate}
+                        setMaintainValue={setMaintainValue}
                     />
                 </React.Fragment>
             )

@@ -1,4 +1,4 @@
-import { Talent, TalentSubject, TalentType } from "./talents"
+import { TALENTS, TalentSubject, TalentType } from "./talents"
 
 export type Liter = number
 export type Seconds = number
@@ -234,13 +234,14 @@ const RECIPES = recipes
  * @param item Item
  * @param talentLevels Talents
  */
-export function getRecipe(item: Item, talentLevels: Map<Talent, number>) {
+export function getRecipe(item: Item, talentLevels: { [key: string]: number }) {
     const oldRecipe = RECIPES[item.name]
     let time_mod = 0
     let input_mod = 0
     let output_mod = 0
 
-    for (const [talent, level] of talentLevels.entries()) {
+    for (const [name, level] of Object.entries(talentLevels)) {
+        const talent = TALENTS[name]
         let applicable = false
         // Check industry talent
         if (talent.subject === TalentSubject.INDUSTRY && talent.target === oldRecipe.industry) {

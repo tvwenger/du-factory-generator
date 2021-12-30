@@ -51,16 +51,3 @@ export function App() {
 
     return content
 }
-
-/**
- * Hook for using a map as state.
- */
-export function useMap<Key, Value>() {
-    const [map, setMap] = React.useState(new Map<Key, Value>())
-    const setValue = (key: Key, value: Value) => {
-        const newCounter = new Map(map)
-        newCounter.set(key, value)
-        setMap(newCounter)
-    }
-    return [map, setValue, setMap] as const
-}
