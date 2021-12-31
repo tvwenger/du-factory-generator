@@ -170,6 +170,11 @@ export function FactoryVisualization({
     // Flag to show the legend
     const [showLegend, setShowLegend] = React.useState<boolean>(false)
 
+    // Scroll to top on render
+    React.useEffect(() => {
+        window.scrollTo(0, 0)
+    })
+
     let content = null
     switch (visualizationState) {
         default:

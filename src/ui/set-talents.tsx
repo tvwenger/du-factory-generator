@@ -49,6 +49,11 @@ interface SetTalentsProps {
  * @param props {@link SetTalentsProps}
  */
 export function SetTalents(props: SetTalentsProps) {
+    // Scroll to top on render
+    React.useEffect(() => {
+        window.scrollTo(0, 0)
+    })
+
     return (
         <React.Fragment>
             <h2>Set talent levels:</h2>

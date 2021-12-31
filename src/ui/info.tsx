@@ -19,6 +19,11 @@ export interface InfoProps {
  * @param props {@link InfoProps}
  */
 export function Info({ setAppState }: InfoProps) {
+    // Scroll to top on render
+    React.useEffect(() => {
+        window.scrollTo(0, 0)
+    })
+
     return (
         <React.Fragment>
             <Button onClick={() => setAppState(AppState.HOME)}>Back</Button>

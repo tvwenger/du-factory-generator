@@ -78,6 +78,11 @@ export function Factory(props: FactoryProps) {
             ]),
         )
 
+    // Scroll to top on render
+    React.useEffect(() => {
+        window.scrollTo(0, 0)
+    })
+
     switch (factoryState) {
         default:
             return (
