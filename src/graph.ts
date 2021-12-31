@@ -2,7 +2,6 @@ import { Container, isDumpContainer } from "./container"
 import { Industry } from "./industry"
 import { isGas, Item, Quantity, Recipe, getRecipe, isCraftable } from "./items"
 import { generateDumpRoutes, generateRelayRoutes } from "./router"
-import { Talent } from "./talents"
 import { TransferContainer } from "./transfer-container"
 import { isByproductTransferUnit, TransferUnit } from "./transfer-unit"
 
