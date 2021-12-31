@@ -1,10 +1,8 @@
 import * as React from "react"
 import { isCraftable, Item, ITEMS, Recipe, getRecipe } from "../items"
-import { Talent, TALENTS } from "../talents"
 import { values } from "ramda"
 import { AppState } from "./app"
 import { Button, Upload, Row, Col } from "antd"
-import { FactoryTalents } from "./factory-talents"
 import { FactorySelect } from "./factory-select"
 import { FactoryCount } from "./factory-count"
 import { FactoryGraph, PerSecond } from "../graph"
@@ -31,6 +29,9 @@ interface FactoryProps {
      */
     setAppState: (state: AppState) => void
 
+    // User's talent levels
+    talentLevels: { [key: string]: number }
+
     // Starting factory state
     startFactoryState: FactoryState
 }
@@ -39,24 +40,25 @@ interface FactoryProps {
  * Factory component
  * @param props {@link FactoryProps}
  */
-export function Factory({ setAppState, startFactoryState }: FactoryProps) {
+export function Factory(props: FactoryProps) {
     // all possible craftable items
     const items = React.useMemo(() => values(ITEMS).filter(isCraftable), [ITEMS])
     // current and previous factory state
-    const [factoryState, setFactoryState] = React.useState<FactoryState>(startFactoryState)
+    const [factoryState, setFactoryState] = React.useState<FactoryState>(props.startFactoryState)
     // error message
     const [errorMessage, setErrorMessage] = React.useState<string>()
     //  factory building instructions instructions
     const [factoryInstructions, setFactoryInstructions] = React.useState<FactoryInstruction[]>([])
-    // Talents and talent levels
-    const [talentLevels, setTalentLevels] = React.useState<{ [key: string]: number }>({})
     // produced items, industry count, and maintain count
     const [selection, setSelection] = React.useState<Item[]>([])
     const [productionRate, setProductionRate] = React.useState<{ [key: string]: PerSecond }>({})
     const [maintainValue, setMaintainValue] = React.useState<{ [key: string]: number }>({})
     // the recipes for all produced items
     const recipes = React.useMemo(
-        () => new Map<Item, Recipe>(selection.map((item) => [item, getRecipe(item, talentLevels)])),
+        () =>
+            new Map<Item, Recipe>(
+                selection.map((item) => [item, getRecipe(item, props.talentLevels)]),
+            ),
         [selection],
     )
     // the FactoryGraph and a flag to show differences
@@ -80,21 +82,7 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
         default:
             return (
                 <React.Fragment>
-                    <Button onClick={() => setAppState(AppState.HOME)}>Back</Button>
-                    <FactoryTalents
-                        setFactoryState={setFactoryState}
-                        talents={TALENTS}
-                        talentLevels={talentLevels}
-                        setTalentLevels={setTalentLevels}
-                        factory={factory}
-                        setFactory={setFactory}
-                    />
-                </React.Fragment>
-            )
-        case FactoryState.SELECT:
-            return (
-                <React.Fragment>
-                    <Button onClick={() => setFactoryState(FactoryState.TALENTS)}>Back</Button>
+                    <Button onClick={() => props.setAppState(AppState.HOME)}>Back</Button>
                     <ExistingFactorySummary factory={startingFactory} />
                     <FactorySelect
                         setFactoryState={setFactoryState}
@@ -109,7 +97,7 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
         case FactoryState.UPLOAD:
             return (
                 <React.Fragment>
-                    <Button onClick={() => setAppState(AppState.HOME)}>Back</Button>
+                    <Button onClick={() => props.setAppState(AppState.HOME)}>Back</Button>
                     <br />
                     <Upload
                         accept=".json"
@@ -155,7 +143,7 @@ export function Factory({ setAppState, startFactoryState }: FactoryProps) {
                         setMaintainValue={setMaintainValue}
                         getMaintainValue={getMaintainValue}
                         getRequirements={getRequirements}
-                        talentLevels={talentLevels}
+                        talentLevels={props.talentLevels}
                         factory={factory}
                         setFactory={setFactory}
                         setFactoryInstructions={setFactoryInstructions}

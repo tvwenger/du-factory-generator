@@ -1,21 +1,36 @@
 import * as React from "react"
 import { Button, Row, Col, InputNumber, Upload } from "antd"
-import { Talent } from "../talents"
-import { FactoryGraph } from "../graph"
-import { FactoryState } from "./factory"
+import { Talent, TALENTS } from "../talents"
+import { AppState, TalentState } from "./app"
 
 /**
- * Properties of the FactoryTalents component
+ * Parse JSON and set talent levels
  */
-interface FactoryTalentsProps {
+export function parseTalentLevelJSON(
+    json: string,
+    setTalentLevels: React.Dispatch<React.SetStateAction<{ [key: string]: number }>>,
+) {
+    const data = JSON.parse(json) as { [key: string]: number }
+    for (const [talent, level] of Object.entries(data)) {
+        console.log(talent, level)
+        setTalentLevels((prevState: { [key: string]: number }) => ({
+            ...prevState,
+            [talent]: level,
+        }))
+    }
+}
+
+/**
+ * Properties of the SetTalents component
+ */
+interface SetTalentsProps {
     /**
      * Set the parent NewFactory state
      * @param state parent component state
      */
-    setFactoryState: (state: FactoryState) => void
+    setAppState: (state: AppState) => void
 
     // factory talents and levels
-    talents: { [key: string]: Talent }
     talentLevels: { [key: string]: number }
 
     /**
@@ -23,30 +38,25 @@ interface FactoryTalentsProps {
      */
     setTalentLevels: React.Dispatch<React.SetStateAction<{ [key: string]: number }>>
 
-    // the current FactoryGraph
-    factory: FactoryGraph | undefined
-
     /**
-     * Set the factory graph
-     * @param factory the FactoryGraph
+     * Set the TalentState
      */
-    setFactory: (factory: FactoryGraph) => void
+    setTalentState: (state: TalentState) => void
 }
 
 /**
  * Set talent levels
- * @param props {@link FactoryTalentsProps}
+ * @param props {@link SetTalentsProps}
  */
-export function FactoryTalents(props: FactoryTalentsProps) {
+export function SetTalents(props: SetTalentsProps) {
     return (
         <React.Fragment>
             <h2>Set talent levels:</h2>
             <ul>
-                <li>
-                    Set talents of user who is placing and running industries. Export talents as
-                    JSON file at the bottom of this page.
-                </li>
-                <li>Or, upload a JSON file that was previously exported from this page.</li>
+                <li>Set talents of user who is placing and running industries.</li>
+                <li>Talents are stored as a cookie in your browser.</li>
+                <li>At the bottom of this page, you can download your talents as a JSON file.</li>
+                <li>You may upload a JSON file that was previously exported from this page.</li>
             </ul>
             <Upload
                 accept=".json"
@@ -55,14 +65,7 @@ export function FactoryTalents(props: FactoryTalentsProps) {
                     const reader = new FileReader()
                     reader.onload = () => {
                         const result = reader.result as string
-                        const data = JSON.parse(result) as { [key: string]: number }
-                        for (const [talent, level] of Object.entries(data)) {
-                            console.log(talent, level)
-                            props.setTalentLevels((prevState: { [key: string]: number }) => ({
-                                ...prevState,
-                                [talent]: level,
-                            }))
-                        }
+                        parseTalentLevelJSON(result, props.setTalentLevels)
                     }
                     reader.readAsText(file)
                     // skip upload
@@ -75,7 +78,7 @@ export function FactoryTalents(props: FactoryTalentsProps) {
                 <Col span={6}>Talent</Col>
                 <Col span={3}>Level</Col>
             </Row>
-            {Object.keys(props.talents).map(function (talent) {
+            {Object.keys(TALENTS).map(function (talent) {
                 // handle update of talent level state
                 const setTalentLevels = (value: number) => {
                     props.setTalentLevels((prevState: { [key: string]: number }) => ({
@@ -85,9 +88,9 @@ export function FactoryTalents(props: FactoryTalentsProps) {
                 }
                 return (
                     <React.Fragment key={talent}>
-                        <MemorizedFactoryTalentsRow
+                        <MemorizedSetTalentsRow
                             setTalentLevels={setTalentLevels}
-                            talent={props.talents[talent]}
+                            talent={TALENTS[talent]}
                             value={props.talentLevels[talent] || 0}
                         />
                     </React.Fragment>
@@ -96,10 +99,20 @@ export function FactoryTalents(props: FactoryTalentsProps) {
             <Button
                 type="primary"
                 onClick={() => {
-                    props.setFactoryState(FactoryState.SELECT)
+                    // save as cookie that expires in 365 days
+                    const date = new Date()
+                    date.setTime(date.getTime() + 365 * 24 * 3600000)
+                    document.cookie =
+                        "talentLevels=" +
+                        JSON.stringify(props.talentLevels) +
+                        "; expires=" +
+                        date.toUTCString() +
+                        "; path=/; SameSite=Lax"
+                    props.setTalentState(TalentState.SET)
+                    props.setAppState(AppState.HOME)
                 }}
             >
-                Next
+                Confirm
             </Button>
             <Button
                 href={`data:text/json;charset=utf-8,${encodeURIComponent(
@@ -114,9 +127,9 @@ export function FactoryTalents(props: FactoryTalentsProps) {
 }
 
 /**
- * Properties of the FactoryTalentRow
+ * Properties of the SetTalentRow
  */
-interface FactoryTalentRowProps {
+interface SetTalentRowProps {
     setTalentLevels: (value: number) => void
     talent: Talent
     value: number
@@ -125,7 +138,7 @@ interface FactoryTalentRowProps {
 /**
  * Single row of the talent table
  */
-function FactoryTalentsRow(props: FactoryTalentRowProps) {
+function SetTalentsRow(props: SetTalentRowProps) {
     return (
         <Row>
             <Col span={6}>
@@ -144,7 +157,7 @@ function FactoryTalentsRow(props: FactoryTalentRowProps) {
         </Row>
     )
 }
-function sameRow(oldProps: FactoryTalentRowProps, newProps: FactoryTalentRowProps) {
+function sameRow(oldProps: SetTalentRowProps, newProps: SetTalentRowProps) {
     return oldProps.value === newProps.value
 }
-const MemorizedFactoryTalentsRow = React.memo(FactoryTalentsRow, sameRow)
+const MemorizedSetTalentsRow = React.memo(SetTalentsRow, sameRow)

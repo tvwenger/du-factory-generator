@@ -1,14 +1,6 @@
 import { MAX_CONTAINER_LINKS, PerSecond } from "./graph"
 import { Industry, isIndustry } from "./industry"
-import {
-    CONTAINERS_ASCENDING_BY_CAPACITY,
-    isCatalyst,
-    isCraftable,
-    Item,
-    Quantity,
-    Recipe,
-    getRecipe,
-} from "./items"
+import { CONTAINERS_ASCENDING_BY_CAPACITY, isCatalyst, Item, Quantity, Recipe } from "./items"
 import { TransferContainer } from "./transfer-container"
 import {
     isByproductTransferUnit,

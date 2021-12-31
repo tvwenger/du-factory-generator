@@ -8,7 +8,6 @@ import {
 } from "./graph"
 import { CATALYSTS, isOre, Item, getRecipe } from "./items"
 import { generateDumpRoutes } from "./router"
-import { Talent } from "./talents"
 import { isTransferContainer, TransferContainer } from "./transfer-container"
 import { isTransferUnit } from "./transfer-unit"
 import { sanityCheck, mergeFactory, unmergeFactory } from "./utils"
