@@ -5,7 +5,6 @@ import { FactoryState } from "./factory"
 import { buildFactory } from "../generator"
 import { FactoryGraph, PerSecond } from "../graph"
 import { FactoryInstruction, generateInstructions } from "./generate-instructions"
-import { Talent } from "../talents"
 
 /**
  * Properties of the FactoryCount component
