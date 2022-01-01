@@ -316,3 +316,56 @@ export const CONTAINERS_ASCENDING_BY_CAPACITY: ContainerCapacity[] = [
  * Get catalysts
  */
 export const CATALYSTS = Object.values(ITEMS).filter(isCatalyst)
+
+/**
+ * Return the required raw ore quantities needed to craft an item
+ */
+export function getRequiredOres(
+    item: Item,
+    requiredOres: { [key: string]: { [key: string]: number } },
+    talentLevels: { [key: string]: number },
+) {
+    const ores: { [key: string]: number } = {}
+
+    // Skip gas and catalyst
+    if (isGas(item) || isCatalyst(item)) {
+        return ores
+    }
+
+    // Loop over ingredients
+    const recipe = getRecipe(item, talentLevels)
+    const batchSize = recipe.quantity
+    for (const [ingredient, ingredientQuantity] of recipe.ingredients) {
+        // catch empty ingredients
+        if (ingredient === undefined) {
+            continue
+        }
+
+        if (isOre(ingredient)) {
+            // If this ingredient is ore, add the quantity
+            if (ores[ingredient.name] === undefined) {
+                ores[ingredient.name] = 0
+            }
+            ores[ingredient.name] += ingredientQuantity / batchSize
+        } else if (requiredOres[ingredient.name] !== undefined) {
+            // Use already calculated values
+            for (const [ore, oreQuantity] of Object.entries(requiredOres[ingredient.name])) {
+                if (ores[ore] === undefined) {
+                    ores[ore] = 0
+                }
+                ores[ore] += (oreQuantity * ingredientQuantity) / batchSize
+            }
+        } else {
+            // Recursively call this function
+            const ingredientOres = getRequiredOres(ingredient, requiredOres, talentLevels)
+            requiredOres[ingredient.name] = ingredientOres
+            for (const [ore, oreQuantity] of Object.entries(ingredientOres)) {
+                if (ores[ore] === undefined) {
+                    ores[ore] = 0
+                }
+                ores[ore] += (oreQuantity * ingredientQuantity) / batchSize
+            }
+        }
+    }
+    return ores
+}

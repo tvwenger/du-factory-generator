@@ -12,7 +12,6 @@ export function parseTalentLevelJSON(
 ) {
     const data = JSON.parse(json) as { [key: string]: number }
     for (const [talent, level] of Object.entries(data)) {
-        console.log(talent, level)
         setTalentLevels((prevState: { [key: string]: number }) => ({
             ...prevState,
             [talent]: level,
@@ -49,6 +48,11 @@ interface SetTalentsProps {
  * @param props {@link SetTalentsProps}
  */
 export function SetTalents(props: SetTalentsProps) {
+    // Scroll to top on render
+    React.useEffect(() => {
+        window.scrollTo(0, 0)
+    })
+
     return (
         <React.Fragment>
             <h2>Set talent levels:</h2>
