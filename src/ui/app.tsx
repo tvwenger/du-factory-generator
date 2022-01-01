@@ -127,6 +127,7 @@ export function App() {
                 <Factory
                     setAppState={setAppState}
                     talentLevels={talentLevels}
+                    orePrices={orePrices}
                     startFactoryState={FactoryState.TALENTS}
                 />
             )
@@ -136,6 +137,7 @@ export function App() {
                 <Factory
                     setAppState={setAppState}
                     talentLevels={talentLevels}
+                    orePrices={orePrices}
                     startFactoryState={FactoryState.UPLOAD}
                 />
             )

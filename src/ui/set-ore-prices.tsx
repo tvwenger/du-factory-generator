@@ -12,7 +12,6 @@ export function parseOrePricesJSON(
 ) {
     const data = JSON.parse(json) as { [key: string]: number }
     for (const [item, price] of Object.entries(data)) {
-        console.log(item, price)
         setOrePrices((prevState: { [key: string]: number }) => ({
             ...prevState,
             [item]: price,

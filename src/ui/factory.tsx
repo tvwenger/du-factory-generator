@@ -32,6 +32,9 @@ interface FactoryProps {
     // User's talent levels
     talentLevels: { [key: string]: number }
 
+    // Prices of ores
+    orePrices: { [key: string]: number }
+
     // Starting factory state
     startFactoryState: FactoryState
 }
@@ -164,6 +167,8 @@ export function Factory(props: FactoryProps) {
                     startingFactory={startingFactory}
                     setFactoryState={setFactoryState}
                     instructions={factoryInstructions!}
+                    selection={selection}
+                    orePrices={props.orePrices}
                 />
             )
         case FactoryState.ERROR:

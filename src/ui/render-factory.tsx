@@ -1,6 +1,6 @@
 import * as React from "react"
-import { Button, Row, Col } from "antd"
-import { Category, Tier, Item, CONTAINERS_ASCENDING_BY_CAPACITY } from "../items"
+import { Button, Row, Col, Table } from "antd"
+import { Category, Tier, Item, CONTAINERS_ASCENDING_BY_CAPACITY, getRequiredOres } from "../items"
 import { FactoryGraph } from "../graph"
 import { FactoryState } from "./factory"
 import { serialize } from "../serialize"
@@ -152,6 +152,12 @@ export interface FactoryVisualizationProps extends FactoryVisualizationComponent
      * @param state the FactoryState
      */
     setFactoryState: (state: FactoryState) => void
+
+    // Items selected to build
+    selection: Item[]
+
+    // ore prices
+    orePrices: { [key: string]: number }
 }
 
 /**
@@ -164,6 +170,8 @@ export function FactoryVisualization({
     startingFactory,
     setFactoryState,
     instructions,
+    selection,
+    orePrices,
 }: FactoryVisualizationProps) {
     // The state of the visualization
     const [visualizationState, setVisualizationState] = React.useState<VisualizationState>()
@@ -179,34 +187,32 @@ export function FactoryVisualization({
     switch (visualizationState) {
         default:
             // get count of industry, schematic, and container types
-            const industryCount = new Map<string, number>()
+            const industryCount: { [key: string]: number } = {}
             let totalIndustries = 0
-            const containerCount = new Map<string, number>()
+            const containerCount: { [key: string]: number } = {}
             let totalContainers = 0
-            const schematicCount = new Map<Item, number>()
+            const schematicCount: { [key: string]: number } = {}
+
+            // Get ore values
+            const oreValues: { [key: string]: number } = {}
 
             if (factory !== undefined) {
                 Array.from(factory.industries).map((node) => {
                     const industry = TIER[node.item.tier] + node.recipe.industry
                     totalIndustries += 1
-                    if (industryCount.has(industry)) {
-                        industryCount.set(industry, industryCount.get(industry)! + 1)
-                    } else {
-                        industryCount.set(industry, 1)
+                    if (industryCount[industry] === undefined) {
+                        industryCount[industry] = 0
                     }
-                    if (schematicCount.has(node.item)) {
-                        schematicCount.set(node.item, schematicCount.get(node.item)! + 1)
-                    } else {
-                        schematicCount.set(node.item, 1)
+                    industryCount[industry] += 1
+                    if (schematicCount[node.item.name] === undefined) {
+                        schematicCount[node.item.name] = 0
                     }
+                    schematicCount[node.item.name] += 1
                 })
-                industryCount.set(
-                    "Transfer Unit",
-                    Array.from(factory.transferUnits)
-                        .filter((transferUnit) => !transferUnit.merged)
-                        .map((transferUnit) => transferUnit.number)
-                        .reduce((total, current) => total + current, 0),
-                )
+                industryCount["Transfer Unit"] = Array.from(factory.transferUnits)
+                    .filter((transferUnit) => !transferUnit.merged)
+                    .map((transferUnit) => transferUnit.number)
+                    .reduce((total, current) => total + current, 0)
                 totalIndustries += Array.from(factory.transferUnits).filter(
                     (transferUnit) => !transferUnit.merged,
                 ).length
@@ -216,30 +222,139 @@ export function FactoryVisualization({
                     .map((container) => {
                         for (const containerSize of container.containers) {
                             totalContainers += 1
-                            if (containerCount.has(containerSize)) {
-                                containerCount.set(
-                                    containerSize,
-                                    containerCount.get(containerSize)! + 1,
-                                )
-                            } else {
-                                containerCount.set(containerSize, 1)
+                            if (containerCount[containerSize] === undefined) {
+                                containerCount[containerSize] = 0
                             }
+                            containerCount[containerSize] += 1
                         }
                     })
                 Array.from(factory.transferContainers).map((container) => {
                     for (const containerSize of container.containers) {
                         totalContainers += 1
-                        if (containerCount.has(containerSize)) {
-                            containerCount.set(
-                                containerSize,
-                                containerCount.get(containerSize)! + 1,
-                            )
-                        } else {
-                            containerCount.set(containerSize, 1)
+                        if (containerCount[containerSize] === undefined) {
+                            containerCount[containerSize] = 0
                         }
+                        containerCount[containerSize] += 1
                     }
                 })
+
+                // get ore requirements per item
+                const requiredOres: { [key: string]: { [key: string]: number } } = {}
+                selection.map((item) => {
+                    const ores = getRequiredOres(item, requiredOres, factory.talentLevels)
+                    requiredOres[item.name] = ores
+                })
+
+                // get ore values per item
+                selection.map((item) => {
+                    oreValues[item.name] = 0
+                    Object.keys(requiredOres[item.name]).map((ore, index) => {
+                        oreValues[item.name] += orePrices[ore] * requiredOres[item.name][ore]
+                    })
+                })
             }
+
+            // Save industry table columns and data
+            const industryColumns = [
+                {
+                    title: "Industry",
+                    dataIndex: "industry",
+                    key: "industry",
+                },
+                {
+                    title: "Count",
+                    dataIndex: "count",
+                    key: "count",
+                },
+            ]
+            const industryData: {}[] = []
+            Object.keys(industryCount)
+                .sort()
+                .map((key) =>
+                    industryData.push({
+                        key: industryData.length,
+                        industry: key,
+                        count: industryCount[key],
+                    }),
+                )
+
+            // Save container table columns and data
+            const containerColumns = [
+                {
+                    title: "Container",
+                    dataIndex: "container",
+                    key: "container",
+                },
+                {
+                    title: "Count",
+                    dataIndex: "count",
+                    key: "count",
+                },
+            ]
+            const containerData: {}[] = []
+            Object.keys(containerCount)
+                .sort()
+                .map((key) =>
+                    containerData.push({
+                        key: containerData.length,
+                        container: key,
+                        count: containerCount[key],
+                    }),
+                )
+
+            // Save schematic table columns and data
+            const schematicColumns = [
+                {
+                    title: "Schematic",
+                    dataIndex: "schematic",
+                    key: "schematic",
+                },
+                {
+                    title: "Count",
+                    dataIndex: "count",
+                    key: "count",
+                },
+            ]
+            const schematicData: {}[] = []
+            Object.keys(schematicCount)
+                .sort()
+                .map((key) =>
+                    schematicData.push({
+                        key: schematicData.length,
+                        schematic: key,
+                        count: schematicCount[key],
+                    }),
+                )
+
+            // Save ore value table columns and data
+            const oreValueColumns = [
+                {
+                    title: "Item",
+                    dataIndex: "item",
+                    key: "item",
+                },
+                {
+                    title: "Ore Value",
+                    dataIndex: "value",
+                    key: "value",
+                    render: (value: number) => {
+                        if (isNaN(value)) {
+                            return "Ore prices not set"
+                        }
+                        return value
+                    },
+                },
+            ]
+            const oreValueData: {}[] = []
+            Object.keys(oreValues)
+                .sort()
+                .map((key) =>
+                    oreValueData.push({
+                        key: oreValueData.length,
+                        item: key,
+                        value: Math.round(oreValues[key]),
+                    }),
+                )
 
             content = (
                 <React.Fragment>
@@ -249,46 +364,40 @@ export function FactoryVisualization({
                     <Button onClick={() => setVisualizationState(VisualizationState.MAP)}>
                         Factory Map
                     </Button>
-                    <br />
-                    <h2>Factory Industries ({totalIndustries}):</h2>
-                    <Row>
-                        <Col span={4}>Industry Type</Col>
-                        <Col span={4}>Count</Col>
+                    <Row gutter={16}>
+                        <Col span={6}>
+                            <h2>Industries ({totalIndustries})</h2>
+                            <Table
+                                columns={industryColumns}
+                                dataSource={industryData}
+                                pagination={false}
+                            />
+                        </Col>
+                        <Col span={6}>
+                            <h2>Containers ({totalContainers})</h2>
+                            <Table
+                                columns={containerColumns}
+                                dataSource={containerData}
+                                pagination={false}
+                            />
+                        </Col>
+                        <Col span={6}>
+                            <h2>Schematics</h2>
+                            <Table
+                                columns={schematicColumns}
+                                dataSource={schematicData}
+                                pagination={false}
+                            />
+                        </Col>
+                        <Col span={6}>
+                            <h2>Ore Values</h2>
+                            <Table
+                                columns={oreValueColumns}
+                                dataSource={oreValueData}
+                                pagination={false}
+                            />
+                        </Col>
                     </Row>
-                    {Array.from(industryCount)
-                        .sort()
-                        .map(([key, value]) => (
-                            <Row key={key}>
-                                <Col span={4}>{key}</Col>
-                                <Col span={4}>{value}</Col>
-                            </Row>
-                        ))}
-                    <h2>Factory Containers ({totalContainers}):</h2>
-                    <Row>
-                        <Col span={4}>Container Type</Col>
-                        <Col span={4}>Count</Col>
-                    </Row>
-                    {Array.from(containerCount)
-                        .sort()
-                        .map(([key, value]) => (
-                            <Row key={key}>
-                                <Col span={4}>{key}</Col>
-                                <Col span={4}>{value}</Col>
-                            </Row>
-                        ))}
-                    <h2>Factory Schematics:</h2>
-                    <Row>
-                        <Col span={4}>Item</Col>
-                        <Col span={4}>Count</Col>
-                    </Row>
-                    {Array.from(schematicCount)
-                        .sort((a, b) => sortName(a[0], b[0]))
-                        .map(([key, value]) => (
-                            <Row key={key.name}>
-                                <Col span={4}>{key.name}</Col>
-                                <Col span={4}>{value}</Col>
-                            </Row>
-                        ))}
                 </React.Fragment>
             )
             break

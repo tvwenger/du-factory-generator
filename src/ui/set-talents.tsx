@@ -12,7 +12,6 @@ export function parseTalentLevelJSON(
 ) {
     const data = JSON.parse(json) as { [key: string]: number }
     for (const [talent, level] of Object.entries(data)) {
-        console.log(talent, level)
         setTalentLevels((prevState: { [key: string]: number }) => ({
             ...prevState,
             [talent]: level,
