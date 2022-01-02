@@ -252,14 +252,14 @@ export function getRecipe(item: Item, talentLevels: { [key: string]: number }) {
             applicable = true
         }
         // Check category
-        else if (talent.subject === TalentSubject.TYPE && talent.category === item.category) {
+        else if (talent.subject === TalentSubject.TYPE && talent.targetCategory === item.category) {
             applicable = true
         }
         // Check category & tier talent
         else if (
             talent.subject === TalentSubject.TIER &&
-            talent.tier === item.tier &&
-            talent.category === item.category
+            talent.targetTier === item.tier &&
+            talent.targetCategory === item.category
         ) {
             applicable = true
         }

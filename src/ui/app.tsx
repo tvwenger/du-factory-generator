@@ -34,11 +34,6 @@ export function App() {
     const [orePricesState, setOrePricesState] = React.useState<OrePricesState>(OrePricesState.UNSET)
     const [orePrices, setOrePrices] = React.useState<{ [key: string]: number }>({})
 
-    // Scroll to top on render
-    React.useEffect(() => {
-        window.scrollTo(0, 0)
-    })
-
     // Parse talentLevel cookie JSON if present
     if (talentState === TalentState.UNSET) {
         const parts = document.cookie.split("talentLevels=")

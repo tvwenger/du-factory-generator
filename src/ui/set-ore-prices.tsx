@@ -48,11 +48,6 @@ interface SetOrePricesProps {
  * @param props {@link SetOrePricesProps}
  */
 export function SetOrePrices(props: SetOrePricesProps) {
-    // Scroll to top on render
-    React.useEffect(() => {
-        window.scrollTo(0, 0)
-    })
-
     return (
         <React.Fragment>
             <h2>Set ore prices:</h2>
