@@ -28,7 +28,7 @@ export function Info({ setAppState }: InfoProps) {
             <a href="https://www.dualuniverse.game/">Dual Universe</a>. Given a set of items to
             build, this tool will determine a factory plan from raw ores to the final products. If
             you encouter any problems or would like to request new features, please submit an{" "}
-            <a href="https://github.com/lgfrbcsgo/du-factory-generator/issues">issue on Github</a>,
+            <a href="https://github.com/tvwenger/du-factory-generator/issues">issue on Github</a>,
             or <a href="https://discord.gg/gXSWKqVnHx">join our Discord server</a> and look for
             Nikolaus.
             <h2>Instructions: Starting a new factory</h2>
@@ -69,7 +69,7 @@ export function Info({ setAppState }: InfoProps) {
                 <br />
                 Container L, 2, 10
             </pre>
-            <a href="https://raw.githubusercontent.com/lgfrbcsgo/du-factory-generator/master/item_list.csv">
+            <a href="https://raw.githubusercontent.com/tvwenger/du-factory-generator/master/item_list.csv">
                 Here is a link
             </a>
             &nbsp;to a blank CSV file with all available item names.
