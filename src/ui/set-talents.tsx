@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Button, Row, Col, Upload, Space } from "antd"
+import { Button, Row, Col, Upload, Space, Divider } from "antd"
 import { PlusOutlined, MinusOutlined } from "@ant-design/icons"
 import { Talent, TALENTS, TalentGroup } from "../talents"
 import { AppState, TalentState } from "./app"
@@ -151,31 +151,40 @@ interface SetTalentsProps {
  * @param props {@link SetTalentsProps}
  */
 export function SetTalents(props: SetTalentsProps) {
+    const [uploaded, setUploaded] = React.useState<boolean>(false)
+
     return (
         <React.Fragment>
-            <h2>Set talent levels:</h2>
+            <h2>Set Talents</h2>
+            <Divider orientation="left">Instructions</Divider>
             <ul>
                 <li>Set talents of user who is placing and running industries.</li>
                 <li>Talents are stored as a cookie in your browser.</li>
                 <li>At the bottom of this page, you can download your talents as a JSON file.</li>
                 <li>You may upload a JSON file that was previously exported from this page.</li>
             </ul>
-            <Upload
-                accept=".json"
-                showUploadList={false}
-                beforeUpload={(file) => {
-                    const reader = new FileReader()
-                    reader.onload = () => {
-                        const result = reader.result as string
-                        parseTalentLevelJSON(result, props.setTalentLevels)
-                    }
-                    reader.readAsText(file)
-                    // skip upload
-                    return false
-                }}
-            >
-                <Button>Upload Talent JSON</Button>
-            </Upload>
+            <Divider orientation="left">Upload</Divider>
+            <Space>
+                <Upload
+                    accept=".json"
+                    showUploadList={false}
+                    beforeUpload={(file) => {
+                        const reader = new FileReader()
+                        reader.onload = () => {
+                            const result = reader.result as string
+                            parseTalentLevelJSON(result, props.setTalentLevels)
+                            setUploaded(true)
+                        }
+                        reader.readAsText(file)
+                        // skip upload
+                        return false
+                    }}
+                >
+                    <Button>Upload Talent JSON</Button>
+                </Upload>
+                {uploaded && "Upload successful!"}
+            </Space>
+            <Divider orientation="left">Update Talents</Divider>
             {Object.keys(TALENT_GROUPS).map(function (talentGroup) {
                 return (
                     <TalentGroupComp

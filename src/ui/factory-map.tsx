@@ -1,6 +1,6 @@
 import * as React from "react"
 import { renderToStaticMarkup } from "react-dom/server"
-import { Button } from "antd"
+import { Button, Space } from "antd"
 import { UncontrolledReactSVGPanZoom } from "react-svg-pan-zoom"
 import { FONTSIZE, FactoryVisualizationComponentProps } from "./render-factory"
 import { FactoryInstruction } from "./generate-instructions"
@@ -70,24 +70,27 @@ export function FactoryMap({ instructions }: FactoryVisualizationComponentProps)
 
     return (
         <React.Fragment>
-            <Button onClick={preparePNGDownload}>Download Image as PNG</Button>
-            <Button
-                href={`data:image/svg+xml,${encodeURIComponent(
-                    renderToStaticMarkup(
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            height={height}
-                            width={width}
-                            style={{ backgroundColor: "white" }}
-                        >
-                            {innerSVG}
-                        </svg>,
-                    ),
-                )}`}
-                download="factory-map.svg"
-            >
-                Download Image as SVG
-            </Button>
+            <br />
+            <Space>
+                <Button onClick={preparePNGDownload}>Download Image as PNG</Button>
+                <Button
+                    href={`data:image/svg+xml,${encodeURIComponent(
+                        renderToStaticMarkup(
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                height={height}
+                                width={width}
+                                style={{ backgroundColor: "white" }}
+                            >
+                                {innerSVG}
+                            </svg>,
+                        ),
+                    )}`}
+                    download="factory-map.svg"
+                >
+                    Download Image as SVG
+                </Button>
+            </Space>
             <div style={{ border: "1px solid black", width: 0.9 * window.innerWidth + 2 }}>
                 <UncontrolledReactSVGPanZoom
                     width={0.9 * window.innerWidth}

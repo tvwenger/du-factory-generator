@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Button, Row, Col, InputNumber } from "antd"
+import { Button, Row, Col, InputNumber, Divider } from "antd"
 import { Item, Recipe } from "../items"
 import { FactoryState } from "./factory"
 import { buildFactory } from "../generator"
@@ -80,7 +80,8 @@ interface FactoryCountProps {
 export function FactoryCount(props: FactoryCountProps) {
     return (
         <React.Fragment>
-            <h2>Select production quantity:</h2>
+            <h2>Select Production Quantity and Maintain Values</h2>
+            <Divider orientation="left">Instructions</Divider>
             <ul>
                 <li>
                     Produce Per Day: How many items to produce per day. Default value is the
@@ -92,7 +93,8 @@ export function FactoryCount(props: FactoryCountProps) {
                     fulfill the requested production rate
                 </li>
             </ul>
-            <Row>
+            <Divider orientation="left">Set Production Quantity and Maintain Values</Divider>
+            <Row className="tableHeader">
                 <Col span={3}>Item</Col>
                 <Col span={3}>Produce Per Day</Col>
                 <Col span={2}>Maintain</Col>
@@ -172,7 +174,7 @@ interface FactoryCountRowProps {
  */
 function FactoryCountRow(props: FactoryCountRowProps) {
     return (
-        <Row>
+        <Row style={{ marginBottom: 2 }}>
             <Col span={3}>
                 <label>{props.item.name}</label>
             </Col>

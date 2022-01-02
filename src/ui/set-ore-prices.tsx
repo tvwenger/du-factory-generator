@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Button, Row, Col, InputNumber, Upload } from "antd"
+import { Button, Row, Col, InputNumber, Upload, Divider, Space } from "antd"
 import { ITEMS, isOre } from "../items"
 import { AppState, OrePricesState } from "./app"
 
@@ -48,34 +48,39 @@ interface SetOrePricesProps {
  * @param props {@link SetOrePricesProps}
  */
 export function SetOrePrices(props: SetOrePricesProps) {
+    const [uploaded, setUploaded] = React.useState<boolean>(false)
+
     return (
         <React.Fragment>
-            <h2>Set ore prices:</h2>
+            <h2>Set Ore Prices</h2>
+            <Divider orientation="left">Instructions</Divider>
             <ul>
                 <li>Ore prices are stored as a cookie in your browser.</li>
                 <li>At the bottom of this page, you can download the ore prices as a JSON file.</li>
                 <li>You may upload a JSON file that was previously exported from this page.</li>
             </ul>
-            <Upload
-                accept=".json"
-                showUploadList={false}
-                beforeUpload={(file) => {
-                    const reader = new FileReader()
-                    reader.onload = () => {
-                        const result = reader.result as string
-                        parseOrePricesJSON(result, props.setOrePrices)
-                    }
-                    reader.readAsText(file)
-                    // skip upload
-                    return false
-                }}
-            >
-                <Button>Upload OrePrices JSON</Button>
-            </Upload>
-            <Row>
-                <Col span={6}>Ore</Col>
-                <Col span={3}>Price</Col>
-            </Row>
+            <Divider orientation="left">Upload</Divider>
+            <Space>
+                <Upload
+                    accept=".json"
+                    showUploadList={false}
+                    beforeUpload={(file) => {
+                        const reader = new FileReader()
+                        reader.onload = () => {
+                            const result = reader.result as string
+                            parseOrePricesJSON(result, props.setOrePrices)
+                            setUploaded(true)
+                        }
+                        reader.readAsText(file)
+                        // skip upload
+                        return false
+                    }}
+                >
+                    <Button>Upload Ore Prices JSON</Button>
+                </Upload>
+                {uploaded && "Upload successful!"}
+            </Space>
+            <Divider orientation="left">Update Ore Prices</Divider>
             {Object.values(ITEMS)
                 .filter(isOre)
                 .map(function (item) {
@@ -96,32 +101,35 @@ export function SetOrePrices(props: SetOrePricesProps) {
                         </React.Fragment>
                     )
                 })}
-            <Button
-                type="primary"
-                onClick={() => {
-                    // save as cookie that expires in 365 days
-                    const date = new Date()
-                    date.setTime(date.getTime() + 365 * 24 * 3600000)
-                    document.cookie =
-                        "orePrices=" +
-                        JSON.stringify(props.orePrices) +
-                        "; expires=" +
-                        date.toUTCString() +
-                        "; path=/; SameSite=Lax"
-                    props.setOrePricesState(OrePricesState.SET)
-                    props.setAppState(AppState.HOME)
-                }}
-            >
-                Confirm
-            </Button>
-            <Button
-                href={`data:text/json;charset=utf-8,${encodeURIComponent(
-                    JSON.stringify(props.orePrices),
-                )}`}
-                download="orePrices.json"
-            >
-                Download Ore Prices as JSON
-            </Button>
+            <br />
+            <Space>
+                <Button
+                    type="primary"
+                    onClick={() => {
+                        // save as cookie that expires in 365 days
+                        const date = new Date()
+                        date.setTime(date.getTime() + 365 * 24 * 3600000)
+                        document.cookie =
+                            "orePrices=" +
+                            JSON.stringify(props.orePrices) +
+                            "; expires=" +
+                            date.toUTCString() +
+                            "; path=/; SameSite=Lax"
+                        props.setOrePricesState(OrePricesState.SET)
+                        props.setAppState(AppState.HOME)
+                    }}
+                >
+                    Confirm
+                </Button>
+                <Button
+                    href={`data:text/json;charset=utf-8,${encodeURIComponent(
+                        JSON.stringify(props.orePrices),
+                    )}`}
+                    download="orePrices.json"
+                >
+                    Download Ore Prices as JSON
+                </Button>
+            </Space>
         </React.Fragment>
     )
 }
@@ -141,10 +149,10 @@ interface SetOrePricesRowProps {
 function SetOrePricesRow(props: SetOrePricesRowProps) {
     return (
         <Row>
-            <Col span={6}>
+            <Col span={2}>
                 <label>{props.item}</label>
             </Col>
-            <Col span={3}>
+            <Col span={2}>
                 <InputNumber
                     min={0}
                     value={props.value}

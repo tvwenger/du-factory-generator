@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Button, Upload } from "antd"
+import { Button, Upload, Divider } from "antd"
 import { ItemSelect } from "./item-select"
 import { FactoryState } from "./factory"
 import { Item } from "../items"
@@ -40,7 +40,8 @@ interface FactorySelectProps {
 export function FactorySelect(props: FactorySelectProps) {
     return (
         <React.Fragment>
-            <h2>Select items to build:</h2>
+            <h2>Select Items to Build</h2>
+            <Divider orientation="left">Instructions</Divider>
             <ul>
                 <li>Start typing the item name to filter</li>
                 <li>
@@ -50,10 +51,7 @@ export function FactorySelect(props: FactorySelectProps) {
                     </pre>
                 </li>
             </ul>
-            <ItemSelect items={props.items} value={props.selection} onChange={props.setSelection} />
-            <Button type="primary" onClick={() => props.setFactoryState(FactoryState.COUNT)}>
-                Next
-            </Button>
+            <Divider orientation="left">Upload</Divider>
             <Upload
                 accept=".csv"
                 showUploadList={false}
@@ -99,6 +97,13 @@ export function FactorySelect(props: FactorySelectProps) {
             >
                 <Button>Upload CSV</Button>
             </Upload>
+            <Divider orientation="left">Select Items</Divider>
+            <ItemSelect items={props.items} value={props.selection} onChange={props.setSelection} />
+            <br />
+            <br />
+            <Button type="primary" onClick={() => props.setFactoryState(FactoryState.COUNT)}>
+                Next
+            </Button>
         </React.Fragment>
     )
 }
