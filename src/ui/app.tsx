@@ -141,7 +141,7 @@ export function App() {
                     setAppState={setAppState}
                     talentLevels={talentLevels}
                     orePrices={orePrices}
-                    startFactoryState={FactoryState.TALENTS}
+                    startFactoryState={FactoryState.SELECT}
                 />
             )
             break

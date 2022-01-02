@@ -97,6 +97,7 @@ export function serialize(factory: FactoryGraph): string {
 
     const saveFactory = {
         version: VERSION,
+        talentLevels: factory.talentLevels,
         nodes: [] as SaveFactoryNode[],
         containers: [] as SaveContainer[],
         transferContainers: [] as SaveTransferContainer[],
@@ -255,12 +256,24 @@ export function serialize(factory: FactoryGraph): string {
  * De-serialize a JSON string representation of a FactoryGraph
  * @param serializedFactory the serialized FactoryGraph
  */
-export function deserialize(serializedFactory: string): FactoryGraph {
+export function deserialize(
+    serializedFactory: string,
+    talentLevels: { [key: string]: number },
+): FactoryGraph {
     const saveFactory = JSON.parse(serializedFactory)
     if (saveFactory.version !== VERSION) {
         throw new Error("Invalid JSON version: " + saveFactory.version + ". Expected: " + VERSION)
     }
-    const factory = new FactoryGraph(saveFactory.talentLevels)
+    // ensure that the talents used to generate the loaded factory
+    // are no better than the current user's talents
+    for (const [talent, level] of Object.entries(saveFactory.talentLevels)) {
+        if (talentLevels[talent] === undefined || talentLevels[talent] < (level as number)) {
+            throw new Error(
+                "Your talent levels must match or exceed the talent levels used to generate the original factory.",
+            )
+        }
+    }
+    const factory = new FactoryGraph(talentLevels)
 
     const factoryContainers: Container[] = []
     const factoryTransferContainers: TransferContainer[] = []

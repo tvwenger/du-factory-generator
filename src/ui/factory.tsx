@@ -12,7 +12,6 @@ import { FactoryInstruction } from "./generate-instructions"
 
 export enum FactoryState {
     UPLOAD = "upload",
-    TALENTS = "talents",
     SELECT = "select",
     COUNT = "count",
     RENDER = "render",
@@ -114,14 +113,24 @@ export function Factory(props: FactoryProps) {
                             const reader = new FileReader()
                             reader.onload = () => {
                                 const factoryJSON = reader.result as string
-                                const uploadedFactory = deserialize(factoryJSON)
+                                let uploadedFactory: FactoryGraph | undefined = undefined
+                                try {
+                                    uploadedFactory = deserialize(factoryJSON, props.talentLevels)
+                                } catch (e) {
+                                    setFactoryState(FactoryState.ERROR)
+                                    setErrorMessage(e.message)
+                                    return
+                                }
                                 setStartingFactory(uploadedFactory)
                                 // create another copy to be modified
-                                const uploadedFactoryCopy = deserialize(factoryJSON)
+                                const uploadedFactoryCopy = deserialize(
+                                    factoryJSON,
+                                    props.talentLevels,
+                                )
                                 setFactory(uploadedFactoryCopy)
                                 setShowDifferences(true)
                                 setStartingFactory(uploadedFactory)
-                                setFactoryState(FactoryState.TALENTS)
+                                setFactoryState(FactoryState.SELECT)
                             }
                             reader.readAsText(file)
                             // skip upload
@@ -170,12 +179,14 @@ export function Factory(props: FactoryProps) {
         case FactoryState.ERROR:
             return (
                 <React.Fragment>
-                    <Button onClick={() => setFactoryState(FactoryState.COUNT)}>Back</Button>
+                    <Button onClick={() => props.setAppState(AppState.HOME)}>Back</Button>
                     <h2>
                         <div id="error">Factory Error</div>
                     </h2>
                     {errorMessage} <br />
-                    <div id="error">Please report this to the developers!</div>
+                    <div id="error">
+                        If this error is unexpected, then please report this to the developers!
+                    </div>
                 </React.Fragment>
             )
     }
@@ -220,8 +231,8 @@ export function ExistingFactorySummary({ factory }: ExistingFactorySummaryProps)
             const element = (
                 <Row key={output.name}>
                     <Col span={3}>{output.item.name}</Col>
-                    <Col span={2}>{productionRate + " / " + unit}</Col>
-                    <Col span={2}>{output.maintainedOutput}</Col>
+                    <Col span={3}>{productionRate + " / " + unit}</Col>
+                    <Col span={3}>{Math.round(output.maintainedOutput)}</Col>
                 </Row>
             )
             elements.push(element)
@@ -232,10 +243,10 @@ export function ExistingFactorySummary({ factory }: ExistingFactorySummaryProps)
         return (
             <React.Fragment>
                 <h2>Existing Factory Production</h2>
-                <Row>
+                <Row className="tableHeader">
                     <Col span={3}>Item</Col>
-                    <Col span={2}>Production Rate</Col>
-                    <Col span={2}>Maintain</Col>
+                    <Col span={3}>Production Rate</Col>
+                    <Col span={3}>Maintain</Col>
                 </Row>
                 {elements}
             </React.Fragment>
