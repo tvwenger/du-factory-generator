@@ -79,6 +79,7 @@ interface SaveTransferUnit {
     merged: boolean
     item: Item
     inputs: number[]
+    requiredTransferRate: number
     rates: number[]
     outputContainer: number | undefined
     outputTransferContainer: number | undefined
@@ -167,6 +168,7 @@ export function serialize(factory: FactoryGraph): string {
             merged: transferUnit.merged,
             item: transferUnit.item,
             inputs: Array.from(transferUnit.inputs).map((node) => factoryContainers.indexOf(node)),
+            requiredTransferRate: transferUnit.requiredTransferRate,
             rates: Array.from(transferUnit.inputs).map(
                 (input) => transferUnit.transferRates.get(input)!,
             ),
@@ -330,11 +332,11 @@ export function deserialize(
         }
         const transferUnit = factory.createTransferUnit(item, output, saveTransferUnit.id)
         transferUnit.merged = saveTransferUnit.merged
+        transferUnit.requiredTransferRate = saveTransferUnit.requiredTransferRate
 
         // Add inputs and rates
         for (let i = 0; i < saveTransferUnit.inputs.length; i++) {
             transferUnit.addInput(factoryContainers[saveTransferUnit.inputs[i]])
-            transferUnit.increaseRequiredTransferRate(saveTransferUnit.rates[i])
             transferUnit.increaseTransferRate(
                 factoryContainers[saveTransferUnit.inputs[i]],
                 saveTransferUnit.rates[i],
