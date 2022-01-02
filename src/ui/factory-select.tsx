@@ -101,7 +101,14 @@ export function FactorySelect(props: FactorySelectProps) {
             <ItemSelect items={props.items} value={props.selection} onChange={props.setSelection} />
             <br />
             <br />
-            <Button type="primary" onClick={() => props.setFactoryState(FactoryState.COUNT)}>
+            <Button
+                type="primary"
+                onClick={() => {
+                    if (props.selection.length > 0) {
+                        props.setFactoryState(FactoryState.COUNT)
+                    }
+                }}
+            >
                 Next
             </Button>
         </React.Fragment>
