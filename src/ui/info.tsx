@@ -26,26 +26,34 @@ export function Info({ setAppState }: InfoProps) {
             <h2>About</h2>
             This is a factory generator for&nbsp;
             <a href="https://www.dualuniverse.game/">Dual Universe</a>. Given a set of items to
-            build, this tool will determine a factory plan from raw ores to the final products. If
-            you encouter any problems or would like to request new features, please submit an{" "}
+            build, this tool will determine a factory plan from raw ores to the final products. The
+            factory is designed to support the production rates of all intermediate industries.
+            Therefore, this is a factory plan that will maximize production efficiency even after
+            production interruptions. If you encouter any problems or would like to request new
+            features, please submit an{" "}
             <a href="https://github.com/tvwenger/du-factory-generator/issues">issue on Github</a>,
-            or <a href="https://discord.gg/gXSWKqVnHx">join our Discord server</a> and look for
-            Nikolaus.
+            or <a href="https://discord.gg/gXSWKqVnHx">join our Discord server</a>.
             <h2>Instructions: Starting a new factory</h2>
             <ul>
+                <li>
+                    Set your talents and, optionally, the current raw ore prices. Be sure to
+                    download these data in JSON format so that you can quickly set the data in the
+                    future.
+                </li>
                 <li>Click "Start a New Factory."</li>
                 <li>
                     Select all items that you would like to produce in the factory, then click
-                    "Next"
+                    "Next."
                 </li>
                 <li>
                     Enter the requested production rate of each item, as well as the quantity you
-                    would like to maintain in the output container(s), then click "Next"
+                    would like to maintain in the output container(s), then click "Next."
                 </li>
                 <li>
                     Wait while your factory plan is generated. This can take a while (up to a few
                     minutes) for large factories. Once complete, you will see a list of the required
-                    industries, containers, and schematics for your factory.
+                    industries, containers, and schematics for your factory, as well as the raw ore
+                    values of the produced items.
                 </li>
                 <li>
                     Click "Factory Map" to see an interactive schematic of the entire factory, which
@@ -75,25 +83,36 @@ export function Info({ setAppState }: InfoProps) {
             &nbsp;to a blank CSV file with all available item names.
             <h2>Instructions: Starting from an existing factory</h2>
             <ul>
+                <li>
+                    Set your talents and, optionally, the current raw ore prices. Be sure to
+                    download these data in JSON format so that you can quickly set the data in the
+                    future.
+                </li>
                 <li>Click "Start From Existing Factory."</li>
-                <li>Upload the factory JSON file.</li>
+                <li>
+                    Upload the factory JSON file. Note that only JSON files for the current Factory
+                    Generator version are acceted, and your set talents must match or exceed those
+                    used to generate the original factory plan.
+                </li>
                 <li>
                     You will be shown the current outputs of the factory. Select new items that you
                     would like to produce in the factory, and add existing items if you would like
-                    to produce more of them, then click "Next"
+                    to produce more of them, then click "Next."
                 </li>
                 <li>
                     Enter the requested production rate, as well as the additional quantity you
-                    would like to maintain in the output container(s), then click "Next"
+                    would like to maintain in the output container(s), then click "Next."
                 </li>
-                <li>Visualize and save the factory as before</li>
+                <li>Visualize and save the factory as before.</li>
             </ul>
             <h2>Factory Instruction Example</h2>
             <img src={example.default} width="600px" />
             <ul>
                 <li>
-                    The text above each row shows the produced item type (e.g., "Uncommon LED").
+                    The text at the top of each row shows the item category and tier (e.g., "Pure
+                    Tier 1")
                 </li>
+                <li>The text above each group shows the produced item (e.g., "Pure Aluminium").</li>
                 <li>
                     The leftmost arrows show the incoming links to the industries. Each link is
                     named by the container contents (e.g., Hydrogen) and the identifier (e.g., "C0")
@@ -117,8 +136,16 @@ export function Info({ setAppState }: InfoProps) {
                     the required maintain value.
                 </li>
                 <li>
-                    The red text above the arrow (e.g., "12/day") is the consumption rate of all
-                    industries or transfer units consuming from the container.
+                    The red text above the arrow (e.g., "12/day") is the maximum consumption rate of
+                    all industries or transfer units consuming from the container. This maximum
+                    consumption rate is achieved when the factory is started or re-started after an
+                    interruption. The factory is designed to support this maximum consumption rate.
+                </li>
+                <li>
+                    The blue text below the arrow is the "steady state" consumption rate of all
+                    industries or transfer units consuming from the container. This steady state
+                    consumption rate is achieved some time after the factory is started or
+                    re-started.
                 </li>
                 <li>
                     The rightmost arrows show the consumers from the container. Each link is named

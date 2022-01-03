@@ -60,6 +60,17 @@ export function App() {
             content = (
                 <React.Fragment>
                     <h2>Welcome to the DU Factory Generator!</h2>
+                    This is a factory generator for&nbsp;
+                    <a href="https://www.dualuniverse.game/">Dual Universe</a>. Given a set of items
+                    to build, this tool will determine a factory plan from raw ores to the final
+                    products. The factory is designed to support the production rates of all
+                    intermediate industries. Therefore, this is a factory plan that will maximize
+                    production efficiency even after production interruptions. If you encouter any
+                    problems or would like to request new features, please submit an{" "}
+                    <a href="https://github.com/tvwenger/du-factory-generator/issues">
+                        issue on Github
+                    </a>
+                    , or <a href="https://discord.gg/gXSWKqVnHx">join our Discord server</a>.
                     <Divider orientation="left">Instructions</Divider>
                     <ul>
                         <li>Set or update talents as necessary.</li>
