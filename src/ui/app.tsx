@@ -36,20 +36,18 @@ export function App() {
 
     // Parse talentLevel cookie JSON if present
     if (talentState === TalentState.UNSET) {
-        const parts = document.cookie.split("talentLevels=")
-        if (parts.length == 2) {
-            const json = parts[1].split(";")[0]
-            parseTalentLevelJSON(json, setTalentLevels)
+        const data = localStorage.getItem("talentLevels")
+        if (data !== null) {
+            parseTalentLevelJSON(data, setTalentLevels)
             setTalentState(TalentState.SET)
         }
     }
 
     // Parse orePrices cookie JSON if present
     if (orePricesState === OrePricesState.UNSET) {
-        const parts = document.cookie.split("orePrices=")
-        if (parts.length == 2) {
-            const json = parts[1].split(";")[0]
-            parseOrePricesJSON(json, setOrePrices)
+        const data = localStorage.getItem("orePrices")
+        if (data !== null) {
+            parseOrePricesJSON(data, setOrePrices)
             setOrePricesState(OrePricesState.SET)
         }
     }

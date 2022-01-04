@@ -230,15 +230,8 @@ export function SetTalents(props: SetTalentsProps) {
                 <Button
                     type="primary"
                     onClick={() => {
-                        // save as cookie that expires in 365 days
-                        const date = new Date()
-                        date.setTime(date.getTime() + 365 * 24 * 3600000)
-                        document.cookie =
-                            "talentLevels=" +
-                            JSON.stringify(props.talentLevels) +
-                            "; expires=" +
-                            date.toUTCString() +
-                            "; path=/; SameSite=Lax"
+                        // save to localStorage
+                        localStorage.setItem("talentLevels", JSON.stringify(props.talentLevels))
                         props.setTalentState(TalentState.SET)
                         props.setAppState(AppState.HOME)
                     }}
