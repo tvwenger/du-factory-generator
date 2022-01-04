@@ -284,7 +284,9 @@ export function getRecipe(item: Item, talentLevels: { [key: string]: number }) {
     }
     const byproducts = oldRecipe.byproducts
     for (const [key, value] of byproducts.entries()) {
-        byproducts.set(key, value * (1.0 + output_mod))
+        if (!isCatalyst(key)) {
+            byproducts.set(key, value * (1.0 + output_mod))
+        }
     }
     const newRecipe = recipe(item, quantity, time, oldRecipe.industry, byproducts, ingredients)
     return newRecipe
