@@ -185,7 +185,11 @@ export function Factory(props: FactoryProps) {
                     </h2>
                     {errorMessage} <br />
                     <div id="error">
-                        If this error is unexpected, then please report this to the developers!
+                        If this error is unexpected, then please report this to the developers via
+                        Discord or the "Report an Issue" link below! Please include all necessary
+                        information that can be used to reproduce this error (e.g., what you were
+                        trying to produce, factory JSON file if you started from a previous factory,
+                        etc.).
                     </div>
                 </React.Fragment>
             )
