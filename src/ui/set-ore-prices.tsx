@@ -106,15 +106,8 @@ export function SetOrePrices(props: SetOrePricesProps) {
                 <Button
                     type="primary"
                     onClick={() => {
-                        // save as cookie that expires in 365 days
-                        const date = new Date()
-                        date.setTime(date.getTime() + 365 * 24 * 3600000)
-                        document.cookie =
-                            "orePrices=" +
-                            JSON.stringify(props.orePrices) +
-                            "; expires=" +
-                            date.toUTCString() +
-                            "; path=/; SameSite=Lax"
+                        // save to localStorage
+                        localStorage.setItem("orePrices", JSON.stringify(props.orePrices))
                         props.setOrePricesState(OrePricesState.SET)
                         props.setAppState(AppState.HOME)
                     }}
