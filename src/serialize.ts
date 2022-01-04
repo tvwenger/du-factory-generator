@@ -13,7 +13,7 @@ import { isTransferContainer, TransferContainer } from "./transfer-container"
 import { isTransferUnit, TransferUnit } from "./transfer-unit"
 
 // Factory JSON version number
-const VERSION = "3.3"
+const VERSION = "4.0"
 
 /**
  * Saved properties for each FactoryNode
@@ -79,6 +79,7 @@ interface SaveTransferUnit {
     merged: boolean
     item: Item
     inputs: number[]
+    requiredTransferRate: number
     rates: number[]
     outputContainer: number | undefined
     outputTransferContainer: number | undefined
@@ -97,6 +98,7 @@ export function serialize(factory: FactoryGraph): string {
 
     const saveFactory = {
         version: VERSION,
+        talentLevels: factory.talentLevels,
         nodes: [] as SaveFactoryNode[],
         containers: [] as SaveContainer[],
         transferContainers: [] as SaveTransferContainer[],
@@ -166,6 +168,7 @@ export function serialize(factory: FactoryGraph): string {
             merged: transferUnit.merged,
             item: transferUnit.item,
             inputs: Array.from(transferUnit.inputs).map((node) => factoryContainers.indexOf(node)),
+            requiredTransferRate: transferUnit.requiredTransferRate,
             rates: Array.from(transferUnit.inputs).map(
                 (input) => transferUnit.transferRates.get(input)!,
             ),
@@ -255,12 +258,24 @@ export function serialize(factory: FactoryGraph): string {
  * De-serialize a JSON string representation of a FactoryGraph
  * @param serializedFactory the serialized FactoryGraph
  */
-export function deserialize(serializedFactory: string): FactoryGraph {
+export function deserialize(
+    serializedFactory: string,
+    talentLevels: { [key: string]: number },
+): FactoryGraph {
     const saveFactory = JSON.parse(serializedFactory)
     if (saveFactory.version !== VERSION) {
         throw new Error("Invalid JSON version: " + saveFactory.version + ". Expected: " + VERSION)
     }
-    const factory = new FactoryGraph(saveFactory.talentLevels)
+    // ensure that the talents used to generate the loaded factory
+    // are no better than the current user's talents
+    for (const [talent, level] of Object.entries(saveFactory.talentLevels)) {
+        if (talentLevels[talent] === undefined || talentLevels[talent] < (level as number)) {
+            throw new Error(
+                "Your talent levels must match or exceed the talent levels used to generate the original factory.",
+            )
+        }
+    }
+    const factory = new FactoryGraph(talentLevels)
 
     const factoryContainers: Container[] = []
     const factoryTransferContainers: TransferContainer[] = []
@@ -317,11 +332,11 @@ export function deserialize(serializedFactory: string): FactoryGraph {
         }
         const transferUnit = factory.createTransferUnit(item, output, saveTransferUnit.id)
         transferUnit.merged = saveTransferUnit.merged
+        transferUnit.requiredTransferRate = saveTransferUnit.requiredTransferRate
 
         // Add inputs and rates
         for (let i = 0; i < saveTransferUnit.inputs.length; i++) {
             transferUnit.addInput(factoryContainers[saveTransferUnit.inputs[i]])
-            transferUnit.increaseRequiredTransferRate(saveTransferUnit.rates[i])
             transferUnit.increaseTransferRate(
                 factoryContainers[saveTransferUnit.inputs[i]],
                 saveTransferUnit.rates[i],

@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Button } from "antd"
+import { Button, Space, Row, Col, Divider } from "antd"
 import { Info } from "./info"
 import { Factory, FactoryState } from "./factory"
 import { SetTalents, parseTalentLevelJSON } from "./set-talents"
@@ -34,27 +34,20 @@ export function App() {
     const [orePricesState, setOrePricesState] = React.useState<OrePricesState>(OrePricesState.UNSET)
     const [orePrices, setOrePrices] = React.useState<{ [key: string]: number }>({})
 
-    // Scroll to top on render
-    React.useEffect(() => {
-        window.scrollTo(0, 0)
-    })
-
     // Parse talentLevel cookie JSON if present
     if (talentState === TalentState.UNSET) {
-        const parts = document.cookie.split("talentLevels=")
-        if (parts.length == 2) {
-            const json = parts[1].split(";")[0]
-            parseTalentLevelJSON(json, setTalentLevels)
+        const data = localStorage.getItem("talentLevels")
+        if (data !== null) {
+            parseTalentLevelJSON(data, setTalentLevels)
             setTalentState(TalentState.SET)
         }
     }
 
     // Parse orePrices cookie JSON if present
     if (orePricesState === OrePricesState.UNSET) {
-        const parts = document.cookie.split("orePrices=")
-        if (parts.length == 2) {
-            const json = parts[1].split(";")[0]
-            parseOrePricesJSON(json, setOrePrices)
+        const data = localStorage.getItem("orePrices")
+        if (data !== null) {
+            parseOrePricesJSON(data, setOrePrices)
             setOrePricesState(OrePricesState.SET)
         }
     }
@@ -64,38 +57,67 @@ export function App() {
         default:
             content = (
                 <React.Fragment>
+                    <h2>Welcome to the DU Factory Generator!</h2>
+                    This is a factory generator for&nbsp;
+                    <a href="https://www.dualuniverse.game/">Dual Universe</a>. Given a set of items
+                    to build, this tool will determine a factory plan from raw ores to the final
+                    products. The factory is designed to support the production rates of all
+                    intermediate industries. Therefore, this is a factory plan that will maximize
+                    production efficiency even after production interruptions. If you encouter any
+                    problems or would like to request new features, please submit an{" "}
+                    <a href="https://github.com/tvwenger/du-factory-generator/issues">
+                        issue on Github
+                    </a>
+                    , or <a href="https://discord.gg/gXSWKqVnHx">join our Discord server</a>.
+                    <Divider orientation="left">Instructions</Divider>
                     <ul>
-                        <li>Start a New Factory: Set up a new factory from scratch</li>
+                        <li>Set or update talents as necessary.</li>
+                        <li>
+                            Optional: set ore prices to calculate "ore values" of produced items.
+                        </li>
+                        <li>Start a New Factory: Set up a new factory from scratch.</li>
                         <li>
                             Start From Existing Factory: Start from a factory previously generated
-                            by this tool
+                            by this tool.
                         </li>
                     </ul>
-                    <Button onClick={() => setAppState(AppState.SETTALENTS)}>
-                        {talentState === TalentState.SET ? "Update Talents" : "Set Talents"}
-                    </Button>
-                    {talentState === TalentState.SET
-                        ? "Talents are set"
-                        : "Talents have not been set"}
-                    <br />
-                    <br />
-                    <Button onClick={() => setAppState(AppState.SETOREPRICES)}>
-                        {orePricesState === OrePricesState.SET
-                            ? "Update Ore Prices"
-                            : "Set Ore Prices"}
-                    </Button>
-                    {orePricesState === OrePricesState.SET
-                        ? "Ore prices are set"
-                        : "Ore prices have not been set"}
-                    <br />
-                    <br />
-                    <Button type="primary" onClick={() => setAppState(AppState.NEWFACTORY)}>
-                        Start a New Factory
-                    </Button>
-                    <Button onClick={() => setAppState(AppState.OLDFACTORY)}>
-                        Start from Existing Factory
-                    </Button>
-                    <Button onClick={() => setAppState(AppState.INFO)}>Help Information</Button>
+                    <Divider orientation="left">Preparation</Divider>
+                    <Row style={{ marginBottom: 5 }}>
+                        <Col span={3}>
+                            <Button onClick={() => setAppState(AppState.SETTALENTS)}>
+                                {talentState === TalentState.SET ? "Update Talents" : "Set Talents"}
+                            </Button>
+                        </Col>
+                        <Col span={3}>
+                            {talentState === TalentState.SET
+                                ? "Talents are set"
+                                : "Talents have not been set"}
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={3}>
+                            <Button onClick={() => setAppState(AppState.SETOREPRICES)}>
+                                {orePricesState === OrePricesState.SET
+                                    ? "Update Ore Prices"
+                                    : "Set Ore Prices"}
+                            </Button>
+                        </Col>
+                        <Col span={3}>
+                            {orePricesState === OrePricesState.SET
+                                ? "Ore prices are set"
+                                : "Ore prices have not been set"}
+                        </Col>
+                    </Row>
+                    <Divider orientation="left">Generate Factory</Divider>
+                    <Space>
+                        <Button type="primary" onClick={() => setAppState(AppState.NEWFACTORY)}>
+                            Start a New Factory
+                        </Button>
+                        <Button onClick={() => setAppState(AppState.OLDFACTORY)}>
+                            Start from Existing Factory
+                        </Button>
+                        <Button onClick={() => setAppState(AppState.INFO)}>Help Information</Button>
+                    </Space>
                 </React.Fragment>
             )
             break
@@ -128,7 +150,7 @@ export function App() {
                     setAppState={setAppState}
                     talentLevels={talentLevels}
                     orePrices={orePrices}
-                    startFactoryState={FactoryState.TALENTS}
+                    startFactoryState={FactoryState.SELECT}
                 />
             )
             break

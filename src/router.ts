@@ -117,7 +117,6 @@ export function generateRelayRoutes(node: FactoryNode) {
         while (rateDiff > delta) {
             const container = node.factory.createRelayContainer(node.item)
             const transferUnit = node.factory.createTransferUnit(node.item, container)
-
             const increaseRate = Math.min(rateDiff, maxTransferRate)
             let increaseMaintain = maintainDiff
             increaseMaintain = (maintainDiff * increaseRate) / rateDiff

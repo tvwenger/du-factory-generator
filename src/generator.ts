@@ -100,8 +100,9 @@ function handleByproducts(factory: FactoryGraph) {
             let outputContainer = undefined
             let minTransferUnits = MAX_CONTAINER_LINKS
             for (const checkContainer of dumpContainers) {
-                const numTransferUnits = Array.from(checkContainer.producers).filter(isTransferUnit)
-                    .length
+                const numTransferUnits = Array.from(checkContainer.producers).filter(
+                    isTransferUnit,
+                ).length
                 minTransferUnits = Math.min(minTransferUnits, numTransferUnits)
                 if (checkContainer.canAddIncomingLinks(1) && numTransferUnits === 0) {
                     outputContainer = checkContainer
@@ -138,7 +139,13 @@ function handleByproducts(factory: FactoryGraph) {
             transferUnit.increaseTransferRate(container, container.ingress(byproduct))
         }
     }
+}
 
+/**
+ * Add transfer units to balance catalysts
+ * @param factory the factory graph
+ */
+function balanceCatalysts(factory: FactoryGraph) {
     // Chain catalyst dump containers together (0 <-> 1 <-> 2 ... etc.)
     for (const catalyst of CATALYSTS) {
         const containers = factory.getDumpContainers(catalyst)
@@ -155,9 +162,10 @@ function handleByproducts(factory: FactoryGraph) {
                 .filter((node) => node.output === container)
             if (transferUnits.length === 0) {
                 const transferUnit = factory.createTransferUnit(catalyst, container)
-                transferUnit.increaseRequiredTransferRate(lastContainer.ingress(catalyst))
+                const rate: PerSecond = 1.0 / 11.0 // HACK
+                transferUnit.increaseRequiredTransferRate(rate)
                 transferUnit.addInput(lastContainer)
-                transferUnit.increaseTransferRate(lastContainer, lastContainer.ingress(catalyst))
+                transferUnit.increaseTransferRate(lastContainer, rate)
             }
 
             // check if this container has link to previous one
@@ -166,9 +174,10 @@ function handleByproducts(factory: FactoryGraph) {
                 .filter((node) => node.output === lastContainer)
             if (transferUnits.length === 0) {
                 const transferUnit = factory.createTransferUnit(catalyst, lastContainer)
-                transferUnit.increaseRequiredTransferRate(container.ingress(catalyst))
+                const rate: PerSecond = 1.0 / 11.0 // HACK
+                transferUnit.increaseRequiredTransferRate(rate)
                 transferUnit.addInput(container)
-                transferUnit.increaseTransferRate(container, container.ingress(catalyst))
+                transferUnit.increaseTransferRate(container, rate)
             }
             lastContainer = container
         }
@@ -339,6 +348,9 @@ export function buildFactory(
 
     // Transfer byproducts
     handleByproducts(factory)
+
+    // Balance catalysts
+    balanceCatalysts(factory)
 
     // Handle transfer contianers
     handleTransferContainers(factory)

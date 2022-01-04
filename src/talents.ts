@@ -13,50 +13,67 @@ export enum TalentSubject {
     TYPE = "Type",
 }
 
+export enum TalentGroup {
+    PURES = "Pures",
+    PRODUCTS = "Products",
+    PARTS = "Parts",
+    ELEMENTS = "Elements",
+    AMMUNITION = "Ammunition",
+    FUELS = "Fuels",
+    PURE_HONECOMBS = "Pure Honeycombs",
+    PRODUCT_HONEYCOMBS = "Product Honeycombs",
+    SCRAPS = "Scraps",
+    INDUSTRY = "Industry",
+}
+
 /**
  * Talent type definition
  */
 export interface Talent {
     readonly name: string
-    readonly group: string
+    readonly skillGroup: string
+    readonly talentGroup: TalentGroup
     readonly type: TalentType
     readonly subject: TalentSubject
     readonly modifier: number
-    readonly category: Category
-    readonly tier: Tier
     readonly target: string | undefined
+    readonly targetCategory: Category
+    readonly targetTier: Tier
 }
 
 /**
  * Returns a new Talent
  * @param name talent name
- * @param group talent group name
+ * @param skillGroup skill's group name
+ * @param talentGroup skill's talent group
  * @param type talent type
  * @param subject entity to which this talent applies
  * @param modifier modifier amount (percentage)
- * @param category talent's applicable category
- * @param tier talent's applicable tier
  * @param target talent's applicable item
+ * @param targetCategory talent's applicable category
+ * @param targetTier talent's applicable tier
  */
 export function talent(
     name: string,
-    group: string,
+    skillGroup: string,
+    talentGroup: TalentGroup,
     type: TalentType,
     subject: TalentSubject,
     modifier: number,
-    category: Category,
-    tier: Tier,
     target: string,
+    targetCategory: Category,
+    targetTier: Tier,
 ): Talent {
     return {
         name,
-        group,
+        skillGroup,
+        talentGroup,
         type,
         subject,
         modifier,
-        category,
-        tier,
         target,
+        targetCategory,
+        targetTier,
     }
 }
 
@@ -67,18 +84,18 @@ var talents: { [key: string]: Talent } = {}
 var data = require("./data/talents.json")
 for (const outer of data) {
     for (const inner of outer.data) {
-        const group = inner.name
         for (const skill of inner.skills) {
             const name = inner.name + ": " + skill.name
             talents[name] = talent(
                 name,
-                group,
+                inner.name,
+                outer.name,
                 skill.class !== undefined ? skill.class : inner.class,
                 skill.subject !== undefined ? skill.subject : inner.subject,
                 skill.amount !== undefined ? skill.amount : inner.amount,
+                skill.name !== undefined ? skill.name : inner.name,
                 skill.type !== undefined ? skill.type : inner.type,
                 skill.tier !== undefined ? skill.tier : inner.tier,
-                skill.name !== undefined ? skill.name : inner.name,
             )
         }
     }
@@ -86,10 +103,13 @@ for (const outer of data) {
 // Validate
 for (const [name, talent] of Object.entries(talents)) {
     if (!Object.values(TalentType).includes(talent.type)) {
-        throw new Error("Invalid talent type" + talent.type)
+        throw new Error("Invalid talent type " + talent.type)
     }
     if (!Object.values(TalentSubject).includes(talent.subject)) {
-        throw new Error("Invalid talent subject" + talent.subject)
+        throw new Error("Invalid talent subject " + talent.subject)
+    }
+    if (!Object.values(TalentGroup).includes(talent.talentGroup)) {
+        throw new Error("Invalid talent group " + talent.talentGroup)
     }
 }
 export const TALENTS = talents

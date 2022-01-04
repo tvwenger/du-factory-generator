@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Button, Row, Col, Table } from "antd"
+import { Button, Row, Col, Table, Space, Divider } from "antd"
 import { Category, Tier, Item, CONTAINERS_ASCENDING_BY_CAPACITY, getRequiredOres } from "../items"
 import { FactoryGraph } from "../graph"
 import { FactoryState } from "./factory"
@@ -358,12 +358,16 @@ export function FactoryVisualization({
 
             content = (
                 <React.Fragment>
-                    <Button onClick={() => setVisualizationState(VisualizationState.INSTRUCTIONS)}>
-                        Building Instructions
-                    </Button>
-                    <Button onClick={() => setVisualizationState(VisualizationState.MAP)}>
-                        Factory Map
-                    </Button>
+                    <Space>
+                        <Button
+                            onClick={() => setVisualizationState(VisualizationState.INSTRUCTIONS)}
+                        >
+                            Building Instructions
+                        </Button>
+                        <Button onClick={() => setVisualizationState(VisualizationState.MAP)}>
+                            Factory Map
+                        </Button>
+                    </Space>
                     <Row gutter={16}>
                         <Col span={6}>
                             <h2>Industries ({totalIndustries})</h2>
@@ -404,21 +408,25 @@ export function FactoryVisualization({
         case VisualizationState.INSTRUCTIONS:
             content = (
                 <React.Fragment>
-                    <Button onClick={() => setVisualizationState(VisualizationState.LIST)}>
-                        Factory Summary
-                    </Button>
-                    <Button onClick={() => setVisualizationState(VisualizationState.MAP)}>
-                        Factory Map
-                    </Button>
+                    <Space>
+                        <Button onClick={() => setVisualizationState(VisualizationState.LIST)}>
+                            Factory Summary
+                        </Button>
+                        <Button onClick={() => setVisualizationState(VisualizationState.MAP)}>
+                            Factory Map
+                        </Button>
+                        {showLegend && (
+                            <Button onClick={() => setShowLegend(false)}>Hide Legend</Button>
+                        )}
+                        {!showLegend && (
+                            <Button onClick={() => setShowLegend(true)}>Show Legend</Button>
+                        )}
+                    </Space>
                     {showLegend && (
                         <React.Fragment>
-                            <Button onClick={() => setShowLegend(false)}>Hide Legend</Button>
                             <br />
                             <img src={example.default} width="600px" />
                         </React.Fragment>
-                    )}
-                    {!showLegend && (
-                        <Button onClick={() => setShowLegend(true)}>Show Legend</Button>
                     )}
                     <br />
                     <FactoryInstructions instructions={instructions} />
@@ -428,21 +436,27 @@ export function FactoryVisualization({
         case VisualizationState.MAP:
             content = (
                 <React.Fragment>
-                    <Button onClick={() => setVisualizationState(VisualizationState.LIST)}>
-                        Factory Summary
-                    </Button>
-                    <Button onClick={() => setVisualizationState(VisualizationState.INSTRUCTIONS)}>
-                        Building Instructions
-                    </Button>
+                    <Space>
+                        <Button onClick={() => setVisualizationState(VisualizationState.LIST)}>
+                            Factory Summary
+                        </Button>
+                        <Button
+                            onClick={() => setVisualizationState(VisualizationState.INSTRUCTIONS)}
+                        >
+                            Building Instructions
+                        </Button>
+                        {showLegend && (
+                            <Button onClick={() => setShowLegend(false)}>Hide Legend</Button>
+                        )}
+                        {!showLegend && (
+                            <Button onClick={() => setShowLegend(true)}>Show Legend</Button>
+                        )}
+                    </Space>
                     {showLegend && (
                         <React.Fragment>
-                            <Button onClick={() => setShowLegend(false)}>Hide Legend</Button>
                             <br />
                             <img src={example.default} width="600px" />
                         </React.Fragment>
-                    )}
-                    {!showLegend && (
-                        <Button onClick={() => setShowLegend(true)}>Show Legend</Button>
                     )}
                     <br />
                     <FactoryMap instructions={instructions} />
@@ -453,15 +467,6 @@ export function FactoryVisualization({
 
     return (
         <React.Fragment>
-            <ul>
-                <li>Factory Summary: List the required industries, containers, and schematics</li>
-                <li>
-                    Download Factory as JSON: Save the factory to a file and start new factory
-                    additions from the current state
-                </li>
-                <li>Building Instructions: Step-by-step instructions for building the factory</li>
-                <li>Factory Map: Visualize the entire factory plan at once</li>
-            </ul>
             <Button
                 onClick={() => {
                     setFactory(startingFactory)
@@ -470,12 +475,25 @@ export function FactoryVisualization({
             >
                 Back
             </Button>
+            <h2>Factory Generator Results</h2>
+            <Divider orientation="left">Instructions</Divider>
+            <ul>
+                <li>
+                    Factory Summary: List the required industries, containers, schematics, and raw
+                    ore values of produced items.
+                </li>
+                <li>Download Factory as JSON: Save the factory to a file.</li>
+                <li>Building Instructions: Step-by-step instructions for building the factory.</li>
+                <li>Factory Map: Visualize the entire factory plan at once.</li>
+            </ul>
             <Button
                 href={`data:text/json;charset=utf-8,${encodeURIComponent(serialize(factory!))}`}
                 download="factory.json"
             >
                 Download Factory as JSON
             </Button>
+            <br />
+            <br />
             {content}
         </React.Fragment>
     )

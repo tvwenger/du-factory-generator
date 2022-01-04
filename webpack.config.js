@@ -19,7 +19,7 @@ module.exports = ({ ifDev, ifProd }) => ({
         path: path.join(__dirname, "./dist"),
         filename: "[name].[fullhash].js",
         ...ifProd({
-            publicPath: "/du-factory-generator/v3.3/",
+            publicPath: "/du-factory-generator/v4.0/",
         }),
     },
     devServer: {
