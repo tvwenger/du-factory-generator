@@ -1,3 +1,5 @@
+import Item from "antd/lib/list/Item"
+import { ItemRender } from "antd/lib/upload/interface"
 import { TALENTS, TalentSubject, TalentType } from "./talents"
 
 export type Liter = number
@@ -278,15 +280,13 @@ export function getRecipe(item: Item, talentLevels: { [key: string]: number }) {
     // Create and return modified recipe
     const quantity = oldRecipe.quantity * (1.0 + output_mod)
     const time = oldRecipe.time * (1.0 - time_mod)
-    const ingredients = oldRecipe.ingredients
-    for (const [key, value] of ingredients.entries()) {
+    const ingredients: Map<Item, number> = new Map()
+    for (const [key, value] of oldRecipe.ingredients.entries()) {
         ingredients.set(key, value * (1.0 - input_mod))
     }
-    const byproducts = oldRecipe.byproducts
-    for (const [key, value] of byproducts.entries()) {
-        if (!isCatalyst(key)) {
-            byproducts.set(key, value * (1.0 + output_mod))
-        }
+    const byproducts: Map<Item, number> = new Map()
+    for (const [key, value] of oldRecipe.byproducts.entries()) {
+        byproducts.set(key, value * (1.0 + output_mod))
     }
     const newRecipe = recipe(item, quantity, time, oldRecipe.industry, byproducts, ingredients)
     return newRecipe
@@ -349,19 +349,15 @@ export function getRequiredOres(
                 ores[ingredient.name] = 0
             }
             ores[ingredient.name] += ingredientQuantity / batchSize
-        } else if (requiredOres[ingredient.name] !== undefined) {
-            // Use already calculated values
-            for (const [ore, oreQuantity] of Object.entries(requiredOres[ingredient.name])) {
-                if (ores[ore] === undefined) {
-                    ores[ore] = 0
-                }
-                ores[ore] += (oreQuantity * ingredientQuantity) / batchSize
-            }
         } else {
-            // Recursively call this function
-            const ingredientOres = getRequiredOres(ingredient, requiredOres, talentLevels)
-            requiredOres[ingredient.name] = ingredientOres
-            for (const [ore, oreQuantity] of Object.entries(ingredientOres)) {
+            // Use already calculated values if possible
+            let ingredientOres = requiredOres[ingredient.name]
+            if (ingredientOres === undefined) {
+                // Recursively call this function
+                ingredientOres = getRequiredOres(ingredient, requiredOres, talentLevels)
+                requiredOres[ingredient.name] = ingredientOres
+            }
+            for (const [ore, oreQuantity] of Object.entries(requiredOres[ingredient.name])) {
                 if (ores[ore] === undefined) {
                     ores[ore] = 0
                 }
