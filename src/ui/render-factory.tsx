@@ -1,5 +1,5 @@
 import * as React from "react"
-import { Button, Row, Col, Table, Space, Divider } from "antd"
+import { Button, Row, Col, Table, Space, Divider, Popover } from "antd"
 import { Category, Tier, Item, CONTAINERS_ASCENDING_BY_CAPACITY, getRequiredOres } from "../items"
 import { FactoryGraph } from "../graph"
 import { FactoryState } from "./factory"
@@ -194,6 +194,7 @@ export function FactoryVisualization({
             const schematicCount: { [key: string]: number } = {}
 
             // Get ore values
+            const requiredOres: { [key: string]: { [key: string]: number } } = {}
             const oreValues: { [key: string]: number } = {}
 
             if (factory !== undefined) {
@@ -239,7 +240,6 @@ export function FactoryVisualization({
                 })
 
                 // get ore requirements per item
-                const requiredOres: { [key: string]: { [key: string]: number } } = {}
                 selection.map((item) => {
                     const ores = getRequiredOres(item, requiredOres, factory.talentLevels)
                     requiredOres[item.name] = ores
@@ -332,6 +332,34 @@ export function FactoryVisualization({
                     title: "Item",
                     dataIndex: "item",
                     key: "item",
+                    render: (value: string) => {
+                        const content = (
+                            <div>
+                                {Object.keys(requiredOres[value]).map((ore) => (
+                                    <p key={ore}>
+                                        {ore +
+                                            ": " +
+                                            Math.round(requiredOres[value][ore]) +
+                                            " @ " +
+                                            Math.round(orePrices[ore]) +
+                                            " quanta/L = " +
+                                            Math.round(requiredOres[value][ore] * orePrices[ore]) +
+                                            " quanta"}
+                                    </p>
+                                ))}
+                            </div>
+                        )
+                        return (
+                            <Popover
+                                placement="topLeft"
+                                title={value}
+                                content={content}
+                                trigger="hover"
+                            >
+                                <a>{value}</a>
+                            </Popover>
+                        )
+                    },
                 },
                 {
                     title: "Ore Value",

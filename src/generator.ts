@@ -66,13 +66,29 @@ function handleByproducts(factory: FactoryGraph) {
         }
 
         for (const [byproduct, quantity] of container.recipe.byproducts.entries()) {
+            // maximum transfer rate supported by a single transfer unit
+            const maxTransferRate = byproduct.transferBatchSize / byproduct.transferTime
+
             // Check if this container already has a transfer unit for the byproduct
             let found = false
             for (const consumer of container.consumers) {
                 if (isTransferUnit(consumer) && consumer.item == byproduct) {
                     found = true
                     // ensure that the transfer rate is set
-                    consumer.setTransferRate(container, container.ingress(consumer.item))
+                    consumer.setTransferRate(container, container.ingress(byproduct))
+                    // ensure that we do not exceed one transfer unit for this byproduct
+                    // THIS IS A HACK
+                    if (consumer.requiredTransferRate > maxTransferRate) {
+                        for (const tuContainer of consumer.inputs) {
+                            const share = container.ingress(byproduct) / maxTransferRate
+                            consumer.setTransferRate(
+                                tuContainer,
+                                share * container.ingress(byproduct),
+                            )
+                        }
+                        consumer.requiredTransferRate = maxTransferRate
+                    }
+                    break
                 }
             }
             if (found) {
@@ -84,9 +100,21 @@ function handleByproducts(factory: FactoryGraph) {
             const transferUnits = factory.getByproductTransferUnits(byproduct)
             for (const transferUnit of transferUnits) {
                 if (transferUnit.canAddIncomingLink) {
+                    foundTransferUnit = true
                     transferUnit.addInput(container)
                     transferUnit.increaseTransferRate(container, container.ingress(byproduct))
-                    foundTransferUnit = true
+                    // ensure that we do not exceed one transfer unit for this byproduct
+                    // THIS IS A HACK
+                    if (transferUnit.requiredTransferRate > maxTransferRate) {
+                        for (const tuContainer of transferUnit.inputs) {
+                            const share = container.ingress(byproduct) / maxTransferRate
+                            transferUnit.setTransferRate(
+                                tuContainer,
+                                share * container.ingress(byproduct),
+                            )
+                        }
+                        transferUnit.requiredTransferRate = maxTransferRate
+                    }
                     break
                 }
             }
@@ -137,6 +165,12 @@ function handleByproducts(factory: FactoryGraph) {
             transferUnit.increaseRequiredTransferRate(container.ingress(byproduct))
             transferUnit.addInput(container)
             transferUnit.increaseTransferRate(container, container.ingress(byproduct))
+            // ensure that we do not exceed one transfer unit for this byproduct
+            // THIS IS A HACK
+            if (transferUnit.requiredTransferRate > maxTransferRate) {
+                transferUnit.setTransferRate(container, maxTransferRate)
+                transferUnit.requiredTransferRate = maxTransferRate
+            }
         }
     }
 }

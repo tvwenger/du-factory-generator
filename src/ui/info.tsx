@@ -69,7 +69,8 @@ export function Info({ setAppState }: InfoProps) {
             </ul>
             <b>Note:</b> You can also select the factory production list using a comma separated
             values (CSV) file. Create a plain text file formatted like:
-            <pre>Item Name, Number Produced per Day, Maintain Value</pre>. For example:
+            <pre>Item Name, Number Produced per Day, Maintain Value</pre>
+            For example:
             <pre>
                 Container S, 10, 50
                 <br />
