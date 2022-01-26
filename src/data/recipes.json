@@ -892,7 +892,7 @@
         "time": 150,
         "byproducts": {},
         "nanopack": true,
-        "industry": "Smelter M",
+        "industry": "Refiner M",
         "input": {
             "Pure Silicon": 50,
             "Pure Aluminium": 50,
@@ -14427,7 +14427,7 @@
         "nanopack": true,
         "industry": "Honeycomb Refinery M",
         "input": {
-            "Pure Iron": 1800
+            "Pure Carbon": 1800
         }
     },
     "Silicon Honeycomb": {
