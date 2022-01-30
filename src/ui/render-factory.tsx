@@ -222,6 +222,13 @@ export function FactoryVisualization({
                 Array.from(factory.containers)
                     .filter((container) => !container.merged)
                     .map((container) => {
+                        // count container hubs
+                        if (container.containers.length > 1) {
+                            if (containerCount["Container Hub"] === undefined) {
+                                containerCount["Container Hub"] = 0
+                            }
+                            containerCount["Container Hub"] += 1
+                        }
                         for (const containerSize of container.containers) {
                             totalContainers += 1
                             if (containerCount[containerSize] === undefined) {
