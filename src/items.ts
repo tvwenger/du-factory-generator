@@ -311,7 +311,7 @@ export const CONTAINERS_ASCENDING_BY_CAPACITY: ContainerCapacity[] = [
     containerCapacity("Container M", 64000),
     containerCapacity("Container L", 128000),
     containerCapacity("Container XL", 256000),
-    containerCapacity("Expanded Container XL0", 512000),
+    containerCapacity("Expanded Container XL", 512000),
 ]
 
 /**

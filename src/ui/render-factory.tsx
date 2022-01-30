@@ -87,6 +87,7 @@ export const CONTAINERLABELS: { [key: string]: string } = {
     "Container M": "M",
     "Container L": "L",
     "Container XL": "XL",
+    "Expanded Container XL": "EXL",
 }
 
 // The size (in pixels) of a node item in the visualization
