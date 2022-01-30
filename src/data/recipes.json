@@ -6396,7 +6396,7 @@
         }
     },
     "Territory Unit": {
-        "tier": 5,
+        "tier": 3,
         "type": "Planet Element",
         "volume": 4118.29,
         "outputQuantity": 1,
