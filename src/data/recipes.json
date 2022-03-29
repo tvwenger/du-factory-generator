@@ -6706,8 +6706,8 @@
         "input": {
             "Basic Pipe": 6,
             "Basic Injector": 5,
-            "Basic Chemical Container S": 1,
-            "Basic Standard Frame S": 1
+            "Basic Chemical Container XS": 1,
+            "Basic Standard Frame XS": 1
         }
     },
     "Space Fuel Tank S": {
@@ -7738,9 +7738,9 @@
         "input": {
             "Uncommon Pipe": 18,
             "Advanced Pipe": 18,
-            "Advanced Burner": 25,
-            "Advanced Chemical Container M": 1,
-            "Advanced Reinforced Frame M": 1
+            "Rare Burner": 25,
+            "Rare Chemical Container M": 1,
+            "Rare Reinforced Frame M": 1
         }
     },
     "Transfer Unit": {
@@ -10743,8 +10743,8 @@
         "byproducts": {},
         "industry": "Assembly Line XS",
         "input": {
-            "Basic Component": 1,
-            "Uncommon Component": 1,
+            "Basic Screw": 1,
+            "Uncommon Screw": 1,
             "Uncommon Electronics": 1
         }
     },
