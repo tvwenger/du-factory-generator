@@ -209,6 +209,106 @@
         "industry": "",
         "input": {}
     },
+    "Relic Plasma Decem L": {
+        "tier": 5,
+        "type": "Relic Plasma",
+        "volume": 1500,
+        "outputQuantity": 1,
+        "time": 0,
+        "byproducts": {},
+        "industry": "",
+        "input": {}
+    },
+    "Relic Plasma Duo L": {
+        "tier": 5,
+        "type": "Relic Plasma",
+        "volume": 1500,
+        "outputQuantity": 1,
+        "time": 0,
+        "byproducts": {},
+        "industry": "",
+        "input": {}
+    },
+    "Relic Plasma Novem L": {
+        "tier": 5,
+        "type": "Relic Plasma",
+        "volume": 1500,
+        "outputQuantity": 1,
+        "time": 0,
+        "byproducts": {},
+        "industry": "",
+        "input": {}
+    },
+    "Relic Plasma Octo L": {
+        "tier": 5,
+        "type": "Relic Plasma",
+        "volume": 1500,
+        "outputQuantity": 1,
+        "time": 0,
+        "byproducts": {},
+        "industry": "",
+        "input": {}
+    },
+    "Relic Plasma Quattuor L": {
+        "tier": 5,
+        "type": "Relic Plasma",
+        "volume": 1500,
+        "outputQuantity": 1,
+        "time": 0,
+        "byproducts": {},
+        "industry": "",
+        "input": {}
+    },
+    "Relic Plasma Quinque L": {
+        "tier": 5,
+        "type": "Relic Plasma",
+        "volume": 1500,
+        "outputQuantity": 1,
+        "time": 0,
+        "byproducts": {},
+        "industry": "",
+        "input": {}
+    },
+    "Relic Plasma Septem L": {
+        "tier": 5,
+        "type": "Relic Plasma",
+        "volume": 1500,
+        "outputQuantity": 1,
+        "time": 0,
+        "byproducts": {},
+        "industry": "",
+        "input": {}
+    },
+    "Relic Plasma Sex L": {
+        "tier": 5,
+        "type": "Relic Plasma",
+        "volume": 1500,
+        "outputQuantity": 1,
+        "time": 0,
+        "byproducts": {},
+        "industry": "",
+        "input": {}
+    },
+    "Relic Plasma Tres L": {
+        "tier": 5,
+        "type": "Relic Plasma",
+        "volume": 1500,
+        "outputQuantity": 1,
+        "time": 0,
+        "byproducts": {},
+        "industry": "",
+        "input": {}
+    },
+    "Relic Plasma Unus L": {
+        "tier": 5,
+        "type": "Relic Plasma",
+        "volume": 1500,
+        "outputQuantity": 1,
+        "time": 0,
+        "byproducts": {},
+        "industry": "",
+        "input": {}
+    },
     "Pure Oxygen": {
         "tier": 0,
         "type": "Pure",
