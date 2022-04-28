@@ -9736,7 +9736,6 @@
             "Rare Reinforced Frame M": 1
         }
     },
-
     "Exotic Safe Space Engine M": {
         "tier": 5,
         "type": "Piloting Element",
@@ -10271,7 +10270,6 @@
             "Rare Reinforced Frame XL": 1
         }
     },
-
     "Exotic Safe Space Engine XL": {
         "tier": 5,
         "type": "Piloting Element",
@@ -10352,6 +10350,204 @@
             "Basic Reinforced Frame XS": 1
         }
     },
+    "Uncommon Military Hover Engine S": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 22.60,
+        "outputQuantity": 1,
+        "time": 1440,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line S",
+        "input": {
+            "Basic Screw": 3,
+            "Uncommon Screw": 3,
+            "Uncommon Injector": 5,
+            "Uncommon Gas Cylinder S": 1,
+            "Uncommon Reinforced Frame S": 1
+        }
+    },
+    "Uncommon Maneuver Hover Engine S": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 22.60,
+        "outputQuantity": 1,
+        "time": 1440,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line S",
+        "input": {
+            "Basic Screw": 3,
+            "Uncommon Screw": 3,
+            "Uncommon Injector": 5,
+            "Uncommon Gas Cylinder S": 1,
+            "Uncommon Reinforced Frame S": 1
+        }
+    },
+    "Uncommon Freight Hover Engine S": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 22.60,
+        "outputQuantity": 1,
+        "time": 1440,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line S",
+        "input": {
+            "Basic Screw": 3,
+            "Uncommon Screw": 3,
+            "Uncommon Injector": 5,
+            "Uncommon Gas Cylinder S": 1,
+            "Uncommon Reinforced Frame S": 1
+        }
+    },
+    "Advanced Military Hover Engine S": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 22.60,
+        "outputQuantity": 1,
+        "time": 4356,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line S",
+        "input": {
+            "Uncommon Screw": 6,
+            "Advanced Injector": 5,
+            "Advanced Gas Cylinder S": 1,
+            "Advanced Reinforced Frame S": 1
+        }
+    },
+    "Advanced Maneuver Hover Engine S": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 22.60,
+        "outputQuantity": 1,
+        "time": 4356,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line S",
+        "input": {
+            "Uncommon Screw": 6,
+            "Advanced Injector": 5,
+            "Advanced Gas Cylinder S": 1,
+            "Advanced Reinforced Frame S": 1
+        }
+    },
+    "Advanced Freight Hover Engine S": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 22.60,
+        "outputQuantity": 1,
+        "time": 4356,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line S",
+        "input": {
+            "Uncommon Screw": 6,
+            "Advanced Injector": 5,
+            "Advanced Gas Cylinder S": 1,
+            "Advanced Reinforced Frame S": 1
+        }
+    },
+    "Rare Military Hover Engine S": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 22.60,
+        "outputQuantity": 1,
+        "time": 12960,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line S",
+        "input": {
+            "Uncommon Screw": 3,
+            "Advanced Screw": 3,
+            "Rare Injector": 5,
+            "Rare Gas Cylinder S": 1,
+            "Rare Reinforced Frame S": 1
+        }
+    },
+    "Rare Maneuver Hover Engine S": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 22.60,
+        "outputQuantity": 1,
+        "time": 12960,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line S",
+        "input": {
+            "Uncommon Screw": 3,
+            "Advanced Screw": 3,
+            "Rare Injector": 5,
+            "Rare Gas Cylinder S": 1,
+            "Rare Reinforced Frame S": 1
+        }
+    },
+    "Rare Freight Hover Engine S": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 22.60,
+        "outputQuantity": 1,
+        "time": 12960,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line S",
+        "input": {
+            "Uncommon Screw": 3,
+            "Advanced Screw": 3,
+            "Rare Injector": 5,
+            "Rare Gas Cylinder S": 1,
+            "Rare Reinforced Frame S": 1
+        }
+    },
+    "Exotic Military Hover Engine S": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 22.60,
+        "outputQuantity": 1,
+        "time": 38880,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line S",
+        "input": {
+            "Advanced Screw": 6,
+            "Exotic Injector": 5,
+            "Exotic Gas Cylinder S": 1,
+            "Exotic Reinforced Frame S": 1
+        }
+    },
+    "Exotic Manuever Hover Engine S": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 22.60,
+        "outputQuantity": 1,
+        "time": 38880,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line S",
+        "input": {
+            "Advanced Screw": 6,
+            "Exotic Injector": 5,
+            "Exotic Gas Cylinder S": 1,
+            "Exotic Reinforced Frame S": 1
+        }
+    },
+    "Exotic Freight Hover Engine S": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 22.60,
+        "outputQuantity": 1,
+        "time": 38880,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line S",
+        "input": {
+            "Advanced Screw": 6,
+            "Exotic Injector": 5,
+            "Exotic Gas Cylinder S": 1,
+            "Exotic Reinforced Frame S": 1
+        }
+    },
     "Hover Engine M": {
         "tier": 2,
         "type": "Piloting Element",
@@ -10366,6 +10562,204 @@
             "Basic Injector": 5,
             "Basic Gas Cylinder S": 1,
             "Basic Reinforced Frame S": 1
+        }
+    },
+    "Uncommon Military Hover Engine M": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 116.60,
+        "outputQuantity": 1,
+        "time": 5760,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line M",
+        "input": {
+            "Basic Screw": 18,
+            "Uncommon Screw": 18,
+            "Uncommon Injector": 25,
+            "Uncommon Gas Cylinder M": 1,
+            "Uncommon Reinforced Frame M": 1
+        }
+    },
+    "Uncommon Maneuver Hover Engine M": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 116.60,
+        "outputQuantity": 1,
+        "time": 5760,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line M",
+        "input": {
+            "Basic Screw": 18,
+            "Uncommon Screw": 18,
+            "Uncommon Injector": 25,
+            "Uncommon Gas Cylinder M": 1,
+            "Uncommon Reinforced Frame M": 1
+        }
+    },
+    "Uncommon Freight Hover Engine M": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 116.60,
+        "outputQuantity": 1,
+        "time": 5760,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line M",
+        "input": {
+            "Basic Screw": 18,
+            "Uncommon Screw": 18,
+            "Uncommon Injector": 25,
+            "Uncommon Gas Cylinder M": 1,
+            "Uncommon Reinforced Frame M": 1
+        }
+    },
+    "Advanced Military Hover Engine M": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 116.60,
+        "outputQuantity": 1,
+        "time": 17280,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line M",
+        "input": {
+            "Uncommon Screw": 36,
+            "Advanced Injector": 25,
+            "Advanced Gas Cylinder M": 1,
+            "Advanced Reinforced Frame M": 1
+        }
+    },
+    "Advanced Maneuver Hover Engine M": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 116.60,
+        "outputQuantity": 1,
+        "time": 17280,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line M",
+        "input": {
+            "Uncommon Screw": 36,
+            "Advanced Injector": 25,
+            "Advanced Gas Cylinder M": 1,
+            "Advanced Reinforced Frame M": 1
+        }
+    },
+    "Advanced Freight Hover Engine M": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 116.60,
+        "outputQuantity": 1,
+        "time": 17280,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line M",
+        "input": {
+            "Uncommon Screw": 36,
+            "Advanced Injector": 25,
+            "Advanced Gas Cylinder M": 1,
+            "Advanced Reinforced Frame M": 1
+        }
+    },
+    "Rare Military Hover Engine M": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 116.60,
+        "outputQuantity": 1,
+        "time": 51840,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line M",
+        "input": {
+            "Uncommon Screw": 18,
+            "Advanced Screw": 18,
+            "Rare Injector": 25,
+            "Rare Gas Cylinder M": 1,
+            "Rare Reinforced Frame M": 1
+        }
+    },
+    "Rare Maneuver Hover Engine M": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 116.60,
+        "outputQuantity": 1,
+        "time": 51840,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line M",
+        "input": {
+            "Uncommon Screw": 18,
+            "Advanced Screw": 18,
+            "Rare Injector": 25,
+            "Rare Gas Cylinder M": 1,
+            "Rare Reinforced Frame M": 1
+        }
+    },
+    "Rare Freight Hover Engine M": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 116.60,
+        "outputQuantity": 1,
+        "time": 51840,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line M",
+        "input": {
+            "Uncommon Screw": 18,
+            "Advanced Screw": 18,
+            "Rare Injector": 25,
+            "Rare Gas Cylinder M": 1,
+            "Rare Reinforced Frame M": 1
+        }
+    },
+    "Exotic Military Hover Engine M": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 116.60,
+        "outputQuantity": 1,
+        "time": 155520,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line M",
+        "input": {
+            "Advanced Screw": 36,
+            "Exotic Injector": 25,
+            "Exotic Gas Cylinder M": 1,
+            "Exotic Reinforced Frame M": 1
+        }
+    },
+    "Exotic Maneuver Hover Engine M": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 116.60,
+        "outputQuantity": 1,
+        "time": 155520,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line M",
+        "input": {
+            "Advanced Screw": 36,
+            "Exotic Injector": 25,
+            "Exotic Gas Cylinder M": 1,
+            "Exotic Reinforced Frame M": 1
+        }
+    },
+    "Exotic Freight Hover Engine M": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 116.60,
+        "outputQuantity": 1,
+        "time": 155520,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line M",
+        "input": {
+            "Advanced Screw": 36,
+            "Exotic Injector": 25,
+            "Exotic Gas Cylinder M": 1,
+            "Exotic Reinforced Frame M": 1
         }
     },
     "Hover Engine L": {
@@ -10383,6 +10777,204 @@
             "Basic Reinforced Frame M": 1
         }
     },
+    "Uncommon Maneuver Hover Engine L": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 23040,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Basic Screw": 108,
+            "Uncommon Screw": 108,
+            "Uncommon Injector": 125,
+            "Uncommon Gas Cylinder L": 1,
+            "Uncommon Reinforced Frame L": 1
+        }
+    },
+    "Uncommon Military Hover Engine L": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 23040,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Basic Screw": 108,
+            "Uncommon Screw": 108,
+            "Uncommon Injector": 125,
+            "Uncommon Gas Cylinder L": 1,
+            "Uncommon Reinforced Frame L": 1
+        }
+    },
+    "Uncommon Freight Hover Engine L": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 23040,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Basic Screw": 108,
+            "Uncommon Screw": 108,
+            "Uncommon Injector": 125,
+            "Uncommon Gas Cylinder L": 1,
+            "Uncommon Reinforced Frame L": 1
+        }
+    },
+    "Advanced Military Hover Engine L": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 69120,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Uncommon Screw": 216,
+            "Advanced Injector": 125,
+            "Advanced Gas Cylinder L": 1,
+            "Advanced Reinforced Frame L": 1
+        }
+    },
+    "Advanced Freight Hover Engine L": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 69120,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Uncommon Screw": 216,
+            "Advanced Injector": 125,
+            "Advanced Gas Cylinder L": 1,
+            "Advanced Reinforced Frame L": 1
+        }
+    },
+    "Advanced Maneuver Hover Engine L": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 69120,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Uncommon Screw": 216,
+            "Advanced Injector": 125,
+            "Advanced Gas Cylinder L": 1,
+            "Advanced Reinforced Frame L": 1
+        }
+    },
+    "Rare Military Hover Engine L": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 208800,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Uncommon Screw": 108,
+            "Advanced Screw": 108,
+            "Rare Injector": 125,
+            "Rare Gas Cylinder L": 1,
+            "Rare Reinforced Frame L": 1
+        }
+    },
+    "Rare Maneuver Hover Engine L": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 208800,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Uncommon Screw": 108,
+            "Advanced Screw": 108,
+            "Rare Injector": 125,
+            "Rare Gas Cylinder L": 1,
+            "Rare Reinforced Frame L": 1
+        }
+    },
+    "Rare Freight Hover Engine L": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 208800,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Uncommon Screw": 108,
+            "Advanced Screw": 108,
+            "Rare Injector": 125,
+            "Rare Gas Cylinder L": 1,
+            "Rare Reinforced Frame L": 1
+        }
+    },
+    "Exotic Military Hover Engine L": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 622800,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Advanced Screw": 216,
+            "Exotic Injector": 125,
+            "Exotic Gas Cylinder L": 1,
+            "Exotic Reinforced Frame L": 1
+        }
+    },
+    "Exotic Maneuver Hover Engine L": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 622800,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Advanced Screw": 216,
+            "Exotic Injector": 125,
+            "Exotic Gas Cylinder L": 1,
+            "Exotic Reinforced Frame L": 1
+        }
+    },
+    "Exotic Freight Hover Engine L": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 622800,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Advanced Screw": 216,
+            "Exotic Injector": 125,
+            "Exotic Gas Cylinder L": 1,
+            "Exotic Reinforced Frame L": 1
+        }
+    },
     "Flat Hover Engine L": {
         "tier": 2,
         "type": "Piloting Element",
@@ -10396,6 +10988,204 @@
             "Basic Injector": 25,
             "Basic Gas Cylinder M": 1,
             "Basic Reinforced Frame M": 1
+        }
+    },
+    "Uncommon Maneuver Flat Hover Engine L": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 23040,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Basic Screw": 108,
+            "Uncommon Screw": 108,
+            "Uncommon Injector": 125,
+            "Uncommon Gas Cylinder L": 1,
+            "Uncommon Reinforced Frame L": 1
+        }
+    },
+    "Uncommon Military Flat Hover Engine L": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 23040,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Basic Screw": 108,
+            "Uncommon Screw": 108,
+            "Uncommon Injector": 125,
+            "Uncommon Gas Cylinder L": 1,
+            "Uncommon Reinforced Frame L": 1
+        }
+    },
+    "Uncommon Freight Flat Hover Engine L": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 23040,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Basic Screw": 108,
+            "Uncommon Screw": 108,
+            "Uncommon Injector": 125,
+            "Uncommon Gas Cylinder L": 1,
+            "Uncommon Reinforced Frame L": 1
+        }
+    },
+    "Advanced Military Flat Hover Engine L": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 69120,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Uncommon Screw": 216,
+            "Advanced Injector": 125,
+            "Advanced Gas Cylinder L": 1,
+            "Advanced Reinforced Frame L": 1
+        }
+    },
+    "Advanced Freight Flat Hover Engine L": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 69120,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Uncommon Screw": 216,
+            "Advanced Injector": 125,
+            "Advanced Gas Cylinder L": 1,
+            "Advanced Reinforced Frame L": 1
+        }
+    },
+    "Advanced Maneuver Flat Hover Engine L": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 69120,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Uncommon Screw": 216,
+            "Advanced Injector": 125,
+            "Advanced Gas Cylinder L": 1,
+            "Advanced Reinforced Frame L": 1
+        }
+    },
+    "Rare Military Flat Hover Engine L": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 208800,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Uncommon Screw": 108,
+            "Advanced Screw": 108,
+            "Rare Injector": 125,
+            "Rare Gas Cylinder L": 1,
+            "Rare Reinforced Frame L": 1
+        }
+    },
+    "Rare Maneuver Flat Hover Engine L": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 208800,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Uncommon Screw": 108,
+            "Advanced Screw": 108,
+            "Rare Injector": 125,
+            "Rare Gas Cylinder L": 1,
+            "Rare Reinforced Frame L": 1
+        }
+    },
+    "Rare Freight Flat Hover Engine L": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 208800,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Uncommon Screw": 108,
+            "Advanced Screw": 108,
+            "Rare Injector": 125,
+            "Rare Gas Cylinder L": 1,
+            "Rare Reinforced Frame L": 1
+        }
+    },
+    "Exotic Military Flat Hover Engine L": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 622800,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Advanced Screw": 216,
+            "Exotic Injector": 125,
+            "Exotic Gas Cylinder L": 1,
+            "Exotic Reinforced Frame L": 1
+        }
+    },
+    "Exotic Maneuver Flat Hover Engine L": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 622800,
+        "byproducts": {},
+        "nanopack": true,
+        4 "industry": "Assembly Line L",
+        "input": {
+            "Advanced Screw": 216,
+            "Exotic Injector": 125,
+            "Exotic Gas Cylinder L": 1,
+            "Exotic Reinforced Frame L": 1
+        }
+    },
+    "Exotic Freight Flat Hover Engine L": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 619.20,
+        "outputQuantity": 1,
+        "time": 622800,
+        "byproducts": {},
+        "nanopack": true,
+        "industry": "Assembly Line L",
+        "input": {
+            "Advanced Screw": 216,
+            "Exotic Injector": 125,
+            "Exotic Gas Cylinder L": 1,
+            "Exotic Reinforced Frame L": 1
         }
     },
     "Adjustor XS": {
@@ -12244,7 +13034,6 @@
             "Relic Plasma Novem L": 1
         }
     },
-
     "Advanced Shield Generator S": {
         "tier": 3,
         "type": "Combat Element",
@@ -12261,7 +13050,6 @@
             "Advanced Reinforced Frame M": 1
         }
     },
-
     "Rare Capacitor Shield Generator S": {
         "tier": 4,
         "type": "Combat Element",
@@ -21698,7 +22486,6 @@
             "Exotic Standard Frame L": 1
         }
     },
-
     "Exotic Safe Atmospheric Engine L": {
         "tier": 5,
         "type": "Piloting Element",
@@ -21763,7 +22550,6 @@
             "Relic Plasma Duo L": 1
         }
     },
-
     "Exotic Safe Atmospheric Engine M": {
         "tier": 5,
         "type": "Piloting Element",
@@ -21828,7 +22614,6 @@
             "Relic Plasma Duo L": 1
         }
     },
-
     "Exotic Safe Atmospheric Engine S": {
         "tier": 5,
         "type": "Piloting Element",
@@ -21893,7 +22678,6 @@
             "Relic Plasma Duo L": 1
         }
     },
-
     "Exotic Safe Atmospheric Engine XS": {
         "tier": 5,
         "type": "Piloting Element",
@@ -22562,7 +23346,6 @@
             "Exotic Standard Frame S": 1,
             "Relic Plasma Octo L": 1
         }
-
     },
     "Exotic Gravity Inverted Container XS": {
         "tier": 5,
@@ -22785,7 +23568,6 @@
             "Rare Standard Frame L": 1
         }
     },
-
     "Exotic Mobile Panel S": {
         "tier": 5,
         "type": "Functional Part",
@@ -22914,7 +23696,6 @@
             "Uncommon Standard Frame S": 1
         }
     },
-
     "Uncommon Maneuver Vertical Booster S": {
         "tier": 2,
         "type": "Piloting Element",
@@ -22963,7 +23744,6 @@
             "Uncommon Standard Frame M": 1
         }
     },
-
     "Uncommon Maneuver Vertical Booster M": {
         "tier": 2,
         "type": "Piloting Element",
@@ -23044,7 +23824,6 @@
             "Uncommon Standard Frame L": 1
         }
     },
-
     "Advanced Freight Vertical Booster XS": {
         "tier": 3,
         "type": "Piloting Element",
@@ -23417,7 +24196,6 @@
             "Rare Standard Frame L": 1
         }
     },
-
     "Exotic Freight Vertical Booster XS": {
         "tier": 5,
         "type": "Piloting Element",
@@ -23610,157 +24388,6 @@
             "Relic Plasma Tres L": 1
         }
     },
-    "Uncommon Hover Engine L": {
-        "tier": 2,
-        "type": "Piloting Element",
-        "volume": 619.20,
-        "outputQuantity": 1,
-        "time": 23040,
-        "byproducts": {},
-        "nanopack": true,
-        "industry": "Assembly Line L",
-        "input": {
-            "Basic Screw": 108,
-            "Uncommon Screw": 108,
-            "Uncommon Injector": 125,
-            "Uncommon Gas Cylinder L": 1,
-            "Uncommon Reinforced Frame L": 1
-        }
-    },
-    "Advanced Hover Engine L": {
-        "tier": 3,
-        "type": "Piloting Element",
-        "volume": 619.20,
-        "outputQuantity": 1,
-        "time": 69120,
-        "byproducts": {},
-        "nanopack": true,
-        "industry": "Assembly Line L",
-        "input": {
-            "Uncommon Screw": 216,
-            "Advanced Injector": 125,
-            "Advanced Gas Cylinder L": 1,
-            "Advanced Reinforced Frame L": 1
-        }
-    },
-    "Rare Hover Engine L": {
-        "tier": 4,
-        "type": "Piloting Element",
-        "volume": 619.20,
-        "outputQuantity": 1,
-        "time": 208800,
-        "byproducts": {},
-        "nanopack": true,
-        "industry": "Assembly Line L",
-        "input": {
-            "Uncommon Screw": 108,
-            "Advanced Screw": 108,
-            "Rare Injector": 125,
-            "Rare Gas Cylinder L": 1,
-            "Rare Reinforced Frame L": 1
-        }
-    },
-    "Uncommon Hover Engine M": {
-        "tier": 2,
-        "type": "Piloting Element",
-        "volume": 116.60,
-        "outputQuantity": 1,
-        "time": 5760,
-        "byproducts": {},
-        "nanopack": true,
-        "industry": "Assembly Line M",
-        "input": {
-            "Basic Screw": 18,
-            "Uncommon Screw": 18,
-            "Uncommon Injector": 25,
-            "Uncommon Gas Cylinder M": 1,
-            "Uncommon Reinforced Frame M": 1
-        }
-    },
-    "Advanced Hover Engine M": {
-        "tier": 3,
-        "type": "Piloting Element",
-        "volume": 116.60,
-        "outputQuantity": 1,
-        "time": 17280,
-        "byproducts": {},
-        "nanopack": true,
-        "industry": "Assembly Line M",
-        "input": {
-            "Uncommon Screw": 36,
-            "Advanced Injector": 25,
-            "Advanced Gas Cylinder M": 1,
-            "Advanced Reinforced Frame M": 1
-        }
-    },
-    "Rare Hover Engine m": {
-        "tier": 4,
-        "type": "Piloting Element",
-        "volume": 116.60,
-        "outputQuantity": 1,
-        "time": 51840,
-        "byproducts": {},
-        "nanopack": true,
-        "industry": "Assembly Line M",
-        "input": {
-            "Uncommon Screw": 18,
-            "Advanced Screw": 18,
-            "Rare Injector": 25,
-            "Rare Gas Cylinder M": 1,
-            "Rare Reinforced Frame M": 1
-        }
-    },
-    "Uncommon Hover Engine S": {
-        "tier": 2,
-        "type": "Piloting Element",
-        "volume": 22.60,
-        "outputQuantity": 1,
-        "time": 1440,
-        "byproducts": {},
-        "nanopack": true,
-        "industry": "Assembly Line S",
-        "input": {
-            "Basic Screw": 3,
-            "Uncommon Screw": 3,
-            "Uncommon Injector": 5,
-            "Uncommon Gas Cylinder S": 1,
-            "Uncommon Reinforced Frame S": 1
-        }
-    },
-    "Advanced Hover Engine S": {
-        "tier": 3,
-        "type": "Piloting Element",
-        "volume": 22.60,
-        "outputQuantity": 1,
-        "time": 4356,
-        "byproducts": {},
-        "nanopack": true,
-        "industry": "Assembly Line S",
-        "input": {
-            "Uncommon Screw": 6,
-            "Advanced Injector": 5,
-            "Advanced Gas Cylinder S": 1,
-            "Advanced Reinforced Frame S": 1
-        }
-    },
-    "Rare Hover Engine S": {
-        "tier": 4,
-        "type": "Piloting Element",
-        "volume": 22.60,
-        "outputQuantity": 1,
-        "time": 12960,
-        "byproducts": {},
-        "nanopack": true,
-        "industry": "Assembly Line S",
-        "input": {
-            "Uncommon Screw": 3,
-            "Advanced Screw": 3,
-            "Rare Injector": 5,
-            "Rare Gas Cylinder S": 1,
-            "Rare Reinforced Frame S": 1
-        }
-    },
-
     "Stasis Weapon XS": {
         "tier": 4,
         "type": "Combat Element",
