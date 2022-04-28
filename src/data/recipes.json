@@ -6303,6 +6303,19 @@
             "Grade 5 Titanium Alloy": 343
         }
     },
+    "Exotic Standard Frame XL": {
+        "tier": 5,
+        "type": "Structural Part",
+        "volume": 3602,
+        "outputQuantity": 1,
+        "time": 828000,
+        "byproducts": {},
+        "industry": "Metalwork Industry M",
+        "input": {
+            "Silumin": 1201,
+            "Grade 5 Titanium Alloy": 2401
+        }
+    },
     "Dynamic Core Unit XS": {
         "tier": 1,
         "type": "Planet Element",
@@ -22543,7 +22556,7 @@
         "industry": "Assembly Line S",
         "input": {
             "Advanced Screw": 6,
-            "Exotic hydraulics": 5,
+            "Exotic Hydraulics": 5,
             "Exotic Mobile panel S": 1,
             "Exotic Quantum Alignment Unit": 4,
             "Exotic Standard Frame S": 1,
@@ -22561,7 +22574,7 @@
         "industry": "Assembly Line S",
         "input": {
             "Advanced Screw": 6,
-            "Exotic hydraulics": 5,
+            "Exotic Hydraulics": 5,
             "Exotic Mobile panel S": 1,
             "Exotic Anti-Gravity Core": 4,
             "Exotic Standard Frame S": 1,
@@ -22578,7 +22591,7 @@
         "industry": "Assembly Line M",
         "input": {
             "Advanced Screw": 36,
-            "Exotic hydraulics": 25,
+            "Exotic Hydraulics": 25,
             "Exotic Mobile panel M": 1,
             "Exotic Quantum Alignment Unit": 16,
             "Exotic Standard Frame M": 1,
@@ -22595,7 +22608,7 @@
         "industry": "Assembly Line M",
         "input": {
             "Advanced Screw": 36,
-            "Exotic hydraulics": 25,
+            "Exotic Hydraulics": 25,
             "Exotic Mobile panel M": 1,
             "Exotic Anti-Gravity Core": 16,
             "Exotic Standard Frame M": 1,
@@ -22612,7 +22625,7 @@
         "industry": "Assembly Line L",
         "input": {
             "Advanced Screw": 216,
-            "Exotic hydraulics": 125,
+            "Exotic Hydraulics": 125,
             "Exotic Mobile panel L": 1,
             "Exotic Quantum Alignment Unit": 64,
             "Exotic Standard Frame L": 1,
@@ -22629,7 +22642,7 @@
         "industry": "Assembly Line L",
         "input": {
             "Advanced Screw": 216,
-            "Exotic hydraulics": 125,
+            "Exotic Hydraulics": 125,
             "Exotic Mobile panel L": 1,
             "Exotic Anti-Gravity Core": 64,
             "Exotic Standard Frame L": 1,
@@ -22646,7 +22659,7 @@
         "industry": "Assembly Line L",
         "input": {
             "Advanced Screw": 432,
-            "Exotic hydraulics": 250,
+            "Exotic Hydraulics": 250,
             "Exotic Mobile panel L": 2,
             "Exotic Quantum Alignment Unit": 128,
             "Exotic Standard Frame L": 2,
@@ -22663,7 +22676,7 @@
         "industry": "Assembly Line L",
         "input": {
             "Advanced Screw": 432,
-            "Exotic hydraulics": 250,
+            "Exotic Hydraulics": 250,
             "Exotic Mobile panel L": 2,
             "Exotic Anti-Gravity Core": 128,
             "Exotic Standard Frame L": 2,
@@ -22680,8 +22693,8 @@
         "industry": "Assembly Line XL",
         "input": {
             "Advanced Screw": 1296,
-            "Exotic hydraulics": 625,
-            "Exotic Mobile panel XL": 1,
+            "Exotic Hydraulics": 625,
+            "Exotic Mobile Panel XL": 1,
             "Exotic Quantum Alignment Unit": 128,
             "Exotic Standard Frame XL": 1,
             "Relic Plasma Octo L": 1
@@ -22697,8 +22710,8 @@
         "industry": "Assembly Line XL",
         "input": {
             "Advanced Screw": 1296,
-            "Exotic hydraulics": 625,
-            "Exotic Mobile panel XL": 1,
+            "Exotic Hydraulics": 625,
+            "Exotic Mobile Panel XL": 1,
             "Exotic Anti-Gravity Core": 128,
             "Exotic Standard Frame XL": 1,
             "Relic Plasma Octo L": 1
@@ -22714,8 +22727,8 @@
         "industry": "Assembly Line XL",
         "input": {
             "Advanced Screw": 2592,
-            "Exotic hydraulics": 1250,
-            "Exotic Mobile panel XL": 2,
+            "Exotic Hydraulics": 1250,
+            "Exotic Mobile Panel XL": 2,
             "Exotic Quantum Alignment Unit": 512,
             "Exotic Standard Frame XL": 2,
             "Relic Plasma Octo L": 2
@@ -22731,8 +22744,8 @@
         "industry": "Assembly Line XL",
         "input": {
             "Advanced Screw": 2592,
-            "Exotic hydraulics": 1250,
-            "Exotic Mobile panel XL": 2,
+            "Exotic Hydraulics": 1250,
+            "Exotic Mobile Panel XL": 2,
             "Exotic Anti-Gravity Core": 512,
             "Exotic Standard Frame XL": 2,
             "Relic Plasma Octo L": 2
