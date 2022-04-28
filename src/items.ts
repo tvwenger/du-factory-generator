@@ -27,6 +27,7 @@ export enum Category {
     INDUSTRY_AND_INFRASTRUCTURE_ELEMENT = "Industry & Infrastructure Element",
     INTERMEDIARY_PART = "Intermediary Part",
     ORE = "Ore",
+	RELICPLASMA = "Relic Plasma",
     PILOTING_ELEMENT = "Piloting Element",
     PLANET_ELEMENT = "Planet Element",
     PRODUCT = "Product",
@@ -60,6 +61,14 @@ export function isOre(item: Item): boolean {
 }
 
 /**
+ * RelicPlasma type guard
+ * @param item Item to check
+ */
+export function isRelicPlasma(item: Item): boolean {
+    return item.category === Category.RELICPLASMA
+}
+
+/**
  * Gas type guard
  * @param item Item to check
  */
@@ -72,7 +81,7 @@ export function isGas(item: Item): boolean {
  * @param item Item to check
  */
 export function isCraftable(item: Item): boolean {
-    return !isOre(item)
+    return !isOre(item) && !isRelicPlasma(item)
 }
 
 /**
