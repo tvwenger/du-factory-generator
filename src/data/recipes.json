@@ -10513,7 +10513,8 @@
             "Advanced Screw": 6,
             "Exotic Injector": 5,
             "Exotic Gas Cylinder S": 1,
-            "Exotic Reinforced Frame S": 1
+            "Exotic Reinforced Frame S": 1,
+            "Relic Plasma Tres L": 1
         }
     },
     "Exotic Manuever Hover Engine S": {
@@ -10529,7 +10530,8 @@
             "Advanced Screw": 6,
             "Exotic Injector": 5,
             "Exotic Gas Cylinder S": 1,
-            "Exotic Reinforced Frame S": 1
+            "Exotic Reinforced Frame S": 1,
+            "Relic Plasma Tres L": 1
         }
     },
     "Exotic Freight Hover Engine S": {
@@ -10545,7 +10547,8 @@
             "Advanced Screw": 6,
             "Exotic Injector": 5,
             "Exotic Gas Cylinder S": 1,
-            "Exotic Reinforced Frame S": 1
+            "Exotic Reinforced Frame S": 1,
+            "Relic Plasma Tres L": 1
         }
     },
     "Hover Engine M": {
@@ -10727,7 +10730,8 @@
             "Advanced Screw": 36,
             "Exotic Injector": 25,
             "Exotic Gas Cylinder M": 1,
-            "Exotic Reinforced Frame M": 1
+            "Exotic Reinforced Frame M": 1,
+            "Relic Plasma Tres L": 1
         }
     },
     "Exotic Maneuver Hover Engine M": {
@@ -10743,7 +10747,8 @@
             "Advanced Screw": 36,
             "Exotic Injector": 25,
             "Exotic Gas Cylinder M": 1,
-            "Exotic Reinforced Frame M": 1
+            "Exotic Reinforced Frame M": 1,
+            "Relic Plasma Tres L": 1
         }
     },
     "Exotic Freight Hover Engine M": {
@@ -10759,7 +10764,8 @@
             "Advanced Screw": 36,
             "Exotic Injector": 25,
             "Exotic Gas Cylinder M": 1,
-            "Exotic Reinforced Frame M": 1
+            "Exotic Reinforced Frame M": 1,
+            "Relic Plasma Tres L": 1
         }
     },
     "Hover Engine L": {
@@ -10940,7 +10946,8 @@
             "Advanced Screw": 216,
             "Exotic Injector": 125,
             "Exotic Gas Cylinder L": 1,
-            "Exotic Reinforced Frame L": 1
+            "Exotic Reinforced Frame L": 1,
+            "Relic Plasma Tres L": 1
         }
     },
     "Exotic Maneuver Hover Engine L": {
@@ -10956,7 +10963,8 @@
             "Advanced Screw": 216,
             "Exotic Injector": 125,
             "Exotic Gas Cylinder L": 1,
-            "Exotic Reinforced Frame L": 1
+            "Exotic Reinforced Frame L": 1,
+            "Relic Plasma Tres L": 1
         }
     },
     "Exotic Freight Hover Engine L": {
@@ -10972,7 +10980,8 @@
             "Advanced Screw": 216,
             "Exotic Injector": 125,
             "Exotic Gas Cylinder L": 1,
-            "Exotic Reinforced Frame L": 1
+            "Exotic Reinforced Frame L": 1,
+            "Relic Plasma Tres L": 1
         }
     },
     "Flat Hover Engine L": {
@@ -11153,7 +11162,8 @@
             "Advanced Screw": 216,
             "Exotic Injector": 125,
             "Exotic Gas Cylinder L": 1,
-            "Exotic Reinforced Frame L": 1
+            "Exotic Reinforced Frame L": 1,
+            "Relic Plasma Tres L": 1
         }
     },
     "Exotic Maneuver Flat Hover Engine L": {
@@ -11164,12 +11174,13 @@
         "time": 622800,
         "byproducts": {},
         "nanopack": true,
-        4 "industry": "Assembly Line L",
+        "industry": "Assembly Line L",
         "input": {
             "Advanced Screw": 216,
             "Exotic Injector": 125,
             "Exotic Gas Cylinder L": 1,
-            "Exotic Reinforced Frame L": 1
+            "Exotic Reinforced Frame L": 1,
+            "Relic Plasma Tres L": 1
         }
     },
     "Exotic Freight Flat Hover Engine L": {
@@ -11185,7 +11196,8 @@
             "Advanced Screw": 216,
             "Exotic Injector": 125,
             "Exotic Gas Cylinder L": 1,
-            "Exotic Reinforced Frame L": 1
+            "Exotic Reinforced Frame L": 1,
+            "Relic Plasma Tres L": 1
         }
     },
     "Adjustor XS": {
