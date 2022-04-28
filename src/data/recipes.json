@@ -12013,7 +12013,7 @@
             "Exotic Standard Frame L": 1
         }
     },
-    "Shield Generator XS": {
+    "Advanced Shield Generator XS": {
         "tier": 3,
         "type": "Combat Element",
         "volume": 210,
@@ -12029,7 +12029,110 @@
             "Advanced Reinforced Frame S": 1
         }
     },
-    "Shield Generator S": {
+    "Rare Capacitor Shield Generator XS": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 168,
+        "outputQuantity": 1,
+        "time": 4050,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Uncommon Component": 1,
+            "Advanced Component": 1,
+            "Rare Magnet": 1,
+            "Rare Laser Chamber XS": 1,
+            "Rare Quantum Barrier": 1,
+            "Rare Reinforced Frame XS": 1
+        }
+    },
+    "Rare Variable Shield Generator XS": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 168,
+        "outputQuantity": 1,
+        "time": 4050,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Uncommon Component": 1,
+            "Advanced Component": 1,
+            "Rare Magnet": 1,
+            "Rare Laser Chamber XS": 1,
+            "Rare Quantum Barrier": 1,
+            "Rare Reinforced Frame XS": 1
+        }
+    },
+    "Rare Active Shield Generator XS": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 168,
+        "outputQuantity": 1,
+        "time": 4050,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Uncommon Component": 1,
+            "Advanced Component": 1,
+            "Rare Magnet": 1,
+            "Rare Laser Chamber XS": 1,
+            "Rare Quantum Barrier": 1,
+            "Rare Reinforced Frame XS": 1
+        }
+    },
+    "Exotic Capacitor Shield Generator XS": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 168,
+        "outputQuantity": 1,
+        "time": 12180,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Advanced Component": 1,
+            "Exotic Magnet": 1,
+            "Exotic Laser Chamber XS": 1,
+            "Exotic Quantum Barrier": 1,
+            "Exotic Reinforced Frame XS": 1
+            "Relic Plasma Novem L": 1
+        }
+    },
+    "Exotic Variable Shield Generator XS": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 168,
+        "outputQuantity": 1,
+        "time": 12180,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Advanced Component": 1,
+            "Exotic Magnet": 1,
+            "Exotic Laser Chamber XS": 1,
+            "Exotic Quantum Barrier": 1,
+            "Exotic Reinforced Frame XS": 1
+            "Relic Plasma Novem L": 1
+        }
+    },
+    "Exotic Active Shield Generator XS": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 134.4,
+        "outputQuantity": 1,
+        "time": 12180,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Advanced Component": 1,
+            "Exotic Magnet": 1,
+            "Exotic Laser Chamber XS": 1,
+            "Exotic Quantum Barrier": 1,
+            "Exotic Reinforced Frame XS": 1
+            "Relic Plasma Novem L": 1
+        }
+    },
+
+    "Advanced Shield Generator S": {
         "tier": 3,
         "type": "Combat Element",
         "volume": 950,
@@ -12045,7 +12148,110 @@
             "Advanced Reinforced Frame M": 1
         }
     },
-    "Shield Generator M": {
+
+    "Rare Capacitor Shield Generator S": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 950,
+        "outputQuantity": 1,
+        "time": 16200,
+        "byproducts": {},
+        "industry": "Assembly Line S",
+        "input": {
+            "Uncommon Component": 3,
+            "Advanced Component": 3,
+            "Rare Magnet": 5,
+            "Rare Laser Chamber S": 1,
+            "Rare Quantum Barrier": 4,
+            "Rare Reinforced Frame S": 1
+        }
+    },
+    "Rare Variable Shield Generator S": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 950,
+        "outputQuantity": 1,
+        "time": 16200,
+        "byproducts": {},
+        "industry": "Assembly Line S",
+        "input": {
+            "Uncommon Component": 3,
+            "Advanced Component": 3,
+            "Rare Magnet": 5,
+            "Rare Laser Chamber S": 1,
+            "Rare Quantum Barrier": 4,
+            "Rare Reinforced Frame S": 1
+        }
+    },
+    "Rare Active Shield Generator S": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 760,
+        "outputQuantity": 1,
+        "time": 16200,
+        "byproducts": {},
+        "industry": "Assembly Line S",
+        "input": {
+            "Uncommon Component": 3,
+            "Advanced Component": 3,
+            "Rare Magnet": 5,
+            "Rare Laser Chamber S": 1,
+            "Rare Quantum Barrier": 4,
+            "Rare Reinforced Frame S": 1
+        }
+    },
+    "Exotic Capacitor Shield Generator S": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 950,
+        "outputQuantity": 1,
+        "time": 48600,
+        "byproducts": {},
+        "industry": "Assembly Line S",
+        "input": {
+            "Advanced Component": 6,
+            "Exotic Magnet": 5,
+            "Exotic Laser Chamber S": 1,
+            "Exotic Quantum Barrier": 4,
+            "Exotic Reinforced Frame S": 1
+            "Relic Plasma Novem L": 1
+        }
+    },
+    "Exotic Variable Shield Generator S": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 950,
+        "outputQuantity": 1,
+        "time": 48600,
+        "byproducts": {},
+        "industry": "Assembly Line S",
+        "input": {
+            "Advanced Component": 6,
+            "Exotic Magnet": 5,
+            "Exotic Laser Chamber S": 1,
+            "Exotic Quantum Barrier": 4,
+            "Exotic Reinforced Frame S": 1
+            "Relic Plasma Novem L": 1
+        }
+    },
+    "Exotic Active Shield Generator S": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 608,
+        "outputQuantity": 1,
+        "time": 48600,
+        "byproducts": {},
+        "industry": "Assembly Line S",
+        "input": {
+            "Advanced Component": 6,
+            "Exotic Magnet": 5,
+            "Exotic Laser Chamber S": 1,
+            "Exotic Quantum Barrier": 4,
+            "Exotic Reinforced Frame S": 1
+            "Relic Plasma Novem L": 1
+        }
+    },
+    "Advanced Shield Generator M": {
         "tier": 3,
         "type": "Combat Element",
         "volume": 4500,
@@ -12061,7 +12267,7 @@
             "Advanced Reinforced Frame L": 1
         }
     },
-    "Shield Generator L": {
+    "Advanced Shield Generator L": {
         "tier": 3,
         "type": "Combat Element",
         "volume": 22700,
@@ -12075,6 +12281,23 @@
             "Advanced Laser Chamber XL": 1,
             "Advanced Quantum Barrier": 256,
             "Advanced Reinforced Frame XL": 1
+        }
+    },
+    "Base Shield Generator XL": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 22700,
+        "outputQuantity": 1,
+        "time": 1036800,
+        "byproducts": {},
+        "industry": "Assembly Line XL",
+        "input": {
+            "Uncommon Component": 648,
+            "Advanced Component": 648,
+            "Rare Magnet": 625,
+            "Rare Laser Chamber XL": 1,
+            "Rare Quantum Barrier": 256,
+            "Rare Reinforced Frame XL": 1
         }
     },
     "Info Button S": {
