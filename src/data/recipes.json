@@ -21420,7 +21420,7 @@
     },
     "Uncommon Optimised Container XS": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 64,
         "outputQuantity": 1,
         "time": 1728,
@@ -21436,7 +21436,7 @@
     },
     "Uncommon Gravity Inverted Container XS": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 64,
         "outputQuantity": 1,
         "time": 1728,
@@ -21452,7 +21452,7 @@
     },
     "Uncommon Optimised Container S": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 342,
         "outputQuantity": 1,
         "time": 6912,
@@ -21468,7 +21468,7 @@
     },
     "Uncommon Gravity Inverted Container S": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 342,
         "outputQuantity": 1,
         "time": 6912,
@@ -21484,7 +21484,7 @@
     },
     "Uncommon Optimised Container M": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 1873,
         "outputQuantity": 1,
         "time": 27660,
@@ -21500,7 +21500,7 @@
     },
     "Uncommon Gravity Inverted Container M": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 1873,
         "outputQuantity": 1,
         "time": 27660,
@@ -21516,7 +21516,7 @@
     },
     "Uncommon Optimised Container L": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 3746,
         "outputQuantity": 1,
         "time": 57600,
@@ -21532,7 +21532,7 @@
     },
     "Uncommon Gravity Inverted Container L": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 3746,
         "outputQuantity": 1,
         "time": 57600,
@@ -21548,7 +21548,7 @@
     },
     "Uncommon Optimised Container XL": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 10050,
         "outputQuantity": 1,
         "time": 115200,
@@ -21564,7 +21564,7 @@
     },
     "Uncommon Gravity Inverted Container XL": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 10050,
         "outputQuantity": 1,
         "time": 115200,
@@ -21580,7 +21580,7 @@
     },
     "Expanded Uncommon Optimised Container XL": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 21000,
         "outputQuantity": 1,
         "time": 230400,
@@ -21596,7 +21596,7 @@
     },
     "Expanded Uncommon Gravity Inverted Container XL": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 21000,
         "outputQuantity": 1,
         "time": 230400,
@@ -21612,7 +21612,7 @@
     },
     "Advanced Optimised Container XS": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 64,
         "outputQuantity": 1,
         "time": 5400,
@@ -21628,7 +21628,7 @@
     },
     "Advanced Gravity Inverted Container XS": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 64,
         "outputQuantity": 1,
         "time": 5400,
@@ -21644,7 +21644,7 @@
     },
     "Advanced Optimised Container S": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 342,
         "outputQuantity": 1,
         "time": 21600,
@@ -21660,7 +21660,7 @@
     },
     "Advanced Gravity Inverted Container S": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 342,
         "outputQuantity": 1,
         "time": 21600,
@@ -21676,7 +21676,7 @@
     },
     "Advanced Optimised Container M": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 1873,
         "outputQuantity": 1,
         "time": 86400,
@@ -21692,7 +21692,7 @@
     },
     "Advanced Gravity Inverted Container M": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 1873,
         "outputQuantity": 1,
         "time": 86400,
@@ -21708,7 +21708,7 @@
     },
     "Advanced Optimised Container L": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 3746,
         "outputQuantity": 1,
         "time": 172800,
@@ -21724,7 +21724,7 @@
     },
     "Advanced Gravity Inverted Container L": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 3746,
         "outputQuantity": 1,
         "time": 172800,
@@ -21740,7 +21740,7 @@
     },
     "Advanced Optimised Container XL": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 10050,
         "outputQuantity": 1,
         "time": 345600,
@@ -21756,7 +21756,7 @@
     },
     "Advanced Gravity Inverted Container XL": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 10050,
         "outputQuantity": 1,
         "time": 345600,
@@ -21772,7 +21772,7 @@
     },
     "Expanded Advanced Optimised Container XL": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 21000,
         "outputQuantity": 1,
         "time": 691200,
@@ -21788,7 +21788,7 @@
     },
     "Expanded Advanced Gravity Inverted Container XL": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 21000,
         "outputQuantity": 1,
         "time": 691200,
@@ -21804,7 +21804,7 @@
     },
     "Rare Optimised Container XS": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 64,
         "outputQuantity": 1,
         "time": 16200,
@@ -21821,7 +21821,7 @@
     },
     "Rare Gravity Inverted Container XS": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 64,
         "outputQuantity": 1,
         "time": 16200,
@@ -21838,7 +21838,7 @@
     },
     "Rare Optimised Container S": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 342,
         "outputQuantity": 1,
         "time": 64800,
@@ -21855,7 +21855,7 @@
     },
     "Rare Gravity Inverted Container S": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 342,
         "outputQuantity": 1,
         "time": 64800,
@@ -21872,7 +21872,7 @@
     },
     "Rare Optimised Container M": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 1873,
         "outputQuantity": 1,
         "time": 259200,
@@ -21889,7 +21889,7 @@
     },
     "Rare Gravity Inverted Container M": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 1873,
         "outputQuantity": 1,
         "time": 259200,
@@ -21906,7 +21906,7 @@
     },
     "Rare Optimised Container L": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 3746,
         "outputQuantity": 1,
         "time": 518400,
@@ -21923,7 +21923,7 @@
     },
     "Rare Gravity Inverted Container L": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 3746,
         "outputQuantity": 1,
         "time": 518400,
@@ -21940,7 +21940,7 @@
     },
     "Rare Optimised Container XL": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 10050,
         "outputQuantity": 1,
         "time": 1036800,
@@ -21957,7 +21957,7 @@
     },
     "Rare Gravity Inverted Container XL": {
         "tier": 2,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 10050,
         "outputQuantity": 1,
         "time": 1036800,
@@ -21974,7 +21974,7 @@
     },
     "Expanded Rare Optimised Container XL": {
         "tier": 4,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 21000,
         "outputQuantity": 1,
         "time": 2073600,
@@ -21991,7 +21991,7 @@
     },
     "Expanded rare Gravity Inverted Container XL": {
         "tier": 4,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 21000,
         "outputQuantity": 1,
         "time": 2073600,
@@ -22008,7 +22008,7 @@
     },
     "Exotic Optimised Container XS": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 64,
         "outputQuantity": 1,
         "time": 48600,
@@ -22026,7 +22026,7 @@
     },
     "Exotic Gravity Inverted Container XS": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 64,
         "outputQuantity": 1,
         "time": 48600,
@@ -22043,7 +22043,7 @@
     },
     "Exotic Optimised Container S": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 342,
         "outputQuantity": 1,
         "time": 194400,
@@ -22060,7 +22060,7 @@
     },
     "Exotic Gravity Inverted Container S": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 342,
         "outputQuantity": 1,
         "time": 194400,
@@ -22077,7 +22077,7 @@
     },
     "Exotic Optimised Container M": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 1873,
         "outputQuantity": 1,
         "time": 777600,
@@ -22094,7 +22094,7 @@
     },
     "Exotic Gravity Inverted Container M": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 1873,
         "outputQuantity": 1,
         "time": 777600,
@@ -22111,7 +22111,7 @@
     },
     "Exotic Optimised Container L": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 3746,
         "outputQuantity": 1,
         "time": 1555200,
@@ -22128,7 +22128,7 @@
     },
     "Exotic Gravity Inverted Container L": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 3746,
         "outputQuantity": 1,
         "time": 1555200,
@@ -22145,7 +22145,7 @@
     },
     "Exotic Optimised Container XL": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 10050,
         "outputQuantity": 1,
         "time": 3110400,
@@ -22162,7 +22162,7 @@
     },
     "Exotic Gravity Inverted Container XL": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 10050,
         "outputQuantity": 1,
         "time": 3110400,
@@ -22179,7 +22179,7 @@
     },
     "Expanded Exotic Optimised Container XL": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 21000,
         "outputQuantity": 1,
         "time": 6220800,
@@ -22196,7 +22196,7 @@
     },
     "Expanded Exotic Gravity Inverted Container XL": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 21000,
         "outputQuantity": 1,
         "time": 6220800,
@@ -22213,7 +22213,7 @@
     },
     "Space Mining Unit L": {
         "tier": 4,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 2200,
         "outputQuantity": 1,
         "time": 259200,
@@ -22230,7 +22230,7 @@
     },
     "Relic Plasma Extractor L": {
         "tier": 4,
-        "type": "Piloting Element",
+        "type": "Industry & Infrastructure Element",
         "volume": 57.60,
         "outputQuantity": 1,
         "time": 259200,
@@ -22248,7 +22248,7 @@
 
     "Exotic Mobile Panel S": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Functional Part",
         "volume": 22.6,
         "outputQuantity": 1,
         "time": 46080,
@@ -22264,7 +22264,7 @@
     },
     "Exotic Mobile Panel M": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Functional Part",
         "volume": 267.20,
         "outputQuantity": 1,
         "time": 138240,
@@ -22280,7 +22280,7 @@
     },
     "Exotic Mobile Panel L": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Functional Part",
         "volume": 1382.40,
         "outputQuantity": 1,
         "time": 414000,
@@ -22296,7 +22296,7 @@
     },
     "Exotic Mobile Panel XL": {
         "tier": 5,
-        "type": "Piloting Element",
+        "type": "Functional Part",
         "volume": 7428.80,
         "outputQuantity": 1,
         "time": 1245600,
@@ -23070,7 +23070,7 @@
             "Relic Plasma Tres L": 1
         }
     },
-	 "Uncommon Hover Engine L": {
+    "Uncommon Hover Engine L": {
         "tier": 2,
         "type": "Piloting Element",
         "volume": 619.20,
@@ -23120,7 +23120,7 @@
             "Rare Reinforced Frame L": 1
         }
     },
-	 "Uncommon Hover Engine M": {
+    "Uncommon Hover Engine M": {
         "tier": 2,
         "type": "Piloting Element",
         "volume": 116.60,
@@ -23170,7 +23170,7 @@
             "Rare Reinforced Frame M": 1
         }
     },
-	 "Uncommon Hover Engine S": {
+    "Uncommon Hover Engine S": {
         "tier": 2,
         "type": "Piloting Element",
         "volume": 22.60,
@@ -23218,6 +23218,71 @@
             "Rare Injector": 5,
             "Rare Gas Cylinder S": 1,
             "Rare Reinforced Frame S": 1
+        }
+    },
+
+    "Stasis Weapon XS": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 40,
+        "outputQuantity": 1,
+        "time": 4050,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Uncommon LED": 1,
+            "Advanced LED": 1,
+            "Rare Optics": 1,
+            "Rare Magnetic Rail L": 1,
+            "Rare Reinforced Frame L": 1
+        }
+    },
+    "Stasis Weapon S": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 120,
+        "outputQuantity": 1,
+        "time": 16200,
+        "byproducts": {},
+        "industry": "Assembly Line S",
+        "input": {
+            "Uncommon LED": 3,
+            "Advanced LED": 3,
+            "Rare Optics": 5,
+            "Rare Magnetic Rail S": 1,
+            "Rare Reinforced Frame S": 1
+        }
+    },
+    "Stasis Weapon M": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 550,
+        "outputQuantity": 1,
+        "time": 64800,
+        "byproducts": {},
+        "industry": "Assembly Line M",
+        "input": {
+            "Uncommon LED": 18,
+            "Advanced LED": 18,
+            "Rare Optics": 25,
+            "Rare Magnetic Rail M": 1,
+            "Rare Reinforced Frame M": 1
+        }
+    },
+    "Stasis Weapon L": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 3000,
+        "outputQuantity": 1,
+        "time": 259200,
+        "byproducts": {},
+        "industry": "Assembly Line L",
+        "input": {
+            "Uncommon LED": 108,
+            "Advanced LED": 108,
+            "Rare Optics": 125,
+            "Rare Magnetic Rail L": 1,
+            "Rare Reinforced Frame L": 1
         }
     }
 }
