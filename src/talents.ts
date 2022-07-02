@@ -1,4 +1,4 @@
-import { Category, Tier } from "./items"
+import {Category, SubCategory, Tier} from "./items"
 
 export enum TalentType {
     TIME = "Time",
@@ -38,6 +38,7 @@ export interface Talent {
     readonly modifier: number
     readonly target: string | undefined
     readonly targetCategory: Category
+    readonly targetSubCategory: SubCategory
     readonly targetTier: Tier
 }
 
@@ -51,6 +52,7 @@ export interface Talent {
  * @param modifier modifier amount (percentage)
  * @param target talent's applicable item
  * @param targetCategory talent's applicable category
+ * @param targetSubCategory talent's applicable sub-category
  * @param targetTier talent's applicable tier
  */
 export function talent(
@@ -62,6 +64,7 @@ export function talent(
     modifier: number,
     target: string,
     targetCategory: Category,
+    targetSubCategory: SubCategory,
     targetTier: Tier,
 ): Talent {
     return {
@@ -73,6 +76,7 @@ export function talent(
         modifier,
         target,
         targetCategory,
+        targetSubCategory,
         targetTier,
     }
 }
@@ -95,6 +99,7 @@ for (const outer of data) {
                 skill.amount !== undefined ? skill.amount : inner.amount,
                 skill.name !== undefined ? skill.name : inner.name,
                 skill.type !== undefined ? skill.type : inner.type,
+                skill.subtype !== undefined ? skill.subtype : inner.subtype,
                 skill.tier !== undefined ? skill.tier : inner.tier,
             )
         }
