@@ -39,6 +39,14 @@ export enum Category {
     WARP_CELLS = "Warp Cells",
 }
 
+export enum SubCategory {
+    XS = "XS",
+    S = "S",
+    M = "M",
+    L = "L",
+    SPACE = "Space",
+}
+
 /**
  * Item type definition
  */
@@ -46,6 +54,7 @@ export interface Item {
     readonly name: string
     readonly tier: Tier
     readonly category: Category
+    readonly subCategory: SubCategory
     readonly volume: Liter
     readonly transferBatchSize: Quantity
     readonly transferTime: Seconds
@@ -96,6 +105,7 @@ export function item(
     name: string,
     tier: Tier,
     category: Category,
+    subCategory: SubCategory,
     volume: Liter,
     transferBatchSize: Quantity,
     transferTime: Seconds,
@@ -104,6 +114,7 @@ export function item(
         name,
         tier,
         category,
+        subCategory,
         volume,
         transferBatchSize,
         transferTime,
@@ -195,6 +206,7 @@ for (const name in data) {
         name,
         data[name].tier,
         data[name].type,
+        data[name].subtype,
         data[name].volume,
         transferBatchSize,
         transferTime,
@@ -261,7 +273,8 @@ export function getRecipe(item: Item, talentLevels: { [key: string]: number }) {
         else if (
             talent.subject === TalentSubject.TIER &&
             talent.targetTier === item.tier &&
-            talent.targetCategory === item.category
+            talent.targetCategory === item.category &&
+            (talent.targetSubCategory === undefined || talent.targetSubCategory === item.subCategory)
         ) {
             applicable = true
         }
