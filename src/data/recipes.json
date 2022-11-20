@@ -235,61 +235,61 @@
         "tier": 1,
         "type": "Pure",
         "volume": 1,
-        "outputQuantity": 405,
-        "time": 225,
+        "outputQuantity": 45,
+        "time": 25,
         "byproducts": {
-            "Pure Hydrogen": 135
+            "Pure Hydrogen": 15
         },
         "nanopack": true,
         "industry": "Refiner M",
         "input": {
-            "Bauxite": 585
+            "Bauxite": 65
         }
     },
     "Pure Carbon": {
         "tier": 1,
         "type": "Pure",
         "volume": 1,
-        "outputQuantity": 405,
-        "time": 225,
+        "outputQuantity": 45,
+        "time": 25,
         "byproducts": {
-            "Pure Oxygen": 67.5,
-            "Pure Hydrogen": 67.5
+            "Pure Oxygen": 7.5,
+            "Pure Hydrogen": 7.5
         },
         "nanopack": true,
         "industry": "Refiner M",
         "input": {
-            "Coal": 585
+            "Coal": 65
         }
     },
     "Pure Silicon": {
         "tier": 1,
         "type": "Pure",
         "volume": 1,
-        "outputQuantity": 405,
-        "time": 225,
+        "outputQuantity": 45,
+        "time": 25,
         "byproducts": {
-            "Pure Oxygen": 135
+            "Pure Oxygen": 15
         },
         "nanopack": true,
         "industry": "Refiner M",
         "input": {
-            "Quartz": 585
+            "Quartz": 65
         }
     },
     "Pure Iron": {
         "tier": 1,
         "type": "Pure",
         "volume": 1,
-        "outputQuantity": 405,
-        "time": 225,
+        "outputQuantity": 45,
+        "time": 25,
         "byproducts": {
-            "Pure Oxygen": 135
+            "Pure Oxygen": 15
         },
         "nanopack": true,
         "industry": "Refiner M",
         "input": {
-            "Hematite": 585
+            "Hematite": 65
         }
     },
     "Pure Calcium": {
@@ -471,7 +471,7 @@
         "type": "Pure",
         "volume": 1,
         "outputQuantity": 45,
-        "time": 15600,
+        "time": 15625,
         "byproducts": {
             "Pure Calcium": 5,
             "Pure Silicon": 5,
@@ -487,7 +487,7 @@
         "type": "Pure",
         "volume": 1,
         "outputQuantity": 45,
-        "time": 15600,
+        "time": 15625,
         "byproducts": {
             "Pure Iron": 5,
             "Pure Manganese": 5,
@@ -503,7 +503,7 @@
         "type": "Pure",
         "volume": 1,
         "outputQuantity": 45,
-        "time": 15600,
+        "time": 15625,
         "byproducts": {
             "Pure Iron": 7.5,
             "Pure Oxygen": 7.5
@@ -518,7 +518,7 @@
         "type": "Pure",
         "volume": 1,
         "outputQuantity": 45,
-        "time": 15600,
+        "time": 15625,
         "byproducts": {
             "Pure Oxygen": 15
         },
@@ -547,7 +547,7 @@
         "type": "Catalyst",
         "volume": 1,
         "outputQuantity": 10,
-        "time": 12480,
+        "time": 12500,
         "byproducts": {},
         "industry": "Chemical Industry M",
         "input": {
@@ -563,7 +563,7 @@
         "type": "Catalyst",
         "volume": 1,
         "outputQuantity": 10,
-        "time": 62520,
+        "time": 62500,
         "byproducts": {},
         "industry": "Chemical Industry M",
         "input": {
@@ -580,15 +580,15 @@
         "type": "Fuel",
         "volume": 1,
         "outputQuantity": 300,
-        "time": 180,
+        "time": 60,
         "byproducts": {},
         "nanopack": true,
         "industry": "Chemical Industry M",
         "input": {
-            "Pure Silicon": 60,
-            "Pure Carbon": 60,
-            "Pure Oxygen": 120,
-            "Pure Hydrogen": 60
+            "Pure Silicon": 20,
+            "Pure Carbon": 20,
+            "Pure Oxygen": 40,
+            "Pure Hydrogen": 20
         }
     },
     "Kergon-X1 Fuel": {
@@ -743,7 +743,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 93780,
+        "time": 93750,
         "byproducts": {
             "Catalyst 5": 1
         },
@@ -760,7 +760,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 3780,
+        "time": 3750,
         "byproducts": {
             "Catalyst 3": 1
         },
@@ -777,7 +777,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 93780,
+        "time": 93750,
         "byproducts": {
             "Catalyst 5": 1
         },
@@ -794,7 +794,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 18780,
+        "time": 18750,
         "byproducts": {
             "Catalyst 4": 1
         },
@@ -811,7 +811,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 18780,
+        "time": 18750,
         "byproducts": {
             "Catalyst 4": 1
         },
@@ -827,7 +827,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 18780,
+        "time": 18750,
         "byproducts": {
             "Catalyst 4": 1
         },
@@ -858,7 +858,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 93780,
+        "time": 93750,
         "byproducts": {
             "Catalyst 5": 1
         },
@@ -1011,7 +1011,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 93780,
+        "time": 93750,
         "byproducts": {
             "Catalyst 5": 1
         },
@@ -1074,7 +1074,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 18780,
+        "time": 18750,
         "byproducts": {
             "Catalyst 4": 1
         },
@@ -1091,7 +1091,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 93780,
+        "time": 93750,
         "byproducts": {
             "Catalyst 5": 1
         },
@@ -5385,6 +5385,38 @@
             "Uncommon Electronics": 1
         }
     },
+    "Uncommon Screen S": {
+        "tier": 2,
+        "type": "Functional Part",
+        "volume": 29.6,
+        "outputQuantity": 1,
+        "time": 720,
+        "byproducts": {},
+        "industry": "3D Printer M",
+        "input": {
+            "Basic LED": 2,
+            "Basic Electronics": 2,
+            "Polycalcite Plastic": 7,
+            "Uncommon LED": 4,
+            "Uncommon Electronics": 4
+        }
+    },
+    "Uncommon Screen M": {
+        "tier": 2,
+        "type": "Functional Part",
+        "volume": 143.2,
+        "outputQuantity": 1,
+        "time": 21600,
+        "byproducts": {},
+        "industry": "3D Printer M",
+        "input": {
+            "Basic LED": 8,
+            "Basic Electronics": 8,
+            "Polycalcite Plastic": 49,
+            "Uncommon LED": 18,
+            "Uncommon Electronics": 18
+        }
+    },
     "Uncommon Screen L": {
         "tier": 2,
         "type": "Functional Part",
@@ -5515,6 +5547,19 @@
         "input": {
             "Polycarbonate Plastic": 25,
             "Polycalcite Plastic": 49
+        }
+    },
+    "Uncommon Casing L": {
+        "tier": 2,
+        "type": "Structural Part",
+        "volume": 515,
+        "outputQuantity": 1,
+        "time": 4320,
+        "byproducts": {},
+        "industry": "3D Printer M",
+        "input": {
+            "Polycarbonate Plastic": 172,
+            "Polycalcite Plastic": 343
         }
     },
     "Uncommon Casing XL": {
@@ -11827,7 +11872,7 @@
         "outputQuantity": 1,
         "time": 92160,
         "byproducts": {},
-        "industry": "Assembly Line XL",
+        "industry": "Assembly Line L",
         "input": {
             "Basic Component": 648,
             "Uncommon Component": 648,
@@ -11891,6 +11936,22 @@
         "outputQuantity": 1,
         "time": 360,
         "byproducts": {},
+        "industry": "Assembly Line S",
+        "input": {
+            "Basic Component": 1,
+            "Uncommon Component": 1,
+            "Uncommon Electronics": 1,
+            "Uncommon Screen XS": 1,
+            "Uncommon Casing XS": 1
+        }
+    },
+    "Modern Transparent Screen XS": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 9.75,
+        "outputQuantity": 1,
+        "time": 360,
+        "byproducts": {},
         "industry": "Assembly Line XS",
         "input": {
             "Basic Component": 1,
@@ -11898,6 +11959,214 @@
             "Uncommon Electronics": 1,
             "Uncommon Screen XS": 1,
             "Uncommon Casing XS": 1
+        }
+    },
+    "Modern Transparent Screen S": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 37.5,
+        "outputQuantity": 1,
+        "time": 360,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Basic Component": 1,
+            "Uncommon Component": 1,
+            "Uncommon Electronics": 1,
+            "Uncommon Screen XS": 1,
+            "Uncommon Casing XS": 1
+        }
+    },
+    "Modern Transparent Screen M": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 90,
+        "outputQuantity": 1,
+        "time": 360,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Basic Component": 1,
+            "Uncommon Component": 1,
+            "Uncommon Electronics": 1,
+            "Uncommon Screen XS": 1,
+            "Uncommon Casing XS": 1
+        }
+    },
+    "Modern Transparent Screen L": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 150,
+        "outputQuantity": 1,
+        "time": 1440,
+        "byproducts": {},
+        "industry": "Assembly Line S",
+        "input": {
+            "Basic Component": 3,
+            "Uncommon Component": 3,
+            "Uncommon Electronics": 5,
+            "Uncommon Screen S": 1,
+            "Uncommon Casing S": 1
+        }
+    },
+    "Modern Transparent Screen XL": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 600,
+        "outputQuantity": 1,
+        "time": 5760,
+        "byproducts": {},
+        "industry": "Assembly Line M",
+        "input": {
+            "Basic Component": 18,
+            "Uncommon Component": 18,
+            "Uncommon Electronics": 25,
+            "Uncommon Screen M": 1,
+            "Uncommon Casing M": 1
+        }
+    },
+    "Expanded Modern Transparent Screen XXL": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 2160,
+        "outputQuantity": 1,
+        "time": 23040,
+        "byproducts": {},
+        "industry": "Assembly Line L",
+        "input": {
+            "Basic Component": 108,
+            "Uncommon Component": 108,
+            "Uncommon Electronics": 125,
+            "Uncommon Screen L": 1,
+            "Uncommon Casing L": 1
+        }
+    },
+    "Super Expanded Modern Transparent Screen XXXL": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 3600,
+        "outputQuantity": 1,
+        "time": 92160,
+        "byproducts": {},
+        "industry": "Assembly Line XL",
+        "input": {
+            "Basic Component": 648,
+            "Uncommon Component": 648,
+            "Uncommon Electronics": 625,
+            "Uncommon Screen XL": 1,
+            "Uncommon Casing XL": 1
+        }
+    },
+    "Modern Screen XS": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 9.75,
+        "outputQuantity": 1,
+        "time": 360,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Basic Component": 1,
+            "Uncommon Component": 1,
+            "Uncommon Electronics": 1,
+            "Uncommon Screen XS": 1,
+            "Uncommon Casing XS": 1
+        }
+    },
+    "Modern Screen S": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 37.5,
+        "outputQuantity": 1,
+        "time": 360,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Basic Component": 1,
+            "Uncommon Component": 1,
+            "Uncommon Electronics": 1,
+            "Uncommon Screen XS": 1,
+            "Uncommon Casing XS": 1
+        }
+    },
+    "Modern Screen M": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 90,
+        "outputQuantity": 1,
+        "time": 360,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Basic Component": 1,
+            "Uncommon Component": 1,
+            "Uncommon Electronics": 1,
+            "Uncommon Screen XS": 1,
+            "Uncommon Casing XS": 1
+        }
+    },
+    "Modern Screen L": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 150,
+        "outputQuantity": 1,
+        "time": 1440,
+        "byproducts": {},
+        "industry": "Assembly Line S",
+        "input": {
+            "Basic Component": 3,
+            "Uncommon Component": 3,
+            "Uncommon Electronics": 5,
+            "Uncommon Screen S": 1,
+            "Uncommon Casing S": 1
+        }
+    },
+    "Modern Screen XL": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 600,
+        "outputQuantity": 1,
+        "time": 5760,
+        "byproducts": {},
+        "industry": "Assembly Line M",
+        "input": {
+            "Basic Component": 18,
+            "Uncommon Component": 18,
+            "Uncommon Electronics": 25,
+            "Uncommon Screen M": 1,
+            "Uncommon Casing M": 1
+        }
+    },
+    "Expanded Modern Screen XXL": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 2160,
+        "outputQuantity": 1,
+        "time": 23040,
+        "byproducts": {},
+        "industry": "Assembly Line L",
+        "input": {
+            "Basic Component": 108,
+            "Uncommon Component": 108,
+            "Uncommon Electronics": 125,
+            "Uncommon Screen L": 1,
+            "Uncommon Casing L": 1
+        }
+    },
+    "Super Expanded Modern Screen XXXL": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 3600,
+        "outputQuantity": 1,
+        "time": 92160,
+        "byproducts": {},
+        "industry": "Assembly Line XL",
+        "input": {
+            "Basic Component": 648,
+            "Uncommon Component": 648,
+            "Uncommon Electronics": 625,
+            "Uncommon Screen XL": 1,
+            "Uncommon Casing XL": 1
         }
     },
     "Sign XS": {
