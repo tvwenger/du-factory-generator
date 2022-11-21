@@ -235,61 +235,61 @@
         "tier": 1,
         "type": "Pure",
         "volume": 1,
-        "outputQuantity": 405,
-        "time": 225,
+        "outputQuantity": 45,
+        "time": 25,
         "byproducts": {
-            "Pure Hydrogen": 135
+            "Pure Hydrogen": 15
         },
         "nanopack": true,
         "industry": "Refiner M",
         "input": {
-            "Bauxite": 585
+            "Bauxite": 65
         }
     },
     "Pure Carbon": {
         "tier": 1,
         "type": "Pure",
         "volume": 1,
-        "outputQuantity": 405,
-        "time": 225,
+        "outputQuantity": 45,
+        "time": 25,
         "byproducts": {
-            "Pure Oxygen": 67.5,
-            "Pure Hydrogen": 67.5
+            "Pure Oxygen": 7.5,
+            "Pure Hydrogen": 7.5
         },
         "nanopack": true,
         "industry": "Refiner M",
         "input": {
-            "Coal": 585
+            "Coal": 65
         }
     },
     "Pure Silicon": {
         "tier": 1,
         "type": "Pure",
         "volume": 1,
-        "outputQuantity": 405,
-        "time": 225,
+        "outputQuantity": 45,
+        "time": 25,
         "byproducts": {
-            "Pure Oxygen": 135
+            "Pure Oxygen": 15
         },
         "nanopack": true,
         "industry": "Refiner M",
         "input": {
-            "Quartz": 585
+            "Quartz": 65
         }
     },
     "Pure Iron": {
         "tier": 1,
         "type": "Pure",
         "volume": 1,
-        "outputQuantity": 405,
-        "time": 225,
+        "outputQuantity": 45,
+        "time": 25,
         "byproducts": {
-            "Pure Oxygen": 135
+            "Pure Oxygen": 15
         },
         "nanopack": true,
         "industry": "Refiner M",
         "input": {
-            "Hematite": 585
+            "Hematite": 65
         }
     },
     "Pure Calcium": {
@@ -471,7 +471,7 @@
         "type": "Pure",
         "volume": 1,
         "outputQuantity": 45,
-        "time": 15600,
+        "time": 15625,
         "byproducts": {
             "Pure Calcium": 5,
             "Pure Silicon": 5,
@@ -487,7 +487,7 @@
         "type": "Pure",
         "volume": 1,
         "outputQuantity": 45,
-        "time": 15600,
+        "time": 15625,
         "byproducts": {
             "Pure Iron": 5,
             "Pure Manganese": 5,
@@ -503,7 +503,7 @@
         "type": "Pure",
         "volume": 1,
         "outputQuantity": 45,
-        "time": 15600,
+        "time": 15625,
         "byproducts": {
             "Pure Iron": 7.5,
             "Pure Oxygen": 7.5
@@ -518,7 +518,7 @@
         "type": "Pure",
         "volume": 1,
         "outputQuantity": 45,
-        "time": 15600,
+        "time": 15625,
         "byproducts": {
             "Pure Oxygen": 15
         },
@@ -547,7 +547,7 @@
         "type": "Catalyst",
         "volume": 1,
         "outputQuantity": 10,
-        "time": 12480,
+        "time": 12500,
         "byproducts": {},
         "industry": "Chemical Industry M",
         "input": {
@@ -563,7 +563,7 @@
         "type": "Catalyst",
         "volume": 1,
         "outputQuantity": 10,
-        "time": 62520,
+        "time": 62500,
         "byproducts": {},
         "industry": "Chemical Industry M",
         "input": {
@@ -580,15 +580,15 @@
         "type": "Fuel",
         "volume": 1,
         "outputQuantity": 300,
-        "time": 180,
+        "time": 60,
         "byproducts": {},
         "nanopack": true,
         "industry": "Chemical Industry M",
         "input": {
-            "Pure Silicon": 60,
-            "Pure Carbon": 60,
-            "Pure Oxygen": 120,
-            "Pure Hydrogen": 60
+            "Pure Silicon": 20,
+            "Pure Carbon": 20,
+            "Pure Oxygen": 40,
+            "Pure Hydrogen": 20
         }
     },
     "Kergon-X1 Fuel": {
@@ -743,7 +743,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 93780,
+        "time": 93750,
         "byproducts": {
             "Catalyst 5": 1
         },
@@ -760,7 +760,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 3780,
+        "time": 3750,
         "byproducts": {
             "Catalyst 3": 1
         },
@@ -777,7 +777,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 93780,
+        "time": 93750,
         "byproducts": {
             "Catalyst 5": 1
         },
@@ -794,7 +794,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 18780,
+        "time": 18750,
         "byproducts": {
             "Catalyst 4": 1
         },
@@ -811,7 +811,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 18780,
+        "time": 18750,
         "byproducts": {
             "Catalyst 4": 1
         },
@@ -827,7 +827,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 18780,
+        "time": 18750,
         "byproducts": {
             "Catalyst 4": 1
         },
@@ -858,7 +858,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 93780,
+        "time": 93750,
         "byproducts": {
             "Catalyst 5": 1
         },
@@ -1011,7 +1011,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 93780,
+        "time": 93750,
         "byproducts": {
             "Catalyst 5": 1
         },
@@ -1074,7 +1074,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 18780,
+        "time": 18750,
         "byproducts": {
             "Catalyst 4": 1
         },
@@ -1091,7 +1091,7 @@
         "type": "Product",
         "volume": 1,
         "outputQuantity": 75,
-        "time": 93780,
+        "time": 93750,
         "byproducts": {
             "Catalyst 5": 1
         },
@@ -2365,6 +2365,51 @@
             "Uncommon Quantum Core": 1,
             "Al-Li Alloy": 5,
             "Advanced Quantum Core": 1
+        }
+    },
+    "Rare Quantum Barrier": {
+        "tier": 4,
+        "type": "Exceptional Part",
+        "volume": 27.5,
+        "outputQuantity": 1,
+        "time": 18750,
+        "byproducts": {},
+        "industry": "Advanced Electronics Industry M",
+        "input": {
+            "Silumin": 5,
+            "Basic LED": 5,
+            "Basic Quantum Core": 2,
+            "Duralumin": 5,
+            "Uncommon LED": 5,
+            "Uncommon Quantum Core": 1,
+            "Al-Li Alloy": 5,
+            "Advanced Quantum Core": 1,
+            "Sc-Al Alloy": 5,
+            "Rare Quantum Core": 1
+        }
+    },
+    "Exotic Quantum Barrier": {
+        "tier": 5,
+        "type": "Exceptional Part",
+        "volume": 30,
+        "outputQuantity": 1,
+        "time": 93750,
+        "byproducts": {},
+        "industry": "Rare Electronics Industry M",
+        "input": {
+            "Silumin": 5,
+
+            "Basic Quantum Core": 1,
+            "Duralumin": 5,
+            "Uncommon LED": 5,
+            "Uncommon Quantum Core": 1,
+            "Al-Li Alloy": 5,
+            "Advanced LED": 5,
+            "Advanced Quantum Core": 1,
+            "Sc-Al Alloy": 5,
+            "Rare Quantum Core": 1,
+            "Grade 5 Titanium Alloy": 5,
+            "Exotic Quantum Core": 1
         }
     },
     "Advanced Antimatter Core": {
@@ -5385,6 +5430,38 @@
             "Uncommon Electronics": 1
         }
     },
+    "Uncommon Screen S": {
+        "tier": 2,
+        "type": "Functional Part",
+        "volume": 29.6,
+        "outputQuantity": 1,
+        "time": 720,
+        "byproducts": {},
+        "industry": "3D Printer M",
+        "input": {
+            "Basic LED": 2,
+            "Basic Electronics": 2,
+            "Polycalcite Plastic": 7,
+            "Uncommon LED": 4,
+            "Uncommon Electronics": 4
+        }
+    },
+    "Uncommon Screen M": {
+        "tier": 2,
+        "type": "Functional Part",
+        "volume": 143.2,
+        "outputQuantity": 1,
+        "time": 21600,
+        "byproducts": {},
+        "industry": "3D Printer M",
+        "input": {
+            "Basic LED": 8,
+            "Basic Electronics": 8,
+            "Polycalcite Plastic": 49,
+            "Uncommon LED": 18,
+            "Uncommon Electronics": 18
+        }
+    },
     "Uncommon Screen L": {
         "tier": 2,
         "type": "Functional Part",
@@ -5515,6 +5592,19 @@
         "input": {
             "Polycarbonate Plastic": 25,
             "Polycalcite Plastic": 49
+        }
+    },
+    "Uncommon Casing L": {
+        "tier": 2,
+        "type": "Structural Part",
+        "volume": 515,
+        "outputQuantity": 1,
+        "time": 4320,
+        "byproducts": {},
+        "industry": "3D Printer M",
+        "input": {
+            "Polycarbonate Plastic": 172,
+            "Polycalcite Plastic": 343
         }
     },
     "Uncommon Casing XL": {
@@ -10081,6 +10171,147 @@
             "Basic Injector": 1
         }
     },
+    "Uncommon Freight Vertical Booster XS": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 11,
+        "outputQuantity": 1,
+        "time": 360,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Basic Pipe": 1,
+            "Uncommon Pipe": 1,
+            "Uncommon Injector": 1,
+            "Uncommon Ionic Chamber XS": 1,
+            "Uncommon Standard Frame XS": 1
+        }
+    },
+    "Uncommon Military Vertical Booster XS": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 11,
+        "outputQuantity": 1,
+        "time": 360,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Basic Pipe": 1,
+            "Uncommon Pipe": 1,
+            "Uncommon Injector": 1,
+            "Uncommon Ionic Chamber XS": 1,
+            "Uncommon Standard Frame XS": 1
+        }
+    },
+    "Uncommon Maneuver Vertical Booster XS": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 11,
+        "outputQuantity": 1,
+        "time": 360,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Basic Pipe": 1,
+            "Uncommon Pipe": 1,
+            "Uncommon Injector": 1,
+            "Uncommon Ionic Chamber XS": 1,
+            "Uncommon Standard Frame XS": 1
+        }
+    },
+    "Advanced Freight Vertical Booster XS": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 11,
+        "outputQuantity": 1,
+        "time": 1080,
+        "byproducts": {},
+        "industry": "Uncommon Assembly Line XS",
+        "input": {
+            "Uncommon Pipe": 1,
+            "Advanced Injector": 1,
+            "Advanced Ionic Chamber XS": 1,
+            "Advanced Standard Frame XS": 1
+        }
+    },
+    "Advanced Military Vertical Booster XS": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 11,
+        "outputQuantity": 1,
+        "time": 1080,
+        "byproducts": {},
+        "industry": "Uncommon Assembly Line XS",
+        "input": {
+            "Uncommon Pipe": 1,
+            "Advanced Injector": 1,
+            "Advanced Ionic Chamber XS": 1,
+            "Advanced Standard Frame XS": 1
+        }
+    },
+    "Advanced Maneuver Vertical Booster XS": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 11,
+        "outputQuantity": 1,
+        "time": 1080,
+        "byproducts": {},
+        "industry": "Uncommon Assembly Line XS",
+        "input": {
+            "Uncommon Pipe": 1,
+            "Advanced Injector": 1,
+            "Advanced Ionic Chamber XS": 1,
+            "Advanced Standard Frame XS": 1
+        }
+    },
+    "Rare Freight Vertical Booster XS": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 11,
+        "outputQuantity": 1,
+        "time": 3240,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line XS",
+        "input": {
+            "Uncommon Pipe": 1,
+            "Advanced Pipe": 1,
+            "Rare Injector": 1,
+            "Rare Ionic Chamber XS": 1,
+            "Rare Standard Frame XS": 1
+        }
+    },
+    "Rare Military Vertical Booster XS": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 11,
+        "outputQuantity": 1,
+        "time": 3240,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line XS",
+        "input": {
+            "Uncommon Pipe": 1,
+            "Advanced Pipe": 1,
+            "Rare Injector": 1,
+            "Rare Ionic Chamber XS": 1,
+            "Rare Standard Frame XS": 1
+        }
+    },
+    "Rare Maneuver Vertical Booster XS": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 11,
+        "outputQuantity": 1,
+        "time": 3240,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line XS",
+        "input": {
+            "Uncommon Pipe": 1,
+            "Advanced Pipe": 1,
+            "Rare Injector": 1,
+            "Rare Ionic Chamber XS": 1,
+            "Rare Standard Frame XS": 1
+        }
+    },
     "Vertical Booster S": {
         "tier": 1,
         "type": "Piloting Element",
@@ -10095,6 +10326,227 @@
             "Basic Injector": 1,
             "Basic Ionic Chamber XS": 1,
             "Basic Standard Frame XS": 1
+        }
+    },
+    "Uncommon Freight Vertical Booster S": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 20.33,
+        "outputQuantity": 1,
+        "time": 1440,
+        "byproducts": {},
+        "industry": "Assembly Line S",
+        "input": {
+            "Basic Pipe": 3,
+            "Uncommon Pipe": 3,
+            "Uncommon Injector": 5,
+            "Uncommon Ionic Chamber XS": 1,
+            "Uncommon Standard Frame XS": 1
+        }
+    },
+    "Exotic Military Vertical Booster XS": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 11,
+        "outputQuantity": 1,
+        "time": 9720,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line XS",
+        "input": {
+            "Advanced Pipe": 1,
+            "Exotic Injector": 1,
+            "Exotic Ionic Chamber XS": 1,
+            "Exotic Standard Frame XS": 1,
+            "Relic Plasma Tres l": 1
+        }
+    },
+    "Exotic Maneuver Vertical Booster XS": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 11,
+        "outputQuantity": 1,
+        "time": 9720,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line XS",
+        "input": {
+            "Advanced Pipe": 1,
+            "Exotic Injector": 1,
+            "Exotic Ionic Chamber XS": 1,
+            "Exotic Standard Frame XS": 1,
+            "Relic Plasma Tres l": 1
+        }
+    },
+    "Uncommon Miltiary Vertical Booster S": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 20.33,
+        "outputQuantity": 1,
+        "time": 1440,
+        "byproducts": {},
+        "industry": "Assembly Line S",
+        "input": {
+            "Basic Pipe": 3,
+            "Uncommon Pipe": 3,
+            "Uncommon Injector": 5,
+            "Uncommon Ionic Chamber XS": 1,
+            "Uncommon Standard Frame XS": 1
+        }
+    },
+    "Uncommon Maneuver Vertical Booster S": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 20.33,
+        "outputQuantity": 1,
+        "time": 1440,
+        "byproducts": {},
+        "industry": "Assembly Line S",
+        "input": {
+            "Basic Pipe": 3,
+            "Uncommon Pipe": 3,
+            "Uncommon Injector": 5,
+            "Uncommon Ionic Chamber XS": 1,
+            "Uncommon Standard Frame XS": 1
+        }
+    },
+    "Advanced Freight Vertical Booster S": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 20.33,
+        "outputQuantity": 1,
+        "time": 4320,
+        "byproducts": {},
+        "industry": "Uncommon Assembly Line S",
+        "input": {
+            "Uncommon Pipe": 6,
+            "Advanced Injector": 5,
+            "Advanced Ionic Chamber S": 1,
+            "Advanced Standard Frame S": 1
+        }
+    },
+    "Advanced Military Vertical Booster S": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 20.33,
+        "outputQuantity": 1,
+        "time": 4320,
+        "byproducts": {},
+        "industry": "Uncommon Assembly Line S",
+        "input": {
+            "Uncommon Pipe": 6,
+            "Advanced Injector": 5,
+            "Advanced Ionic Chamber S": 1,
+            "Advanced Standard Frame S": 1
+        }
+    },
+    "Advanced Maneuver Vertical Booster S": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 20.33,
+        "outputQuantity": 1,
+        "time": 4320,
+        "byproducts": {},
+        "industry": "Uncommon Assembly Line S",
+        "input": {
+            "Uncommon Pipe": 6,
+            "Advanced Injector": 5,
+            "Advanced Ionic Chamber S": 1,
+            "Advanced Standard Frame S": 1
+        }
+    },
+    "Rare Maneuver Vertical Booster S": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 20.33,
+        "outputQuantity": 1,
+        "time": 12960,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line S",
+        "input": {
+            "Uncommon Pipe": 3,
+            "Advanced Pipe": 3,
+            "Rare Injector": 5,
+            "Rare Ionic Chamber S": 1,
+            "Rare Standard Frame S": 1
+        }
+    },
+    "Rare Freight Vertical Booster S": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 20.33,
+        "outputQuantity": 1,
+        "time": 12960,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line S",
+        "input": {
+            "Uncommon Pipe": 3,
+            "Advanced Pipe": 3,
+            "Rare Injector": 5,
+            "Rare Ionic Chamber S": 1,
+            "Rare Standard Frame S": 1
+        }
+    },
+    "Rare Military Vertical Booster S": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 20.33,
+        "outputQuantity": 1,
+        "time": 12960,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line S",
+        "input": {
+            "Uncommon Pipe": 3,
+            "Advanced Pipe": 3,
+            "Rare Injector": 5,
+            "Rare Ionic Chamber S": 1,
+            "Rare Standard Frame S": 1
+        }
+    },
+    "Exotic Freight Vertical Booster S": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 20.33,
+        "outputQuantity": 1,
+        "time": 38880,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line S",
+        "input": {
+            "Advanced Pipe": 6,
+            "Exotic Injector": 5,
+            "Exotic Ionic Chamber S": 1,
+            "Exotic Standard Frame S": 1,
+            "Relic Plasma Tres l": 1
+        }
+    },
+    "Exotic Military Vertical Booster S": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 20.33,
+        "outputQuantity": 1,
+        "time": 38880,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line S",
+        "input": {
+            "Advanced Pipe": 6,
+            "Exotic Injector": 5,
+            "Exotic Ionic Chamber S": 1,
+            "Exotic Standard Frame S": 1,
+            "Relic Plasma Tres l": 1
+        }
+    },
+    "Exotic Maneuver Vertical Booster S": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 20.33,
+        "outputQuantity": 1,
+        "time": 38880,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line S",
+        "input": {
+            "Advanced Pipe": 6,
+            "Exotic Injector": 5,
+            "Exotic Ionic Chamber S": 1,
+            "Exotic Standard Frame S": 1,
+            "Relic Plasma Tres l": 1
         }
     },
     "Vertical Booster M": {
@@ -10113,6 +10565,195 @@
             "Basic Standard Frame S": 1
         }
     },
+    "Uncommon Freight Vertical Booster M": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 105.2,
+        "outputQuantity": 1,
+        "time": 5760,
+        "byproducts": {},
+        "industry": "Assembly Line M",
+        "input": {
+            "Basic Pipe": 18,
+            "Uncommon Pipe": 18,
+            "Uncommon Injector": 25,
+            "Uncommon Ionic Chamber M": 1,
+            "Uncommon Standard Frame M": 1
+        }
+    },
+    "Uncommon Military Vertical Booster M": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 105.2,
+        "outputQuantity": 1,
+        "time": 5760,
+        "byproducts": {},
+        "industry": "Assembly Line M",
+        "input": {
+            "Basic Pipe": 18,
+            "Uncommon Pipe": 18,
+            "Uncommon Injector": 25,
+            "Uncommon Ionic Chamber M": 1,
+            "Uncommon Standard Frame M": 1
+        }
+    },
+    "Uncommon Maneuver Vertical Booster M": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 105.2,
+        "outputQuantity": 1,
+        "time": 5760,
+        "byproducts": {},
+        "industry": "Assembly Line M",
+        "input": {
+            "Basic Pipe": 18,
+            "Uncommon Pipe": 18,
+            "Uncommon Injector": 25,
+            "Uncommon Ionic Chamber M": 1,
+            "Uncommon Standard Frame M": 1
+        }
+    },
+    "Advanced Freight Vertical Booster M": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 105.20,
+        "outputQuantity": 1,
+        "time": 17280,
+        "byproducts": {},
+        "industry": "Uncommon Assembly Line M",
+        "input": {
+            "Uncommon Pipe": 36,
+            "Advanced Injector": 25,
+            "Advanced Ionic Chamber M": 1,
+            "Advanced Standard Frame M": 1
+        }
+    },
+    "Advanced Military Vertical Booster M": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 105.20,
+        "outputQuantity": 1,
+        "time": 17280,
+        "byproducts": {},
+        "industry": "Uncommon Assembly Line M",
+        "input": {
+            "Uncommon Pipe": 36,
+            "Advanced Injector": 25,
+            "Advanced Ionic Chamber M": 1,
+            "Advanced Standard Frame M": 1
+        }
+    },
+    "Advanced Maneuver Vertical Booster M": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 105.20,
+        "outputQuantity": 1,
+        "time": 17280,
+        "byproducts": {},
+        "industry": "Uncommon Assembly Line M",
+        "input": {
+            "Uncommon Pipe": 36,
+            "Advanced Injector": 25,
+            "Advanced Ionic Chamber M": 1,
+            "Advanced Standard Frame M": 1
+        }
+    },
+    "Rare Freight Vertical Booster M": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 105.2,
+        "outputQuantity": 1,
+        "time": 51840,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line M",
+        "input": {
+            "Uncommon Pipe": 18,
+            "Advanced Pipe": 18,
+            "Rare Injector": 25,
+            "Rare Ionic Chamber M": 1,
+            "Rare Standard Frame M": 1
+        }
+    },
+    "Rare Military Vertical Booster M": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 20.33,
+        "outputQuantity": 1,
+        "time": 51840,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line M",
+        "input": {
+            "Uncommon Pipe": 18,
+            "Advanced Pipe": 18,
+            "Rare Injector": 25,
+            "Rare Ionic Chamber M": 1,
+            "Rare Standard Frame M": 1
+        }
+    },
+    "Rare Maneuver Vertical Booster M": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 105.2,
+        "outputQuantity": 1,
+        "time": 51840,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line M",
+        "input": {
+            "Uncommon Pipe": 18,
+            "Advanced Pipe": 18,
+            "Rare Injector": 25,
+            "Rare Ionic Chamber M": 1,
+            "Rare Standard Frame M": 1
+        }
+    },
+    "Exotic Freight Vertical Booster M": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 105.20,
+        "outputQuantity": 1,
+        "time": 155520,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line M",
+        "input": {
+            "Advanced Pipe": 36,
+            "Exotic Injector": 25,
+            "Exotic Ionic Chamber M": 1,
+            "Exotic Standard Frame M": 1,
+            "Relic Plasma Tres l": 1
+        }
+    },
+    "Exotic Military Vertical Booster M": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 105.20,
+        "outputQuantity": 1,
+        "time": 155520,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line M",
+        "input": {
+            "Advanced Pipe": 36,
+            "Exotic Injector": 25,
+            "Exotic Ionic Chamber M": 1,
+            "Exotic Standard Frame M": 1,
+            "Relic Plasma Tres l": 1
+        }
+    },
+    "Exotic Maneuver Vertical Booster M": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 105.20,
+        "outputQuantity": 1,
+        "time": 155520,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line M",
+        "input": {
+            "Advanced Pipe": 36,
+            "Exotic Injector": 25,
+            "Exotic Ionic Chamber M": 1,
+            "Exotic Standard Frame M": 1,
+            "Relic Plasma Tres l": 1
+        }
+    },
     "Vertical Booster L": {
         "tier": 1,
         "type": "Piloting Element",
@@ -10126,6 +10767,195 @@
             "Basic Injector": 25,
             "Basic Ionic Chamber M": 1,
             "Basic Standard Frame M": 1
+        }
+    },
+    "Uncommon Freight Vertical Booster L": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 562.4,
+        "outputQuantity": 1,
+        "time": 23040,
+        "byproducts": {},
+        "industry": "Assembly Line L",
+        "input": {
+            "Basic Pipe": 108,
+            "Uncommon Pipe": 108,
+            "Uncommon Injector": 125,
+            "Uncommon Ionic Chamber L": 1,
+            "Uncommon Standard Frame L": 1
+        }
+    },
+    "Uncommon Miltary Vertical Booster L": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 562.4,
+        "outputQuantity": 1,
+        "time": 23040,
+        "byproducts": {},
+        "industry": "Assembly Line L",
+        "input": {
+            "Basic Pipe": 108,
+            "Uncommon Pipe": 108,
+            "Uncommon Injector": 125,
+            "Uncommon Ionic Chamber L": 1,
+            "Uncommon Standard Frame L": 1
+        }
+    },
+    "Uncommon Maneuver Vertical Booster L": {
+        "tier": 2,
+        "type": "Piloting Element",
+        "volume": 562.4,
+        "outputQuantity": 1,
+        "time": 23040,
+        "byproducts": {},
+        "industry": "Assembly Line L",
+        "input": {
+            "Basic Pipe": 108,
+            "Uncommon Pipe": 108,
+            "Uncommon Injector": 125,
+            "Uncommon Ionic Chamber L": 1,
+            "Uncommon Standard Frame L": 1
+        }
+    },
+    "Advanced Freight Vertical Booster L": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 562.4,
+        "outputQuantity": 1,
+        "time": 69120,
+        "byproducts": {},
+        "industry": "Uncommon Assembly Line L",
+        "input": {
+            "Uncommon Pipe": 216,
+            "Advanced Injector": 125,
+            "Advanced Ionic Chamber L": 1,
+            "Advanced Standard Frame L": 1
+        }
+    },
+    "Advanced Military Vertical Booster L": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 562.4,
+        "outputQuantity": 1,
+        "time": 69120,
+        "byproducts": {},
+        "industry": "Uncommon Assembly Line L",
+        "input": {
+            "Uncommon Pipe": 216,
+            "Advanced Injector": 125,
+            "Advanced Ionic Chamber L": 1,
+            "Advanced Standard Frame L": 1
+        }
+    },
+    "Advanced Maneuver Vertical Booster L": {
+        "tier": 3,
+        "type": "Piloting Element",
+        "volume": 562.4,
+        "outputQuantity": 1,
+        "time": 69120,
+        "byproducts": {},
+        "industry": "Uncommon Assembly Line L",
+        "input": {
+            "Uncommon Pipe": 216,
+            "Advanced Injector": 125,
+            "Advanced Ionic Chamber L": 1,
+            "Advanced Standard Frame L": 1
+        }
+    },
+    "Rare Freight Vertical Booster L": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 562.4,
+        "outputQuantity": 1,
+        "time": 207360,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line L",
+        "input": {
+            "Uncommon Pipe": 108,
+            "Advanced Pipe": 108,
+            "Rare Injector": 125,
+            "Rare Ionic Chamber L": 1,
+            "Rare Standard Frame L": 1
+        }
+    },
+    "Rare Military Vertical Booster L": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 562.4,
+        "outputQuantity": 1,
+        "time": 207360,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line L",
+        "input": {
+            "Uncommon Pipe": 108,
+            "Advanced Pipe": 108,
+            "Rare Injector": 125,
+            "Rare Ionic Chamber L": 1,
+            "Rare Standard Frame L": 1
+        }
+    },
+    "Rare Maneuver Vertical Booster L": {
+        "tier": 4,
+        "type": "Piloting Element",
+        "volume": 562.4,
+        "outputQuantity": 1,
+        "time": 207360,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line L",
+        "input": {
+            "Uncommon Pipe": 108,
+            "Advanced Pipe": 108,
+            "Rare Injector": 125,
+            "Rare Ionic Chamber L": 1,
+            "Rare Standard Frame L": 1
+        }
+    },
+    "Exotic Freight Vertical Booster L": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 562.4,
+        "outputQuantity": 1,
+        "time": 622080,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line L",
+        "input": {
+            "Advanced Pipe": 216,
+            "Exotic Injector": 125,
+            "Exotic Ionic Chamber L": 1,
+            "Exotic Standard Frame L": 1,
+            "Relic Plasma Tres l": 1
+        }
+    },
+    "Exotic Military Vertical Booster L": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 562.4,
+        "outputQuantity": 1,
+        "time": 622080,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line L",
+        "input": {
+            "Advanced Pipe": 216,
+            "Exotic Injector": 125,
+            "Exotic Ionic Chamber L": 1,
+            "Exotic Standard Frame L": 1,
+            "Relic Plasma Tres l": 1
+        }
+    },
+    "Exotic Maneuver Vertical Booster L": {
+        "tier": 5,
+        "type": "Piloting Element",
+        "volume": 562.4,
+        "outputQuantity": 1,
+        "time": 622080,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line L",
+        "input": {
+            "Advanced Pipe": 216,
+            "Exotic Injector": 125,
+            "Exotic Ionic Chamber L": 1,
+            "Exotic Standard Frame L": 1,
+            "Relic Plasma Tres l": 1
         }
     },
     "Landing Gear XS": {
@@ -11707,14 +12537,46 @@
             "Advanced Reinforced Frame S": 1
         }
     },
-    "Shield Generator S": {
+    "Advanced Shield Generator XS": {
+        "tier": 3,
+        "type": "Combat Element",
+        "volume": 210,
+        "outputQuantity": 1,
+        "time": 1350,
+        "byproducts": {},
+        "industry": "Uncommon Assembly Line XS",
+        "input": {
+            "Uncommon Component": 1,
+            "Advanced Magnet": 1,
+            "Advanced Laser Chamber xs": 1,
+            "Advanced Quantum Barrier": 1,
+            "Advanced Reinforced Frame XS": 1
+        }
+    },
+    "Advanced Shield Generator S": {
         "tier": 3,
         "type": "Combat Element",
         "volume": 950,
         "outputQuantity": 1,
+        "time": 5400,
+        "byproducts": {},
+        "industry": "Uncommon Assembly Line S",
+        "input": {
+            "Uncommon Component": 6,
+            "Advanced Magnet": 5,
+            "Advanced Laser Chamber S": 1,
+            "Advanced Quantum Barrier": 4,
+            "Advanced Reinforced Frame S": 1
+        }
+    },
+    "Advanced Shield Generator M": {
+        "tier": 3,
+        "type": "Combat Element",
+        "volume": 4500,
+        "outputQuantity": 1,
         "time": 21600,
         "byproducts": {},
-        "industry": "Assembly Line M",
+        "industry": "Uncommon Assembly Line M",
         "input": {
             "Uncommon Component": 36,
             "Advanced Magnet": 25,
@@ -11723,14 +12585,14 @@
             "Advanced Reinforced Frame M": 1
         }
     },
-    "Shield Generator M": {
+    "Advanced Shield Generator L": {
         "tier": 3,
         "type": "Combat Element",
-        "volume": 4500,
+        "volume": 22700,
         "outputQuantity": 1,
         "time": 86400,
         "byproducts": {},
-        "industry": "Assembly Line L",
+        "industry": "Uncommon Assembly Line L",
         "input": {
             "Uncommon Component": 216,
             "Advanced Magnet": 125,
@@ -11739,20 +12601,412 @@
             "Advanced Reinforced Frame L": 1
         }
     },
-    "Shield Generator L": {
-        "tier": 3,
+    "Exotic Active Shield Generator XS": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 134.4,
+        "outputQuantity": 1,
+        "time": 12150,
+        "byproducts": {},
+        "industry": "Rare Assembly Line XS",
+        "input": {
+            "Advanced Component": 1,
+            "Exotic Magnet": 1,
+            "Exotic Laser Chamber XS": 1,
+            "Exotic Quantum Barrier": 1,
+            "Exotic Reinforced Frame XS": 1,
+            "Relic Plasma Novem l": 1
+        }
+    },
+    "Exotic Active Shield Generator S": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 950,
+        "outputQuantity": 1,
+        "time": 48600,
+        "byproducts": {},
+        "industry": "Rare Assembly Line S",
+        "input": {
+            "Advanced Component": 6,
+            "Exotic Magnet": 5,
+            "Exotic Laser Chamber S": 1,
+            "Exotic Quantum Barrier": 4,
+            "Exotic Reinforced Frame S": 1,
+            "Relic Plasma Novem l": 1
+        }
+    },
+    "Exotic Active Shield Generator M": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 2880,
+        "outputQuantity": 1,
+        "time": 194400,
+        "byproducts": {},
+        "industry": "Rare Assembly Line M",
+        "input": {
+            "Advanced Component": 36,
+            "Exotic Magnet": 25,
+            "Exotic Laser Chamber M": 1,
+            "Exotic Quantum Barrier": 16,
+            "Exotic Reinforced Frame M": 1,
+            "Relic Plasma Novem l": 1
+        }
+    },
+    "Exotic Active Shield Generator L": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 14530,
+        "outputQuantity": 1,
+        "time": 777600,
+        "byproducts": {},
+        "industry": "Rare Assembly Line L",
+        "input": {
+            "Advanced Component": 216,
+            "Exotic Magnet": 125,
+            "Exotic Laser Chamber L": 1,
+            "Exotic Quantum Barrier": 64,
+            "Exotic Reinforced Frame L": 1,
+            "Relic Plasma Novem l": 1
+        }
+    },
+    "Exotic Capacitor Shield Generator XS": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 210,
+        "outputQuantity": 1,
+        "time": 12150,
+        "byproducts": {},
+        "industry": "Rare Assembly Line XS",
+        "input": {
+            "Advanced Component": 1,
+            "Exotic Magnet": 1,
+            "Exotic Laser Chamber XS": 1,
+            "Exotic Quantum Barrier": 1,
+            "Exotic Reinforced Frame XS": 1,
+            "Relic Plasma Novem l": 1
+        }
+    },
+    "Exotic Capacitor Shield Generator S": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 950,
+        "outputQuantity": 1,
+        "time": 48600,
+        "byproducts": {},
+        "industry": "Rare Assembly Line S",
+        "input": {
+            "Advanced Component": 6,
+            "Exotic Magnet": 5,
+            "Exotic Laser Chamber S": 1,
+            "Exotic Quantum Barrier": 4,
+            "Exotic Reinforced Frame S": 1,
+            "Relic Plasma Novem l": 1
+        }
+    },
+    "Exotic Capacitor Shield Generator M": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 4500,
+        "outputQuantity": 1,
+        "time": 194400,
+        "byproducts": {},
+        "industry": "Rare Assembly Line M",
+        "input": {
+            "Advanced Component": 36,
+            "Exotic Magnet": 25,
+            "Exotic Laser Chamber M": 1,
+            "Exotic Quantum Barrier": 16,
+            "Exotic Reinforced Frame M": 1,
+            "Relic Plasma Novem l": 1
+        }
+    },
+    "Exotic Capacitor Shield Generator L": {
+        "tier": 5,
         "type": "Combat Element",
         "volume": 22700,
         "outputQuantity": 1,
-        "time": 345600,
+        "time": 777600,
         "byproducts": {},
-        "industry": "Assembly Line XL",
+        "industry": "Rare Assembly Line L",
         "input": {
-            "Uncommon Component": 1296,
-            "Advanced Magnet": 625,
-            "Advanced Laser Chamber XL": 1,
-            "Advanced Quantum Barrier": 256,
-            "Advanced Reinforced Frame XL": 1
+            "Advanced Component": 216,
+            "Exotic Magnet": 125,
+            "Exotic Laser Chamber L": 1,
+            "Exotic Quantum Barrier": 64,
+            "Exotic Reinforced Frame L": 1,
+            "Relic Plasma Novem l": 1
+        }
+    },
+    "Exotic Variable Shield Generator XS": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 210,
+        "outputQuantity": 1,
+        "time": 12150,
+        "byproducts": {},
+        "industry": "Rare Assembly Line XS",
+        "input": {
+            "Advanced Component": 1,
+            "Exotic Magnet": 1,
+            "Exotic Laser Chamber XS": 1,
+            "Exotic Quantum Barrier": 1,
+            "Exotic Reinforced Frame XS": 1,
+            "Relic Plasma Novem l": 1
+        }
+    },
+    "Exotic Variable Shield Generator S": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 950,
+        "outputQuantity": 1,
+        "time": 48600,
+        "byproducts": {},
+        "industry": "Rare Assembly Line S",
+        "input": {
+            "Advanced Component": 6,
+            "Exotic Magnet": 5,
+            "Exotic Laser Chamber S": 1,
+            "Exotic Quantum Barrier": 4,
+            "Exotic Reinforced Frame S": 1,
+            "Relic Plasma Novem l": 1
+        }
+    },
+    "Exotic Variable Shield Generator M": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 4500,
+        "outputQuantity": 1,
+        "time": 194400,
+        "byproducts": {},
+        "industry": "Rare Assembly Line M",
+        "input": {
+            "Advanced Component": 36,
+            "Exotic Magnet": 25,
+            "Exotic Laser Chamber M": 1,
+            "Exotic Quantum Barrier": 16,
+            "Exotic Reinforced Frame M": 1,
+            "Relic Plasma Novem l": 1
+        }
+    },
+    "Exotic Variable Shield Generator L": {
+        "tier": 5,
+        "type": "Combat Element",
+        "volume": 22700,
+        "outputQuantity": 1,
+        "time": 777600,
+        "byproducts": {},
+        "industry": "Rare Assembly Line L",
+        "input": {
+            "Advanced Component": 216,
+            "Exotic Magnet": 125,
+            "Exotic Laser Chamber L": 1,
+            "Exotic Quantum Barrier": 64,
+            "Exotic Reinforced Frame L": 1,
+            "Relic Plasma Novem l": 1
+        }
+    },
+    "Rare Active Shield Generator XS": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 168,
+        "outputQuantity": 1,
+        "time": 4050,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line XS",
+        "input": {
+            "Uncommon Component": 1,
+            "Advanced Component": 1,
+            "Rare Magnet": 1,
+            "Rare Laser Chamber XS": 1,
+            "Rare Quantum Barrier": 1,
+            "Rare Reinforced Frame XS": 1
+        }
+    },
+    "Rare Active Shield Generator S": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 760,
+        "outputQuantity": 1,
+        "time": 16200,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line S",
+        "input": {
+            "Uncommon Component": 3,
+            "Advanced Component": 3,
+            "Rare Magnet": 5,
+            "Rare Laser Chamber S": 1,
+            "Rare Quantum Barrier": 4,
+            "Rare Reinforced Frame S": 1
+        }
+    },
+    "Rare Active Shield Generator M": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 3600,
+        "outputQuantity": 1,
+        "time": 64800,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line M",
+        "input": {
+            "Uncommon Component": 18,
+            "Advanced Component": 18,
+            "Rare Magnet": 25,
+            "Rare Laser Chamber M": 1,
+            "Rare Quantum Barrier": 16,
+            "Rare Reinforced Frame M": 1
+        }
+    },
+    "Rare Active Shield Generator L": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 18160,
+        "outputQuantity": 1,
+        "time": 259200,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line L",
+        "input": {
+            "Uncommon Component": 108,
+            "Advanced Component": 108,
+            "Rare Magnet": 125,
+            "Rare Laser Chamber L": 1,
+            "Rare Quantum Barrier": 64,
+            "Rare Reinforced Frame L": 1
+        }
+    },
+    "Rare Capacitor Shield Generator XS": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 210,
+        "outputQuantity": 1,
+        "time": 4050,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line XS",
+        "input": {
+            "Uncommon Component": 1,
+            "Advanced Component": 1,
+            "Rare Magnet": 1,
+            "Rare Laser Chamber XS": 1,
+            "Rare Quantum Barrier": 1,
+            "Rare Reinforced Frame XS": 1
+        }
+    },
+    "Rare Capacitor Shield Generator S": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 950,
+        "outputQuantity": 1,
+        "time": 16200,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line XS",
+        "input": {
+            "Uncommon Component": 3,
+            "Advanced Component": 3,
+            "Rare Magnet": 5,
+            "Rare Laser Chamber S": 1,
+            "Rare Quantum Barrier": 4,
+            "Rare Reinforced Frame S": 1
+        }
+    },
+    "Rare Capacitor Shield Generator M": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 4500,
+        "outputQuantity": 1,
+        "time": 64800,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line M",
+        "input": {
+            "Uncommon Component": 18,
+            "Advanced Component": 18,
+            "Rare Magnet": 25,
+            "Rare Laser Chamber M": 1,
+            "Rare Quantum Barrier": 16,
+            "Rare Reinforced Frame M": 1
+        }
+    },
+    "Rare Capacitor Shield Generator L": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 22700,
+        "outputQuantity": 1,
+        "time": 259200,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line L",
+        "input": {
+            "Uncommon Component": 108,
+            "Advanced Component": 108,
+            "Rare Magnet": 125,
+            "Rare Laser Chamber L": 1,
+            "Rare Quantum Barrier": 64,
+            "Rare Reinforced Frame L": 1
+        }
+    },
+    "Rare Variable Shield Generator XS": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 210,
+        "outputQuantity": 1,
+        "time": 4050,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line XS",
+        "input": {
+            "Uncommon Component": 1,
+            "Advanced Component": 1,
+            "Rare Magnet": 1,
+            "Rare Laser Chamber XS": 1,
+            "Rare Quantum Barrier": 1,
+            "Rare Reinforced Frame XS": 1
+        }
+    },
+    "Rare Variable Shield Generator S": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 950,
+        "outputQuantity": 1,
+        "time": 16200,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line S",
+        "input": {
+            "Uncommon Component": 3,
+            "Advanced Component": 3,
+            "Rare Magnet": 5,
+            "Rare Laser Chamber S": 1,
+            "Rare Quantum Barrier": 4,
+            "Rare Reinforced Frame S": 1
+        }
+    },
+    "Rare Variable Shield Generator M": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 4500,
+        "outputQuantity": 1,
+        "time": 64800,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line M",
+        "input": {
+            "Uncommon Component": 18,
+            "Advanced Component": 18,
+            "Rare Magnet": 25,
+            "Rare Laser Chamber M": 1,
+            "Rare Quantum Barrier": 16,
+            "Rare Reinforced Frame M": 1
+        }
+    },
+    "Rare Variable Shield Generator L": {
+        "tier": 4,
+        "type": "Combat Element",
+        "volume": 22700,
+        "outputQuantity": 1,
+        "time": 259200,
+        "byproducts": {},
+        "industry": "Advanced Assembly Line L",
+        "input": {
+            "Uncommon Component": 108,
+            "Advanced Component": 108,
+            "Rare Magnet": 125,
+            "Rare Laser Chamber L": 1,
+            "Rare Quantum Barrier": 64,
+            "Rare Reinforced Frame L": 1
         }
     },
     "Info Button S": {
@@ -11827,7 +13081,7 @@
         "outputQuantity": 1,
         "time": 92160,
         "byproducts": {},
-        "industry": "Assembly Line XL",
+        "industry": "Assembly Line L",
         "input": {
             "Basic Component": 648,
             "Uncommon Component": 648,
@@ -11891,6 +13145,22 @@
         "outputQuantity": 1,
         "time": 360,
         "byproducts": {},
+        "industry": "Assembly Line S",
+        "input": {
+            "Basic Component": 1,
+            "Uncommon Component": 1,
+            "Uncommon Electronics": 1,
+            "Uncommon Screen XS": 1,
+            "Uncommon Casing XS": 1
+        }
+    },
+    "Modern Transparent Screen XS": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 9.75,
+        "outputQuantity": 1,
+        "time": 360,
+        "byproducts": {},
         "industry": "Assembly Line XS",
         "input": {
             "Basic Component": 1,
@@ -11898,6 +13168,214 @@
             "Uncommon Electronics": 1,
             "Uncommon Screen XS": 1,
             "Uncommon Casing XS": 1
+        }
+    },
+    "Modern Transparent Screen S": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 37.5,
+        "outputQuantity": 1,
+        "time": 360,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Basic Component": 1,
+            "Uncommon Component": 1,
+            "Uncommon Electronics": 1,
+            "Uncommon Screen XS": 1,
+            "Uncommon Casing XS": 1
+        }
+    },
+    "Modern Transparent Screen M": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 90,
+        "outputQuantity": 1,
+        "time": 360,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Basic Component": 1,
+            "Uncommon Component": 1,
+            "Uncommon Electronics": 1,
+            "Uncommon Screen XS": 1,
+            "Uncommon Casing XS": 1
+        }
+    },
+    "Modern Transparent Screen L": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 150,
+        "outputQuantity": 1,
+        "time": 1440,
+        "byproducts": {},
+        "industry": "Assembly Line S",
+        "input": {
+            "Basic Component": 3,
+            "Uncommon Component": 3,
+            "Uncommon Electronics": 5,
+            "Uncommon Screen S": 1,
+            "Uncommon Casing S": 1
+        }
+    },
+    "Modern Transparent Screen XL": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 600,
+        "outputQuantity": 1,
+        "time": 5760,
+        "byproducts": {},
+        "industry": "Assembly Line M",
+        "input": {
+            "Basic Component": 18,
+            "Uncommon Component": 18,
+            "Uncommon Electronics": 25,
+            "Uncommon Screen M": 1,
+            "Uncommon Casing M": 1
+        }
+    },
+    "Expanded Modern Transparent Screen XXL": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 2160,
+        "outputQuantity": 1,
+        "time": 23040,
+        "byproducts": {},
+        "industry": "Assembly Line L",
+        "input": {
+            "Basic Component": 108,
+            "Uncommon Component": 108,
+            "Uncommon Electronics": 125,
+            "Uncommon Screen L": 1,
+            "Uncommon Casing L": 1
+        }
+    },
+    "Super Expanded Modern Transparent Screen XXXL": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 3600,
+        "outputQuantity": 1,
+        "time": 92160,
+        "byproducts": {},
+        "industry": "Assembly Line XL",
+        "input": {
+            "Basic Component": 648,
+            "Uncommon Component": 648,
+            "Uncommon Electronics": 625,
+            "Uncommon Screen XL": 1,
+            "Uncommon Casing XL": 1
+        }
+    },
+    "Modern Screen XS": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 9.75,
+        "outputQuantity": 1,
+        "time": 360,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Basic Component": 1,
+            "Uncommon Component": 1,
+            "Uncommon Electronics": 1,
+            "Uncommon Screen XS": 1,
+            "Uncommon Casing XS": 1
+        }
+    },
+    "Modern Screen S": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 37.5,
+        "outputQuantity": 1,
+        "time": 360,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Basic Component": 1,
+            "Uncommon Component": 1,
+            "Uncommon Electronics": 1,
+            "Uncommon Screen XS": 1,
+            "Uncommon Casing XS": 1
+        }
+    },
+    "Modern Screen M": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 90,
+        "outputQuantity": 1,
+        "time": 360,
+        "byproducts": {},
+        "industry": "Assembly Line XS",
+        "input": {
+            "Basic Component": 1,
+            "Uncommon Component": 1,
+            "Uncommon Electronics": 1,
+            "Uncommon Screen XS": 1,
+            "Uncommon Casing XS": 1
+        }
+    },
+    "Modern Screen L": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 150,
+        "outputQuantity": 1,
+        "time": 1440,
+        "byproducts": {},
+        "industry": "Assembly Line S",
+        "input": {
+            "Basic Component": 3,
+            "Uncommon Component": 3,
+            "Uncommon Electronics": 5,
+            "Uncommon Screen S": 1,
+            "Uncommon Casing S": 1
+        }
+    },
+    "Modern Screen XL": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 600,
+        "outputQuantity": 1,
+        "time": 5760,
+        "byproducts": {},
+        "industry": "Assembly Line M",
+        "input": {
+            "Basic Component": 18,
+            "Uncommon Component": 18,
+            "Uncommon Electronics": 25,
+            "Uncommon Screen M": 1,
+            "Uncommon Casing M": 1
+        }
+    },
+    "Expanded Modern Screen XXL": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 2160,
+        "outputQuantity": 1,
+        "time": 23040,
+        "byproducts": {},
+        "industry": "Assembly Line L",
+        "input": {
+            "Basic Component": 108,
+            "Uncommon Component": 108,
+            "Uncommon Electronics": 125,
+            "Uncommon Screen L": 1,
+            "Uncommon Casing L": 1
+        }
+    },
+    "Super Expanded Modern Screen XXXL": {
+        "tier": 2,
+        "type": "Furniture & Appliances Element",
+        "volume": 3600,
+        "outputQuantity": 1,
+        "time": 92160,
+        "byproducts": {},
+        "industry": "Assembly Line XL",
+        "input": {
+            "Basic Component": 648,
+            "Uncommon Component": 648,
+            "Uncommon Electronics": 625,
+            "Uncommon Screen XL": 1,
+            "Uncommon Casing XL": 1
         }
     },
     "Sign XS": {
