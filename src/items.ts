@@ -38,7 +38,7 @@ export enum Category {
     SCRAP = "Scrap",
     STRUCTURAL_PART = "Structural Part",
     SYSTEMS_ELEMENT = "Systems Element",
-    WARP_CELLS = "Warp Cells",
+    WARP_CELLS = "Warp Cell",
 }
 
 /**
