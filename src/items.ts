@@ -34,6 +34,7 @@ export enum Category {
     PRODUCT_HONEYCOMB = "Product Honeycomb",
     PURE = "Pure",
     PURE_HONEYCOMB = "Pure Honeycomb",
+	SCHEMATIC = "Schematics",
     SCRAP = "Scrap",
     STRUCTURAL_PART = "Structural Part",
     SYSTEMS_ELEMENT = "Systems Element",
