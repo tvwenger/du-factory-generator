@@ -7,12 +7,9 @@ on:
     branches: [ "master" ]
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
+
     strategy:
       matrix:
         node-version: [14.x, 16.x, 18.x]
@@ -27,13 +24,18 @@ jobs:
 
     - name: Build
       run: |
+        npm install
+		    npm run build
+
     - name: Setup Pages
       uses: actions/configure-pages@v3
+      
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v1
       with:
         # Upload entire repository
-        path: './dist'
+        path: '/dist'
+        
     - name: Deploy to GitHub Pages
       id: deployment
       uses: actions/deploy-pages@v1
