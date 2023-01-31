@@ -3,8 +3,18 @@ name: NodeJS with Webpack
 on:
   push:
     branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+    
+
+# Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Allow one concurrent deployment
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
 
 jobs:
   build:
