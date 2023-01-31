@@ -27,14 +27,14 @@ export enum Category {
     INDUSTRY_AND_INFRASTRUCTURE_ELEMENT = "Industry & Infrastructure Element",
     INTERMEDIARY_PART = "Intermediary Part",
     ORE = "Ore",
-	RELICPLASMA = "Relic Plasma",
+	RELIC = "Relic",
     PILOTING_ELEMENT = "Piloting Element",
     PLANET_ELEMENT = "Planet Element",
     PRODUCT = "Product",
     PRODUCT_HONEYCOMB = "Product Honeycomb",
     PURE = "Pure",
     PURE_HONEYCOMB = "Pure Honeycomb",
-	SCHEMATIC = "Schematics",
+	SCHEMATICS = "Schematics",
     SCRAP = "Scrap",
     STRUCTURAL_PART = "Structural Part",
     SYSTEMS_ELEMENT = "Systems Element",
@@ -66,7 +66,7 @@ export function isOre(item: Item): boolean {
  * @param item Item to check
  */
 export function isRelicPlasma(item: Item): boolean {
-    return item.category === Category.RELICPLASMA
+    return item.category === Category.RELIC
 }
 
 /**
