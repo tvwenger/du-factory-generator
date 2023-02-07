@@ -51,6 +51,7 @@ export interface Item {
     readonly volume: Liter
     readonly transferBatchSize: Quantity
     readonly transferTime: Seconds
+    readonly id: number
 }
 
 /**
@@ -109,6 +110,7 @@ export function item(
     volume: Liter,
     transferBatchSize: Quantity,
     transferTime: Seconds,
+    id: number,
 ): Item {
     return {
         name,
@@ -117,6 +119,7 @@ export function item(
         volume,
         transferBatchSize,
         transferTime,
+        id,
     }
 }
 
@@ -208,6 +211,7 @@ for (const name in data) {
         data[name].volume,
         transferBatchSize,
         transferTime,
+        data[name].id,
     )
 }
 for (const name in data) {

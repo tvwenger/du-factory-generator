@@ -219,7 +219,7 @@ export class MergedNodeInstruction {
                 textAnchor="middle"
                 fontWeight="bold"
             >
-                {this.container.item.name}
+                {this.container.item.name}  ({this.container.item.id})
             </text>
         )
         elements.push(element)
