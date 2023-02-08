@@ -16564,7 +16564,7 @@
         "id": 1373443625
     },
     "Gunner Module M": {
-        "tier": 2,
+        "tier": 3,
         "type": "Systems Element",
         "volume": 486.4,
         "outputQuantity": 1,
@@ -16581,7 +16581,7 @@
         "id": 564736657
     },
     "Gunner Module L": {
-        "tier": 2,
+        "tier": 4,
         "type": "Systems Element",
         "volume": 2666.6,
         "outputQuantity": 1,
