@@ -10023,7 +10023,7 @@
         "time": 120,
         "byproducts": {},
         "nanopack": true,
-        "industry": "Assembly Line S",
+        "industry": "Assembly Line XS",
         "input": {
             "Basic Pipe": 6,
             "Basic Injector": 5,
