@@ -17405,7 +17405,7 @@
         "outputQuantity": 1,
         "time": 1440,
         "byproducts": {},
-        "industry": "Assembly Line XS",
+        "industry": "Assembly Line S",
         "input": {
             "Basic Connector": 3,
             "Uncommon Connector": 3,
