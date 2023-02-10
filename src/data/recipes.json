@@ -17141,7 +17141,7 @@
         "outputQuantity": 1,
         "time": 23040,
         "byproducts": {},
-        "industry": "Assembly Line L",
+        "industry": "Assembly Line M",
         "input": {
             "Basic Screw": 108,
             "Uncommon Screw": 108,
