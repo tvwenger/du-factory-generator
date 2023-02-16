@@ -16555,7 +16555,8 @@
         "byproducts": {},
         "industry": "Assembly Line S",
         "input": {
-            "Uncommon Connector": 6,
+            "Basic Connector": 3,
+            "Uncommon Connector": 3,
             "Uncommon Power System": 5,
             "Uncommon Control System S": 1,
             "Uncommon Standard Frame S": 1,
@@ -16589,7 +16590,8 @@
         "byproducts": {},
         "industry": "Assembly Line L",
         "input": {
-            "Uncommon Connector": 216,
+            "Uncommon Connector": 108,
+            "Advanced Connector": 108,
             "Rare Power System": 125,
             "Rare Control System L": 1,
             "Rare Standard Frame L": 1,
@@ -20958,7 +20960,7 @@
         "input": {
             "Glass": 28,
             "Basic Fixation": 24,
-            "Basic Standard Frame S": 14
+            "Basic Standard Frame S": 4
         },
         "id": 2158665549
     },
