@@ -16556,9 +16556,9 @@
         "industry": "Assembly Line S",
         "input": {
             "Uncommon Connector": 6,
-            "Advanced Power System": 5,
-            "Advanced Control System S": 1,
-            "Advanced Standard Frame S": 1,
+            "Uncommon Power System": 5,
+            "Uncommon Control System S": 1,
+            "Uncommon Standard Frame S": 1,
             "Tier 2 S Element Schematic Copy": 1
         },
         "id": 1373443625
@@ -16590,9 +16590,9 @@
         "industry": "Assembly Line L",
         "input": {
             "Uncommon Connector": 216,
-            "Advanced Power System": 125,
-            "Advanced Control System L": 1,
-            "Advanced Standard Frame L": 1,
+            "Rare Power System": 125,
+            "Rare Control System L": 1,
+            "Rare Standard Frame L": 1,
             "Tier 4 L Element Schematic Copy": 1
         },
         "id": 3327293642
