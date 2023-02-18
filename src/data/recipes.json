@@ -16330,7 +16330,7 @@
         "id": 3663249627
     },
     "Force Field XS": {
-        "tier": 3,
+        "tier": 2,
         "type": "Furniture & Appliances Element",
         "volume": 57.56,
         "outputQuantity": 1,
@@ -16338,15 +16338,15 @@
         "byproducts": {},
         "industry": "Assembly Line XS",
         "input": {
-            "Uncommon Component": 1,
-            "Advanced Power System": 1,
-            "Advanced Quantum Barrier": 1,
+            "Basic Component": 2,
+            "Uncommon Component": 2,
+            "Uncommon Power System": 2,
             "Tier 2 XS Element Schematic Copy": 1
         },
         "id": 3686074288
     },
     "Force Field S": {
-        "tier": 3,
+        "tier": 2,
         "type": "Furniture & Appliances Element",
         "volume": 34.7,
         "outputQuantity": 1,
@@ -16354,9 +16354,9 @@
         "byproducts": {},
         "industry": "Assembly Line XS",
         "input": {
-            "Uncommon Component": 1,
-            "Advanced Power System": 1,
-            "Advanced Quantum Barrier": 1,
+            "Basic Component": 2,
+            "Uncommon Component": 2,
+            "Uncommon Power System": 2,
             "Tier 2 S Element Schematic Copy": 1
         },
         "id": 3685998465
@@ -19254,7 +19254,7 @@
         "id": 2153998731
     },
     "Detection Zone XS": {
-        "tier": 3,
+        "tier": 2,
         "type": "Furniture & Appliances Element",
         "volume": 4.5,
         "outputQuantity": 1,
@@ -19262,14 +19262,15 @@
         "byproducts": {},
         "industry": "Assembly Line XS",
         "input": {
-            "Uncommon Component": 1,
-            "Advanced Electronics": 1,
+            "Basic Component": 2,
+			"Uncommon Component": 2,
+            "Uncommon Electronics": 2,
             "Tier 2 XS Element Schematic Copy": 1
         },
         "id": 485151209
     },
     "Detection Zone S": {
-        "tier": 3,
+        "tier": 2,
         "type": "Furniture & Appliances Element",
         "volume": 4.5,
         "outputQuantity": 1,
@@ -19277,8 +19278,9 @@
         "byproducts": {},
         "industry": "Assembly Line XS",
         "input": {
-            "Uncommon Component": 1,
-            "Advanced Electronics": 1,
+            "Basic Component": 2,
+			"Uncommon Component": 2,
+            "Uncommon Electronics": 2,
             "Tier 2 S Element Schematic Copy": 1
         },
         "id": 485149228
@@ -19292,14 +19294,14 @@
         "byproducts": {},
         "industry": "Assembly Line XS",
         "input": {
-            "Uncommon Component": 1,
+			"Uncommon Component": 1,
             "Advanced Electronics": 1,
             "Tier 3 M Element Schematic Copy": 1
         },
         "id": 485149481
     },
     "Detection Zone L": {
-        "tier": 3,
+        "tier": 2,
         "type": "Furniture & Appliances Element",
         "volume": 4.5,
         "outputQuantity": 1,
@@ -19307,7 +19309,7 @@
         "byproducts": {},
         "industry": "Assembly Line XS",
         "input": {
-            "Uncommon Component": 1,
+			"Uncommon Component": 1,
             "Advanced Electronics": 1,
             "Tier 3 L Element Schematic Copy": 1
         },
