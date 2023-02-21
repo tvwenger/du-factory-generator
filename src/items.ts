@@ -66,6 +66,14 @@ export function isOre(item: Item): boolean {
  * RelicPlasma type guard
  * @param item Item to check
  */
+export function isSchematic(item: Item): boolean {
+    return item.category === Category.SCHEMATICS
+}
+
+/**
+ * RelicPlasma type guard
+ * @param item Item to check
+ */
 export function isRelicPlasma(item: Item): boolean {
     return item.category === Category.RELIC
 }
@@ -83,7 +91,7 @@ export function isGas(item: Item): boolean {
  * @param item Item to check
  */
 export function isCraftable(item: Item): boolean {
-    return !isOre(item) && !isRelicPlasma(item)
+    return !isOre(item) && !isRelicPlasma(item) && !isSchematic(item)
 }
 
 /**
@@ -296,6 +304,11 @@ export function getRecipe(item: Item, talentLevels: { [key: string]: number }) {
     const time = oldRecipe.time * (1.0 - time_mod)
     const ingredients: Map<Item, number> = new Map()
     for (const [key, value] of oldRecipe.ingredients.entries()) {
+        if (isSchematic(key) || isRelicPlasma(key))
+        {
+            //skip schematics or plasma
+            continue
+        }
         ingredients.set(key, value * (1.0 - input_mod))
     }
     const byproducts: Map<Item, number> = new Map()
