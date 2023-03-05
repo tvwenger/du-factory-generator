@@ -18580,10 +18580,9 @@
         "industry": "Assembly Line XS",
         "input": {
             "Basic LED": 1,
-            "Uncommon LED": 1,
-            "Uncommon Electronics": 1,
-            "Uncommon Antenna XS": 1,
-            "Uncommon Casing XS": 1,
+            "Basic Electronics": 1,
+            "Basic Antenna XS": 1,
+            "Basic Casing XS": 1,
             "Tier 1 XS Element Schematic Copy": 1
         },
         "id": 3996923355
