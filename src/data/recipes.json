@@ -16939,8 +16939,8 @@
         "byproducts": {},
         "industry": "Assembly Line XS",
         "input": {
-            "Basic Component": 1,
-            "Uncommon Component": 1,
+            "Basic Screw": 2,
+            "Uncommon Screw": 2,
             "Uncommon Electronics": 1,
             "Tier 2 XS Element Schematic Copy": 1
         },
