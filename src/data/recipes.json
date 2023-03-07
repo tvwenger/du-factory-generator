@@ -10053,7 +10053,7 @@
         "id": 1790622152
     },
     "Space Fuel Tank M": {
-        "tier": 2,
+        "tier": 1,
         "type": "Industry & Infrastructure Element",
         "volume": 499.2,
         "outputQuantity": 1,
@@ -10070,7 +10070,7 @@
         "id": 773467906
     },
     "Space Fuel Tank L": {
-        "tier": 2,
+        "tier": 1,
         "type": "Industry & Infrastructure Element",
         "volume": 2755.4,
         "outputQuantity": 1,
