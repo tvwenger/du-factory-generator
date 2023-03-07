@@ -10035,7 +10035,7 @@
         "id": 2421673145
     },
     "Space Fuel Tank S": {
-        "tier": 2,
+        "tier": 1,
         "type": "Industry & Infrastructure Element",
         "volume": 92.6,
         "outputQuantity": 1,
