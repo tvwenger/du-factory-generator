@@ -1763,7 +1763,7 @@
             "Pure Aluminium": 50,
             "Tier 2 Product Material Schematic Copy": 1
         },
-        "id": 2021063794
+        "id": 231758472
     },
     "Grade 5 Titanium Alloy": {
         "tier": 5,
@@ -1782,7 +1782,7 @@
             "Catalyst 5": 1,
             "Tier 5 Product Material Schematic Copy": 1
         },
-        "id": 2393133080
+        "id": 3292291904
     },
     "Inconel": {
         "tier": 3,
@@ -1801,7 +1801,7 @@
             "Catalyst 3": 1,
             "Tier 3 Product Material Schematic Copy": 1
         },
-        "id": 3179094495
+        "id": 167908167
     },
     "Mangalloy": {
         "tier": 5,
@@ -1820,7 +1820,7 @@
             "Catalyst 5": 1,
             "Tier 5 Product Material Schematic Copy": 1
         },
-        "id": 436849583
+        "id": 3987872305
     },
     "Maraging Steel": {
         "tier": 4,
@@ -1839,7 +1839,7 @@
             "Catalyst 4": 1,
             "Tier 4 Product Material Schematic Copy": 1
         },
-        "id": 1124170943
+        "id": 3518490274
     },
     "Red Gold": {
         "tier": 4,
@@ -1857,7 +1857,7 @@
             "Catalyst 4": 1,
             "Tier 4 Product Material Schematic Copy": 1
         },
-        "id": 3694950795
+        "id": 2550840787
     },
     "Sc-Al Alloy": {
         "tier": 4,
@@ -1892,7 +1892,7 @@
             "Pure Carbon": 50,
             "Tier 2 Product Material Schematic Copy": 1
         },
-        "id": 1516319806
+        "id": 2984358477
     },
     "Ti-Nb Supraconductor": {
         "tier": 5,
@@ -1944,7 +1944,7 @@
             "Pure Oxygen": 50,
             "Tier 1 Product Material Schematic Copy": 1
         },
-        "id": 3922862539
+        "id": 2679709617
     },
     "Marble": {
         "tier": 2,
@@ -1960,7 +1960,7 @@
             "Pure Oxygen": 50,
             "Tier 2 Product Material Schematic Copy": 1
         },
-        "id": 2152500637
+        "id": 331532952
     },
     "Concrete": {
         "tier": 2,
@@ -1976,7 +1976,7 @@
             "Pure Silicon": 37.5,
             "Tier 2 Product Material Schematic Copy": 1
         },
-        "id": 847682043
+        "id": 645870905
     },
     "Carbon Fiber": {
         "tier": 1,
@@ -1992,7 +1992,7 @@
             "Pure Carbon": 50,
             "Tier 1 Product Material Schematic Copy": 1
         },
-        "id": 3287530404
+        "id": 1622880428
     },
     "Glass": {
         "tier": 1,
@@ -2008,7 +2008,7 @@
             "Pure Oxygen": 50,
             "Tier 1 Product Material Schematic Copy": 1
         },
-        "id": 2200747731
+        "id": 1942154251
     },
     "Advanced Glass": {
         "tier": 2,
@@ -2025,7 +2025,7 @@
             "Pure Oxygen": 50,
             "Tier 2 Product Material Schematic Copy": 1
         },
-        "id": 2200747731
+        "id": 1942154251
     },
     "Ag-Li Reinforced Glass": {
         "tier": 3,
@@ -2191,7 +2191,7 @@
             "Pure Silicon": 50,
             "Tier 1 Product Material Schematic Copy": 1
         },
-        "id": 1035435038
+        "id": 2565702107
     },
     "Steel": {
         "tier": 1,
@@ -2207,7 +2207,7 @@
             "Pure Carbon": 50,
             "Tier 1 Product Material Schematic Copy": 1
         },
-        "id": 1124170943
+        "id": 3518490274
     },
     "Wood": {
         "tier": 1,
@@ -2223,7 +2223,7 @@
             "Pure Oxygen": 50,
             "Tier 1 Product Material Schematic Copy": 1
         },
-        "id": 2117549242
+        "id": 770773323
     },
     "Basic Component": {
         "tier": 1,
@@ -4601,7 +4601,7 @@
             "Advanced Component": 50,
             "Advanced Processor": 50
         },
-		"id": 3432113051
+        "id": 3432113051
     },
     "Basic Core System XS": {
         "tier": 1,
@@ -19262,7 +19262,7 @@
         "industry": "Assembly Line XS",
         "input": {
             "Basic Component": 2,
-			"Uncommon Component": 2,
+            "Uncommon Component": 2,
             "Uncommon Electronics": 2,
             "Tier 2 XS Element Schematic Copy": 1
         },
@@ -19278,7 +19278,7 @@
         "industry": "Assembly Line XS",
         "input": {
             "Basic Component": 2,
-			"Uncommon Component": 2,
+            "Uncommon Component": 2,
             "Uncommon Electronics": 2,
             "Tier 2 S Element Schematic Copy": 1
         },
@@ -19293,7 +19293,7 @@
         "byproducts": {},
         "industry": "Assembly Line XS",
         "input": {
-			"Uncommon Component": 1,
+            "Uncommon Component": 1,
             "Advanced Electronics": 1,
             "Tier 3 M Element Schematic Copy": 1
         },
@@ -19308,7 +19308,7 @@
         "byproducts": {},
         "industry": "Assembly Line XS",
         "input": {
-			"Uncommon Component": 1,
+            "Uncommon Component": 1,
             "Advanced Electronics": 1,
             "Tier 3 L Element Schematic Copy": 1
         },
