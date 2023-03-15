@@ -3216,6 +3216,23 @@
         },
         "id": 3808417020
     },
+    "Rare Processor": {
+        "tier": 4,
+        "type": "Complex Part",
+        "volume": 5,
+        "outputQuantity": 1,
+        "time": 3840,
+        "byproducts": {},
+        "industry": "Electronics Industry M",
+        "input": {
+            "Basic Fixation": 1,
+            "Calcium Reinforced Copper": 2,
+            "Uncommon Fixation": 2,
+            "Cu-Ag Alloy": 2,
+            "Red Gold": 2
+        },
+        "id": 3840
+    },
     "Basic Quantum Core": {
         "tier": 1,
         "type": "Complex Part",
@@ -4593,13 +4610,12 @@
         "byproducts": {},
         "industry": "Electronics Industry M",
         "input": {
-            "Basic Component": 38,
-            "Basic Processor": 38,
             "Uncommon Component": 38,
             "Uncommon Processor": 38,
-            "Polysulfide Plastic": 343,
-            "Advanced Component": 50,
-            "Advanced Processor": 50
+            "Advanced Component": 88,
+            "Advanced Processor": 38,
+            "Fluoropolymer": 343,
+            "Rare Processor": 50
         },
         "id": 3432113051
     },
