@@ -17484,7 +17484,7 @@
             "Uncommon LED": 18,
             "Uncommon Magnet": 25,
             "Uncommon Antenna M": 1,
-            "Uncommon Reinforced Frame M": 1,
+            "Uncommon Standard Frame M": 1,
             "Tier 3 M Element Schematic Copy": 1
         },
         "id": 612626034
@@ -17502,7 +17502,7 @@
             "Uncommon LED": 108,
             "Uncommon Magnet": 125,
             "Uncommon Antenna L": 1,
-            "Uncommon Reinforced Frame L": 1,
+            "Uncommon Standard Frame L": 1,
             "Tier 2 L Element Schematic Copy": 1
         },
         "id": 3094514782
