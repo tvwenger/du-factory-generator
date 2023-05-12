@@ -14530,7 +14530,7 @@
         "id": 3032489865
     },
     "Basic Hover Engine M": {
-        "tier": 2,
+        "tier": 1,
         "type": "Piloting Element",
         "volume": 116.6,
         "outputQuantity": 1,
@@ -14761,7 +14761,7 @@
         "id": 3087709978
     },
     "Basic Hover Engine L": {
-        "tier": 2,
+        "tier": 1,
         "type": "Piloting Element",
         "volume": 619.2,
         "outputQuantity": 1,
@@ -14883,7 +14883,7 @@
         "id": 1943212688
     },
     "Basic Flat Hover Engine L": {
-        "tier": 2,
+        "tier": 1,
         "type": "Piloting Element",
         "volume": 619.2,
         "outputQuantity": 1,
