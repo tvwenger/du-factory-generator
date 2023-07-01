@@ -13542,7 +13542,7 @@
         "outputQuantity": 1,
         "time": 17280,
         "byproducts": {},
-        "industry": "Assembly Line L",
+        "industry": "Assembly Line M",
         "input": {
             "Uncommon Screw": 36,
             "Advanced Burner": 25,
@@ -13613,7 +13613,7 @@
         "outputQuantity": 1,
         "time": 51840,
         "byproducts": {},
-        "industry": "Assembly Line L",
+        "industry": "Assembly Line M",
         "input": {
             "Uncommon Screw": 18,
             "Advanced Screw": 18,
