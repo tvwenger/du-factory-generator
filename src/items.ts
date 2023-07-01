@@ -27,16 +27,18 @@ export enum Category {
     INDUSTRY_AND_INFRASTRUCTURE_ELEMENT = "Industry & Infrastructure Element",
     INTERMEDIARY_PART = "Intermediary Part",
     ORE = "Ore",
+	RELIC = "Relic",
     PILOTING_ELEMENT = "Piloting Element",
     PLANET_ELEMENT = "Planet Element",
     PRODUCT = "Product",
     PRODUCT_HONEYCOMB = "Product Honeycomb",
     PURE = "Pure",
     PURE_HONEYCOMB = "Pure Honeycomb",
+	SCHEMATICS = "Schematics",
     SCRAP = "Scrap",
     STRUCTURAL_PART = "Structural Part",
     SYSTEMS_ELEMENT = "Systems Element",
-    WARP_CELLS = "Warp Cells",
+    WARP_CELLS = "Warp Cell",
 }
 
 /**
@@ -49,6 +51,7 @@ export interface Item {
     readonly volume: Liter
     readonly transferBatchSize: Quantity
     readonly transferTime: Seconds
+    readonly id: number
 }
 
 /**
@@ -57,6 +60,22 @@ export interface Item {
  */
 export function isOre(item: Item): boolean {
     return item.category === Category.ORE
+}
+
+/**
+ * RelicPlasma type guard
+ * @param item Item to check
+ */
+export function isSchematic(item: Item): boolean {
+    return item.category === Category.SCHEMATICS
+}
+
+/**
+ * RelicPlasma type guard
+ * @param item Item to check
+ */
+export function isRelicPlasma(item: Item): boolean {
+    return item.category === Category.RELIC
 }
 
 /**
@@ -72,7 +91,7 @@ export function isGas(item: Item): boolean {
  * @param item Item to check
  */
 export function isCraftable(item: Item): boolean {
-    return !isOre(item)
+    return !isOre(item) && !isRelicPlasma(item) && !isSchematic(item)
 }
 
 /**
@@ -99,6 +118,7 @@ export function item(
     volume: Liter,
     transferBatchSize: Quantity,
     transferTime: Seconds,
+    id: number,
 ): Item {
     return {
         name,
@@ -107,6 +127,7 @@ export function item(
         volume,
         transferBatchSize,
         transferTime,
+        id,
     }
 }
 
@@ -198,6 +219,7 @@ for (const name in data) {
         data[name].volume,
         transferBatchSize,
         transferTime,
+        data[name].id,
     )
 }
 for (const name in data) {
@@ -282,6 +304,11 @@ export function getRecipe(item: Item, talentLevels: { [key: string]: number }) {
     const time = oldRecipe.time * (1.0 - time_mod)
     const ingredients: Map<Item, number> = new Map()
     for (const [key, value] of oldRecipe.ingredients.entries()) {
+        if (isSchematic(key) || isRelicPlasma(key))
+        {
+            //skip schematics or plasma
+            continue
+        }
         ingredients.set(key, value * (1.0 - input_mod))
     }
     const byproducts: Map<Item, number> = new Map()

@@ -465,7 +465,7 @@ export class NodeInstruction {
                 textAnchor="middle"
                 fontWeight="bold"
             >
-                {relayRoutes[0].container.item.name}
+                {relayRoutes[0].container.item.name} ({relayRoutes[0].container.item.id})
             </text>
         )
         elements.push(element)

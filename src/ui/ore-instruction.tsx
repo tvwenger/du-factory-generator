@@ -90,7 +90,7 @@ export class OreInstruction {
                 textAnchor="middle"
                 fontWeight="bold"
             >
-                {this.node.item.name}
+                {this.node.item.name} ({this.node.item.id})
             </text>
         )
         elements.push(element)
